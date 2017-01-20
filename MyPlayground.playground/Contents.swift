@@ -59,3 +59,7 @@ print()
 
 let s = 0..<10
 s.count
+
+for i in 0..<10 {
+    print(NSUUID().uuidString)
+}

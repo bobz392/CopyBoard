@@ -13,6 +13,7 @@ struct AppColors {
     UIColor(red:0.97, green:0.95, blue:0.92, alpha:1.00)
 //    UIColor(red:0.93, green:0.87, blue:0.69, alpha:1.00)
     static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
+    static let noteDate = UIColor(red:0.74, green:0.67, blue:0.59, alpha:1.00)
     static let horizonLine = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.00)
     static let verticalLine = UIColor(red:0.95, green:0.85, blue:0.73, alpha:1.00)
     static let mainBackground = UIColor(red:0.78, green:0.78, blue:0.78, alpha:1.00)
@@ -67,8 +68,8 @@ extension UIView {
     func addCardShadow() {
         self.layer.cornerRadius = 2
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 2
-        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowOffset = CGSize(width: 1, height: 3)
     }
 }

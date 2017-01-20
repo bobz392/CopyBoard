@@ -19,6 +19,7 @@ class NoteTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var verticalLineView: UIView!
     @IBOutlet weak var verticalLineView2: UIView!
     @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var noteDateLabel: UILabel!
     
     let clipImageView = UIImageView()
     
@@ -29,6 +30,7 @@ class NoteTableViewCell: MGSwipeTableCell {
         self.contentView.bgClear()
         self.cellCardView.addCardShadow()
         self.noteLabel.textColor = AppColors.noteText
+        self.noteDateLabel.textColor = AppColors.noteDate
         
         AppColors.noteCell.bgColor(to: self.cellCardView)
         AppColors.horizonLine.bgColor(to: self.horizonLineView)

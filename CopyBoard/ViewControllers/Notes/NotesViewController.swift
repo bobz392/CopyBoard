@@ -40,36 +40,12 @@ class NotesViewController: UIViewController {
         self.noteView.tableView.delegate = self
         self.noteView.tableView.dataSource = self
         
-//        let note1 = Note()
-//        note1.content = "abc"
-//        
-//        let note2 = Note()
-//        note2.content = "def"
-//        
-//        let note3 = Note()
-//        note3.content = "ghi"
-//        
-//        DBManager.shared.realm.beginWrite()
-//        DBManager.shared.realm.add([note1, note2, note3])
-//        try! DBManager.shared.realm.commitWrite()
-        
+//        Note.noteTestData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-}
-
-extension NotesViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-//        self.noteView.didScroll(scrollView: scrollView)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        self.noteView.didEndScroll(scrollView: scrollView)
     }
 
 }
@@ -83,11 +59,19 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.reuseId) as! NoteTableViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
         cell.noteLabel.text = note.content
+        cell.noteDateLabel.text = try! note.createdAt?.colloquialSinceNow().colloquial
+        print(try! note.createdAt?.colloquialSinceNow().colloquial ?? "no date")
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return NoteTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let note = self.viewModel.noteIn(row: indexPath.row)
+        let editorVC = EditorViewController(note: note)
+        self.navigationController?.pushViewController(editorVC, animated: true)
     }
 }
 

@@ -15,14 +15,6 @@
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72332BB1E30DE7300D5189D /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332BA1E30DE7300D5189D /* bg.jpg */; };
 		C72332BD1E30DEFD00D5189D /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332BC1E30DEFD00D5189D /* bg2.jpg */; };
-		C72332D61E30F51300D5189D /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C72332C11E30F51300D5189D /* DateTools.bundle */; };
-		C72332D71E30F51300D5189D /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332C41E30F51300D5189D /* DTConstants.m */; };
-		C72332D81E30F51300D5189D /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332C61E30F51300D5189D /* DTError.m */; };
-		C72332D91E30F51300D5189D /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332C81E30F51300D5189D /* DTTimePeriod.m */; };
-		C72332DA1E30F51300D5189D /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332CA1E30F51300D5189D /* DTTimePeriodChain.m */; };
-		C72332DB1E30F51300D5189D /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332CC1E30F51300D5189D /* DTTimePeriodCollection.m */; };
-		C72332DC1E30F51300D5189D /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332CE1E30F51300D5189D /* DTTimePeriodGroup.m */; };
-		C72332DD1E30F51300D5189D /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D01E30F51300D5189D /* NSDate+DateTools.m */; };
 		C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D31E30F51300D5189D /* MGSwipeButton.m */; };
 		C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D51E30F51300D5189D /* MGSwipeTableCell.m */; };
 		C72332E31E3135FB00D5189D /* bg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332E21E3135FB00D5189D /* bg3.jpg */; };
@@ -37,6 +29,30 @@
 		C7403F951E282A8F0067229E /* GroupManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F941E282A8F0067229E /* GroupManagerTest.swift */; };
 		C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
+		C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7B1E32541D00A1CB9F /* CalendarName.swift */; };
+		C7655A911E32541D00A1CB9F /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7C1E32541D00A1CB9F /* Commons.swift */; };
+		C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7D1E32541D00A1CB9F /* Date+Compare.swift */; };
+		C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7E1E32541D00A1CB9F /* Date+Components.swift */; };
+		C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7F1E32541D00A1CB9F /* Date+Formatter.swift */; };
+		C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A801E32541D00A1CB9F /* Date+Math.swift */; };
+		C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A811E32541D00A1CB9F /* DateComponents+Extension.swift */; };
+		C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A821E32541D00A1CB9F /* DateInRegion+Compare.swift */; };
+		C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A831E32541D00A1CB9F /* DateInRegion+Components.swift */; };
+		C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A841E32541D00A1CB9F /* DateInRegion+Formatter.swift */; };
+		C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A851E32541D00A1CB9F /* DateInRegion+Math.swift */; };
+		C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A861E32541D00A1CB9F /* DateInRegion.swift */; };
+		C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A871E32541D00A1CB9F /* DateInRegionFormatter.swift */; };
+		C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A881E32541D00A1CB9F /* DateTimeInterval.swift */; };
+		C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A891E32541D00A1CB9F /* Extensions.swift */; };
+		C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8A1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift */; };
+		C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8B1E32541D00A1CB9F /* LocaleName.swift */; };
+		C7655AA11E32541D00A1CB9F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8C1E32541D00A1CB9F /* Region.swift */; };
+		C7655AA21E32541D00A1CB9F /* SwiftDate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7655A8D1E32541D00A1CB9F /* SwiftDate.bundle */; };
+		C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8E1E32541D00A1CB9F /* TimeInterval+Extensions.swift */; };
+		C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8F1E32541D00A1CB9F /* TimeZoneName.swift */; };
+		C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA61E325FA100A1CB9F /* EditorViewController.swift */; };
+		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
+		C7655AAB1E327D6800A1CB9F /* s.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AAA1E327D6800A1CB9F /* s.xib */; };
 		C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335C1E2EEE9A001DCE38 /* NoteView.swift */; };
 		C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C78C33621E2EF060001DCE38 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -123,22 +139,6 @@
 		C72332BA1E30DE7300D5189D /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		C72332BC1E30DEFD00D5189D /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
-		C72332C11E30F51300D5189D /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
-		C72332C21E30F51300D5189D /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
-		C72332C31E30F51300D5189D /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
-		C72332C41E30F51300D5189D /* DTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTConstants.m; sourceTree = "<group>"; };
-		C72332C51E30F51300D5189D /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
-		C72332C61E30F51300D5189D /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
-		C72332C71E30F51300D5189D /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriod.h; sourceTree = "<group>"; };
-		C72332C81E30F51300D5189D /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriod.m; sourceTree = "<group>"; };
-		C72332C91E30F51300D5189D /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
-		C72332CA1E30F51300D5189D /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
-		C72332CB1E30F51300D5189D /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodCollection.h; sourceTree = "<group>"; };
-		C72332CC1E30F51300D5189D /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollection.m; sourceTree = "<group>"; };
-		C72332CD1E30F51300D5189D /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
-		C72332CE1E30F51300D5189D /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
-		C72332CF1E30F51300D5189D /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
-		C72332D01E30F51300D5189D /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
 		C72332D21E30F51300D5189D /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		C72332D31E30F51300D5189D /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		C72332D41E30F51300D5189D /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -163,6 +163,30 @@
 		C7403F941E282A8F0067229E /* GroupManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTest.swift; sourceTree = "<group>"; };
 		C74568B71E2D34D700E7C776 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		C7655A7B1E32541D00A1CB9F /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarName.swift; sourceTree = "<group>"; };
+		C7655A7C1E32541D00A1CB9F /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
+		C7655A7D1E32541D00A1CB9F /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
+		C7655A7E1E32541D00A1CB9F /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
+		C7655A7F1E32541D00A1CB9F /* Date+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		C7655A801E32541D00A1CB9F /* Date+Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Math.swift"; sourceTree = "<group>"; };
+		C7655A811E32541D00A1CB9F /* DateComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateComponents+Extension.swift"; sourceTree = "<group>"; };
+		C7655A821E32541D00A1CB9F /* DateInRegion+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateInRegion+Compare.swift"; sourceTree = "<group>"; };
+		C7655A831E32541D00A1CB9F /* DateInRegion+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateInRegion+Components.swift"; sourceTree = "<group>"; };
+		C7655A841E32541D00A1CB9F /* DateInRegion+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateInRegion+Formatter.swift"; sourceTree = "<group>"; };
+		C7655A851E32541D00A1CB9F /* DateInRegion+Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateInRegion+Math.swift"; sourceTree = "<group>"; };
+		C7655A861E32541D00A1CB9F /* DateInRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateInRegion.swift; sourceTree = "<group>"; };
+		C7655A871E32541D00A1CB9F /* DateInRegionFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateInRegionFormatter.swift; sourceTree = "<group>"; };
+		C7655A881E32541D00A1CB9F /* DateTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeInterval.swift; sourceTree = "<group>"; };
+		C7655A891E32541D00A1CB9F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C7655A8A1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTimeFormatter.swift; sourceTree = "<group>"; };
+		C7655A8B1E32541D00A1CB9F /* LocaleName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleName.swift; sourceTree = "<group>"; };
+		C7655A8C1E32541D00A1CB9F /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		C7655A8D1E32541D00A1CB9F /* SwiftDate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftDate.bundle; sourceTree = "<group>"; };
+		C7655A8E1E32541D00A1CB9F /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		C7655A8F1E32541D00A1CB9F /* TimeZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneName.swift; sourceTree = "<group>"; };
+		C7655AA61E325FA100A1CB9F /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		C7655AAA1E327D6800A1CB9F /* s.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = s.xib; sourceTree = "<group>"; };
 		C78C335C1E2EEE9A001DCE38 /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		C78C335F1E2EF019001DCE38 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C78C33611E2EF060001DCE38 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -257,33 +281,10 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
-				C72332C01E30F51300D5189D /* DateTools */,
+				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
 				C72332D11E30F51300D5189D /* MGSwipeTableCell */,
 			);
 			path = Vander;
-			sourceTree = "<group>";
-		};
-		C72332C01E30F51300D5189D /* DateTools */ = {
-			isa = PBXGroup;
-			children = (
-				C72332C11E30F51300D5189D /* DateTools.bundle */,
-				C72332C21E30F51300D5189D /* DateTools.h */,
-				C72332C31E30F51300D5189D /* DTConstants.h */,
-				C72332C41E30F51300D5189D /* DTConstants.m */,
-				C72332C51E30F51300D5189D /* DTError.h */,
-				C72332C61E30F51300D5189D /* DTError.m */,
-				C72332C71E30F51300D5189D /* DTTimePeriod.h */,
-				C72332C81E30F51300D5189D /* DTTimePeriod.m */,
-				C72332C91E30F51300D5189D /* DTTimePeriodChain.h */,
-				C72332CA1E30F51300D5189D /* DTTimePeriodChain.m */,
-				C72332CB1E30F51300D5189D /* DTTimePeriodCollection.h */,
-				C72332CC1E30F51300D5189D /* DTTimePeriodCollection.m */,
-				C72332CD1E30F51300D5189D /* DTTimePeriodGroup.h */,
-				C72332CE1E30F51300D5189D /* DTTimePeriodGroup.m */,
-				C72332CF1E30F51300D5189D /* NSDate+DateTools.h */,
-				C72332D01E30F51300D5189D /* NSDate+DateTools.m */,
-			);
-			path = DateTools;
 			sourceTree = "<group>";
 		};
 		C72332D11E30F51300D5189D /* MGSwipeTableCell */ = {
@@ -324,12 +325,12 @@
 			children = (
 				C7403ECA1E27CA630067229E /* CopyBoard.entitlements */,
 				C7403E251E269CA00067229E /* AppDelegate.swift */,
+				C7403F311E280DE70067229E /* ViewControllers */,
 				C7110FE71E2836A2007A1577 /* Manages */,
 				C72332B51E30337900D5189D /* Control */,
 				C78C335E1E2EF010001DCE38 /* Colors */,
 				C74FF9C41E2C455400D5CC9E /* Model */,
 				C72332BF1E30F51300D5189D /* Vander */,
-				C7403F311E280DE70067229E /* ViewControllers */,
 				C7403E2C1E269CA00067229E /* Assets.xcassets */,
 				C72332BA1E30DE7300D5189D /* bg.jpg */,
 				C72332BC1E30DEFD00D5189D /* bg2.jpg */,
@@ -355,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				C7403F321E280E040067229E /* BaseViewController.swift */,
+				C7655AA51E325F9100A1CB9F /* Editor */,
 				C7403F361E280E240067229E /* Notes */,
 			);
 			path = ViewControllers;
@@ -367,6 +369,7 @@
 				C7403F371E280E240067229E /* NotesViewController.swift */,
 				C71110281E29448F007A1577 /* NotesViewModle.swift */,
 				C78C335C1E2EEE9A001DCE38 /* NoteView.swift */,
+				C7655AAA1E327D6800A1CB9F /* s.xib */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -387,6 +390,43 @@
 				C74FF9C51E2C455C00D5CC9E /* Note.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C7655A7A1E32541D00A1CB9F /* SwiftDate */ = {
+			isa = PBXGroup;
+			children = (
+				C7655A7B1E32541D00A1CB9F /* CalendarName.swift */,
+				C7655A7C1E32541D00A1CB9F /* Commons.swift */,
+				C7655A7D1E32541D00A1CB9F /* Date+Compare.swift */,
+				C7655A7E1E32541D00A1CB9F /* Date+Components.swift */,
+				C7655A7F1E32541D00A1CB9F /* Date+Formatter.swift */,
+				C7655A801E32541D00A1CB9F /* Date+Math.swift */,
+				C7655A811E32541D00A1CB9F /* DateComponents+Extension.swift */,
+				C7655A821E32541D00A1CB9F /* DateInRegion+Compare.swift */,
+				C7655A831E32541D00A1CB9F /* DateInRegion+Components.swift */,
+				C7655A841E32541D00A1CB9F /* DateInRegion+Formatter.swift */,
+				C7655A851E32541D00A1CB9F /* DateInRegion+Math.swift */,
+				C7655A861E32541D00A1CB9F /* DateInRegion.swift */,
+				C7655A871E32541D00A1CB9F /* DateInRegionFormatter.swift */,
+				C7655A881E32541D00A1CB9F /* DateTimeInterval.swift */,
+				C7655A891E32541D00A1CB9F /* Extensions.swift */,
+				C7655A8A1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift */,
+				C7655A8B1E32541D00A1CB9F /* LocaleName.swift */,
+				C7655A8C1E32541D00A1CB9F /* Region.swift */,
+				C7655A8D1E32541D00A1CB9F /* SwiftDate.bundle */,
+				C7655A8E1E32541D00A1CB9F /* TimeInterval+Extensions.swift */,
+				C7655A8F1E32541D00A1CB9F /* TimeZoneName.swift */,
+			);
+			path = SwiftDate;
+			sourceTree = "<group>";
+		};
+		C7655AA51E325F9100A1CB9F /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				C7655AA61E325FA100A1CB9F /* EditorViewController.swift */,
+				C7655AA81E32603C00A1CB9F /* EditorView.swift */,
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 		C78C335E1E2EF010001DCE38 /* Colors */ = {
@@ -584,13 +624,14 @@
 				C78C33891E2EFA96001DCE38 /* 1B5DE090-2C33-36AA-BCBD-3885389B14D3.bcsymbolmap in Resources */,
 				C78C33901E2EFA96001DCE38 /* 8D14D7A1-0560-3458-A239-9F06FAB73495.bcsymbolmap in Resources */,
 				C78C338B1E2EFA96001DCE38 /* 5B1B6DB5-CA5E-3791-AE67-2C8B9633A3AB.bcsymbolmap in Resources */,
+				C7655AAB1E327D6800A1CB9F /* s.xib in Resources */,
 				C78C33931E2EFA96001DCE38 /* 9F993729-85CB-380E-8056-679F9226AC21.bcsymbolmap in Resources */,
 				C78C338E1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
 				C72332BB1E30DE7300D5189D /* bg.jpg in Resources */,
 				C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */,
-				C72332D61E30F51300D5189D /* DateTools.bundle in Resources */,
+				C7655AA21E32541D00A1CB9F /* SwiftDate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,27 +707,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C72332D81E30F51300D5189D /* DTError.m in Sources */,
+				C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
+				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
+				C7655AA11E32541D00A1CB9F /* Region.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
+				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */,
-				C72332D91E30F51300D5189D /* DTTimePeriod.m in Sources */,
+				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
+				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
+				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
+				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
+				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
+				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
-				C72332D71E30F51300D5189D /* DTConstants.m in Sources */,
+				C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */,
+				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
 				C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */,
-				C72332DA1E30F51300D5189D /* DTTimePeriodChain.m in Sources */,
-				C72332DB1E30F51300D5189D /* DTTimePeriodCollection.m in Sources */,
+				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
+				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
+				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
+				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
-				C72332DC1E30F51300D5189D /* DTTimePeriodGroup.m in Sources */,
+				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
+				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
+				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
+				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
+				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
+				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
-				C72332DD1E30F51300D5189D /* NSDate+DateTools.m in Sources */,
 				C72332B31E302DAA00D5189D /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,12 +883,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CopyBoard",
-					"$(PROJECT_DIR)/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "74abca40-e534-4d4c-938f-7292fcca0708";
@@ -852,12 +908,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CopyBoard",
-					"$(PROJECT_DIR)/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "96b228ea-b231-43e0-a541-214700001267";

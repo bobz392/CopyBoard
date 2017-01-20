@@ -68,24 +68,21 @@ class NoteView {
         self.tableView.bgClear()
     }
     
-    
-    
     private func configBarView(view: UIView) {
         view.addSubview(self.barView)
-        self.barView.backgroundColor = AppColors.mainBackgroundColor
-//        self.barView.bgClear()
+        self.barView.bgClear()
         self.barView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(44)
+            make.height.equalTo(64)
         }
         
         self.barView.addSubview(self.titleLabel)
         self.titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(10)
             make.left.greaterThanOrEqualToSuperview().offset(60)
             make.right.greaterThanOrEqualToSuperview().offset(-60)
         }
@@ -93,7 +90,7 @@ class NoteView {
         self.barView.addSubview(self.searchButton)
         self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
         self.searchButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(10)
             make.height.equalTo(32)
             make.width.equalTo(32)
             make.right.equalToSuperview().offset(-8)
@@ -101,62 +98,20 @@ class NoteView {
         
         self.barView.addSubview(self.searchBar)
         self.searchBar.isHidden = true
+        self.searchBar.isTranslucent = true
+        self.searchBar.barStyle = .default
+        self.searchBar.searchBarStyle = .minimal
+        self.searchBar.tintColor = AppColors.mainBackground
         self.searchBar.alpha = 0
         self.searchBar.showsCancelButton = true
         self.searchBar.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
     }
-    
-    func didScroll(scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        
-        let barOffset = 20 - offset
-//        if abs(self.currentBarOffset - barOffset) < 2 {
-//            return
-//        } else {
-//            self.currentBarOffset = barOffset
-//        }
-//        
-        
-        if offset <= 0 || offset >= 44 {
-            return
-        } else {
-            
-            let frame = self.barView.frame
-            let point = CGPoint(x: 0, y: barOffset)
-            self.barView.frame = CGRect(origin: point, size: frame.size)
-        }
-    }
-    
-    func didEndScroll(scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        
-        if offset <= 0 || offset >= 44 {
-            return
-        } else {
-            let y: CGFloat
-            if offset >= 22 {
-                y = -24
-            } else {
-                y = 20
-            }
-            self.barView.snp.updateConstraints({ (make) in
-                make.top.equalToSuperview().offset(y)
-            })
-//            UIView.animate(withDuration: 0.25, animations: {
-//                self.barView.superview?.layoutIfNeeded()
-//            })
-        }
-    }
-    
 }
-
-
 
 extension NoteView {
     func searchAnimation(startSearch: Bool) {

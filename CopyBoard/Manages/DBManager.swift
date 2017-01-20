@@ -40,7 +40,12 @@ class DBManager {
                 .sorted(byKeyPath: "createdAt", ascending: false)
         }
     }
-    
+}
+
+struct UUIDGenerator {
+    static func getUUID() -> String {
+        return NSUUID().uuidString
+    }
 }
 
 ///**
