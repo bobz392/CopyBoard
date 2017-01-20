@@ -1,0 +1,74 @@
+//
+//  AppColors.swift
+//  CopyBoard
+//
+//  Created by zhoubo on 2017/1/18.
+//  Copyright © 2017年 zhoubo. All rights reserved.
+//
+
+import UIKit
+
+struct AppColors {
+    static let noteCell = //UIColor(red:1.00, green:0.95, blue:0.63, alpha:1.00)
+    UIColor(red:0.97, green:0.95, blue:0.92, alpha:1.00)
+//    UIColor(red:0.93, green:0.87, blue:0.69, alpha:1.00)
+    static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
+    static let horizonLine = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.00)
+    static let verticalLine = UIColor(red:0.95, green:0.85, blue:0.73, alpha:1.00)
+    static let mainBackground = UIColor(red:0.78, green:0.78, blue:0.78, alpha:1.00)
+    static let pin = UIColor(red:0.99, green:0.34, blue:0.35, alpha:1.00)
+    
+    static let mainGreenColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
+    static let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
+    static let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
+    static let lightSeparatorColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00)
+    static let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
+    
+    static let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
+    
+    static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
+    static let mainIconColor = UIColor(red:0.70, green:0.76, blue:0.79, alpha:1.00)
+    static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
+    static let cellCardSelectedColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
+    static let searchBackgroundColor = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)
+    
+    static let buttonBackgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
+    static let mainTextColor = UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)
+    static let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
+    
+    static let headerTextColor = UIColor(red:0.80, green:0.81, blue:0.85, alpha:1.00)
+    
+    static let linkButtonTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
+    static let cellLabelSelectedTextColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:1.00)
+    static let cellSelectedColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:0.2)
+    static let emptyTintColor = UIColor(red:0.70, green:0.72, blue:0.82, alpha:1.00)
+    
+    static let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
+    static let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
+    
+    static let swipeRedBackgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
+    static let swipeBlueBackgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
+    
+    static let scheduleLineBackgroundColor = UIColor(red:0.75, green:0.78, blue:0.79, alpha:1.00)
+    
+}
+
+extension UIColor {
+    func bgColor(to: UIView) {
+        to.backgroundColor = self
+    }
+}
+
+extension UIView {
+    func bgClear() {
+        self.backgroundColor = UIColor.clear
+    }
+    
+    func addCardShadow() {
+        self.layer.cornerRadius = 2
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+    }
+}
