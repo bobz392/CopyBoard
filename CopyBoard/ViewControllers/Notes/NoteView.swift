@@ -24,19 +24,7 @@ class NoteView {
     
     func config(withView view: UIView) {
         AppColors.mainBackground.bgColor(to: view)
-        
-        let bgImageView = UIImageView()
-        view.addSubview(bgImageView)
-        bgImageView.image = UIImage(named: "bg3.jpg")
-        bgImageView.contentMode = .scaleAspectFill
-        bgImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        self.configBarView(view: view)
+    
         self.configTableView(view: view)
         
         view.addSubview(self.holderView)
@@ -54,35 +42,36 @@ class NoteView {
     private func configTableView(view: UIView) {
         view.addSubview(self.tableView)
         self.tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.barView.snp.bottom)
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
         self.tableView.register(NoteTableViewCell.nib,
                                 forCellReuseIdentifier: NoteTableViewCell.reuseId)
         self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView()
-//        self.tableView.clipsToBounds = false
         self.tableView.bgClear()
     }
     
-    private func configBarView(view: UIView) {
+    func configBarView(view: UINavigationBar) {
         view.addSubview(self.barView)
-        self.barView.bgClear()
+//        AppColors.mainBackground.bgColor(to: self.barView)
+        self.barView.backgroundColor = UIColor.clear
         self.barView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(64)
+            make.bottom.equalToSuperview()
         }
         
         self.barView.addSubview(self.titleLabel)
-        self.titleLabel.font = UIFont.systemFont(ofSize: 17)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+        self.titleLabel.text = "NOTES"
+        self.titleLabel.textAlignment = .center
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()//.offset(10)
             make.left.greaterThanOrEqualToSuperview().offset(60)
             make.right.greaterThanOrEqualToSuperview().offset(-60)
         }
@@ -90,7 +79,7 @@ class NoteView {
         self.barView.addSubview(self.searchButton)
         self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
         self.searchButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()//.offset(10)
             make.height.equalTo(32)
             make.width.equalTo(32)
             make.right.equalToSuperview().offset(-8)
@@ -106,7 +95,7 @@ class NoteView {
         self.searchBar.showsCancelButton = true
         self.searchBar.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview()//.offset(20)
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }

@@ -9,14 +9,15 @@
 import UIKit
 
 struct AppColors {
-    static let noteCell = //UIColor(red:1.00, green:0.95, blue:0.63, alpha:1.00)
-    UIColor(red:0.97, green:0.95, blue:0.92, alpha:1.00)
-//    UIColor(red:0.93, green:0.87, blue:0.69, alpha:1.00)
+    static let noteCell =
+//        UIColor(red:0.94, green:0.88, blue:0.70, alpha:1.00)
+        UIColor(red:0.95, green:0.89, blue:0.67, alpha:1.00)
     static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
     static let noteDate = UIColor(red:0.74, green:0.67, blue:0.59, alpha:1.00)
-    static let horizonLine = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.00)
-    static let verticalLine = UIColor(red:0.95, green:0.85, blue:0.73, alpha:1.00)
-    static let mainBackground = UIColor(red:0.78, green:0.78, blue:0.78, alpha:1.00)
+    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
+    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
+    static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
+    //UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
     static let pin = UIColor(red:0.99, green:0.34, blue:0.35, alpha:1.00)
     
     static let mainGreenColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
@@ -57,6 +58,19 @@ struct AppColors {
 extension UIColor {
     func bgColor(to: UIView) {
         to.backgroundColor = self
+    }
+    
+    func toImage(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setFillColor(self.cgColor)
+        context?.fill(CGRect(x:0, y:0, width: size.width, height: size.height))
+        
+        let output = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return output!
     }
 }
 

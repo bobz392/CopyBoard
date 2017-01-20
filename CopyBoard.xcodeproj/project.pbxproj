@@ -13,11 +13,8 @@
 		C72332B31E302DAA00D5189D /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */; };
 		C72332B41E302DAA00D5189D /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
-		C72332BB1E30DE7300D5189D /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332BA1E30DE7300D5189D /* bg.jpg */; };
-		C72332BD1E30DEFD00D5189D /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332BC1E30DEFD00D5189D /* bg2.jpg */; };
 		C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D31E30F51300D5189D /* MGSwipeButton.m */; };
 		C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D51E30F51300D5189D /* MGSwipeTableCell.m */; };
-		C72332E31E3135FB00D5189D /* bg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C72332E21E3135FB00D5189D /* bg3.jpg */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
@@ -52,7 +49,15 @@
 		C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8F1E32541D00A1CB9F /* TimeZoneName.swift */; };
 		C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA61E325FA100A1CB9F /* EditorViewController.swift */; };
 		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
-		C7655AAB1E327D6800A1CB9F /* s.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AAA1E327D6800A1CB9F /* s.xib */; };
+		C7655ACE1E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AB91E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m */; };
+		C7655ACF1E32BF3000A1CB9F /* TLYDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABB1E32BF3000A1CB9F /* TLYDelegateProxy.m */; };
+		C7655AD01E32BF3000A1CB9F /* UIScrollView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABD1E32BF3000A1CB9F /* UIScrollView+Helpers.m */; };
+		C7655AD11E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABF1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m */; };
+		C7655AD21E32BF3000A1CB9F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7655AC01E32BF3000A1CB9F /* Info.plist */; };
+		C7655AD31E32BF3000A1CB9F /* TLYShyScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC51E32BF3000A1CB9F /* TLYShyScrollViewController.m */; };
+		C7655AD41E32BF3000A1CB9F /* TLYShyStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC71E32BF3000A1CB9F /* TLYShyStatusBarController.m */; };
+		C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC91E32BF3000A1CB9F /* TLYShyViewController.m */; };
+		C7655AD61E32BF3000A1CB9F /* TLYShyNavBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ACD1E32BF3000A1CB9F /* TLYShyNavBarManager.m */; };
 		C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335C1E2EEE9A001DCE38 /* NoteView.swift */; };
 		C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C78C33621E2EF060001DCE38 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -136,14 +141,11 @@
 		C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
-		C72332BA1E30DE7300D5189D /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
-		C72332BC1E30DEFD00D5189D /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72332D21E30F51300D5189D /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		C72332D31E30F51300D5189D /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		C72332D41E30F51300D5189D /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
 		C72332D51E30F51300D5189D /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
-		C72332E21E3135FB00D5189D /* bg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg3.jpg; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E2C1E269CA00067229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,7 +188,27 @@
 		C7655A8F1E32541D00A1CB9F /* TimeZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneName.swift; sourceTree = "<group>"; };
 		C7655AA61E325FA100A1CB9F /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
-		C7655AAA1E327D6800A1CB9F /* s.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = s.xib; sourceTree = "<group>"; };
+		C7655AB81E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLYSwizzlingHelpers.h"; sourceTree = "<group>"; };
+		C7655AB91E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLYSwizzlingHelpers.m"; sourceTree = "<group>"; };
+		C7655ABA1E32BF3000A1CB9F /* TLYDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYDelegateProxy.h; sourceTree = "<group>"; };
+		C7655ABB1E32BF3000A1CB9F /* TLYDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYDelegateProxy.m; sourceTree = "<group>"; };
+		C7655ABC1E32BF3000A1CB9F /* UIScrollView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Helpers.h"; sourceTree = "<group>"; };
+		C7655ABD1E32BF3000A1CB9F /* UIScrollView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Helpers.m"; sourceTree = "<group>"; };
+		C7655ABE1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BetterLayoutGuides.h"; sourceTree = "<group>"; };
+		C7655ABF1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BetterLayoutGuides.m"; sourceTree = "<group>"; };
+		C7655AC01E32BF3000A1CB9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7655AC21E32BF3000A1CB9F /* TLYShyChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyChild.h; sourceTree = "<group>"; };
+		C7655AC31E32BF3000A1CB9F /* TLYShyParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyParent.h; sourceTree = "<group>"; };
+		C7655AC41E32BF3000A1CB9F /* TLYShyScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyScrollViewController.h; sourceTree = "<group>"; };
+		C7655AC51E32BF3000A1CB9F /* TLYShyScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyScrollViewController.m; sourceTree = "<group>"; };
+		C7655AC61E32BF3000A1CB9F /* TLYShyStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyStatusBarController.h; sourceTree = "<group>"; };
+		C7655AC71E32BF3000A1CB9F /* TLYShyStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyStatusBarController.m; sourceTree = "<group>"; };
+		C7655AC81E32BF3000A1CB9F /* TLYShyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyViewController.h; sourceTree = "<group>"; };
+		C7655AC91E32BF3000A1CB9F /* TLYShyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyViewController.m; sourceTree = "<group>"; };
+		C7655ACA1E32BF3000A1CB9F /* TLYShyNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBar.h; sourceTree = "<group>"; };
+		C7655ACB1E32BF3000A1CB9F /* TLYShyNavBarFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarFade.h; sourceTree = "<group>"; };
+		C7655ACC1E32BF3000A1CB9F /* TLYShyNavBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarManager.h; sourceTree = "<group>"; };
+		C7655ACD1E32BF3000A1CB9F /* TLYShyNavBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyNavBarManager.m; sourceTree = "<group>"; };
 		C78C335C1E2EEE9A001DCE38 /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		C78C335F1E2EF019001DCE38 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C78C33611E2EF060001DCE38 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -281,6 +303,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C7655AB61E32BF3000A1CB9F /* TLYShyNavBar */,
 				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
 				C72332D11E30F51300D5189D /* MGSwipeTableCell */,
 			);
@@ -332,9 +355,6 @@
 				C74FF9C41E2C455400D5CC9E /* Model */,
 				C72332BF1E30F51300D5189D /* Vander */,
 				C7403E2C1E269CA00067229E /* Assets.xcassets */,
-				C72332BA1E30DE7300D5189D /* bg.jpg */,
-				C72332BC1E30DEFD00D5189D /* bg2.jpg */,
-				C72332E21E3135FB00D5189D /* bg3.jpg */,
 				C7403E471E27BF310067229E /* LaunchScreen.storyboard */,
 				C72332BE1E30F43A00D5189D /* bridge-header.h */,
 				C7403E311E269CA00067229E /* Info.plist */,
@@ -369,7 +389,6 @@
 				C7403F371E280E240067229E /* NotesViewController.swift */,
 				C71110281E29448F007A1577 /* NotesViewModle.swift */,
 				C78C335C1E2EEE9A001DCE38 /* NoteView.swift */,
-				C7655AAA1E327D6800A1CB9F /* s.xib */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -427,6 +446,50 @@
 				C7655AA81E32603C00A1CB9F /* EditorView.swift */,
 			);
 			path = Editor;
+			sourceTree = "<group>";
+		};
+		C7655AB61E32BF3000A1CB9F /* TLYShyNavBar */ = {
+			isa = PBXGroup;
+			children = (
+				C7655AB71E32BF3000A1CB9F /* Categories */,
+				C7655AC01E32BF3000A1CB9F /* Info.plist */,
+				C7655AC11E32BF3000A1CB9F /* ShyControllers */,
+				C7655ACA1E32BF3000A1CB9F /* TLYShyNavBar.h */,
+				C7655ACB1E32BF3000A1CB9F /* TLYShyNavBarFade.h */,
+				C7655ACC1E32BF3000A1CB9F /* TLYShyNavBarManager.h */,
+				C7655ACD1E32BF3000A1CB9F /* TLYShyNavBarManager.m */,
+			);
+			path = TLYShyNavBar;
+			sourceTree = "<group>";
+		};
+		C7655AB71E32BF3000A1CB9F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C7655AB81E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.h */,
+				C7655AB91E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m */,
+				C7655ABA1E32BF3000A1CB9F /* TLYDelegateProxy.h */,
+				C7655ABB1E32BF3000A1CB9F /* TLYDelegateProxy.m */,
+				C7655ABC1E32BF3000A1CB9F /* UIScrollView+Helpers.h */,
+				C7655ABD1E32BF3000A1CB9F /* UIScrollView+Helpers.m */,
+				C7655ABE1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.h */,
+				C7655ABF1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C7655AC11E32BF3000A1CB9F /* ShyControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7655AC21E32BF3000A1CB9F /* TLYShyChild.h */,
+				C7655AC31E32BF3000A1CB9F /* TLYShyParent.h */,
+				C7655AC41E32BF3000A1CB9F /* TLYShyScrollViewController.h */,
+				C7655AC51E32BF3000A1CB9F /* TLYShyScrollViewController.m */,
+				C7655AC61E32BF3000A1CB9F /* TLYShyStatusBarController.h */,
+				C7655AC71E32BF3000A1CB9F /* TLYShyStatusBarController.m */,
+				C7655AC81E32BF3000A1CB9F /* TLYShyViewController.h */,
+				C7655AC91E32BF3000A1CB9F /* TLYShyViewController.m */,
+			);
+			path = ShyControllers;
 			sourceTree = "<group>";
 		};
 		C78C335E1E2EF010001DCE38 /* Colors */ = {
@@ -608,7 +671,6 @@
 			files = (
 				C72332B41E302DAA00D5189D /* NoteTableViewCell.xib in Resources */,
 				C78C33961E2EFA96001DCE38 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap in Resources */,
-				C72332E31E3135FB00D5189D /* bg3.jpg in Resources */,
 				C78C338C1E2EFA96001DCE38 /* 5F176F2C-E1A6-34F5-A597-9378AD27BD9E.bcsymbolmap in Resources */,
 				C78C33921E2EFA96001DCE38 /* 8F30DB2B-FA6E-3A4A-8A8A-20D6A63FC0AD.bcsymbolmap in Resources */,
 				C78C33861E2EFA96001DCE38 /* 0CF18327-1779-3376-8A33-98C36B7CB2BA.bcsymbolmap in Resources */,
@@ -617,19 +679,17 @@
 				C78C33881E2EFA96001DCE38 /* 163CA734-6CBF-3AAA-93FE-E46988C568F7.bcsymbolmap in Resources */,
 				C78C338A1E2EFA96001DCE38 /* 207FAC92-2E81-3102-809E-2E48BCBCC5DC.bcsymbolmap in Resources */,
 				C78C33951E2EFA96001DCE38 /* E97F97F7-FAC3-37F8-ACC1-70137A753F29.bcsymbolmap in Resources */,
-				C72332BD1E30DEFD00D5189D /* bg2.jpg in Resources */,
 				C78C33971E2EFA96001DCE38 /* F7BE8380-2112-3873-AD92-A218F84C1C69.bcsymbolmap in Resources */,
 				C78C338D1E2EFA96001DCE38 /* 709376EC-E602-3A0D-940D-0E51DDC04211.bcsymbolmap in Resources */,
 				C7403E481E27BF310067229E /* LaunchScreen.storyboard in Resources */,
 				C78C33891E2EFA96001DCE38 /* 1B5DE090-2C33-36AA-BCBD-3885389B14D3.bcsymbolmap in Resources */,
 				C78C33901E2EFA96001DCE38 /* 8D14D7A1-0560-3458-A239-9F06FAB73495.bcsymbolmap in Resources */,
 				C78C338B1E2EFA96001DCE38 /* 5B1B6DB5-CA5E-3791-AE67-2C8B9633A3AB.bcsymbolmap in Resources */,
-				C7655AAB1E327D6800A1CB9F /* s.xib in Resources */,
 				C78C33931E2EFA96001DCE38 /* 9F993729-85CB-380E-8056-679F9226AC21.bcsymbolmap in Resources */,
+				C7655AD21E32BF3000A1CB9F /* Info.plist in Resources */,
 				C78C338E1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
-				C72332BB1E30DE7300D5189D /* bg.jpg in Resources */,
 				C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */,
 				C7655AA21E32541D00A1CB9F /* SwiftDate.bundle in Resources */,
 			);
@@ -708,12 +768,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */,
+				C7655AD11E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m in Sources */,
+				C7655ACE1E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
 				C7655AA11E32541D00A1CB9F /* Region.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */,
+				C7655AD41E32BF3000A1CB9F /* TLYShyStatusBarController.m in Sources */,
+				C7655AD01E32BF3000A1CB9F /* UIScrollView+Helpers.m in Sources */,
+				C7655AD61E32BF3000A1CB9F /* TLYShyNavBarManager.m in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
 				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
@@ -724,6 +789,7 @@
 				C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */,
 				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
 				C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */,
+				C7655ACF1E32BF3000A1CB9F /* TLYDelegateProxy.m in Sources */,
 				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
 				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
@@ -735,10 +801,12 @@
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
+				C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
+				C7655AD31E32BF3000A1CB9F /* TLYShyScrollViewController.m in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,

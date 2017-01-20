@@ -35,7 +35,7 @@ class NoteTableViewCell: MGSwipeTableCell {
         AppColors.noteCell.bgColor(to: self.cellCardView)
         AppColors.horizonLine.bgColor(to: self.horizonLineView)
         AppColors.verticalLine.bgColor(to: self.verticalLineView)
-        AppColors.verticalLine.bgColor(to: self.verticalLineView2)
+        AppColors.horizonLine.bgColor(to: self.verticalLineView2)
         
         self.addSubview(self.clipImageView)
         self.clipImageView.snp.makeConstraints { (make) in

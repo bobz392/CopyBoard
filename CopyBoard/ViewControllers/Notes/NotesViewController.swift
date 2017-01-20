@@ -8,17 +8,21 @@
 
 import UIKit
 
-class NotesViewController: UIViewController {
+class NotesViewController: BaseViewController {
 
     let noteView = NoteView()
     var viewModel: NotesViewModel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.noteView.config(withView: self.view)
+        if let bar = self.navigationController?.navigationBar {
+            self.noteView.configBarView(view: bar)
+        }
         
-        
+    
         let searchResultDriver =
             self.noteView.searchBar.rx.text.orEmpty.asDriver()
 
@@ -39,7 +43,7 @@ class NotesViewController: UIViewController {
         
         self.noteView.tableView.delegate = self
         self.noteView.tableView.dataSource = self
-        
+        self.shyNavBarManager.scrollView = self.noteView.tableView
 //        Note.noteTestData()
     }
 

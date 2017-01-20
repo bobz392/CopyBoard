@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController(rootViewController: NotesViewController())
-        nav.isNavigationBarHidden = true
+        nav.navigationBar.barTintColor = AppColors.mainBackground
+        nav.navigationBar.shadowImage = AppColors.mainBackground.toImage()
+        nav.navigationBar.setBackgroundImage(AppColors.mainBackground.toImage(), for: .default)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
