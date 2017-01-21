@@ -79,9 +79,7 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
 
                 let height = cellPadding +  noteHeight + cellPadding
                 let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
-                debugPrint("frame = \(frame)")
                 let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                debugPrint("insetFrame = \(insetFrame) \n")
                 // 5
                 let attributes = NoteLayoutAttributes(forCellWith: indexPath)
                 attributes.noteHeight = noteHeight

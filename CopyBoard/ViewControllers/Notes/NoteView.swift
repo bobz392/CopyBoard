@@ -116,6 +116,7 @@ extension NoteView {
         let weakSelf = self
         let labelCenterY: CGFloat = startSearch ? 44 : 0
         let searchButtonRight: CGFloat = startSearch ? 44 : -8
+        self.searchBar.text = nil
         
         if startSearch {
             weakSelf.titleLabel.snp.updateConstraints({ (make) in
