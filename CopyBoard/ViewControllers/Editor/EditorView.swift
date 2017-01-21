@@ -14,7 +14,7 @@ class EditorView {
     func config(withView view: UIView) {
         
         view.addSubview(editorTextView)
-        self.editorTextView.spliteLineColor = AppColors.horizonLine
+//        self.editorTextView.spliteLineColor = AppColors.horizonLine
         self.editorTextView.font = self.editorTextView.noteFont
         self.editorTextView.textColor = AppColors.noteText
         self.editorTextView.snp.makeConstraints { (make) in

@@ -20,12 +20,21 @@ class DBManager {
     
     static func configMainRealm() {
         
-        let config = Realm.Configuration(
-            schemaVersion: version,
-            migrationBlock: { (igration, oldSchemaVersion) in
-                if (oldSchemaVersion < version) {}
-        })
+//        var config = Realm.Configuration(
+//            schemaVersion: version,
+//            migrationBlock: { (igration, oldSchemaVersion) in
+//                if (oldSchemaVersion < version) {}
+//        })
         
+        let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!
+        let realmURL = directory.appendingPathComponent("db.realm")
+        
+        let config = Realm.Configuration(fileURL: realmURL,
+                            schemaVersion: version,
+                            migrationBlock: { (igration, oldSchemaVersion) in
+                                if (oldSchemaVersion < version) {}
+        })
+
         Realm.Configuration.defaultConfiguration = config
     }
     

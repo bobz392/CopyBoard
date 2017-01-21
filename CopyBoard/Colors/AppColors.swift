@@ -12,13 +12,14 @@ struct AppColors {
     static let noteCell =
 //        UIColor(red:0.94, green:0.88, blue:0.70, alpha:1.00)
         UIColor(red:0.95, green:0.89, blue:0.67, alpha:1.00)
+    
+    
     static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
     static let noteDate = UIColor(red:0.74, green:0.67, blue:0.59, alpha:1.00)
-    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
-    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
+    static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
+//    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
+//    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
-    //UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
-    static let pin = UIColor(red:0.99, green:0.34, blue:0.35, alpha:1.00)
     
     static let mainGreenColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
     static let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
@@ -29,7 +30,6 @@ struct AppColors {
     static let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
     
     static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
-    static let mainIconColor = UIColor(red:0.70, green:0.76, blue:0.79, alpha:1.00)
     static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let cellCardSelectedColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
     static let searchBackgroundColor = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)

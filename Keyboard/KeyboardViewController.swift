@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class KeyboardViewController: UIInputViewController {
 
@@ -26,8 +27,23 @@ class KeyboardViewController: UIInputViewController {
 //            print(g.readGroud())
 //        }
         // Perform custom UI setup here
+        
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 10)
+        
+        self.view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
+        
         self.nextKeyboardButton = UIButton(type: .system)
         print(DBManager.shared.queryNotes())
+        
+        label.text = (DBManager.shared.realm.configuration.fileURL?.absoluteString)! + "\n"
+            + "count = \(DBManager.shared.queryNotes())"
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false

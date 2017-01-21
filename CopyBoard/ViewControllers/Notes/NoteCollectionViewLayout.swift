@@ -8,10 +8,12 @@
 
 import UIKit
 
+let kNoteCellPadding: CGFloat = 6
+
 class NoteCollectionViewLayout: UICollectionViewLayout {
 
     var delegate: NoteCollectionViewLayoutDelegate
-    var cellPadding: CGFloat = 6
+    var cellPadding: CGFloat = kNoteCellPadding
     var numberOfColumns = 2
     
     private var cache = [NoteLayoutAttributes]()
@@ -39,6 +41,7 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
             fatalError("self.collection view shold not be nil")
         }
         let insets = cview.contentInset
+        debugPrint("\(cview.bounds.width)\n \(UIScreen.main.bounds.width)")
         return cview.bounds.width - (insets.left + insets.right)
     }
     
@@ -72,14 +75,13 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
                 let indexPath = IndexPath(item: item, section: 0)
                 
                 // 4
-                let width = columnWidth - cellPadding * 2
-                let noteHeight = delegate.collectionView(collectionView: cview, heightForRowAt: indexPath, withWidth: width)
-//                let annotationHeight = delegate.collectionView(collectionView!,
-//                                                               heightForAnnotationAtIndexPath: indexPath, withWidth: width)
-                let height = cellPadding +  noteHeight /*+ annotationHeight */ + cellPadding
+                let noteHeight = delegate.collectionView(collectionView: cview, heightForRowAt: indexPath, withWidth: self.itemWidth)
+
+                let height = cellPadding +  noteHeight + cellPadding
                 let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
+                debugPrint("frame = \(frame)")
                 let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                
+                debugPrint("insetFrame = \(insetFrame) \n")
                 // 5
                 let attributes = NoteLayoutAttributes(forCellWith: indexPath)
                 attributes.noteHeight = noteHeight
