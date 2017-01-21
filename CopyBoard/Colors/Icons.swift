@@ -11,12 +11,13 @@ import Foundation
 import UIKit
 
 enum Icons {
-    case pin
+    case search
+    case setting
+    
     case plus
     case check
     case uncheck
     case coffee
-    case search
     case timeManagement
     case delete
     case back
@@ -32,7 +33,7 @@ enum Icons {
     case arrangement
     case calendar
     case readLater
-    case settings
+    
     case weekStart
     case home
     case finish
@@ -53,12 +54,16 @@ enum Icons {
     
     func iconString() -> String {
         switch self {
-        case .pin: return "pint"
+            case .setting: return "setting"
+            case .search:  return "search"
+            
+            
+            
         case .plus: return "plus"
         case .check: return "check"
         case .uncheck: return "uncheck"
         case .coffee: return "coffee"
-        case .search:  return "search"
+    
         case .timeManagement: return "time_management"
         case .delete: return "delete"
         case .back: return "back"
@@ -73,7 +78,7 @@ enum Icons {
         case .smallDelete: return "small_delete"
         case .arrangement: return "arrangement"
         case .calendar: return "calendar"
-        case .settings: return "settings"
+        
         case .home: return "home"
         case .finish: return "finish"
         case .unfinish: return "unfinish"
