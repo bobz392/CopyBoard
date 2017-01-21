@@ -12,7 +12,7 @@ class NoteTableViewCell: MGSwipeTableCell {
 
     static let nib = UINib(nibName: "NoteTableViewCell", bundle: nil)
     static let reuseId = "noteTableViewCell"
-    static let rowHeight: CGFloat = 75
+    static let rowHeight: CGFloat = 70
     
     @IBOutlet weak var cellCardView: UIView!
     @IBOutlet weak var horizonLineView: UIView!
@@ -42,7 +42,7 @@ class NoteTableViewCell: MGSwipeTableCell {
             make.left.equalToSuperview()
             make.width.equalTo(26)
             make.height.equalTo(66)
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(5)
         }
         self.clipImageView.image = UIImage(named: "clip")
         self.clipImageView.highlightedImage = UIImage(named: "clip_p")

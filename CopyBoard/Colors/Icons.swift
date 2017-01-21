@@ -11,70 +11,92 @@ import Foundation
 import UIKit
 
 enum Icons {
+    case settings
     case search
-    case setting
-    case star
+    
+    case plus
+    case check
+    case uncheck
+    case coffee
+    
+    case timeManagement
     case delete
-    case clear
-    case color
-    case hideKeyboard
-    case bigClear
-    case info
-    case done
     case back
-    case globle
-    case launch
-    case deleteText
-    case returnKey
-    case preview
-    case space
+    case loop
+    case notify
+    case schedule
+    case smallPlus
+    case tag
+    case due
+    case note
+    case clear
+    case smallDelete
+    case arrangement
+    case calendar
+    case readLater
+    
+    case weekStart
+    case home
+    case finish
+    case unfinish
+    case export
+    case closeDown
     case save
-    case create
-    case sync
-    case number
-    case text
-    case filter
-    case createManual
-    case selected
+    case rename
+    case briefcase
+    case about
+    case delay
+    case sound
+    case mail
+    case star
+    case play
+    case stop
+    case bigClear
     
     func iconString() -> String {
         switch self {
-        case .setting: return "setting"
+        case .plus: return "plus"
+        case .check: return "check"
+        case .uncheck: return "uncheck"
+        case .coffee: return "coffee"
         case .search:  return "search"
-        case .star: return "star"
+        case .timeManagement: return "time_management"
         case .delete: return "delete"
-        case .clear:  return "clear"
-        case .color: return "color"
-        case .hideKeyboard: return "hideKeyboard"
-        case .bigClear: return "big_clear"
-        case .info: return "info"
-        case .done: return "done"
         case .back: return "back"
-        case .globle: return "globle"
-        case .launch: return "launch"
-        case .deleteText: return "deleteText"
-        case .returnKey: return "return"
-        case .preview: return "preview"
-        case .space: return "space"
+        case .loop: return "loop"
+        case .notify: return "notify"
+        case .schedule: return "schedule"
+        case .smallPlus: return "small_plus"
+        case .tag: return "tag"
+        case .due: return "due"
+        case .note: return "note"
+        case .clear:  return "clear"
+        case .smallDelete: return "small_delete"
+        case .arrangement: return "arrangement"
+        case .calendar: return "calendar"
+        case .settings: return "settings"
+        case .home: return "home"
+        case .finish: return "finish"
+        case .unfinish: return "unfinish"
+        case .export: return "export"
+        case .closeDown: return "close_down"
         case .save: return "save"
-        case .create: return "create"
-        case .sync: return "sync"
-        case .number: return "number"
-        case .text: return "text"
-        case .filter: return "filter"
-        case .createManual: return "createManual"
-        case .selected: return "selected"
+        case .rename: return "rename"
+        case .briefcase: return "briefcase"
+        case .about: return "about"
+        case .delay: return "delay"
+        case .mail: return "mail"
+        case .sound: return "sound"
+        case .star: return "star"
+        case .weekStart: return "week_start"
+        case .readLater: return "read_later"
+        case .play: return "play"
+        case .stop: return "stop"
+        case .bigClear: return "big_clear"
         }
     }
     
     func iconImage() -> UIImage? {
-        return UIImage(named: self.iconString())?
-            .withRenderingMode(.alwaysTemplate)
-    }
-    
-    func configMainButton(button: UIButton) {
-        button.setImage(self.iconImage(),
-                        for: .normal)
-        button.tintColor = AppColors.mainIcon
+        return UIImage(named: self.iconString())?.withRenderingMode(.alwaysTemplate)
     }
 }

@@ -151,9 +151,15 @@ extension UIView {
     func addCardShadow() {
         self.layer.cornerRadius = 2
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOpacity = 0.1
         self.layer.shadowRadius = 2
-        self.layer.shadowOffset = CGSize(width: 1, height: 3)
+//        var bounds = self.bounds
+//        bounds.origin.y = 2
+//        bounds.size.height -= 2
+//        bounds.size.width = UIScreen.main.bounds.width - 16
+//        self.layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        self.layer.shouldRasterize = true
     }
     
     func addFullSideShadow() {
