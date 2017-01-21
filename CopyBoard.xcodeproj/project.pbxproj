@@ -53,11 +53,13 @@
 		C7655ACF1E32BF3000A1CB9F /* TLYDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABB1E32BF3000A1CB9F /* TLYDelegateProxy.m */; };
 		C7655AD01E32BF3000A1CB9F /* UIScrollView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABD1E32BF3000A1CB9F /* UIScrollView+Helpers.m */; };
 		C7655AD11E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ABF1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m */; };
-		C7655AD21E32BF3000A1CB9F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7655AC01E32BF3000A1CB9F /* Info.plist */; };
 		C7655AD31E32BF3000A1CB9F /* TLYShyScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC51E32BF3000A1CB9F /* TLYShyScrollViewController.m */; };
 		C7655AD41E32BF3000A1CB9F /* TLYShyStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC71E32BF3000A1CB9F /* TLYShyStatusBarController.m */; };
 		C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655AC91E32BF3000A1CB9F /* TLYShyViewController.m */; };
 		C7655AD61E32BF3000A1CB9F /* TLYShyNavBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7655ACD1E32BF3000A1CB9F /* TLYShyNavBarManager.m */; };
+		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
+		C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */; };
+		C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */; };
 		C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335C1E2EEE9A001DCE38 /* NoteView.swift */; };
 		C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C78C33621E2EF060001DCE38 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -196,7 +198,6 @@
 		C7655ABD1E32BF3000A1CB9F /* UIScrollView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Helpers.m"; sourceTree = "<group>"; };
 		C7655ABE1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BetterLayoutGuides.h"; sourceTree = "<group>"; };
 		C7655ABF1E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BetterLayoutGuides.m"; sourceTree = "<group>"; };
-		C7655AC01E32BF3000A1CB9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7655AC21E32BF3000A1CB9F /* TLYShyChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyChild.h; sourceTree = "<group>"; };
 		C7655AC31E32BF3000A1CB9F /* TLYShyParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyParent.h; sourceTree = "<group>"; };
 		C7655AC41E32BF3000A1CB9F /* TLYShyScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyScrollViewController.h; sourceTree = "<group>"; };
@@ -209,6 +210,9 @@
 		C7655ACB1E32BF3000A1CB9F /* TLYShyNavBarFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarFade.h; sourceTree = "<group>"; };
 		C7655ACC1E32BF3000A1CB9F /* TLYShyNavBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarManager.h; sourceTree = "<group>"; };
 		C7655ACD1E32BF3000A1CB9F /* TLYShyNavBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyNavBarManager.m; sourceTree = "<group>"; };
+		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
+		C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C78C335C1E2EEE9A001DCE38 /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		C78C335F1E2EF019001DCE38 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C78C33611E2EF060001DCE38 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 			children = (
 				C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */,
 				C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */,
+				C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */,
+				C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				C7403F371E280E240067229E /* NotesViewController.swift */,
 				C71110281E29448F007A1577 /* NotesViewModle.swift */,
 				C78C335C1E2EEE9A001DCE38 /* NoteView.swift */,
+				C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -452,7 +459,6 @@
 			isa = PBXGroup;
 			children = (
 				C7655AB71E32BF3000A1CB9F /* Categories */,
-				C7655AC01E32BF3000A1CB9F /* Info.plist */,
 				C7655AC11E32BF3000A1CB9F /* ShyControllers */,
 				C7655ACA1E32BF3000A1CB9F /* TLYShyNavBar.h */,
 				C7655ACB1E32BF3000A1CB9F /* TLYShyNavBarFade.h */,
@@ -686,7 +692,7 @@
 				C78C33901E2EFA96001DCE38 /* 8D14D7A1-0560-3458-A239-9F06FAB73495.bcsymbolmap in Resources */,
 				C78C338B1E2EFA96001DCE38 /* 5B1B6DB5-CA5E-3791-AE67-2C8B9633A3AB.bcsymbolmap in Resources */,
 				C78C33931E2EFA96001DCE38 /* 9F993729-85CB-380E-8056-679F9226AC21.bcsymbolmap in Resources */,
-				C7655AD21E32BF3000A1CB9F /* Info.plist in Resources */,
+				C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */,
 				C78C338E1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
@@ -783,6 +789,7 @@
 				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
+				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
@@ -803,6 +810,7 @@
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
+				C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,

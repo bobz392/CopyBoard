@@ -16,7 +16,8 @@ class NoteView {
     
     let searchBar = UISearchBar()
     
-    let tableView = UITableView()
+//    let tableView = UITableView()
+    var collectionView: UICollectionView!
 
     let holderView = UIView()
     
@@ -24,34 +25,34 @@ class NoteView {
     
     func config(withView view: UIView) {
         AppColors.mainBackground.bgColor(to: view)
-    
-        self.configTableView(view: view)
         
         view.addSubview(self.holderView)
-        self.holderView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalTo(self.tableView)
-            make.bottom.equalToSuperview()
-        }
         self.holderView.alpha = 0
         self.holderView.isHidden = true
         self.holderView.backgroundColor = UIColor.black
     }
     
-    private func configTableView(view: UIView) {
-        view.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { (make) in
+    func configCollectionView(view: UIView, delegate: NoteCollectionViewLayoutDelegate) {
+        let layout = NoteCollectionViewLayout(delegate: delegate)
+        
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.addSubview(self.collectionView)
+        self.collectionView.contentInset = UIEdgeInsetsMake(0, 6, 0, 6)
+        self.collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        self.tableView.register(NoteTableViewCell.nib,
-                                forCellReuseIdentifier: NoteTableViewCell.reuseId)
-        self.tableView.separatorStyle = .none
-        self.tableView.tableFooterView = UIView()
-        self.tableView.bgClear()
+        self.holderView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(self.collectionView)
+            make.bottom.equalToSuperview()
+        }
+        self.collectionView.register(NoteCollectionViewCell.nib,
+                                     forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
+        self.collectionView.bgClear()
     }
     
     func configBarView(view: UINavigationBar) {
