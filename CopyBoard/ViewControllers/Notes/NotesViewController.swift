@@ -45,7 +45,7 @@ class NotesViewController: BaseViewController {
         self.noteView.collectionView.dataSource = self
         self.shyNavBarManager.scrollView = self.noteView.collectionView
 //        Note.noteTestData()
-        debugPrint(DBManager.shared.realm.configuration.fileURL?.absoluteString)
+//        debugPrint(DBManager.shared.realm.configuration.fileURL?.absoluteString)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,15 +62,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return self.viewModel.notesCount()
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
-        cell.addCardShadow()
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
-        cell.contentLabel.text = note.content
+        cell.configCell(use: note)
         return cell
     }
     
@@ -79,7 +74,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let layout = collectionView.collectionViewLayout as! NoteCollectionViewLayout
     
         let font = UIFont.systemFont(ofSize: 16)
-        let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth)
+        let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth - 10)
         return height + 35.0
     }
     

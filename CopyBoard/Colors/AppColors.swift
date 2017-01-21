@@ -9,17 +9,15 @@
 import UIKit
 
 struct AppColors {
-    static let noteCell =
-//        UIColor(red:0.94, green:0.88, blue:0.70, alpha:1.00)
-        UIColor(red:0.95, green:0.89, blue:0.67, alpha:1.00)
-    
     
     static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
     static let noteDate = UIColor(red:0.74, green:0.67, blue:0.59, alpha:1.00)
     static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
-//    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
-//    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
+    
+    //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
+    //    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
+    //    static let noteCell = UIColor(red:0.95, green:0.89, blue:0.67, alpha:1.00)
     
     static let mainGreenColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
     static let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
@@ -53,6 +51,39 @@ struct AppColors {
     
     static let scheduleLineBackgroundColor = UIColor(red:0.75, green:0.78, blue:0.79, alpha:1.00)
     
+}
+
+enum AppPairColors: Int {
+    case normalNote = 0
+    case white
+    case sand
+    case watermelon
+    case powderBlue
+    case mint
+    
+    func pairColor() -> (light: UIColor, dark: UIColor) {
+        switch self {
+        case .sand:
+            return (UIColor(red:0.94, green:0.87, blue:0.71, alpha:1.00),
+                    UIColor(red:0.83, green:0.76, blue:0.59, alpha:1.00))
+        case .white:
+            return (UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00),
+                    UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00))
+        case .normalNote:
+            return (UIColor(red:0.99, green:0.99, blue:0.80, alpha:1.00),
+                    UIColor(red:0.95, green:0.93, blue:0.65, alpha:1.00))
+        case .watermelon:
+            return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
+                    UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))
+        case .powderBlue:
+            return (UIColor(red:0.73, green:0.79, blue:0.94, alpha:1.00),
+                    UIColor(red:0.60, green:0.67, blue:0.83, alpha:1.00))
+        case .mint:
+            return (UIColor(red:0.16, green:0.73, blue:0.61, alpha:1.00),
+                    UIColor(red:0.14, green:0.62, blue:0.52, alpha:1.00))
+        }
+        
+    }
 }
 
 extension UIColor {
@@ -89,10 +120,10 @@ extension UIView {
     
     func addFullSideShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 10
         self.layer.shadowOffset = CGSize.zero
-        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
+//        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
         
         
     }

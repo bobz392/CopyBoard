@@ -15,14 +15,27 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        headerView.backgroundColor = UIColor(red:0.79, green:0.93, blue:0.97, alpha:1.00)
-        
-        self.backgroundColor = UIColor(red:0.77, green:0.89, blue:0.96, alpha:1.00)
     }
 
+    func configCell(use note: Note) {
+        guard let pairColor = AppPairColors(rawValue: note.color)?.pairColor() else {
+            fatalError("have no this type color")
+        }
+        pairColor.dark.bgColor(to: self.headerView)
+        pairColor.light.bgColor(to: self.cardView)
+        self.contentLabel.text = note.content
+
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 3
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.backgroundColor = UIColor.clear.cgColor
+    }
+    
 }
