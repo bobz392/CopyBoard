@@ -54,36 +54,16 @@ class NotesViewController: BaseViewController {
 
 }
 
-extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.notesCount()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.reuseId) as! NoteTableViewCell
-        let note = self.viewModel.noteIn(row: indexPath.row)
-        cell.noteLabel.text = note.content
-        cell.noteDateLabel.text = try! note.createdAt?.colloquialSinceNow().colloquial
-        print(try! note.createdAt?.colloquialSinceNow().colloquial ?? "no date")
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return NoteTableViewCell.rowHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let note = self.viewModel.noteIn(row: indexPath.row)
-        let editorVC = EditorViewController(note: note)
-        self.navigationController?.pushViewController(editorVC, animated: true)
-    }
-}
-
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.notesCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
+        cell.addCardShadow()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

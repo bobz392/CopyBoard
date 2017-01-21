@@ -99,7 +99,7 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
         // Loop through the cache and look for items in the rect
-        for attributes  in cache {
+        for attributes  in self.cache {
             if attributes.frame.intersects(rect) {
                 layoutAttributes.append(attributes)
             }

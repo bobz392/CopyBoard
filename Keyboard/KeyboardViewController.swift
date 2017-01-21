@@ -27,7 +27,7 @@ class KeyboardViewController: UIInputViewController {
 //        }
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
-        
+        print(DBManager.shared.queryNotes())
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false

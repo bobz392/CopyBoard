@@ -86,4 +86,14 @@ extension UIView {
         self.layer.shadowRadius = 2
         self.layer.shadowOffset = CGSize(width: 1, height: 3)
     }
+    
+    func addFullSideShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
+        
+        
+    }
 }

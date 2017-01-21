@@ -10,8 +10,6 @@
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
-		C72332B31E302DAA00D5189D /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */; };
-		C72332B41E302DAA00D5189D /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D31E30F51300D5189D /* MGSwipeButton.m */; };
 		C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D51E30F51300D5189D /* MGSwipeTableCell.m */; };
@@ -60,6 +58,15 @@
 		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
 		C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */; };
 		C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */; };
+		C7655AE11E33BDCC00A1CB9F /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33771E2EFA96001DCE38 /* Realm.framework.dSYM */; };
+		C7655AE21E33BDCC00A1CB9F /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33791E2EFA96001DCE38 /* RealmSwift.framework.dSYM */; };
+		C7655AE31E33BDCC00A1CB9F /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
+		C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
+		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
+		C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
+		C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33761E2EFA96001DCE38 /* Realm.framework */; };
+		C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33781E2EFA96001DCE38 /* RealmSwift.framework */; };
+		C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
 		C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335C1E2EEE9A001DCE38 /* NoteView.swift */; };
 		C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C78C33621E2EF060001DCE38 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -134,14 +141,25 @@
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7655ADD1E33BD7800A1CB9F /* Copy Carthage dSYMs */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C7655AE11E33BDCC00A1CB9F /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C7655AE21E33BDCC00A1CB9F /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
+				C7655AE31E33BDCC00A1CB9F /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+			);
+			name = "Copy Carthage dSYMs";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C71110281E29448F007A1577 /* NotesViewModle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModle.swift; sourceTree = "<group>"; };
-		C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
-		C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72332D21E30F51300D5189D /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
@@ -264,6 +282,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */,
+				C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */,
+				C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,8 +311,6 @@
 		C72332B01E302D9900D5189D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C72332B11E302DAA00D5189D /* NoteTableViewCell.swift */,
-				C72332B21E302DAA00D5189D /* NoteTableViewCell.xib */,
 				C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */,
 				C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */,
 			);
@@ -579,9 +598,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7403E431E269D140067229E /* Build configuration list for PBXNativeTarget "Keyboard" */;
 			buildPhases = (
+				C7655ADF1E33BD8C00A1CB9F /* Set the build number to the count of Git commits */,
 				C7403E371E269D140067229E /* Sources */,
 				C7403E381E269D140067229E /* Frameworks */,
 				C7403E391E269D140067229E /* Resources */,
+				C7655ADD1E33BD7800A1CB9F /* Copy Carthage dSYMs */,
+				C7655ADE1E33BD7B00A1CB9F /* Copy Carthage Frameworks */,
+				C7655AE01E33BDA400A1CB9F /* Set the build number to "DEVELOPMENT" */,
 			);
 			buildRules = (
 			);
@@ -675,7 +698,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C72332B41E302DAA00D5189D /* NoteTableViewCell.xib in Resources */,
 				C78C33961E2EFA96001DCE38 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap in Resources */,
 				C78C338C1E2EFA96001DCE38 /* 5F176F2C-E1A6-34F5-A597-9378AD27BD9E.bcsymbolmap in Resources */,
 				C78C33921E2EFA96001DCE38 /* 8F30DB2B-FA6E-3A4A-8A8A-20D6A63FC0AD.bcsymbolmap in Resources */,
@@ -766,6 +788,51 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C7655ADE1E33BD7B00A1CB9F /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C7655ADF1E33BD8C00A1CB9F /* Set the build number to the count of Git commits */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set the build number to the count of Git commits";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		C7655AE01E33BDA400A1CB9F /* Set the build number to "DEVELOPMENT" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set the build number to \"DEVELOPMENT\"";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the build number to \"DEVELOPMENT\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion DEVELOPMENT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -819,7 +886,6 @@
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
-				C72332B31E302DAA00D5189D /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,6 +894,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
+				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
+				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
+				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,6 +1073,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
@@ -1020,6 +1093,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
