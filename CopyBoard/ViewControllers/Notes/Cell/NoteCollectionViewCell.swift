@@ -69,7 +69,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     func deleteAction() {
-        return
         guard let cv = self.curlView else { return }
         
         let p = CGPoint(x: 0, y: 0)
