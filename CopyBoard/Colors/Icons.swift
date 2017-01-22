@@ -14,13 +14,13 @@ enum Icons {
     case search
     case setting
     case star
+    case delete
     
     case plus
     case check
     case uncheck
     case coffee
     case timeManagement
-    case delete
     case back
     case loop
     case notify
@@ -57,7 +57,7 @@ enum Icons {
         case .setting: return "setting"
         case .search:  return "search"
         case .star: return "star"
-            
+        case .delete: return "delete"
             
         case .plus: return "plus"
         case .check: return "check"
@@ -65,7 +65,7 @@ enum Icons {
         case .coffee: return "coffee"
     
         case .timeManagement: return "time_management"
-        case .delete: return "delete"
+        
         case .back: return "back"
         case .loop: return "loop"
         case .notify: return "notify"

@@ -57,25 +57,12 @@ class NotesViewController: BaseViewController {
 
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.notesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        collectionView.deselectItem(at: indexPath, animated: true)
-        
-        guard let cell = collectionView.cellForItem(at: indexPath)
-            as? NoteCollectionViewCell else { return }
-        
-        
-       
-        if cell.noteContentView.animatingAppear {
-            cell.noteContentView.startAppearAnimation()
-        } else {
-            cell.noteContentView.startDisappearAnimation()
-        }
-//        collectionView.deleteItemsAtIndexPaths([indexPath], animationStyle: UITableViewRowAnimation.automatic)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,8 +85,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let calString = NSString(string: content)
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let textRect = calString.boundingRect(with: size, options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSFontAttributeName: font], context: nil)
-        debugPrint(textRect)
         return ceil(textRect.height)
     }
+    
 }
 

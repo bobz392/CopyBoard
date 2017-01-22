@@ -11,6 +11,6 @@
 
 #import "TLYShyNavBarManager.h"
 #import "iRate.h"
-#import "ZCFocusLabel.h"
+#import "XBPageDragView.h"
 
 #endif /* bridge_header_h */
