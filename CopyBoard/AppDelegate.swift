@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         DBManager.configDB()
+        Logger.log(DBManager.shared.realm.configuration.fileURL?.absoluteString)
         
         return true
     }

@@ -41,7 +41,7 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
             fatalError("self.collection view shold not be nil")
         }
         let insets = cview.contentInset
-        debugPrint("\(cview.bounds.width)\n \(UIScreen.main.bounds.width)")
+        Logger.log("\(cview.bounds.width)\n \(UIScreen.main.bounds.width)")
         return cview.bounds.width - (insets.left + insets.right)
     }
     

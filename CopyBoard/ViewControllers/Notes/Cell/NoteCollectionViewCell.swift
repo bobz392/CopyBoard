@@ -105,7 +105,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
             self.curlView?.pageOpaque = true
             
             let p = CGPoint(x: cardBounds.width / 2.0, y: cardBounds.height / 2.0)
-            let angle = CGFloat(M_PI_2) + 0.1
+            let angle = CGFloat(M_PI_2) + 0.05
             self.curlView?.curl(self.cardView,
                                 cylinderPosition: p,
                                 cylinderAngle: angle,
@@ -119,7 +119,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     func connectCollectionViewWithOverlay() {
         //        guard NoteCollectionViewInputOverlay.connected == true else {
-        //            debugPrint("overlay added")
+        //            Logger.log("overlay added")
         //            return
         //        }
         if !NoteCollectionViewInputOverlay.connected {

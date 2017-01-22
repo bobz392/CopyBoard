@@ -66,6 +66,8 @@
 		C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33761E2EFA96001DCE38 /* Realm.framework */; };
 		C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33781E2EFA96001DCE38 /* RealmSwift.framework */; };
 		C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
+		C76B8DF01E356387006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
+		C76B8DF11E3563D9006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -254,6 +256,7 @@
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
+		C76B8DEF1E356387006896FA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C7753D721E352A0900C45A5A /* CGPointAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointAdditions.c; sourceTree = "<group>"; };
 		C7753D731E352A0900C45A5A /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
 		C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackFragmentShader.glsl; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 				C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */,
 				C74568B71E2D34D700E7C776 /* DBManager.swift */,
 				C7D96D6C1E3434E300B4E418 /* RateManager.swift */,
+				C76B8DEF1E356387006896FA /* Logger.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -984,6 +988,7 @@
 				C7753D941E352A0900C45A5A /* XBAnimation.m in Sources */,
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
+				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
 				C7655AD11E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m in Sources */,
 				C7655ACE1E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m in Sources */,
@@ -1049,6 +1054,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,

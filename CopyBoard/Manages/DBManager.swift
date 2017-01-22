@@ -34,12 +34,11 @@ class DBManager {
                             migrationBlock: { (igration, oldSchemaVersion) in
                                 if (oldSchemaVersion < version) {}
         })
-
         Realm.Configuration.defaultConfiguration = config
     }
     
     func queryNotes(contain: String? = nil) -> Results<Note> {
-        debugPrint(self.realm.objects(Note.self))
+        Logger.log(self.realm.objects(Note.self))
         if let contain = contain {
             return self.realm.objects(Note.self)
                 .filter("content CONTAINS '\(contain)'")

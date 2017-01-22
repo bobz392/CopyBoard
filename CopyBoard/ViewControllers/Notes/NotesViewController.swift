@@ -44,8 +44,7 @@ class NotesViewController: BaseViewController {
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
         self.shyNavBarManager.scrollView = self.noteView.collectionView
-//        Note.noteTestData()
-//        debugPrint(DBManager.shared.realm.configuration.fileURL?.absoluteString)
+        Note.noteTestData()
     }
 
     override func didReceiveMemoryWarning() {
