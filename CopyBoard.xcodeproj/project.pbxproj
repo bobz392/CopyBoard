@@ -11,8 +11,6 @@
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
-		C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D31E30F51300D5189D /* MGSwipeButton.m */; };
-		C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72332D51E30F51300D5189D /* MGSwipeTableCell.m */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
@@ -22,6 +20,10 @@
 		C7403F381E280E240067229E /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F371E280E240067229E /* NotesViewController.swift */; };
 		C7403F8D1E282A4E0067229E /* CopyBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F8C1E282A4E0067229E /* CopyBoardTests.swift */; };
 		C7403F951E282A8F0067229E /* GroupManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F941E282A8F0067229E /* GroupManagerTest.swift */; };
+		C74209AC1E34F6CE00DC455E /* ZCAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C74209931E34F6CE00DC455E /* ZCAnimatedLabel.m */; };
+		C74209AD1E34F6CE00DC455E /* ZCCoreTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C74209951E34F6CE00DC455E /* ZCCoreTextLayout.m */; };
+		C74209B01E34F6CE00DC455E /* ZCEasingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C742099B1E34F6CE00DC455E /* ZCEasingUtil.m */; };
+		C74209B31E34F6CE00DC455E /* ZCFocusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C74209A11E34F6CE00DC455E /* ZCFocusLabel.m */; };
 		C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7B1E32541D00A1CB9F /* CalendarName.swift */; };
@@ -94,6 +96,17 @@
 		C78C33AB1E2EFAC6001DCE38 /* RxDataSources.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C337F1E2EFA96001DCE38 /* RxDataSources.framework.dSYM */; };
 		C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33811E2EFA96001DCE38 /* RxSwift.framework.dSYM */; };
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
+		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
+		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
+		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
+		C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D571E341EEF00B4E418 /* Easing.swift */; };
+		C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D581E341EEF00B4E418 /* Geometry.swift */; };
+		C7D96D611E341EEF00B4E418 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D591E341EEF00B4E418 /* Init.swift */; };
+		C7D96D621E341EEF00B4E418 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D5A1E341EEF00B4E418 /* Ring.swift */; };
+		C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D5B1E341EEF00B4E418 /* Spark.swift */; };
+		C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7D96D661E34304300B4E418 /* iRate.bundle */; };
+		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
+		C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D6C1E3434E300B4E418 /* RateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,10 +175,6 @@
 		C71110281E29448F007A1577 /* NotesViewModle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModle.swift; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
-		C72332D21E30F51300D5189D /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
-		C72332D31E30F51300D5189D /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
-		C72332D41E30F51300D5189D /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
-		C72332D51E30F51300D5189D /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E2C1E269CA00067229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,6 +192,14 @@
 		C7403F8C1E282A4E0067229E /* CopyBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyBoardTests.swift; sourceTree = "<group>"; };
 		C7403F8E1E282A4E0067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7403F941E282A8F0067229E /* GroupManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTest.swift; sourceTree = "<group>"; };
+		C74209921E34F6CE00DC455E /* ZCAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAnimatedLabel.h; sourceTree = "<group>"; };
+		C74209931E34F6CE00DC455E /* ZCAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAnimatedLabel.m; sourceTree = "<group>"; };
+		C74209941E34F6CE00DC455E /* ZCCoreTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCoreTextLayout.h; sourceTree = "<group>"; };
+		C74209951E34F6CE00DC455E /* ZCCoreTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCoreTextLayout.m; sourceTree = "<group>"; };
+		C742099A1E34F6CE00DC455E /* ZCEasingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCEasingUtil.h; sourceTree = "<group>"; };
+		C742099B1E34F6CE00DC455E /* ZCEasingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCEasingUtil.m; sourceTree = "<group>"; };
+		C74209A01E34F6CE00DC455E /* ZCFocusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFocusLabel.h; sourceTree = "<group>"; };
+		C74209A11E34F6CE00DC455E /* ZCFocusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFocusLabel.m; sourceTree = "<group>"; };
 		C74568B71E2D34D700E7C776 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C7655A7B1E32541D00A1CB9F /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarName.swift; sourceTree = "<group>"; };
@@ -268,6 +285,18 @@
 		C78C33831E2EFA96001DCE38 /* RxTest.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RxTest.framework.dSYM; sourceTree = "<group>"; };
 		C78C33841E2EFA96001DCE38 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
+		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
+		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
+		C7D96D571E341EEF00B4E418 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
+		C7D96D581E341EEF00B4E418 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		C7D96D591E341EEF00B4E418 /* Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
+		C7D96D5A1E341EEF00B4E418 /* Ring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
+		C7D96D5B1E341EEF00B4E418 /* Spark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spark.swift; sourceTree = "<group>"; };
+		C7D96D661E34304300B4E418 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		C7D96D671E34304300B4E418 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		C7D96D681E34304300B4E418 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		C7D96D6C1E3434E300B4E418 /* RateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +333,7 @@
 				C7110FE81E2836B2007A1577 /* GroupManager.swift */,
 				C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */,
 				C74568B71E2D34D700E7C776 /* DBManager.swift */,
+				C7D96D6C1E3434E300B4E418 /* RateManager.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -328,22 +358,13 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C74209911E34F6CE00DC455E /* ZCAnimatedLabel */,
+				C7D96D641E34304300B4E418 /* iRate */,
+				C7D96D521E341EEF00B4E418 /* FiveButton */,
 				C7655AB61E32BF3000A1CB9F /* TLYShyNavBar */,
 				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
-				C72332D11E30F51300D5189D /* MGSwipeTableCell */,
 			);
 			path = Vander;
-			sourceTree = "<group>";
-		};
-		C72332D11E30F51300D5189D /* MGSwipeTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				C72332D21E30F51300D5189D /* MGSwipeButton.h */,
-				C72332D31E30F51300D5189D /* MGSwipeButton.m */,
-				C72332D41E30F51300D5189D /* MGSwipeTableCell.h */,
-				C72332D51E30F51300D5189D /* MGSwipeTableCell.m */,
-			);
-			path = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
 		C7403E191E269CA00067229E = {
@@ -427,6 +448,21 @@
 				C7403F941E282A8F0067229E /* GroupManagerTest.swift */,
 			);
 			path = CopyBoardTests;
+			sourceTree = "<group>";
+		};
+		C74209911E34F6CE00DC455E /* ZCAnimatedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				C74209921E34F6CE00DC455E /* ZCAnimatedLabel.h */,
+				C74209931E34F6CE00DC455E /* ZCAnimatedLabel.m */,
+				C742099A1E34F6CE00DC455E /* ZCEasingUtil.h */,
+				C742099B1E34F6CE00DC455E /* ZCEasingUtil.m */,
+				C74209941E34F6CE00DC455E /* ZCCoreTextLayout.h */,
+				C74209951E34F6CE00DC455E /* ZCCoreTextLayout.m */,
+				C74209A01E34F6CE00DC455E /* ZCFocusLabel.h */,
+				C74209A11E34F6CE00DC455E /* ZCFocusLabel.m */,
+			);
+			path = ZCAnimatedLabel;
 			sourceTree = "<group>";
 		};
 		C74FF9C41E2C455400D5CC9E /* Model */ = {
@@ -566,6 +602,39 @@
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		C7D96D521E341EEF00B4E418 /* FiveButton */ = {
+			isa = PBXGroup;
+			children = (
+				C7D96D531E341EEF00B4E418 /* FaveButton.swift */,
+				C7D96D541E341EEF00B4E418 /* FaveIcon.swift */,
+				C7D96D551E341EEF00B4E418 /* Helpers */,
+				C7D96D5A1E341EEF00B4E418 /* Ring.swift */,
+				C7D96D5B1E341EEF00B4E418 /* Spark.swift */,
+			);
+			path = FiveButton;
+			sourceTree = "<group>";
+		};
+		C7D96D551E341EEF00B4E418 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C7D96D561E341EEF00B4E418 /* Constraints+.swift */,
+				C7D96D571E341EEF00B4E418 /* Easing.swift */,
+				C7D96D581E341EEF00B4E418 /* Geometry.swift */,
+				C7D96D591E341EEF00B4E418 /* Init.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C7D96D641E34304300B4E418 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				C7D96D661E34304300B4E418 /* iRate.bundle */,
+				C7D96D671E34304300B4E418 /* iRate.h */,
+				C7D96D681E34304300B4E418 /* iRate.m */,
+			);
+			path = iRate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,6 +783,7 @@
 				C78C33901E2EFA96001DCE38 /* 8D14D7A1-0560-3458-A239-9F06FAB73495.bcsymbolmap in Resources */,
 				C78C338B1E2EFA96001DCE38 /* 5B1B6DB5-CA5E-3791-AE67-2C8B9633A3AB.bcsymbolmap in Resources */,
 				C78C33931E2EFA96001DCE38 /* 9F993729-85CB-380E-8056-679F9226AC21.bcsymbolmap in Resources */,
+				C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */,
 				C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */,
 				C78C338E1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
@@ -841,28 +911,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */,
+				C74209AC1E34F6CE00DC455E /* ZCAnimatedLabel.m in Sources */,
+				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C7655AD11E32BF3000A1CB9F /* UIViewController+BetterLayoutGuides.m in Sources */,
 				C7655ACE1E32BF3000A1CB9F /* NSObject+TLYSwizzlingHelpers.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
+				C74209AD1E34F6CE00DC455E /* ZCCoreTextLayout.m in Sources */,
+				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
+				C7D96D6B1E34304300B4E418 /* iRate.m in Sources */,
 				C7655AA11E32541D00A1CB9F /* Region.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
-				C72332DF1E30F51300D5189D /* MGSwipeTableCell.m in Sources */,
 				C7655AD41E32BF3000A1CB9F /* TLYShyStatusBarController.m in Sources */,
 				C7655AD01E32BF3000A1CB9F /* UIScrollView+Helpers.m in Sources */,
 				C7655AD61E32BF3000A1CB9F /* TLYShyNavBarManager.m in Sources */,
+				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
 				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
+				C74209B01E34F6CE00DC455E /* ZCEasingUtil.m in Sources */,
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
+				C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
 				C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */,
 				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
-				C72332DE1E30F51300D5189D /* MGSwipeButton.m in Sources */,
 				C7655ACF1E32BF3000A1CB9F /* TLYDelegateProxy.m in Sources */,
 				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
 				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
@@ -872,16 +948,22 @@
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
+				C7D96D621E341EEF00B4E418 /* Ring.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
+				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
+				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
+				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
+				C74209B31E34F6CE00DC455E /* ZCFocusLabel.m in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
 				C7655AD31E32BF3000A1CB9F /* TLYShyScrollViewController.m in Sources */,
+				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,

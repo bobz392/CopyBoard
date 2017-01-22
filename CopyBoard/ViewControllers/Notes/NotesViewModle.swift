@@ -20,6 +20,7 @@ class NotesViewModel {
     let disposeBag = DisposeBag()
     
     var notes = DBManager.shared.queryNotes()
+//    var noteToken = 
     var isInSearch = false
     var searchNotes = [Note]()
     

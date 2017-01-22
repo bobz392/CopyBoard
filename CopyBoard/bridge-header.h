@@ -9,8 +9,8 @@
 #ifndef bridge_header_h
 #define bridge_header_h
 
-#import "MGSwipeTableCell.h"
-#import "MGSwipeButton.h"
 #import "TLYShyNavBarManager.h"
+#import "iRate.h"
+#import "ZCFocusLabel.h"
 
 #endif /* bridge_header_h */

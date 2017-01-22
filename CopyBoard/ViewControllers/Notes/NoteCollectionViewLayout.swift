@@ -56,6 +56,8 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
+        super.prepare()
+        
         guard let cview = self.collectionView else {
             fatalError("self.collection view shold not be nil")
         }

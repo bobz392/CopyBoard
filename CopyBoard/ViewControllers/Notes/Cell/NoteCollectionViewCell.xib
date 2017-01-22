@@ -28,22 +28,52 @@
                                     <constraint firstAttribute="height" constant="25" id="tDi-11-Ler"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrL-vy-Nji">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-z4-ELJ" userLabel="star" customClass="FaveButton" customModule="CopyBoard" customModuleProvider="target">
+                                <rect key="frame" x="116" y="0.0" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="8kI-6W-UGK"/>
+                                    <constraint firstAttribute="height" constant="25" id="qui-Xu-kGF"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.3607304382" blue="0.39335508120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="25"/>
+                                <state key="normal" image="star"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.67450980390000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dotSecondColor">
+                                        <color key="value" red="0.98823529409999999" green="0.4039215686" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
+                                        <color key="value" red="0.99607843139999996" green="0.65490196079999996" blue="0.027450980390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="circleFromColor">
+                                        <color key="value" red="0.98823529409999999" green="0.4039215686" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="circleToColor">
+                                        <color key="value" red="1" green="0.67450980390000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                        <color key="value" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYS-tn-OrQ" customClass="ZCFocusLabel">
                                 <rect key="frame" x="5" y="30" width="131" height="142"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QYS-tn-OrQ" secondAttribute="trailing" constant="5" id="Cqa-KO-tHe"/>
+                            <constraint firstItem="QYS-tn-OrQ" firstAttribute="top" secondItem="fpg-z4-ELJ" secondAttribute="bottom" constant="5" id="GzB-a9-tVd"/>
                             <constraint firstItem="Al0-lU-Jji" firstAttribute="top" secondItem="AEV-TO-LfN" secondAttribute="top" id="Hjx-IX-eLL"/>
                             <constraint firstAttribute="trailing" secondItem="Al0-lU-Jji" secondAttribute="trailing" id="OF5-eP-fSG"/>
-                            <constraint firstAttribute="trailing" secondItem="TrL-vy-Nji" secondAttribute="trailing" constant="5" id="VNd-y9-kHW"/>
-                            <constraint firstItem="TrL-vy-Nji" firstAttribute="top" secondItem="Al0-lU-Jji" secondAttribute="bottom" constant="5" id="dRd-s7-7j8"/>
+                            <constraint firstAttribute="trailing" secondItem="fpg-z4-ELJ" secondAttribute="trailing" id="YS8-Qi-MQZ"/>
+                            <constraint firstItem="fpg-z4-ELJ" firstAttribute="top" secondItem="AEV-TO-LfN" secondAttribute="top" id="eC8-Ay-27T"/>
                             <constraint firstItem="Al0-lU-Jji" firstAttribute="leading" secondItem="AEV-TO-LfN" secondAttribute="leading" id="eX5-J6-6xg"/>
-                            <constraint firstAttribute="bottom" secondItem="TrL-vy-Nji" secondAttribute="bottom" constant="5" id="wpJ-1H-6t2"/>
-                            <constraint firstItem="TrL-vy-Nji" firstAttribute="leading" secondItem="AEV-TO-LfN" secondAttribute="leading" constant="5" id="ytT-8c-VfG"/>
+                            <constraint firstItem="QYS-tn-OrQ" firstAttribute="leading" secondItem="AEV-TO-LfN" secondAttribute="leading" constant="5" id="eff-eX-bh6"/>
+                            <constraint firstAttribute="bottom" secondItem="QYS-tn-OrQ" secondAttribute="bottom" constant="5" id="usu-XC-4Iy"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -57,10 +87,14 @@
             <size key="customSize" width="141" height="177"/>
             <connections>
                 <outlet property="cardView" destination="AEV-TO-LfN" id="KXL-uS-coq"/>
-                <outlet property="contentLabel" destination="TrL-vy-Nji" id="yFP-5M-GVK"/>
+                <outlet property="faveButton" destination="fpg-z4-ELJ" id="62D-jv-OJn"/>
                 <outlet property="headerView" destination="Al0-lU-Jji" id="a69-VV-xbv"/>
+                <outlet property="noteContentView" destination="QYS-tn-OrQ" id="cYb-hf-1BJ"/>
             </connections>
-            <point key="canvasLocation" x="5.5" y="2.5"/>
+            <point key="canvasLocation" x="-133" y="-183"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="star" width="32" height="32"/>
+    </resources>
 </document>

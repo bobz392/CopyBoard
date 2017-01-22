@@ -62,6 +62,22 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return self.viewModel.notesCount()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        guard let cell = collectionView.cellForItem(at: indexPath)
+            as? NoteCollectionViewCell else { return }
+        
+        
+       
+        if cell.noteContentView.animatingAppear {
+            cell.noteContentView.startAppearAnimation()
+        } else {
+            cell.noteContentView.startDisappearAnimation()
+        }
+//        collectionView.deleteItemsAtIndexPaths([indexPath], animationStyle: UITableViewRowAnimation.automatic)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)

@@ -71,7 +71,7 @@ enum AppPairColors: Int {
                     UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00))
         case .normalNote:
             return (UIColor(red:0.99, green:0.99, blue:0.80, alpha:1.00),
-                    UIColor(red:0.95, green:0.93, blue:0.65, alpha:1.00))
+                    UIColor(red:0.95, green:0.89, blue:0.66, alpha:1.00))//UIColor(red:1.00, green:0.80, blue:0.18, alpha:1.00))//UIColor(red:0.95, green:0.93, blue:0.65, alpha:1.00))
         case .watermelon:
             return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
                     UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))
@@ -81,6 +81,9 @@ enum AppPairColors: Int {
         case .mint:
             return (UIColor(red:0.16, green:0.73, blue:0.61, alpha:1.00),
                     UIColor(red:0.14, green:0.62, blue:0.52, alpha:1.00))
+            
+//            (UIColor(red:0.22, green:0.79, blue:0.45, alpha:1.00),
+//             UIColor(red:0.19, green:0.68, blue:0.39, alpha:1.00))
         }
         
     }

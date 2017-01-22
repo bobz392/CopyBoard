@@ -58,7 +58,6 @@ class NoteView {
     
     func configBarView(view: UINavigationBar) {
         view.addSubview(self.barView)
-//        AppColors.mainBackground.bgColor(to: self.barView)
         self.barView.backgroundColor = UIColor.clear
         self.barView.clipsToBounds = true
         self.barView.snp.makeConstraints { (make) in

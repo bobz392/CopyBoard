@@ -13,6 +13,7 @@ import UIKit
 enum Icons {
     case search
     case setting
+    case star
     
     case plus
     case check
@@ -47,16 +48,15 @@ enum Icons {
     case delay
     case sound
     case mail
-    case star
     case play
     case stop
     case bigClear
     
     func iconString() -> String {
         switch self {
-            case .setting: return "setting"
-            case .search:  return "search"
-            
+        case .setting: return "setting"
+        case .search:  return "search"
+        case .star: return "star"
             
             
         case .plus: return "plus"
@@ -91,7 +91,6 @@ enum Icons {
         case .delay: return "delay"
         case .mail: return "mail"
         case .sound: return "sound"
-        case .star: return "star"
         case .weekStart: return "week_start"
         case .readLater: return "read_later"
         case .play: return "play"
