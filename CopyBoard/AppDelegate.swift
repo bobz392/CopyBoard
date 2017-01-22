@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBar.barTintColor = AppColors.mainBackground
         nav.navigationBar.shadowImage = AppColors.mainBackground.toImage()
         nav.navigationBar.setBackgroundImage(AppColors.mainBackground.toImage(), for: .default)
+        
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+        DBManager.configDB()
         
         return true
     }

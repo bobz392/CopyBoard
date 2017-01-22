@@ -14,6 +14,8 @@ class Note: Object {
     dynamic var content: String = ""
     dynamic var createdAt: Date? = nil
     dynamic var color: Int = 0
+    dynamic var favourite: Bool = false
+    dynamic var inTrash: Bool = false
     
     
     class func noteCreator(content: String, createdAt: Date? = nil) -> Note {

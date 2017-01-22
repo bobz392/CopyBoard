@@ -38,6 +38,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
         swipe.direction = .left
         self.cardView.addGestureRecognizer(swipe)
+        
+//        self.noteDateLabel.textColor = AppColors.noteDate
     }
     
     func configCell(use note: Note) {

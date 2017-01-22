@@ -11,14 +11,14 @@ import RealmSwift
 import RxSwift
 
 class DBManager {
-    static let version: UInt64 = 1
+    static let version: UInt64 = 2
     static let shared = DBManager()
     
     typealias DBBlock = () -> Void
     
     internal let realm = try! Realm()
     
-    static func configMainRealm() {
+    static func configDB() {
         
 //        var config = Realm.Configuration(
 //            schemaVersion: version,
