@@ -9,10 +9,10 @@
 import UIKit
 
 class NotesViewController: BaseViewController {
-
+    
     let noteView = NoteView()
     var viewModel: NotesViewModel!
-    
+    fileprivate var animator: NoteModalTransitionAnimator? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +22,27 @@ class NotesViewController: BaseViewController {
             self.noteView.configBarView(view: bar)
         }
         self.noteView.configCollectionView(view: self.view, delegate: self)
-    
-//        let searchResultDriver =
-//            self.noteView.searchBar.rx.text.orEmpty.asDriver()
-
+        
+        //        let searchResultDriver =
+        //            self.noteView.searchBar.rx.text.orEmpty.asDriver()
+        
         self.viewModel = NotesViewModel()
-//            searchDriver: searchResultDriver,
-//            holderViewAlpha: self.noteView.holderView.rx.alpha
-//        )
+        //            searchDriver: searchResultDriver,
+        //            holderViewAlpha: self.noteView.holderView.rx.alpha
+        //        )
         self.viewModel.bindNotifyToken(dataSource: self)
-       
+        
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+        
         let weakSelf = self
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
             weakSelf.noteView.searchAnimation(startSearch: true)
-        }.addDisposableTo(viewModel.disposeBag)
+            }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
             weakSelf.noteView.searchAnimation(startSearch: false)
-        }.addDisposableTo(viewModel.disposeBag)
+            }.addDisposableTo(viewModel.disposeBag)
         
         
         self.noteView.collectionView.delegate = self
@@ -50,13 +53,19 @@ class NotesViewController: BaseViewController {
             Note.noteTestData()
         #endif
     }
-
+    
+    deinit {
+        UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }
 
+// MARK: - realm notification datasource
 extension NotesViewController: RealmNotificationDataSource {
     func dataInit() {
         self.noteView.collectionView.reloadData()
@@ -78,8 +87,8 @@ extension NotesViewController: RealmNotificationDataSource {
 
 // MARK: transition
 extension NotesViewController {
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
+    
+    func deviceOrientationChanged() {
         NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
     }
@@ -89,12 +98,36 @@ extension NotesViewController {
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate, CHTCollectionViewDelegateWaterfallLayout {
     
+    func presentEditorVC(note: Note) {
+        let editorVC = EditorViewController(note: note)
+        editorVC.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        
+        let animator = NoteModalTransitionAnimator(modalViewController: editorVC)
+        self.animator = animator
+        // create animator object with instance of modal view controller
+        // we need to keep it in property with strong reference so it will not get release
+        animator.dragable = true
+        animator.setContentScrollView(editorVC.editorView.editorTextView as UIScrollView)
+        animator.direction = .bottom
+        
+        // set transition delegate of modal view controller to our object
+        editorVC.transitioningDelegate = animator
+        
+        // if you modal cover all behind view controller, use UIModalPresentationFullScreen
+        editorVC.modalPresentationStyle = UIModalPresentationStyle.custom;
+        self.present(editorVC, animated: true) { 
+            
+        }
+
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.notesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.deselectItem(at: indexPath, animated: true)
+        let note = self.viewModel.noteIn(row: indexPath.row)
+        self.presentEditorVC(note: note)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,7 +140,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(collectionView: UICollectionView, heightForRowAt indexPath: IndexPath, withWidth: CGFloat) -> CGFloat {
         let note = self.viewModel.noteIn(row: indexPath.row)
         let layout = collectionView.collectionViewLayout as! NoteCollectionViewLayout
-    
+        
         let font = UIFont.systemFont(ofSize: 16)
         let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth - 10)
         return height + 35.0

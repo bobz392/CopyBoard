@@ -20,7 +20,7 @@ class EditorView {
         self.editorTextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(150)
             make.bottom.equalToSuperview()
         }
     }

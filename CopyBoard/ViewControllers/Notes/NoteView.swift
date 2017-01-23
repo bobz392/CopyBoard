@@ -83,7 +83,7 @@ extension NoteView {
     
     fileprivate func layoutColumnCount() -> Int {
         let dm = DeviceManager.shared
-        return dm.isPad() ? 3 : (dm.isLandscape() ? 3 : 2)
+        return dm.isPad() ? (dm.isLandscape() ? 4 : 3) : (dm.isLandscape() ? 3 : 2)
     }
     
     func invalidateLayout() {
@@ -92,7 +92,7 @@ extension NoteView {
             layout.columnCount = self.layoutColumnCount()
             self.collectionView.performBatchUpdates({ 
                 layout.invalidateLayout()
-            }, completion: { [unowned self] (finish) in
+            }, completion: { (finish) in
 //                self.collectionView.contentOffset = CGPoint.zero
             })
         }

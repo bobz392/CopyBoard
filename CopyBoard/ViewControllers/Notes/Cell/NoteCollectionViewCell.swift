@@ -41,8 +41,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
         swipe.direction = .left
         self.cardView.addGestureRecognizer(swipe)
-        
-        //        self.noteDateLabel.textColor = AppColors.noteDate
     }
     
     func configCell(use note: Note) {
@@ -68,6 +66,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.layer.backgroundColor = UIColor.clear.cgColor
     }
     
+    // MARK: - action
     func gestureOpenAction() {
         self.connectCollectionViewWithOverlay()
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
