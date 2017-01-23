@@ -29,33 +29,6 @@ class NoteView {
         self.holderView.backgroundColor = UIColor.black
     }
     
-    func configCollectionView(view: UIView, delegate: NoteCollectionViewLayoutDelegate) {
-        let layout = NoteCollectionViewLayout(delegate: delegate)
-        
-        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
-        self.holderView.addGestureRecognizer(tap)
-        
-        view.addSubview(self.holderView)
-        self.holderView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalTo(self.collectionView)
-            make.bottom.equalToSuperview()
-        }
-        self.collectionView.register(NoteCollectionViewCell.nib,
-                                     forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
-        self.collectionView.bgClear()
-    }
-    
     func configBarView(view: UINavigationBar) {
         view.addSubview(self.barView)
         self.barView.backgroundColor = UIColor.clear
@@ -105,6 +78,64 @@ class NoteView {
     }
 }
 
+// MARK: - collection view
+extension NoteView {
+    
+    fileprivate func layoutColumnCount() -> Int {
+        let dm = DeviceManager.shared
+        return dm.isPad() ? (dm.isLandscape() ? 4 : 3) : (dm.isLandscape() ? 3 : 2)
+    }
+    
+    func invalidateLayout() {
+        if let layout =
+            self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
+            layout.columnCount = self.layoutColumnCount()
+            layout.invalidateLayout()
+        }
+        
+        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+    }
+    
+    func collectionViewItemSpace() -> CGFloat {
+        return DeviceManager.shared.isPhone() ? 6.0 : 12.0
+    }
+    
+    func configCollectionView(view: UIView, delegate: NoteCollectionViewLayoutDelegate) {
+        let layout = CHTCollectionViewWaterfallLayout()
+        let space = self.collectionViewItemSpace()
+        layout.minimumInteritemSpacing = space
+        layout.minimumColumnSpacing = space
+        layout.columnCount = self.layoutColumnCount()
+        layout.itemRenderDirection = .leftToRight
+        layout.sectionInset = UIEdgeInsetsMake(0, space, 0, space)
+        
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
+        self.holderView.addGestureRecognizer(tap)
+        
+        view.addSubview(self.holderView)
+        self.holderView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(self.collectionView)
+            make.bottom.equalToSuperview()
+        }
+        self.collectionView.register(NoteCollectionViewCell.nib,
+                                     forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
+        self.collectionView.bgClear()
+    }
+    
+}
+
+// MARK: - search
 extension NoteView {
     
     @objc func endSearchAction() {

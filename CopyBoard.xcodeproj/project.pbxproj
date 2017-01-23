@@ -68,6 +68,8 @@
 		C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
 		C76B8DF01E356387006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C76B8DF11E3563D9006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
+		C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */; };
+		C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF61E35AB06006896FA /* DeviceManager.swift */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -257,6 +259,9 @@
 		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C76B8DEF1E356387006896FA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C76B8DF31E359EA8006896FA /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		C76B8DF61E35AB06006896FA /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		C7753D721E352A0900C45A5A /* CGPointAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointAdditions.c; sourceTree = "<group>"; };
 		C7753D731E352A0900C45A5A /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
 		C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackFragmentShader.glsl; sourceTree = "<group>"; };
@@ -367,6 +372,7 @@
 				C74568B71E2D34D700E7C776 /* DBManager.swift */,
 				C7D96D6C1E3434E300B4E418 /* RateManager.swift */,
 				C76B8DEF1E356387006896FA /* Logger.swift */,
+				C76B8DF61E35AB06006896FA /* DeviceManager.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
 				C7D96D641E34304300B4E418 /* iRate */,
 				C7D96D521E341EEF00B4E418 /* FiveButton */,
@@ -578,6 +585,15 @@
 				C7655AC91E32BF3000A1CB9F /* TLYShyViewController.m */,
 			);
 			path = ShyControllers;
+			sourceTree = "<group>";
+		};
+		C76B8DF21E359EA8006896FA /* WaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C76B8DF31E359EA8006896FA /* CHTCollectionViewWaterfallLayout.h */,
+				C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */,
+			);
+			path = WaterfallLayout;
 			sourceTree = "<group>";
 		};
 		C7753D711E352A0900C45A5A /* XBPageCurl */ = {
@@ -1002,6 +1018,7 @@
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C7655AD41E32BF3000A1CB9F /* TLYShyStatusBarController.m in Sources */,
 				C7655AD01E32BF3000A1CB9F /* UIScrollView+Helpers.m in Sources */,
+				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C7655AD61E32BF3000A1CB9F /* TLYShyNavBarManager.m in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
@@ -1031,6 +1048,7 @@
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
+				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655AD51E32BF3000A1CB9F /* TLYShyViewController.m in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,

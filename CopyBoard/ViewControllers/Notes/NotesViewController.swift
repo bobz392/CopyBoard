@@ -57,7 +57,17 @@ class NotesViewController: BaseViewController {
 
 }
 
-extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate {
+// MARK: transition
+extension NotesViewController {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        self.noteView.invalidateLayout()
+    }
+    
+}
+
+// MARK: collection view
+extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate, CHTCollectionViewDelegateWaterfallLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.notesCount()
@@ -81,6 +91,19 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let font = UIFont.systemFont(ofSize: 16)
         let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth - 10)
         return height + 35.0
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
+        let note = self.viewModel.noteIn(row: indexPath.row)
+        let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
+        
+        
+        let font = UIFont.systemFont(ofSize: 16)
+        let space = CGFloat(layout.columnCount + 1) * self.noteView.collectionViewItemSpace()
+        let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
+        let height = self.dynamicHeight(content: note.content, font: font, width: width - 10)
+        return CGSize(width: width, height: height + 35)
     }
     
     func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {

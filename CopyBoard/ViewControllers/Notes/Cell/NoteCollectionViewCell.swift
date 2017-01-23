@@ -104,7 +104,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
             self.curlView?.isOpaque = false
             self.curlView?.pageOpaque = true
             
-            let p = CGPoint(x: cardBounds.width / 2.0, y: cardBounds.height / 2.0)
+            let rato: CGFloat = DeviceManager.shared.isPhone() ? 2.0 : 3.0
+            let p = CGPoint(x: rato, y: rato)
             let angle = CGFloat(M_PI_2) + 0.05
             self.curlView?.curl(self.cardView,
                                 cylinderPosition: p,

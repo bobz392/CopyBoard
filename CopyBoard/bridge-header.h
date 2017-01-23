@@ -12,5 +12,6 @@
 #import "TLYShyNavBarManager.h"
 #import "iRate.h"
 #import "XBPageDragView.h"
+#import "CHTCollectionViewWaterfallLayout.h"
 
 #endif /* bridge_header_h */

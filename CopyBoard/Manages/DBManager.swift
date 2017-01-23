@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import RxSwift
 
-class DBManager {
+final class DBManager {
     static let version: UInt64 = 2
     typealias DBBlock = () -> Void
     static let shared = DBManager(realm: DBManager.beSuredCreate())

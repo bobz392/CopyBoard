@@ -14,7 +14,14 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
 
     var delegate: NoteCollectionViewLayoutDelegate
     var cellPadding: CGFloat = kNoteCellPadding
-    var numberOfColumns = 2
+    
+    var numberOfColumns: Int = 2 {
+        didSet(newValue) {
+            self.width = -1
+            self.cache.removeAll()
+            self.invalidateLayout()
+        }
+    }
     
     private var cache = [NoteLayoutAttributes]()
     
@@ -113,6 +120,14 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
         return CGSize(width: contentWidth, height: contentHeight)
     }
 
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        guard let oldBounds = self.collectionView?.bounds else { return false}
+        
+        if newBounds.height != oldBounds.height {
+            return true
+        }
+        return false
+    }
 }
 
 class NoteLayoutAttributes:UICollectionViewLayoutAttributes {
