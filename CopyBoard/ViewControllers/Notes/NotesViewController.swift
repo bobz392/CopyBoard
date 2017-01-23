@@ -35,20 +35,22 @@ class NotesViewController: BaseViewController {
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
         
-        let weakSelf = self
+        let noteView = self.noteView
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
-            weakSelf.noteView.searchAnimation(startSearch: true)
+            noteView.searchAnimation(startSearch: true)
+            noteView.collectionView
+                .scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
-            weakSelf.noteView.searchAnimation(startSearch: false)
+            noteView.searchAnimation(startSearch: false)
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
         
         #if debug
-            Note.noteTestData()
+            //            Note.noteTestData()
         #endif
     }
     
@@ -137,14 +139,16 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         // if you modal cover all behind view controller, use UIModalPresentationFullScreen
         editorVC.modalPresentationStyle = UIModalPresentationStyle.custom;
-        self.present(editorVC, animated: true) { 
+        self.present(editorVC, animated: true) {
             
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.notesCount()
+        let count = self.viewModel.notesCount()
+        self.noteView.emptyNoteView.isHidden = count > 0
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

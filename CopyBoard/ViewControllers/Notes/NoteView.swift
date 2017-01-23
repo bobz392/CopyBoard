@@ -17,7 +17,7 @@ class NoteView {
     let searchBar = UISearchBar()
     
     var collectionView: UICollectionView!
-
+    var emptyNoteView = UIView()
     let holderView = UIView()
     
     private var barShowing = true
@@ -90,10 +90,10 @@ extension NoteView {
         if let layout =
             self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
             layout.columnCount = self.layoutColumnCount()
-            self.collectionView.performBatchUpdates({ 
+            self.collectionView.performBatchUpdates({
                 layout.invalidateLayout()
             }, completion: { (finish) in
-//                self.collectionView.contentOffset = CGPoint.zero
+                //                self.collectionView.contentOffset = CGPoint.zero
             })
         }
     }
@@ -122,9 +122,11 @@ extension NoteView {
             make.bottom.equalToSuperview()
         }
         
+        self.configEmptyDataView(view: view)
+        
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.holderView.addGestureRecognizer(tap)
-        
         view.addSubview(self.holderView)
         self.holderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -132,11 +134,46 @@ extension NoteView {
             make.top.equalTo(self.collectionView)
             make.bottom.equalToSuperview()
         }
+        
         self.collectionView.register(NoteCollectionViewCell.nib,
                                      forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
         self.collectionView.bgClear()
     }
     
+    
+    func configEmptyDataView(view: UIView) {
+        view.addSubview(self.emptyNoteView)
+        self.emptyNoteView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.emptyNoteView.isHidden = true
+        self.emptyNoteView.bgClear()
+        
+        let emptyImageView = UIImageView()
+        emptyImageView.image = UIImage(named: "empty")
+        emptyImageView.contentMode = .scaleAspectFit
+        let width: CGFloat = UIScreen.main.bounds.width * 0.33
+        let height = width * 1.2
+        self.emptyNoteView.addSubview(emptyImageView)
+        emptyImageView.snp.makeConstraints { (make) in
+            make.width.equalTo(width)
+            make.height.equalTo(height)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.7)
+        }
+        
+        let label = UILabel()
+        label.textColor = AppColors.emptyText
+        self.emptyNoteView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(emptyImageView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        label.text = Localized("emptyNotes")
+    }
 }
 
 // MARK: - search
