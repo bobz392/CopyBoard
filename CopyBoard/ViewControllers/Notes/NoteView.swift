@@ -41,12 +41,12 @@ class NoteView {
         }
         
         self.barView.addSubview(self.titleLabel)
-        self.titleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+        self.titleLabel.font = appFont(size: 16, weight: UIFontWeightMedium)
         self.titleLabel.text = "STICKER"
         self.titleLabel.textAlignment = .center
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()//.offset(10)
+            make.centerY.equalToSuperview()
             make.left.greaterThanOrEqualToSuperview().offset(60)
             make.right.greaterThanOrEqualToSuperview().offset(-60)
         }
@@ -154,7 +154,7 @@ extension NoteView {
         
         let emptyImageView = UIImageView()
         emptyImageView.image = UIImage(named: "empty")
-        emptyImageView.contentMode = .scaleAspectFit
+        emptyImageView.contentMode = .scaleAspectFill
         let width: CGFloat = UIScreen.main.bounds.width * 0.33
         let height = width * 1.2
         self.emptyNoteView.addSubview(emptyImageView)
@@ -162,16 +162,17 @@ extension NoteView {
             make.width.equalTo(width)
             make.height.equalTo(height)
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.7)
+            make.centerY.equalToSuperview().multipliedBy(0.8)
         }
         
         let label = UILabel()
         label.textColor = AppColors.emptyText
         self.emptyNoteView.addSubview(label)
         label.snp.makeConstraints { (make) in
-            make.top.equalTo(emptyImageView.snp.bottom).offset(20)
+            make.top.equalTo(emptyImageView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
+        label.font = appFont(size: emptyNotesFont(), weight: UIFontWeightMedium)
         label.text = Localized("emptyNotes")
     }
 }

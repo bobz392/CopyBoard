@@ -12,7 +12,7 @@ class NoteTextView: UITextView {
 
     static let NoteLineSpace: CGFloat = 15
     
-    var noteFont = UIFont.systemFont(ofSize: 16)
+    var noteFont = appFont(size: 16)
     var spliteLineColor: UIColor?
     
     override func draw(_ rect: CGRect) {

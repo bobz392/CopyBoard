@@ -57,8 +57,9 @@
 		C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33761E2EFA96001DCE38 /* Realm.framework */; };
 		C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33781E2EFA96001DCE38 /* RealmSwift.framework */; };
 		C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
-		C769960A1E3697D5001E2F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C769960C1E3697D5001E2F86 /* LaunchScreen.storyboard */; };
 		C76996111E369968001E2F86 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
+		C769961E1E369B29001E2F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
+		C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76996201E369B50001E2F86 /* Launch Screen.storyboard */; };
 		C76B8DF01E356387006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C76B8DF11E3563D9006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */; };
@@ -233,10 +234,10 @@
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
-		C769960B1E3697D5001E2F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C769960D1E3697E2001E2F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		C769960F1E369894001E2F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C76996101E369968001E2F86 /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		C769961D1E369B29001E2F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C769961F1E369B3B001E2F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C76996201E369B50001E2F86 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C76B8DEF1E356387006896FA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C76B8DF31E359EA8006896FA /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -415,6 +416,7 @@
 		C7403E241E269CA00067229E /* CopyBoard */ = {
 			isa = PBXGroup;
 			children = (
+				C769961C1E369B29001E2F86 /* Localizable.strings */,
 				C7403ECA1E27CA630067229E /* CopyBoard.entitlements */,
 				C7403E251E269CA00067229E /* AppDelegate.swift */,
 				C7403F311E280DE70067229E /* ViewControllers */,
@@ -424,7 +426,7 @@
 				C74FF9C41E2C455400D5CC9E /* Model */,
 				C72332BF1E30F51300D5189D /* Vander */,
 				C7403E2C1E269CA00067229E /* Assets.xcassets */,
-				C769960C1E3697D5001E2F86 /* LaunchScreen.storyboard */,
+				C76996201E369B50001E2F86 /* Launch Screen.storyboard */,
 				C72332BE1E30F43A00D5189D /* bridge-header.h */,
 				C7403E311E269CA00067229E /* Info.plist */,
 			);
@@ -779,7 +781,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"zh-Hans",
 			);
 			mainGroup = C7403E191E269CA00067229E;
 			productRefGroup = C7403E231E269CA00067229E /* Products */;
@@ -804,6 +806,7 @@
 				C78C33861E2EFA96001DCE38 /* 0CF18327-1779-3376-8A33-98C36B7CB2BA.bcsymbolmap in Resources */,
 				C7753D8F1E352A0900C45A5A /* FrontVertexShader.glsl in Resources */,
 				C78C33911E2EFA96001DCE38 /* 8EE4F6D1-0523-3C5F-90C5-5B32B9833315.bcsymbolmap in Resources */,
+				C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */,
 				C78C33871E2EFA96001DCE38 /* 0F904D37-AC20-3595-B4C1-D1C3147B94A8.bcsymbolmap in Resources */,
 				C78C33881E2EFA96001DCE38 /* 163CA734-6CBF-3AAA-93FE-E46988C568F7.bcsymbolmap in Resources */,
 				C78C338A1E2EFA96001DCE38 /* 207FAC92-2E81-3102-809E-2E48BCBCC5DC.bcsymbolmap in Resources */,
@@ -811,9 +814,9 @@
 				C7753D931E352A0900C45A5A /* NextPageVertexShader.glsl in Resources */,
 				C78C33971E2EFA96001DCE38 /* F7BE8380-2112-3873-AD92-A218F84C1C69.bcsymbolmap in Resources */,
 				C78C338D1E2EFA96001DCE38 /* 709376EC-E602-3A0D-940D-0E51DDC04211.bcsymbolmap in Resources */,
+				C769961E1E369B29001E2F86 /* Localizable.strings in Resources */,
 				C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */,
 				C7753D8E1E352A0900C45A5A /* FrontFragmentShader.glsl in Resources */,
-				C769960A1E3697D5001E2F86 /* LaunchScreen.storyboard in Resources */,
 				C78C33891E2EFA96001DCE38 /* 1B5DE090-2C33-36AA-BCBD-3885389B14D3.bcsymbolmap in Resources */,
 				C78C33901E2EFA96001DCE38 /* 8D14D7A1-0560-3458-A239-9F06FAB73495.bcsymbolmap in Resources */,
 				C78C338B1E2EFA96001DCE38 /* 5B1B6DB5-CA5E-3791-AE67-2C8B9633A3AB.bcsymbolmap in Resources */,
@@ -1051,14 +1054,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C769960C1E3697D5001E2F86 /* LaunchScreen.storyboard */ = {
+		C769961C1E369B29001E2F86 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C769960B1E3697D5001E2F86 /* Base */,
-				C769960D1E3697E2001E2F86 /* zh-Hans */,
-				C769960F1E369894001E2F86 /* en */,
+				C769961D1E369B29001E2F86 /* en */,
+				C769961F1E369B3B001E2F86 /* zh-Hans */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

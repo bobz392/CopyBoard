@@ -34,7 +34,7 @@ class EditorView {
         
         attrString.addAttributes([
             NSParagraphStyleAttributeName: paraStyle,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 16)
+            NSFontAttributeName: appFont(size: 16)
             ], range: NSMakeRange(0, content.characters.count))
         self.editorTextView.attributedText = attrString
     }

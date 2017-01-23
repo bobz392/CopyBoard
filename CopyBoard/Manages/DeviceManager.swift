@@ -27,4 +27,21 @@ struct DeviceManager {
             || UIDevice.current.orientation == .landscapeRight
     }
     
+    func phoneScreenType() -> PhoneScreenType {
+        let height = UIScreen.main.bounds.height
+        if height <= 568 {
+            return .phone5
+        } else if height <= 667 {
+            return .phone6
+        } else {
+            return .phone6p
+        }
+    }
+    
+}
+
+enum PhoneScreenType {
+    case phone5
+    case phone6
+    case phone6p
 }

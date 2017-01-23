@@ -167,7 +167,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let note = self.viewModel.noteIn(row: indexPath.row)
         let layout = collectionView.collectionViewLayout as! NoteCollectionViewLayout
         
-        let font = UIFont.systemFont(ofSize: 16)
+        let font = appFont(size: 16)
         let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth - 10)
         return height + 35.0
     }
@@ -178,7 +178,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
         
-        let font = UIFont.systemFont(ofSize: 16)
+        let font = appFont(size: 16)
         let space = CGFloat(layout.columnCount + 1) * self.noteView.collectionViewItemSpace()
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
         let height = self.dynamicHeight(content: note.content, font: font, width: width - 10)
