@@ -30,7 +30,7 @@ class NotesViewController: BaseViewController {
         //            searchDriver: searchResultDriver,
         //            holderViewAlpha: self.noteView.holderView.rx.alpha
         //        )
-        self.viewModel.bindNotifyToken(dataSource: self)
+        DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
@@ -44,19 +44,37 @@ class NotesViewController: BaseViewController {
             weakSelf.noteView.searchAnimation(startSearch: false)
             }.addDisposableTo(viewModel.disposeBag)
         
-        
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
-        self.shyNavBarManager.scrollView = self.noteView.collectionView
         
         #if debug
             Note.noteTestData()
         #endif
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(self.noteView.collectionView, delay: 20.0)
+            navigationController.expandOnActive = false
+            navigationController.scrollingNavbarDelegate = self
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
+            navigationController.scrollingNavbarDelegate = nil
+        }
+    }
+    
     deinit {
         UIDevice.current.endGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.removeObserver(self)
+        DBManager.shared.unbindNotify()
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,12 +103,16 @@ extension NotesViewController: RealmNotificationDataSource {
     }
 }
 
-// MARK: transition
-extension NotesViewController {
+// MARK: transition scroll
+extension NotesViewController: ScrollingNavigationControllerDelegate {
     
     func deviceOrientationChanged() {
         NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
+    }
+    
+    func scrollingUpdateAlphaView() -> UIView? {
+        return self.noteView.barView
     }
     
 }

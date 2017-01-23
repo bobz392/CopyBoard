@@ -21,15 +21,10 @@ class NotesViewModel {
     let disposeBag = DisposeBag()
     
     var notes: Results<Note>
-    var notesToken: RealmSwift.NotificationToken? = nil
+    
 //    var noteToken = 
     var isInSearch = false
     var searchNotes = [Note]()
-    weak var dataSource: RealmNotificationDataSource?
-    
-    deinit {
-        self.notesToken?.stop()
-    }
     
     init(
 //        searchDriver: Driver<String>,
@@ -85,29 +80,7 @@ class NotesViewModel {
     func noteIn(row: Int) -> Note {
         return self.isInSearch ? self.searchNotes[row] : self.notes[row]
     }
-    
-    func bindNotifyToken(dataSource: RealmNotificationDataSource) {
-        self.dataSource = dataSource
-        self.notesToken = self.notes.addNotificationBlock { (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial(_):
-                dataSource.dataInit()
-                
-            case .update(_, let deletions, let insertions, let modifications):
-                dataSource.update(deletions: deletions, insertions: insertions, modifications: modifications)
-                
-            case .error(let error):
-                Logger.log("realmNoticationToken error = \(error)")
-            }
-        }
 
-    }
-}
-
-//MARK: - 自动通知的协议
-protocol RealmNotificationDataSource: NSObjectProtocol {
-    func dataInit()
-    func update(deletions: [Int], insertions: [Int], modifications: [Int])
 }
 
 extension Note: IdentifiableType {

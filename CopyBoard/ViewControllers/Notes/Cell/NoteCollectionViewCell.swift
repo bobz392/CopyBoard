@@ -35,7 +35,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
-        self.faveButton.addTarget(self, action: #selector(self.favAction), for: .touchUpInside)
+        self.faveButton.delegate = self
         self.noteLabel.textColor = AppColors.noteText
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
@@ -50,7 +50,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         pairColor.dark.bgColor(to: self.headerView)
         pairColor.light.bgColor(to: self.cardView)
         self.noteLabel.text = note.content
-        self.faveButton.isSelected = note.favourite
+        
+        self.faveButton.animateSelect(note.favourite, duration: 1)
         self.note = note
     }
     
@@ -90,20 +91,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         let weakSelf =  self
         UIView.animate(withDuration: kCurlDeleteDuration, animations: { 
             cv.alpha = 0
-            weakSelf.backView.alpha = 0.3
         }) { (finish) in
             weakSelf.deleteNote()
-        }
-    }
-    
-    func favAction() {
-        guard  let n = self.note else {
-            Logger.log("have no note to delete")
-            return
-        }
-        
-        DBManager.shared.updateObject {
-            n.favourite = true
         }
     }
     
@@ -163,6 +152,19 @@ class NoteCollectionViewCell: UICollectionViewCell {
         })
         self.isCurl = false
         NoteCollectionViewInputOverlay.openedItemIndex = nil
+    }
+}
+
+extension NoteCollectionViewCell: FaveButtonDelegate {
+    func faveButton(_ faveButton: FaveButton, didSelected selected: Bool) {
+        guard  let n = self.note else {
+            Logger.log("have no note to delete")
+            return
+        }
+        
+        DBManager.shared.updateObject(false) { 
+            n.favourite = !n.favourite
+        }
     }
 }
 

@@ -9,7 +9,6 @@
 #ifndef bridge_header_h
 #define bridge_header_h
 
-#import "TLYShyNavBarManager.h"
 #import "iRate.h"
 #import "XBPageDragView.h"
 #import "CHTCollectionViewWaterfallLayout.h"
