@@ -12,7 +12,6 @@ class NotesViewController: BaseViewController {
     
     let noteView = NoteView()
     var viewModel: NotesViewModel!
-    fileprivate var animator: NoteModalTransitionAnimator? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,18 +56,12 @@ class NotesViewController: BaseViewController {
         #endif
     }
     
-    func endSearchAction() {
-        self.noteView.searchAnimation(startSearch: false)
-        self.viewModel.isInSearch = false
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(self.noteView.collectionView, delay: 20.0)
+            navigationController.followScrollView(self.noteView.collectionView)
             navigationController.expandOnActive = false
-            navigationController.scrollingNavbarDelegate = self
         }
     }
     
@@ -91,6 +84,11 @@ class NotesViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func endSearchAction() {
+        self.noteView.searchAnimation(startSearch: false)
+        self.viewModel.isInSearch = false
+    }
+
 }
 
 // MARK: - realm notification datasource
@@ -114,15 +112,11 @@ extension NotesViewController: RealmNotificationDataSource {
 }
 
 // MARK: transition scroll
-extension NotesViewController: ScrollingNavigationControllerDelegate {
+extension NotesViewController {
     
     func deviceOrientationChanged() {
         NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
-    }
-    
-    func scrollingUpdateAlphaView() -> UIView? {
-        return self.noteView.barView
     }
     
 }
@@ -132,25 +126,6 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func presentEditorVC(note: Note) {
         let editorVC = EditorViewController(note: note)
-        editorVC.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        
-        let animator = NoteModalTransitionAnimator(modalViewController: editorVC)
-        self.animator = animator
-        // create animator object with instance of modal view controller
-        // we need to keep it in property with strong reference so it will not get release
-        animator.dragable = true
-        animator.setContentScrollView(editorVC.editorView.editorTextView as UIScrollView)
-        animator.direction = .bottom
-        
-        // set transition delegate of modal view controller to our object
-        editorVC.transitioningDelegate = animator
-        
-        // if you modal cover all behind view controller, use UIModalPresentationFullScreen
-        editorVC.modalPresentationStyle = UIModalPresentationStyle.custom;
-        self.present(editorVC, animated: true) {
-            
-        }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -73,10 +73,15 @@ final class DBManager {
         try? realm.commitWrite(withoutNotifying: tokens)
     }
     
-    func writeObjects(_ objects: [Object]) {
+    func writeObjects( notify: Bool = true, objects: [Object]) {
+        var tokens = [NotificationToken]()
+        if notify == false, let token = self.notesToken {
+            tokens.append(token)
+        }
+
         realm.beginWrite()
         realm.add(objects)
-        try? realm.commitWrite()
+        try? realm.commitWrite(withoutNotifying: tokens)
     }
 
 }

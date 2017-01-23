@@ -13,8 +13,7 @@ import UIKit
      Called when the state of the navigation bar is about to change
      */
     @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
-    
-    @objc optional func scrollingUpdateAlphaView() -> UIView?
+
 }
 
 /**
@@ -401,43 +400,41 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         let alpha = (frame.origin.y + deltaLimit) / frame.size.height
         
         // Hide all the possible titles
-        if let updateView = self.scrollingNavbarDelegate?.scrollingUpdateAlphaView?() {
-            updateView.alpha = alpha
+        
+        navigationItem.titleView?.alpha = alpha
+        navigationBar.tintColor = navigationBar.tintColor.withAlphaComponent(alpha)
+        if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
+            navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = titleColor.withAlphaComponent(alpha)
         } else {
-            
-            navigationItem.titleView?.alpha = alpha
-            navigationBar.tintColor = navigationBar.tintColor.withAlphaComponent(alpha)
-            if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
-                navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = titleColor.withAlphaComponent(alpha)
-            } else {
-                navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = UIColor.black.withAlphaComponent(alpha)
-            }
-            
-            // Hide all possible button items and navigation items
-            func shouldHideView(_ view: UIView) -> Bool {
-                let className = view.classForCoder.description()
-                return className == "UINavigationButton" ||
-                    className == "UINavigationItemView" ||
-                    className == "UIImageView" ||
-                    className == "UISegmentedControl"
-            }
-            
-            navigationBar.subviews
-                .filter(shouldHideView)
-                .forEach { $0.alpha = alpha }
-            
-            // Hide the left items
-            navigationItem.leftBarButtonItem?.customView?.alpha = alpha
-            if let leftItems = navigationItem.leftBarButtonItems {
-                leftItems.forEach { $0.customView?.alpha = alpha }
-            }
-            
-            // Hide the right items
-            navigationItem.rightBarButtonItem?.customView?.alpha = alpha
-            if let leftItems = navigationItem.rightBarButtonItems {
-                leftItems.forEach { $0.customView?.alpha = alpha }
-            }
+            navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = UIColor.black.withAlphaComponent(alpha)
         }
+        
+        // Hide all possible button items and navigation items
+        func shouldHideView(_ view: UIView) -> Bool {
+            let className = view.classForCoder.description()
+            return className == "UINavigationButton" ||
+                className == "UINavigationItemView" ||
+                className == "UIImageView" ||
+                className == "UISegmentedControl" ||
+                className == "UIView"
+        }
+        
+        navigationBar.subviews
+            .filter(shouldHideView)
+            .forEach { $0.alpha = alpha }
+        
+        // Hide the left items
+        navigationItem.leftBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = navigationItem.leftBarButtonItems {
+            leftItems.forEach { $0.customView?.alpha = alpha }
+        }
+        
+        // Hide the right items
+        navigationItem.rightBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = navigationItem.rightBarButtonItems {
+            leftItems.forEach { $0.customView?.alpha = alpha }
+        }
+        
     }
     
     // MARK: - UIGestureRecognizerDelegate

@@ -23,6 +23,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var faveButton: FaveButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var noteDateLabel: UILabel!
     
     fileprivate var curlView: XBCurlView? = nil
     fileprivate var isCurl = false
@@ -37,6 +38,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
         self.faveButton.delegate = self
         self.noteLabel.textColor = AppColors.noteText
+        self.noteDateLabel.textColor = AppColors.noteDate
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
         swipe.direction = .left
@@ -50,8 +52,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         pairColor.dark.bgColor(to: self.headerView)
         pairColor.light.bgColor(to: self.cardView)
         self.noteLabel.text = note.content
-        
-        self.faveButton.animateSelect(note.favourite, duration: 1)
+        self.faveButton.isSelected = note.favourite
+        self.noteDateLabel.text = try! note.createdAt?.colloquialSinceNow().colloquial
         self.note = note
     }
     
@@ -78,21 +80,15 @@ class NoteCollectionViewCell: UICollectionViewCell {
     func deleteAction() {
         guard let cv = self.curlView else { return }
         
-        let p = CGPoint(x: 0, y: 0)
-        let angle = CGFloat(M_PI_2) + 0.23
-        cv.setCylinderAngle(angle, animatedWithDuration: kCurlDeleteDuration)
-        cv.setCylinderRadius(20, animatedWithDuration: kCurlDeleteDuration)
-        cv.setCylinderPosition(p, animatedWithDuration: kCurlDeleteDuration) { [unowned self] in
-            self.isCurl = false
-//            self.closeCurl(duration: 0.1)
-        }
-        NoteCollectionViewInputOverlay.openedItemIndex = nil
-        cv.startAnimating()
         let weakSelf =  self
-        UIView.animate(withDuration: kCurlDeleteDuration, animations: { 
-            cv.alpha = 0
-        }) { (finish) in
-            weakSelf.deleteNote()
+        NoteCollectionViewInputOverlay.openedItemIndex = nil
+        cv.uncurlAnimated(withDuration: kCurlDeleteDuration) { 
+            UIView.animate(withDuration: kCurlDeleteDuration, animations: {
+                cv.alpha = 0
+            }) { (finish) in
+                weakSelf.deleteNote()
+            }
+            weakSelf.curlView = nil
         }
     }
     
@@ -182,9 +178,12 @@ final class NoteCollectionViewInputOverlay: UIView {
         if cell.isCurl == false || cell.deleteButton.frame.contains(pointCell) {
             return nil
         }
-        
-        cell.closeCurl()
-        
+
+        if cell.isCurl == true {
+            cell.closeCurl()
+            return cell
+        }
+
         return nil
     }
     

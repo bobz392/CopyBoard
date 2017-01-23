@@ -42,9 +42,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Al0-lU-Jji">
                                 <rect key="frame" x="0.0" y="0.0" width="141" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-jb-2wD">
+                                        <rect key="frame" x="5" y="0.0" width="0.0" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.80023035340000004" green="0.9466013673" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="r3v-jb-2wD" secondAttribute="bottom" id="02Q-yo-1jz"/>
+                                    <constraint firstItem="r3v-jb-2wD" firstAttribute="leading" secondItem="Al0-lU-Jji" secondAttribute="leading" constant="5" id="6H7-ZT-acS"/>
                                     <constraint firstAttribute="height" constant="25" id="tDi-11-Ler"/>
+                                    <constraint firstItem="r3v-jb-2wD" firstAttribute="top" secondItem="Al0-lU-Jji" secondAttribute="top" id="uNe-sD-wJJ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-z4-ELJ" userLabel="star" customClass="FaveButton" customModule="CopyBoard" customModuleProvider="target">
@@ -116,9 +127,10 @@
                 <outlet property="deleteButton" destination="Vhg-0T-2Od" id="LdZ-jE-MRs"/>
                 <outlet property="faveButton" destination="fpg-z4-ELJ" id="62D-jv-OJn"/>
                 <outlet property="headerView" destination="Al0-lU-Jji" id="a69-VV-xbv"/>
+                <outlet property="noteDateLabel" destination="r3v-jb-2wD" id="t1J-Wi-DcX"/>
                 <outlet property="noteLabel" destination="dmr-we-EGz" id="Fwe-8y-8ch"/>
             </connections>
-            <point key="canvasLocation" x="-133.5" y="-183.5"/>
+            <point key="canvasLocation" x="-221" y="-345"/>
         </collectionViewCell>
     </objects>
     <resources>

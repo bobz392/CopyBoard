@@ -11,10 +11,11 @@ import UIKit
 struct AppColors {
     
     static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
-    static let noteDate = UIColor(red:0.74, green:0.67, blue:0.59, alpha:1.00)
+    static let noteDate = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
-     static let emptyText = UIColor(red:0.77, green:0.76, blue:0.73, alpha:1.00)
+    static let emptyText = UIColor(red:0.77, green:0.76, blue:0.73, alpha:1.00)
+    
     
     //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
     //    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
@@ -55,9 +56,9 @@ struct AppColors {
 }
 
 enum AppPairColors: Int {
-    case normalNote = 0
+    case sand = 0
+    case pink
     case white
-    case sand
     case watermelon
     case powderBlue
     case mint
@@ -70,9 +71,9 @@ enum AppPairColors: Int {
         case .white:
             return (UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00),
                     UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00))
-        case .normalNote:
-            return (UIColor(red:0.99, green:0.99, blue:0.80, alpha:1.00),
-                    UIColor(red:0.95, green:0.89, blue:0.66, alpha:1.00))//UIColor(red:1.00, green:0.80, blue:0.18, alpha:1.00))//UIColor(red:0.95, green:0.93, blue:0.65, alpha:1.00))
+        case .pink:
+            return (UIColor(red:0.95, green:0.49, blue:0.76, alpha:1.00),
+                    UIColor(red:0.82, green:0.37, blue:0.62, alpha:1.00))
         case .watermelon:
             return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
                     UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))

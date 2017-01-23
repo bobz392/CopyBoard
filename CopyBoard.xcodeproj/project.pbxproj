@@ -64,9 +64,6 @@
 		C76B8DF11E3563D9006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */; };
 		C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF61E35AB06006896FA /* DeviceManager.swift */; };
-		C76B8DFE1E3675B7006896FA /* ScrollingNavbar+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DFB1E3675B7006896FA /* ScrollingNavbar+Sizes.swift */; };
-		C76B8DFF1E3675B7006896FA /* ScrollingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DFC1E3675B7006896FA /* ScrollingNavigationController.swift */; };
-		C76B8E001E3675B7006896FA /* ScrollingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DFD1E3675B7006896FA /* ScrollingNavigationViewController.swift */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -242,9 +239,6 @@
 		C76B8DF31E359EA8006896FA /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		C76B8DF61E35AB06006896FA /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
-		C76B8DFB1E3675B7006896FA /* ScrollingNavbar+Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollingNavbar+Sizes.swift"; sourceTree = "<group>"; };
-		C76B8DFC1E3675B7006896FA /* ScrollingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationController.swift; sourceTree = "<group>"; };
-		C76B8DFD1E3675B7006896FA /* ScrollingNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationViewController.swift; sourceTree = "<group>"; };
 		C7753D721E352A0900C45A5A /* CGPointAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointAdditions.c; sourceTree = "<group>"; };
 		C7753D731E352A0900C45A5A /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
 		C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackFragmentShader.glsl; sourceTree = "<group>"; };
@@ -381,7 +375,6 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
-				C76B8DFA1E3675B7006896FA /* AMScrollingNavbar */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
 				C7D96D641E34304300B4E418 /* iRate */,
@@ -536,16 +529,6 @@
 				C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */,
 			);
 			path = WaterfallLayout;
-			sourceTree = "<group>";
-		};
-		C76B8DFA1E3675B7006896FA /* AMScrollingNavbar */ = {
-			isa = PBXGroup;
-			children = (
-				C76B8DFB1E3675B7006896FA /* ScrollingNavbar+Sizes.swift */,
-				C76B8DFC1E3675B7006896FA /* ScrollingNavigationController.swift */,
-				C76B8DFD1E3675B7006896FA /* ScrollingNavigationViewController.swift */,
-			);
-			path = AMScrollingNavbar;
 			sourceTree = "<group>";
 		};
 		C7753D711E352A0900C45A5A /* XBPageCurl */ = {
@@ -971,7 +954,6 @@
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
-				C76B8E001E3675B7006896FA /* ScrollingNavigationViewController.swift in Sources */,
 				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
@@ -981,7 +963,6 @@
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
 				C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
-				C76B8DFF1E3675B7006896FA /* ScrollingNavigationController.swift in Sources */,
 				C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */,
 				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
 				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
@@ -1001,7 +982,6 @@
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
-				C76B8DFE1E3675B7006896FA /* ScrollingNavbar+Sizes.swift in Sources */,
 				C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,

@@ -9,9 +9,6 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
-    var customNavigationBar: UIView? = nil
-    var leftBarButton: UIButton? = nil
     
     fileprivate var sourceViewBlock: SourceViewBlock? = nil
     fileprivate var previewViewControllerBlock: PreviewViewControllerBlock? = nil
