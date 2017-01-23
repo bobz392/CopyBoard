@@ -25,8 +25,8 @@ class NotesViewModel {
     var searchNotes = [Note]()
     
     init(
-        searchDriver: Driver<String>,
-        holderViewAlpha: UIBindingObserver<UIView, CGFloat>
+//        searchDriver: Driver<String>,
+//        holderViewAlpha: UIBindingObserver<UIView, CGFloat>
         ) {
 //        self.searchResultDriver = searchDriver
 //        let searchDriver = searchResultDriver.throttle(0.3)

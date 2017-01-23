@@ -23,13 +23,13 @@ class NotesViewController: BaseViewController {
         }
         self.noteView.configCollectionView(view: self.view, delegate: self)
     
-        let searchResultDriver =
-            self.noteView.searchBar.rx.text.orEmpty.asDriver()
+//        let searchResultDriver =
+//            self.noteView.searchBar.rx.text.orEmpty.asDriver()
 
-        viewModel = NotesViewModel(
-            searchDriver: searchResultDriver,
-            holderViewAlpha: self.noteView.holderView.rx.alpha
-        )
+        viewModel = NotesViewModel()
+//            searchDriver: searchResultDriver,
+//            holderViewAlpha: self.noteView.holderView.rx.alpha
+//        )
        
         let weakSelf = self
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
@@ -44,7 +44,10 @@ class NotesViewController: BaseViewController {
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
         self.shyNavBarManager.scrollView = self.noteView.collectionView
-        Note.noteTestData()
+        
+        #if debug
+            Note.noteTestData()
+        #endif
     }
 
     override func didReceiveMemoryWarning() {

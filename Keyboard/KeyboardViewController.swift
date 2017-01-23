@@ -22,28 +22,23 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        if let g = GroupUserDefault() {
-//            print(g.readGroud())
-//        }
-        // Perform custom UI setup here
-        
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 10)
         
-        self.view.addSubview(label)
-        label.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+        self.nextKeyboardButton = UIButton(type: .system)
+        
+        DBManager.configDB()
+        
+        if DBManager.checkKeyboardAccess() {
+            Logger.log(DBManager.shared.queryNotes())
+            label.text = (DBManager.shared.realm.configuration.fileURL?.absoluteString)! + "\n"
+                + "count = \(DBManager.shared.queryNotes())"
+
+        } else {
+            label.text = "cant access"
         }
         
-        self.nextKeyboardButton = UIButton(type: .system)
-        print(DBManager.shared.queryNotes())
-        
-        label.text = (DBManager.shared.realm.configuration.fileURL?.absoluteString)! + "\n"
-            + "count = \(DBManager.shared.queryNotes())"
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +46,25 @@ class KeyboardViewController: UIInputViewController {
         if #available(iOSApplicationExtension 10.0, *) {
             self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         } else {
-            // Fallback on earlier versions
+            self.nextKeyboardButton.addTarget(self, action: #selector(self.advanceToNextInputMode), for: .allTouchEvents)
+        }
+        
+        
+        
+        let settingButton = UIButton(type: UIButtonType.system)
+        settingButton.addTarget(self, action: #selector(self.open), for: .touchUpInside)
+        settingButton.setTitle("go", for: .normal)
+        self.view.addSubview(settingButton)
+        settingButton.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.top.equalToSuperview()
+        }
+        
+        self.view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(settingButton.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
         
         self.view.addSubview(self.nextKeyboardButton)
@@ -65,6 +78,17 @@ class KeyboardViewController: UIInputViewController {
             self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         } else {
             // Fallback on earlier versions
+        }
+    }
+    
+    func open() {
+        if let url = URL(string: UIApplicationOpenSettingsURLString) {//"prefs:root=General&path=Keyboard") {
+//            self.extensionContext?.open(url, completionHandler: { (finish) in
+//                
+//            })
+            UIApplication.🚀sharedApplication().🚀openURL(url: url)
+        } else {
+            Logger.log("go url = nil")
         }
     }
     
@@ -90,4 +114,30 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
 
+}
+
+extension UIApplication {
+    
+    public static func 🚀sharedApplication() -> UIApplication {
+        
+        guard UIApplication.responds(to: Selector("sharedApplication")) else {
+            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication` does not respond to selector `sharedApplication`.")
+        }
+        
+        
+        guard let unmanagedSharedApplication = UIApplication.perform(Selector("sharedApplication")) else {
+            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication.sharedApplication()` returned `nil`.")
+        }
+        
+        guard let sharedApplication = unmanagedSharedApplication.takeUnretainedValue() as? UIApplication else {
+            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication.sharedApplication()` returned not `UIApplication` instance.")
+        }
+        
+        return sharedApplication
+    }
+    
+    public func 🚀openURL(url: URL) {
+        self.performSelector(onMainThread: Selector("openURL:"), with: url, waitUntilDone: true)
+    }
+    
 }

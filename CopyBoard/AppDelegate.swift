@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DBManager.configDB()
         Logger.log(DBManager.shared.realm.configuration.fileURL?.absoluteString)
         
+        
         return true
     }
 

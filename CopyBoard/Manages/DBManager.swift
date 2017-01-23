@@ -12,22 +12,17 @@ import RxSwift
 
 class DBManager {
     static let version: UInt64 = 2
-    static let shared = DBManager()
-    
     typealias DBBlock = () -> Void
+    static let shared = DBManager(realm: DBManager.beSuredCreate())
     
-    internal let realm = try! Realm()
+    let realm: Realm
+    
+    init(realm: Realm) {
+        self.realm = realm
+    }
     
     static func configDB() {
-        
-//        var config = Realm.Configuration(
-//            schemaVersion: version,
-//            migrationBlock: { (igration, oldSchemaVersion) in
-//                if (oldSchemaVersion < version) {}
-//        })
-        
-        let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!
-        let realmURL = directory.appendingPathComponent("db.realm")
+        let realmURL = self.containerDBURL()
         
         let config = Realm.Configuration(fileURL: realmURL,
                             schemaVersion: version,
@@ -35,6 +30,21 @@ class DBManager {
                                 if (oldSchemaVersion < version) {}
         })
         Realm.Configuration.defaultConfiguration = config
+    }
+    
+    static private func beSuredCreate() -> Realm {
+        return try! Realm()
+    }
+    
+    static private func containerDBURL() -> URL {
+        let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!
+        return directory.appendingPathComponent("Library/Caches/db.realm")
+    }
+    
+    static func checkKeyboardAccess() -> Bool {
+        let r = try? Realm()
+        
+        return r != nil
     }
     
     func queryNotes(contain: String? = nil) -> Results<Note> {
