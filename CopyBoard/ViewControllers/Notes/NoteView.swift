@@ -76,6 +76,18 @@ class NoteView {
             make.bottom.equalToSuperview()
         }
     }
+    
+    func emptyNotesView(hidden: Bool) {
+        self.emptyNoteView.isHidden = hidden
+        let searchButtonRight: CGFloat = hidden ? -8 : 44
+        self.searchButton.snp.updateConstraints({ (make) in
+            make.right.equalToSuperview().offset(searchButtonRight)
+        })
+        
+        UIView.animate(withDuration: 0.25) { [unowned self] in
+            self.barView.layoutIfNeeded()
+        }   
+    }
 }
 
 // MARK: - collection view
@@ -114,6 +126,7 @@ extension NoteView {
         layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.keyboardDismissMode = .onDrag
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
@@ -124,9 +137,6 @@ extension NoteView {
         
         self.configEmptyDataView(view: view)
         
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
-        self.holderView.addGestureRecognizer(tap)
         view.addSubview(self.holderView)
         self.holderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -179,10 +189,6 @@ extension NoteView {
 
 // MARK: - search
 extension NoteView {
-    
-    @objc func endSearchAction() {
-        self.searchAnimation(startSearch: false)
-    }
     
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self

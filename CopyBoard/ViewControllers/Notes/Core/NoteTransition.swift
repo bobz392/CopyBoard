@@ -429,7 +429,7 @@ class NoteModalTransitionAnimator: UIPercentDrivenInteractiveTransition,UIViewCo
             percentComplete = 0
         }
         
-        let transitionContext:UIViewControllerContextTransitioning = self.transitionContext!
+        guard let transitionContext = self.transitionContext else { return }
         
         let fromViewController:UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         let toViewController:UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!

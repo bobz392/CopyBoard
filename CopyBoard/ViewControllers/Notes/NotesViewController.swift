@@ -35,23 +35,31 @@ class NotesViewController: BaseViewController {
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
         
-        let noteView = self.noteView
+        let weakSelf = self
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
-            noteView.searchAnimation(startSearch: true)
-            noteView.collectionView
-                .scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            weakSelf.noteView.searchAnimation(startSearch: true)
+            weakSelf.viewModel.isInSearch = true
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
-            noteView.searchAnimation(startSearch: false)
+            weakSelf.noteView.searchAnimation(startSearch: false)
+            weakSelf.viewModel.isInSearch = false
             }.addDisposableTo(viewModel.disposeBag)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
+        self.noteView.holderView.addGestureRecognizer(tap)
         
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
         
         #if debug
-            //            Note.noteTestData()
+            Note.noteTestData()
         #endif
+    }
+    
+    func endSearchAction() {
+        self.noteView.searchAnimation(startSearch: false)
+        self.viewModel.isInSearch = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,7 +155,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.viewModel.notesCount()
-        self.noteView.emptyNoteView.isHidden = count > 0
+        self.noteView.emptyNotesView(hidden: count > 0)
         return count
     }
     
