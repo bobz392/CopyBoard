@@ -83,31 +83,35 @@ extension NoteView {
     
     fileprivate func layoutColumnCount() -> Int {
         let dm = DeviceManager.shared
-        return dm.isPad() ? (dm.isLandscape() ? 4 : 3) : (dm.isLandscape() ? 3 : 2)
+        return dm.isPad() ? 3 : (dm.isLandscape() ? 3 : 2)
     }
     
     func invalidateLayout() {
         if let layout =
             self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
             layout.columnCount = self.layoutColumnCount()
-            layout.invalidateLayout()
+            self.collectionView.performBatchUpdates({ 
+                layout.invalidateLayout()
+            }, completion: { [unowned self] (finish) in
+//                self.collectionView.contentOffset = CGPoint.zero
+            })
         }
-        
-        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
     }
     
     func collectionViewItemSpace() -> CGFloat {
-        return DeviceManager.shared.isPhone() ? 6.0 : 12.0
+        return DeviceManager.shared.isPhone() ? 12.0 : 18.0
     }
     
     func configCollectionView(view: UIView, delegate: NoteCollectionViewLayoutDelegate) {
         let layout = CHTCollectionViewWaterfallLayout()
         let space = self.collectionViewItemSpace()
+        
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space
         layout.columnCount = self.layoutColumnCount()
         layout.itemRenderDirection = .leftToRight
-        layout.sectionInset = UIEdgeInsetsMake(0, space, 0, space)
+        let inset = space * 0.5
+        layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.addSubview(self.collectionView)

@@ -19,6 +19,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var faveButton: FaveButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -26,20 +27,22 @@ class NoteCollectionViewCell: UICollectionViewCell {
     fileprivate var curlView: XBCurlView? = nil
     fileprivate var isCurl = false
     
+    var note: Note? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
-        
+        self.faveButton.addTarget(self, action: #selector(self.favAction), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
         swipe.direction = .left
         self.cardView.addGestureRecognizer(swipe)
         
-//        self.noteDateLabel.textColor = AppColors.noteDate
+        //        self.noteDateLabel.textColor = AppColors.noteDate
     }
     
     func configCell(use note: Note) {
@@ -49,6 +52,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         pairColor.dark.bgColor(to: self.headerView)
         pairColor.light.bgColor(to: self.cardView)
         self.noteLabel.text = note.content
+        self.faveButton.isSelected = note.favourite
+        self.note = note
     }
     
     override func layoutSubviews() {
@@ -79,18 +84,37 @@ class NoteCollectionViewCell: UICollectionViewCell {
         cv.setCylinderRadius(20, animatedWithDuration: kCurlDeleteDuration)
         cv.setCylinderPosition(p, animatedWithDuration: kCurlDeleteDuration) { [unowned self] in
             self.isCurl = false
-            self.deleteNote()
+//            self.closeCurl(duration: 0.1)
         }
         NoteCollectionViewInputOverlay.openedItemIndex = nil
         cv.startAnimating()
-        
-        UIView.animate(withDuration: kCurlDeleteDuration) { [unowned self] in
+        let weakSelf =  self
+        UIView.animate(withDuration: kCurlDeleteDuration, animations: { 
             cv.alpha = 0
+            weakSelf.backView.alpha = 0.3
+        }) { (finish) in
+            weakSelf.deleteNote()
+        }
+    }
+    
+    func favAction() {
+        guard  let n = self.note else {
+            Logger.log("have no note to delete")
+            return
+        }
+        
+        DBManager.shared.updateObject {
+            n.favourite = true
         }
     }
     
     fileprivate func deleteNote() {
+        guard  let n = self.note else {
+            Logger.log("have no note to delete")
+            return
+        }
         
+        DBManager.shared.deleteNote(note: n)
     }
     
     final func curl(index: IndexPath) {
@@ -104,9 +128,9 @@ class NoteCollectionViewCell: UICollectionViewCell {
             self.curlView?.isOpaque = false
             self.curlView?.pageOpaque = true
             
-            let rato: CGFloat = DeviceManager.shared.isPhone() ? 2.0 : 3.0
-            let p = CGPoint(x: rato, y: rato)
-            let angle = CGFloat(M_PI_2) + 0.05
+            let rato: CGFloat = DeviceManager.shared.isPhone() ? 0.5 : 0.8
+            let p = CGPoint(x: cardBounds.width * rato, y: cardBounds.height * rato)
+            let angle = CGFloat(M_PI_2)
             self.curlView?.curl(self.cardView,
                                 cylinderPosition: p,
                                 cylinderAngle: angle,
@@ -119,10 +143,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     func connectCollectionViewWithOverlay() {
-        //        guard NoteCollectionViewInputOverlay.connected == true else {
-        //            Logger.log("overlay added")
-        //            return
-        //        }
         if !NoteCollectionViewInputOverlay.connected {
             var view = self.superview
             while(view != nil) {
@@ -138,8 +158,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    fileprivate func closeCurl() {
-        self.curlView?.uncurlAnimated(withDuration: kCurlCloseDuration, completion: { [unowned self] in
+    fileprivate func closeCurl(duration: Double = kCurlCloseDuration) {
+        self.curlView?.uncurlAnimated(withDuration: duration, completion: { [unowned self] in
             self.curlView = nil
         })
         self.isCurl = false
@@ -153,9 +173,9 @@ final class NoteCollectionViewInputOverlay: UIView {
     static var cacheCollectionView: UICollectionView? = nil
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard let openIndex = NoteCollectionViewInputOverlay.openedItemIndex,
+        guard let index = NoteCollectionViewInputOverlay.openedItemIndex,
             let cv = self.superview as? UICollectionView,
-            let cell = cv.cellForItem(at: openIndex) as? NoteCollectionViewCell else { return nil}
+            let cell = cv.cellForItem(at: index) as? NoteCollectionViewCell else { return nil}
         
         let pointCell = self.convert(point, to: cell)
         if cell.isCurl == false || cell.deleteButton.frame.contains(pointCell) {
@@ -165,5 +185,13 @@ final class NoteCollectionViewInputOverlay: UIView {
         cell.closeCurl()
         
         return nil
+    }
+    
+    static func closeOpenItem() {
+        guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
+            let index = NoteCollectionViewInputOverlay.openedItemIndex,
+            let cell = cv.cellForItem(at: index) as? NoteCollectionViewCell else { return }
+     
+        cell.closeCurl()
     }
 }

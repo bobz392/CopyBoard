@@ -26,10 +26,11 @@ class NotesViewController: BaseViewController {
 //        let searchResultDriver =
 //            self.noteView.searchBar.rx.text.orEmpty.asDriver()
 
-        viewModel = NotesViewModel()
+        self.viewModel = NotesViewModel()
 //            searchDriver: searchResultDriver,
 //            holderViewAlpha: self.noteView.holderView.rx.alpha
 //        )
+        self.viewModel.bindNotifyToken(dataSource: self)
        
         let weakSelf = self
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
@@ -52,15 +53,34 @@ class NotesViewController: BaseViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension NotesViewController: RealmNotificationDataSource {
+    func dataInit() {
+        self.noteView.collectionView.reloadData()
+    }
+    
+    func update(deletions: [Int], insertions: [Int], modifications: [Int]) {
+        if insertions.count > 0 {
+            self.noteView.collectionView
+                .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+        } else if deletions.count > 0 {
+            self.noteView.collectionView
+                .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+        } else if modifications.count > 0 {
+            self.noteView.collectionView
+                .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
+        }
+    }
 }
 
 // MARK: transition
 extension NotesViewController {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
+        NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
     }
     

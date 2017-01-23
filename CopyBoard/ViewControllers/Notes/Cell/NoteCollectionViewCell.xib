@@ -111,6 +111,7 @@
             </constraints>
             <size key="customSize" width="141" height="177"/>
             <connections>
+                <outlet property="backView" destination="TU5-ve-6Ak" id="hXM-GN-Ral"/>
                 <outlet property="cardView" destination="AEV-TO-LfN" id="KXL-uS-coq"/>
                 <outlet property="deleteButton" destination="Vhg-0T-2Od" id="LdZ-jE-MRs"/>
                 <outlet property="faveButton" destination="fpg-z4-ELJ" id="62D-jv-OJn"/>

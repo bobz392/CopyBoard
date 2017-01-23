@@ -11,7 +11,7 @@ import RealmSwift
 import RxSwift
 
 final class DBManager {
-    static let version: UInt64 = 2
+    static let version: UInt64 = 0
     typealias DBBlock = () -> Void
     static let shared = DBManager(realm: DBManager.beSuredCreate())
     
@@ -26,9 +26,10 @@ final class DBManager {
         
         let config = Realm.Configuration(fileURL: realmURL,
                             schemaVersion: version,
-                            migrationBlock: { (igration, oldSchemaVersion) in
+                            migrationBlock: { (migration, oldSchemaVersion) in
                                 if (oldSchemaVersion < version) {}
         })
+        Logger.log(DBManager.shared.realm.configuration.fileURL?.absoluteString ?? "db file url = nil")
         Realm.Configuration.defaultConfiguration = config
     }
     
@@ -47,8 +48,35 @@ final class DBManager {
         return r != nil
     }
     
+    func writeObject(_ object: Object) {
+        try? realm.write {
+            realm.add(object)
+        }
+    }
+    
+    func deleteObject(_ object: Object) {
+        try? realm.write {
+            realm.delete(object)
+        }
+    }
+    
+    func updateObject(_ updateBlock: @escaping DBBlock) {
+        try? realm.write({
+            updateBlock()
+        })
+    }
+    
+    func writeObjects(_ objects: [Object]) {
+        realm.beginWrite()
+        realm.add(objects)
+        try? realm.commitWrite()
+    }
+
+}
+
+// MARK: - notes
+extension DBManager {
     func queryNotes(contain: String? = nil) -> Results<Note> {
-        Logger.log(self.realm.objects(Note.self))
         if let contain = contain {
             return self.realm.objects(Note.self)
                 .filter("content CONTAINS '\(contain)'")
@@ -57,6 +85,10 @@ final class DBManager {
             return self.realm.objects(Note.self)
                 .sorted(byKeyPath: "createdAt", ascending: false)
         }
+    }
+    
+    func deleteNote(note: Note) {
+        self.deleteObject(note)
     }
 }
 
