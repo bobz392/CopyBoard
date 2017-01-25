@@ -132,8 +132,13 @@
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
-		C73F6DD81E392DF900FBD6F0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */; };
-		C73F6DD91E392DF900FBD6F0 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */; };
+		C73F6DF61E393DDC00FBD6F0 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */; };
+		C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */; };
+		C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */; };
+		C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFB1E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift */; };
+		C73F6E011E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFC1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift */; };
+		C73F6E021E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFD1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFE1E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
 		C7403E421E269D140067229E /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7403E3B1E269D140067229E /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -349,8 +354,13 @@
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
+		C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
+		C73F6DFB1E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		C73F6DFC1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
+		C73F6DFD1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
+		C73F6DFE1E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E311E269CA00067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -580,7 +590,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
-				C73F6DA71E392DF800FBD6F0 /* Extensions */,
+				C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */,
 				C71087511E38781800D9C3A9 /* Hero */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
@@ -591,13 +601,16 @@
 			path = Vander;
 			sourceTree = "<group>";
 		};
-		C73F6DA71E392DF800FBD6F0 /* Extensions */ = {
+		C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */,
-				C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */,
+				C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */,
+				C73F6DFB1E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift */,
+				C73F6DFC1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift */,
+				C73F6DFD1E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift */,
+				C73F6DFE1E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift */,
 			);
-			path = Extensions;
+			path = DGElasticPullToRefresh;
 			sourceTree = "<group>";
 		};
 		C7403E191E269CA00067229E = {
@@ -649,6 +662,8 @@
 			children = (
 				C7403EC91E27CA500067229E /* Keyboard.entitlements */,
 				C7403E3D1E269D140067229E /* KeyboardViewController.swift */,
+				C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */,
+				C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */,
 				C7403E3F1E269D140067229E /* Info.plist */,
 			);
 			path = Keyboard;
@@ -1094,6 +1109,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73F6DF61E393DDC00FBD6F0 /* KeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1320,7 @@
 				C71087691E38781800D9C3A9 /* CALayer+Hero.swift in Sources */,
 				C7753D941E352A0900C45A5A /* XBAnimation.m in Sources */,
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
+				C73F6E011E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
 				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
@@ -1340,6 +1357,7 @@
 				C71087791E38781800D9C3A9 /* MatchPreprocessor.swift in Sources */,
 				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
 				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
+				C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */,
 				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
@@ -1347,8 +1365,8 @@
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
 				C71087741E38781800D9C3A9 /* HeroModifier.swift in Sources */,
 				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
+				C73F6E021E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
-				C73F6DD81E392DF900FBD6F0 /* StringExtensions.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C71087761E38781800D9C3A9 /* HeroTargetState.swift in Sources */,
@@ -1357,18 +1375,19 @@
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
 				C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
+				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
+				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C71087781E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
-				C73F6DD91E392DF900FBD6F0 /* SwifterSwift.swift in Sources */,
 				C710876B1E38781800D9C3A9 /* CascadePreprocessor.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
@@ -1389,6 +1408,7 @@
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
+				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
 				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
 			);

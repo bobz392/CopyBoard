@@ -10,7 +10,7 @@ import UIKit
 
 class NoteTextView: UITextView {
 
-    static let NoteLineSpace: CGFloat = 15
+    static let NoteLineSpace: CGFloat = 4
     
     var noteFont = appFont(size: 16)
     var spliteLineColor: UIColor?

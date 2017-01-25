@@ -143,7 +143,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let toBlock = { () -> Void in
             let duration = 0.35
-            weakSelf.noteView.collectionView.heroModifiers = [.scale(1.5), .fade, .duration(duration)]
+            weakSelf.noteView.collectionView.heroModifiers = [.scale(3), .fade, .duration(duration)]
             
             let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
             weakSelf.noteView.barView.heroModifiers = [.fade, .duration(duration), .position(p)]
