@@ -122,7 +122,11 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.viewModel.notesCount()
-        self.noteView.emptyNotesView(hidden: count > 0)
+        
+        if !self.viewModel.isInSearch {
+            self.noteView.emptyNotesView(hidden: count > 0)
+        }
+        
         return count
     }
     

@@ -218,6 +218,7 @@ extension NoteView {
         
         AppColors.mainBackground.bgColor(to: self.searchResultView)
         self.searchResultView.alpha = 0
+        self.searchResultView.isHidden = true
     }
 }
 
@@ -241,6 +242,7 @@ extension NoteView {
             weakSelf.searchBar.setShowsCancelButton(true, animated: false)
             weakSelf.searchBar.becomeFirstResponder()
             weakSelf.holderView.isHidden = false
+            weakSelf.searchResultView.isHidden = false
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
@@ -265,6 +267,8 @@ extension NoteView {
                 weakSelf.searchResultView.alpha = 0
             }) { (finish) in
                 weakSelf.holderView.isHidden = true
+                weakSelf.searchResultView.isHidden = true
+                
                 weakSelf.titleLabel.snp.updateConstraints({ (make) in
                     make.centerY.equalToSuperview().offset(labelCenterY)
                 })
@@ -274,13 +278,12 @@ extension NoteView {
                 })
                 weakSelf.searchBar.isHidden = true
                 weakSelf.searchBar.resignFirstResponder()
+                weakSelf.collectionView.reloadData()
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     weakSelf.barView.layoutIfNeeded()
                     weakSelf.titleLabel.alpha = 1
                     weakSelf.searchButton.alpha = 1
-                }, completion: { (finish) -> Void in
-                    weakSelf.collectionView.reloadData()
                 })
             }
         }
