@@ -106,6 +106,27 @@
 		C710874D1E3874E500D9C3A9 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C337E1E2EFA96001DCE38 /* RxDataSources.framework */; };
 		C710874E1E3874E500D9C3A9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33801E2EFA96001DCE38 /* RxSwift.framework */; };
 		C71087501E3874E500D9C3A9 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
+		C71087671E38781800D9C3A9 /* Array+HeroModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087521E38781800D9C3A9 /* Array+HeroModifier.swift */; };
+		C71087681E38781800D9C3A9 /* BasePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087531E38781800D9C3A9 /* BasePreprocessor.swift */; };
+		C71087691E38781800D9C3A9 /* CALayer+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087541E38781800D9C3A9 /* CALayer+Hero.swift */; };
+		C710876A1E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087551E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift */; };
+		C710876B1E38781800D9C3A9 /* CascadePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087561E38781800D9C3A9 /* CascadePreprocessor.swift */; };
+		C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087571E38781800D9C3A9 /* CG+Hero.swift */; };
+		C710876D1E38781800D9C3A9 /* DispatchQueue+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087581E38781800D9C3A9 /* DispatchQueue+Hero.swift */; };
+		C710876E1E38781800D9C3A9 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087591E38781800D9C3A9 /* Hero.swift */; };
+		C710876F1E38781800D9C3A9 /* HeroContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875A1E38781800D9C3A9 /* HeroContext.swift */; };
+		C71087701E38781800D9C3A9 /* HeroDebugPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875B1E38781800D9C3A9 /* HeroDebugPlugin.swift */; };
+		C71087711E38781800D9C3A9 /* HeroDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875C1E38781800D9C3A9 /* HeroDebugView.swift */; };
+		C71087721E38781800D9C3A9 /* HeroDefaultAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875D1E38781800D9C3A9 /* HeroDefaultAnimator.swift */; };
+		C71087731E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875E1E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift */; };
+		C71087741E38781800D9C3A9 /* HeroModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710875F1E38781800D9C3A9 /* HeroModifier.swift */; };
+		C71087751E38781800D9C3A9 /* HeroPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087601E38781800D9C3A9 /* HeroPlugin.swift */; };
+		C71087761E38781800D9C3A9 /* HeroTargetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087611E38781800D9C3A9 /* HeroTargetState.swift */; };
+		C71087771E38781800D9C3A9 /* HeroTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087621E38781800D9C3A9 /* HeroTypes.swift */; };
+		C71087781E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087631E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift */; };
+		C71087791E38781800D9C3A9 /* MatchPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087641E38781800D9C3A9 /* MatchPreprocessor.swift */; };
+		C710877A1E38781800D9C3A9 /* SourcePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087651E38781800D9C3A9 /* SourcePreprocessor.swift */; };
+		C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71087661E38781800D9C3A9 /* UIKit+Hero.swift */; };
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
@@ -300,6 +321,27 @@
 /* Begin PBXFileReference section */
 		C71087471E3874B000D9C3A9 /* CopyBoard copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CopyBoard copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71087481E3874B100D9C3A9 /* CopyBoard copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CopyBoard copy-Info.plist"; path = "/Users/zhoubobo/Desktop/CopyBoard/CopyBoard copy-Info.plist"; sourceTree = "<absolute>"; };
+		C71087521E38781800D9C3A9 /* Array+HeroModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+HeroModifier.swift"; sourceTree = "<group>"; };
+		C71087531E38781800D9C3A9 /* BasePreprocessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePreprocessor.swift; sourceTree = "<group>"; };
+		C71087541E38781800D9C3A9 /* CALayer+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Hero.swift"; sourceTree = "<group>"; };
+		C71087551E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+Hero.swift"; sourceTree = "<group>"; };
+		C71087561E38781800D9C3A9 /* CascadePreprocessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CascadePreprocessor.swift; sourceTree = "<group>"; };
+		C71087571E38781800D9C3A9 /* CG+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CG+Hero.swift"; sourceTree = "<group>"; };
+		C71087581E38781800D9C3A9 /* DispatchQueue+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Hero.swift"; sourceTree = "<group>"; };
+		C71087591E38781800D9C3A9 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		C710875A1E38781800D9C3A9 /* HeroContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroContext.swift; sourceTree = "<group>"; };
+		C710875B1E38781800D9C3A9 /* HeroDebugPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDebugPlugin.swift; sourceTree = "<group>"; };
+		C710875C1E38781800D9C3A9 /* HeroDebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDebugView.swift; sourceTree = "<group>"; };
+		C710875D1E38781800D9C3A9 /* HeroDefaultAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDefaultAnimator.swift; sourceTree = "<group>"; };
+		C710875E1E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDefaultAnimatorViewContext.swift; sourceTree = "<group>"; };
+		C710875F1E38781800D9C3A9 /* HeroModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroModifier.swift; sourceTree = "<group>"; };
+		C71087601E38781800D9C3A9 /* HeroPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroPlugin.swift; sourceTree = "<group>"; };
+		C71087611E38781800D9C3A9 /* HeroTargetState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroTargetState.swift; sourceTree = "<group>"; };
+		C71087621E38781800D9C3A9 /* HeroTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroTypes.swift; sourceTree = "<group>"; };
+		C71087631E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoreSubviewModifiersPreprocessor.swift; sourceTree = "<group>"; };
+		C71087641E38781800D9C3A9 /* MatchPreprocessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchPreprocessor.swift; sourceTree = "<group>"; };
+		C71087651E38781800D9C3A9 /* SourcePreprocessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcePreprocessor.swift; sourceTree = "<group>"; };
+		C71087661E38781800D9C3A9 /* UIKit+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Hero.swift"; sourceTree = "<group>"; };
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C71110281E29448F007A1577 /* NotesViewModle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModle.swift; sourceTree = "<group>"; };
@@ -474,6 +516,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C71087511E38781800D9C3A9 /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				C71087521E38781800D9C3A9 /* Array+HeroModifier.swift */,
+				C71087531E38781800D9C3A9 /* BasePreprocessor.swift */,
+				C71087541E38781800D9C3A9 /* CALayer+Hero.swift */,
+				C71087551E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift */,
+				C71087561E38781800D9C3A9 /* CascadePreprocessor.swift */,
+				C71087571E38781800D9C3A9 /* CG+Hero.swift */,
+				C71087581E38781800D9C3A9 /* DispatchQueue+Hero.swift */,
+				C71087591E38781800D9C3A9 /* Hero.swift */,
+				C710875A1E38781800D9C3A9 /* HeroContext.swift */,
+				C710875B1E38781800D9C3A9 /* HeroDebugPlugin.swift */,
+				C710875C1E38781800D9C3A9 /* HeroDebugView.swift */,
+				C710875D1E38781800D9C3A9 /* HeroDefaultAnimator.swift */,
+				C710875E1E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift */,
+				C710875F1E38781800D9C3A9 /* HeroModifier.swift */,
+				C71087601E38781800D9C3A9 /* HeroPlugin.swift */,
+				C71087611E38781800D9C3A9 /* HeroTargetState.swift */,
+				C71087621E38781800D9C3A9 /* HeroTypes.swift */,
+				C71087631E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift */,
+				C71087641E38781800D9C3A9 /* MatchPreprocessor.swift */,
+				C71087651E38781800D9C3A9 /* SourcePreprocessor.swift */,
+				C71087661E38781800D9C3A9 /* UIKit+Hero.swift */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
 		C7110FE71E2836A2007A1577 /* Manages */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +580,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C71087511E38781800D9C3A9 /* Hero */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
 				C7D96D641E34304300B4E418 /* iRate */,
@@ -1223,6 +1294,7 @@
 			files = (
 				C76996111E369968001E2F86 /* TextManager.swift in Sources */,
 				C7655AA41E32541D00A1CB9F /* TimeZoneName.swift in Sources */,
+				C71087691E38781800D9C3A9 /* CALayer+Hero.swift in Sources */,
 				C7753D941E352A0900C45A5A /* XBAnimation.m in Sources */,
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
@@ -1230,11 +1302,18 @@
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
+				C710876A1E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift in Sources */,
+				C71087751E38781800D9C3A9 /* HeroPlugin.swift in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
+				C710876D1E38781800D9C3A9 /* DispatchQueue+Hero.swift in Sources */,
+				C710877A1E38781800D9C3A9 /* SourcePreprocessor.swift in Sources */,
 				C7D96D6B1E34304300B4E418 /* iRate.m in Sources */,
 				C7655AA11E32541D00A1CB9F /* Region.swift in Sources */,
+				C71087721E38781800D9C3A9 /* HeroDefaultAnimator.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
+				C71087711E38781800D9C3A9 /* HeroDebugView.swift in Sources */,
+				C710876E1E38781800D9C3A9 /* Hero.swift in Sources */,
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
@@ -1245,22 +1324,30 @@
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
+				C71087671E38781800D9C3A9 /* Array+HeroModifier.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
 				C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
 				C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */,
+				C71087771E38781800D9C3A9 /* HeroTypes.swift in Sources */,
+				C71087791E38781800D9C3A9 /* MatchPreprocessor.swift in Sources */,
 				C7655A9E1E32541D00A1CB9F /* Extensions.swift in Sources */,
 				C7655A991E32541D00A1CB9F /* DateInRegion+Formatter.swift in Sources */,
 				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
+				C71087731E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift in Sources */,
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
+				C71087741E38781800D9C3A9 /* HeroModifier.swift in Sources */,
 				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
 				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
+				C71087761E38781800D9C3A9 /* HeroTargetState.swift in Sources */,
 				C7753D981E352A0900C45A5A /* XBPageDragView.m in Sources */,
+				C71087701E38781800D9C3A9 /* HeroDebugPlugin.swift in Sources */,
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
+				C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */,
 				C7D96D621E341EEF00B4E418 /* Ring.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
@@ -1270,15 +1357,20 @@
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
+				C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
+				C71087781E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
+				C710876B1E38781800D9C3A9 /* CascadePreprocessor.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
+				C710876F1E38781800D9C3A9 /* HeroContext.swift in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
+				C71087681E38781800D9C3A9 /* BasePreprocessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -120,7 +120,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     func willLeaveEditor() {
         self.backView.alpha = 1
-//        self.faveButton.heroModifiers = nil
+        self.faveButton.heroModifiers = nil
         self.layer.shadowOpacity = 0.2
         UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 1

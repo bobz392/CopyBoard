@@ -77,6 +77,8 @@ class NoteView {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        
+        view.layoutIfNeeded()
     }
     
     func emptyNotesView(hidden: Bool) {

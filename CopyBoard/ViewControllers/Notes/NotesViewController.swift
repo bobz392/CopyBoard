@@ -128,31 +128,31 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let editorVC = EditorViewController(note: note)
         let weakSelf = self
         let toBlock = { () -> Void in
-//            let row = indexPath.row
-//            cell.headerView.heroID = "\(row)header"
-//            let duration = 0.35
-//            cell.headerView.heroModifiers = [.duration(duration)]
-//            
-//            cell.cardView.heroID = "\(row)card"
-//            cell.cardView.heroModifiers = [.duration(duration)]
-//            weakSelf.noteView.collectionView.heroModifiers = [.scale(1.5), .fade, .duration(duration)]
-//            
-//            let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
-//            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(duration), .position(p)]
-//            
-//            cell.faveButton.heroID = "\(row)star"
-//            editorVC.editorView.faveButton.heroID = "\(row)star"
-//            cell.faveButton.heroModifiers = [.fade, .duration(duration)]
-//            
-//            editorVC.isHeroEnabled = true
-//            editorVC.editorView.barView.heroID = "\(row)header"
-//            editorVC.editorView.barView.heroModifiers = [.duration(duration)]
-//            
-//            editorVC.view.heroID = "\(row)card"
-//            editorVC.view.heroModifiers = [.duration(duration)]
-//            
-//            editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
-//            editorVC.view.backgroundColor = cell.cardView.backgroundColor
+            let row = indexPath.row
+            cell.headerView.heroID = "\(row)header"
+            let duration = 0.35
+            cell.headerView.heroModifiers = [.duration(duration)]
+            
+            cell.cardView.heroID = "\(row)card"
+            cell.cardView.heroModifiers = [.duration(duration)]
+            weakSelf.noteView.collectionView.heroModifiers = [.scale(1.5), .fade, .duration(duration)]
+            
+            let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
+            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(duration), .position(p)]
+            
+            cell.faveButton.heroID = "\(row)star"
+            editorVC.editorView.faveButton.heroID = "\(row)star"
+            cell.faveButton.heroModifiers = [.fade, .duration(duration)]
+            
+            editorVC.isHeroEnabled = true
+            editorVC.editorView.barView.heroID = "\(row)header"
+            editorVC.editorView.barView.heroModifiers = [.duration(duration)]
+            
+            editorVC.view.heroID = "\(row)card"
+            editorVC.view.heroModifiers = [.duration(duration)]
+            
+            editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
+            editorVC.view.backgroundColor = cell.cardView.backgroundColor
             
             weakSelf.present(editorVC, animated: true, completion: nil)
         }
