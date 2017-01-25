@@ -18,6 +18,7 @@ class NoteView {
     
     var collectionView: UICollectionView!
     var emptyNoteView = UIView()
+    var searchResultView = UIView()
     let holderView = UIView()
     
     private var barShowing = true
@@ -92,6 +93,10 @@ class NoteView {
             self.barView.layoutIfNeeded()
         }   
     }
+    
+    func configEmptySearchView() {
+        
+    }
 }
 
 // MARK: - collection view
@@ -118,7 +123,7 @@ extension NoteView {
         return DeviceManager.shared.isPhone() ? 12.0 : 18.0
     }
     
-    func configCollectionView(view: UIView, delegate: NoteCollectionViewLayoutDelegate) {
+    func configCollectionView(view: UIView, delegate: NotesViewController) {
         let layout = CHTCollectionViewWaterfallLayout()
         let space = self.collectionViewItemSpace()
         
@@ -140,7 +145,7 @@ extension NoteView {
         }
         
         self.configEmptyDataView(view: view)
-        
+
         view.addSubview(self.holderView)
         self.holderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -149,16 +154,21 @@ extension NoteView {
             make.bottom.equalToSuperview()
         }
         
+        self.configSearchResultView(view: view)
+        
         self.collectionView.register(NoteCollectionViewCell.nib,
                                      forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
         self.collectionView.bgClear()
+        
+        self.collectionView.delegate = delegate
+        self.collectionView.dataSource = delegate
     }
     
     
     func configEmptyDataView(view: UIView) {
         view.addSubview(self.emptyNoteView)
         self.emptyNoteView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(self.collectionView)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -188,6 +198,26 @@ extension NoteView {
         }
         label.font = appFont(size: emptyNotesFont(), weight: UIFontWeightMedium)
         label.text = Localized("emptyNotes")
+    }
+    
+    func configSearchResultView(view: UIView) {
+        view.addSubview(self.searchResultView)
+        self.searchResultView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.collectionView)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        let label = UILabel()
+        label.text = "no result"
+        self.searchResultView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
+        AppColors.mainBackground.bgColor(to: self.searchResultView)
+        self.searchResultView.alpha = 0
     }
 }
 
@@ -232,6 +262,7 @@ extension NoteView {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
                 weakSelf.holderView.alpha = 0
+                weakSelf.searchResultView.alpha = 0
             }) { (finish) in
                 weakSelf.holderView.isHidden = true
                 weakSelf.titleLabel.snp.updateConstraints({ (make) in
@@ -243,10 +274,13 @@ extension NoteView {
                 })
                 weakSelf.searchBar.isHidden = true
                 weakSelf.searchBar.resignFirstResponder()
+                
                 UIView.animate(withDuration: 0.25, animations: {
                     weakSelf.barView.layoutIfNeeded()
                     weakSelf.titleLabel.alpha = 1
                     weakSelf.searchButton.alpha = 1
+                }, completion: { (finish) -> Void in
+                    weakSelf.collectionView.reloadData()
                 })
             }
         }

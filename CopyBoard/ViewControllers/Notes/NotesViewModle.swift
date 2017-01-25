@@ -13,61 +13,79 @@ import RxCocoa
 import RxDataSources
 
 class NotesViewModel {
+    typealias SearchBlock = (String) -> Void
+    //    let searchResultDriver: Driver<String>
+    //    let dataSource = RxTableViewSectionedAnimatedDataSource<NotesData>()
     
-//    let searchResultDriver: Driver<String>
-//    let dataSource = RxTableViewSectionedAnimatedDataSource<NotesData>()
-    
-//    let inSearch = Variable<Bool>(false)
+    //    let inSearch = Variable<Bool>(false)
     let disposeBag = DisposeBag()
     
     var notes: Results<Note>
     
-//    var noteToken = 
+    //    var noteToken =
     var isInSearch = false
     var searchNotes = [Note]()
+    let searchBlock: SearchBlock
     
     init(
-//        searchDriver: Driver<String>,
-//        holderViewAlpha: UIBindingObserver<UIView, CGFloat>
-        ) {
+        searchDriver: Driver<String>,
+        searchBlock: @escaping SearchBlock) {
         
+        self.searchBlock = searchBlock
         self.notes = DBManager.shared.queryNotes()
-    
-//        self.searchResultDriver = searchDriver
-//        let searchDriver = searchResultDriver.throttle(0.3)
-//            .distinctUntilChanged()
-//            .flatMapLatest { (query) -> Driver<NotesSearchState> in
-//                if query.isEmpty {
-//                    return Driver.just(NotesSearchState.empty)
-//                } else {
-//                    let notes = DBManager.shared.queryNotes(contain: query)
-//                    let errorReturn = Driver.just(NotesSearchState(notes: [], searchString: query))
-//                    if notes.isEmpty {
-//                        return errorReturn
-//                    } else {
-//                        let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query)).startWith(NotesSearchState.empty)
-//                        return k.asDriver(onErrorJustReturn: NotesSearchState(notes: [], searchString: query))
-//                    }
-//                }
-//        }
-//        
-//        searchDriver.asObservable()
-//            .takeUntil(inSearch.asObservable())
-//            .map { (state) -> CGFloat in
-//                debugPrint("holder view alpha = \(state.searchString.isEmpty ? 0.3 : 0)")
-//                return state.searchString.isEmpty ? 0.3 : 0
-//            }
-//            .bindTo(holderViewAlpha)
-//            .addDisposableTo(disposeBag)
+        
+        //        self.searchResultDriver = searchDriver
+        let search = searchDriver.throttle(0.3)
+            .distinctUntilChanged()
+            .flatMapLatest { (query) -> Driver<NotesSearchState> in
+                if query.isEmpty {
+                    return Driver.just(NotesSearchState.empty)
+                } else {
+                    let notes = DBManager.shared.queryNotes(contain: query)
+                    let errorReturn = Driver.just(NotesSearchState(notes: [], searchString: query))
+                    if notes.isEmpty {
+                        return errorReturn
+                    } else {
+                        let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query)).startWith(NotesSearchState.empty)
+                        return k.asDriver(onErrorJustReturn: NotesSearchState(notes: [], searchString: query))
+                    }
+                }
+        }
+        
+        let insearchVariable = Variable(self.isInSearch).asObservable()
+        
+//        let empty = search.asObservable()
+//            .map { (state) -> Bool in
+//            return state.notes.count <= 0 && state.searchString.characters.count > 0
+//        }.bindTo(binder: (Observable<Bool>) -> R)
+        
+        search.asObservable()
+            .takeUntil(insearchVariable)
+            .subscribe { [unowned self] (state) in
+                print(state.element ?? "no state")
+                if let s = state.element {
+                    self.searchNotes = s.notes
+                    self.searchBlock(s.searchString)
+                }
+            }.addDisposableTo(disposeBag)
+        //
+        //        searchDriver.asObservable()
+        //            .takeUntil(inSearch.asObservable())
+        //            .map { (state) -> CGFloat in
+        //                debugPrint("holder view alpha = \(state.searchString.isEmpty ? 0.3 : 0)")
+        //                return state.searchString.isEmpty ? 0.3 : 0
+        //            }
+        //            .bindTo(holderViewAlpha)
+        //            .addDisposableTo(disposeBag)
         
         
-//        dataSource.configureCell = { (datas, tableView, indexPath, note) in
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-//            cell.textLabel?.text = note.content
-//            return cell
-//        }
-//        
-//        let initDataSource = NotesData( notes: Array(DBManager.shared.queryNotes()) )
+        //        dataSource.configureCell = { (datas, tableView, indexPath, note) in
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        //            cell.textLabel?.text = note.content
+        //            return cell
+        //        }
+        //
+        //        let initDataSource = NotesData( notes: Array(DBManager.shared.queryNotes()) )
         
         
         
@@ -80,7 +98,7 @@ class NotesViewModel {
     func noteIn(row: Int) -> Note {
         return self.isInSearch ? self.searchNotes[row] : self.notes[row]
     }
-
+    
 }
 
 extension Note: IdentifiableType {

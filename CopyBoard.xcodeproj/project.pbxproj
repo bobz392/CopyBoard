@@ -94,7 +94,6 @@
 		C71087331E3874B000D9C3A9 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C336C1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap */; };
 		C71087341E3874B000D9C3A9 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C33721E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap */; };
 		C71087351E3874B000D9C3A9 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C336D1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap */; };
-		C71087361E3874B000D9C3A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C71087371E3874B000D9C3A9 /* SwiftDate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7655A8D1E32541D00A1CB9F /* SwiftDate.bundle */; };
 		C71087381E3874B000D9C3A9 /* NextPageFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D7A1E352A0900C45A5A /* NextPageFragmentShader.glsl */; };
 		C710873A1E3874B000D9C3A9 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7403E3B1E269D140067229E /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -132,8 +131,8 @@
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
+		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
-		C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
 		C7403E421E269D140067229E /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7403E3B1E269D140067229E /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7403F341E280E040067229E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F321E280E040067229E /* BaseViewController.swift */; };
@@ -347,9 +346,9 @@
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
+		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7403E2C1E269CA00067229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7403E311E269CA00067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7403E3B1E269D140067229E /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E3D1E269D140067229E /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -614,6 +613,7 @@
 		C7403E241E269CA00067229E /* CopyBoard */ = {
 			isa = PBXGroup;
 			children = (
+				C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */,
 				C769961C1E369B29001E2F86 /* Localizable.strings */,
 				C7403ECA1E27CA630067229E /* CopyBoard.entitlements */,
 				C7403E251E269CA00067229E /* AppDelegate.swift */,
@@ -623,7 +623,6 @@
 				C78C335E1E2EF010001DCE38 /* Colors */,
 				C74FF9C41E2C455400D5CC9E /* Model */,
 				C72332BF1E30F51300D5189D /* Vander */,
-				C7403E2C1E269CA00067229E /* Assets.xcassets */,
 				C76996201E369B50001E2F86 /* Launch Screen.storyboard */,
 				C72332BE1E30F43A00D5189D /* bridge-header.h */,
 				C7403E311E269CA00067229E /* Info.plist */,
@@ -1032,7 +1031,6 @@
 				C71087331E3874B000D9C3A9 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C71087341E3874B000D9C3A9 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C71087351E3874B000D9C3A9 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
-				C71087361E3874B000D9C3A9 /* Assets.xcassets in Resources */,
 				C71087371E3874B000D9C3A9 /* SwiftDate.bundle in Resources */,
 				C71087381E3874B000D9C3A9 /* NextPageFragmentShader.glsl in Resources */,
 			);
@@ -1055,6 +1053,7 @@
 				C78C33951E2EFA96001DCE38 /* E97F97F7-FAC3-37F8-ACC1-70137A753F29.bcsymbolmap in Resources */,
 				C7753D931E352A0900C45A5A /* NextPageVertexShader.glsl in Resources */,
 				C78C33971E2EFA96001DCE38 /* F7BE8380-2112-3873-AD92-A218F84C1C69.bcsymbolmap in Resources */,
+				C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */,
 				C78C338D1E2EFA96001DCE38 /* 709376EC-E602-3A0D-940D-0E51DDC04211.bcsymbolmap in Resources */,
 				C769961E1E369B29001E2F86 /* Localizable.strings in Resources */,
 				C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */,
@@ -1072,7 +1071,6 @@
 				C78C338E1E2EFA96001DCE38 /* 721E89CA-C433-35BB-9AFC-BFF84C6AE20E.bcsymbolmap in Resources */,
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
-				C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */,
 				C7655AA21E32541D00A1CB9F /* SwiftDate.bundle in Resources */,
 				C7753D901E352A0900C45A5A /* NextPageFragmentShader.glsl in Resources */,
 			);

@@ -20,14 +20,23 @@ class NotesViewController: BaseViewController {
         self.noteView.config(withView: self.view)
         self.noteView.configCollectionView(view: self.view, delegate: self)
         
-        self.viewModel = NotesViewModel()
+        let weakSelf = self
+        
+        let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
+        self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
+            if weakSelf.viewModel.notesCount() > 0 || query.characters.count > 0 {
+                weakSelf.noteView.searchResultView.alpha = 0
+                weakSelf.noteView.collectionView.reloadData()
+            } else {
+                weakSelf.noteView.searchResultView.alpha = 1
+            }
+        })
         
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
         
-        let weakSelf = self
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
             weakSelf.noteView.searchAnimation(startSearch: true)
             weakSelf.viewModel.isInSearch = true
@@ -35,15 +44,11 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
-            weakSelf.noteView.searchAnimation(startSearch: false)
-            weakSelf.viewModel.isInSearch = false
+            weakSelf.endSearchAction()
             }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.holderView.addGestureRecognizer(tap)
-        
-        self.noteView.collectionView.delegate = self
-        self.noteView.collectionView.dataSource = self
         
         #if debug
             Note.noteTestData()
