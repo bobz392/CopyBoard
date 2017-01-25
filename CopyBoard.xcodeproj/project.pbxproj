@@ -33,6 +33,7 @@
 		C711B0911E380BD60051665B /* UIKit+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711B07B1E380BD60051665B /* UIKit+Hero.swift */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
+		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
@@ -68,7 +69,6 @@
 		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
 		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
 		C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */; };
-		C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */; };
 		C7655AE11E33BDCC00A1CB9F /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33771E2EFA96001DCE38 /* Realm.framework.dSYM */; };
 		C7655AE21E33BDCC00A1CB9F /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33791E2EFA96001DCE38 /* RealmSwift.framework.dSYM */; };
 		C7655AE31E33BDCC00A1CB9F /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
@@ -229,6 +229,7 @@
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
+		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E2C1E269CA00067229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -272,7 +273,6 @@
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
-		C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C76996101E369968001E2F86 /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		C769961D1E369B29001E2F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C769961F1E369B3B001E2F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -429,6 +429,7 @@
 		C72332B01E302D9900D5189D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */,
 				C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */,
 				C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */,
 			);
@@ -525,7 +526,6 @@
 				C7403F371E280E240067229E /* NotesViewController.swift */,
 				C71110281E29448F007A1577 /* NotesViewModle.swift */,
 				C78C335C1E2EEE9A001DCE38 /* NoteView.swift */,
-				C7655ADB1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -1029,6 +1029,7 @@
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
+				C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
 				C711B07C1E380BD60051665B /* Array+HeroModifier.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
@@ -1061,7 +1062,6 @@
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
-				C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C711B0911E380BD60051665B /* UIKit+Hero.swift in Sources */,
