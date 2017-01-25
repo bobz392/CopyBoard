@@ -12,6 +12,7 @@ fileprivate let kCurlDeleteDuration: TimeInterval = 0.4
 fileprivate let kCurlOpenDuration: TimeInterval = 0.3
 fileprivate let kCurlCloseDuration: TimeInterval = 0.2
 let kNoteViewAlphaAnimation: TimeInterval = 0.1
+let noteViewShowAlphaAnimation: TimeInterval = 0.5
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
@@ -148,10 +149,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.cardView.heroID = nil
         self.cardView.heroModifiers = nil
         
-        self.faveButton.heroID = nil
+        self.faveButton.heroID = nil 
         self.faveButton.heroModifiers = nil
         
-        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+        UIView.animate(withDuration: noteViewShowAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 1
             self.layer.shadowOpacity = 0.2
         }) { (finish) in }
@@ -163,11 +164,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
 extension NoteCollectionViewCell {
     
     final func curl(index: IndexPath) {
-        self.curlView?.stopAnimating()
-        
         if self.isCurl {
             self.closeCurl()
         } else {
+            guard NoteCollectionViewInputOverlay.openedItemIndex == nil else { return }
+            
             let cardBounds = self.cardView.bounds
             self.curlView = XBCurlView(frame: cardBounds)
             self.curlView?.isOpaque = false

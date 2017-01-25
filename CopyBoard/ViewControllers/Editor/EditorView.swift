@@ -11,7 +11,8 @@ import UIKit
 class EditorView {
     let editorTextView = UITextView()
     let barView = UIView()
-    let faveButton = FaveButton(frame: .zero, faveIconNormal: Icons.star.iconImage())
+    
+    let faveButton = FaveButton(frame: CGRect(center: .zero, size: CGSize(width: 38, height: 38)), faveIconNormal: Icons.star.iconImage())
     
     func config(withView view: UIView) {
         self.configBarView(view: view)
@@ -43,16 +44,14 @@ class EditorView {
         self.barView.addSubview(self.faveButton)
         self.faveButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview().offset(10)
-            make.height.equalTo(32)
-            make.width.equalTo(32)
+            make.height.equalTo(38)
+            make.width.equalTo(38)
             make.right.equalToSuperview().offset(-8)
         }
         self.faveButton.normalColor = UIColor.white
-        self.faveButton.selectedColor = UIColor(colorLiteralRed: 226/255, green: 38/255,  blue: 77/255,  alpha: 1)
-
-        self.faveButton.dotFirstColor = UIColor(colorLiteralRed: 152/255, green: 219/255, blue: 236/255, alpha: 1)
-
-        self.faveButton.dotSecondColor = UIColor(colorLiteralRed: 247/255, green: 188/255, blue: 48/255,  alpha: 1)
+        self.faveButton.selectedColor = UIColor(red:0.99, green:0.67, blue:0.26, alpha:1.00)
+        self.faveButton.dotFirstColor = UIColor(red:0.99, green:0.65, blue:0.17, alpha:1.00)
+        self.faveButton.dotSecondColor = UIColor(red:0.98, green:0.41, blue:0.22, alpha:1.00)        
     }
     
     func configNote(content: String) {
@@ -70,7 +69,7 @@ class EditorView {
         
         self.editorTextView.alpha = 0
         
-        UIView.animate(withDuration: kNoteViewAlphaAnimation) { [unowned self] in
+        UIView.animate(withDuration: noteViewShowAlphaAnimation) { [unowned self] in
             self.editorTextView.alpha = 1
         }
     }
