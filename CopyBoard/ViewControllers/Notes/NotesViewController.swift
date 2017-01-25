@@ -142,20 +142,41 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let row = indexPath.row
         
         let toBlock = { () -> Void in
-            let duration = 0.35
-            weakSelf.noteView.collectionView.heroModifiers = [.scale(3), .fade, .duration(duration)]
+//            let rect = cell.convert(cell.bounds, to: self.noteView.collectionView)
+//            
+//            let bounds = self.noteView.collectionView.bounds
+//            let scaleX = bounds.width / rect.width
+//            let scaleY = bounds.height / rect.height
+//            let pointX = -scaleX * rect.origin.x
+//            let pointY = -scaleY * rect.origin.y
+//            let point = CGPoint(x: pointX, y: pointY)
+//            let size = CGSize(width: scaleX * bounds.width, height: scaleY * (bounds.height))
+//            debugPrint(rect)
+//            debugPrint(point)
+//            debugPrint(size)
+//            debugPrint("\(scaleX) | \(scaleY)")
+//            
+//            debugPrint("\n")
+            
+//            HeroModifier
+//.scale(x: scaleX, y: scaleY, z: 1),
+//            , .translate(x: pointX, y: pointY)
+//            .size(size),
+            weakSelf.noteView.collectionView.heroModifiers =
+                [.scale(2), .fade, .duration(kHeroAnimationDuration)]
             
             let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
-            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(duration), .position(p)]
+            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration), .position(p)]
             
             editorVC.isHeroEnabled = true
             editorVC.editorView.faveButton.heroID = "\(row)star"
+            editorVC.editorView.faveButton.heroModifiers = [.duration(kHeroAnimationDuration)]
             
             editorVC.editorView.barView.heroID = "\(row)header"
-            editorVC.editorView.barView.heroModifiers = [.duration(duration)]
+            editorVC.editorView.barView.heroModifiers = [.duration(kHeroAnimationDuration)]
             
             editorVC.view.heroID = "\(row)card"
-            editorVC.view.heroModifiers = [.duration(duration)]
+            editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
             
             editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
             editorVC.view.backgroundColor = cell.cardView.backgroundColor

@@ -13,6 +13,7 @@ fileprivate let kCurlOpenDuration: TimeInterval = 0.3
 fileprivate let kCurlCloseDuration: TimeInterval = 0.2
 let kNoteViewAlphaAnimation: TimeInterval = 0.1
 let noteViewShowAlphaAnimation: TimeInterval = 0.5
+let kHeroAnimationDuration: TimeInterval = 0.4
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
@@ -123,15 +124,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        let duration = 0.35
         self.headerView.heroID = "\(row)header"
-        self.headerView.heroModifiers = [.duration(duration)]
+        self.headerView.heroModifiers = [.duration(kHeroAnimationDuration)]
         
         self.cardView.heroID = "\(row)card"
-        self.cardView.heroModifiers = [.duration(duration)]
+        self.cardView.heroModifiers = [.duration(kHeroAnimationDuration)]
         
         self.faveButton.heroID = "\(row)star"
-        self.faveButton.heroModifiers = [.fade, .duration(duration)]
+        self.faveButton.heroModifiers = [.fade, .duration(kHeroAnimationDuration)]
         
         UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 0
