@@ -16,9 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController(rootViewController: NotesViewController())
-        navigationController.navigationBar.barTintColor = AppColors.mainBackground
-//        nav.navigationBar.shadowImage = AppColors.mainBackground.toImage()
-//        nav.navigationBar.setBackgroundImage(AppColors.mainBackground.toImage(), for: .default)
+        navigationController.isNavigationBarHidden = true
+        
+//        navigationController.navigationBar.barTintColor = AppColors.mainBackground
+        let barImage = AppColors.mainBackground.toImage()
+        navigationController.navigationBar.shadowImage = barImage
+        navigationController.navigationBar.setBackgroundImage(barImage, for: .default)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

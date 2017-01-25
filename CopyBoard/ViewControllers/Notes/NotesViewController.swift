@@ -12,14 +12,13 @@ class NotesViewController: BaseViewController {
     
     let noteView = NoteView()
     var viewModel: NotesViewModel!
+    fileprivate var selectedCell: NoteCollectionViewCell? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.noteView.config(withView: self.view)
-        if let bar = self.navigationController?.navigationBar {
-            self.noteView.configBarView(view: bar)
-        }
+        
         self.noteView.configCollectionView(view: self.view, delegate: self)
         
         //        let searchResultDriver =
@@ -59,19 +58,30 @@ class NotesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(self.noteView.collectionView)
-            navigationController.expandOnActive = false
+//        if let navigationController = self.navigationController as? ScrollingNavigationController {
+//            navigationController.followScrollView(self.noteView.collectionView)
+//            navigationController.expandOnActive = false
+//        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let cell = self.selectedCell {
+            self.selectedCell = nil
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                cell.noteLabel.alpha = 1
+            }, completion: nil)
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.stopFollowingScrollView()
-            navigationController.scrollingNavbarDelegate = nil
-        }
+//        if let navigationController = self.navigationController as? ScrollingNavigationController {
+//            navigationController.stopFollowingScrollView()
+//            navigationController.scrollingNavbarDelegate = nil
+//        }
     }
     
     deinit {
@@ -124,10 +134,6 @@ extension NotesViewController {
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate, CHTCollectionViewDelegateWaterfallLayout {
     
-    func presentEditorVC(note: Note) {
-        let editorVC = EditorViewController(note: note)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.viewModel.notesCount()
         self.noteView.emptyNotesView(hidden: count > 0)
@@ -135,8 +141,32 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath)
+            as? NoteCollectionViewCell else { return }
+        
+        if !cell.cellCanSelected() {
+            return
+        }
+        
         let note = self.viewModel.noteIn(row: indexPath.row)
-        self.presentEditorVC(note: note)
+        let editorVC = EditorViewController(note: note)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.noteLabel.alpha = 0
+        }) { (finish) in
+            self.present(editorVC, animated: true, completion: nil)
+        }
+        
+        self.selectedCell = cell
+        cell.headerView.heroID = "\(indexPath.row)header"
+        cell.cardView.heroID = "\(indexPath.row)card"
+        
+        editorVC.isHeroEnabled = true
+        editorVC.editorView.barView.heroID = "\(indexPath.row)header"
+        editorVC.view.heroID = "\(indexPath.row)card"
+        
+        editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
+        editorVC.view.backgroundColor = cell.cardView.backgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

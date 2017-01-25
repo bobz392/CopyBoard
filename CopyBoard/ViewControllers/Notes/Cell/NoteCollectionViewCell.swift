@@ -70,6 +70,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - action
+    func cellCanSelected() -> Bool {
+        Logger.log("cell can selected = \(!self.isCurl)")
+        return !self.isCurl
+    }
+    
     func gestureOpenAction() {
         self.connectCollectionViewWithOverlay()
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
@@ -118,7 +123,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
             self.curlView?.curl(self.cardView,
                                 cylinderPosition: p,
                                 cylinderAngle: angle,
-                                cylinderRadius: 20,
+                                cylinderRadius: 30,
                                 animatedWithDuration: kCurlOpenDuration
             )
             NoteCollectionViewInputOverlay.openedItemIndex = index
@@ -145,9 +150,9 @@ class NoteCollectionViewCell: UICollectionViewCell {
     fileprivate func closeCurl(duration: Double = kCurlCloseDuration) {
         self.curlView?.uncurlAnimated(withDuration: duration, completion: { [unowned self] in
             self.curlView = nil
+            self.isCurl = false
+            NoteCollectionViewInputOverlay.openedItemIndex = nil
         })
-        self.isCurl = false
-        NoteCollectionViewInputOverlay.openedItemIndex = nil
     }
 }
 
@@ -181,7 +186,7 @@ final class NoteCollectionViewInputOverlay: UIView {
 
         if cell.isCurl == true {
             cell.closeCurl()
-            return cell
+            return self
         }
 
         return nil

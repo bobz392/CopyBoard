@@ -26,7 +26,26 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
         
         self.editorView.config(withView: self.view)
+//        self.editorView.configNote(content: self.note.content)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dis))
+        self.view.addGestureRecognizer(tap)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.editorView.configNote(content: self.note.content)
+    }
+    
+    func dis() {
+        UIView.animate(withDuration: kNoteViewAlphaAnimation, animations: { 
+            self.editorView.editorTextView.alpha = 0
+        }) { (finish) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

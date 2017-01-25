@@ -27,17 +27,19 @@ class NoteView {
         self.holderView.alpha = 0
         self.holderView.isHidden = true
         self.holderView.backgroundColor = UIColor.black
+        
+        self.configBarView(view: view)
     }
     
-    func configBarView(view: UINavigationBar) {
+    func configBarView(view: UIView) {
         view.addSubview(self.barView)
-        self.barView.backgroundColor = UIColor.clear
+        AppColors.mainBackground.bgColor(to: self.barView)
         self.barView.clipsToBounds = true
         self.barView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.height.equalTo(44)
         }
         
         self.barView.addSubview(self.titleLabel)
@@ -129,7 +131,7 @@ extension NoteView {
         self.collectionView.keyboardDismissMode = .onDrag
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(self.barView.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()

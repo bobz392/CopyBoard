@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+let kNoteViewAlphaAnimation: TimeInterval = 0.1
+
 class Note: Object {
     dynamic var uuid: String = ""
     dynamic var content: String = ""

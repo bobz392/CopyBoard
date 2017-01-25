@@ -78,16 +78,12 @@ enum AppPairColors: Int {
             return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
                     UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))
         case .powderBlue:
-            return (UIColor(red:0.73, green:0.79, blue:0.94, alpha:1.00),
-                    UIColor(red:0.60, green:0.67, blue:0.83, alpha:1.00))
+            return (UIColor(red:0.30, green:0.82, blue:0.88, alpha:1.00),
+                    UIColor(red:0.47, green:0.67, blue:0.84, alpha:1.00))
         case .mint:
-            return (UIColor(red:0.16, green:0.73, blue:0.61, alpha:1.00),
-                    UIColor(red:0.14, green:0.62, blue:0.52, alpha:1.00))
-            
-//            (UIColor(red:0.22, green:0.79, blue:0.45, alpha:1.00),
-//             UIColor(red:0.19, green:0.68, blue:0.39, alpha:1.00))
+            return (UIColor(red:0.28, green:0.72, blue:0.60, alpha:1.00),
+                    UIColor(red:0.00, green:0.59, blue:0.53, alpha:1.00))
         }
-        
     }
 }
 
