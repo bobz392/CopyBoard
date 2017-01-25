@@ -89,7 +89,7 @@ class NotesViewModel {
         //        let initDataSource = NotesData( notes: Array(DBManager.shared.queryNotes()) )
     }
     
-    func useSearchNotes() -> Bool {
+    private func useSearchNotes() -> Bool {
         return self.isInSearch && !self.isQueryStringEmpty
     }
     

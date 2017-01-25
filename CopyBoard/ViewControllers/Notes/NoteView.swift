@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-fileprivate let kHolderViewAlpha: CGFloat = 0.1
+fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
 class NoteView {
     let barView = UIView()

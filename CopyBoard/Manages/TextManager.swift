@@ -37,7 +37,7 @@ extension String {
     func searchHintString(query: String? = nil) -> NSAttributedString {
         let attr = NSMutableAttributedString(string: self,
                                              attributes: [NSFontAttributeName: appFont(size: 16)])
-        if let q = query {
+        if let q = query, q.characters.count > 0 {
             let pattern = "\(q)"
             let regular = try! NSRegularExpression(pattern: pattern, options:.caseInsensitive   )
             let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.characters.count))

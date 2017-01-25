@@ -78,11 +78,12 @@ class NotesViewController: BaseViewController {
     
     func endSearchAction() {
         self.noteView.searchAnimation(startSearch: false)
-        self.viewModel.isInSearch = false
-        self.viewModel.isQueryStringEmpty = true
-        if self.viewModel.useSearchNotes() {
+        if !self.viewModel.isQueryStringEmpty {
             self.noteView.collectionView.reloadData()
         }
+        self.viewModel.isInSearch = false
+        self.viewModel.isQueryStringEmpty = true
+        
     }
     
 }
@@ -168,7 +169,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
-        let query = self.viewModel.useSearchNotes() ? self.noteView.searchBar.text : nil
+        let query = self.noteView.searchBar.text
         cell.configCell(use: note, query: query)
         return cell
     }
