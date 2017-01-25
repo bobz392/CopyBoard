@@ -152,6 +152,7 @@ extension NoteView {
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.collectionView.keyboardDismissMode = .onDrag
+        self.collectionView.alwaysBounceVertical = true
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(self.barView.snp.bottom)
