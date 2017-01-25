@@ -54,8 +54,6 @@ open class FaveButton: UIButton {
     @IBInspectable open var selectedColor: UIColor   = UIColor(colorLiteralRed: 226/255, green: 38/255,  blue: 77/255,  alpha: 1)
     @IBInspectable open var dotFirstColor: UIColor   = UIColor(colorLiteralRed: 152/255, green: 219/255, blue: 236/255, alpha: 1)
     @IBInspectable open var dotSecondColor: UIColor  = UIColor(colorLiteralRed: 247/255, green: 188/255, blue: 48/255,  alpha: 1)
-    @IBInspectable open var circleFromColor: UIColor = UIColor(colorLiteralRed: 221/255, green: 70/255,  blue: 136/255, alpha: 1)
-    @IBInspectable open var circleToColor: UIColor   = UIColor(colorLiteralRed: 205/255, green: 143/255, blue: 246/255, alpha: 1)
     
     @IBOutlet open weak var delegate: AnyObject?
     
@@ -159,6 +157,7 @@ extension FaveButton{
 // MARK: actions
 extension FaveButton{
     func addActions(){
+        self.removeTarget(self, action: #selector(toggle(_:)), for: .touchUpInside)
         self.addTarget(self, action: #selector(toggle(_:)), for: .touchUpInside)
     }
     
@@ -189,15 +188,11 @@ extension FaveButton{
             let igniteFromRadius = radius*0.8
             let igniteToRadius   = radius*1.1
             
-            let ring   = Ring.createRing(self, radius: 0.01, lineWidth: 3, fillColor: self.circleFromColor)
             let sparks = createSparks(igniteFromRadius)
-            
-            ring.animateToRadius(radius, toColor: circleToColor, duration: Const.expandDuration, delay: 0)
-            ring.animateColapse(radius, duration: Const.collapseDuration, delay: Const.expandDuration)
-
+        
             sparks.forEach{
-                $0.animateIgniteShow(igniteToRadius, duration:0.4, delay: Const.collapseDuration/3.0)
-                $0.animateIgniteHide(0.7, delay: 0.2)
+                $0.animateIgniteShow(igniteToRadius, duration:0.4, delay: 0)//Const.collapseDuration/3.0)
+                $0.animateIgniteHide(0.7, delay: 0)
             }
         }
     }

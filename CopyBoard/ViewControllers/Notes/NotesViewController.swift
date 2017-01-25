@@ -16,12 +16,12 @@ class NotesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.noteView.config(withView: self.view)
         self.noteView.configCollectionView(view: self.view, delegate: self)
         
         self.viewModel = NotesViewModel()
-
+        
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
@@ -78,7 +78,7 @@ class NotesViewController: BaseViewController {
         self.noteView.searchAnimation(startSearch: false)
         self.viewModel.isInSearch = false
     }
-
+    
 }
 
 // MARK: - realm notification datasource
@@ -127,24 +127,18 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let note = self.viewModel.noteIn(row: indexPath.row)
         let editorVC = EditorViewController(note: note)
         let weakSelf = self
+        let row = indexPath.row
+        
         let toBlock = { () -> Void in
-            let row = indexPath.row
-            cell.headerView.heroID = "\(row)header"
             let duration = 0.35
-            cell.headerView.heroModifiers = [.duration(duration)]
-            
-            cell.cardView.heroID = "\(row)card"
-            cell.cardView.heroModifiers = [.duration(duration)]
             weakSelf.noteView.collectionView.heroModifiers = [.scale(1.5), .fade, .duration(duration)]
             
             let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
             weakSelf.noteView.barView.heroModifiers = [.fade, .duration(duration), .position(p)]
             
-            cell.faveButton.heroID = "\(row)star"
-            editorVC.editorView.faveButton.heroID = "\(row)star"
-            cell.faveButton.heroModifiers = [.fade, .duration(duration)]
-            
             editorVC.isHeroEnabled = true
+            editorVC.editorView.faveButton.heroID = "\(row)star"
+            
             editorVC.editorView.barView.heroID = "\(row)header"
             editorVC.editorView.barView.heroModifiers = [.duration(duration)]
             
@@ -157,7 +151,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             weakSelf.present(editorVC, animated: true, completion: nil)
         }
         
-        cell.willToEditor(block: toBlock)
+        cell.willToEditor(block: toBlock, row: row)
         self.selectedCell = cell
     }
     

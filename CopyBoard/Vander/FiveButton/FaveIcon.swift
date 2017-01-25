@@ -116,7 +116,7 @@ extension FaveIcon{
         let scaleAnimation = Init(CAKeyframeAnimation(keyPath: "transform.scale")){
             $0.values    = tweenValues!
             $0.duration  = duration
-            $0.beginTime = CACurrentMediaTime()+selectedDelay
+            
         }
         iconMask.add(scaleAnimation, forKey: nil)
     }

@@ -37,7 +37,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
-        self.faveButton.delegate = self
+        self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
         
@@ -104,26 +104,56 @@ class NoteCollectionViewCell: UICollectionViewCell {
         DBManager.shared.deleteNote(note: n)
     }
     
-    func willToEditor(block: @escaping () -> Void) {
+    func favourate() {
+        guard  let n = self.note else {
+            Logger.log("have no note to delete")
+            return
+        }
+        
+        DBManager.shared.updateObject(false) {
+            n.favourite = !n.favourite
+        }
+    }
+
+    
+    func willToEditor(block: @escaping () -> Void, row: Int) {
         if self.isCurl {
             return
         }
         
+        let duration = 0.35
+        self.headerView.heroID = "\(row)header"
+        self.headerView.heroModifiers = [.duration(duration)]
+        
+        self.cardView.heroID = "\(row)card"
+        self.cardView.heroModifiers = [.duration(duration)]
+        
+        self.faveButton.heroID = "\(row)star"
+        self.faveButton.heroModifiers = [.fade, .duration(duration)]
+        
         UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 0
+            self.layer.shadowOpacity = 0
         }) { (finish) in
             block()
         }
         self.backView.alpha = 0
-        self.layer.shadowOpacity = 0
     }
     
     func willLeaveEditor() {
         self.backView.alpha = 1
+        self.headerView.heroID = nil
+        self.headerView.heroModifiers = nil
+        
+        self.cardView.heroID = nil
+        self.cardView.heroModifiers = nil
+        
+        self.faveButton.heroID = nil
         self.faveButton.heroModifiers = nil
-        self.layer.shadowOpacity = 0.2
+        
         UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 1
+            self.layer.shadowOpacity = 0.2
         }) { (finish) in }
     }
     
@@ -180,21 +210,7 @@ extension NoteCollectionViewCell {
             NoteCollectionViewInputOverlay.openedItemIndex = nil
         })
     }
-    
-}
-
-// MARK: - fave button
-extension NoteCollectionViewCell: FaveButtonDelegate {
-    func faveButton(_ faveButton: FaveButton, didSelected selected: Bool) {
-        guard  let n = self.note else {
-            Logger.log("have no note to delete")
-            return
-        }
-        
-        DBManager.shared.updateObject(false) {
-            n.favourite = !n.favourite
-        }
-    }
+ 
 }
 
 final class NoteCollectionViewInputOverlay: UIView {

@@ -47,7 +47,6 @@
 		C71087011E3874B000D9C3A9 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
 		C71087021E3874B000D9C3A9 /* XBPageDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7753D871E352A0900C45A5A /* XBPageDragView.m */; };
 		C71087031E3874B000D9C3A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
-		C71087041E3874B000D9C3A9 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D5A1E341EEF00B4E418 /* Ring.swift */; };
 		C71087051E3874B000D9C3A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F321E280E040067229E /* BaseViewController.swift */; };
 		C71087061E3874B000D9C3A9 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D581E341EEF00B4E418 /* Geometry.swift */; };
 		C71087071E3874B000D9C3A9 /* LocaleName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A8B1E32541D00A1CB9F /* LocaleName.swift */; };
@@ -233,7 +232,6 @@
 		C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D571E341EEF00B4E418 /* Easing.swift */; };
 		C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D581E341EEF00B4E418 /* Geometry.swift */; };
 		C7D96D611E341EEF00B4E418 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D591E341EEF00B4E418 /* Init.swift */; };
-		C7D96D621E341EEF00B4E418 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D5A1E341EEF00B4E418 /* Ring.swift */; };
 		C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D5B1E341EEF00B4E418 /* Spark.swift */; };
 		C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7D96D661E34304300B4E418 /* iRate.bundle */; };
 		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
@@ -466,7 +464,6 @@
 		C7D96D571E341EEF00B4E418 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		C7D96D581E341EEF00B4E418 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		C7D96D591E341EEF00B4E418 /* Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
-		C7D96D5A1E341EEF00B4E418 /* Ring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
 		C7D96D5B1E341EEF00B4E418 /* Spark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spark.swift; sourceTree = "<group>"; };
 		C7D96D661E34304300B4E418 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		C7D96D671E34304300B4E418 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
@@ -824,7 +821,6 @@
 				C7D96D531E341EEF00B4E418 /* FaveButton.swift */,
 				C7D96D541E341EEF00B4E418 /* FaveIcon.swift */,
 				C7D96D551E341EEF00B4E418 /* Helpers */,
-				C7D96D5A1E341EEF00B4E418 /* Ring.swift */,
 				C7D96D5B1E341EEF00B4E418 /* Spark.swift */,
 			);
 			path = FiveButton;
@@ -1267,7 +1263,6 @@
 				C71087011E3874B000D9C3A9 /* Icons.swift in Sources */,
 				C71087021E3874B000D9C3A9 /* XBPageDragView.m in Sources */,
 				C71087031E3874B000D9C3A9 /* AppDelegate.swift in Sources */,
-				C71087041E3874B000D9C3A9 /* Ring.swift in Sources */,
 				C71087051E3874B000D9C3A9 /* BaseViewController.swift in Sources */,
 				C71087061E3874B000D9C3A9 /* Geometry.swift in Sources */,
 				C71087071E3874B000D9C3A9 /* LocaleName.swift in Sources */,
@@ -1348,7 +1343,6 @@
 				C71087701E38781800D9C3A9 /* HeroDebugPlugin.swift in Sources */,
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
 				C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */,
-				C7D96D621E341EEF00B4E418 /* Ring.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,

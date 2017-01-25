@@ -47,6 +47,12 @@ class EditorView {
             make.width.equalTo(32)
             make.right.equalToSuperview().offset(-8)
         }
+        self.faveButton.normalColor = UIColor.white
+        self.faveButton.selectedColor = UIColor(colorLiteralRed: 226/255, green: 38/255,  blue: 77/255,  alpha: 1)
+
+        self.faveButton.dotFirstColor = UIColor(colorLiteralRed: 152/255, green: 219/255, blue: 236/255, alpha: 1)
+
+        self.faveButton.dotSecondColor = UIColor(colorLiteralRed: 247/255, green: 188/255, blue: 48/255,  alpha: 1)
     }
     
     func configNote(content: String) {
