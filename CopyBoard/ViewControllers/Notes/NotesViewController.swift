@@ -16,18 +16,12 @@ class NotesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
         self.noteView.config(withView: self.view)
-        
         self.noteView.configCollectionView(view: self.view, delegate: self)
         
-        //        let searchResultDriver =
-        //            self.noteView.searchBar.rx.text.orEmpty.asDriver()
-        
         self.viewModel = NotesViewModel()
-        //            searchDriver: searchResultDriver,
-        //            holderViewAlpha: self.noteView.holderView.rx.alpha
-        //        )
+
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
@@ -50,6 +44,8 @@ class NotesViewController: BaseViewController {
         self.noteView.collectionView.delegate = self
         self.noteView.collectionView.dataSource = self
         
+        self.isHeroEnabled = false
+        
         #if debug
             Note.noteTestData()
         #endif
@@ -67,12 +63,8 @@ class NotesViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let cell = self.selectedCell {
-            self.selectedCell = nil
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                cell.noteLabel.alpha = 1
-            }, completion: nil)
-        }
+        self.selectedCell?.willLeaveEditor()
+        self.selectedCell = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -144,29 +136,26 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let cell = collectionView.cellForItem(at: indexPath)
             as? NoteCollectionViewCell else { return }
         
-        if !cell.cellCanSelected() {
-            return
-        }
-        
         let note = self.viewModel.noteIn(row: indexPath.row)
         let editorVC = EditorViewController(note: note)
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            cell.noteLabel.alpha = 0
-        }) { (finish) in
-            self.present(editorVC, animated: true, completion: nil)
+        let weakSelf = self
+        let toBlock = { () -> Void in
+            let row = indexPath.row
+            cell.headerView.heroID = "\(row)header"
+            cell.cardView.heroID = "\(row)card"
+            
+            editorVC.isHeroEnabled = true
+            editorVC.editorView.barView.heroID = "\(row)header"
+            editorVC.view.heroID = "\(row)card"
+            
+            editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
+            editorVC.view.backgroundColor = cell.cardView.backgroundColor
+            
+            weakSelf.present(editorVC, animated: true, completion: nil)
         }
         
+        cell.willToEditor(block: toBlock)
         self.selectedCell = cell
-        cell.headerView.heroID = "\(indexPath.row)header"
-        cell.cardView.heroID = "\(indexPath.row)card"
-        
-        editorVC.isHeroEnabled = true
-        editorVC.editorView.barView.heroID = "\(indexPath.row)header"
-        editorVC.view.heroID = "\(indexPath.row)card"
-        
-        editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
-        editorVC.view.backgroundColor = cell.cardView.backgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

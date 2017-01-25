@@ -32,19 +32,7 @@
 		C711B0901E380BD60051665B /* SourcePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711B07A1E380BD60051665B /* SourcePreprocessor.swift */; };
 		C711B0911E380BD60051665B /* UIKit+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711B07B1E380BD60051665B /* UIKit+Hero.swift */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
-		C72ECF401E381D01008B34E1 /* ZCAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF271E381D01008B34E1 /* ZCAnimatedLabel.m */; };
-		C72ECF411E381D01008B34E1 /* ZCCoreTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF291E381D01008B34E1 /* ZCCoreTextLayout.m */; };
-		C72ECF421E381D01008B34E1 /* ZCDashLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF2B1E381D01008B34E1 /* ZCDashLabel.m */; };
-		C72ECF431E381D01008B34E1 /* ZCDuangLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF2D1E381D01008B34E1 /* ZCDuangLabel.m */; };
-		C72ECF441E381D01008B34E1 /* ZCEasingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF2F1E381D01008B34E1 /* ZCEasingUtil.m */; };
-		C72ECF451E381D01008B34E1 /* ZCFallLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF311E381D01008B34E1 /* ZCFallLabel.m */; };
-		C72ECF461E381D01008B34E1 /* ZCFlyinLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF331E381D01008B34E1 /* ZCFlyinLabel.m */; };
-		C72ECF471E381D01008B34E1 /* ZCFocusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF351E381D01008B34E1 /* ZCFocusLabel.m */; };
-		C72ECF481E381D01008B34E1 /* ZCRevealLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF371E381D01008B34E1 /* ZCRevealLabel.m */; };
-		C72ECF491E381D01008B34E1 /* ZCShapeshiftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF391E381D01008B34E1 /* ZCShapeshiftLabel.m */; };
-		C72ECF4A1E381D01008B34E1 /* ZCSpinLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF3B1E381D01008B34E1 /* ZCSpinLabel.m */; };
-		C72ECF4B1E381D01008B34E1 /* ZCThrownLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF3D1E381D01008B34E1 /* ZCThrownLabel.m */; };
-		C72ECF4C1E381D01008B34E1 /* ZCTransparencyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF3F1E381D01008B34E1 /* ZCTransparencyLabel.m */; };
+		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E2D1E269CA00067229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7403E2C1E269CA00067229E /* Assets.xcassets */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
@@ -241,32 +229,7 @@
 		C711B07B1E380BD60051665B /* UIKit+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Hero.swift"; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
-		C72ECF261E381D01008B34E1 /* ZCAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAnimatedLabel.h; sourceTree = "<group>"; };
-		C72ECF271E381D01008B34E1 /* ZCAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAnimatedLabel.m; sourceTree = "<group>"; };
-		C72ECF281E381D01008B34E1 /* ZCCoreTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCoreTextLayout.h; sourceTree = "<group>"; };
-		C72ECF291E381D01008B34E1 /* ZCCoreTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCoreTextLayout.m; sourceTree = "<group>"; };
-		C72ECF2A1E381D01008B34E1 /* ZCDashLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCDashLabel.h; sourceTree = "<group>"; };
-		C72ECF2B1E381D01008B34E1 /* ZCDashLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCDashLabel.m; sourceTree = "<group>"; };
-		C72ECF2C1E381D01008B34E1 /* ZCDuangLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCDuangLabel.h; sourceTree = "<group>"; };
-		C72ECF2D1E381D01008B34E1 /* ZCDuangLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCDuangLabel.m; sourceTree = "<group>"; };
-		C72ECF2E1E381D01008B34E1 /* ZCEasingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCEasingUtil.h; sourceTree = "<group>"; };
-		C72ECF2F1E381D01008B34E1 /* ZCEasingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCEasingUtil.m; sourceTree = "<group>"; };
-		C72ECF301E381D01008B34E1 /* ZCFallLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFallLabel.h; sourceTree = "<group>"; };
-		C72ECF311E381D01008B34E1 /* ZCFallLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFallLabel.m; sourceTree = "<group>"; };
-		C72ECF321E381D01008B34E1 /* ZCFlyinLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFlyinLabel.h; sourceTree = "<group>"; };
-		C72ECF331E381D01008B34E1 /* ZCFlyinLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFlyinLabel.m; sourceTree = "<group>"; };
-		C72ECF341E381D01008B34E1 /* ZCFocusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFocusLabel.h; sourceTree = "<group>"; };
-		C72ECF351E381D01008B34E1 /* ZCFocusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFocusLabel.m; sourceTree = "<group>"; };
-		C72ECF361E381D01008B34E1 /* ZCRevealLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRevealLabel.h; sourceTree = "<group>"; };
-		C72ECF371E381D01008B34E1 /* ZCRevealLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRevealLabel.m; sourceTree = "<group>"; };
-		C72ECF381E381D01008B34E1 /* ZCShapeshiftLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCShapeshiftLabel.h; sourceTree = "<group>"; };
-		C72ECF391E381D01008B34E1 /* ZCShapeshiftLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCShapeshiftLabel.m; sourceTree = "<group>"; };
-		C72ECF3A1E381D01008B34E1 /* ZCSpinLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSpinLabel.h; sourceTree = "<group>"; };
-		C72ECF3B1E381D01008B34E1 /* ZCSpinLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSpinLabel.m; sourceTree = "<group>"; };
-		C72ECF3C1E381D01008B34E1 /* ZCThrownLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCThrownLabel.h; sourceTree = "<group>"; };
-		C72ECF3D1E381D01008B34E1 /* ZCThrownLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCThrownLabel.m; sourceTree = "<group>"; };
-		C72ECF3E1E381D01008B34E1 /* ZCTransparencyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTransparencyLabel.h; sourceTree = "<group>"; };
-		C72ECF3F1E381D01008B34E1 /* ZCTransparencyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTransparencyLabel.m; sourceTree = "<group>"; };
+		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E2C1E269CA00067229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -432,6 +395,7 @@
 				C76B8DEF1E356387006896FA /* Logger.swift */,
 				C76B8DF61E35AB06006896FA /* DeviceManager.swift */,
 				C76996101E369968001E2F86 /* TextManager.swift */,
+				C72ECF4D1E382B59008B34E1 /* Convenient.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -484,7 +448,6 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
-				C72ECF251E381D01008B34E1 /* ZCAnimatedLabel */,
 				C711B0641E380BD60051665B /* Hero */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
@@ -493,39 +456,6 @@
 				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
 			);
 			path = Vander;
-			sourceTree = "<group>";
-		};
-		C72ECF251E381D01008B34E1 /* ZCAnimatedLabel */ = {
-			isa = PBXGroup;
-			children = (
-				C72ECF261E381D01008B34E1 /* ZCAnimatedLabel.h */,
-				C72ECF271E381D01008B34E1 /* ZCAnimatedLabel.m */,
-				C72ECF281E381D01008B34E1 /* ZCCoreTextLayout.h */,
-				C72ECF291E381D01008B34E1 /* ZCCoreTextLayout.m */,
-				C72ECF2A1E381D01008B34E1 /* ZCDashLabel.h */,
-				C72ECF2B1E381D01008B34E1 /* ZCDashLabel.m */,
-				C72ECF2C1E381D01008B34E1 /* ZCDuangLabel.h */,
-				C72ECF2D1E381D01008B34E1 /* ZCDuangLabel.m */,
-				C72ECF2E1E381D01008B34E1 /* ZCEasingUtil.h */,
-				C72ECF2F1E381D01008B34E1 /* ZCEasingUtil.m */,
-				C72ECF301E381D01008B34E1 /* ZCFallLabel.h */,
-				C72ECF311E381D01008B34E1 /* ZCFallLabel.m */,
-				C72ECF321E381D01008B34E1 /* ZCFlyinLabel.h */,
-				C72ECF331E381D01008B34E1 /* ZCFlyinLabel.m */,
-				C72ECF341E381D01008B34E1 /* ZCFocusLabel.h */,
-				C72ECF351E381D01008B34E1 /* ZCFocusLabel.m */,
-				C72ECF361E381D01008B34E1 /* ZCRevealLabel.h */,
-				C72ECF371E381D01008B34E1 /* ZCRevealLabel.m */,
-				C72ECF381E381D01008B34E1 /* ZCShapeshiftLabel.h */,
-				C72ECF391E381D01008B34E1 /* ZCShapeshiftLabel.m */,
-				C72ECF3A1E381D01008B34E1 /* ZCSpinLabel.h */,
-				C72ECF3B1E381D01008B34E1 /* ZCSpinLabel.m */,
-				C72ECF3C1E381D01008B34E1 /* ZCThrownLabel.h */,
-				C72ECF3D1E381D01008B34E1 /* ZCThrownLabel.m */,
-				C72ECF3E1E381D01008B34E1 /* ZCTransparencyLabel.h */,
-				C72ECF3F1E381D01008B34E1 /* ZCTransparencyLabel.m */,
-			);
-			path = ZCAnimatedLabel;
 			sourceTree = "<group>";
 		};
 		C7403E191E269CA00067229E = {
@@ -1088,15 +1018,11 @@
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
 				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
-				C72ECF491E381D01008B34E1 /* ZCShapeshiftLabel.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
 				C711B07F1E380BD60051665B /* CAMediaTimingFunction+Hero.swift in Sources */,
-				C72ECF441E381D01008B34E1 /* ZCEasingUtil.m in Sources */,
 				C711B08A1E380BD60051665B /* HeroPlugin.swift in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
-				C72ECF481E381D01008B34E1 /* ZCRevealLabel.m in Sources */,
-				C72ECF461E381D01008B34E1 /* ZCFlyinLabel.m in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
 				C711B0821E380BD60051665B /* DispatchQueue+Hero.swift in Sources */,
 				C711B0901E380BD60051665B /* SourcePreprocessor.swift in Sources */,
@@ -1109,7 +1035,6 @@
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
-				C72ECF451E381D01008B34E1 /* ZCFallLabel.m in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
 				C7655A921E32541D00A1CB9F /* Date+Compare.swift in Sources */,
 				C7655AA31E32541D00A1CB9F /* TimeInterval+Extensions.swift in Sources */,
@@ -1130,12 +1055,11 @@
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
 				C711B0881E380BD60051665B /* HeroDefaultAnimatorViewContext.swift in Sources */,
-				C72ECF431E381D01008B34E1 /* ZCDuangLabel.m in Sources */,
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
+				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
 				C711B0891E380BD60051665B /* HeroModifier.swift in Sources */,
 				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
-				C72ECF4C1E381D01008B34E1 /* ZCTransparencyLabel.m in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C7753D981E352A0900C45A5A /* XBPageDragView.m in Sources */,
 				C711B08B1E380BD60051665B /* HeroTargetState.swift in Sources */,
@@ -1147,28 +1071,22 @@
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
-				C72ECF4B1E381D01008B34E1 /* ZCThrownLabel.m in Sources */,
 				C7655A931E32541D00A1CB9F /* Date+Components.swift in Sources */,
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7655ADC1E33AB6C00A1CB9F /* NoteCollectionViewLayout.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C711B0911E380BD60051665B /* UIKit+Hero.swift in Sources */,
-				C72ECF471E381D01008B34E1 /* ZCFocusLabel.m in Sources */,
-				C72ECF411E381D01008B34E1 /* ZCCoreTextLayout.m in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C711B08D1E380BD60051665B /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
 				C711B0801E380BD60051665B /* CascadePreprocessor.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
-				C72ECF4A1E381D01008B34E1 /* ZCSpinLabel.m in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
-				C72ECF421E381D01008B34E1 /* ZCDashLabel.m in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C711B0841E380BD60051665B /* HeroContext.swift in Sources */,
-				C72ECF401E381D01008B34E1 /* ZCAnimatedLabel.m in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C711B07D1E380BD60051665B /* BasePreprocessor.swift in Sources */,

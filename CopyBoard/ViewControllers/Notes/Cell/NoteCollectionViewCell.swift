@@ -11,6 +11,7 @@ import UIKit
 fileprivate let kCurlDeleteDuration: TimeInterval = 0.4
 fileprivate let kCurlOpenDuration: TimeInterval = 0.3
 fileprivate let kCurlCloseDuration: TimeInterval = 0.2
+let kNoteViewAlphaAnimation: TimeInterval = 0.15
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
@@ -64,17 +65,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.layer.shadowRadius = 3
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.2
-        //        self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.backgroundColor = UIColor.clear.cgColor
     }
     
     // MARK: - action
-    func cellCanSelected() -> Bool {
-        Logger.log("cell can selected = \(!self.isCurl)")
-        return !self.isCurl
-    }
-    
     func gestureOpenAction() {
         self.connectCollectionViewWithOverlay()
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
@@ -87,24 +82,47 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
         let weakSelf =  self
         NoteCollectionViewInputOverlay.openedItemIndex = nil
-        cv.uncurlAnimated(withDuration: kCurlDeleteDuration) { 
+        cv.uncurlAnimated(withDuration: kCurlDeleteDuration) {
             UIView.animate(withDuration: kCurlDeleteDuration, animations: {
                 cv.alpha = 0
             }) { (finish) in
-                weakSelf.deleteNote()
+                weakSelf.deleteRealmNote()
             }
             weakSelf.curlView = nil
         }
     }
     
-    fileprivate func deleteNote() {
+    fileprivate func deleteRealmNote() {
         guard  let n = self.note else {
-            Logger.log("have no note to delete")
+            Logger.log("have no note to delete, maybe check it")
             return
         }
         
         DBManager.shared.deleteNote(note: n)
     }
+    
+    func willToEditor(block: @escaping () -> Void) {
+        if self.isCurl {
+            return
+        }
+        
+        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+            self.noteLabel.alpha = 0
+        }) { (finish) in
+            block()
+        }
+    }
+    
+    func willLeaveEditor() {
+        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+            self.noteLabel.alpha = 1
+        }) { (finish) in }
+    }
+    
+}
+
+// MARK: - curl view
+extension NoteCollectionViewCell {
     
     final func curl(index: IndexPath) {
         self.curlView?.stopAnimating()
@@ -154,8 +172,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
             NoteCollectionViewInputOverlay.openedItemIndex = nil
         })
     }
+    
 }
 
+// MARK: - fave button
 extension NoteCollectionViewCell: FaveButtonDelegate {
     func faveButton(_ faveButton: FaveButton, didSelected selected: Bool) {
         guard  let n = self.note else {
@@ -163,7 +183,7 @@ extension NoteCollectionViewCell: FaveButtonDelegate {
             return
         }
         
-        DBManager.shared.updateObject(false) { 
+        DBManager.shared.updateObject(false) {
             n.favourite = !n.favourite
         }
     }
@@ -183,12 +203,12 @@ final class NoteCollectionViewInputOverlay: UIView {
         if cell.isCurl == false || cell.deleteButton.frame.contains(pointCell) {
             return nil
         }
-
+        
         if cell.isCurl == true {
             cell.closeCurl()
             return self
         }
-
+        
         return nil
     }
     
@@ -196,7 +216,7 @@ final class NoteCollectionViewInputOverlay: UIView {
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
             let index = NoteCollectionViewInputOverlay.openedItemIndex,
             let cell = cv.cellForItem(at: index) as? NoteCollectionViewCell else { return }
-     
+        
         cell.closeCurl()
     }
 }
