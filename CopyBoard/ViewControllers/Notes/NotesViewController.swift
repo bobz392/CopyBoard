@@ -83,13 +83,13 @@ class NotesViewController: BaseViewController {
         }
         self.viewModel.isInSearch = false
         self.viewModel.isQueryStringEmpty = true
-        
     }
     
 }
 
 // MARK: - realm notification datasource
 extension NotesViewController: RealmNotificationDataSource {
+    
     func dataInit() {
         self.noteView.collectionView.reloadData()
     }
@@ -106,6 +106,7 @@ extension NotesViewController: RealmNotificationDataSource {
                 .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
         }
     }
+    
 }
 
 // MARK: transition scroll
