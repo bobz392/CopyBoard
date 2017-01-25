@@ -22,6 +22,7 @@ class EditorView {
 //        self.editorTextView.font = self.editorTextView.noteFont
         self.editorTextView.bgClear()
         self.editorTextView.textColor = AppColors.noteText
+        self.editorTextView.alwaysBounceVertical = true
         self.editorTextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()

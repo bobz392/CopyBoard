@@ -132,6 +132,8 @@
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
+		C73F6DD81E392DF900FBD6F0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */; };
+		C73F6DD91E392DF900FBD6F0 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */; };
 		C7403E261E269CA00067229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E251E269CA00067229E /* AppDelegate.swift */; };
 		C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403E3D1E269D140067229E /* KeyboardViewController.swift */; };
 		C7403E421E269D140067229E /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7403E3B1E269D140067229E /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -347,6 +349,8 @@
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		C7403E221E269CA00067229E /* CopyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403E251E269CA00067229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7403E311E269CA00067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C73F6DA71E392DF800FBD6F0 /* Extensions */,
 				C71087511E38781800D9C3A9 /* Hero */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
@@ -584,6 +589,15 @@
 				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
 			);
 			path = Vander;
+			sourceTree = "<group>";
+		};
+		C73F6DA71E392DF800FBD6F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C73F6DB21E392DF800FBD6F0 /* StringExtensions.swift */,
+				C73F6DB31E392DF800FBD6F0 /* SwifterSwift.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C7403E191E269CA00067229E = {
@@ -1334,6 +1348,7 @@
 				C71087741E38781800D9C3A9 /* HeroModifier.swift in Sources */,
 				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
 				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
+				C73F6DD81E392DF900FBD6F0 /* StringExtensions.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C71087761E38781800D9C3A9 /* HeroTargetState.swift in Sources */,
@@ -1353,6 +1368,7 @@
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C71087781E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
+				C73F6DD91E392DF900FBD6F0 /* SwifterSwift.swift in Sources */,
 				C710876B1E38781800D9C3A9 /* CascadePreprocessor.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
