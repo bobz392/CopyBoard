@@ -194,7 +194,7 @@ extension NoteView {
     
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self
-        let labelCenterY: CGFloat = startSearch ? 44 : 0
+        let labelCenterY: CGFloat = startSearch ? 22 : 0
         let searchButtonRight: CGFloat = startSearch ? 44 : -8
         self.searchBar.text = nil
         
@@ -210,7 +210,7 @@ extension NoteView {
             weakSelf.searchBar.becomeFirstResponder()
             weakSelf.holderView.isHidden = false
             
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
                 weakSelf.holderView.alpha = 0.3
                 weakSelf.titleLabel.alpha = 0
@@ -227,7 +227,7 @@ extension NoteView {
                 }, completion: nil)
             }
         } else {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
                 weakSelf.holderView.alpha = 0
             }) { (finish) in

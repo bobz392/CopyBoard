@@ -11,6 +11,7 @@ import UIKit
 class EditorView {
     let editorTextView = UITextView()
     let barView = UIView()
+    let faveButton = FaveButton(frame: .zero, faveIconNormal: Icons.star.iconImage())
     
     func config(withView view: UIView) {
         self.configBarView(view: view)
@@ -38,6 +39,14 @@ class EditorView {
             make.right.equalToSuperview()
             make.height.equalTo(64)
         }
+        
+        self.barView.addSubview(self.faveButton)
+        self.faveButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview().offset(10)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+            make.right.equalToSuperview().offset(-8)
+        }
     }
     
     func configNote(content: String) {
@@ -55,7 +64,7 @@ class EditorView {
         
         self.editorTextView.alpha = 0
         
-        UIView.animate(withDuration: 0.1) { [unowned self] in
+        UIView.animate(withDuration: kNoteViewAlphaAnimation) { [unowned self] in
             self.editorTextView.alpha = 1
         }
     }

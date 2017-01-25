@@ -429,9 +429,9 @@
 		C72332B01E302D9900D5189D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */,
 				C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */,
 				C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */,
+				C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

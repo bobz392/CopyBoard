@@ -130,7 +130,7 @@
                 <outlet property="noteDateLabel" destination="r3v-jb-2wD" id="t1J-Wi-DcX"/>
                 <outlet property="noteLabel" destination="dmr-we-EGz" id="Fwe-8y-8ch"/>
             </connections>
-            <point key="canvasLocation" x="-221" y="-345"/>
+            <point key="canvasLocation" x="-292" y="-346"/>
         </collectionViewCell>
     </objects>
     <resources>

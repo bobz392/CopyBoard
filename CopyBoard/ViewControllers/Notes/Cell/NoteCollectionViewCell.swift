@@ -11,7 +11,7 @@ import UIKit
 fileprivate let kCurlDeleteDuration: TimeInterval = 0.4
 fileprivate let kCurlOpenDuration: TimeInterval = 0.3
 fileprivate let kCurlCloseDuration: TimeInterval = 0.2
-let kNoteViewAlphaAnimation: TimeInterval = 0.15
+let kNoteViewAlphaAnimation: TimeInterval = 0.1
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
@@ -60,7 +60,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        self.madeShadow()
+    }
+    
+    fileprivate func madeShadow() {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 3
         self.layer.shadowColor = UIColor.black.cgColor
@@ -111,9 +114,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }) { (finish) in
             block()
         }
+        self.backView.alpha = 0
+        self.layer.shadowOpacity = 0
     }
     
     func willLeaveEditor() {
+        self.backView.alpha = 1
+        self.faveButton.heroModifiers = nil
+        self.layer.shadowOpacity = 0.2
         UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
             self.noteLabel.alpha = 1
         }) { (finish) in }
