@@ -53,11 +53,6 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        if let navigationController = self.navigationController as? ScrollingNavigationController {
-//            navigationController.followScrollView(self.noteView.collectionView)
-//            navigationController.expandOnActive = false
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,11 +64,6 @@ class NotesViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-//        if let navigationController = self.navigationController as? ScrollingNavigationController {
-//            navigationController.stopFollowingScrollView()
-//            navigationController.scrollingNavbarDelegate = nil
-//        }
     }
     
     deinit {
