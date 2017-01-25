@@ -31,6 +31,7 @@ class NotesViewController: BaseViewController {
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
             weakSelf.noteView.searchAnimation(startSearch: true)
             weakSelf.viewModel.isInSearch = true
+            NoteCollectionViewInputOverlay.closeOpenItem()
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
