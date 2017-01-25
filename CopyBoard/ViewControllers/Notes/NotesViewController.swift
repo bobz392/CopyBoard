@@ -118,7 +118,7 @@ extension NotesViewController {
 }
 
 // MARK: collection view
-extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, NoteCollectionViewLayoutDelegate, CHTCollectionViewDelegateWaterfallLayout {
+extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.viewModel.notesCount()
@@ -168,17 +168,9 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
-        cell.configCell(use: note)
+        let query = self.viewModel.useSearchNotes() ? self.noteView.searchBar.text : nil
+        cell.configCell(use: note, query: query)
         return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, heightForRowAt indexPath: IndexPath, withWidth: CGFloat) -> CGFloat {
-        let note = self.viewModel.noteIn(row: indexPath.row)
-        let layout = collectionView.collectionViewLayout as! NoteCollectionViewLayout
-        
-        let font = appFont(size: 16)
-        let height = self.dynamicHeight(content: note.content, font: font, width: layout.itemWidth - 10)
-        return height + 35.0
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {

@@ -47,15 +47,16 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.cardView.addGestureRecognizer(swipe)
     }
     
-    func configCell(use note: Note) {
+    func configCell(use note: Note, query: String? = nil) {
         guard let pairColor = AppPairColors(rawValue: note.color)?.pairColor() else {
             fatalError("have no this type color")
         }
         pairColor.dark.bgColor(to: self.headerView)
         pairColor.light.bgColor(to: self.cardView)
-        self.noteLabel.text = note.content
+        
         self.faveButton.isSelected = note.favourite
         self.noteDateLabel.text = try! note.createdAt?.colloquialSinceNow().colloquial
+        self.noteLabel.attributedText = note.content.searchHintString(query: query)
         self.note = note
     }
     

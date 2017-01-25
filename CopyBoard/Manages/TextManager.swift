@@ -32,3 +32,24 @@ func emptyNotesFont() -> CGFloat {
         return 0
     }
 }
+
+extension String {
+    func searchHintString(query: String? = nil) -> NSAttributedString {
+        let attr = NSMutableAttributedString(string: self,
+                                             attributes: [NSFontAttributeName: appFont(size: 16)])
+        if let q = query {
+            let pattern = "\(q)"
+            let regular = try! NSRegularExpression(pattern: pattern, options:.caseInsensitive   )
+            let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.characters.count))
+            Logger.log("\(results.count) match use \(query)")
+            for result in results {
+                attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: result.range)
+            }
+            
+            return attr
+        } else {
+            return attr
+        }
+    }
+    
+}

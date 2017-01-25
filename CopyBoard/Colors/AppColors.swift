@@ -15,7 +15,7 @@ struct AppColors {
     static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
     static let emptyText = UIColor(red:0.77, green:0.76, blue:0.73, alpha:1.00)
-    
+    static let searchText = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)
     
     //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
     //    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
@@ -32,7 +32,7 @@ struct AppColors {
     static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
     static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let cellCardSelectedColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
-    static let searchBackgroundColor = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)
+    
     
     static let buttonBackgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     static let mainTextColor = UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)
