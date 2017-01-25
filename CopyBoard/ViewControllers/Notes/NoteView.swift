@@ -194,7 +194,7 @@ extension NoteView {
     
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self
-        let labelCenterY: CGFloat = startSearch ? 22 : 0
+        let labelCenterY: CGFloat = startSearch ? 11 : 0
         let searchButtonRight: CGFloat = startSearch ? 44 : -8
         self.searchBar.text = nil
         
