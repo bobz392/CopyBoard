@@ -24,6 +24,7 @@ class NotesViewModel {
     
     //    var noteToken =
     var isInSearch = false
+    var isQueryStringEmpty = true
     var searchNotes = [Note]()
     let searchBlock: SearchBlock
     
@@ -34,8 +35,7 @@ class NotesViewModel {
         self.searchBlock = searchBlock
         self.notes = DBManager.shared.queryNotes()
         
-        //        self.searchResultDriver = searchDriver
-        let search = searchDriver.throttle(0.3)
+        let search = searchDriver.throttle(0.5)
             .distinctUntilChanged()
             .flatMapLatest { (query) -> Driver<NotesSearchState> in
                 if query.isEmpty {
@@ -65,10 +65,11 @@ class NotesViewModel {
                 print(state.element ?? "no state")
                 if let s = state.element {
                     self.searchNotes = s.notes
+                    self.isQueryStringEmpty = s.searchString.characters.count <= 0
                     self.searchBlock(s.searchString)
                 }
             }.addDisposableTo(disposeBag)
-        //
+        
         //        searchDriver.asObservable()
         //            .takeUntil(inSearch.asObservable())
         //            .map { (state) -> CGFloat in
@@ -86,17 +87,18 @@ class NotesViewModel {
         //        }
         //
         //        let initDataSource = NotesData( notes: Array(DBManager.shared.queryNotes()) )
-        
-        
-        
+    }
+    
+    func useSearchNotes() -> Bool {
+        return self.isInSearch && !self.isQueryStringEmpty
     }
     
     func notesCount() -> Int {
-        return self.isInSearch ? self.searchNotes.count : self.notes.count
+        return self.useSearchNotes() ? self.searchNotes.count : self.notes.count
     }
     
     func noteIn(row: Int) -> Note {
-        return self.isInSearch ? self.searchNotes[row] : self.notes[row]
+        return self.useSearchNotes() ? self.searchNotes[row] : self.notes[row]
     }
     
 }

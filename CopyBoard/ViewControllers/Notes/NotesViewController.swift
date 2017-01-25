@@ -24,12 +24,8 @@ class NotesViewController: BaseViewController {
         
         let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
-            if weakSelf.viewModel.notesCount() > 0 || query.characters.count > 0 {
-                weakSelf.noteView.searchResultView.alpha = 0
-                weakSelf.noteView.collectionView.reloadData()
-            } else {
-                weakSelf.noteView.searchResultView.alpha = 1
-            }
+            weakSelf.noteView.searchViewStateChange(query: query.characters.count > 0,
+                                                    notesCount: weakSelf.viewModel.notesCount())
         })
         
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
@@ -83,6 +79,10 @@ class NotesViewController: BaseViewController {
     func endSearchAction() {
         self.noteView.searchAnimation(startSearch: false)
         self.viewModel.isInSearch = false
+        self.viewModel.isQueryStringEmpty = true
+        if self.viewModel.useSearchNotes() {
+            self.noteView.collectionView.reloadData()
+        }
     }
     
 }

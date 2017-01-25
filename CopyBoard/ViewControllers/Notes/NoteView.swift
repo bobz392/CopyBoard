@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+fileprivate let kHolderViewAlpha: CGFloat = 0.1
+
 class NoteView {
     let barView = UIView()
     let titleLabel = UILabel()
@@ -94,8 +96,22 @@ class NoteView {
         }   
     }
     
-    func configEmptySearchView() {
+    func searchViewStateChange(query: Bool, notesCount: Int) {
+        UIView.animate(withDuration: 0.1) { [unowned self] in
+            if query {
+                self.holderView.alpha = 0
+                if notesCount > 0 {
+                    self.searchResultView.alpha = 0
+                } else {
+                    self.searchResultView.alpha = 1
+                }
+            } else {
+                self.searchResultView.alpha = 0
+                self.holderView.alpha = kHolderViewAlpha
+            }
+        }
         
+        self.collectionView.reloadData()
     }
 }
 
@@ -246,7 +262,7 @@ extension NoteView {
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
-                weakSelf.holderView.alpha = 0.3
+                weakSelf.holderView.alpha = kHolderViewAlpha
                 weakSelf.titleLabel.alpha = 0
                 weakSelf.searchButton.alpha = 0
             }) { (finish) in
@@ -278,7 +294,6 @@ extension NoteView {
                 })
                 weakSelf.searchBar.isHidden = true
                 weakSelf.searchBar.resignFirstResponder()
-                weakSelf.collectionView.reloadData()
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     weakSelf.barView.layoutIfNeeded()
