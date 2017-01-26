@@ -9,7 +9,7 @@
 import UIKit
 
 class EditorViewController: UIViewController {
-
+    
     let editorView = EditorView()
     let note: Note
     
@@ -25,47 +25,36 @@ class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.editorView.config(withView: self.view, note: self.note)
-//        self.editorView.configNote(content: self.note.content)
+        let weakSelf = self
+        self.editorView.config(with: self.view, note: note) { 
+            weakSelf.dismiss(animated: true, completion: { (finish) -> Void in
+                weakSelf.editorView.editorTextView.dg_removePullToRefresh()
+            })
+
+        }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dis))
         self.view.addGestureRecognizer(tap)
-        
-        
-//        let loadingView = DGElasticPullToRefreshLoadingView()
-//
-//        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-//        self.editorView.editorTextView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-//            self?.editorView.editorTextView.dg_stopLoading()
-//            
-////            loadingView.observing = false
-//            self?.editorView.editorTextView.dg_removePullToRefresh()
-//            self?.dis()
-//            }, loadingView: loadingView)
-//        
-//        if let pairColor = AppPairColors(rawValue: note.color)?.pairColor() {
-//            self.editorView.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
-//            self.editorView.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.editorView.configNote(content: self.note.content)
+        self.editorView.editorTextView.heroID = nil
+        self.editorView.editorTextView.heroModifiers = nil
     }
     
     func dis() {
-        UIView.animate(withDuration: kNoteViewAlphaAnimation, animations: { 
+        UIView.animate(withDuration: kNoteViewAlphaAnimation, animations: {
             self.editorView.editorTextView.alpha = 0
         }) { (finish) in
+            self.editorView.editorTextView.dg_removePullToRefresh()
             self.dismiss(animated: true, completion: nil)
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

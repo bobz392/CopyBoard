@@ -14,7 +14,7 @@ class EditorView {
     
     let faveButton = FaveButton(frame: CGRect(center: .zero, size: CGSize(width: 38, height: 38)), faveIconNormal: Icons.star.iconImage())
     
-    func config(withView view: UIView, note: Note) {
+    func config(with view: UIView, note: Note, dismissBlock: @escaping () -> Void) {
         self.configBarView(view: view)
         
         view.addSubview(editorTextView)
@@ -25,26 +25,32 @@ class EditorView {
         self.editorTextView.textContainerInset = UIEdgeInsetsMake(12, 12, 12, 12)
         self.editorTextView.alwaysBounceVertical = true
         
-//        let loadingView = DGElasticPullToRefreshLoadingView()
-//        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-//        self.editorTextView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-//            self?.editorTextView.dg_stopLoading()
-//            self?.editorTextView.dg_removePullToRefresh()
-//            }, loadingView: loadingView)
-//        if let pairColor = AppPairColors(rawValue: note.color)?.pairColor() {
-//            self.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
-//            self.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
-//        }
-        
         self.editorTextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.top.equalTo(self.barView.snp.bottom)
             make.bottom.equalToSuperview()
         }
+        
+        self.configNote(content: note.content)
+        
+        let weakSelf = self
+        let loadingView = PullDismissView { (progress) in
+            weakSelf.editorTextView.alpha = 1 - progress
+        }
+        
+        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        self.editorTextView.dg_addPullToRefreshWithActionHandler({ () -> Void in
+            dismissBlock()
+        }, loadingView: loadingView)
+        
+        if let pairColor = AppPairColors(rawValue: note.color)?.pairColor() {
+            weakSelf.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
+            weakSelf.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
+        }
     }
     
-    func configBarView(view: UIView) {
+    fileprivate func configBarView(view: UIView) {
         view.addSubview(self.barView)
         self.barView.backgroundColor = UIColor.yellow
         self.barView.clipsToBounds = true
@@ -68,7 +74,7 @@ class EditorView {
         self.faveButton.dotSecondColor = UIColor(red:0.98, green:0.41, blue:0.22, alpha:1.00)        
     }
     
-    func configNote(content: String) {
+    fileprivate func configNote(content: String) {
         let attrString = NSMutableAttributedString(string: content)
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.lineSpacing = NoteTextView.NoteLineSpace
@@ -80,11 +86,6 @@ class EditorView {
             NSFontAttributeName: appFont(size: 18)
             ], range: NSMakeRange(0, content.characters.count))
         self.editorTextView.attributedText = attrString
-        
-        self.editorTextView.alpha = 0
-        UIView.animate(withDuration: noteViewShowAlphaAnimation) { [unowned self] in
-            self.editorTextView.alpha = 1
-        }
     }
     
 }

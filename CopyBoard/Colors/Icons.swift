@@ -15,7 +15,9 @@ enum Icons {
     case setting
     case star
     case delete
+    case clear
     
+    case bigClear
     case plus
     case check
     case uncheck
@@ -29,7 +31,6 @@ enum Icons {
     case tag
     case due
     case note
-    case clear
     case smallDelete
     case arrangement
     case calendar
@@ -50,7 +51,7 @@ enum Icons {
     case mail
     case play
     case stop
-    case bigClear
+    
     
     func iconString() -> String {
         switch self {
@@ -58,6 +59,10 @@ enum Icons {
         case .search:  return "search"
         case .star: return "star"
         case .delete: return "delete"
+        case .clear:  return "clear"
+            
+            
+        case .bigClear: return "big_clear"
             
         case .plus: return "plus"
         case .check: return "check"
@@ -74,7 +79,6 @@ enum Icons {
         case .tag: return "tag"
         case .due: return "due"
         case .note: return "note"
-        case .clear:  return "clear"
         case .smallDelete: return "small_delete"
         case .arrangement: return "arrangement"
         case .calendar: return "calendar"
@@ -95,7 +99,6 @@ enum Icons {
         case .readLater: return "read_later"
         case .play: return "play"
         case .stop: return "stop"
-        case .bigClear: return "big_clear"
         }
     }
     
