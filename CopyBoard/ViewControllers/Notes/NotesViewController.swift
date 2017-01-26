@@ -181,10 +181,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             editorVC.editorView.editorTextView.heroID = "\(row)note"
             let y = UIScreen.main.bounds.height - 64
             editorVC.editorView.editorTextView.heroModifiers =
-                [.translate(x:0, y:y), .fade, .duration(kHeroAnimationDuration)]
-            
-            editorVC.editorView.barView.backgroundColor = cell.headerView.backgroundColor
-            editorVC.view.backgroundColor = cell.cardView.backgroundColor
+                [.translate(x:0, y:y), .duration(kHeroAnimationDuration)]
             
             weakSelf.present(editorVC, animated: true, completion: nil)
         }

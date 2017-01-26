@@ -36,8 +36,8 @@ class EditorViewController: UIViewController {
         }
         
         self.editorView.faveButton.rx.tap.subscribe { (event) in
-            DBManager.shared.updateObject { [unowned self] in
-                self.note.favourite = !self.note.favourite
+            DBManager.shared.updateObject {
+                weakSelf.note.favourite = !weakSelf.note.favourite
             }
         }.addDisposableTo(self.disposeBag)
         

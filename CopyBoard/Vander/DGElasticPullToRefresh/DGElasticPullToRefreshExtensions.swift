@@ -124,6 +124,7 @@ public extension UIScrollView {
     
     public func dg_setPullToRefreshFillColor(_ color: UIColor) {
         pullToRefreshView?.fillColor = color
+        pullToRefreshView?.topHolderView.backgroundColor = color
     }
     
     public func dg_stopLoading() {

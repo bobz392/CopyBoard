@@ -37,6 +37,7 @@ class EditorView {
         let weakSelf = self
         let loadingView = PullDismissView { (progress) in
             weakSelf.editorTextView.alpha = 1 - progress
+            debugPrint(weakSelf.editorTextView.contentOffset)
         }
         
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -45,8 +46,10 @@ class EditorView {
         }, loadingView: loadingView)
         
         if let pairColor = AppPairColors(rawValue: note.color)?.pairColor() {
-            weakSelf.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
-            weakSelf.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
+            self.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
+            self.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
+            self.barView.backgroundColor = pairColor.dark
+            view.backgroundColor = pairColor.light
         }
         
         self.faveButton.isSelected = note.favourite
@@ -85,7 +88,8 @@ class EditorView {
         
         attrString.addAttributes([
             NSParagraphStyleAttributeName: paraStyle,
-            NSFontAttributeName: appFont(size: 18)
+            NSFontAttributeName: appFont(size: 18),
+            NSForegroundColorAttributeName: AppColors.noteText
             ], range: NSMakeRange(0, content.characters.count))
         self.editorTextView.attributedText = attrString
     }

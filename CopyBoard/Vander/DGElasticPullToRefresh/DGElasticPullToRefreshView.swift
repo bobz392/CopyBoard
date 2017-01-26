@@ -117,6 +117,8 @@ open class DGElasticPullToRefreshView: UIView {
     fileprivate let r2ControlPointView = UIView()
     fileprivate let r3ControlPointView = UIView()
     
+    let topHolderView = UIView()
+    
     // MARK: -
     // MARK: Constructors
     
@@ -140,6 +142,9 @@ open class DGElasticPullToRefreshView: UIView {
         addSubview(r1ControlPointView)
         addSubview(r2ControlPointView)
         addSubview(r3ControlPointView)
+        
+        
+        addSubview(topHolderView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
@@ -402,6 +407,8 @@ open class DGElasticPullToRefreshView: UIView {
             let height = currentHeight()
             
             frame = CGRect(x: 0.0, y: -height, width: width, height: height)
+            topHolderView .frame = CGRect(x: 0, y: -100, width: width, height: 100)
+            self.clipsToBounds = false
             
             if state.isAnyOf([.loading, .animatingToStopped]) {
                 cControlPointView.center = CGPoint(x: width / 2.0, y: height)
@@ -434,7 +441,7 @@ open class DGElasticPullToRefreshView: UIView {
             
             shapeLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
             shapeLayer.path = currentPath()
-            shapeLayer.masksToBounds = false
+            shapeLayer.masksToBounds = true
             layoutLoadingView()
         }
     }
