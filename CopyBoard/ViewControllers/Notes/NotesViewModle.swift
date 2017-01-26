@@ -46,7 +46,7 @@ class NotesViewModel {
                     if notes.isEmpty {
                         return errorReturn
                     } else {
-                        let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query)).startWith(NotesSearchState.empty)
+                        let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query))
                         return k.asDriver(onErrorJustReturn: NotesSearchState(notes: [], searchString: query))
                     }
                 }
