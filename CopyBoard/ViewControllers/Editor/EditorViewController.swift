@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class EditorViewController: UIViewController {
     
     let editorView = EditorView()
-    let note: Note
+    fileprivate let note: Note
+    fileprivate let disposeBag = DisposeBag()
     
     init(note: Note) {
         self.note = note
@@ -30,8 +33,13 @@ class EditorViewController: UIViewController {
             weakSelf.dismiss(animated: true, completion: { (finish) -> Void in
                 weakSelf.editorView.editorTextView.dg_removePullToRefresh()
             })
-
         }
+        
+        self.editorView.faveButton.rx.tap.subscribe { (event) in
+            DBManager.shared.updateObject { [unowned self] in
+                self.note.favourite = !self.note.favourite
+            }
+        }.addDisposableTo(self.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dis))
         self.view.addGestureRecognizer(tap)

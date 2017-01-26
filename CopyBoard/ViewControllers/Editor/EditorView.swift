@@ -48,6 +48,8 @@ class EditorView {
             weakSelf.editorTextView.dg_setPullToRefreshFillColor(pairColor.dark)
             weakSelf.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
         }
+        
+        self.faveButton.isSelected = note.favourite
     }
     
     fileprivate func configBarView(view: UIView) {
