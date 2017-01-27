@@ -16,7 +16,7 @@ struct AppColors {
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
     static let emptyText = UIColor(red:0.77, green:0.76, blue:0.73, alpha:1.00)
     static let searchText = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)
-    
+    static let faveButton = UIColor(red:0.99, green:0.67, blue:0.26, alpha:1.00)
     //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
     //    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)
     //    static let noteCell = UIColor(red:0.95, green:0.89, blue:0.67, alpha:1.00)

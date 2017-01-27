@@ -59,7 +59,8 @@ final class PullDismissView: DGElasticPullToRefreshLoadingView {
                 self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
         }
-//        self.pb(progress)
+
+        self.pb(progress)
     }
     
     override func layoutSubviews() {

@@ -146,6 +146,9 @@
 		C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7D96D661E34304300B4E418 /* iRate.bundle */; };
 		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
 		C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D6C1E3434E300B4E418 /* RateManager.swift */; };
+		D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D001F7356D0DC91262059 /* CircleMenu.swift */; };
+		D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */; };
+		D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +371,9 @@
 		C7D96D671E34304300B4E418 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		C7D96D681E34304300B4E418 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		C7D96D6C1E3434E300B4E418 /* RateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
+		D61D001F7356D0DC91262059 /* CircleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenu.swift; sourceTree = "<group>"; };
+		D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuLoader.swift; sourceTree = "<group>"; };
+		D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +475,7 @@
 				C7D96D641E34304300B4E418 /* iRate */,
 				C7D96D521E341EEF00B4E418 /* FiveButton */,
 				C7655A7A1E32541D00A1CB9F /* SwiftDate */,
+				D61D00C5FB3FB683D4B037E1 /* CircleMenu */,
 			);
 			path = Vander;
 			sourceTree = "<group>";
@@ -745,6 +752,32 @@
 				C7D96D681E34304300B4E418 /* iRate.m */,
 			);
 			path = iRate;
+			sourceTree = "<group>";
+		};
+		D61D00C5FB3FB683D4B037E1 /* CircleMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D61D001F7356D0DC91262059 /* CircleMenu.swift */,
+				D61D0447351D694A07E6C1E5 /* CircleMenuButton */,
+				D61D034294F5BF584A1AC26C /* CircleMenuLoader */,
+			);
+			path = CircleMenu;
+			sourceTree = "<group>";
+		};
+		D61D034294F5BF584A1AC26C /* CircleMenuLoader */ = {
+			isa = PBXGroup;
+			children = (
+				D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */,
+			);
+			path = CircleMenuLoader;
+			sourceTree = "<group>";
+		};
+		D61D0447351D694A07E6C1E5 /* CircleMenuButton */ = {
+			isa = PBXGroup;
+			children = (
+				D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */,
+			);
+			path = CircleMenuButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1115,6 +1148,9 @@
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C71087681E38781800D9C3A9 /* BasePreprocessor.swift in Sources */,
+				D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */,
+				D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */,
+				D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

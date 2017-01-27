@@ -44,7 +44,7 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
-        self.noteView.holderView.addGestureRecognizer(tap)
+        self.noteView.searchHolderView.addGestureRecognizer(tap)
         
         #if debug
             Note.noteTestData()
@@ -87,7 +87,7 @@ class NotesViewController: BaseViewController {
     
 }
 
-// MARK: - realm notification datasource
+// MARK: - realm notification data source
 extension NotesViewController: RealmNotificationDataSource {
     
     func dataInit() {
@@ -142,26 +142,6 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let row = indexPath.row
         
         let toBlock = { () -> Void in
-//            let rect = cell.convert(cell.bounds, to: self.noteView.collectionView)
-//            
-//            let bounds = self.noteView.collectionView.bounds
-//            let scaleX = bounds.width / rect.width
-//            let scaleY = bounds.height / rect.height
-//            let pointX = -scaleX * rect.origin.x
-//            let pointY = -scaleY * rect.origin.y
-//            let point = CGPoint(x: pointX, y: pointY)
-//            let size = CGSize(width: scaleX * bounds.width, height: scaleY * (bounds.height))
-//            debugPrint(rect)
-//            debugPrint(point)
-//            debugPrint(size)
-//            debugPrint("\(scaleX) | \(scaleY)")
-//            
-//            debugPrint("\n")
-            
-//            HeroModifier
-//.scale(x: scaleX, y: scaleY, z: 1),
-//            , .translate(x: pointX, y: pointY)
-//            .size(size),
             weakSelf.noteView.collectionView.heroModifiers =
                 [.scale(2), .fade, .duration(kHeroAnimationDuration)]
             
@@ -179,10 +159,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
             
             editorVC.editorView.editorTextView.heroID = "\(row)note"
-            let y = UIScreen.main.bounds.height - 64
             editorVC.editorView.editorTextView.heroModifiers =
-                [.translate(x:0, y:y), .duration(kHeroAnimationDuration)]
-            
+                [.translate(x: 0, y:50), .fade, .duration(kHeroAnimationDuration - 0.2), .delay(0.2)]
             weakSelf.present(editorVC, animated: true, completion: nil)
         }
         

@@ -16,6 +16,8 @@ enum Icons {
     case star
     case delete
     case clear
+    case color
+    
     
     case bigClear
     case plus
@@ -60,7 +62,7 @@ enum Icons {
         case .star: return "star"
         case .delete: return "delete"
         case .clear:  return "clear"
-            
+        case .color: return "color"
             
         case .bigClear: return "big_clear"
             

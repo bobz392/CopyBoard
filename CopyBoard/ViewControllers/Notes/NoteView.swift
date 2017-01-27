@@ -21,15 +21,15 @@ class NoteView {
     var collectionView: UICollectionView!
     var emptyNoteView = UIView()
     var searchResultView = UIView()
-    let holderView = UIView()
+    let searchHolderView = UIView()
     
     private var barShowing = true
     
     func config(withView view: UIView) {
         AppColors.mainBackground.bgColor(to: view)
-        self.holderView.alpha = 0
-        self.holderView.isHidden = true
-        self.holderView.backgroundColor = UIColor.black
+        self.searchHolderView.alpha = 0
+        self.searchHolderView.isHidden = true
+        self.searchHolderView.backgroundColor = UIColor.black
         
         self.configBarView(view: view)
     }
@@ -99,7 +99,7 @@ class NoteView {
     func searchViewStateChange(query: Bool, notesCount: Int) {
         UIView.animate(withDuration: 0.1) { [unowned self] in
             if query {
-                self.holderView.alpha = 0
+                self.searchHolderView.alpha = 0
                 if notesCount > 0 {
                     self.searchResultView.alpha = 0
                 } else {
@@ -107,7 +107,7 @@ class NoteView {
                 }
             } else {
                 self.searchResultView.alpha = 0
-                self.holderView.alpha = kHolderViewAlpha
+                self.searchHolderView.alpha = kHolderViewAlpha
             }
         }
         
@@ -129,9 +129,7 @@ extension NoteView {
             layout.columnCount = self.layoutColumnCount()
             self.collectionView.performBatchUpdates({
                 layout.invalidateLayout()
-            }, completion: { (finish) in
-                //                self.collectionView.contentOffset = CGPoint.zero
-            })
+            }, completion: nil)
         }
     }
     
@@ -163,8 +161,8 @@ extension NoteView {
         
         self.configEmptyDataView(view: view)
 
-        view.addSubview(self.holderView)
-        self.holderView.snp.makeConstraints { (make) in
+        view.addSubview(self.searchHolderView)
+        self.searchHolderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.top.equalTo(self.collectionView)
@@ -258,12 +256,12 @@ extension NoteView {
             })
             weakSelf.searchBar.setShowsCancelButton(true, animated: false)
             weakSelf.searchBar.becomeFirstResponder()
-            weakSelf.holderView.isHidden = false
+            weakSelf.searchHolderView.isHidden = false
             weakSelf.searchResultView.isHidden = false
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
-                weakSelf.holderView.alpha = kHolderViewAlpha
+                weakSelf.searchHolderView.alpha = kHolderViewAlpha
                 weakSelf.titleLabel.alpha = 0
                 weakSelf.searchButton.alpha = 0
             }) { (finish) in
@@ -280,10 +278,10 @@ extension NoteView {
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
-                weakSelf.holderView.alpha = 0
+                weakSelf.searchHolderView.alpha = 0
                 weakSelf.searchResultView.alpha = 0
             }) { (finish) in
-                weakSelf.holderView.isHidden = true
+                weakSelf.searchHolderView.isHidden = true
                 weakSelf.searchResultView.isHidden = true
                 
                 weakSelf.titleLabel.snp.updateConstraints({ (make) in
