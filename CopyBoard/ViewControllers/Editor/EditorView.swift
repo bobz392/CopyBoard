@@ -12,9 +12,13 @@ import SnapKit
 class EditorView {
     let editorTextView = UITextView()
     let barView = UIView()
+    let barHolderView = UIView()
+    let keyboardBarView = UIView()
+    
     let closeButton = TintButton(type: .custom)
     let colorButton = TintButton(type: .custom)
     let colorHolderView = UIView()
+    
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
     let faveButton = FaveButton(frame: CGRect(center: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
@@ -39,9 +43,12 @@ class EditorView {
             self.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
             self.barView.backgroundColor = pairColor.dark
             view.backgroundColor = pairColor.light
+            self.keyboardBarView.backgroundColor = pairColor.dark
         }
         
         self.faveButton.isSelected = note.favourite
+        
+        self.configKeyboardAction(view: view)
     }
     
     func changeColor(start: Bool) {
@@ -80,6 +87,44 @@ class EditorView {
         })
     }
     
+    @objc func dismissKeyboard() {
+        self.editorTextView.resignFirstResponder()
+    }
+    
+    fileprivate func configKeyboardAction(view: UIView) {
+        let weakSelf = self
+        view.addSubview(self.keyboardBarView)
+        self.keyboardBarView.snp.makeConstraints { maker in
+            maker.height.equalTo(44)
+            maker.top.equalTo(self.editorTextView.snp.bottom)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+        }
+        self.keyboardBarView.alpha = 0
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.keyboardBarView.addGestureRecognizer(tap)
+        
+        KeyboardManager.shared.setHander { (show) in
+            let barHeight: CGFloat = show ? 20 : 64
+            let textViewBottom: CGFloat = show ? -KeyboardManager.keyboardHeight - 44 : 0
+            let barViewAlpha: CGFloat = show ? 0 : 1
+            
+            weakSelf.barView.snp.updateConstraints({ maker in
+                maker.height.equalTo(barHeight)
+            })
+            weakSelf.editorTextView.snp.updateConstraints({ maker in
+                maker.bottom.equalToSuperview().offset(textViewBottom)
+            })
+            
+            UIView.animate(withDuration: KeyboardManager.duration, animations: {
+                view.layoutIfNeeded()
+                weakSelf.barHolderView.alpha = barViewAlpha
+                weakSelf.keyboardBarView.alpha = 1 - barViewAlpha
+            })
+        }
+    }
+    
     fileprivate func configBarView(view: UIView) {
         view.addSubview(self.barView)
         self.barView.snp.makeConstraints { maker in
@@ -89,19 +134,28 @@ class EditorView {
             maker.height.equalTo(64)
         }
 
-        self.barView.addSubview(self.closeButton)
+        self.barView.addSubview(self.barHolderView)
+        self.barHolderView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().offset(20)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+        self.barHolderView.bgClear()
+        
+        self.barHolderView.addSubview(self.closeButton)
         self.closeButton.setImage(Icons.bigClear.iconImage(), for: .normal)
         self.closeButton.addTintColor()
         self.closeButton.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview().offset(10)
+            maker.centerY.equalToSuperview()
             maker.height.equalTo(32)
             maker.width.equalTo(32)
             maker.left.equalToSuperview().offset(12)
         }
 
-        self.barView.addSubview(self.faveButton)
+        self.barHolderView.addSubview(self.faveButton)
         self.faveButton.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview().offset(10)
+            maker.centerY.equalToSuperview()
             maker.height.equalTo(32)
             maker.width.equalTo(32)
             maker.right.equalToSuperview().offset(-12)
@@ -113,7 +167,7 @@ class EditorView {
     }
 
     fileprivate func configColorView(view: UIView) {
-        view.addSubview(self.colorButton)
+        self.barHolderView.addSubview(self.colorButton)
         self.colorButton.setImage(Icons.color.iconImage(), for: .normal)
         self.colorButton.addTintColor()
         self.colorButton.snp.makeConstraints { maker in

@@ -51,6 +51,7 @@
 		C7403F8D1E282A4E0067229E /* CopyBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F8C1E282A4E0067229E /* CopyBoardTests.swift */; };
 		C7403F951E282A8F0067229E /* GroupManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F941E282A8F0067229E /* GroupManagerTest.swift */; };
 		C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
+		C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7B1E32541D00A1CB9F /* CalendarName.swift */; };
 		C7655A911E32541D00A1CB9F /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7C1E32541D00A1CB9F /* Commons.swift */; };
@@ -266,6 +267,7 @@
 		C7403F8E1E282A4E0067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7403F941E282A8F0067229E /* GroupManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTest.swift; sourceTree = "<group>"; };
 		C74568B71E2D34D700E7C776 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C7655A7B1E32541D00A1CB9F /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarName.swift; sourceTree = "<group>"; };
 		C7655A7C1E32541D00A1CB9F /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				C76B8DF61E35AB06006896FA /* DeviceManager.swift */,
 				C76996101E369968001E2F86 /* TextManager.swift */,
 				C72ECF4D1E382B59008B34E1 /* Convenient.swift */,
+				C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -1148,6 +1151,7 @@
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C71087681E38781800D9C3A9 /* BasePreprocessor.swift in Sources */,
+				C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */,
 				D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */,
 				D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */,
 				D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */,
