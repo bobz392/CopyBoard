@@ -75,7 +75,7 @@ enum AppPairColors: Int, CustomDebugStringConvertible {
             return (UIColor(red:0.81, green:0.58, blue:0.85, alpha:1.00),
                     UIColor(red:0.73, green:0.41, blue:0.78, alpha:1.00))
         case .watermelon:
-            return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
+            return (UIColor(red:0.94, green:0.60, blue:0.60, alpha:1.00),//UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
                     UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))
         case .powderBlue:
             return (UIColor(red:0.73, green:0.79, blue:0.94, alpha:1.00),
