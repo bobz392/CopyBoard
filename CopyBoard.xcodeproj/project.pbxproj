@@ -52,6 +52,7 @@
 		C7403F951E282A8F0067229E /* GroupManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7403F941E282A8F0067229E /* GroupManagerTest.swift */; };
 		C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */; };
+		C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7B1E32541D00A1CB9F /* CalendarName.swift */; };
 		C7655A911E32541D00A1CB9F /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7C1E32541D00A1CB9F /* Commons.swift */; };
@@ -268,6 +269,7 @@
 		C7403F941E282A8F0067229E /* GroupManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTest.swift; sourceTree = "<group>"; };
 		C74568B71E2D34D700E7C776 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C7655A7B1E32541D00A1CB9F /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarName.swift; sourceTree = "<group>"; };
 		C7655A7C1E32541D00A1CB9F /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				C72332B81E3033AB00D5189D /* NoteTextView.swift */,
+				C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -1081,6 +1084,7 @@
 				C710876A1E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift in Sources */,
 				C71087751E38781800D9C3A9 /* HeroPlugin.swift in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
+				C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
 				C710876D1E38781800D9C3A9 /* DispatchQueue+Hero.swift in Sources */,
 				C710877A1E38781800D9C3A9 /* SourcePreprocessor.swift in Sources */,

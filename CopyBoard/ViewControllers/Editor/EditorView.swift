@@ -15,8 +15,8 @@ class EditorView {
     let barHolderView = UIView()
     let keyboardBarView = UIView()
     
-    let closeButton = TintButton(type: .custom)
-    let colorButton = TintButton(type: .custom)
+    let closeButton = TouchButton(type: .custom)
+    let colorButton = TouchButton(type: .custom)
     let colorHolderView = UIView()
     
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
@@ -102,8 +102,17 @@ class EditorView {
         }
         self.keyboardBarView.alpha = 0
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        self.keyboardBarView.addGestureRecognizer(tap)
+        let hideKeyboardButton = TouchButton(type: .custom)
+        hideKeyboardButton.setImage(Icons.hideKeyboard.iconImage(), for: .normal)
+        hideKeyboardButton.config()
+        hideKeyboardButton.addTarget(self, action: #selector(self.dismissKeyboard), for: .touchUpInside)
+        self.keyboardBarView.addSubview(hideKeyboardButton)
+        hideKeyboardButton.snp.makeConstraints { maker in
+            maker.width.equalTo(32)
+            maker.height.equalTo(32)
+            maker.centerY.equalToSuperview()
+            maker.right.equalToSuperview().offset(-12)
+        }
         
         KeyboardManager.shared.setHander { (show) in
             let barHeight: CGFloat = show ? 20 : 64
@@ -145,7 +154,7 @@ class EditorView {
         
         self.barHolderView.addSubview(self.closeButton)
         self.closeButton.setImage(Icons.bigClear.iconImage(), for: .normal)
-        self.closeButton.addTintColor()
+        self.closeButton.config()
         self.closeButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.height.equalTo(32)
@@ -169,7 +178,7 @@ class EditorView {
     fileprivate func configColorView(view: UIView) {
         self.barHolderView.addSubview(self.colorButton)
         self.colorButton.setImage(Icons.color.iconImage(), for: .normal)
-        self.colorButton.addTintColor()
+        self.colorButton.config()
         self.colorButton.snp.makeConstraints { maker in
             maker.centerY.equalTo(self.faveButton)
             maker.height.equalTo(self.faveButton)
