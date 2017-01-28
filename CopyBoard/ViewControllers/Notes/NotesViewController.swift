@@ -13,6 +13,7 @@ class NotesViewController: BaseViewController {
     let noteView = NoteView()
     var viewModel: NotesViewModel!
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
+    fileprivate var noteHeight: CGFloat? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,11 +210,15 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {
-        
-        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-        let textRect = content.bounding(size: size, font: font)
-        
-        return ceil(textRect.height)
+        if let height = self.noteHeight {
+            return height
+        } else {
+            let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+            let textRect = content.bounding(size: size, font: font)
+            let height = ceil(textRect.height)
+            self.noteHeight = height
+            return height
+        }
     }
 }
 

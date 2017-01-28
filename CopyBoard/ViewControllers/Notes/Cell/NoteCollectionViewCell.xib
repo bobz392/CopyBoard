@@ -82,8 +82,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmr-we-EGz">
-                                <rect key="frame" x="5" y="30" width="131" height="142"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmr-we-EGz">
+                                <rect key="frame" x="5" y="30" width="131" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                             <constraint firstAttribute="trailing" secondItem="Al0-lU-Jji" secondAttribute="trailing" id="OF5-eP-fSG"/>
                             <constraint firstItem="dmr-we-EGz" firstAttribute="top" secondItem="Al0-lU-Jji" secondAttribute="bottom" constant="5" id="Rus-pG-Lwd"/>
                             <constraint firstAttribute="trailing" secondItem="fpg-z4-ELJ" secondAttribute="trailing" id="YS8-Qi-MQZ"/>
-                            <constraint firstAttribute="bottom" secondItem="dmr-we-EGz" secondAttribute="bottom" constant="5" id="Yum-It-38O"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dmr-we-EGz" secondAttribute="bottom" constant="5" id="Yum-It-38O"/>
                             <constraint firstAttribute="trailing" secondItem="dmr-we-EGz" secondAttribute="trailing" constant="5" id="dWS-Lu-z4V"/>
                             <constraint firstItem="fpg-z4-ELJ" firstAttribute="top" secondItem="AEV-TO-LfN" secondAttribute="top" id="eC8-Ay-27T"/>
                             <constraint firstItem="Al0-lU-Jji" firstAttribute="leading" secondItem="AEV-TO-LfN" secondAttribute="leading" id="eX5-J6-6xg"/>

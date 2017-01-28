@@ -56,8 +56,8 @@ extension String {
         let attr = NSMutableAttributedString(string: self)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 0
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        paragraphStyle.paragraphSpacing = 0
+        paragraphStyle.lineBreakMode = .byTruncatingMiddle
+        
         
         let range = NSMakeRange(0, self.characters.count)
         attr.addAttribute(NSParagraphStyleAttributeName,
@@ -68,11 +68,20 @@ extension String {
     }
     
     func bounding(size: CGSize, font: UIFont) -> CGSize {
+//        let label = UILabel(frame: CGRect(center: .zero, size: size))
+//        label.numberOfLines = 0
+//        label.attributedText = noteAttr()
+//        label.font = appFont(size: 16)
+//        let size = label.sizeThatFits(size)
+//        
+        
+        
+        
         let attr = noteAttr()
-        var rect = attr.boundingRect(with: size,
+        let rect = attr.boundingRect(with: size,
                                      options: [.usesLineFragmentOrigin],
                                      context: nil)
-        
+//
         //文本的高度减去字体高度小于等于行间距，判断为当前只有1行
 //        if (rect.size.height - font.lineHeight) <= 0 {
 //            if self.containChinese() {
@@ -81,7 +90,7 @@ extension String {
 //            }
 //        }
         
-        return rect.size
+        return CGSize(width: rect.width, height: appFont(size: 16).lineHeight * 5)
     }
     
     func containChinese() -> Bool {

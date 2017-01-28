@@ -67,11 +67,13 @@ class EditorViewController: UIViewController {
             self.editorView.editorTextView.dg_removePullToRefresh()
             self.dismiss(animated: true, completion: nil)
         }
-//        if self.editorView.editorTextView.text.characters.count > 0 {
-//            DBManager.shared.updateObject {
-//                self.note.content = self.editorView.editorTextView.text
-//            }
-//        }
+        
+        let noteText = self.editorView.editorTextView.text ?? ""
+        if noteText.characters.count > 0, self.note.content != noteText {
+            DBManager.shared.updateObject {
+                self.note.content = self.editorView.editorTextView.text
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
