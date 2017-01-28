@@ -10,7 +10,7 @@ import UIKit
 
 struct AppColors {
     
-    static let noteText = UIColor(red:0.43, green:0.26, blue:0.19, alpha:1.00)
+    static let noteText = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
     static let noteDate = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
@@ -72,8 +72,8 @@ enum AppPairColors: Int, CustomDebugStringConvertible {
             return (UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00),
                     UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00))
         case .pink:
-            return (UIColor(red:0.95, green:0.49, blue:0.76, alpha:1.00),
-                    UIColor(red:0.82, green:0.37, blue:0.62, alpha:1.00))
+            return (UIColor(red:0.81, green:0.58, blue:0.85, alpha:1.00),
+                    UIColor(red:0.73, green:0.41, blue:0.78, alpha:1.00))
         case .watermelon:
             return (UIColor(red:0.93, green:0.45, blue:0.49, alpha:1.00),
                     UIColor(red:0.84, green:0.33, blue:0.36, alpha:1.00))
@@ -81,8 +81,8 @@ enum AppPairColors: Int, CustomDebugStringConvertible {
             return (UIColor(red:0.73, green:0.79, blue:0.94, alpha:1.00),
                     UIColor(red:0.60, green:0.67, blue:0.83, alpha:1.00))
         case .mint:
-            return (UIColor(red:0.28, green:0.72, blue:0.60, alpha:1.00),
-                    UIColor(red:0.00, green:0.59, blue:0.53, alpha:1.00))
+            return (UIColor(red:0.50, green:0.80, blue:0.77, alpha:1.00),
+                    UIColor(red:0.30, green:0.71, blue:0.67, alpha:1.00))
         }
     }
     
