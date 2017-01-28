@@ -144,7 +144,7 @@ extension NoteView {
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space
         layout.columnCount = self.layoutColumnCount()
-        layout.itemRenderDirection = .leftToRight
+        layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
         layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
         

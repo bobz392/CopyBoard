@@ -158,10 +158,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let toBlock = { () -> Void in
             weakSelf.noteView.collectionView.heroModifiers =
-                [.scale(2), .fade, .duration(kHeroAnimationDuration)]
+                [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
             
             let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -64)
-            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration), .position(p)]
+            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
             
             editorVC.isHeroEnabled = true
             editorVC.editorView.faveButton.heroID = "\(row)star"
@@ -201,7 +201,6 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let note = self.viewModel.noteIn(row: indexPath.row)
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
-        
         let font = appFont(size: 16)
         let space = CGFloat(layout.columnCount + 1) * self.noteView.collectionViewItemSpace()
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
@@ -210,11 +209,11 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let calString = NSString(string: content)
+        
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-        let textRect = calString.boundingRect(with: size, options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSFontAttributeName: font], context: nil)
+        let textRect = content.bounding(size: size, font: font)
+        
         return ceil(textRect.height)
     }
-    
 }
 

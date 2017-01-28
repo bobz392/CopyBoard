@@ -144,7 +144,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     func willLeaveEditor() {
-        self.backView.alpha = 1
         self.headerView.heroID = nil
         self.headerView.heroModifiers = nil
         
@@ -157,10 +156,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
         UIView.animate(withDuration: noteViewShowAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: { [unowned self] in
             self.noteLabel.alpha = 1
             self.layer.shadowOpacity = 0.2
-            self.configCell(use: self.note!)
+            if let n = self.note,
+                let pairColor = AppPairColors(rawValue: n.color)?.pairColor() {
+                pairColor.dark.bgColor(to: self.headerView)
+                pairColor.light.bgColor(to: self.cardView)
+            }
 
-        }) { (finish) in
-        
+        }) { [unowned self] (finish) in
+            self.backView.alpha = 1
         }
     }
     
