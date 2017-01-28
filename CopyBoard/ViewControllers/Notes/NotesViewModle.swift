@@ -14,15 +14,8 @@ import RxDataSources
 
 class NotesViewModel {
     typealias SearchBlock = (String) -> Void
-    //    let searchResultDriver: Driver<String>
-    //    let dataSource = RxTableViewSectionedAnimatedDataSource<NotesData>()
-    
-    //    let inSearch = Variable<Bool>(false)
     let disposeBag = DisposeBag()
-    
     var notes: Results<Note>
-    
-    //    var noteToken =
     var isInSearch = false
     var isQueryStringEmpty = true
     var searchNotes = [Note]()
@@ -54,11 +47,6 @@ class NotesViewModel {
         
         let insearchVariable = Variable(self.isInSearch).asObservable()
         
-//        let empty = search.asObservable()
-//            .map { (state) -> Bool in
-//            return state.notes.count <= 0 && state.searchString.characters.count > 0
-//        }.bindTo(binder: (Observable<Bool>) -> R)
-        
         search.asObservable()
             .takeUntil(insearchVariable)
             .subscribe { [unowned self] (state) in
@@ -69,24 +57,6 @@ class NotesViewModel {
                     self.searchBlock(s.searchString)
                 }
             }.addDisposableTo(disposeBag)
-        
-        //        searchDriver.asObservable()
-        //            .takeUntil(inSearch.asObservable())
-        //            .map { (state) -> CGFloat in
-        //                debugPrint("holder view alpha = \(state.searchString.isEmpty ? 0.3 : 0)")
-        //                return state.searchString.isEmpty ? 0.3 : 0
-        //            }
-        //            .bindTo(holderViewAlpha)
-        //            .addDisposableTo(disposeBag)
-        
-        
-        //        dataSource.configureCell = { (datas, tableView, indexPath, note) in
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        //            cell.textLabel?.text = note.content
-        //            return cell
-        //        }
-        //
-        //        let initDataSource = NotesData( notes: Array(DBManager.shared.queryNotes()) )
     }
     
     private func useSearchNotes() -> Bool {

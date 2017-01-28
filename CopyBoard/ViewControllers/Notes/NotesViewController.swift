@@ -160,7 +160,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             weakSelf.noteView.collectionView.heroModifiers =
                 [.scale(2), .fade, .duration(kHeroAnimationDuration)]
             
-            let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -96)
+            let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -64)
             weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration), .position(p)]
             
             editorVC.isHeroEnabled = true
@@ -172,7 +172,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             
             editorVC.view.heroID = "\(row)card"
             editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
-
+            
+            editorVC.editorView.colorButton.heroModifiers = [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+            editorVC.editorView.closeButton.heroModifiers = [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+            
             editorVC.editorView.editorTextView.heroID = "\(row)note"
             editorVC.editorView.editorTextView.heroModifiers =
                 [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration)]
