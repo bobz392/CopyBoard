@@ -99,13 +99,11 @@ extension EditorViewController: CircleMenuDelegate {
             let weakSelf = self
             weakSelf.editorView.changeColor(pair: pc)
             weakSelf.view.backgroundColor = pc.pairColor().light
-            DBManager.shared.updateObject {
+            DBManager.shared.updateObject(false, updateBlock: { 
                 weakSelf.note.color = pc.rawValue
-            } 
+            })
+            weakSelf.currentPairColor = nil
         }
-        
-        
-     
     }
     
     func menuCollapsed(_ circleMenu: CircleMenu) {

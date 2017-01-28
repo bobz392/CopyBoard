@@ -173,12 +173,14 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             editorVC.view.heroID = "\(row)card"
             editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
             
-            editorVC.editorView.colorButton.heroModifiers = [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-            editorVC.editorView.closeButton.heroModifiers = [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+            editorVC.editorView.colorButton.heroModifiers =
+                [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+            editorVC.editorView.closeButton.heroModifiers =
+                [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
             
             editorVC.editorView.editorTextView.heroID = "\(row)note"
             editorVC.editorView.editorTextView.heroModifiers =
-                [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration)]
+                [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
             weakSelf.present(editorVC, animated: true, completion: nil)
         }
         

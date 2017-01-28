@@ -133,12 +133,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.heroID = "\(row)star"
         self.faveButton.heroModifiers = [.fade, .duration(kHeroAnimationDuration)]
         
-        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: { [unowned self] in
             self.noteLabel.alpha = 0
             self.layer.shadowOpacity = 0
         }) { (finish) in
             block()
         }
+        
         self.backView.alpha = 0
     }
     
@@ -153,10 +154,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.heroID = nil 
         self.faveButton.heroModifiers = nil
         
-        UIView.animate(withDuration: noteViewShowAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+        UIView.animate(withDuration: noteViewShowAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: { [unowned self] in
             self.noteLabel.alpha = 1
             self.layer.shadowOpacity = 0.2
-        }) { (finish) in }
+            self.configCell(use: self.note!)
+
+        }) { (finish) in
+        
+        }
     }
     
 }
