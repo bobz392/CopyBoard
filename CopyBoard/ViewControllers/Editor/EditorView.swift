@@ -15,13 +15,14 @@ class EditorView {
     let closeButton = TintButton(type: .custom)
     let colorButton = TintButton(type: .custom)
     let colorHolderView = UIView()
+    let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
     let faveButton = FaveButton(frame: CGRect(center: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
     func config(with view: UIView, note: Note, dismissBlock: @escaping () -> Void) {
         self.configBarView(view: view)
-        self.configColorView(view: view)
         self.configNote(view: view, content: note.content)
-
+        self.configColorView(view: view)
+        
         let weakSelf = self
         let loadingView = PullDismissView { (progress) in
             weakSelf.faveButton.alpha = 1 - progress
@@ -41,6 +42,42 @@ class EditorView {
         }
         
         self.faveButton.isSelected = note.favourite
+    }
+    
+    func changeColor(start: Bool) {
+        let weakSelf = self
+        self.editorTextView.resignFirstResponder()
+        if start {
+            self.colorHolderView.isHidden = false
+            UIView.animate(withDuration: 0.2, animations: {
+                weakSelf.colorHolderView.alpha = 1
+            }, completion: { (finish) in
+                weakSelf.colorMenu.onTap()
+            })
+            
+            
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+                weakSelf.colorHolderView.alpha = 0
+            }, completion: { (finish) in
+                weakSelf.colorHolderView.isHidden = true
+            })
+            
+        }
+    }
+    
+    func changeColor(pair: AppPairColors) {
+        let weakSelf = self
+        let pc = pair.pairColor()
+        UIView.animate(withDuration: 0.4, animations: {
+            weakSelf.barView.backgroundColor = pc.dark
+            weakSelf.editorTextView.backgroundColor = pc.light
+            weakSelf.editorTextView.dg_setPullToRefreshFillColor(pc.dark)
+            weakSelf.editorTextView.dg_setPullToRefreshBackgroundColor(pc.light)
+            weakSelf.barView.backgroundColor = pc.dark
+        }, completion: { (finish) in
+            weakSelf.changeColor(start: false)
+        })
     }
     
     fileprivate func configBarView(view: UIView) {
@@ -86,9 +123,29 @@ class EditorView {
             maker.right.equalTo(self.faveButton.snp.left).offset(-12)
         }
 
-        self.colorHolderView.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        self.colorHolderView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         self.colorHolderView.alpha = 0
         self.colorHolderView.isHidden = true
+        
+        view.addSubview(self.colorHolderView)
+        self.colorHolderView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+        }
+        
+        self.colorHolderView.addSubview(self.colorMenu)
+        self.colorMenu.backgroundColor = UIColor.white
+        self.colorMenu.buttonsCount = 5
+        self.colorMenu.duration = 0.5
+        self.colorMenu.distance = 120
+        self.colorMenu.snp.makeConstraints { maker in
+            maker.height.equalTo(60)
+            maker.width.equalTo(60)
+            maker.center.equalToSuperview()
+        }
+        self.colorMenu.layer.cornerRadius = 30
     }
     
     fileprivate func configNote(view: UIView, content: String) {

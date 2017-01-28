@@ -119,6 +119,21 @@ extension NotesViewController {
     
 }
 
+extension EditorViewController: HeroViewControllerDelegate {
+    
+    func heroWillStartAnimatingFrom(viewController: UIViewController) {
+        
+    }
+    
+    func heroDidEndAnimatingTo(viewController: UIViewController) {
+        
+    }
+    
+    func heroWillStartTransition() {
+        
+    }
+}
+
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
@@ -157,10 +172,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             
             editorVC.view.heroID = "\(row)card"
             editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
-            
+
             editorVC.editorView.editorTextView.heroID = "\(row)note"
             editorVC.editorView.editorTextView.heroModifiers =
-                [.translate(x: 0, y:50), .fade, .duration(kHeroAnimationDuration - 0.2), .delay(0.2)]
+                [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration)]
             weakSelf.present(editorVC, animated: true, completion: nil)
         }
         
@@ -173,6 +188,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let note = self.viewModel.noteIn(row: indexPath.row)
         let query = self.noteView.searchBar.text
         cell.configCell(use: note, query: query)
+        
         return cell
     }
     

@@ -16,6 +16,8 @@ class EditorViewController: UIViewController {
     fileprivate let note: Note
     fileprivate let disposeBag = DisposeBag()
 
+    fileprivate var currentPairColor: [AppPairColors]? = nil
+    
     init(note: Note) {
         self.note = note
         super.init(nibName: nil, bundle: nil)
@@ -42,13 +44,14 @@ class EditorViewController: UIViewController {
                 }.addDisposableTo(self.disposeBag)
 
         self.editorView.colorButton.rx.tap.subscribe { (event) in
-
+                weakSelf.editorView.changeColor(start: true)
                 }.addDisposableTo(self.disposeBag)
 
         self.editorView.closeButton.rx.tap.subscribe { (event) in
             self.dismissAction()
         }.addDisposableTo(self.disposeBag)
 
+        self.editorView.colorMenu.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -71,4 +74,41 @@ class EditorViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+}
+
+extension EditorViewController: CircleMenuDelegate {
+    
+    func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int) {
+        
+        let pairColors: [AppPairColors]
+        if let pairs = self.currentPairColor {
+            pairColors = pairs
+        } else {
+            guard let pair = AppPairColors(rawValue: self.note.color) else {
+                fatalError("have no this type color \(note.color)")
+            }
+            pairColors = pair.colorsExceptMe()
+            self.currentPairColor = pairColors
+        }
+        
+        button.backgroundColor = pairColors[atIndex].pairColor().dark
+    }
+    
+    func circleMenu(_ circleMenu: CircleMenu, buttonWillSelected button: UIButton, atIndex: Int) {
+        if let pc = self.currentPairColor?[atIndex] {
+            let weakSelf = self
+            weakSelf.editorView.changeColor(pair: pc)
+            weakSelf.view.backgroundColor = pc.pairColor().light
+            DBManager.shared.updateObject {
+                weakSelf.note.color = pc.rawValue
+            } 
+        }
+        
+        
+     
+    }
+    
+    func menuCollapsed(_ circleMenu: CircleMenu) {
+        self.editorView.changeColor(start: false)
+    }
 }

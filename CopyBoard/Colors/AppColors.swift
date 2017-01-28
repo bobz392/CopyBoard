@@ -55,7 +55,7 @@ struct AppColors {
     
 }
 
-enum AppPairColors: Int {
+enum AppPairColors: Int, CustomDebugStringConvertible {
     case sand = 0
     case pink
     case white
@@ -85,6 +85,41 @@ enum AppPairColors: Int {
                     UIColor(red:0.00, green:0.59, blue:0.53, alpha:1.00))
         }
     }
+    
+    func colorsExceptMe() -> [AppPairColors] {
+        let colors: [AppPairColors] = [
+            .sand,
+            .pink,
+            .white,
+            .watermelon,
+            .powderBlue,
+            .mint
+        ]
+        
+        return colors.filter({ (pairColor) -> Bool in
+            pairColor != self
+        })
+    }
+    
+    var debugDescription: String {
+        get {
+            switch self {
+            case .sand:
+                return "sand"
+            case .white:
+                return "whit"
+            case .pink:
+                return "pink"
+            case .watermelon:
+                return "watermelon"
+            case .powderBlue:
+                return "powderBlue"
+            case .mint:
+                return "mint"
+            }
+        }
+    }
+    
 }
 
 extension UIColor {
@@ -124,7 +159,7 @@ extension UIView {
         self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 10
         self.layer.shadowOffset = CGSize.zero
-//        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
+        //        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
         
         
     }
