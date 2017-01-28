@@ -154,6 +154,7 @@ class EditorView {
 //        self.editorTextView.font = self.editorTextView.noteFont
         self.editorTextView.bgClear()
         self.editorTextView.textColor = AppColors.noteText
+        self.editorTextView.tintColor = AppColors.noteText
         self.editorTextView.textContainerInset = UIEdgeInsetsMake(12, 12, 12, 12)
         self.editorTextView.alwaysBounceVertical = true
 
