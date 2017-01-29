@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = ScrollingNavigationController(rootViewController: NotesViewController())
 //        navigationController.isNavigationBarHidden = true
+        navigationController.view.backgroundColor = AppColors.mainBackground
         let barImage = AppColors.mainBackground.toImage()
         navigationController.navigationBar.shadowImage = barImage
         navigationController.navigationBar.setBackgroundImage(barImage, for: .default)

@@ -363,7 +363,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     private func checkForPartialScroll() {
         let frame = navigationBar.frame
-        var duration = TimeInterval(0)
+        var duration = TimeInterval(0.2)
         var delta = CGFloat(0.0)
         let distance = delta / (frame.size.height / 2)
         
@@ -371,12 +371,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         let threshold = statusBarHeight - (frame.size.height / 2)
         if navigationBar.frame.origin.y >= threshold {
             delta = frame.origin.y - statusBarHeight
-            duration = TimeInterval(abs(distance * 0.2))
+//            duration = TimeInterval(abs(distance * 0.4))
             state = .expanded
         } else {
             // Scroll up
             delta = frame.origin.y + deltaLimit
-            duration = TimeInterval(abs(distance * 0.2))
+//            duration = TimeInterval(abs(distance * 0.4))
             state = .collapsed
         }
         

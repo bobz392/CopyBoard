@@ -46,29 +46,27 @@ class NotesViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(self.noteView.collectionView, delay: 0)
-        }
-        
-        
         #if debug
             Note.noteTestData()
         #endif
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(self.noteView.collectionView, delay: 0)
+            navigationController.scrollingNavbarDelegate = self
+        }
+    }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        
-//        if let navigationController = navigationController as? ScrollingNavigationController {
-//            navigationController.stopFollowingScrollView()
-//        }
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,7 +74,7 @@ class NotesViewController: BaseViewController {
         self.selectedCell?.willLeaveEditor()
         self.selectedCell = nil
     }
- 
+    
     deinit {
         DBManager.shared.unbindNotify()
     }
@@ -120,14 +118,18 @@ extension NotesViewController: RealmNotificationDataSource {
 
 // MARK: transition scroll
 //extension NotesViewController {
-//    
+//
 //    override func deviceOrientationChanged() {
 //        NoteCollectionViewInputOverlay.closeOpenItem()
 //        self.noteView.invalidateLayout()
-//        
+//
 //    }
-//    
+//
 //}
+
+extension NotesViewController: ScrollingNavigationControllerDelegate {
+    
+}
 
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
