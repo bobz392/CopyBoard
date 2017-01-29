@@ -416,7 +416,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
                 className == "UINavigationItemView" ||
                 className == "UIImageView" ||
                 className == "UISegmentedControl" ||
-                className == "UIView"
+                className == "CopyBoard.BarView"
         }
         
         navigationBar.subviews

@@ -17,7 +17,9 @@ class NotesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let bar = self.navigationController?.navigationBar {
+            self.noteView.configBarView(bar: bar)
+        }
         self.noteView.config(withView: self.view)
         self.noteView.configCollectionView(view: self.view, delegate: self)
         
@@ -44,16 +46,29 @@ class NotesViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(self.noteView.collectionView, delay: 0)
+        }
+        
+        
         #if debug
             Note.noteTestData()
         #endif
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-           self.view.layoutIfNeeded()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        
+//    }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        
+//        if let navigationController = navigationController as? ScrollingNavigationController {
+//            navigationController.stopFollowingScrollView()
+//        }
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -61,11 +76,7 @@ class NotesViewController: BaseViewController {
         self.selectedCell?.willLeaveEditor()
         self.selectedCell = nil
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
+ 
     deinit {
         DBManager.shared.unbindNotify()
     }

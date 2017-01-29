@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController(rootViewController: NotesViewController())
-        navigationController.isNavigationBarHidden = true
+        let navigationController = ScrollingNavigationController(rootViewController: NotesViewController())
+//        navigationController.isNavigationBarHidden = true
         let barImage = AppColors.mainBackground.toImage()
         navigationController.navigationBar.shadowImage = barImage
         navigationController.navigationBar.setBackgroundImage(barImage, for: .default)

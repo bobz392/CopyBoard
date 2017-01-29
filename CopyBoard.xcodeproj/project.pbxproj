@@ -53,6 +53,10 @@
 		C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */; };
 		C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */; };
+		C74BF1401E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13D1E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift */; };
+		C74BF1411E3D9524007F35E1 /* ScrollingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13E1E3D9524007F35E1 /* ScrollingNavigationController.swift */; };
+		C74BF1421E3D9524007F35E1 /* ScrollingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13F1E3D9524007F35E1 /* ScrollingNavigationViewController.swift */; };
+		C74BF1441E3D98EE007F35E1 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF1431E3D98EE007F35E1 /* BarView.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655A901E32541D00A1CB9F /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7B1E32541D00A1CB9F /* CalendarName.swift */; };
 		C7655A911E32541D00A1CB9F /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655A7C1E32541D00A1CB9F /* Commons.swift */; };
@@ -270,6 +274,10 @@
 		C74568B71E2D34D700E7C776 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
+		C74BF13D1E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollingNavbar+Sizes.swift"; sourceTree = "<group>"; };
+		C74BF13E1E3D9524007F35E1 /* ScrollingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationController.swift; sourceTree = "<group>"; };
+		C74BF13F1E3D9524007F35E1 /* ScrollingNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationViewController.swift; sourceTree = "<group>"; };
+		C74BF1431E3D98EE007F35E1 /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C7655A7B1E32541D00A1CB9F /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarName.swift; sourceTree = "<group>"; };
 		C7655A7C1E32541D00A1CB9F /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
@@ -474,6 +482,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C74BF13C1E3D9524007F35E1 /* AMScrollingNavbar */,
 				C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */,
 				C71087511E38781800D9C3A9 /* Hero */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
@@ -557,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				C7403F321E280E040067229E /* BaseViewController.swift */,
+				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
 				C7655AA51E325F9100A1CB9F /* Editor */,
 				C7403F361E280E240067229E /* Notes */,
 			);
@@ -582,6 +592,16 @@
 				C7403F941E282A8F0067229E /* GroupManagerTest.swift */,
 			);
 			path = CopyBoardTests;
+			sourceTree = "<group>";
+		};
+		C74BF13C1E3D9524007F35E1 /* AMScrollingNavbar */ = {
+			isa = PBXGroup;
+			children = (
+				C74BF13D1E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift */,
+				C74BF13E1E3D9524007F35E1 /* ScrollingNavigationController.swift */,
+				C74BF13F1E3D9524007F35E1 /* ScrollingNavigationViewController.swift */,
+			);
+			path = AMScrollingNavbar;
 			sourceTree = "<group>";
 		};
 		C74FF9C41E2C455400D5CC9E /* Model */ = {
@@ -1116,15 +1136,18 @@
 				C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */,
 				C7655A981E32541D00A1CB9F /* DateInRegion+Components.swift in Sources */,
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
+				C74BF1401E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
 				C71087731E38781800D9C3A9 /* HeroDefaultAnimatorViewContext.swift in Sources */,
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
+				C74BF1421E3D9524007F35E1 /* ScrollingNavigationViewController.swift in Sources */,
 				C73F6E051E396B6600FBD6F0 /* PullDismissView.swift in Sources */,
 				C71087741E38781800D9C3A9 /* HeroModifier.swift in Sources */,
 				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
 				C73F6E021E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				C7655A971E32541D00A1CB9F /* DateInRegion+Compare.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
+				C74BF1441E3D98EE007F35E1 /* BarView.swift in Sources */,
 				C78C33621E2EF060001DCE38 /* Icons.swift in Sources */,
 				C71087761E38781800D9C3A9 /* HeroTargetState.swift in Sources */,
 				C7753D981E352A0900C45A5A /* XBPageDragView.m in Sources */,
@@ -1140,6 +1163,7 @@
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
+				C74BF1411E3D9524007F35E1 /* ScrollingNavigationController.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,

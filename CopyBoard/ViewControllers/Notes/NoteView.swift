@@ -12,11 +12,9 @@ import SnapKit
 fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
 class NoteView {
-    let barView = UIView()
-    let titleLabel = UILabel()
-    let searchButton = UIButton(type: .custom)
-    
+    let barView = BarView(sideMargin: 8)
     let searchBar = UISearchBar()
+    let searchButton = UIButton(type: .custom)
     
     var collectionView: UICollectionView!
     var emptyNoteView = UIView()
@@ -30,41 +28,18 @@ class NoteView {
         self.searchHolderView.alpha = 0
         self.searchHolderView.isHidden = true
         self.searchHolderView.backgroundColor = UIColor.black
-        
-        self.configBarView(view: view)
     }
     
-    func configBarView(view: UIView) {
-        view.addSubview(self.barView)
+    func configBarView(bar: UINavigationBar) {
+        bar.addSubview(self.barView)
         AppColors.mainBackground.bgColor(to: self.barView)
         self.barView.clipsToBounds = true
-        self.barView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight())
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(44)
-        }
+        self.barView.addConstraint()
         
-        self.barView.addSubview(self.titleLabel)
-        self.titleLabel.font = appFont(size: 16, weight: UIFontWeightMedium)
-        self.titleLabel.text = "STICKER"
-        self.titleLabel.textAlignment = .center
-        self.titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.left.greaterThanOrEqualToSuperview().offset(60)
-            make.right.greaterThanOrEqualToSuperview().offset(-60)
-        }
-        
-        self.barView.addSubview(self.searchButton)
+        self.barView.setTitle(title: "STICKER")
+        self.barView.appendButtons(buttons: [self.searchButton], left: false)
         self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
         self.searchButton.tintColor = AppColors.mainIcon
-        self.searchButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.height.equalTo(32)
-            make.width.equalTo(32)
-            make.right.equalToSuperview().offset(-8)
-        }
         
         self.barView.addSubview(self.searchBar)
         self.searchBar.isHidden = true
@@ -81,7 +56,7 @@ class NoteView {
             make.bottom.equalToSuperview()
         }
         
-        view.layoutIfNeeded()
+        bar.layoutIfNeeded()
     }
     
     func emptyNotesView(hidden: Bool) {
@@ -152,7 +127,7 @@ extension NoteView {
         self.collectionView.alwaysBounceVertical = true
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.barView.snp.bottom)
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -246,7 +221,7 @@ extension NoteView {
         self.searchBar.text = nil
         
         if startSearch {
-            weakSelf.titleLabel.snp.updateConstraints({ (make) in
+            weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                 make.centerY.equalToSuperview().offset(labelCenterY)
             })
             
@@ -261,7 +236,7 @@ extension NoteView {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
                 weakSelf.searchHolderView.alpha = kHolderViewAlpha
-                weakSelf.titleLabel.alpha = 0
+                weakSelf.barView.titleLabel.alpha = 0
                 weakSelf.searchButton.alpha = 0
             }) { (finish) in
                 UIView.animate(withDuration: 0.2, animations: {
@@ -283,7 +258,7 @@ extension NoteView {
                 weakSelf.searchHolderView.isHidden = true
                 weakSelf.searchResultView.isHidden = true
                 
-                weakSelf.titleLabel.snp.updateConstraints({ (make) in
+                weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                     make.centerY.equalToSuperview().offset(labelCenterY)
                 })
                 
@@ -295,7 +270,7 @@ extension NoteView {
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     weakSelf.barView.layoutIfNeeded()
-                    weakSelf.titleLabel.alpha = 1
+                    weakSelf.barView.titleLabel.alpha = 1
                     weakSelf.searchButton.alpha = 1
                 })
             }
