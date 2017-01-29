@@ -40,11 +40,12 @@ struct DeviceManager {
 
 extension DeviceManager {
     func statusbarHeight() -> CGFloat {
-        if isPad() {
-            return 20
-        } else {
-            return isLandscape() ? 0 : 20
-        }
+        return 20
+//        if isPad() {
+//            return 20
+//        } else {
+//            return isLandscape() ? 0 : 20
+//        }
     }
     
     func columnCount() -> Int {
