@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TouchButton: UIButton {
+final class TouchButton: UIButton {
     
     func config() {
         self.backgroundColor = UIColor.clear

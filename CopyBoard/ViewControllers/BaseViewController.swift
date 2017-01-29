@@ -16,13 +16,38 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+////        self.canRotate = true
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+////        self.canRotate = false
+//    }
+//    
+//    func deviceOrientationChanged() {
+//        
+//    }
+//    
+//    override var shouldAutorotate: Bool {
+//        return self.canRotate
+//    }    
+//    
+//    deinit {
+//        UIDevice.current.endGeneratingDeviceOrientationNotifications()
+//        NotificationCenter.default.removeObserver(self)
+//    }
 }
 
 // Mark: - 3d touch

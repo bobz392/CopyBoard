@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EditorViewController: UIViewController {
+class EditorViewController: BaseViewController {
 
     let editorView = EditorView()
     fileprivate let note: Note
@@ -79,8 +79,17 @@ class EditorViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }
+
+//// MARK: transition scroll
+//extension EditorViewController {
+//    
+//    override func deviceOrientationChanged() {
+//        self.editorView.invalidateLayout()
+//    }
+//    
+//}
 
 extension EditorViewController: CircleMenuDelegate {
     

@@ -12,8 +12,6 @@ struct DeviceManager {
     
     static let shared = DeviceManager()
     
-    
-    
     func isPhone() -> Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
@@ -38,6 +36,20 @@ struct DeviceManager {
         }
     }
     
+}
+
+extension DeviceManager {
+    func statusbarHeight() -> CGFloat {
+        if isPad() {
+            return 20
+        } else {
+            return isLandscape() ? 0 : 20
+        }
+    }
+    
+    func columnCount() -> Int {
+        return isPad() ? (isLandscape() ? 4 : 3) : (isLandscape() ? 3 : 2)
+    }
 }
 
 enum PhoneScreenType {

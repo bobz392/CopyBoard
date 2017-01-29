@@ -39,7 +39,7 @@ class NoteView {
         AppColors.mainBackground.bgColor(to: self.barView)
         self.barView.clipsToBounds = true
         self.barView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight())
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.height.equalTo(44)
@@ -118,18 +118,17 @@ class NoteView {
 // MARK: - collection view
 extension NoteView {
     
-    fileprivate func layoutColumnCount() -> Int {
-        let dm = DeviceManager.shared
-        return dm.isPad() ? (dm.isLandscape() ? 4 : 3) : (dm.isLandscape() ? 3 : 2)
-    }
-    
     func invalidateLayout() {
         if let layout =
             self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
-            layout.columnCount = self.layoutColumnCount()
+            layout.columnCount = DeviceManager.shared.columnCount()
             self.collectionView.performBatchUpdates({
                 layout.invalidateLayout()
             }, completion: nil)
+        }
+        
+        self.barView.snp.updateConstraints { (make) in
+            make.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight())
         }
     }
     
@@ -143,7 +142,7 @@ extension NoteView {
         
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space
-        layout.columnCount = self.layoutColumnCount()
+        layout.columnCount = DeviceManager.shared.columnCount()
         layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
         layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)

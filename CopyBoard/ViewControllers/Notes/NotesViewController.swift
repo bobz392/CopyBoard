@@ -31,9 +31,6 @@ class NotesViewController: BaseViewController {
         
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationChanged), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
-        
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
             weakSelf.noteView.searchAnimation(startSearch: true)
             weakSelf.viewModel.isInSearch = true
@@ -54,6 +51,8 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+           self.view.layoutIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,8 +67,6 @@ class NotesViewController: BaseViewController {
     }
     
     deinit {
-        UIDevice.current.endGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.removeObserver(self)
         DBManager.shared.unbindNotify()
     }
     
@@ -111,29 +108,15 @@ extension NotesViewController: RealmNotificationDataSource {
 }
 
 // MARK: transition scroll
-extension NotesViewController {
-    
-    func deviceOrientationChanged() {
-        NoteCollectionViewInputOverlay.closeOpenItem()
-        self.noteView.invalidateLayout()
-    }
-    
-}
-
-extension EditorViewController: HeroViewControllerDelegate {
-    
-    func heroWillStartAnimatingFrom(viewController: UIViewController) {
-        
-    }
-    
-    func heroDidEndAnimatingTo(viewController: UIViewController) {
-        
-    }
-    
-    func heroWillStartTransition() {
-        
-    }
-}
+//extension NotesViewController {
+//    
+//    override func deviceOrientationChanged() {
+//        NoteCollectionViewInputOverlay.closeOpenItem()
+//        self.noteView.invalidateLayout()
+//        
+//    }
+//    
+//}
 
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {

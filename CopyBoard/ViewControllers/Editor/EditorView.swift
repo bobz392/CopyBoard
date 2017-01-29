@@ -73,6 +73,12 @@ class EditorView {
         }
     }
     
+    func invalidateLayout() {
+        self.barView.snp.updateConstraints { maker in
+            maker.height.equalTo(44 + DeviceManager.shared.statusbarHeight())
+        }
+    }
+    
     func changeColor(pair: AppPairColors) {
         let weakSelf = self
         let pc = pair.pairColor()
@@ -136,16 +142,17 @@ class EditorView {
     
     fileprivate func configBarView(view: UIView) {
         view.addSubview(self.barView)
+        let barHeight = DeviceManager.shared.statusbarHeight()
         self.barView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.height.equalTo(64)
+            maker.height.equalTo(44 + barHeight)
         }
 
         self.barView.addSubview(self.barHolderView)
         self.barHolderView.snp.makeConstraints { maker in
-            maker.top.equalToSuperview().offset(20)
+            maker.top.equalToSuperview().offset(barHeight)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
@@ -231,8 +238,6 @@ class EditorView {
         let attrString = NSMutableAttributedString(string: content)
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.lineSpacing = NoteTextView.NoteLineSpace
-//        paraStyle.minimumLineHeight = self.editorTextView.noteFont.lineHeight
-//        paraStyle.maximumLineHeight = self.editorTextView.noteFont.lineHeight
         
         attrString.addAttributes([
             NSParagraphStyleAttributeName: paraStyle,
@@ -242,26 +247,4 @@ class EditorView {
         self.editorTextView.attributedText = attrString
     }
     
-}
-
-final class TintButton: UIButton {
-    func addTintColor() {
-        self.tintColor = UIColor.white
-        
-        self.addTarget(self, action: #selector(self.changesTint), for: .touchDown)
-        self.addTarget(self, action: #selector(self.resetTint), for: .touchUpOutside)
-        self.addTarget(self, action: #selector(self.resetTint), for: .touchDragOutside)
-        self.addTarget(self, action: #selector(self.resetTint), for: .touchUpInside)
-        self.addTarget(self, action: #selector(self.resetTint), for: .touchCancel)
-    }
-    
-    func changesTint() {
-        self.tintColor = AppColors.faveButton
-        self.layoutIfNeeded()
-    }
-    
-    func resetTint() {
-        self.tintColor = UIColor.white
-        self.layoutIfNeeded()
-    }
 }
