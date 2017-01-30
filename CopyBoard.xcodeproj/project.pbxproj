@@ -89,9 +89,6 @@
 		C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
-		C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33761E2EFA96001DCE38 /* Realm.framework */; };
-		C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33781E2EFA96001DCE38 /* RealmSwift.framework */; };
-		C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C33841E2EFA96001DCE38 /* SnapKit.framework */; };
 		C76996111E369968001E2F86 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C769961E1E369B29001E2F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
 		C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76996201E369B50001E2F86 /* Launch Screen.storyboard */; };
@@ -139,10 +136,18 @@
 		C78C33A81E2EFAC6001DCE38 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33771E2EFA96001DCE38 /* Realm.framework.dSYM */; };
 		C78C33A91E2EFAC6001DCE38 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33791E2EFA96001DCE38 /* RealmSwift.framework.dSYM */; };
 		C78C33AA1E2EFAC6001DCE38 /* RxCocoa.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C337D1E2EFA96001DCE38 /* RxCocoa.framework.dSYM */; };
-		C78C33AB1E2EFAC6001DCE38 /* RxDataSources.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C337F1E2EFA96001DCE38 /* RxDataSources.framework.dSYM */; };
 		C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33811E2EFA96001DCE38 /* RxSwift.framework.dSYM */; };
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
 		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
+		C79EF8771E3ED3CA004BDACC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */; };
+		C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */; };
+		C79EF8961E3EDACB004BDACC /* IIViewDeckController.txt in Resources */ = {isa = PBXBuildFile; fileRef = C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */; };
+		C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */; };
+		C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */; };
+		C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */; };
+		C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */; };
+		C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */; };
+		C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -196,7 +201,6 @@
 				C78C33A81E2EFAC6001DCE38 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
 				C78C33A91E2EFAC6001DCE38 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C78C33AA1E2EFAC6001DCE38 /* RxCocoa.framework.dSYM in Copy Carthage dSYMs */,
-				C78C33AB1E2EFAC6001DCE38 /* RxDataSources.framework.dSYM in Copy Carthage dSYMs */,
 				C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
 			);
@@ -374,6 +378,29 @@
 		C78C33841E2EFA96001DCE38 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C79EF8531E3DF2D0004BDACC /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		C79EF8791E3ED828004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewDeck.framework; path = "../../Library/Developer/Xcode/DerivedData/ViewDeckExample-gutppqxdpffmqnatxgmjjajjtgfs/Build/Products/Debug-iphoneos/ViewDeck-iOS8.0/ViewDeck.framework"; sourceTree = "<group>"; };
+		C79EF87B1E3ED864004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ViewDeck.framework; sourceTree = "<group>"; };
+		C79EF8801E3EDACB004BDACC /* IIEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIEnvironment.h; sourceTree = "<group>"; };
+		C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIViewDeckController+Private.h"; sourceTree = "<group>"; };
+		C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckController.mm; sourceTree = "<group>"; };
+		C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IIViewDeckController.txt; sourceTree = "<group>"; };
+		C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckTransitioning.h; sourceTree = "<group>"; };
+		C79EF8871E3EDACB004BDACC /* IIDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIDelegateProxy.h; sourceTree = "<group>"; };
+		C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIDelegateProxy.m; sourceTree = "<group>"; };
+		C79EF8891E3EDACB004BDACC /* IIEnvironment+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIEnvironment+Private.h"; sourceTree = "<group>"; };
+		C79EF88A1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckDefaultTransitionAnimator.h; sourceTree = "<group>"; };
+		C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckDefaultTransitionAnimator.mm; sourceTree = "<group>"; };
+		C79EF88C1E3EDACB004BDACC /* IIViewDeckLayoutSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckLayoutSupport.h; sourceTree = "<group>"; };
+		C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckLayoutSupport.m; sourceTree = "<group>"; };
+		C79EF88E1E3EDACB004BDACC /* IIViewDeckTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckTransition.h; sourceTree = "<group>"; };
+		C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckTransition.mm; sourceTree = "<group>"; };
+		C79EF8901E3EDACB004BDACC /* UIViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Private.h"; sourceTree = "<group>"; };
+		C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Private.m"; sourceTree = "<group>"; };
+		C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IIViewDeckAdditions.h"; sourceTree = "<group>"; };
+		C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IIViewDeckAdditions.m"; sourceTree = "<group>"; };
+		C79EF8941E3EDACB004BDACC /* ViewDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeck.h; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -402,9 +429,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7655AEF1E33C06F00A1CB9F /* RealmSwift.framework in Frameworks */,
-				C7655AF01E33C07200A1CB9F /* SnapKit.framework in Frameworks */,
-				C7655AEE1E33C06D00A1CB9F /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +509,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C79EF87F1E3EDACB004BDACC /* ViewDeck */,
 				C74BF13C1E3D9524007F35E1 /* AMScrollingNavbar */,
 				C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */,
 				C71087511E38781800D9C3A9 /* Hero */,
@@ -520,6 +545,7 @@
 				C7403F8B1E282A4E0067229E /* CopyBoardTests */,
 				C7403E231E269CA00067229E /* Products */,
 				C71087481E3874B100D9C3A9 /* CopyBoard copy-Info.plist */,
+				C79EF8781E3ED828004BDACC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -647,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				C7655AA61E325FA100A1CB9F /* EditorViewController.swift */,
+				C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */,
 				C7655AA81E32603C00A1CB9F /* EditorView.swift */,
 				C73F6E041E396B6600FBD6F0 /* PullDismissView.swift */,
 			);
@@ -749,6 +776,50 @@
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		C79EF8781E3ED828004BDACC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C79EF87B1E3ED864004BDACC /* ViewDeck.framework */,
+				C79EF8791E3ED828004BDACC /* ViewDeck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C79EF87F1E3EDACB004BDACC /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				C79EF8801E3EDACB004BDACC /* IIEnvironment.h */,
+				C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */,
+				C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */,
+				C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */,
+				C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */,
+				C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */,
+				C79EF8861E3EDACB004BDACC /* Private */,
+				C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */,
+				C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */,
+				C79EF8941E3EDACB004BDACC /* ViewDeck.h */,
+			);
+			path = ViewDeck;
+			sourceTree = "<group>";
+		};
+		C79EF8861E3EDACB004BDACC /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				C79EF8871E3EDACB004BDACC /* IIDelegateProxy.h */,
+				C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */,
+				C79EF8891E3EDACB004BDACC /* IIEnvironment+Private.h */,
+				C79EF88A1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.h */,
+				C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */,
+				C79EF88C1E3EDACB004BDACC /* IIViewDeckLayoutSupport.h */,
+				C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */,
+				C79EF88E1E3EDACB004BDACC /* IIViewDeckTransition.h */,
+				C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */,
+				C79EF8901E3EDACB004BDACC /* UIViewController+Private.h */,
+				C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		C7D96D521E341EEF00B4E418 /* FiveButton */ = {
@@ -941,6 +1012,7 @@
 			files = (
 				C78C33961E2EFA96001DCE38 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap in Resources */,
 				C78C338C1E2EFA96001DCE38 /* 5F176F2C-E1A6-34F5-A597-9378AD27BD9E.bcsymbolmap in Resources */,
+				C79EF8961E3EDACB004BDACC /* IIViewDeckController.txt in Resources */,
 				C78C33921E2EFA96001DCE38 /* 8F30DB2B-FA6E-3A4A-8A8A-20D6A63FC0AD.bcsymbolmap in Resources */,
 				C78C33861E2EFA96001DCE38 /* 0CF18327-1779-3376-8A33-98C36B7CB2BA.bcsymbolmap in Resources */,
 				C7753D8F1E352A0900C45A5A /* FrontVertexShader.glsl in Resources */,
@@ -1032,7 +1104,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -1049,10 +1120,10 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1100,12 +1171,14 @@
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C73F6E011E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
+				C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */,
 				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
 				C710876A1E38781800D9C3A9 /* CAMediaTimingFunction+Hero.swift in Sources */,
 				C71087751E38781800D9C3A9 /* HeroPlugin.swift in Sources */,
+				C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
 				C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */,
 				C7655A9F1E32541D00A1CB9F /* ISO8601DateTimeFormatter.swift in Sources */,
@@ -1115,6 +1188,7 @@
 				C7655AA11E32541D00A1CB9F /* Region.swift in Sources */,
 				C71087721E38781800D9C3A9 /* HeroDefaultAnimator.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
+				C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */,
 				C71087711E38781800D9C3A9 /* HeroDebugView.swift in Sources */,
 				C710876E1E38781800D9C3A9 /* Hero.swift in Sources */,
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
@@ -1159,6 +1233,7 @@
 				C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
+				C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */,
 				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
@@ -1167,10 +1242,13 @@
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
+				C79EF8771E3ED3CA004BDACC /* MenuViewController.swift in Sources */,
+				C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */,
 				C74BF1411E3D9524007F35E1 /* ScrollingNavigationController.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
+				C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C71087781E38781800D9C3A9 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
 				C710876B1E38781800D9C3A9 /* CascadePreprocessor.swift in Sources */,
@@ -1180,6 +1258,7 @@
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C710876F1E38781800D9C3A9 /* HeroContext.swift in Sources */,
+				C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C71087681E38781800D9C3A9 /* BasePreprocessor.swift in Sources */,
@@ -1339,12 +1418,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyBoard/CopyBoard.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CopyBoard",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
@@ -1365,12 +1445,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyBoard/CopyBoard.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CopyBoard",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;

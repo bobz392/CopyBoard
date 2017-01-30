@@ -159,6 +159,9 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let note = self.viewModel.noteIn(row: indexPath.row)
         let editorVC = EditorViewController(note: note)
+        let menuVC = MenuViewController()
+        
+        let deckVC = IIViewDeckController(center: editorVC, rightViewController: menuVC)
         let weakSelf = self
         let row = indexPath.row
         
@@ -191,7 +194,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             editorVC.editorView.editorTextView.heroID = "\(row)note"
             editorVC.editorView.editorTextView.heroModifiers =
                 [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-            weakSelf.present(editorVC, animated: true, completion: nil)
+            weakSelf.present(deckVC, animated: true, completion: nil)
         }
         
         cell.willToEditor(block: toBlock, row: row)
