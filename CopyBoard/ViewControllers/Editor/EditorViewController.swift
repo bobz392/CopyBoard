@@ -35,6 +35,8 @@ class EditorViewController: BaseViewController {
             weakSelf.dismiss(animated: true, completion: { (finish) -> Void in
                 weakSelf.editorView.editorTextView.dg_removePullToRefresh()
             })
+            
+            weakSelf.updateNote()
         }
 
         self.editorView.faveButton.rx.tap.subscribe { (event) in
@@ -58,6 +60,9 @@ class EditorViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.editorView.editorTextView.heroID = nil
         self.editorView.editorTextView.heroModifiers = nil
+        self.editorView.faveButton.heroModifiers = nil
+        self.editorView.closeButton.heroModifiers = nil
+        self.editorView.colorButton.heroModifiers = nil
     }
 
     func dismissAction() {
@@ -68,6 +73,10 @@ class EditorViewController: BaseViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
+        self.updateNote()
+    }
+    
+    private func updateNote() {
         let noteText = self.editorView.editorTextView.text ?? ""
         if noteText.characters.count > 0, self.note.content != noteText {
             DBManager.shared.updateObject {

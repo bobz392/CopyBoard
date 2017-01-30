@@ -14,7 +14,15 @@ class NotesViewController: BaseViewController {
     var viewModel: NotesViewModel!
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
-    
+    fileprivate var scrollingNav: ScrollingNavigationController {
+        get {
+            guard let nav = self.navigationController as? ScrollingNavigationController
+                else {
+                    fatalError("navigationController not a ScrollingNavigationController")
+            }
+            return nav
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let bar = self.navigationController?.navigationBar {
@@ -49,22 +57,18 @@ class NotesViewController: BaseViewController {
         #if debug
             Note.noteTestData()
         #endif
+        
+        scrollingNav.followScrollView(self.noteView.collectionView, delay: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(self.noteView.collectionView, delay: 0)
-        }
+        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         DeviceManager.canRotate = false
         super.viewWillDisappear(animated)
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.stopFollowingScrollView()
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +83,7 @@ class NotesViewController: BaseViewController {
     }
     
     deinit {
+        scrollingNav.stopFollowingScrollView()
         DBManager.shared.unbindNotify()
     }
     
@@ -122,9 +127,10 @@ extension NotesViewController: RealmNotificationDataSource {
 // MARK: transition scroll
 extension NotesViewController {
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("new size \(size)")
-    }
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        print("new size \(size)")
+//        
+//    }
     
     override func deviceOrientationChanged() {
         print("deviceOrientationChanged")
@@ -160,8 +166,12 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             weakSelf.noteView.collectionView.heroModifiers =
                 [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
             
-            let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -64)
-            weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
+            if weakSelf.scrollingNav.state == .expanded {
+                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -64)
+                weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
+            } else {
+                weakSelf.noteView.barView.heroModifiers = nil
+            }
             
             editorVC.isHeroEnabled = true
             editorVC.editorView.faveButton.heroID = "\(row)star"
