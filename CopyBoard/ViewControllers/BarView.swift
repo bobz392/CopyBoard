@@ -44,7 +44,7 @@ class BarView: UIView {
             maker.top.equalToSuperview()
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.height.equalTo(44)
+            maker.bottom.equalToSuperview()
         }
     }
     
