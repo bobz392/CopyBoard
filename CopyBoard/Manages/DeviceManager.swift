@@ -12,17 +12,41 @@ struct DeviceManager {
     
     static let shared = DeviceManager()
     
-    func isPhone() -> Bool {
-        return UIDevice.current.userInterfaceIdiom == .phone
+    static var canRotate = false
+    
+    static var currentOrientation: UIInterfaceOrientationMask {
+        let orient = UIApplication.shared.statusBarOrientation
+        switch orient {
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        case .portrait:
+            return .portrait
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        case .unknown:
+            return .portrait
+        }
     }
     
-    func isPad() -> Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
+    var isPhone: Bool {
+        get {
+            return UIDevice.current.userInterfaceIdiom == .phone
+        }
+    }
+
+    var isPad: Bool {
+        get {
+            return UIDevice.current.userInterfaceIdiom == .pad
+        }
     }
     
-    func isLandscape() -> Bool {
-        return UIDevice.current.orientation == .landscapeLeft
-            || UIDevice.current.orientation == .landscapeRight
+    var isLandscape: Bool {
+        get {
+            let orient = UIApplication.shared.statusBarOrientation
+            return orient == .landscapeLeft || orient == .landscapeRight
+        }
     }
     
     func phoneScreenType() -> PhoneScreenType {
@@ -39,18 +63,19 @@ struct DeviceManager {
 }
 
 extension DeviceManager {
-    func statusbarHeight() -> CGFloat {
-        return 20
-//        if isPad() {
-//            return 20
-//        } else {
-//            return isLandscape() ? 0 : 20
-//        }
+    
+    var statusbarHeight: CGFloat {
+        get {
+            return UIApplication.shared.statusBarFrame.height
+        }
     }
     
-    func columnCount() -> Int {
-        return isPad() ? (isLandscape() ? 4 : 3) : (isLandscape() ? 3 : 2)
+    var noteColumnCount: Int {
+        get {
+            return isPad ? (isLandscape ? 4 : 3) : (isLandscape ? 3 : 2)
+        }
     }
+    
 }
 
 enum PhoneScreenType {

@@ -56,13 +56,12 @@ class NotesViewController: BaseViewController {
         
         if let navigationController = navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(self.noteView.collectionView, delay: 0)
-            navigationController.scrollingNavbarDelegate = self
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
+    override func viewWillDisappear(_ animated: Bool) {
+        DeviceManager.canRotate = false
+        super.viewWillDisappear(animated)
         if let navigationController = navigationController as? ScrollingNavigationController {
             navigationController.stopFollowingScrollView()
         }
@@ -73,6 +72,10 @@ class NotesViewController: BaseViewController {
         
         self.selectedCell?.willLeaveEditor()
         self.selectedCell = nil
+        
+        dispatchDelay(0.25) {
+            DeviceManager.canRotate = true
+        }
     }
     
     deinit {
@@ -117,17 +120,17 @@ extension NotesViewController: RealmNotificationDataSource {
 }
 
 // MARK: transition scroll
-//extension NotesViewController {
-//
-//    override func deviceOrientationChanged() {
-//        NoteCollectionViewInputOverlay.closeOpenItem()
-//        self.noteView.invalidateLayout()
-//
-//    }
-//
-//}
-
-extension NotesViewController: ScrollingNavigationControllerDelegate {
+extension NotesViewController {
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("new size \(size)")
+    }
+    
+    override func deviceOrientationChanged() {
+        print("deviceOrientationChanged")
+        NoteCollectionViewInputOverlay.closeOpenItem()
+        self.noteView.invalidateLayout()
+    }
     
 }
 

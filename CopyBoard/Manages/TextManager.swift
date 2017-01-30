@@ -19,7 +19,7 @@ func appFont(size: CGFloat, weight: CGFloat = UIFontWeightRegular) -> UIFont {
 func emptyNotesFont() -> CGFloat {
     let dm = DeviceManager.shared
     
-    if dm.isPhone() {
+    if dm.isPhone {
         switch dm.phoneScreenType() {
         case .phone5:
             return 18

@@ -82,14 +82,15 @@ class EditorViewController: BaseViewController {
     
 }
 
-//// MARK: transition scroll
-//extension EditorViewController {
-//    
-//    override func deviceOrientationChanged() {
-//        self.editorView.invalidateLayout()
-//    }
-//    
-//}
+// MARK: transition scroll
+extension EditorViewController {
+    
+   
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+}
 
 extension EditorViewController: CircleMenuDelegate {
     

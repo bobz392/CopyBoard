@@ -142,6 +142,7 @@
 		C78C33AB1E2EFAC6001DCE38 /* RxDataSources.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C337F1E2EFA96001DCE38 /* RxDataSources.framework.dSYM */; };
 		C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33811E2EFA96001DCE38 /* RxSwift.framework.dSYM */; };
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
+		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -372,6 +373,7 @@
 		C78C33831E2EFA96001DCE38 /* RxTest.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RxTest.framework.dSYM; sourceTree = "<group>"; };
 		C78C33841E2EFA96001DCE38 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C79EF8531E3DF2D0004BDACC /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			children = (
 				C72332B81E3033AB00D5189D /* NoteTextView.swift */,
 				C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */,
+				C79EF8531E3DF2D0004BDACC /* GuideView.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				C710876C1E38781800D9C3A9 /* CG+Hero.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
+				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C7655AA01E32541D00A1CB9F /* LocaleName.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,

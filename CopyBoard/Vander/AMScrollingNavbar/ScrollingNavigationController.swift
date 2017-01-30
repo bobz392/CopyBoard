@@ -363,9 +363,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     private func checkForPartialScroll() {
         let frame = navigationBar.frame
-        var duration = TimeInterval(0.2)
+        let duration = TimeInterval(0.2)
         var delta = CGFloat(0.0)
-        let distance = delta / (frame.size.height / 2)
+//        let distance = delta / (frame.size.height / 2)
         
         // Scroll back down
         let threshold = statusBarHeight - (frame.size.height / 2)

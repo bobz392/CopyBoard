@@ -96,19 +96,13 @@ extension NoteView {
     func invalidateLayout() {
         if let layout =
             self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
-            layout.columnCount = DeviceManager.shared.columnCount()
-            self.collectionView.performBatchUpdates({
-                layout.invalidateLayout()
-            }, completion: nil)
-        }
-        
-        self.barView.snp.updateConstraints { (make) in
-            make.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight())
+            layout.columnCount = DeviceManager.shared.noteColumnCount
+            self.collectionView.setCollectionViewLayout(layout, animated: true)
         }
     }
     
     func collectionViewItemSpace() -> CGFloat {
-        return DeviceManager.shared.isPhone() ? 12.0 : 18.0
+        return DeviceManager.shared.isPhone ? 12.0 : 18.0
     }
     
     func configCollectionView(view: UIView, delegate: NotesViewController) {
@@ -117,7 +111,7 @@ extension NoteView {
         
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space
-        layout.columnCount = DeviceManager.shared.columnCount()
+        layout.columnCount = DeviceManager.shared.noteColumnCount
         layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
         layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)

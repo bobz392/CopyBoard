@@ -41,7 +41,7 @@ class BarView: UIView {
     
     func addConstraint() {
         self.snp.makeConstraints { maker in
-            maker.top.equalToSuperview()//.offset(UIApplication.shared.statusBarFrame.height)
+            maker.top.equalToSuperview()
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.height.equalTo(44)

@@ -73,12 +73,6 @@ class EditorView {
         }
     }
     
-    func invalidateLayout() {
-        self.barView.snp.updateConstraints { maker in
-            maker.height.equalTo(44 + DeviceManager.shared.statusbarHeight())
-        }
-    }
-    
     func changeColor(pair: AppPairColors) {
         let weakSelf = self
         let pc = pair.pairColor()
@@ -142,7 +136,7 @@ class EditorView {
     
     fileprivate func configBarView(view: UIView) {
         view.addSubview(self.barView)
-        let barHeight = DeviceManager.shared.statusbarHeight()
+        let barHeight = DeviceManager.shared.statusbarHeight
         self.barView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
             maker.left.equalToSuperview()

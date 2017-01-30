@@ -183,7 +183,7 @@ extension NoteCollectionViewCell {
             self.curlView?.isOpaque = false
             self.curlView?.pageOpaque = true
             
-            let rato: CGFloat = DeviceManager.shared.isPhone() ? 0.5 : 0.8
+            let rato: CGFloat = DeviceManager.shared.isPhone ? 0.5 : 0.8
             let p = CGPoint(x: cardBounds.width * rato, y: cardBounds.height * rato)
             let angle = CGFloat(M_PI_2)
             self.curlView?.curl(self.cardView,
