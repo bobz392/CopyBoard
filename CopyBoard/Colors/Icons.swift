@@ -19,6 +19,7 @@ enum Icons {
     case color
     case hideKeyboard
     case bigClear
+    case info
     
     
     
@@ -67,6 +68,7 @@ enum Icons {
         case .color: return "color"
         case .hideKeyboard: return "hideKeyboard"
         case .bigClear: return "big_clear"
+        case .info: return "info"
             
         case .plus: return "plus"
         case .check: return "check"
