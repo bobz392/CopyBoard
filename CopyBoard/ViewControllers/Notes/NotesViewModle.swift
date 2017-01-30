@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 import RxSwift
 import RxCocoa
-import RxDataSources
 
 class NotesViewModel {
     typealias SearchBlock = (String) -> Void
@@ -72,16 +71,16 @@ class NotesViewModel {
     }
     
 }
-
-extension Note: IdentifiableType {
-    typealias Identity = String
-    
-    var identity: String {
-        get {
-            return self.uuid
-        }
-    }
-}
+//
+//extension Note: IdentifiableType {
+//    typealias Identity = String
+//    
+//    var identity: String {
+//        get {
+//            return self.uuid
+//        }
+//    }
+//}
 
 
 struct NotesData {
@@ -92,29 +91,29 @@ struct NotesData {
     }
 }
 
-
-extension NotesData: AnimatableSectionModelType {
-    typealias Item = Note
-    typealias Identity = String
-    
-    var items: [Note] {
-        get {
-            return self.notes
-        }
-    }
-    
-    var identity: String {
-        get {
-            return "header"
-        }
-    }
-    
-    init(original: NotesData, items: [Item]) {
-        self = original
-        self.notes = items
-    }
-    
-}
+//
+//extension NotesData: AnimatableSectionModelType {
+//    typealias Item = Note
+//    typealias Identity = String
+//    
+//    var items: [Note] {
+//        get {
+//            return self.notes
+//        }
+//    }
+//    
+//    var identity: String {
+//        get {
+//            return "header"
+//        }
+//    }
+//    
+//    init(original: NotesData, items: [Item]) {
+//        self = original
+//        self.notes = items
+//    }
+//    
+//}
 
 struct NotesSearchState {
     let notes: [Note]
