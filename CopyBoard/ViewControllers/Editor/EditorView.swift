@@ -221,6 +221,7 @@ class EditorView {
         self.editorTextView.tintColor = AppColors.noteText
         self.editorTextView.textContainerInset = UIEdgeInsetsMake(12, 12, 12, 12)
         self.editorTextView.alwaysBounceVertical = true
+        self.editorTextView.dataDetectorTypes = .all
 
         self.editorTextView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
