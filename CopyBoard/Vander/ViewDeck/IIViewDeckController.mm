@@ -452,7 +452,7 @@ static inline BOOL IIIsAllowedTransition(IIViewDeckSide fromSide, IIViewDeckSide
     }
 
     let decorationView = [[UIView alloc] initWithFrame:self.view.bounds];
-    decorationView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    decorationView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
     [decorationView addGestureRecognizer:self.decorationTapGestureRecognizer];
     self.currentDecorationView = decorationView;
     return decorationView;

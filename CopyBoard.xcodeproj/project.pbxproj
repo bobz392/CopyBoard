@@ -139,7 +139,6 @@
 		C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33811E2EFA96001DCE38 /* RxSwift.framework.dSYM */; };
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
 		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
-		C79EF8771E3ED3CA004BDACC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */; };
 		C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */; };
 		C79EF8961E3EDACB004BDACC /* IIViewDeckController.txt in Resources */ = {isa = PBXBuildFile; fileRef = C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */; };
 		C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */; };
@@ -148,6 +147,7 @@
 		C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */; };
 		C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */; };
 		C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */; };
+		C79EF89F1E3EE57D004BDACC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF89E1E3EE57D004BDACC /* MenuViewController.swift */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -378,7 +378,6 @@
 		C78C33841E2EFA96001DCE38 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C79EF8531E3DF2D0004BDACC /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
-		C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C79EF8791E3ED828004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewDeck.framework; path = "../../Library/Developer/Xcode/DerivedData/ViewDeckExample-gutppqxdpffmqnatxgmjjajjtgfs/Build/Products/Debug-iphoneos/ViewDeck-iOS8.0/ViewDeck.framework"; sourceTree = "<group>"; };
 		C79EF87B1E3ED864004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ViewDeck.framework; sourceTree = "<group>"; };
 		C79EF8801E3EDACB004BDACC /* IIEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIEnvironment.h; sourceTree = "<group>"; };
@@ -401,6 +400,7 @@
 		C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IIViewDeckAdditions.h"; sourceTree = "<group>"; };
 		C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IIViewDeckAdditions.m"; sourceTree = "<group>"; };
 		C79EF8941E3EDACB004BDACC /* ViewDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeck.h; sourceTree = "<group>"; };
+		C79EF89E1E3EE57D004BDACC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -597,6 +597,7 @@
 				C7403F321E280E040067229E /* BaseViewController.swift */,
 				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
 				C7655AA51E325F9100A1CB9F /* Editor */,
+				C79EF89D1E3EE57D004BDACC /* Menu */,
 				C7403F361E280E240067229E /* Notes */,
 			);
 			path = ViewControllers;
@@ -673,7 +674,6 @@
 			isa = PBXGroup;
 			children = (
 				C7655AA61E325FA100A1CB9F /* EditorViewController.swift */,
-				C79EF8761E3ED3CA004BDACC /* MenuViewController.swift */,
 				C7655AA81E32603C00A1CB9F /* EditorView.swift */,
 				C73F6E041E396B6600FBD6F0 /* PullDismissView.swift */,
 			);
@@ -820,6 +820,14 @@
 				C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		C79EF89D1E3EE57D004BDACC /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C79EF89E1E3EE57D004BDACC /* MenuViewController.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		C7D96D521E341EEF00B4E418 /* FiveButton */ = {
@@ -1242,8 +1250,8 @@
 				C7655A951E32541D00A1CB9F /* Date+Math.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
-				C79EF8771E3ED3CA004BDACC /* MenuViewController.swift in Sources */,
 				C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */,
+				C79EF89F1E3EE57D004BDACC /* MenuViewController.swift in Sources */,
 				C74BF1411E3D9524007F35E1 /* ScrollingNavigationController.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C710877B1E38781800D9C3A9 /* UIKit+Hero.swift in Sources */,

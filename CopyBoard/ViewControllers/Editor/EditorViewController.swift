@@ -26,6 +26,35 @@ class EditorViewController: BaseViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func createDeckVC(row: Int) -> IIViewDeckController {
+        let menuVC = MenuViewController()
+        
+        let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
+        deckVC.delegate = self
+        
+        self.isHeroEnabled = true
+        self.editorView.faveButton.heroID = "\(row)star"
+        self.editorView.faveButton.heroModifiers = [.duration(kHeroAnimationDuration)]
+        
+        self.editorView.barView.heroID = "\(row)header"
+        self.editorView.barView.heroModifiers = [.duration(kHeroAnimationDuration)]
+        
+        self.view.heroID = "\(row)card"
+        self.view.heroModifiers = [.duration(kHeroAnimationDuration)]
+        
+        self.editorView.colorButton.heroModifiers =
+            [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+        self.editorView.closeButton.heroModifiers =
+            [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+        
+        self.editorView.editorTextView.heroID = "\(row)note"
+        self.editorView.editorTextView.heroModifiers =
+            [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
+        
+        return deckVC
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +128,18 @@ extension EditorViewController {
         return false
     }
     
+}
+
+extension EditorViewController: IIViewDeckControllerDelegate {
+    func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
+        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        return true
+    }
+    
+    func viewDeckController(_ viewDeckController: IIViewDeckController, willClose side: IIViewDeckSide) -> Bool {
+        UIApplication.shared.setStatusBarHidden(false, with: .slide)
+        return true
+    }
 }
 
 extension EditorViewController: CircleMenuDelegate {

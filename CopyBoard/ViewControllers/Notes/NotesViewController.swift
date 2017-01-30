@@ -133,7 +133,7 @@ extension NotesViewController {
 //    }
     
     override func deviceOrientationChanged() {
-        print("deviceOrientationChanged")
+        Logger.log("deviceOrientationChanged")
         NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
     }
@@ -152,48 +152,28 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         return count
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath)
             as? NoteCollectionViewCell else { return }
         
         let note = self.viewModel.noteIn(row: indexPath.row)
-        let editorVC = EditorViewController(note: note)
-        let menuVC = MenuViewController()
         
-        let deckVC = IIViewDeckController(center: editorVC, rightViewController: menuVC)
         let weakSelf = self
         let row = indexPath.row
+        let editorVC = EditorViewController(note: note)
+        let deckVC = editorVC.createDeckVC(row: row)
         
         let toBlock = { () -> Void in
             weakSelf.noteView.collectionView.heroModifiers =
                 [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
             
             if weakSelf.scrollingNav.state == .expanded {
-                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: -64)
+                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: weakSelf.noteView.barView.frame.height)
                 weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
             } else {
                 weakSelf.noteView.barView.heroModifiers = nil
             }
-            
-            editorVC.isHeroEnabled = true
-            editorVC.editorView.faveButton.heroID = "\(row)star"
-            editorVC.editorView.faveButton.heroModifiers = [.duration(kHeroAnimationDuration)]
-            
-            editorVC.editorView.barView.heroID = "\(row)header"
-            editorVC.editorView.barView.heroModifiers = [.duration(kHeroAnimationDuration)]
-            
-            editorVC.view.heroID = "\(row)card"
-            editorVC.view.heroModifiers = [.duration(kHeroAnimationDuration)]
-            
-            editorVC.editorView.colorButton.heroModifiers =
-                [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-            editorVC.editorView.closeButton.heroModifiers =
-                [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-            
-            editorVC.editorView.editorTextView.heroID = "\(row)note"
-            editorVC.editorView.editorTextView.heroModifiers =
-                [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
             weakSelf.present(deckVC, animated: true, completion: nil)
         }
         
