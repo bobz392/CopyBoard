@@ -125,7 +125,7 @@ extension NotesViewController: RealmNotificationDataSource {
 }
 
 // MARK: transition scroll
-extension NotesViewController {
+extension NotesViewController: UIViewControllerTransitioningDelegate {
     
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        print("new size \(size)")
@@ -138,6 +138,23 @@ extension NotesViewController {
         self.noteView.invalidateLayout()
     }
     
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitioningAnimation()
+        transition.reverse = true
+        return transition
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitioningAnimation()
+        transition.reverse = false
+        return transition
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitioningAnimation()
+        transition.reverse = operation == .pop
+        return transition
+    }
 }
 
 // MARK: collection view
@@ -162,23 +179,31 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let weakSelf = self
         let row = indexPath.row
         let editorVC = EditorViewController(note: note)
-        let deckVC = editorVC.createDeckVC(row: row)
+//        let deckVC = editorVC.cni n reateDeckVC(row: row)
         
-        let toBlock = { () -> Void in
-            weakSelf.noteView.collectionView.heroModifiers =
-                [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
-            
-            if weakSelf.scrollingNav.state == .expanded {
-                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: weakSelf.noteView.barView.frame.height)
-                weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
-            } else {
-                weakSelf.noteView.barView.heroModifiers = nil
-            }
-            weakSelf.present(deckVC, animated: true, completion: nil)
+//        let toBlock = { () -> Void in
+//            weakSelf.noteView.collectionView.heroModifiers =
+//                [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
+//            
+//            if weakSelf.scrollingNav.state == .expanded {
+//                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: weakSelf.noteView.barView.frame.height)
+//                weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
+//            } else {
+//                weakSelf.noteView.barView.heroModifiers = nil
+//            }
+//            weakSelf.present(editorVC, animated: true, completion: nil)
+//        }
+        
+        if cell.canEnter() {
+            self.transitioningDelegate = self
+            editorVC.transitioningDelegate = self
+            self.present(editorVC, animated: true, completion: nil)
+            self.selectedCell = cell
         }
-        
-        cell.willToEditor(block: toBlock, row: row)
-        self.selectedCell = cell
+        return
+            
+//        cell.willToEditor(block: toBlock, row: row)
+//        self.selectedCell = cell
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

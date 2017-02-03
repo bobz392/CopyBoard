@@ -33,7 +33,7 @@ class EditorViewController: BaseViewController {
         let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
         deckVC.delegate = self
         
-        self.isHeroEnabled = true
+        self.isHeroEnabled = false
         self.editorView.faveButton.heroID = "\(row)star"
         self.editorView.faveButton.heroModifiers = [.duration(kHeroAnimationDuration)]
         
@@ -54,7 +54,6 @@ class EditorViewController: BaseViewController {
         
         return deckVC
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()

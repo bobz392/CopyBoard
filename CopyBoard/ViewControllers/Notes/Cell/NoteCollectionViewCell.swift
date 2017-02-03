@@ -117,7 +117,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
             n.favourite = !n.favourite
         }
     }
-
+    
+    func canEnter() -> Bool {
+        return !self.isCurl
+    }
     
     func willToEditor(block: @escaping () -> Void, row: Int) {
         if self.isCurl {
