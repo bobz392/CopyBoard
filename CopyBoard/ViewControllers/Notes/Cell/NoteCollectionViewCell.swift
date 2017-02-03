@@ -121,55 +121,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     func canEnter() -> Bool {
         return !self.isCurl
     }
-    
-    func willToEditor(block: @escaping () -> Void, row: Int) {
-        if self.isCurl {
-            return
-        }
-        
-        self.headerView.heroID = "\(row)header"
-        self.headerView.heroModifiers = [.duration(kHeroAnimationDuration)]
-        
-        self.cardView.heroID = "\(row)card"
-        self.cardView.heroModifiers = [.duration(kHeroAnimationDuration)]
-        
-        self.faveButton.heroID = "\(row)star"
-        self.faveButton.heroModifiers = [.fade, .duration(kHeroAnimationDuration)]
-        
-        UIView.animate(withDuration: kNoteViewAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: { [unowned self] in
-            self.noteLabel.alpha = 0
-            self.layer.shadowOpacity = 0
-        }) { (finish) in
-            block()
-        }
-        
-        self.backView.alpha = 0
-    }
-    
-    func willLeaveEditor() {
-        self.headerView.heroID = nil
-        self.headerView.heroModifiers = nil
-        
-        self.cardView.heroID = nil
-        self.cardView.heroModifiers = nil
-        
-        self.faveButton.heroID = nil 
-        self.faveButton.heroModifiers = nil
-        
-        UIView.animate(withDuration: noteViewShowAlphaAnimation, delay: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: { [unowned self] in
-            self.noteLabel.alpha = 1
-            self.layer.shadowOpacity = 0.2
-            if let n = self.note,
-                let pairColor = AppPairColors(rawValue: n.color)?.pairColor() {
-                pairColor.dark.bgColor(to: self.headerView)
-                pairColor.light.bgColor(to: self.cardView)
-            }
-
-        }) { [unowned self] (finish) in
-            self.backView.alpha = 1
-        }
-    }
-    
+     
 }
 
 // MARK: - curl view

@@ -73,10 +73,8 @@ class NotesViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.selectedCell?.willLeaveEditor()
-        self.selectedCell = nil
-        
+
+        self.selectedCell = nil        
         dispatchDelay(0.25) {
             DeviceManager.canRotate = true
         }
@@ -127,11 +125,6 @@ extension NotesViewController: RealmNotificationDataSource {
 // MARK: transition scroll
 extension NotesViewController: UIViewControllerTransitioningDelegate {
     
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        print("new size \(size)")
-//        
-//    }
-    
     override func deviceOrientationChanged() {
         Logger.log("deviceOrientationChanged")
         NoteCollectionViewInputOverlay.closeOpenItem()
@@ -150,11 +143,6 @@ extension NotesViewController: UIViewControllerTransitioningDelegate {
         return transition
     }
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitioningAnimation()
-        transition.reverse = operation == .pop
-        return transition
-    }
 }
 
 // MARK: collection view
@@ -174,36 +162,15 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let cell = collectionView.cellForItem(at: indexPath)
             as? NoteCollectionViewCell else { return }
         
-        let note = self.viewModel.noteIn(row: indexPath.row)
-        
-        let weakSelf = self
-        let row = indexPath.row
-        let editorVC = EditorViewController(note: note)
-//        let deckVC = editorVC.cni n reateDeckVC(row: row)
-        
-//        let toBlock = { () -> Void in
-//            weakSelf.noteView.collectionView.heroModifiers =
-//                [.scale(2), .fade, .duration(kHeroAnimationDuration * 0.8)]
-//            
-//            if weakSelf.scrollingNav.state == .expanded {
-//                let p = CGPoint(x: weakSelf.noteView.barView.center.x, y: weakSelf.noteView.barView.frame.height)
-//                weakSelf.noteView.barView.heroModifiers = [.fade, .duration(kHeroAnimationDuration * 0.8), .position(p)]
-//            } else {
-//                weakSelf.noteView.barView.heroModifiers = nil
-//            }
-//            weakSelf.present(editorVC, animated: true, completion: nil)
-//        }
-        
         if cell.canEnter() {
-            self.transitioningDelegate = self
-            editorVC.transitioningDelegate = self
-            self.present(editorVC, animated: true, completion: nil)
+            let note = self.viewModel.noteIn(row: indexPath.row)
+            let editorVC = EditorViewController(note: note)
+            let deckVC = editorVC.createDeckVC()
+            
+            deckVC.transitioningDelegate = self
+            self.present(deckVC, animated: true, completion: nil)
             self.selectedCell = cell
         }
-        return
-            
-//        cell.willToEditor(block: toBlock, row: row)
-//        self.selectedCell = cell
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

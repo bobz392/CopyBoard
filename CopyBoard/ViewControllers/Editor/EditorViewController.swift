@@ -27,31 +27,11 @@ class EditorViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createDeckVC(row: Int) -> IIViewDeckController {
+    func createDeckVC() -> IIViewDeckController {
         let menuVC = MenuViewController()
         
         let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
         deckVC.delegate = self
-        
-        self.isHeroEnabled = false
-        self.editorView.faveButton.heroID = "\(row)star"
-        self.editorView.faveButton.heroModifiers = [.duration(kHeroAnimationDuration)]
-        
-        self.editorView.barView.heroID = "\(row)header"
-        self.editorView.barView.heroModifiers = [.duration(kHeroAnimationDuration)]
-        
-        self.view.heroID = "\(row)card"
-        self.view.heroModifiers = [.duration(kHeroAnimationDuration)]
-        
-        self.editorView.colorButton.heroModifiers =
-            [.translate(x: 84, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-        self.editorView.closeButton.heroModifiers =
-            [.translate(x: -44, y: 0), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-        
-        self.editorView.editorTextView.heroID = "\(row)note"
-        self.editorView.editorTextView.heroModifiers =
-            [.translate(x: 0, y: 70), .fade, .duration(kHeroAnimationDuration - 0.1), .delay(0.1)]
-        
         return deckVC
     }
 
@@ -60,10 +40,8 @@ class EditorViewController: BaseViewController {
 
         let weakSelf = self
         self.editorView.config(with: self.view, note: note) {
-            weakSelf.dismiss(animated: true, completion: { (finish) -> Void in
-                weakSelf.editorView.editorTextView.dg_removePullToRefresh()
-            })
-            
+//            weakSelf.editorView.editorTextView.dg_stopLoading()
+            weakSelf.dismiss(animated: true, completion: { (finish) -> Void in })
             weakSelf.updateNote()
         }
 
@@ -86,11 +64,6 @@ class EditorViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.editorView.editorTextView.heroID = nil
-        self.editorView.editorTextView.heroModifiers = nil
-        self.editorView.faveButton.heroModifiers = nil
-        self.editorView.closeButton.heroModifiers = nil
-        self.editorView.colorButton.heroModifiers = nil
     }
 
     func dismissAction() {
@@ -117,6 +90,9 @@ class EditorViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
+    deinit {
+        self.editorView.editorTextView.dg_removePullToRefresh()
+    }
 }
 
 // MARK: transition scroll
@@ -164,7 +140,7 @@ extension EditorViewController: CircleMenuDelegate {
             let weakSelf = self
             weakSelf.editorView.changeColor(pair: pc)
             weakSelf.view.backgroundColor = pc.pairColor().light
-            DBManager.shared.updateObject(false, updateBlock: { 
+            DBManager.shared.updateObject(true, updateBlock: {
                 weakSelf.note.color = pc.rawValue
             })
             weakSelf.currentPairColor = nil

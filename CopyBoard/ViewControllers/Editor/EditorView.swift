@@ -12,15 +12,16 @@ import SnapKit
 class EditorView {
     let editorTextView = UITextView()
     let barView = UIView()
-    let barHolderView = UIView()
+    let realBarView = BarView()
     let keyboardBarView = UIView()
     
     let closeButton = TouchButton(type: .custom)
+    let infoButton = TouchButton(type: .custom)
     let colorButton = TouchButton(type: .custom)
     let colorHolderView = UIView()
     
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
-    let faveButton = FaveButton(frame: CGRect(center: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
+    let faveButton = FaveButton(frame: CGRect(origin: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
     func config(with view: UIView, note: Note, dismissBlock: @escaping () -> Void) {
         self.configBarView(view: view)
@@ -128,7 +129,7 @@ class EditorView {
             
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 view.layoutIfNeeded()
-                weakSelf.barHolderView.alpha = barViewAlpha
+                weakSelf.realBarView.alpha = barViewAlpha
                 weakSelf.keyboardBarView.alpha = 1 - barViewAlpha
             })
         }
@@ -144,32 +145,25 @@ class EditorView {
             maker.height.equalTo(44 + barHeight)
         }
 
-        self.barView.addSubview(self.barHolderView)
-        self.barHolderView.snp.makeConstraints { maker in
+        self.barView.addSubview(self.realBarView)
+        self.realBarView.snp.makeConstraints { maker in
             maker.top.equalToSuperview().offset(barHeight)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
-        self.barHolderView.bgClear()
+        self.realBarView.bgClear()
         
-        self.barHolderView.addSubview(self.closeButton)
+        self.realBarView.appendButtons(buttons: [closeButton], left: true)
         self.closeButton.setImage(Icons.bigClear.iconImage(), for: .normal)
         self.closeButton.config()
-        self.closeButton.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.height.equalTo(32)
-            maker.width.equalTo(32)
-            maker.left.equalToSuperview().offset(12)
-        }
 
-        self.barHolderView.addSubview(self.faveButton)
-        self.faveButton.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.height.equalTo(32)
-            maker.width.equalTo(32)
-            maker.right.equalToSuperview().offset(-12)
-        }
+        self.realBarView.appendButtons(buttons: [faveButton, colorButton, infoButton], left: false)
+        self.infoButton.setImage(Icons.about.iconImage(), for: .normal)
+        self.colorButton.setImage(Icons.color.iconImage(), for: .normal)
+        self.infoButton.config()
+        self.colorButton.config()
+        
         self.faveButton.normalColor = UIColor.white
         self.faveButton.selectedColor = AppColors.faveButton
         self.faveButton.dotFirstColor = UIColor(red:0.99, green:0.65, blue:0.17, alpha:1.00)
@@ -177,16 +171,6 @@ class EditorView {
     }
 
     fileprivate func configColorView(view: UIView) {
-        self.barHolderView.addSubview(self.colorButton)
-        self.colorButton.setImage(Icons.color.iconImage(), for: .normal)
-        self.colorButton.config()
-        self.colorButton.snp.makeConstraints { maker in
-            maker.centerY.equalTo(self.faveButton)
-            maker.height.equalTo(self.faveButton)
-            maker.width.equalTo(self.faveButton)
-            maker.right.equalTo(self.faveButton.snp.left).offset(-12)
-        }
-
         self.colorHolderView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         self.colorHolderView.alpha = 0
         self.colorHolderView.isHidden = true

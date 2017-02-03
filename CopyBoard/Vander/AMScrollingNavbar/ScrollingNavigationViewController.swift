@@ -10,13 +10,13 @@ open class ScrollingNavigationViewController: UIViewController, UIScrollViewDele
     /**
      On appear calls `showNavbar()` by default
      */
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.showNavbar(animated: true)
-        }
-    }
+//    override open func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        if let navigationController = self.navigationController as? ScrollingNavigationController {
+//            navigationController.showNavbar(animated: true)
+//        }
+//    }
     //
     //  /**
     //   On disappear calls `stopFollowingScrollView()` to stop observing the current scroll view, and perform the tear down
