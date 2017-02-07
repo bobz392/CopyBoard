@@ -35,8 +35,11 @@ class MenuView {
             maker.bottom.equalToSuperview()
         }
      
+        self.menuTableView.separatorStyle = .none
         self.menuTableView.register(MenuDateTableCell.nib,
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)
+        self.menuTableView.register(MenuDeviceTableCell.nib,
+                                    forCellReuseIdentifier: MenuDeviceTableCell.reuseId)
         self.menuTableView.tableFooterView = UIView()
     }
     

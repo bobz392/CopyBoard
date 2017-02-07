@@ -42,21 +42,24 @@ class MenuViewController: UIViewController {
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let note = self.note else {
             fatalError("in ment note must not nil")
         }
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MenuDateTableCell.reuseId, for: indexPath) as! MenuDateTableCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuDateTableCell.reuseId,
+                                                     for: indexPath) as! MenuDateTableCell
             cell.configEditDate(date: note.modificationDate ?? Date())
             
             return cell
-        default:
-            return UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuDeviceTableCell.reuseId,
+                                                     for: indexPath) as! MenuDeviceTableCell
+            cell.config(row: indexPath.row, note: note)
+            return cell
         }
     }
     
@@ -76,11 +79,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             return MenuDateTableCell.rowHeight
-        default:
-            return 0
+        } else {
+            return MenuDeviceTableCell.rowHeight
         }
     }
     

@@ -10,9 +10,21 @@ import UIKit
 
 class MenuDeviceTableCell: UITableViewCell {
 
+    static let nib = UINib(nibName: "MenuDeviceTableCell", bundle: nil)
+    static let reuseId = "menuDeviceTableCell"
+    static let rowHeight: CGFloat = 58
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.infoLabel.textColor = AppColors.menuText
+        self.titleLabel.textColor = AppColors.menuSecondaryText
+        
+        self.bgClear()
+        self.contentView.bgClear()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,4 +33,13 @@ class MenuDeviceTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func config(row: Int, note: Note) {
+        if row == 1 {
+            self.infoLabel.text = DeviceManager.shared.deviceName
+            self.titleLabel.text = Localized("modificationDevice")
+        } else {
+            self.infoLabel.text = (note.createdAt ?? Date()).string(custom: "yyyy-MM-dd hh:mm a")
+            self.titleLabel.text = Localized("creationDate")
+        }
+    }
 }

@@ -11,8 +11,9 @@ import UIKit
 class MenuDateTableCell: UITableViewCell {
     
     static let nib = UINib(nibName: "MenuDateTableCell", bundle: nil)
-    static let reuseId = "MenuDateTableCell"
-    static let rowHeight: CGFloat = 74
+    static let reuseId = "menuDateTableCell"
+    static let rowHeight: CGFloat = 82
+    
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -35,7 +36,7 @@ class MenuDateTableCell: UITableViewCell {
     
     func configEditDate(date: Date) {
         self.dayLabel.text = "\(date.day)"
-        self.dateLabel.text = date.string(format: DateFormat.custom("MMMM YYYY HH:mm"))
+        self.dateLabel.text = date.string(custom: "MMMM YYYY HH:mm")
         self.editLabel.text = Localized("modificationDate")
     }
     
