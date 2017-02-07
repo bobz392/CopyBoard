@@ -61,6 +61,12 @@ class NotesViewController: BaseViewController {
         scrollingNav.followScrollView(self.noteView.collectionView, delay: 0)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.noteView.invalidateLayout()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         scrollingNav.showNavbar()

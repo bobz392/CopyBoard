@@ -15,8 +15,8 @@ class EditorViewController: BaseViewController {
     let editorView = EditorView()
     fileprivate let note: Note
     fileprivate let disposeBag = DisposeBag()
-
     fileprivate var currentPairColor: [AppPairColors]? = nil
+    weak var deckVC: IIViewDeckController? = nil
     
     init(note: Note) {
         self.note = note
@@ -29,9 +29,11 @@ class EditorViewController: BaseViewController {
     
     func createDeckVC() -> IIViewDeckController {
         let menuVC = MenuViewController()
-        
+        menuVC.note = self.note
         let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
+        deckVC.view.backgroundColor = AppColors.cloud
         deckVC.delegate = self
+        self.deckVC = deckVC
         return deckVC
     }
 
@@ -56,9 +58,16 @@ class EditorViewController: BaseViewController {
                 }.addDisposableTo(self.disposeBag)
 
         self.editorView.closeButton.rx.tap.subscribe { (event) in
-            self.dismissAction()
+            weakSelf.dismissAction()
         }.addDisposableTo(self.disposeBag)
 
+        self.editorView.infoButton.rx.tap.subscribe { (event) in
+            if let deckVC = weakSelf.deckVC {
+                weakSelf.openMenu(viewDeckController: deckVC)
+                deckVC.open(.right, animated: true)
+            }
+        }.addDisposableTo(self.disposeBag)
+        
         self.editorView.colorMenu.delegate = self
     }
 
@@ -97,7 +106,6 @@ class EditorViewController: BaseViewController {
 
 // MARK: transition scroll
 extension EditorViewController {
-    
    
     override var shouldAutorotate: Bool {
         return false
@@ -107,13 +115,19 @@ extension EditorViewController {
 
 extension EditorViewController: IIViewDeckControllerDelegate {
     func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
-        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        self.openMenu(viewDeckController: viewDeckController)
         return true
     }
     
-    func viewDeckController(_ viewDeckController: IIViewDeckController, willClose side: IIViewDeckSide) -> Bool {
+    fileprivate func openMenu(viewDeckController: IIViewDeckController) {
+        if let menu = viewDeckController.rightViewController as? MenuViewController {
+            menu.menuStatusBarHeight = DeviceManager.shared.statusbarHeight
+        }
+        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+    }
+    
+    func viewDeckController(_ viewDeckController: IIViewDeckController, didClose side: IIViewDeckSide) {
         UIApplication.shared.setStatusBarHidden(false, with: .slide)
-        return true
     }
 }
 

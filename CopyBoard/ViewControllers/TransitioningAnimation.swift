@@ -21,6 +21,10 @@ final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIView
             let toView = toVC.view
             else { fatalError("view is empty") }
 
+//        toView.updateConstraints()
+//        toView.setNeedsLayout()
+//        toView.layoutIfNeeded()
+//        toVC.viewWillLayoutSubviews()
         self.animateTransition(transitionContext, fromView: fromView, toView: toView)
     }
     
@@ -36,6 +40,7 @@ final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIView
         blackMaskView.backgroundColor = UIColor.black
 
         let animationOptions: UIViewAnimationOptions = [.curveEaseInOut, .beginFromCurrentState, .layoutSubviews]
+        
         if self.reverse {
             containerView.addSubview(toView)
             containerView.addSubview(fromView)

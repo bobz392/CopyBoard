@@ -33,6 +33,7 @@ class EditorView {
             weakSelf.faveButton.alpha = 1 - progress
             weakSelf.colorButton.alpha = 1 - progress
             weakSelf.closeButton.alpha = 1 - progress
+            weakSelf.infoButton.alpha = 1 - progress
         }
         
         self.editorTextView.dg_addPullToRefreshWithActionHandler({ () -> Void in
@@ -159,7 +160,7 @@ class EditorView {
         self.closeButton.config()
 
         self.realBarView.appendButtons(buttons: [faveButton, colorButton, infoButton], left: false)
-        self.infoButton.setImage(Icons.about.iconImage(), for: .normal)
+        self.infoButton.setImage(Icons.info.iconImage(), for: .normal)
         self.colorButton.setImage(Icons.color.iconImage(), for: .normal)
         self.infoButton.config()
         self.colorButton.config()

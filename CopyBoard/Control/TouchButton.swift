@@ -13,7 +13,7 @@ final class TouchButton: UIButton {
     
     func config() {
         self.backgroundColor = UIColor.clear
-        self.layer.cornerRadius = 4.0
+        self.layer.cornerRadius = 8.0
         self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
@@ -24,18 +24,16 @@ final class TouchButton: UIButton {
         self.tintColor = UIColor.white
     }
     
-    func configButtonCorner() {
-        self.layer.cornerRadius = self.frame.width * 0.5
-    }
+    fileprivate var duration: TimeInterval = 0.35
     
     func buttonAnimationStartAction(_ btn: UIButton) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: duration) {
             self.backgroundColor = AppColors.faveButton
         }
     }
     
     func buttonAnimationEndAction(_ btn: UIButton) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: duration) {
             self.backgroundColor = UIColor.clear
         }
     }

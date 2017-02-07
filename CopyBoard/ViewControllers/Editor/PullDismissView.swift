@@ -47,18 +47,19 @@ final class PullDismissView: DGElasticPullToRefreshLoadingView {
         super.setPullProgress(progress)
         
         self.imageView.alpha = progress
-
-        if progress >= 1, self.imageView.tag == 0 {
-            self.imageView.tag = 1
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                self.imageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-            }, completion: nil)
-        } else if progress < 1, self.imageView.tag == 1 {
-            self.imageView.tag = 0
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: nil)
-        }
+        let scale: CGFloat = 1 + 0.5 * progress
+        self.imageView.transform = CGAffineTransform(scaleX: scale , y: scale)
+//        if progress >= 1, self.imageView.tag == 0 {
+//            self.imageView.tag = 1
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                
+//            }, completion: nil)
+//        } else if progress < 1, self.imageView.tag == 1 {
+//            self.imageView.tag = 0
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+//            }, completion: nil)
+//        }
 
         self.pb(progress)
     }

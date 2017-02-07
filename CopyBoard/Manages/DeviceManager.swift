@@ -14,7 +14,7 @@ struct DeviceManager {
     
     static var canRotate = false
     
-    static var currentOrientation: UIInterfaceOrientationMask {
+    var currentOrientation: UIInterfaceOrientationMask {
         let orient = UIApplication.shared.statusBarOrientation
         switch orient {
         case .landscapeLeft:
@@ -46,6 +46,12 @@ struct DeviceManager {
         get {
             let orient = UIApplication.shared.statusBarOrientation
             return orient == .landscapeLeft || orient == .landscapeRight
+        }
+    }
+    
+    var deviceName: String {
+        get {
+            return UIDevice.current.name
         }
     }
     

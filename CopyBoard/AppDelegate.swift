@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if DeviceManager.canRotate {
             return .all
         } else {
-            return DeviceManager.currentOrientation
+            return DeviceManager.shared.currentOrientation
         }
     }
     
