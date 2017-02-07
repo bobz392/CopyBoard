@@ -12,7 +12,7 @@ class MenuViewController: UIViewController {
 
     fileprivate let menuView = MenuView()
     weak var note: Note? = nil
-    var menuStatusBarHeight: CGFloat = 0
+    var statysBarHidden = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class MenuViewController: UIViewController {
     
     func quitMenu() {
         self.viewDeckController?.closeSide(true)
-        UIApplication.shared.setStatusBarHidden(false, with: .slide)
+        DeviceManager.shared.hiddenStatusBar(hidden: false)
     }
 
 }
@@ -69,7 +69,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         label.font = appFont(size: 17)
         view.addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview().offset(self.menuStatusBarHeight * 0.5)
+            maker.centerY.equalToSuperview().offset(self.statysBarHidden ? 0 : 10)
             maker.left.equalToSuperview().offset(12)
         }
         return view
@@ -85,8 +85,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        Logger.log("height for header = \(44 + DeviceManager.shared.statusbarHeight)")
-        return 44 + self.menuStatusBarHeight
+        return 44 + (self.statysBarHidden ? 0 : 20)
     }
     
 }

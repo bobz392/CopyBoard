@@ -30,6 +30,7 @@ class EditorViewController: BaseViewController {
     func createDeckVC() -> IIViewDeckController {
         let menuVC = MenuViewController()
         menuVC.note = self.note
+        menuVC.statysBarHidden = DeviceManager.shared.isLandscape
         let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
         deckVC.view.backgroundColor = AppColors.cloud
         deckVC.delegate = self
@@ -120,14 +121,11 @@ extension EditorViewController: IIViewDeckControllerDelegate {
     }
     
     fileprivate func openMenu(viewDeckController: IIViewDeckController) {
-        if let menu = viewDeckController.rightViewController as? MenuViewController {
-            menu.menuStatusBarHeight = DeviceManager.shared.statusbarHeight
-        }
-        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        DeviceManager.shared.hiddenStatusBar(hidden: true)
     }
     
     func viewDeckController(_ viewDeckController: IIViewDeckController, didClose side: IIViewDeckSide) {
-        UIApplication.shared.setStatusBarHidden(false, with: .slide)
+        DeviceManager.shared.hiddenStatusBar(hidden: false)
     }
 }
 

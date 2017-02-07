@@ -98,7 +98,9 @@ extension NoteView {
             self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
             layout.columnCount = DeviceManager.shared.noteColumnCount
             self.collectionView.setCollectionViewLayout(layout, animated: true)
+            
         }
+        UIApplication.shared.setStatusBarHidden(DeviceManager.shared.isLandscape, with: .fade)
     }
     
     func collectionViewItemSpace() -> CGFloat {

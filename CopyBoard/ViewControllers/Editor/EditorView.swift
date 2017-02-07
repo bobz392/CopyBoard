@@ -117,7 +117,8 @@ class EditorView {
         }
         
         KeyboardManager.shared.setHander { (show) in
-            let barHeight: CGFloat = show ? 20 : 64
+            let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
+            let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
             let textViewBottom: CGFloat = show ? -KeyboardManager.keyboardHeight - 44 : 0
             let barViewAlpha: CGFloat = show ? 0 : 1
             

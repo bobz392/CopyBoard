@@ -44,7 +44,7 @@ struct DeviceManager {
     
     var isLandscape: Bool {
         get {
-            let orient = UIApplication.shared.statusBarOrientation
+            let orient = UIDevice.current.orientation
             return orient == .landscapeLeft || orient == .landscapeRight
         }
     }
@@ -64,6 +64,11 @@ struct DeviceManager {
         } else {
             return .phone6p
         }
+    }
+    
+    func hiddenStatusBar(hidden: Bool) {
+        guard !self.isLandscape else { return }
+        UIApplication.shared.setStatusBarHidden(hidden, with: .slide)
     }
     
 }
