@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCe-PM-LZh">
-                        <rect key="frame" x="22" y="77" width="298" height="1"/>
+                        <rect key="frame" x="18" y="77" width="302" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="Uui-h6-8cH"/>
@@ -46,7 +46,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NCe-PM-LZh" firstAttribute="leading" secondItem="t15-LZ-FVU" secondAttribute="leading" id="0RD-0B-tBb"/>
+                    <constraint firstItem="NCe-PM-LZh" firstAttribute="leading" secondItem="t15-LZ-FVU" secondAttribute="leading" constant="-4" id="0RD-0B-tBb"/>
                     <constraint firstItem="t15-LZ-FVU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-4" id="Eui-kB-2rW"/>
                     <constraint firstItem="Umi-eH-Q06" firstAttribute="baseline" secondItem="t15-LZ-FVU" secondAttribute="baseline" constant="-1" id="GyI-6m-qYE"/>
                     <constraint firstAttribute="trailing" secondItem="NCe-PM-LZh" secondAttribute="trailing" id="KUM-uO-FRj"/>

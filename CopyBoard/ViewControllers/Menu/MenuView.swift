@@ -13,7 +13,6 @@ class MenuView {
     let menuTableView = UITableView()
     let holderView = UIView()
     let closeButton = UIButton(type: .custom)
-    let headerView = UIView()
     
     func configView(view: UIView) {
 
@@ -34,27 +33,34 @@ class MenuView {
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
-     
+        
+        self.menuTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
         self.menuTableView.separatorStyle = .none
         self.menuTableView.register(MenuDateTableCell.nib,
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)
         self.menuTableView.register(MenuDeviceTableCell.nib,
                                     forCellReuseIdentifier: MenuDeviceTableCell.reuseId)
-        self.menuTableView.tableFooterView = UIView()
-    }
-    
-    func configHeaderView() {
-        self.headerView.bgClear()
-        let titleLabel = UILabel()
-        titleLabel.font = appFont(size: 17)
-        titleLabel.text = "信息"
-        self.headerView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { maker in
-            maker.left.equalToSuperview().offset(8)
-            maker.centerY.equalToSuperview()
+        
+        view.addSubview(self.closeButton)
+        self.closeButton.snp.makeConstraints { maker in
+            maker.bottom.equalToSuperview()
+            maker.height.equalTo(44)
+            maker.left.equalTo(self.menuTableView)
+            maker.right.equalToSuperview()
         }
-        titleLabel.textAlignment = .left
+        self.closeButton.backgroundColor = AppColors.cloudHeader
+        self.closeButton.setTitleColor(AppColors.menuSecondaryText, for: .normal)
+        closeButton.setTitle(Localized("close"), for: .normal)
+        
+        let lineView = UIView()
+        UIColor.lightGray.bgColor(to: lineView)
+        view.addSubview(lineView)
+        lineView.snp.makeConstraints { maker in
+            maker.left.equalTo(self.menuTableView)
+            maker.right.equalToSuperview()
+            maker.top.equalTo(self.closeButton)
+            maker.height.equalTo(0.5)
+        }
     }
-    
     
 }
