@@ -17,6 +17,8 @@ final class TouchButton: UIButton {
         }
     }
     
+    var selectedBgColor = AppColors.faveButton
+    
     func config(cornerRadius: CGFloat = 8.0) {
         self.layer.cornerRadius = cornerRadius
         self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
@@ -33,7 +35,7 @@ final class TouchButton: UIButton {
     
     func buttonAnimationStartAction(_ btn: UIButton) {
         UIView.animate(withDuration: duration) { [unowned self] in
-            self.backgroundColor = AppColors.faveButton
+            self.backgroundColor = self.selectedBgColor
         }
     }
     

@@ -52,6 +52,7 @@ class MenuView {
         self.closeButton.setTitleColor(AppColors.menuSecondaryText, for: .normal)
         self.closeButton.config(cornerRadius: 0)
         self.closeButton.bgColor = AppColors.cloudHeader
+        self.closeButton.selectedBgColor = AppColors.mainBackground
         self.closeButton.setTitle(Localized("close"), for: .normal)
         
         let lineView = UIView()
