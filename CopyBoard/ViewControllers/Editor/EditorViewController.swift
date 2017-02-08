@@ -108,16 +108,20 @@ class EditorViewController: BaseViewController {
 // MARK: transition scroll
 extension EditorViewController {
    
-    override var shouldAutorotate: Bool {
-        return false
-    }
+//    override var shouldAutorotate: Bool {
+//        return false
+//    }
     
 }
 
 extension EditorViewController: IIViewDeckControllerDelegate {
     func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
+        if self.editorView.canOpenMenu {
         self.openMenu(viewDeckController: viewDeckController)
         return true
+        } else {
+            return false
+        }
     }
     
     fileprivate func openMenu(viewDeckController: IIViewDeckController) {

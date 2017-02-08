@@ -21,10 +21,10 @@ final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIView
             let toView = toVC.view
             else { fatalError("view is empty") }
 
-//        toView.updateConstraints()
-//        toView.setNeedsLayout()
-//        toView.layoutIfNeeded()
-//        toVC.viewWillLayoutSubviews()
+        toView.frame = fromView.bounds
+        toView.layoutIfNeeded()
+        toVC.viewWillLayoutSubviews()
+        
         self.animateTransition(transitionContext, fromView: fromView, toView: toView)
     }
     
@@ -84,6 +84,7 @@ final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIView
                 toView.frame = finalFrame
             }) { (finish) in
                 blackMaskView.removeFromSuperview()
+                fromView.transform = identity
                 fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             }

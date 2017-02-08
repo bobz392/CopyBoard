@@ -8,11 +8,10 @@
 
 import UIKit
 
-class MenuView {
-
+class MenuView {    
     let menuTableView = UITableView()
     let holderView = UIView()
-    let closeButton = UIButton(type: .custom)
+    let closeButton = TouchButton(type: .custom)
     
     func configView(view: UIView) {
 
@@ -36,6 +35,7 @@ class MenuView {
         
         self.menuTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
         self.menuTableView.separatorStyle = .none
+        self.menuTableView.allowsSelection = false
         self.menuTableView.register(MenuDateTableCell.nib,
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)
         self.menuTableView.register(MenuDeviceTableCell.nib,
@@ -48,9 +48,11 @@ class MenuView {
             maker.left.equalTo(self.menuTableView)
             maker.right.equalToSuperview()
         }
-        self.closeButton.backgroundColor = AppColors.cloudHeader
+        
         self.closeButton.setTitleColor(AppColors.menuSecondaryText, for: .normal)
-        closeButton.setTitle(Localized("close"), for: .normal)
+        self.closeButton.config(cornerRadius: 0)
+        self.closeButton.bgColor = AppColors.cloudHeader
+        self.closeButton.setTitle(Localized("close"), for: .normal)
         
         let lineView = UIView()
         UIColor.lightGray.bgColor(to: lineView)

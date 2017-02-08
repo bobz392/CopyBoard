@@ -10,7 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    fileprivate let menuView = MenuView()
+    let menuView = MenuView()
     weak var note: Note? = nil
     var statysBarHidden = false
     

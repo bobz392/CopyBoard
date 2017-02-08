@@ -20,6 +20,8 @@ class EditorView {
     let colorButton = TouchButton(type: .custom)
     let colorHolderView = UIView()
     
+    var canOpenMenu = true
+    
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
     let faveButton = FaveButton(frame: CGRect(origin: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
@@ -98,8 +100,8 @@ class EditorView {
         view.addSubview(self.keyboardBarView)
         self.keyboardBarView.snp.makeConstraints { maker in
             maker.height.equalTo(44)
-            maker.top.equalTo(self.editorTextView.snp.bottom)
-            maker.left.equalToSuperview()
+            maker.width.equalTo(44)
+            maker.bottom.equalTo(self.editorTextView)
             maker.right.equalToSuperview()
         }
         self.keyboardBarView.alpha = 0
@@ -112,16 +114,16 @@ class EditorView {
         hideKeyboardButton.snp.makeConstraints { maker in
             maker.width.equalTo(32)
             maker.height.equalTo(32)
-            maker.centerY.equalToSuperview()
-            maker.right.equalToSuperview().offset(-12)
+            maker.center.equalToSuperview()
         }
         
         KeyboardManager.shared.setHander { (show) in
             let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
             let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
-            let textViewBottom: CGFloat = show ? -KeyboardManager.keyboardHeight - 44 : 0
+            let textViewBottom: CGFloat = show ? -KeyboardManager.keyboardHeight : 0
             let barViewAlpha: CGFloat = show ? 0 : 1
             
+            weakSelf.canOpenMenu = !show
             weakSelf.barView.snp.updateConstraints({ maker in
                 maker.height.equalTo(barHeight)
             })
