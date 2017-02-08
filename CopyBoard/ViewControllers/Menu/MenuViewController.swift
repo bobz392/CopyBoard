@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
 
     let menuView = MenuView()
     weak var note: Note? = nil
@@ -36,6 +36,10 @@ class MenuViewController: UIViewController {
     func quitMenu() {
         self.viewDeckController?.closeSide(true)
         DeviceManager.shared.hiddenStatusBar(hidden: false)
+    }
+    
+    override func deviceOrientationChanged() {
+        self.quitMenu()
     }
 
 }

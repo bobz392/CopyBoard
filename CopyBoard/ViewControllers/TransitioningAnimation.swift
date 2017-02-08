@@ -23,7 +23,6 @@ final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIView
 
         toView.frame = fromView.bounds
         toView.layoutIfNeeded()
-        toVC.viewWillLayoutSubviews()
         
         self.animateTransition(transitionContext, fromView: fromView, toView: toView)
     }

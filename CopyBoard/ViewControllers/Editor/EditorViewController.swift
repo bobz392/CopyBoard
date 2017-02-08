@@ -105,13 +105,12 @@ class EditorViewController: BaseViewController {
     }
 }
 
-// MARK: transition scroll
+// MARK: orientation
 extension EditorViewController {
    
-//    override var shouldAutorotate: Bool {
-//        return false
-//    }
-    
+    override func deviceOrientationChanged() {
+        self.editorView.invalidateLayout()
+    }
 }
 
 extension EditorViewController: IIViewDeckControllerDelegate {

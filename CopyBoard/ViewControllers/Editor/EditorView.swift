@@ -230,4 +230,17 @@ class EditorView {
         self.editorTextView.attributedText = attrString
     }
     
+    func invalidateLayout() {
+        let barHeight = DeviceManager.shared.statusbarHeight
+        self.barView.snp.updateConstraints { maker in
+            maker.height.equalTo(44 + barHeight)
+        }
+        
+        self.realBarView.snp.updateConstraints { maker in
+            maker.top.equalToSuperview().offset(barHeight)
+        }
+
+        self.barView.superview?.layoutIfNeeded()
+    }
+
 }
