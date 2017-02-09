@@ -45,6 +45,8 @@
 		C72CF6711E4C8C3600CAAC15 /* SwiftDate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C72CF65B1E4C8C3600CAAC15 /* SwiftDate.bundle */; };
 		C72CF6721E4C8C3600CAAC15 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF65C1E4C8C3600CAAC15 /* TimeInterval+Extensions.swift */; };
 		C72CF6731E4C8C3600CAAC15 /* TimeZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF65D1E4C8C3600CAAC15 /* TimeZoneName.swift */; };
+		C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */; };
+		C72CF6781E4C8EF200CAAC15 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
@@ -254,6 +256,8 @@
 		C72CF65B1E4C8C3600CAAC15 /* SwiftDate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftDate.bundle; sourceTree = "<group>"; };
 		C72CF65C1E4C8C3600CAAC15 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		C72CF65D1E4C8C3600CAAC15 /* TimeZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneName.swift; sourceTree = "<group>"; };
+		C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 		C700F1171E4C397D00EE66D4 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				C72CF6741E4C8EE200CAAC15 /* Cell */,
 				C700F1181E4C398900EE66D4 /* SettingViewController.swift */,
 				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
 			);
@@ -533,6 +538,15 @@
 				C72CF65D1E4C8C3600CAAC15 /* TimeZoneName.swift */,
 			);
 			path = SwiftDate;
+			sourceTree = "<group>";
+		};
+		C72CF6741E4C8EE200CAAC15 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */,
+				C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */ = {
@@ -1043,6 +1057,7 @@
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
 				C7753D901E352A0900C45A5A /* NextPageFragmentShader.glsl in Resources */,
+				C72CF6781E4C8EF200CAAC15 /* SettingsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1244,7 @@
 				C72CF6621E4C8C3600CAAC15 /* Date+Formatter.swift in Sources */,
 				C72CF6731E4C8C3600CAAC15 /* TimeZoneName.swift in Sources */,
 				C72CF6651E4C8C3600CAAC15 /* DateInRegion+Compare.swift in Sources */,
+				C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */,
 				C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */,
 				C74BF1411E3D9524007F35E1 /* ScrollingNavigationController.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,

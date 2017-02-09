@@ -56,9 +56,10 @@ class NotesViewController: BaseViewController {
         
         self.noteView.settingButton.rx.tap.subscribe { (tap) in
             let settingVC = SettingViewController()
-            settingVC.transitioningDelegate = weakSelf
+            let navigation = UINavigationController(rootViewController: settingVC)
+            navigation.transitioningDelegate = weakSelf
             weakSelf.transitionType = .ping
-            weakSelf.present(settingVC, animated: true, completion: nil)
+            weakSelf.present(navigation, animated: true, completion: nil)
         }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
