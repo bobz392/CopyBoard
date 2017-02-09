@@ -151,7 +151,6 @@ II_DELEGATE_PROXY(IIViewDeckControllerDelegate);
     let view = self.view;
     [view addGestureRecognizer:self.leftEdgeGestureRecognizer];
     [view addGestureRecognizer:self.rightEdgeGestureRecognizer];
-
     [self ii_exchangeViewFromController:nil toController:self.centerViewController inContainerView:self.view];
 }
 
@@ -240,7 +239,7 @@ static inline BOOL IIIsAllowedTransition(IIViewDeckSide fromSide, IIViewDeckSide
 }
 
 - (void)openSide:(IIViewDeckSide)side animated:(BOOL)animated notify:(BOOL)notify completion:(nullable void(^)(BOOL cancelled))completion {
-    if (side == _openSide) {
+    if (side == _openSide && self->_flags.isInSideChange == NO) {
         return;
     }
     NSAssert(self->_flags.isInSideChange == NO, @"A side change is currently taking place. You can not switch the side while already transitioning from or to a side.");

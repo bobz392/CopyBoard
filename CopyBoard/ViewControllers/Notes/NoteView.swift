@@ -32,6 +32,10 @@ class NoteView {
     }
     
     func configBarView(bar: UINavigationBar) {
+        let barImage = AppColors.mainBackground.toImage()
+        bar.shadowImage = barImage
+        bar.setBackgroundImage(barImage, for: .default)
+        
         bar.addSubview(self.barView)
         AppColors.mainBackground.bgColor(to: self.barView)
         self.barView.clipsToBounds = true

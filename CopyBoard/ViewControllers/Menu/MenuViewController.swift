@@ -12,7 +12,7 @@ class MenuViewController: BaseViewController {
 
     let menuView = MenuView()
     weak var note: Note? = nil
-    var statysBarHidden = false
+    fileprivate var barHeight: CGFloat = DeviceManager.shared.isLandscape ? 0 : 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,8 @@ class MenuViewController: BaseViewController {
     
     override func deviceOrientationChanged() {
         self.quitMenu()
+        self.barHeight = DeviceManager.shared.isLandscape ? 0 : 20
+        self.menuView.menuTableView.reloadData()
     }
 
 }
@@ -77,7 +79,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         label.font = appFont(size: 17)
         view.addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview().offset(self.statysBarHidden ? 0 : 10)
+            maker.centerY.equalToSuperview().offset(self.barHeight * 0.5)
             maker.left.equalToSuperview().offset(12)
         }
         return view
@@ -92,7 +94,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44 + (self.statysBarHidden ? 0 : 20)
+        return 44 + self.barHeight
     }
     
 }

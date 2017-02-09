@@ -20,6 +20,7 @@ class EditorViewController: BaseViewController {
     fileprivate var noteChanged = false
     
     weak var deckVC: IIViewDeckController? = nil
+    weak var menuVC: MenuViewController? = nil
     
     init(note: Note) {
         self.note = note
@@ -33,7 +34,7 @@ class EditorViewController: BaseViewController {
     func createDeckVC() -> IIViewDeckController {
         let menuVC = MenuViewController()
         menuVC.note = self.note
-        menuVC.statysBarHidden = DeviceManager.shared.isLandscape
+        self.menuVC = menuVC
         let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
         deckVC.view.backgroundColor = AppColors.cloud
         deckVC.delegate = self
@@ -115,6 +116,8 @@ extension EditorViewController {
    
     override func deviceOrientationChanged() {
         self.editorView.invalidateLayout()
+        self.menuVC?.deviceOrientationChanged()
+        
     }
     
 }

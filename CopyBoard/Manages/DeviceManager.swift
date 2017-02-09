@@ -14,7 +14,7 @@ struct DeviceManager {
     
     static var canRotate = false
     
-    var currentOrientation: UIInterfaceOrientationMask {
+    var statusOrientation: UIInterfaceOrientationMask {
         let orient = UIApplication.shared.statusBarOrientation
         switch orient {
         case .landscapeLeft:
@@ -45,7 +45,14 @@ struct DeviceManager {
     var isLandscape: Bool {
         get {
             let orient = UIDevice.current.orientation
-            return orient == .landscapeLeft || orient == .landscapeRight
+            if orient == .landscapeLeft || orient == .landscapeRight {
+                return true
+            } else if orient == .portrait || orient == .portraitUpsideDown {
+                return false
+            } else {
+                let so = UIApplication.shared.statusBarOrientation
+                return so.isLandscape
+            }
         }
     }
     

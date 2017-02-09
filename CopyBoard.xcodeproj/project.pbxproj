@@ -134,7 +134,6 @@
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
 		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
 		C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */; };
-		C79EF8961E3EDACB004BDACC /* IIViewDeckController.txt in Resources */ = {isa = PBXBuildFile; fileRef = C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */; };
 		C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */; };
 		C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */; };
 		C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */; };
@@ -371,7 +370,6 @@
 		C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIViewDeckController+Private.h"; sourceTree = "<group>"; };
 		C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
 		C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckController.mm; sourceTree = "<group>"; };
-		C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IIViewDeckController.txt; sourceTree = "<group>"; };
 		C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckTransitioning.h; sourceTree = "<group>"; };
 		C79EF8871E3EDACB004BDACC /* IIDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIDelegateProxy.h; sourceTree = "<group>"; };
 		C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIDelegateProxy.m; sourceTree = "<group>"; };
@@ -795,7 +793,6 @@
 				C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */,
 				C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */,
 				C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */,
-				C79EF8841E3EDACB004BDACC /* IIViewDeckController.txt */,
 				C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */,
 				C79EF8861E3EDACB004BDACC /* Private */,
 				C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */,
@@ -1023,7 +1020,6 @@
 			files = (
 				C78C33961E2EFA96001DCE38 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap in Resources */,
 				C78C338C1E2EFA96001DCE38 /* 5F176F2C-E1A6-34F5-A597-9378AD27BD9E.bcsymbolmap in Resources */,
-				C79EF8961E3EDACB004BDACC /* IIViewDeckController.txt in Resources */,
 				C78C33921E2EFA96001DCE38 /* 8F30DB2B-FA6E-3A4A-8A8A-20D6A63FC0AD.bcsymbolmap in Resources */,
 				C78C33861E2EFA96001DCE38 /* 0CF18327-1779-3376-8A33-98C36B7CB2BA.bcsymbolmap in Resources */,
 				C7753D8F1E352A0900C45A5A /* FrontVertexShader.glsl in Resources */,
