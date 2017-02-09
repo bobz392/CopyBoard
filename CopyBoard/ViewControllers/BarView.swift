@@ -17,7 +17,7 @@ class BarView: UIView {
     fileprivate var leftButtons = [UIButton]()
     fileprivate var rightButtons = [UIButton]()
     
-    init(sideMargin: CGFloat = 12) {
+    init(sideMargin: CGFloat = 8) {
         self.sideMargin = sideMargin
         super.init(frame: CGRect.zero)
         self.setup()
@@ -29,7 +29,7 @@ class BarView: UIView {
     
     fileprivate func setup() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.font = appFont(size: 16, weight: UIFontWeightMedium)
+        self.titleLabel.font = appFont(size: 17)
         self.titleLabel.textAlignment = .center
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()

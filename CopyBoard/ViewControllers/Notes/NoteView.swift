@@ -15,6 +15,7 @@ class NoteView {
     let barView = BarView(sideMargin: 8)
     let searchBar = UISearchBar()
     let searchButton = UIButton(type: .custom)
+    let settingButton = UIButton(type: .custom)
     
     var collectionView: UICollectionView!
     var emptyNoteView = UIView()
@@ -37,9 +38,15 @@ class NoteView {
         self.barView.addConstraint()
         
         self.barView.setTitle(title: "STICKER")
+        
         self.barView.appendButtons(buttons: [self.searchButton], left: false)
         self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
         self.searchButton.tintColor = AppColors.mainIcon
+        
+        self.barView.appendButtons(buttons: [self.settingButton], left: true)
+        self.settingButton.setImage(Icons.setting.iconImage(), for: .normal)
+        self.settingButton.tintColor = AppColors.mainIcon
+        self.settingButton.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4)
         
         self.barView.addSubview(self.searchBar)
         self.searchBar.isHidden = true
@@ -214,11 +221,16 @@ extension NoteView {
         let weakSelf = self
         let labelCenterY: CGFloat = startSearch ? 11 : 0
         let searchButtonRight: CGFloat = startSearch ? 44 : -8
+        let settingButtonLeft: CGFloat = startSearch ? -44 : 8
         self.searchBar.text = nil
         
         if startSearch {
             weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                 make.centerY.equalToSuperview().offset(labelCenterY)
+            })
+            
+            weakSelf.settingButton.snp.updateConstraints({ maker in
+                maker.left.equalToSuperview().offset(settingButtonLeft)
             })
             
             weakSelf.searchButton.snp.updateConstraints({ (make) in
@@ -256,6 +268,10 @@ extension NoteView {
                 
                 weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                     make.centerY.equalToSuperview().offset(labelCenterY)
+                })
+                
+                weakSelf.settingButton.snp.updateConstraints({ maker in
+                    maker.left.equalToSuperview().offset(settingButtonLeft)
                 })
                 
                 weakSelf.searchButton.snp.updateConstraints({ (make) in

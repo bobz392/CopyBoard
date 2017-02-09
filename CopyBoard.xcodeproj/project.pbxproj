@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F1181E4C398900EE66D4 /* SettingViewController.swift */; };
+		C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F11A1E4C399E00EE66D4 /* SettingView.swift */; };
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
@@ -209,6 +211,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C700F1181E4C398900EE66D4 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C700F11A1E4C399E00EE66D4 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C71087481E3874B100D9C3A9 /* CopyBoard copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CopyBoard copy-Info.plist"; path = "/Users/zhoubobo/Desktop/CopyBoard/CopyBoard copy-Info.plist"; sourceTree = "<absolute>"; };
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -414,6 +418,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C700F1171E4C397D00EE66D4 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C700F1181E4C398900EE66D4 /* SettingViewController.swift */,
+				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		C7110FE71E2836A2007A1577 /* Manages */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +565,7 @@
 				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
 				C79EF8A11E3F6F80004BDACC /* TransitioningAnimation.swift */,
 				C7655AA51E325F9100A1CB9F /* Editor */,
+				C700F1171E4C397D00EE66D4 /* Setting */,
 				C79EF89D1E3EE57D004BDACC /* Menu */,
 				C7403F361E280E240067229E /* Notes */,
 			);
@@ -1153,6 +1167,7 @@
 				C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */,
 				C7655A961E32541D00A1CB9F /* DateComponents+Extension.swift in Sources */,
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
+				C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
 				C7655A9C1E32541D00A1CB9F /* DateInRegionFormatter.swift in Sources */,
 				C71741DD1E49971F00D39597 /* Note+Creator.swift in Sources */,
@@ -1161,6 +1176,7 @@
 				C71741DA1E4824B200D39597 /* MenuDateTableCell.swift in Sources */,
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
+				C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */,
 				C79EF8A21E3F6F80004BDACC /* TransitioningAnimation.swift in Sources */,
 				C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
