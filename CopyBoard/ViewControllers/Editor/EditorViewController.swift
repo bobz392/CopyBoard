@@ -116,6 +116,7 @@ extension EditorViewController {
     override func deviceOrientationChanged() {
         self.editorView.invalidateLayout()
     }
+    
 }
 
 // MARK: - text view delegate
@@ -125,10 +126,12 @@ extension EditorViewController: UITextViewDelegate {
         self.noteChanged = true
         return true
     }
+    
 }
 
 // MARK: - view deck controller delegate
 extension EditorViewController: IIViewDeckControllerDelegate {
+    
     func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
         if self.editorView.canOpenMenu {
         self.openMenu(viewDeckController: viewDeckController)
@@ -145,6 +148,7 @@ extension EditorViewController: IIViewDeckControllerDelegate {
     func viewDeckController(_ viewDeckController: IIViewDeckController, didClose side: IIViewDeckSide) {
         DeviceManager.shared.hiddenStatusBar(hidden: false)
     }
+    
 }
 
 // MARK: - circle menu delegate
@@ -181,4 +185,5 @@ extension EditorViewController: CircleMenuDelegate {
     func menuCollapsed(_ circleMenu: CircleMenu) {
         self.editorView.changeColor(start: false)
     }
+    
 }

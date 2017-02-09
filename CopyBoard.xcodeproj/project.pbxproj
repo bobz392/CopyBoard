@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F1181E4C398900EE66D4 /* SettingViewController.swift */; };
 		C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F11A1E4C399E00EE66D4 /* SettingView.swift */; };
+		C700F11D1E4C3E9600EE66D4 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */; };
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
@@ -135,7 +136,7 @@
 		C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */; };
 		C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */; };
 		C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */; };
-		C79EF8A21E3F6F80004BDACC /* TransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8A11E3F6F80004BDACC /* TransitioningAnimation.swift */; };
+		C79EF8A21E3F6F80004BDACC /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -213,6 +214,7 @@
 /* Begin PBXFileReference section */
 		C700F1181E4C398900EE66D4 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C700F11A1E4C399E00EE66D4 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
 		C71087481E3874B100D9C3A9 /* CopyBoard copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CopyBoard copy-Info.plist"; path = "/Users/zhoubobo/Desktop/CopyBoard/CopyBoard copy-Info.plist"; sourceTree = "<absolute>"; };
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -376,7 +378,7 @@
 		C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IIViewDeckAdditions.h"; sourceTree = "<group>"; };
 		C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IIViewDeckAdditions.m"; sourceTree = "<group>"; };
 		C79EF8941E3EDACB004BDACC /* ViewDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeck.h; sourceTree = "<group>"; };
-		C79EF8A11E3F6F80004BDACC /* TransitioningAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitioningAnimation.swift; sourceTree = "<group>"; };
+		C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -563,7 +565,8 @@
 			children = (
 				C7403F321E280E040067229E /* BaseViewController.swift */,
 				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
-				C79EF8A11E3F6F80004BDACC /* TransitioningAnimation.swift */,
+				C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */,
+				C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */,
 				C7655AA51E325F9100A1CB9F /* Editor */,
 				C700F1171E4C397D00EE66D4 /* Setting */,
 				C79EF89D1E3EE57D004BDACC /* Menu */,
@@ -1177,7 +1180,7 @@
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */,
-				C79EF8A21E3F6F80004BDACC /* TransitioningAnimation.swift in Sources */,
+				C79EF8A21E3F6F80004BDACC /* PresentTransition.swift in Sources */,
 				C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
@@ -1221,6 +1224,7 @@
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
 				C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */,
+				C700F11D1E4C3E9600EE66D4 /* PingTransition.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,

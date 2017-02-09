@@ -138,13 +138,13 @@ extension NotesViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitioningAnimation()
+        let transition = PresentTransition()
         transition.reverse = true
         return transition
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitioningAnimation()
+        let transition = PresentTransition()
         transition.reverse = false
         return transition
     }
@@ -210,5 +210,6 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return height
         }
     }
+    
 }
 

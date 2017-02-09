@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
+final class PresentTransition: UIViewControllerAnimatedTransitioning {
     
     internal let animationDuration: TimeInterval = 0.35
     var reverse = false
