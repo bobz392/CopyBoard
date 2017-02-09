@@ -10,7 +10,7 @@ import UIKit
 
 final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
 
-    internal let animationDuration: TimeInterval = 0.4
+    internal let animationDuration: TimeInterval = 0.6
     var reverse = false
 
     fileprivate var transitionContext: UIViewControllerContextTransitioning? = nil
@@ -51,12 +51,13 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
     fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView, startView: UIView) {
         let containerView = transitionContext.containerView
 
-//        let bounds = startView.convert(startView.frame, to: reverse ? fromView : toView)
-        
-        var bounds = CGRect(x: 16, y: 32, width: 32, height: 32)
-        bounds = bounds.insetBy(dx: -10, dy: -10)
-        Logger.log("start view frame = \(bounds), view frame = \(startView.frame) contentView frame = \(containerView.frame)")
-//        let bounds = startView.frame
+        let v = self.reverse ? toView : fromView
+        var bounds = v.convert(startView.frame, to: containerView)
+        bounds.origin.y += DeviceManager.shared.statusbarHeight
+        //var bounds = CGRect(x: 16, y: 32, width: 32, height: 32)
+        if reverse {
+            bounds.insetBy(dx: 15, dy: 15)
+        }
         let maskStartPath = UIBezierPath(ovalIn: bounds)
 
         let finalPoint = self.calculateFinalPoint(startView: startView, toView: toView)
