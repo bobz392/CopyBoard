@@ -13,9 +13,12 @@ import RxCocoa
 class EditorViewController: BaseViewController {
 
     let editorView = EditorView()
+    
     fileprivate let note: Note
     fileprivate let disposeBag = DisposeBag()
     fileprivate var currentPairColor: [AppPairColors]? = nil
+    fileprivate var noteChanged = false
+    
     weak var deckVC: IIViewDeckController? = nil
     
     init(note: Note) {
@@ -43,9 +46,8 @@ class EditorViewController: BaseViewController {
 
         let weakSelf = self
         self.editorView.config(with: self.view, note: note) {
-//            weakSelf.editorView.editorTextView.dg_stopLoading()
             weakSelf.dismiss(animated: true, completion: { (finish) -> Void in })
-            weakSelf.updateNote()
+            weakSelf.updateNoteIfNeed()
         }
 
         self.editorView.faveButton.rx.tap.subscribe { (event) in
@@ -84,13 +86,16 @@ class EditorViewController: BaseViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
-        self.updateNote()
+        self.updateNoteIfNeed()
     }
     
-    private func updateNote() {
-        let noteText = self.editorView.editorTextView.text ?? ""
-        if noteText.characters.count > 0, self.note.content != noteText {
+    private func updateNoteIfNeed() {
+        if let noteText = self.editorView.editorTextView.text,
+            noteText.characters.count > 0, self.noteChanged {
+            
             DBManager.shared.updateObject {
+                self.note.modificationDevice = DeviceManager.shared.deviceName
+                self.note.modificationDate = Date()
                 self.note.content = self.editorView.editorTextView.text
             }
         }
@@ -113,6 +118,16 @@ extension EditorViewController {
     }
 }
 
+// MARK: - text view delegate
+extension EditorViewController: UITextViewDelegate {
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        self.noteChanged = true
+        return true
+    }
+}
+
+// MARK: - view deck controller delegate
 extension EditorViewController: IIViewDeckControllerDelegate {
     func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
         if self.editorView.canOpenMenu {
@@ -132,6 +147,7 @@ extension EditorViewController: IIViewDeckControllerDelegate {
     }
 }
 
+// MARK: - circle menu delegate
 extension EditorViewController: CircleMenuDelegate {
     
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int) {

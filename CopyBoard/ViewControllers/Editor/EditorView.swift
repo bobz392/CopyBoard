@@ -99,8 +99,8 @@ class EditorView {
         let weakSelf = self
         view.addSubview(self.keyboardBarView)
         self.keyboardBarView.snp.makeConstraints { maker in
-            maker.height.equalTo(44)
-            maker.width.equalTo(44)
+            maker.height.equalTo(38)
+            maker.width.equalTo(38)
             maker.bottom.equalTo(self.editorTextView)
             maker.right.equalToSuperview()
         }
