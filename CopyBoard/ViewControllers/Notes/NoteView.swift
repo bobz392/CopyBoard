@@ -12,7 +12,7 @@ import SnapKit
 fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
 class NoteView {
-    let barView = BarView(sideMargin: 8)
+    let barView = BarView(sideMargin: 6)
     let searchBar = UISearchBar()
     let searchButton = UIButton(type: .custom)
     let settingButton = UIButton(type: .custom)
@@ -46,7 +46,6 @@ class NoteView {
         self.barView.appendButtons(buttons: [self.settingButton], left: true)
         self.settingButton.setImage(Icons.setting.iconImage(), for: .normal)
         self.settingButton.tintColor = AppColors.mainIcon
-        self.settingButton.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4)
         
         self.barView.addSubview(self.searchBar)
         self.searchBar.isHidden = true
@@ -68,7 +67,7 @@ class NoteView {
     
     func emptyNotesView(hidden: Bool) {
         self.emptyNoteView.isHidden = hidden
-        let searchButtonRight: CGFloat = hidden ? -8 : 44
+        let searchButtonRight: CGFloat = hidden ? -self.barView.sideMargin : 44
         self.searchButton.snp.updateConstraints({ (make) in
             make.right.equalToSuperview().offset(searchButtonRight)
         })
@@ -220,8 +219,8 @@ extension NoteView {
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self
         let labelCenterY: CGFloat = startSearch ? 11 : 0
-        let searchButtonRight: CGFloat = startSearch ? 44 : -8
-        let settingButtonLeft: CGFloat = startSearch ? -44 : 8
+        let searchButtonRight: CGFloat = startSearch ? 44 : -self.barView.sideMargin
+        let settingButtonLeft: CGFloat = startSearch ? -44 : self.barView.sideMargin
         self.searchBar.text = nil
         
         if startSearch {

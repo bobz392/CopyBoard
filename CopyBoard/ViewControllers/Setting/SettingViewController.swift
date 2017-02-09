@@ -15,8 +15,7 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = AppColors.mainBackground
-        
+        self.settingView.config(view: self.view)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.quit))
         self.view.addGestureRecognizer(tap)
     }

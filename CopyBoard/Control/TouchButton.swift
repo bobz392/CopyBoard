@@ -11,13 +11,14 @@ import UIKit
 
 final class TouchButton: UIButton {
     
-    var bgColor: UIColor = UIColor.clear {
+    var bgColor: UIColor = UIColor.white {
         didSet {
             self.backgroundColor = bgColor
         }
     }
     
     var selectedBgColor = AppColors.faveButton
+    var useTint = true
     
     func config(cornerRadius: CGFloat = 8.0) {
         self.layer.cornerRadius = cornerRadius
@@ -35,13 +36,22 @@ final class TouchButton: UIButton {
     
     func buttonAnimationStartAction(_ btn: UIButton) {
         UIView.animate(withDuration: duration) { [unowned self] in
-            self.backgroundColor = self.selectedBgColor
+            if self.useTint {
+                self.tintColor = self.selectedBgColor
+            } else {
+                self.backgroundColor = self.selectedBgColor
+            }
+            
         }
     }
     
     func buttonAnimationEndAction(_ btn: UIButton) {
         UIView.animate(withDuration: duration) { [unowned self] in
-            self.backgroundColor = self.bgColor
+            if self.useTint {
+                self.tintColor = self.bgColor
+            } else {
+                self.backgroundColor = self.bgColor
+            }
         }
     }
     

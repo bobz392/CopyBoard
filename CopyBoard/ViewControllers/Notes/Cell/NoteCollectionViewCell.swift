@@ -56,7 +56,12 @@ class NoteCollectionViewCell: UICollectionViewCell {
         pairColor.light.bgColor(to: self.cardView)
         
         self.faveButton.isSelected = note.favourite
-        self.noteDateLabel.text = try! note.createdAt?.colloquialSinceNow().colloquial
+        if let createdAt = note.createdAt {
+            let region = Region.Local(autoUpdate: true)
+            self.noteDateLabel.text = try? createdAt.colloquialSinceNow(in: region).colloquial
+        } else {
+            self.noteDateLabel.text = nil
+        }
         self.noteLabel.attributedText = note.content.searchHintString(query: query)
         self.note = note
     }

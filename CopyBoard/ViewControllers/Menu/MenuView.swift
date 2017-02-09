@@ -42,6 +42,7 @@ class MenuView {
                                     forCellReuseIdentifier: MenuDeviceTableCell.reuseId)
         
         view.addSubview(self.closeButton)
+        self.closeButton.useTint = false
         self.closeButton.snp.makeConstraints { maker in
             maker.bottom.equalToSuperview()
             maker.height.equalTo(44)

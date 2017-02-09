@@ -53,7 +53,8 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
 //        let bounds = startView.convert(startView.frame, to: reverse ? fromView : toView)
         
-        let bounds = CGRect(x: 16, y: 32, width: 32, height: 32)
+        var bounds = CGRect(x: 16, y: 32, width: 32, height: 32)
+        bounds = bounds.insetBy(dx: -10, dy: -10)
         Logger.log("start view frame = \(bounds), view frame = \(startView.frame) contentView frame = \(containerView.frame)")
 //        let bounds = startView.frame
         let maskStartPath = UIBezierPath(ovalIn: bounds)
@@ -61,7 +62,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         let finalPoint = self.calculateFinalPoint(startView: startView, toView: toView)
         let radius = sqrt(pow(finalPoint.x, 2) + pow(finalPoint.y, 2))
         let maskFinalPath = UIBezierPath(ovalIn: bounds.insetBy(dx: -radius, dy: -radius))
-        self.maskLayer.anchorPoint = startView.center
+        //self.maskLayer.anchorPoint = startView.center
 
         if reverse {
             containerView.addSubview(toView)

@@ -20,7 +20,7 @@ enum Icons {
     case hideKeyboard
     case bigClear
     case info
-    
+    case done
     
     
     case plus
@@ -69,6 +69,7 @@ enum Icons {
         case .hideKeyboard: return "hideKeyboard"
         case .bigClear: return "big_clear"
         case .info: return "info"
+        case .done: return "done"
             
         case .plus: return "plus"
         case .check: return "check"
