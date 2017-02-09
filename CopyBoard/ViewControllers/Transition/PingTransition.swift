@@ -54,7 +54,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         let v = self.reverse ? toView : fromView
         var bounds = v.convert(startView.frame, to: containerView)
         bounds.origin.y += DeviceManager.shared.statusbarHeight
-        //var bounds = CGRect(x: 16, y: 32, width: 32, height: 32)
+
         if reverse {
             bounds.insetBy(dx: 15, dy: 15)
         }
