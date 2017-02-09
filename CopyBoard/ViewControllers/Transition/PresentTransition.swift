@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PresentTransition: UIViewControllerAnimatedTransitioning {
+final class PresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     internal let animationDuration: TimeInterval = 0.35
     var reverse = false
@@ -59,7 +59,7 @@ final class PresentTransition: UIViewControllerAnimatedTransitioning {
                 fromView.frame = finalFrame
             }, completion: { (finish) in
                 blackMaskView.removeFromSuperview()
-                fromView.removeFromSuperview()
+                //fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             })
         } else {
@@ -84,7 +84,7 @@ final class PresentTransition: UIViewControllerAnimatedTransitioning {
             }) { (finish) in
                 blackMaskView.removeFromSuperview()
                 fromView.transform = identity
-                fromView.removeFromSuperview()
+                //fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             }
         }

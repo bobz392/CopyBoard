@@ -130,7 +130,7 @@ class NoteCollectionViewLayout: UICollectionViewLayout {
     }
 }
 
-class NoteLayoutAttributes:UICollectionViewLayoutAttributes {
+class NoteLayoutAttributes: UICollectionViewLayoutAttributes {
     
     // 1. Custom attribute
     var noteHeight: CGFloat = 0.0

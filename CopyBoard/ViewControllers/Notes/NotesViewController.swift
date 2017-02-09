@@ -12,6 +12,7 @@ class NotesViewController: BaseViewController {
     
     let noteView = NoteView()
     var viewModel: NotesViewModel!
+    
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
     fileprivate var scrollingNav: ScrollingNavigationController {
@@ -23,6 +24,8 @@ class NotesViewController: BaseViewController {
             return nav
         }
     }
+    fileprivate var transitionType = TransitionType.present
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let bar = self.navigationController?.navigationBar {
@@ -50,6 +53,13 @@ class NotesViewController: BaseViewController {
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
             weakSelf.endSearchAction()
             }.addDisposableTo(viewModel.disposeBag)
+        
+        self.noteView.settingButton.rx.tap.subscribe { (tap) in
+            let settingVC = SettingViewController()
+            settingVC.transitioningDelegate = weakSelf
+            weakSelf.transitionType = .ping
+            weakSelf.present(settingVC, animated: true, completion: nil)
+        }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
@@ -128,8 +138,8 @@ extension NotesViewController: RealmNotificationDataSource {
     
 }
 
-// MARK: transition scroll
-extension NotesViewController: UIViewControllerTransitioningDelegate {
+// MARK: transition and orientation
+extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartViewDelegate {
     
     override func deviceOrientationChanged() {
         Logger.log("deviceOrientationChanged")
@@ -138,15 +148,35 @@ extension NotesViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = PresentTransition()
-        transition.reverse = true
-        return transition
+        if self.transitionType == .present {
+            let transition = PresentTransition()
+            transition.reverse = true
+            return transition
+        } else if self.transitionType == .ping {
+            let transition = PingTransition()
+            transition.reverse = true
+            return transition
+        } else {
+            return nil
+        }
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = PresentTransition()
-        transition.reverse = false
-        return transition
+        if self.transitionType == .present {
+            let transition = PresentTransition()
+            transition.reverse = false
+            return transition
+        } else if self.transitionType == .ping {
+            let transition = PingTransition()
+            transition.reverse = false
+            return transition
+        } else {
+            return nil
+        }
+    }
+    
+    func startView() -> UIView {
+        return self.noteView.settingButton
     }
     
 }
@@ -174,6 +204,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let deckVC = editorVC.createDeckVC()
             
             deckVC.transitioningDelegate = self
+            self.transitionType = .present
             self.present(deckVC, animated: true, completion: nil)
             self.selectedCell = cell
         }

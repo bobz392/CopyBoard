@@ -15,12 +15,20 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = AppColors.mainBackground
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.quit))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func quit() {
+        self.dismiss(animated: true) { 
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F1181E4C398900EE66D4 /* SettingViewController.swift */; };
 		C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F11A1E4C399E00EE66D4 /* SettingView.swift */; };
-		C700F11D1E4C3E9600EE66D4 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */; };
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
@@ -21,6 +20,9 @@
 		C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */; };
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
+		C72CF6431E4C46D900CAAC15 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6411E4C46D900CAAC15 /* PingTransition.swift */; };
+		C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */; };
+		C72CF6461E4C46EA00CAAC15 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6451E4C46EA00CAAC15 /* TransitionType.swift */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
@@ -136,7 +138,6 @@
 		C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */; };
 		C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */; };
 		C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */; };
-		C79EF8A21E3F6F80004BDACC /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -214,7 +215,6 @@
 /* Begin PBXFileReference section */
 		C700F1181E4C398900EE66D4 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C700F11A1E4C399E00EE66D4 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
 		C71087481E3874B100D9C3A9 /* CopyBoard copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CopyBoard copy-Info.plist"; path = "/Users/zhoubobo/Desktop/CopyBoard/CopyBoard copy-Info.plist"; sourceTree = "<absolute>"; };
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -228,6 +228,9 @@
 		C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuDeviceTableCell.xib; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
+		C72CF6411E4C46D900CAAC15 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
+		C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
+		C72CF6451E4C46EA00CAAC15 /* TransitionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -378,7 +381,6 @@
 		C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IIViewDeckAdditions.h"; sourceTree = "<group>"; };
 		C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IIViewDeckAdditions.m"; sourceTree = "<group>"; };
 		C79EF8941E3EDACB004BDACC /* ViewDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeck.h; sourceTree = "<group>"; };
-		C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -492,6 +494,16 @@
 			path = Vander;
 			sourceTree = "<group>";
 		};
+		C72CF6401E4C46D900CAAC15 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				C72CF6411E4C46D900CAAC15 /* PingTransition.swift */,
+				C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */,
+				C72CF6451E4C46EA00CAAC15 /* TransitionType.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,12 +577,11 @@
 			children = (
 				C7403F321E280E040067229E /* BaseViewController.swift */,
 				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
-				C79EF8A11E3F6F80004BDACC /* PresentTransition.swift */,
-				C700F11C1E4C3E9600EE66D4 /* PingTransition.swift */,
-				C7655AA51E325F9100A1CB9F /* Editor */,
-				C700F1171E4C397D00EE66D4 /* Setting */,
-				C79EF89D1E3EE57D004BDACC /* Menu */,
+				C72CF6401E4C46D900CAAC15 /* Transition */,
 				C7403F361E280E240067229E /* Notes */,
+				C7655AA51E325F9100A1CB9F /* Editor */,
+				C79EF89D1E3EE57D004BDACC /* Menu */,
+				C700F1171E4C397D00EE66D4 /* Setting */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1180,7 +1191,6 @@
 				C7655A9D1E32541D00A1CB9F /* DateTimeInterval.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */,
-				C79EF8A21E3F6F80004BDACC /* PresentTransition.swift in Sources */,
 				C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */,
 				C7655A911E32541D00A1CB9F /* Commons.swift in Sources */,
 				C7655A941E32541D00A1CB9F /* Date+Formatter.swift in Sources */,
@@ -1195,6 +1205,7 @@
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C74BF1401E3D9524007F35E1 /* ScrollingNavbar+Sizes.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
+				C72CF6431E4C46D900CAAC15 /* PingTransition.swift in Sources */,
 				C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */,
 				C74BF1421E3D9524007F35E1 /* ScrollingNavigationViewController.swift in Sources */,
 				C73F6E051E396B6600FBD6F0 /* PullDismissView.swift in Sources */,
@@ -1208,6 +1219,7 @@
 				C7753D981E352A0900C45A5A /* XBPageDragView.m in Sources */,
 				C7403E261E269CA00067229E /* AppDelegate.swift in Sources */,
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
+				C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */,
 				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
 				C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */,
 				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
@@ -1224,13 +1236,13 @@
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
 				C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */,
-				C700F11D1E4C3E9600EE66D4 /* PingTransition.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C7655A9A1E32541D00A1CB9F /* DateInRegion+Math.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
+				C72CF6461E4C46EA00CAAC15 /* TransitionType.swift in Sources */,
 				C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */,
 				C7655A9B1E32541D00A1CB9F /* DateInRegion.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
