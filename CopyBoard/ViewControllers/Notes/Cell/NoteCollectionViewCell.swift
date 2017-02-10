@@ -66,6 +66,12 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.note = note
     }
     
+    func deselectCell() {
+        if let fave = self.note?.favourite {
+            self.faveButton.isSelected = fave
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.madeShadow()

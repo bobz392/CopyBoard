@@ -74,7 +74,6 @@ class NotesViewController: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         self.noteView.invalidateLayout()
     }
     
@@ -84,17 +83,16 @@ class NotesViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        DeviceManager.canRotate = false
         super.viewWillDisappear(animated)
+        KeyboardManager.shared.removeHander()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        self.selectedCell?.deselectCell()
         self.selectedCell = nil        
-        dispatchDelay(0.25) {
-            DeviceManager.canRotate = true
-        }
+        self.noteView.searchKeyboardHandle()
     }
     
     deinit {

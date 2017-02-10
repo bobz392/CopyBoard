@@ -12,8 +12,6 @@ struct DeviceManager {
     
     static let shared = DeviceManager()
     
-    static var canRotate = false
-    
     var statusOrientation: UIInterfaceOrientationMask {
         let orient = UIApplication.shared.statusBarOrientation
         switch orient {

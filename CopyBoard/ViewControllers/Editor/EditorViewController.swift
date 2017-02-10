@@ -75,8 +75,9 @@ class EditorViewController: BaseViewController {
         self.editorView.colorMenu.delegate = self
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        KeyboardManager.shared.removeHander()
     }
 
     func dismissAction() {

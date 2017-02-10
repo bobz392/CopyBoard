@@ -24,6 +24,7 @@ class NoteView {
     let searchNoResultView = UIView()
     let searchHolderView = UIView()
     let noResultsLabel = UILabel()
+    let catImageView = UIImageView()
     
     private var barShowing = true
     
@@ -138,6 +139,13 @@ extension NoteView {
             
         }
         UIApplication.shared.setStatusBarHidden(DeviceManager.shared.isLandscape, with: .fade)
+        
+        let height: CGFloat = self.searchNoResultView.frame.height * 0.4
+        self.catImageView.snp.updateConstraints { maker in
+            maker.height.equalTo(height)
+            maker.width.equalTo(height * 0.7)
+        }
+        self.searchNoResultView.layoutIfNeeded()
     }
     
     func collectionViewItemSpace() -> CGFloat {
@@ -230,17 +238,23 @@ extension NoteView {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
-        let imageView = UIImageView()
-        self.searchNoResultView.addSubview(imageView)
-        imageView.snp.makeConstraints { maker in
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
-            maker.top.equalToSuperview().offset(-44 - DeviceManager.shared.statusbarHeight)
-            maker.bottom.equalToSuperview()
+
+        if let image = UIImage(named: "empty_bg.pdf") {
+            self.searchNoResultView.layer.contents = image.cgImage
         }
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "empty_cat")
+        
+        let catImageView = UIImageView()
+        self.searchNoResultView.addSubview(catImageView)
+        catImageView.image = UIImage(named: "empty_cat")
+        self.searchNoResultView.addSubview(catImageView)
+        
+        let height: CGFloat = view.frame.height * 0.4
+        catImageView.snp.makeConstraints { maker in
+            maker.height.equalTo(height)
+            maker.width.equalTo(height * 0.75)
+            maker.right.equalToSuperview().offset(-15)
+            maker.bottom.equalToSuperview().offset(-15)
+        }
         
         self.noResultsLabel.text = Localized("noResuts")
         self.noResultsLabel.font = appFont(size: 17)
@@ -250,22 +264,25 @@ extension NoteView {
         self.noResultsLabel.snp.makeConstraints { maker in
             maker.left.equalToSuperview().offset(30)
             maker.bottom.equalToSuperview().offset(30)
+            maker.right.greaterThanOrEqualTo(catImageView.snp.left)
         }
         
         AppColors.mainBackground.bgColor(to: self.searchNoResultView)
         self.searchNoResultView.alpha = 0
         self.searchNoResultView.isHidden = true
-        
+    }
+    
+    func searchKeyboardHandle() {
         KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
-            if height > 0 {
-                self.searchNoResultView.snp.updateConstraints({ maker in
-                    maker.bottom.equalToSuperview().offset( show ? -height : 0)
-                })
-                
-                UIView.animate(withDuration: duration, animations: {
-                    view.layoutIfNeeded()
-                })
-            }
+            let view = self.searchNoResultView
+            view.snp.updateConstraints({ maker in
+                maker.bottom.equalToSuperview().offset( show ? -height : 0)
+            })
+            
+            UIView.animate(withDuration: duration, animations: {
+                view.layoutIfNeeded()
+            })
+            
         }
     }
 }
