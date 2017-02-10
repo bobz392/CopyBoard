@@ -32,12 +32,22 @@ class NoteView {
     }
     
     func configBarView(bar: UINavigationBar) {
-        let barImage = AppColors.mainBackground.toImage()
+        let barImage = UIColor.clear.toImage()
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         
+        let barHolderView = UIView()
+        barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
+        bar.addSubview(barHolderView)
+        barHolderView.snp.makeConstraints { maker in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalToSuperview().offset(-20)
+            maker.bottom.equalToSuperview()
+        }
+        
         bar.addSubview(self.barView)
-        AppColors.mainBackground.bgColor(to: self.barView)
+        self.barView.bgClear()
         self.barView.clipsToBounds = true
         self.barView.addConstraint()
         
