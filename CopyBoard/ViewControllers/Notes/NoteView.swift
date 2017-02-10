@@ -35,7 +35,7 @@ class NoteView {
     }
     
     func configBarView(bar: UINavigationBar) {
-        let barImage = UIColor.clear.toImage()
+        let barImage = UIImage()
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         
@@ -98,11 +98,9 @@ class NoteView {
             self.searchHolderView.alpha = 0
             if notesCount > 0 {
                 self.searchNoResultView.alpha = 0
-                self.barHolderView.alpha = 0.8
                 self.noResultsLabel(show: false)
             } else {
                 self.searchNoResultView.alpha = 1
-                self.barHolderView.alpha = 0.6
                 self.noResultsLabel(show: true)
             }
             
