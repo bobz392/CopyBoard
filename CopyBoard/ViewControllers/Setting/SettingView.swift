@@ -95,7 +95,7 @@ class SettingView {
             touchButton.useTint = false
             touchButton.bgColor = UIColor.clear
             touchButton.selectedBgColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
-            catView.addSubview(touchButton)
+            view.addSubview(touchButton)
             touchButton.snp.makeConstraints({ maker in
                 maker.left.equalToSuperview()
                 maker.right.equalToSuperview()
