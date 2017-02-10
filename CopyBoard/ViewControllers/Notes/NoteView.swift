@@ -119,7 +119,6 @@ class NoteView {
             maker.bottom.equalToSuperview().offset(show ? -10 : 30)
         })
         
-        self.searchNoResultView.setNeedsLayout()
         UIView.animate(withDuration: show ? 0.6 : 0.1, animations: { [unowned self] in
             self.noResultsLabel.alpha = show ? 1 : 0
             self.searchNoResultView.layoutIfNeeded()
@@ -279,6 +278,8 @@ extension NoteView {
                 maker.bottom.equalToSuperview().offset( show ? -height : 0)
             })
             
+            self.barHolderView.backgroundColor = show ? AppColors.mainBackgroundAlphaLight : AppColors.mainBackgroundAlpha
+            
             UIView.animate(withDuration: duration, animations: {
                 view.layoutIfNeeded()
             })
@@ -298,6 +299,8 @@ extension NoteView {
         self.searchBar.text = nil
         
         if startSearch {
+            let index = IndexPath(item: 0, section: 0)
+            weakSelf.collectionView.scrollToItem(at: index, at: .top, animated: true)
             weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                 make.centerY.equalToSuperview().offset(labelCenterY)
             })

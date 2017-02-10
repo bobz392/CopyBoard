@@ -79,7 +79,6 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
