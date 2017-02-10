@@ -48,9 +48,7 @@ class KeyboardViewController: UIInputViewController {
         } else {
             self.nextKeyboardButton.addTarget(self, action: #selector(self.advanceToNextInputMode), for: .allTouchEvents)
         }
-        
-        
-        
+
         let settingButton = UIButton(type: UIButtonType.system)
         settingButton.addTarget(self, action: #selector(self.open), for: .touchUpInside)
         settingButton.setTitle("go", for: .normal)
@@ -82,10 +80,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func open() {
+//        self.extensionContext?.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: { (finish) in
+//            Logger.log("complete")
+//        })
+//        return
+        
         if let url = URL(string: UIApplicationOpenSettingsURLString) {//"prefs:root=General&path=Keyboard") {
-//            self.extensionContext?.open(url, completionHandler: { (finish) in
-//                
-//            })
             UIApplication.🚀sharedApplication().🚀openURL(url: url)
         } else {
             Logger.log("go url = nil")
