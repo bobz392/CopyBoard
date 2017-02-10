@@ -117,10 +117,10 @@ class EditorView {
             maker.center.equalToSuperview()
         }
         
-        KeyboardManager.shared.setHander { (show) in
+        KeyboardManager.shared.setHander { (show, height, duration) in
             let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
             let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
-            let textViewBottom: CGFloat = show ? -KeyboardManager.keyboardHeight : 0
+            let textViewBottom: CGFloat = show ? -height : 0
             let barViewAlpha: CGFloat = show ? 0 : 1
             
             weakSelf.canOpenMenu = !show
@@ -131,7 +131,7 @@ class EditorView {
                 maker.bottom.equalToSuperview().offset(textViewBottom)
             })
             
-            UIView.animate(withDuration: KeyboardManager.duration, animations: {
+            UIView.animate(withDuration: duration, animations: {
                 view.layoutIfNeeded()
                 weakSelf.realBarView.alpha = barViewAlpha
                 weakSelf.keyboardBarView.alpha = 1 - barViewAlpha

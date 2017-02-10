@@ -9,12 +9,12 @@
 import UIKit
 
 final class KeyboardManager {
-    typealias KeyboardHandle = (Bool) -> Void
+    typealias KeyboardHandle = (_ show: Bool, _ height: CGFloat, _ duration: Double) -> Void
     
     static let shared = KeyboardManager()
-    static var keyboardHeight: CGFloat = 0
-    static var duration: Double = 0.25
-    static var keyboardShow: Bool = false
+    //    static var keyboardHeight: CGFloat = 0
+    //    static var duration: Double = 0.25
+    //    static var keyboardShow: Bool = false
     
     fileprivate var keyboardHandler: KeyboardHandle?
     
@@ -36,7 +36,7 @@ final class KeyboardManager {
         self.keyboardHandler = handle
     }
     
-    func closeNotification() {
+    func removeHander() {
         self.keyboardHandler = nil
     }
     
@@ -46,16 +46,15 @@ final class KeyboardManager {
             let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
             Logger.log("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
-                KeyboardManager.keyboardHeight = frameValue.height
-                KeyboardManager.duration = durationValue > 0 ? durationValue : 0.25
-                KeyboardManager.keyboardShow = true
-                keyboardHandler?(true)
+                self.keyboardHandler?(true, frameValue.height, durationValue)
             }
         }
     }
     
     fileprivate func handleKeyboardHide(_ notification: Notification) {
-        keyboardHandler?(false)
-        KeyboardManager.keyboardShow = false
+        if let userInfo = (notification as NSNotification).userInfo,
+            let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+            self.keyboardHandler?(false, 0, durationValue)
+        }
     }
 }

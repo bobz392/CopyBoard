@@ -12,15 +12,18 @@ import SnapKit
 fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
 class NoteView {
+    
+    let barHolderView = UIView()
     let barView = BarView(sideMargin: 6)
     let searchBar = UISearchBar()
     let searchButton = UIButton(type: .custom)
     let settingButton = UIButton(type: .custom)
     
     var collectionView: UICollectionView!
-    var emptyNoteView = UIView()
-    var searchResultView = UIView()
+    let emptyNoteView = UIView()
+    let searchNoResultView = UIView()
     let searchHolderView = UIView()
+    let noResultsLabel = UILabel()
     
     private var barShowing = true
     
@@ -36,7 +39,6 @@ class NoteView {
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         
-        let barHolderView = UIView()
         barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
         bar.addSubview(barHolderView)
         barHolderView.snp.makeConstraints { maker in
@@ -96,12 +98,26 @@ class NoteView {
             if query {
                 self.searchHolderView.alpha = 0
                 if notesCount > 0 {
-                    self.searchResultView.alpha = 0
+                    self.searchNoResultView.alpha = 0
+//                    self.noResultsLabel.alpha = 0
+                    self.barHolderView.alpha = 0.8
+//                    self.noResultsLabel.snp.makeConstraints({ maker in
+//                        maker.left.equalToSuperview().offset(30)
+//                    })
                 } else {
-                    self.searchResultView.alpha = 1
+                    self.searchNoResultView.alpha = 1
+                    self.barHolderView.alpha = 0.6
+                    
+//                    self.noResultsLabel.snp.makeConstraints({ maker in
+//                        maker.left.equalToSuperview().offset(12)
+//                    })
+//                    UIView.animate(withDuration: 0.25, animations: { [unowned self] in
+//                        self.noResultsLabel.alpha = 0
+//                        self.searchNoResultView.layoutIfNeeded()
+//                    })
                 }
             } else {
-                self.searchResultView.alpha = 0
+                self.searchNoResultView.alpha = 0
                 self.searchHolderView.alpha = kHolderViewAlpha
             }
         }
@@ -206,24 +222,48 @@ extension NoteView {
     }
     
     func configSearchResultView(view: UIView) {
-        view.addSubview(self.searchResultView)
-        self.searchResultView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.collectionView)
+        view.addSubview(self.searchNoResultView)
+        self.searchNoResultView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
-        let label = UILabel()
-        label.text = "no result"
-        self.searchResultView.addSubview(label)
-        label.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+        let imageView = UIImageView()
+        self.searchNoResultView.addSubview(imageView)
+        imageView.snp.makeConstraints { maker in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalToSuperview().offset(-44 - DeviceManager.shared.statusbarHeight)
+            maker.bottom.equalToSuperview()
+        }
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "empty_cat")
+        
+        self.noResultsLabel.text = Localized("noResuts")
+        self.noResultsLabel.font = appFont(size: 17)
+        self.noResultsLabel.textColor = UIColor.white
+//        self.noResultsLabel.alpha = 0
+        self.searchNoResultView.addSubview(self.noResultsLabel)
+        self.noResultsLabel.snp.makeConstraints { maker in
+            maker.left.equalToSuperview().offset(30)
+            maker.bottom.equalToSuperview().offset(-15)
         }
         
-        AppColors.mainBackground.bgColor(to: self.searchResultView)
-        self.searchResultView.alpha = 0
-        self.searchResultView.isHidden = true
+        AppColors.mainBackground.bgColor(to: self.searchNoResultView)
+        self.searchNoResultView.alpha = 0
+        self.searchNoResultView.isHidden = true
+        
+        KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
+            self.searchNoResultView.snp.updateConstraints({ maker in
+                maker.bottom.equalToSuperview().offset( show ? -height : 0)
+            })
+            
+            UIView.animate(withDuration: duration, animations: {
+                view.layoutIfNeeded()
+            })
+        }
     }
 }
 
@@ -252,7 +292,7 @@ extension NoteView {
             weakSelf.searchBar.setShowsCancelButton(true, animated: false)
             weakSelf.searchBar.becomeFirstResponder()
             weakSelf.searchHolderView.isHidden = false
-            weakSelf.searchResultView.isHidden = false
+            weakSelf.searchNoResultView.isHidden = false
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
@@ -274,10 +314,10 @@ extension NoteView {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
                 weakSelf.searchHolderView.alpha = 0
-                weakSelf.searchResultView.alpha = 0
+                weakSelf.searchNoResultView.alpha = 0
             }) { (finish) in
                 weakSelf.searchHolderView.isHidden = true
-                weakSelf.searchResultView.isHidden = true
+                weakSelf.searchNoResultView.isHidden = true
                 
                 weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                     make.centerY.equalToSuperview().offset(labelCenterY)
