@@ -90,40 +90,43 @@ class NoteView {
         
         UIView.animate(withDuration: 0.25) { [unowned self] in
             self.barView.layoutIfNeeded()
-        }   
+        }
     }
     
     func searchViewStateChange(query: Bool, notesCount: Int) {
-        UIView.animate(withDuration: 0.1) { [unowned self] in
-            if query {
-                self.searchHolderView.alpha = 0
-                if notesCount > 0 {
-                    self.searchNoResultView.alpha = 0
-//                    self.noResultsLabel.alpha = 0
-                    self.barHolderView.alpha = 0.8
-//                    self.noResultsLabel.snp.makeConstraints({ maker in
-//                        maker.left.equalToSuperview().offset(30)
-//                    })
-                } else {
-                    self.searchNoResultView.alpha = 1
-                    self.barHolderView.alpha = 0.6
-                    
-//                    self.noResultsLabel.snp.makeConstraints({ maker in
-//                        maker.left.equalToSuperview().offset(12)
-//                    })
-//                    UIView.animate(withDuration: 0.25, animations: { [unowned self] in
-//                        self.noResultsLabel.alpha = 0
-//                        self.searchNoResultView.layoutIfNeeded()
-//                    })
-                }
-            } else {
+        if query {
+            self.searchHolderView.alpha = 0
+            if notesCount > 0 {
                 self.searchNoResultView.alpha = 0
-                self.searchHolderView.alpha = kHolderViewAlpha
+                self.barHolderView.alpha = 0.8
+                self.noResultsLabel(show: false)
+            } else {
+                self.searchNoResultView.alpha = 1
+                self.barHolderView.alpha = 0.6
+                self.noResultsLabel(show: true)
             }
+            
+        } else {
+            self.searchNoResultView.alpha = 0
+            self.searchHolderView.alpha = kHolderViewAlpha
+            self.noResultsLabel(show: false)
         }
         
         self.collectionView.reloadData()
     }
+    
+    fileprivate func noResultsLabel(show: Bool) {
+        self.noResultsLabel.snp.updateConstraints ({ maker in
+            maker.bottom.equalToSuperview().offset(show ? -10 : 30)
+        })
+        
+        self.searchNoResultView.setNeedsLayout()
+        UIView.animate(withDuration: show ? 0.6 : 0.1, animations: { [unowned self] in
+            self.noResultsLabel.alpha = show ? 1 : 0
+            self.searchNoResultView.layoutIfNeeded()
+        })
+    }
+    
 }
 
 // MARK: - collection view
@@ -166,7 +169,7 @@ extension NoteView {
         }
         
         self.configEmptyDataView(view: view)
-
+        
         view.addSubview(self.searchHolderView)
         self.searchHolderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -244,11 +247,11 @@ extension NoteView {
         self.noResultsLabel.text = Localized("noResuts")
         self.noResultsLabel.font = appFont(size: 17)
         self.noResultsLabel.textColor = UIColor.white
-//        self.noResultsLabel.alpha = 0
+        self.noResultsLabel.alpha = 0
         self.searchNoResultView.addSubview(self.noResultsLabel)
         self.noResultsLabel.snp.makeConstraints { maker in
             maker.left.equalToSuperview().offset(30)
-            maker.bottom.equalToSuperview().offset(-15)
+            maker.bottom.equalToSuperview().offset(30)
         }
         
         AppColors.mainBackground.bgColor(to: self.searchNoResultView)
@@ -256,13 +259,15 @@ extension NoteView {
         self.searchNoResultView.isHidden = true
         
         KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
-            self.searchNoResultView.snp.updateConstraints({ maker in
-                maker.bottom.equalToSuperview().offset( show ? -height : 0)
-            })
-            
-            UIView.animate(withDuration: duration, animations: {
-                view.layoutIfNeeded()
-            })
+            if height > 0 {
+                self.searchNoResultView.snp.updateConstraints({ maker in
+                    maker.bottom.equalToSuperview().offset( show ? -height : 0)
+                })
+                
+                UIView.animate(withDuration: duration, animations: {
+                    view.layoutIfNeeded()
+                })
+            }
         }
     }
 }
