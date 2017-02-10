@@ -15,8 +15,9 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let bar = self.navigationController?.navigationBar {
-            self.settingView.configBarView(bar: bar)
+        if let navigation = self.navigationController {
+            navigation.view.backgroundColor = AppColors.mainBackground
+            self.settingView.configBarView(bar: navigation.navigationBar)
         }
         self.settingView.config(view: self.view)
         

@@ -22,12 +22,13 @@ class SettingView {
     
     func configBarView(bar: UINavigationBar) {
         bar.addSubview(self.realBarView)
-        let barImage = AppColors.mainBackground.toImage()
+        let barImage = AppColors.mainBackgroundAlpha.toImage()
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         self.realBarView.addConstraint()
         
-        AppColors.mainBackground.bgColor(to: self.realBarView)
+        self.realBarView.bgClear()
+//        AppColors.mainBackground.bgColor(to: self.realBarView)
         self.realBarView.titleLabel.text = Localized("settings")
         
         self.realBarView.appendButtons(buttons: [closeButton], left: false)
