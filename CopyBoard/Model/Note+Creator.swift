@@ -73,6 +73,14 @@ extension Note {
         
         DBManager.shared.writeObjects(notify: false, objects: [note1, note2, note3, note4, note5, note6, note7, note8, note9])
     }
+
+    class func addNote(row: Int) {
+        let note = Note()
+        note.noteCreator(content: "row \(row)", createdAt: Date())
+        note.color = 0
+        DBManager.shared.writeObject(note)
+        
+    }
     
     #endif
 

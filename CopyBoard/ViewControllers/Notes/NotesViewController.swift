@@ -69,7 +69,7 @@ class NotesViewController: BaseViewController {
             Note.noteTestData()
         #endif
         
-        scrollingNav.followScrollView(self.noteView.collectionView, delay: 0)
+        self.scrollingNav.followScrollView(self.noteView.collectionView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -79,6 +79,8 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,7 +188,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let count = self.viewModel.notesCount()
         
         if !self.viewModel.isInSearch {
+            self.scrollingNav.stopFollowingScrollView()
             self.noteView.emptyNotesView(hidden: count > 0)
+        } else if count == 1 {
+            self.scrollingNav.followScrollView(self.noteView.collectionView)
         }
         
         return count

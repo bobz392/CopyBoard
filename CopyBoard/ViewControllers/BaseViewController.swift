@@ -28,6 +28,13 @@ class BaseViewController: UIViewController {
         
     }
     
+    open func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

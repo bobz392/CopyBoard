@@ -197,7 +197,7 @@ extension NoteView {
     func configEmptyDataView(view: UIView) {
         view.addSubview(self.emptyNoteView)
         self.emptyNoteView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.collectionView)
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -215,7 +215,7 @@ extension NoteView {
             make.width.equalTo(width)
             make.height.equalTo(height)
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.8)
+            make.centerY.equalToSuperview()
         }
         
         let label = UILabel()
@@ -229,6 +229,11 @@ extension NoteView {
         label.text = Localized("emptyNotes")
     }
     
+}
+
+// MARK: - search
+extension NoteView {
+    
     func configSearchResultView(view: UIView) {
         view.addSubview(self.searchNoResultView)
         self.searchNoResultView.snp.makeConstraints { (make) in
@@ -237,7 +242,7 @@ extension NoteView {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
+        
         if let image = UIImage(named: "empty_bg.pdf") {
             self.searchNoResultView.layer.contents = image.cgImage
         }
@@ -286,11 +291,7 @@ extension NoteView {
             
         }
     }
-}
 
-// MARK: - search
-extension NoteView {
-    
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self
         let labelCenterY: CGFloat = startSearch ? 11 : 0
