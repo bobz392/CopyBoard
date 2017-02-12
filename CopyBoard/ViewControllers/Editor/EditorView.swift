@@ -96,7 +96,6 @@ class EditorView {
     }
     
     fileprivate func configKeyboardAction(view: UIView) {
-        let weakSelf = self
         view.addSubview(self.keyboardBarView)
         self.keyboardBarView.snp.makeConstraints { maker in
             maker.height.equalTo(38)
@@ -116,26 +115,33 @@ class EditorView {
             maker.height.equalTo(32)
             maker.center.equalToSuperview()
         }
-        
-        KeyboardManager.shared.setHander { (show, height, duration) in
-            let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
-            let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
-            let textViewBottom: CGFloat = show ? -height : 0
-            let barViewAlpha: CGFloat = show ? 0 : 1
-            
-            weakSelf.canOpenMenu = !show
-            weakSelf.barView.snp.updateConstraints({ maker in
-                maker.height.equalTo(barHeight)
-            })
-            weakSelf.editorTextView.snp.updateConstraints({ maker in
-                maker.bottom.equalToSuperview().offset(textViewBottom)
-            })
-            
-            UIView.animate(withDuration: duration, animations: {
-                view.layoutIfNeeded()
-                weakSelf.realBarView.alpha = barViewAlpha
-                weakSelf.keyboardBarView.alpha = 1 - barViewAlpha
-            })
+    }
+    
+    func editorKeyboardHandle(add: Bool) {
+        if add {
+            let weakSelf = self
+            KeyboardManager.shared.setHander { (show, height, duration) in
+                let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
+                let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
+                let textViewBottom: CGFloat = show ? -height : 0
+                let barViewAlpha: CGFloat = show ? 0 : 1
+                
+                weakSelf.canOpenMenu = !show
+                weakSelf.barView.snp.updateConstraints({ maker in
+                    maker.height.equalTo(barHeight)
+                })
+                weakSelf.editorTextView.snp.updateConstraints({ maker in
+                    maker.bottom.equalToSuperview().offset(textViewBottom)
+                })
+                
+                UIView.animate(withDuration: duration, animations: {
+                    weakSelf.barView.superview?.layoutIfNeeded()
+                    weakSelf.realBarView.alpha = barViewAlpha
+                    weakSelf.keyboardBarView.alpha = 1 - barViewAlpha
+                })
+            }
+        } else {
+            KeyboardManager.shared.removeHander()
         }
     }
     

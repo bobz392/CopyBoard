@@ -209,7 +209,6 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if cell.canEnter() {
             let note = self.viewModel.noteIn(row: indexPath.row)
             let editorVC = EditorViewController(note: note)
-            editorVC.createDeckVC()            
             editorVC.transitioningDelegate = self
             self.transitionType = .present
             self.present(editorVC, animated: true, completion: nil)

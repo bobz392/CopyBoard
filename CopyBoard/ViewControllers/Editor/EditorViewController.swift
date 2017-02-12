@@ -19,8 +19,6 @@ class EditorViewController: BaseViewController {
     fileprivate var currentPairColor: [AppPairColors]? = nil
     fileprivate var noteChanged = false
     
-//    weak var deckVC: IIViewDeckController? = nil
-    weak var menuVC: MenuViewController? = nil
     
     init(note: Note) {
         self.note = note
@@ -29,21 +27,6 @@ class EditorViewController: BaseViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func createDeckVC() {
-        let menuVC = MenuViewController()
-        menuVC.note = self.note
-        self.menuVC = menuVC
-        
-        SideMenuManager.menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuVC)
-        SideMenuManager.menuRightNavigationController?.isNavigationBarHidden = true
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
-        SideMenuManager.menuPresentMode = .menuSlideIn
-        SideMenuManager.menuFadeStatusBar = false
-        SideMenuManager.menuShadowOpacity = 0
-        SideMenuManager.menuShadowRadius = 0
-        SideMenuManager.menuAnimationFadeStrength = 0.6
     }
 
     override func viewDidLoad() {
@@ -79,9 +62,30 @@ class EditorViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        KeyboardManager.shared.removeHander()
+        self.editorView.editorKeyboardHandle(add: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.editorView.editorKeyboardHandle(add: true)
+        self.configMenu()
     }
 
+    fileprivate func configMenu() {
+        let menuVC = MenuViewController()
+        menuVC.note = self.note
+        
+        SideMenuManager.menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuVC)
+        SideMenuManager.menuRightNavigationController?.isNavigationBarHidden = true
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.menuShadowOpacity = 0
+        SideMenuManager.menuShadowRadius = 0
+        SideMenuManager.menuAnimationFadeStrength = 0.6
+    }
+    
     func dismissAction() {
         UIView.animate(withDuration: kNoteViewAlphaAnimation, animations: {
             self.editorView.editorTextView.alpha = 0
