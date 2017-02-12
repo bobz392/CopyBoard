@@ -94,37 +94,6 @@ class NoteView {
         }
     }
     
-    func searchViewStateChange(query: Bool, notesCount: Int) {
-        if query {
-            self.searchHolderView.alpha = 0
-            if notesCount > 0 {
-                self.searchNoResultView.alpha = 0
-                self.noResultsLabel(show: false)
-            } else {
-                self.searchNoResultView.alpha = 1
-                self.noResultsLabel(show: true)
-            }
-            
-        } else {
-            self.searchNoResultView.alpha = 0
-            self.searchHolderView.alpha = kHolderViewAlpha
-            self.noResultsLabel(show: false)
-        }
-        
-        self.collectionView.reloadData()
-    }
-    
-    fileprivate func noResultsLabel(show: Bool) {
-        self.noResultsLabel.snp.updateConstraints ({ maker in
-            maker.bottom.equalToSuperview().offset(show ? -10 : 30)
-        })
-        
-        UIView.animate(withDuration: show ? 0.6 : 0.1, animations: { [unowned self] in
-            self.noResultsLabel.alpha = show ? 1 : 0
-            self.searchNoResultView.layoutIfNeeded()
-        })
-    }
-    
 }
 
 // MARK: - collection view
@@ -276,22 +245,25 @@ extension NoteView {
         self.searchNoResultView.isHidden = true
     }
     
-    func searchKeyboardHandle() {
-        KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
-            let view = self.searchNoResultView
-            view.snp.updateConstraints({ maker in
-                maker.bottom.equalToSuperview().offset( show ? -height : 0)
-            })
-            
-            self.barHolderView.backgroundColor = show ? AppColors.mainBackgroundAlphaLight : AppColors.mainBackgroundAlpha
-            
-            UIView.animate(withDuration: duration, animations: {
-                view.layoutIfNeeded()
-            })
-            
+    func searchKeyboardHandle(add: Bool) {
+        if add {
+            KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
+                let view = self.searchNoResultView
+                view.snp.updateConstraints({ maker in
+                    maker.bottom.equalToSuperview().offset( show ? -height : 0)
+                })
+                
+                self.barHolderView.backgroundColor = show ? AppColors.mainBackgroundAlphaLight : AppColors.mainBackgroundAlpha
+                
+                UIView.animate(withDuration: duration, animations: {
+                    view.layoutIfNeeded()
+                })
+            }
+        } else {
+            KeyboardManager.shared.removeHander()
         }
     }
-
+    
     func searchAnimation(startSearch: Bool) {
         let weakSelf = self
         let labelCenterY: CGFloat = startSearch ? 11 : 0
@@ -365,4 +337,36 @@ extension NoteView {
             }
         }
     }
+    
+    func searchViewStateChange(query: Bool, notesCount: Int) {
+        if query {
+            self.searchHolderView.alpha = 0
+            if notesCount > 0 {
+                self.searchNoResultView.alpha = 0
+                self.noResultsLabel(show: false)
+            } else {
+                self.searchNoResultView.alpha = 1
+                self.noResultsLabel(show: true)
+            }
+            
+        } else {
+            self.searchNoResultView.alpha = 0
+            self.searchHolderView.alpha = kHolderViewAlpha
+            self.noResultsLabel(show: false)
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
+    fileprivate func noResultsLabel(show: Bool) {
+        self.noResultsLabel.snp.updateConstraints ({ maker in
+            maker.bottom.equalToSuperview().offset(show ? -10 : 30)
+        })
+        
+        UIView.animate(withDuration: show ? 0.6 : 0.1, animations: { [unowned self] in
+            self.noResultsLabel.alpha = show ? 1 : 0
+            self.searchNoResultView.layoutIfNeeded()
+        })
+    }
+    
 }

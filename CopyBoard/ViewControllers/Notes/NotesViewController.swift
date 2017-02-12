@@ -87,7 +87,7 @@ class NotesViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        KeyboardManager.shared.removeHander()
+        self.noteView.searchKeyboardHandle(add: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,7 +95,7 @@ class NotesViewController: BaseViewController {
 
         self.selectedCell?.deselectCell()
         self.selectedCell = nil        
-        self.noteView.searchKeyboardHandle()
+        self.noteView.searchKeyboardHandle(add: true)
     }
     
     deinit {
