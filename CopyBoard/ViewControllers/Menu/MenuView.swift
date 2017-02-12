@@ -50,6 +50,16 @@ class MenuView {
             maker.right.equalToSuperview()
         }
         
+        let statusBarCoverView = UIView()
+        view.addSubview(statusBarCoverView)
+        statusBarCoverView.backgroundColor = AppColors.cloud
+        statusBarCoverView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview()
+            maker.height.equalTo(20)
+            maker.left.equalTo(self.menuTableView)
+            maker.right.equalToSuperview()
+        }
+        
         self.closeButton.setTitleColor(AppColors.menuSecondaryText, for: .normal)
         self.closeButton.config(cornerRadius: 0)
         self.closeButton.bgColor = AppColors.cloudHeader

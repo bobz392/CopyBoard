@@ -19,6 +19,10 @@
 		C71741DD1E49971F00D39597 /* Note+Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DC1E49971F00D39597 /* Note+Creator.swift */; };
 		C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */; };
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
+		C721A0DD1E50DD15000257A8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0D91E50DD15000257A8 /* SideMenuManager.swift */; };
+		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
+		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
+		C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72CF6431E4C46D900CAAC15 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6411E4C46D900CAAC15 /* PingTransition.swift */; };
 		C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */; };
@@ -130,13 +134,6 @@
 		C78C33AC1E2EFAC6001DCE38 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33811E2EFA96001DCE38 /* RxSwift.framework.dSYM */; };
 		C78C33AD1E2EFAC6001DCE38 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
 		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
-		C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */; };
-		C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */; };
-		C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */; };
-		C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */; };
-		C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */ = {isa = PBXBuildFile; fileRef = C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */; };
-		C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */; };
-		C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -224,6 +221,10 @@
 		C71741DC1E49971F00D39597 /* Note+Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Creator.swift"; sourceTree = "<group>"; };
 		C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDeviceTableCell.swift; sourceTree = "<group>"; };
 		C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuDeviceTableCell.xib; sourceTree = "<group>"; };
+		C721A0D91E50DD15000257A8 /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
+		C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
+		C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
+		C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72CF6411E4C46D900CAAC15 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
@@ -359,25 +360,6 @@
 		C79EF8531E3DF2D0004BDACC /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		C79EF8791E3ED828004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewDeck.framework; path = "../../Library/Developer/Xcode/DerivedData/ViewDeckExample-gutppqxdpffmqnatxgmjjajjtgfs/Build/Products/Debug-iphoneos/ViewDeck-iOS8.0/ViewDeck.framework"; sourceTree = "<group>"; };
 		C79EF87B1E3ED864004BDACC /* ViewDeck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ViewDeck.framework; sourceTree = "<group>"; };
-		C79EF8801E3EDACB004BDACC /* IIEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIEnvironment.h; sourceTree = "<group>"; };
-		C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIViewDeckController+Private.h"; sourceTree = "<group>"; };
-		C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckController.mm; sourceTree = "<group>"; };
-		C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckTransitioning.h; sourceTree = "<group>"; };
-		C79EF8871E3EDACB004BDACC /* IIDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIDelegateProxy.h; sourceTree = "<group>"; };
-		C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIDelegateProxy.m; sourceTree = "<group>"; };
-		C79EF8891E3EDACB004BDACC /* IIEnvironment+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIEnvironment+Private.h"; sourceTree = "<group>"; };
-		C79EF88A1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckDefaultTransitionAnimator.h; sourceTree = "<group>"; };
-		C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckDefaultTransitionAnimator.mm; sourceTree = "<group>"; };
-		C79EF88C1E3EDACB004BDACC /* IIViewDeckLayoutSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckLayoutSupport.h; sourceTree = "<group>"; };
-		C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckLayoutSupport.m; sourceTree = "<group>"; };
-		C79EF88E1E3EDACB004BDACC /* IIViewDeckTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckTransition.h; sourceTree = "<group>"; };
-		C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIViewDeckTransition.mm; sourceTree = "<group>"; };
-		C79EF8901E3EDACB004BDACC /* UIViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Private.h"; sourceTree = "<group>"; };
-		C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Private.m"; sourceTree = "<group>"; };
-		C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IIViewDeckAdditions.h"; sourceTree = "<group>"; };
-		C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IIViewDeckAdditions.m"; sourceTree = "<group>"; };
-		C79EF8941E3EDACB004BDACC /* ViewDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeck.h; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -456,6 +438,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C721A0D81E50DD15000257A8 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C721A0D91E50DD15000257A8 /* SideMenuManager.swift */,
+				C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */,
+				C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */,
+				C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		C72332B01E302D9900D5189D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,8 +472,8 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C721A0D81E50DD15000257A8 /* SideMenu */,
 				C72CF6471E4C8C3600CAAC15 /* SwiftDate */,
-				C79EF87F1E3EDACB004BDACC /* ViewDeck */,
 				C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */,
 				C76B8DF21E359EA8006896FA /* WaterfallLayout */,
 				C7753D711E352A0900C45A5A /* XBPageCurl */,
@@ -765,40 +758,6 @@
 				C79EF8791E3ED828004BDACC /* ViewDeck.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C79EF87F1E3EDACB004BDACC /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				C79EF8801E3EDACB004BDACC /* IIEnvironment.h */,
-				C79EF8811E3EDACB004BDACC /* IIViewDeckController+Private.h */,
-				C79EF8821E3EDACB004BDACC /* IIViewDeckController.h */,
-				C79EF8831E3EDACB004BDACC /* IIViewDeckController.mm */,
-				C79EF8851E3EDACB004BDACC /* IIViewDeckTransitioning.h */,
-				C79EF8861E3EDACB004BDACC /* Private */,
-				C79EF8921E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.h */,
-				C79EF8931E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m */,
-				C79EF8941E3EDACB004BDACC /* ViewDeck.h */,
-			);
-			path = ViewDeck;
-			sourceTree = "<group>";
-		};
-		C79EF8861E3EDACB004BDACC /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				C79EF8871E3EDACB004BDACC /* IIDelegateProxy.h */,
-				C79EF8881E3EDACB004BDACC /* IIDelegateProxy.m */,
-				C79EF8891E3EDACB004BDACC /* IIEnvironment+Private.h */,
-				C79EF88A1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.h */,
-				C79EF88B1E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm */,
-				C79EF88C1E3EDACB004BDACC /* IIViewDeckLayoutSupport.h */,
-				C79EF88D1E3EDACB004BDACC /* IIViewDeckLayoutSupport.m */,
-				C79EF88E1E3EDACB004BDACC /* IIViewDeckTransition.h */,
-				C79EF88F1E3EDACB004BDACC /* IIViewDeckTransition.mm */,
-				C79EF8901E3EDACB004BDACC /* UIViewController+Private.h */,
-				C79EF8911E3EDACB004BDACC /* UIViewController+Private.m */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		C79EF89D1E3EE57D004BDACC /* Menu */ = {
@@ -1163,19 +1122,16 @@
 				C72CF6611E4C8C3600CAAC15 /* Date+Components.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
 				C72CF6721E4C8C3600CAAC15 /* TimeInterval+Extensions.swift in Sources */,
-				C79EF8951E3EDACB004BDACC /* IIViewDeckController.mm in Sources */,
 				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
-				C79EF89C1E3EDACB004BDACC /* UIViewController+IIViewDeckAdditions.m in Sources */,
 				C72CF6601E4C8C3600CAAC15 /* Date+Compare.swift in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
 				C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */,
 				C72CF66D1E4C8C3600CAAC15 /* ISO8601DateTimeFormatter.swift in Sources */,
 				C7D96D6B1E34304300B4E418 /* iRate.m in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
-				C79EF8981E3EDACB004BDACC /* IIViewDeckDefaultTransitionAnimator.mm in Sources */,
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */,
 				C72CF6631E4C8C3600CAAC15 /* Date+Math.swift in Sources */,
@@ -1198,6 +1154,7 @@
 				C72CF6661E4C8C3600CAAC15 /* DateInRegion+Components.swift in Sources */,
 				C73F6E051E396B6600FBD6F0 /* PullDismissView.swift in Sources */,
 				C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */,
+				C721A0DD1E50DD15000257A8 /* SideMenuManager.swift in Sources */,
 				C73F6E021E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				C72CF6691E4C8C3600CAAC15 /* DateInRegion.swift in Sources */,
 				C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */,
@@ -1210,23 +1167,23 @@
 				C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */,
 				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
 				C72CF66E1E4C8C3600CAAC15 /* LocaleName.swift in Sources */,
-				C79EF8991E3EDACB004BDACC /* IIViewDeckLayoutSupport.m in Sources */,
 				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */,
+				C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				C72CF6621E4C8C3600CAAC15 /* Date+Formatter.swift in Sources */,
 				C72CF6731E4C8C3600CAAC15 /* TimeZoneName.swift in Sources */,
 				C72CF6651E4C8C3600CAAC15 /* DateInRegion+Compare.swift in Sources */,
 				C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */,
-				C79EF89A1E3EDACB004BDACC /* IIViewDeckTransition.mm in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C72CF66C1E4C8C3600CAAC15 /* Extensions.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
+				C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */,
 				C72CF66B1E4C8C3600CAAC15 /* DateTimeInterval.swift in Sources */,
-				C79EF89B1E3EDACB004BDACC /* UIViewController+Private.m in Sources */,
 				C72CF65E1E4C8C3600CAAC15 /* CalendarName.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C72CF66A1E4C8C3600CAAC15 /* DateInRegionFormatter.swift in Sources */,
@@ -1236,7 +1193,6 @@
 				C72CF66F1E4C8C3600CAAC15 /* Localization.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultManager.swift in Sources */,
 				C72CF6461E4C46EA00CAAC15 /* TransitionType.swift in Sources */,
-				C79EF8971E3EDACB004BDACC /* IIDelegateProxy.m in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C72CF6701E4C8C3600CAAC15 /* Region.swift in Sources */,
 				C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */,

@@ -19,7 +19,7 @@ class EditorViewController: BaseViewController {
     fileprivate var currentPairColor: [AppPairColors]? = nil
     fileprivate var noteChanged = false
     
-    weak var deckVC: IIViewDeckController? = nil
+//    weak var deckVC: IIViewDeckController? = nil
     weak var menuVC: MenuViewController? = nil
     
     init(note: Note) {
@@ -31,15 +31,19 @@ class EditorViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createDeckVC() -> IIViewDeckController {
+    func createDeckVC() {
         let menuVC = MenuViewController()
         menuVC.note = self.note
         self.menuVC = menuVC
-        let deckVC = IIViewDeckController(center: self, rightViewController: menuVC)
-        deckVC.view.backgroundColor = AppColors.cloud
-        deckVC.delegate = self
-        self.deckVC = deckVC
-        return deckVC
+        
+        SideMenuManager.menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuVC)
+        SideMenuManager.menuRightNavigationController?.isNavigationBarHidden = true
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.menuShadowOpacity = 0
+        SideMenuManager.menuShadowRadius = 0
+        SideMenuManager.menuAnimationFadeStrength = 0.6
     }
 
     override func viewDidLoad() {
@@ -66,10 +70,8 @@ class EditorViewController: BaseViewController {
         }.addDisposableTo(self.disposeBag)
 
         self.editorView.infoButton.rx.tap.subscribe { (event) in
-            if let deckVC = weakSelf.deckVC {
-                weakSelf.openMenu(viewDeckController: deckVC)
-                deckVC.open(.right, animated: true)
-            }
+            guard let menuVC = SideMenuManager.menuRightNavigationController else { return }
+            weakSelf.present(menuVC, animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
         
         self.editorView.colorMenu.delegate = self
@@ -117,8 +119,7 @@ extension EditorViewController {
    
     override func deviceOrientationChanged() {
         self.editorView.invalidateLayout()
-        self.menuVC?.deviceOrientationChanged()
-        
+        SideMenuManager.menuRightNavigationController?.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -129,28 +130,6 @@ extension EditorViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         self.noteChanged = true
         return true
-    }
-    
-}
-
-// MARK: - view deck controller delegate
-extension EditorViewController: IIViewDeckControllerDelegate {
-    
-    func viewDeckController(_ viewDeckController: IIViewDeckController, willOpen side: IIViewDeckSide) -> Bool {
-        if self.editorView.canOpenMenu {
-        self.openMenu(viewDeckController: viewDeckController)
-        return true
-        } else {
-            return false
-        }
-    }
-    
-    fileprivate func openMenu(viewDeckController: IIViewDeckController) {
-        DeviceManager.shared.hiddenStatusBar(hidden: true)
-    }
-    
-    func viewDeckController(_ viewDeckController: IIViewDeckController, didClose side: IIViewDeckSide) {
-        DeviceManager.shared.hiddenStatusBar(hidden: false)
     }
     
 }

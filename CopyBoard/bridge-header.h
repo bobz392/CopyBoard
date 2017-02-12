@@ -12,6 +12,5 @@
 #import "iRate.h"
 #import "XBPageDragView.h"
 #import "CHTCollectionViewWaterfallLayout.h"
-#import "ViewDeck.h"
 
 #endif /* bridge_header_h */

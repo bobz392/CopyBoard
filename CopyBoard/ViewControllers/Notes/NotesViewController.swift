@@ -209,11 +209,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if cell.canEnter() {
             let note = self.viewModel.noteIn(row: indexPath.row)
             let editorVC = EditorViewController(note: note)
-            let deckVC = editorVC.createDeckVC()
-            
-            deckVC.transitioningDelegate = self
+            editorVC.createDeckVC()            
+            editorVC.transitioningDelegate = self
             self.transitionType = .present
-            self.present(deckVC, animated: true, completion: nil)
+            self.present(editorVC, animated: true, completion: nil)
             self.selectedCell = cell
         }
     }

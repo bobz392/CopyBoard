@@ -18,10 +18,6 @@ class MenuViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.quitMenu))
-        self.view.addGestureRecognizer(tap)
-        
         menuView.configView(view: self.view)
         menuView.menuTableView.delegate = self
         menuView.menuTableView.dataSource = self
@@ -34,14 +30,7 @@ class MenuViewController: BaseViewController {
     }
     
     func quitMenu() {
-        self.viewDeckController?.closeSide(true)
-        DeviceManager.shared.hiddenStatusBar(hidden: false)
-    }
-    
-    override func deviceOrientationChanged() {
-        self.quitMenu()
-        self.barHeight = DeviceManager.shared.isLandscape ? 0 : 20
-        self.menuView.menuTableView.reloadData()
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -79,7 +68,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         label.font = appFont(size: 17)
         view.addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview().offset(self.barHeight * 0.5)
+            maker.centerY.equalToSuperview()
             maker.left.equalToSuperview().offset(12)
         }
         return view
@@ -94,7 +83,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44 + self.barHeight
+        return 44
     }
     
 }
