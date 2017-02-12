@@ -42,10 +42,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
-        
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-        swipe.direction = .left
-        self.cardView.addGestureRecognizer(swipe)
     }
     
     func configCell(use note: Note, query: String? = nil) {
@@ -64,6 +60,15 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }
         self.noteLabel.attributedText = note.content.searchHintString(query: query)
         self.note = note
+        
+        if let grs = self.cardView.gestureRecognizers {
+            for gr in grs {
+                self.cardView.removeGestureRecognizer(gr)
+            }
+        }
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+        swipe.direction = .left
+        self.cardView.addGestureRecognizer(swipe)
     }
     
     func deselectCell() {
@@ -96,16 +101,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     func deleteAction() {
         guard let cv = self.curlView else { return }
-        
         let weakSelf =  self
-        NoteCollectionViewInputOverlay.openedItemIndex = nil
-        cv.uncurlAnimated(withDuration: kCurlDeleteDuration) {
+        self.closeCurl {
             UIView.animate(withDuration: kCurlDeleteDuration, animations: {
                 cv.alpha = 0
             }) { (finish) in
                 weakSelf.deleteRealmNote()
             }
-            weakSelf.curlView = nil
         }
     }
     
@@ -179,12 +181,12 @@ extension NoteCollectionViewCell {
         }
     }
     
-    fileprivate func closeCurl(duration: Double = kCurlCloseDuration) {
-        self.curlView?.uncurlAnimated(withDuration: duration, completion: { [unowned self] in
-            self.curlView = nil
-            self.isCurl = false
-            NoteCollectionViewInputOverlay.openedItemIndex = nil
-        })
+    fileprivate func closeCurl(duration: Double = kCurlCloseDuration, completion: (() -> Void)? = nil) {
+        self.curlView?.uncurlAnimated(withDuration: duration, completion: completion)
+        
+        self.curlView = nil
+        self.isCurl = false
+        NoteCollectionViewInputOverlay.openedItemIndex = nil
     }
  
 }

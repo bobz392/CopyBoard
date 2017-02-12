@@ -55,6 +55,8 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.settingButton.rx.tap.subscribe { (tap) in
+            Note.addNote(row: Int(arc4random()) % 100)
+            return
             let settingVC = SettingViewController()
             let navigation = UINavigationController(rootViewController: settingVC)
             navigation.transitioningDelegate = weakSelf
@@ -66,7 +68,7 @@ class NotesViewController: BaseViewController {
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
         #if debug
-            Note.noteTestData()
+//            Note.noteTestData()
         #endif
         
         self.scrollingNav.followScrollView(self.noteView.collectionView)
@@ -124,12 +126,19 @@ extension NotesViewController: RealmNotificationDataSource {
     }
     
     func update(deletions: [Int], insertions: [Int], modifications: [Int]) {
+        NoteCollectionViewInputOverlay.closeOpenItem()
         if insertions.count > 0 {
             self.noteView.collectionView
                 .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+            if self.viewModel.notes.count == 1 {
+                self.scrollingNav.followScrollView(self.noteView.collectionView)
+            }
         } else if deletions.count > 0 {
             self.noteView.collectionView
                 .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+            if self.viewModel.notes.count == 1 {
+                self.scrollingNav.stopFollowingScrollView()
+            }
         } else if modifications.count > 0 {
             self.noteView.collectionView
                 .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
@@ -186,12 +195,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.viewModel.notesCount()
-        
         if !self.viewModel.isInSearch {
-            self.scrollingNav.stopFollowingScrollView()
             self.noteView.emptyNotesView(hidden: count > 0)
-        } else if count == 1 {
-            self.scrollingNav.followScrollView(self.noteView.collectionView)
         }
         
         return count
