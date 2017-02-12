@@ -55,8 +55,8 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.settingButton.rx.tap.subscribe { (tap) in
-            Note.addNote(row: Int(arc4random()) % 100)
-            return
+//            Note.addNote(row: Int(arc4random()) % 100)
+//            return
             let settingVC = SettingViewController()
             let navigation = UINavigationController(rootViewController: settingVC)
             navigation.transitioningDelegate = weakSelf
@@ -68,7 +68,7 @@ class NotesViewController: BaseViewController {
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
         #if debug
-//            Note.noteTestData()
+            Note.noteTestData()
         #endif
         
 //        self.scrollingNav.followScrollView(self.noteView.collectionView)

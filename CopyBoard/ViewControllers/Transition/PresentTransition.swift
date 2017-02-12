@@ -59,7 +59,6 @@ final class PresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 fromView.frame = finalFrame
             }, completion: { (finish) in
                 blackMaskView.removeFromSuperview()
-                //fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             })
         } else {
@@ -84,7 +83,6 @@ final class PresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
             }) { (finish) in
                 blackMaskView.removeFromSuperview()
                 fromView.transform = identity
-                //fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             }
         }

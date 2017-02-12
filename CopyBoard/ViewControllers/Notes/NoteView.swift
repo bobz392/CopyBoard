@@ -41,12 +41,12 @@ class NoteView {
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         
-        barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
-        bar.addSubview(barHolderView)
-        barHolderView.snp.makeConstraints { maker in
+        self.barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
+        bar.addSubview(self.barHolderView)
+        self.barHolderView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.top.equalToSuperview().offset(-20)
+            maker.top.equalToSuperview().offset(-DeviceManager.shared.statusbarHeight)
             maker.bottom.equalToSuperview()
         }
         
@@ -114,7 +114,11 @@ extension NoteView {
             maker.height.equalTo(height)
             maker.width.equalTo(height * 0.7)
         }
-        self.searchNoResultView.layoutIfNeeded()
+        self.barHolderView.snp.updateConstraints { maker in
+            maker.top.equalToSuperview().offset(-DeviceManager.shared.statusbarHeight)
+        }
+        
+        self.barView.superview?.layoutIfNeeded()
     }
     
     func collectionViewItemSpace() -> CGFloat {
