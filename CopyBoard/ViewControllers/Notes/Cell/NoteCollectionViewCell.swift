@@ -42,6 +42,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+        swipe.direction = .left
+        self.cardView.addGestureRecognizer(swipe)
     }
     
     func configCell(use note: Note, query: String? = nil) {
@@ -60,15 +64,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }
         self.noteLabel.attributedText = note.content.searchHintString(query: query)
         self.note = note
+//        
+//        if let grs = self.cardView.gestureRecognizers {
+//            for gr in grs {
+//                self.cardView.removeGestureRecognizer(gr)
+//            }
+//        }
         
-        if let grs = self.cardView.gestureRecognizers {
-            for gr in grs {
-                self.cardView.removeGestureRecognizer(gr)
-            }
-        }
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-        swipe.direction = .left
-        self.cardView.addGestureRecognizer(swipe)
     }
     
     func deselectCell() {

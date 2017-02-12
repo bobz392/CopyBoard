@@ -15,15 +15,15 @@ class NotesViewController: BaseViewController {
     
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
-    fileprivate var scrollingNav: ScrollingNavigationController {
-        get {
-            guard let nav = self.navigationController as? ScrollingNavigationController
-                else {
-                    fatalError("navigationController not a ScrollingNavigationController")
-            }
-            return nav
-        }
-    }
+//    fileprivate var scrollingNav: ScrollingNavigationController {
+//        get {
+//            guard let nav = self.navigationController as? ScrollingNavigationController
+//                else {
+//                    fatalError("navigationController not a ScrollingNavigationController")
+//            }
+//            return nav
+//        }
+//    }
     fileprivate var transitionType = TransitionType.present
     
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ class NotesViewController: BaseViewController {
 //            Note.noteTestData()
         #endif
         
-        self.scrollingNav.followScrollView(self.noteView.collectionView)
+//        self.scrollingNav.followScrollView(self.noteView.collectionView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -82,7 +82,7 @@ class NotesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        scrollingNav.showNavbar()
+//        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,7 +99,7 @@ class NotesViewController: BaseViewController {
     }
     
     deinit {
-        scrollingNav.stopFollowingScrollView()
+//        scrollingNav.stopFollowingScrollView()
         DBManager.shared.unbindNotify()
     }
     
@@ -130,15 +130,15 @@ extension NotesViewController: RealmNotificationDataSource {
         if insertions.count > 0 {
             self.noteView.collectionView
                 .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
-            if self.viewModel.notes.count == 1 {
-                self.scrollingNav.followScrollView(self.noteView.collectionView)
-            }
+//            if self.viewModel.notes.count == 1, !self.viewModel.isInSearch {
+//                self.scrollingNav.followScrollView(self.noteView.collectionView)
+//            }
         } else if deletions.count > 0 {
             self.noteView.collectionView
                 .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
-            if self.viewModel.notes.count == 1 {
-                self.scrollingNav.stopFollowingScrollView()
-            }
+//            if self.viewModel.notes.count == 0, !self.viewModel.isInSearch {
+//                self.scrollingNav.stopFollowingScrollView()
+//            }
         } else if modifications.count > 0 {
             self.noteView.collectionView
                 .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
