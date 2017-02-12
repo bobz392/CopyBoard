@@ -21,6 +21,7 @@ class NoteView {
     
     var collectionView: UICollectionView!
     let emptyNoteView = UIView()
+    let searchNoResultBgView = UIView()
     let searchNoResultView = UIView()
     let searchHolderView = UIView()
     let noResultsLabel = UILabel()
@@ -204,16 +205,24 @@ extension NoteView {
 extension NoteView {
     
     func configSearchResultView(view: UIView) {
-        view.addSubview(self.searchNoResultView)
-        self.searchNoResultView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+        view.addSubview(self.searchNoResultBgView)
+        self.searchNoResultBgView.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+        if let image = UIImage(named: "empty_bg.pdf") {
+            self.searchNoResultBgView.layer.contents = image.cgImage
         }
         
-        if let image = UIImage(named: "empty_bg.pdf") {
-            self.searchNoResultView.layer.contents = image.cgImage
+        self.searchNoResultBgView.addSubview(self.searchNoResultView)
+        self.searchNoResultView.bgClear()
+        self.searchNoResultView.snp.makeConstraints { maker in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview()
         }
         
         let catImageView = UIImageView()
@@ -240,9 +249,8 @@ extension NoteView {
             maker.right.greaterThanOrEqualTo(catImageView.snp.left)
         }
         
-        AppColors.mainBackground.bgColor(to: self.searchNoResultView)
-        self.searchNoResultView.alpha = 0
-        self.searchNoResultView.isHidden = true
+        self.searchNoResultBgView.alpha = 0
+        self.searchNoResultBgView.isHidden = true
     }
     
     func searchKeyboardHandle(add: Bool) {
@@ -288,7 +296,7 @@ extension NoteView {
             weakSelf.searchBar.setShowsCancelButton(true, animated: false)
             weakSelf.searchBar.becomeFirstResponder()
             weakSelf.searchHolderView.isHidden = false
-            weakSelf.searchNoResultView.isHidden = false
+            weakSelf.searchNoResultBgView.isHidden = false
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.barView.layoutIfNeeded()
@@ -310,10 +318,10 @@ extension NoteView {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
                 weakSelf.searchHolderView.alpha = 0
-                weakSelf.searchNoResultView.alpha = 0
+                weakSelf.searchNoResultBgView.alpha = 0
             }) { (finish) in
                 weakSelf.searchHolderView.isHidden = true
-                weakSelf.searchNoResultView.isHidden = true
+                weakSelf.searchNoResultBgView.isHidden = true
                 
                 weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
                     make.centerY.equalToSuperview().offset(labelCenterY)
@@ -342,15 +350,15 @@ extension NoteView {
         if query {
             self.searchHolderView.alpha = 0
             if notesCount > 0 {
-                self.searchNoResultView.alpha = 0
+                self.searchNoResultBgView.alpha = 0
                 self.noResultsLabel(show: false)
             } else {
-                self.searchNoResultView.alpha = 1
+                self.searchNoResultBgView.alpha = 1
                 self.noResultsLabel(show: true)
             }
             
         } else {
-            self.searchNoResultView.alpha = 0
+            self.searchNoResultBgView.alpha = 0
             self.searchHolderView.alpha = kHolderViewAlpha
             self.noResultsLabel(show: false)
         }
