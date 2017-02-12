@@ -39,7 +39,13 @@ class SettingViewController: BaseViewController {
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
+    func settingsItem() {
+//        let dateLabelSettings = SettingItem(settingName: <#T##String##Swift.String#>, settingType: <#T##Int##Swift.Int#>) { type in
+//
+//        }
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

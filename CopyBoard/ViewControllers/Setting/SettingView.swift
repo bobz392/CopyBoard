@@ -62,8 +62,6 @@ class SettingView {
             })
             view.clipsToBounds = true
             view.layer.cornerRadius = 8
-//            view.layer.borderWidth = 0.5
-//            view.layer.borderColor = AppColors.mainIcon.cgColor
             
             let imageView = UIImageView()
             imageView.image = UIImage(named: "cat")
@@ -113,5 +111,6 @@ class SettingView {
 struct SettingItem {
     var settingName: String
     var settingType: Int
+    var action: (Any) -> Void
 }
 

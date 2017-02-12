@@ -12,7 +12,8 @@ struct AppColors {
     
     static let noteText = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
     static let noteDate = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
-    static let mainIcon = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
+    static let mainIcon = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1.00)
+        //UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.00)
     static let mainBackground = UIColor(red:0.91, green:0.89, blue:0.85, alpha:1.00)
     static let mainBackgroundAlpha = UIColor(red:0.91, green:0.89, blue:0.85, alpha:0.95)
     static let mainBackgroundAlphaLight = UIColor(red:0.91, green:0.89, blue:0.85, alpha:0.6)

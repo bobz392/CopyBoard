@@ -1,4 +1,5 @@
-"emptyNotes"="没有便签";
+"sticker"="便笺";
+"emptyNotes"="没有便笺";
 "infomation"="详情";
 "modificationDate"="修改日期";
 "modificationDevice"="最后一次编辑的设备";
@@ -6,3 +7,4 @@
 "settings"="设置";
 "close"="关闭";
 "noResuts"="无结果!";
+"stickerDate"="便笺日期显示为";

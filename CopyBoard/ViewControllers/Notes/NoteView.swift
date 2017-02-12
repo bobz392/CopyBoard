@@ -54,7 +54,7 @@ class NoteView {
         self.barView.clipsToBounds = true
         self.barView.addConstraint()
         
-        self.barView.setTitle(title: "STICKER")
+        self.barView.setTitle(title: Localized("sticker"))
         
         self.barView.appendButtons(buttons: [self.searchButton], left: false)
         self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
