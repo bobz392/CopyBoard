@@ -38,6 +38,7 @@ class BaseViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
 }
 
 // Mark: - 3d touch

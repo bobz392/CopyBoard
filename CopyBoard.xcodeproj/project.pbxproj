@@ -23,6 +23,8 @@
 		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
 		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
 		C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */; };
+		C721A0E21E51900E000257A8 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0E11E51900E000257A8 /* SettingItem.swift */; };
+		C721A0E41E51D76E000257A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0E31E51D76E000257A8 /* DetailViewController.swift */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72CF6431E4C46D900CAAC15 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6411E4C46D900CAAC15 /* PingTransition.swift */; };
 		C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */; };
@@ -225,6 +227,8 @@
 		C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
 		C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
 		C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		C721A0E11E51900E000257A8 /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
+		C721A0E31E51D76E000257A8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72CF6411E4C46D900CAAC15 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
@@ -406,7 +410,9 @@
 			children = (
 				C72CF6741E4C8EE200CAAC15 /* Cell */,
 				C700F1181E4C398900EE66D4 /* SettingViewController.swift */,
+				C721A0E31E51D76E000257A8 /* DetailViewController.swift */,
 				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
+				C721A0E11E51900E000257A8 /* SettingItem.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1169,6 +1175,7 @@
 				C72CF66E1E4C8C3600CAAC15 /* LocaleName.swift in Sources */,
 				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
+				C721A0E41E51D76E000257A8 /* DetailViewController.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */,
 				C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */,
@@ -1188,6 +1195,7 @@
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C72CF66A1E4C8C3600CAAC15 /* DateInRegionFormatter.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
+				C721A0E21E51900E000257A8 /* SettingItem.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C72CF66F1E4C8C3600CAAC15 /* Localization.swift in Sources */,

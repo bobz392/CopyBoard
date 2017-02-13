@@ -11,14 +11,11 @@ import UIKit
 class SettingViewController: BaseViewController {
 
     let settingView = SettingView()
+    var settingItems = SettingItemCreator().creator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let navigation = self.navigationController {
-            navigation.view.backgroundColor = AppColors.mainBackground
-            self.settingView.configBarView(bar: navigation.navigationBar)
-        }
         self.settingView.config(view: self.view)
         
         self.settingView.closeButton
@@ -35,42 +32,56 @@ class SettingViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func deviceOrientationChanged() {
+        self.settingView.invalidateLayout()
+    }
 
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func settingsItem() {
-//        let dateLabelSettings = SettingItem(settingName: <#T##String##Swift.String#>, settingType: <#T##Int##Swift.Int#>) { type in
-//
-//        }
-    }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return self.settingItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.settingItems[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
+        cell.settingLabel.text = self.settingItems[indexPath.section][indexPath.row].settingName()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
  
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return self.settingView.catHeaderView()
+        } else {
+            return self.settingView.sectionHeaderView(title: "KEYBOARD")
         }
-        
-        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 180
+            return 190
         } else {
-            return 50
+            return 45
         }
     }
     

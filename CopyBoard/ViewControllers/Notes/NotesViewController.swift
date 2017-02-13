@@ -60,6 +60,7 @@ class NotesViewController: BaseViewController {
             let settingVC = SettingViewController()
             let navigation = UINavigationController(rootViewController: settingVC)
             navigation.transitioningDelegate = weakSelf
+            navigation.isNavigationBarHidden = true
             weakSelf.transitionType = .ping
             weakSelf.present(navigation, animated: true, completion: nil)
         }.addDisposableTo(viewModel.disposeBag)

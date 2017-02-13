@@ -12,8 +12,6 @@ fileprivate let kCurlDeleteDuration: TimeInterval = 0.4
 fileprivate let kCurlOpenDuration: TimeInterval = 0.3
 fileprivate let kCurlCloseDuration: TimeInterval = 0.2
 let kNoteViewAlphaAnimation: TimeInterval = 0.1
-let noteViewShowAlphaAnimation: TimeInterval = 0.5
-let kHeroAnimationDuration: TimeInterval = 0.4
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
