@@ -18,7 +18,7 @@ class SettingView {
     var catView: UIView? = nil
     
     func config(view: UIView) {
-        view.backgroundColor = AppColors.mainBackground
+        view.backgroundColor = AppColors.cloud
         self.configTableView(view: view)
         self.configBarView(view: view)
     }
@@ -31,11 +31,11 @@ class SettingView {
             maker.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight)
             maker.height.equalTo(44)
         }
-        self.realBarView.backgroundColor = AppColors.mainBackgroundAlpha
+        self.realBarView.backgroundColor = AppColors.cloudHeader
         self.realBarView.titleLabel.text = Localized("settings")
         
         let topView = UIView()
-        topView.backgroundColor = AppColors.mainBackgroundAlpha
+        topView.backgroundColor = AppColors.cloudHeader
         view.addSubview(topView)
         topView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
