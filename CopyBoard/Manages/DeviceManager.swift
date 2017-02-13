@@ -86,6 +86,12 @@ extension DeviceManager {
         }
     }
     
+    var navigationBarHeight: CGFloat {
+        get {
+            return isLandscape ? 32 : 44
+        }
+    }
+    
     var noteColumnCount: Int {
         get {
             return isPad ? (isLandscape ? 4 : 3) : (isLandscape ? 3 : 2)

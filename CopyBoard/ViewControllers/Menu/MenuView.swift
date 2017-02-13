@@ -55,7 +55,7 @@ class MenuView {
         statusBarCoverView.backgroundColor = AppColors.cloud
         statusBarCoverView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
-            maker.height.equalTo(20)
+            maker.height.equalTo(DeviceManager.shared.statusbarHeight)
             maker.left.equalTo(self.menuTableView)
             maker.right.equalToSuperview()
         }

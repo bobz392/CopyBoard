@@ -121,8 +121,10 @@ class EditorView {
         if add {
             let weakSelf = self
             KeyboardManager.shared.setHander { (show, height, duration) in
-                let statusBarHeight: CGFloat = DeviceManager.shared.statusbarHeight
-                let barHeight: CGFloat = show ? statusBarHeight : statusBarHeight + 44
+                let statusBarHeight = DeviceManager.shared.statusbarHeight
+                let navigationBarHeight = DeviceManager.shared.navigationBarHeight
+                let barHeight: CGFloat = show ?
+                    statusBarHeight : (statusBarHeight + navigationBarHeight)
                 let textViewBottom: CGFloat = show ? -height : 0
                 let barViewAlpha: CGFloat = show ? 0 : 1
                 
@@ -147,17 +149,18 @@ class EditorView {
     
     fileprivate func configBarView(view: UIView) {
         view.addSubview(self.barView)
-        let barHeight = DeviceManager.shared.statusbarHeight
+        let statusBarHeight = DeviceManager.shared.statusbarHeight
+        let navigationBarHeight = DeviceManager.shared.navigationBarHeight
         self.barView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.height.equalTo(44 + barHeight)
+            maker.height.equalTo(statusBarHeight + navigationBarHeight)
         }
 
         self.barView.addSubview(self.realBarView)
         self.realBarView.snp.makeConstraints { maker in
-            maker.top.equalToSuperview().offset(barHeight)
+            maker.top.equalToSuperview().offset(statusBarHeight)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
@@ -237,13 +240,14 @@ class EditorView {
     }
     
     func invalidateLayout() {
-        let barHeight = DeviceManager.shared.statusbarHeight
+        let statusBarHeight = DeviceManager.shared.statusbarHeight
+        let navigationBarHeight = DeviceManager.shared.navigationBarHeight
         self.barView.snp.updateConstraints { maker in
-            maker.height.equalTo(44 + barHeight)
+            maker.height.equalTo(navigationBarHeight + statusBarHeight)
         }
         
         self.realBarView.snp.updateConstraints { maker in
-            maker.top.equalToSuperview().offset(barHeight)
+            maker.top.equalToSuperview().offset(statusBarHeight)
         }
 
         self.barView.superview?.layoutIfNeeded()

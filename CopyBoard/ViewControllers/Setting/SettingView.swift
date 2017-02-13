@@ -29,7 +29,7 @@ class SettingView {
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight)
-            maker.height.equalTo(44)
+            maker.height.equalTo(DeviceManager.shared.navigationBarHeight)
         }
         self.realBarView.backgroundColor = AppColors.cloudHeader
         self.realBarView.titleLabel.text = Localized("settings")
@@ -57,7 +57,8 @@ class SettingView {
             maker.top.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
-        self.settingsTableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
+        self.settingsTableView.contentInset =
+            UIEdgeInsetsMake(DeviceManager.shared.navigationBarHeight, 0, 0, 0)
         self.settingsTableView.register(SettingsTableViewCell.nib,
                                         forCellReuseIdentifier: SettingsTableViewCell.reuseId)
         self.settingsTableView.separatorColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
@@ -65,6 +66,9 @@ class SettingView {
     }
     
     func invalidateLayout() {
+        self.settingsTableView.contentInset =
+            UIEdgeInsetsMake(DeviceManager.shared.navigationBarHeight, 0, 0, 0)
+        
         self.realBarView.snp.updateConstraints { maker in
             maker.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight)
         }

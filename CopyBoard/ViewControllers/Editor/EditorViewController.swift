@@ -33,7 +33,7 @@ class EditorViewController: BaseViewController {
         super.viewDidLoad()
 
         let weakSelf = self
-        self.editorView.config(with: self.view, note: note) {
+        self.editorView.config(with: self.view,note: note) {
             weakSelf.dismiss(animated: true, completion: { (finish) -> Void in })
             weakSelf.updateNoteIfNeed()
         }
