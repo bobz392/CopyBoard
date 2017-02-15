@@ -92,7 +92,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return CGFloat.leastNonzeroMagnitude
         } else {
-            return 45
+            return 40
         }
     }
     

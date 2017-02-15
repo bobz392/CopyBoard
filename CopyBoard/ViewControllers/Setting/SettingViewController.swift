@@ -87,7 +87,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 190
         } else {
-            return 45
+            return 40
         }
     }
     
