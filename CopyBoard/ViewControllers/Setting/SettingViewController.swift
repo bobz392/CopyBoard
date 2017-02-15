@@ -17,12 +17,17 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
 
         self.settingView.config(view: self.view)
+        self.settingView.configTableView(delegate: self, dataSource: self)
         
         self.settingView.closeButton
             .addTarget(self, action: #selector(self.quit), for: .touchUpInside)
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.settingView.settingsTableView.delegate = self
-        self.settingView.settingsTableView.dataSource = self
+        self.settingView.settingsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
     func quit() {
@@ -68,13 +73,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
+        let item = self.settingItems[indexPath.section][indexPath.row]
+        let vc = DetailViewController(type: item)
         self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

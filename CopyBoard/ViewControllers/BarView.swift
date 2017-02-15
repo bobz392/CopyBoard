@@ -39,6 +39,18 @@ class BarView: UIView {
         }
     }
     
+    func addTableViewIndexCover(color: UIColor) {
+        let view = UIView()
+        view.backgroundColor = color
+        self.addSubview(view)
+        view.snp.makeConstraints { maker in
+            maker.right.equalToSuperview()
+            maker.width.equalTo(self.sideMargin)
+            maker.bottom.equalToSuperview()
+            maker.top.equalToSuperview()
+        }
+    }
+    
     func addConstraint() {
         self.snp.makeConstraints { maker in
             maker.top.equalToSuperview()

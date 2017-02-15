@@ -14,6 +14,8 @@ class SettingView {
     
     let realBarView = BarView()
     let closeButton = UIButton(type: .custom)
+    let backButton = UIButton(type: .custom)
+    
     let settingsTableView = UITableView(frame: .zero, style: .grouped)
     var catView: UIView? = nil
     
@@ -33,6 +35,7 @@ class SettingView {
         }
         self.realBarView.backgroundColor = AppColors.cloudHeader
         self.realBarView.titleLabel.text = Localized("settings")
+        self.realBarView.addTableViewIndexCover(color: AppColors.cloud)
         
         let topView = UIView()
         topView.backgroundColor = AppColors.cloudHeader
@@ -60,21 +63,43 @@ class SettingView {
         let height = DeviceManager.shared.navigationBarHeight + DeviceManager.shared.statusbarHeight
         self.settingsTableView.contentInset =
             UIEdgeInsetsMake(height, 0, 0, 0)
+        
         self.settingsTableView.register(SettingsTableViewCell.nib,
                                         forCellReuseIdentifier: SettingsTableViewCell.reuseId)
         self.settingsTableView.separatorColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
         self.settingsTableView.bgClear()
     }
     
+    func configTableView<T: UITableViewDelegate, E: UITableViewDataSource>(delegate: T, dataSource: E) {
+        self.settingsTableView.delegate = delegate
+        self.settingsTableView.dataSource = dataSource
+    }
+    
     func invalidateLayout() {
-        let height = DeviceManager.shared.navigationBarHeight + DeviceManager.shared.statusbarHeight
+        let statusBarHeight = DeviceManager.shared.statusbarHeight
+        let barHeight = DeviceManager.shared.navigationBarHeight
+        
         self.settingsTableView.contentInset =
-            UIEdgeInsetsMake(height, 0, 0, 0)
+            UIEdgeInsetsMake(barHeight + statusBarHeight, 0, 0, 0)
         
         self.realBarView.snp.updateConstraints { maker in
-            maker.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight)
+            maker.top.equalToSuperview().offset(statusBarHeight)
+            maker.height.equalTo(barHeight)
         }
         self.realBarView.superview?.layoutIfNeeded()
+        
+        if let firstCell = self.settingsTableView.visibleCells.first,
+            let index = self.settingsTableView.indexPath(for: firstCell) {
+            self.settingsTableView.scrollToRow(at: index, at: .top, animated: false)
+        }
+    }
+    
+    // MARK: - detail setting
+    func configSettingDetail(title: String) {
+        self.realBarView.titleLabel.text = title
+        self.realBarView.appendButtons(buttons: [self.backButton], left: true)
+        self.backButton.setImage(Icons.back.iconImage(), for: .normal)
+        self.backButton.tintColor = AppColors.mainIcon
     }
     
 }

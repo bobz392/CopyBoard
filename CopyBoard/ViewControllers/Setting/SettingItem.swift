@@ -11,7 +11,6 @@ import Foundation
 enum SettingType {
     case general
     case search
-    
     case keyboardLine
     case keyboardHeight
     
@@ -21,13 +20,13 @@ enum SettingType {
             return Localized("general")
         case .search:
             return Localized("search")
-            
         case .keyboardLine:
             return Localized("stickerLine")
         case .keyboardHeight:
             return Localized("keyboardHeight")
         }
     }
+    
 }
 
 struct SettingItemCreator {
@@ -35,7 +34,7 @@ struct SettingItemCreator {
     func creator() -> [[SettingType]] {
         let section1: [SettingType] = [.general, .search]
         let section2: [SettingType] = [.keyboardHeight, .keyboardLine]
-        let section3: [SettingType] = [.general]
+        let section3: [SettingType] = [.general, .general, .general, .general, .general]
         
         return [section1, section2, section3]
     }

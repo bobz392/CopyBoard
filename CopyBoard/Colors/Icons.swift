@@ -21,6 +21,7 @@ enum Icons {
     case bigClear
     case info
     case done
+    case back
     
     
     case plus
@@ -28,7 +29,7 @@ enum Icons {
     case uncheck
     case coffee
     case timeManagement
-    case back
+    
     case loop
     case notify
     case schedule
@@ -70,6 +71,8 @@ enum Icons {
         case .bigClear: return "big_clear"
         case .info: return "info"
         case .done: return "done"
+        case .back: return "back"
+            
             
         case .plus: return "plus"
         case .check: return "check"
@@ -78,7 +81,7 @@ enum Icons {
     
         case .timeManagement: return "time_management"
         
-        case .back: return "back"
+        
         case .loop: return "loop"
         case .notify: return "notify"
         case .schedule: return "schedule"
