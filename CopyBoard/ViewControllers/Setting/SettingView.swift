@@ -142,7 +142,7 @@ extension SettingView {
             view.addSubview(label)
             label.text = Localized("useKeyboard")
             label.textColor = UIColor.white
-            label.backgroundColor = UIColor(red:0.86, green:0.30, blue:0.32, alpha:1.00)
+            label.backgroundColor = AppColors.red
             label.textAlignment = .center
             view.addSubview(label)
             label.snp.makeConstraints({ maker in
@@ -157,7 +157,7 @@ extension SettingView {
             touchButton.config(cornerRadius: 0)
             touchButton.useTint = false
             touchButton.bgColor = UIColor.clear
-            touchButton.selectedBgColor = AppColors.red
+            touchButton.selectedBgColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
             view.addSubview(touchButton)
             touchButton.snp.makeConstraints({ maker in
                 maker.left.equalToSuperview()

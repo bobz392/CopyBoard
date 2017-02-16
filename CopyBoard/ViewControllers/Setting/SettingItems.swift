@@ -85,9 +85,9 @@ enum SettingType {
         case .gesture:
             cell.settingLabel.text = Localized("stickerGusture")
             cell.settingDetailLabel.isHidden = false
-            cell.settingDetailLabel.text = settings.stickerGesture == 0 ? Localized("creationDate") : Localized("modificationDate")
+            cell.settingDetailLabel.text = settings.stickerGesture == 0 ? Localized("gusture") : Localized("longGusture")
             cell.accessoryType = .disclosureIndicator
-
+            
         case .caseSensitive:
             cell.settingLabel.text = Localized("caseSensitive")
             cell.settingSwitch.isHidden = false
