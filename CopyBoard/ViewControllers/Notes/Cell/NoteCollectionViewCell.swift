@@ -132,7 +132,12 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     func canEnter() -> Bool {
-        return !self.isCurl
+        if NoteCollectionViewInputOverlay.openedItemIndex == nil {
+            return true
+        } else {
+            NoteCollectionViewInputOverlay.closeOpenItem()
+            return false
+        }
     }
      
 }
@@ -205,12 +210,7 @@ final class NoteCollectionViewInputOverlay: UIView {
         if cell.isCurl == false || cell.deleteButton.frame.contains(pointCell) {
             return nil
         }
-        
-        if cell.isCurl == true {
-            cell.closeCurl()
-            return self
-        }
-        
+
         return nil
     }
     
