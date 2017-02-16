@@ -21,6 +21,11 @@ enum SettingType {
 
     case caseSensitive
     case advance
+    
+    case filterAll
+    case filterStar
+    case filterUnstar
+    case filterColor
 
     func settingName() -> String {
         switch self {
@@ -47,6 +52,12 @@ enum SettingType {
             return Localized("caseSensitive")
         case .advance:
             return Localized("filter")
+            
+//        case .filterAll:
+//            return
+            
+        default:
+            return ""
         }
     }
     
@@ -58,6 +69,9 @@ enum SettingType {
             
         case .search:
             return ([[.caseSensitive], [.advance]], ["", ""])
+        
+        case .filter:
+            return ([[.filterAll, .filterStar, .filterUnstar], [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]], ["", ""])
             
         default:
             fatalError("have not this type \(self)")

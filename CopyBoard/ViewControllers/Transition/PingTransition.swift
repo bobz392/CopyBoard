@@ -55,15 +55,14 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         var bounds = v.convert(startView.frame, to: containerView)
         bounds.origin.y += DeviceManager.shared.statusbarHeight
 
-        if reverse {
-            bounds.insetBy(dx: 15, dy: 15)
-        }
+//        if reverse {
+//            bounds.insetBy(dx: 15, dy: 15)
+//        }
         let maskStartPath = UIBezierPath(ovalIn: bounds)
 
         let finalPoint = self.calculateFinalPoint(startView: startView, toView: toView)
         let radius = sqrt(pow(finalPoint.x, 2) + pow(finalPoint.y, 2))
         let maskFinalPath = UIBezierPath(ovalIn: bounds.insetBy(dx: -radius, dy: -radius))
-        //self.maskLayer.anchorPoint = startView.center
 
         if reverse {
             containerView.addSubview(toView)
@@ -80,6 +79,21 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
             maskLayerAnimation.toValue = maskStartPath.cgPath
 
             self.maskLayer.add(maskLayerAnimation, forKey: "path")
+            
+            let duration = self.animationDuration * 0.5
+            UIView.animate(withDuration: duration, delay: duration, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
+                self.fromView?.alpha = 0.2
+            }, completion: { (finish) in })
+            
+//            let alphaAnimation = CABasicAnimation(keyPath: "opacity")
+//            alphaAnimation.duration = self.animationDuration * 0.5
+//            alphaAnimation.beginTime = CACurrentMediaTime() + self.animationDuration * 0.5
+//            alphaAnimation.fromValue = 1
+//            alphaAnimation.toValue = 0.2
+//            alphaAnimation.isRemovedOnCompletion = false
+//            alphaAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//            
+//            self.maskLayer.add(alphaAnimation, forKey: "opacity")
         } else {
             containerView.addSubview(fromView)
             containerView.addSubview(toView)
@@ -93,7 +107,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
             maskLayerAnimation.delegate = self
             maskLayerAnimation.toValue = maskFinalPath.cgPath
             maskLayerAnimation.fromValue = maskStartPath.cgPath
-
+            
             self.maskLayer.add(maskLayerAnimation, forKey: "path")
         }
 
@@ -103,9 +117,11 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         guard  let transitionContext = self.transitionContext else {
             fatalError("transitionContext = nil")
         }
-        self.fromView?.removeFromSuperview()
+        
         transitionContext.completeTransition(true)
+        self.fromView?.removeFromSuperview()
         self.maskLayer.removeFromSuperlayer()
+        self.fromView?.alpha = 1
     }
 
     func calculateFinalPoint(startView: UIView, toView: UIView) -> CGPoint {

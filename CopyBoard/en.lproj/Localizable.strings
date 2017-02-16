@@ -15,9 +15,14 @@
 "stickerDate"="Date label use";
 "stickerGusture"="Delete gesture";
 "caseSensitive"="Case sensitive";
-"filter"="Filter";
 "lines"="STICKER LINES";
 "keyboard"="KEYBOARD";
 "extra"="EXTRA";
 "gusture"="Swipe left";
 "longGusture"="Long press";
+
+// filter
+"filter"="Filter";
+"filterAll"="All";
+"filterStar"="Star only";
+"filterStar"="Unstar only";

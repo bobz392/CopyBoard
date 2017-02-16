@@ -12,6 +12,7 @@
 		C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7110FEB1E2836B2007A1577 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
+		C71160F51E56286F00779A0F /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71160F71E56286F00779A0F /* SettingsTableViewCell.xib */; };
 		C71741D41E479C4000D39597 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D31E479C4000D39597 /* MenuViewController.swift */; };
 		C71741D61E479C7500D39597 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D51E479C7500D39597 /* MenuView.swift */; };
 		C71741DA1E4824B200D39597 /* MenuDateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D81E4824B200D39597 /* MenuDateTableCell.swift */; };
@@ -53,7 +54,6 @@
 		C72CF6721E4C8C3600CAAC15 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF65C1E4C8C3600CAAC15 /* TimeInterval+Extensions.swift */; };
 		C72CF6731E4C8C3600CAAC15 /* TimeZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF65D1E4C8C3600CAAC15 /* TimeZoneName.swift */; };
 		C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */; };
-		C72CF6781E4C8EF200CAAC15 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
@@ -218,6 +218,8 @@
 		C7110FE81E2836B2007A1577 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C71110281E29448F007A1577 /* NotesViewModle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModle.swift; sourceTree = "<group>"; };
+		C71160F81E56287100779A0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsTableViewCell.xib"; sourceTree = "<group>"; };
+		C71160F91E56289200779A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C71741D31E479C4000D39597 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C71741D51E479C7500D39597 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C71741D81E4824B200D39597 /* MenuDateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDateTableCell.swift; sourceTree = "<group>"; };
@@ -260,7 +262,6 @@
 		C72CF65C1E4C8C3600CAAC15 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		C72CF65D1E4C8C3600CAAC15 /* TimeZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneName.swift; sourceTree = "<group>"; };
 		C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -537,7 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */,
-				C72CF6761E4C8EF200CAAC15 /* SettingsTableViewCell.xib */,
+				C71160F71E56286F00779A0F /* SettingsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -963,6 +964,7 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
+				Base,
 			);
 			mainGroup = C7403E191E269CA00067229E;
 			productRefGroup = C7403E231E269CA00067229E /* Products */;
@@ -1016,7 +1018,7 @@
 				C78C33941E2EFA96001DCE38 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap in Resources */,
 				C78C338F1E2EFA96001DCE38 /* 7E5BBAC1-9469-31C7-8A21-74669E4C8340.bcsymbolmap in Resources */,
 				C7753D901E352A0900C45A5A /* NextPageFragmentShader.glsl in Resources */,
-				C72CF6781E4C8EF200CAAC15 /* SettingsTableViewCell.xib in Resources */,
+				C71160F51E56286F00779A0F /* SettingsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1267,6 +1269,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C71160F71E56286F00779A0F /* SettingsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C71160F81E56287100779A0F /* zh-Hans */,
+				C71160F91E56289200779A0F /* Base */,
+			);
+			name = SettingsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
 		C769961C1E369B29001E2F86 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
