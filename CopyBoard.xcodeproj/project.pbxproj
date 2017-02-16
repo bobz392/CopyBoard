@@ -13,6 +13,9 @@
 		C7110FEB1E2836B2007A1577 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */; };
 		C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71110281E29448F007A1577 /* NotesViewModle.swift */; };
 		C71160F51E56286F00779A0F /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71160F71E56286F00779A0F /* SettingsTableViewCell.xib */; };
+		C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */; };
+		C71160FE1E56530B00779A0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71160FD1E56530B00779A0F /* AppSettings.swift */; };
+		C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71160FD1E56530B00779A0F /* AppSettings.swift */; };
 		C71741D41E479C4000D39597 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D31E479C4000D39597 /* MenuViewController.swift */; };
 		C71741D61E479C7500D39597 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D51E479C7500D39597 /* MenuView.swift */; };
 		C71741DA1E4824B200D39597 /* MenuDateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D81E4824B200D39597 /* MenuDateTableCell.swift */; };
@@ -220,6 +223,7 @@
 		C71110281E29448F007A1577 /* NotesViewModle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModle.swift; sourceTree = "<group>"; };
 		C71160F81E56287100779A0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsTableViewCell.xib"; sourceTree = "<group>"; };
 		C71160F91E56289200779A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		C71160FD1E56530B00779A0F /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		C71741D31E479C4000D39597 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C71741D51E479C7500D39597 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C71741D81E4824B200D39597 /* MenuDateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDateTableCell.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				C721A0E31E51D76E000257A8 /* DetailViewController.swift */,
 				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
 				C721A0E11E51900E000257A8 /* SettingItems.swift */,
+				C71160FD1E56530B00779A0F /* AppSettings.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1208,6 +1213,7 @@
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C72CF66C1E4C8C3600CAAC15 /* Extensions.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
+				C71160FE1E56530B00779A0F /* AppSettings.swift in Sources */,
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
 				C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */,
 				C72CF66B1E4C8C3600CAAC15 /* DateTimeInterval.swift in Sources */,
@@ -1238,8 +1244,10 @@
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
+				C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */,
 				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
+				C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */,
 				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

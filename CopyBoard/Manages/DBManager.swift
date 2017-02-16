@@ -112,13 +112,15 @@ extension DBManager {
     }
     
     func queryNotes(contain: String? = nil) -> Results<Note> {
+        let sortKey = AppSettings.shared.sortKey()
         if let contain = contain {
+            let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
             return self.realm.objects(Note.self)
-                .filter("content CONTAINS '\(contain)'")
-                .sorted(byKeyPath: "createdAt", ascending: false)
+                .filter(query)
+                .sorted(byKeyPath: sortKey, ascending: false)
         } else {
             return self.realm.objects(Note.self)
-                .sorted(byKeyPath: "createdAt", ascending: false)
+                .sorted(byKeyPath: sortKey, ascending: false)
         }
     }
     

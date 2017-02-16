@@ -26,6 +26,12 @@ enum SettingType {
     case filterStar
     case filterUnstar
     case filterColor
+    
+    case sortBy
+    
+    case version
+    case rate
+    case contact
 
     func settingName() -> String {
         switch self {
@@ -34,7 +40,7 @@ enum SettingType {
         case .search:
             return Localized("search")
         case .keyboardLine:
-            return Localized("stickerLine")
+            return Localized("stickerLines")
         case .keyboardHeight:
             return Localized("keyboardHeight")
         case .filter:
@@ -45,44 +51,68 @@ enum SettingType {
         case .line:
             return ""
         case .gesture:
-            return Localized("stickerLine")
+            return Localized("stickerGusture")
 
 
         case .caseSensitive:
             return Localized("caseSensitive")
         case .advance:
-            return Localized("filter")
+            return Localized("advance")
             
-//        case .filterAll:
-//            return
+        case .filterAll:
+            return Localized("filterAll")
+        case .filterStar:
+            return Localized("filterStar")
+        case .filterUnstar:
+            return Localized("filterUnstar")
+            
+        case .version:
+            return Localized("version")
+        case .contact:
+            return Localized("contactUs")
+        case .rate:
+            return Localized("rate")
+            
+        case .sortBy:
+            return Localized("sortBy")
             
         default:
             return ""
         }
     }
     
+    // types and header titles
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
-            return ([[.date, .gesture], [.line, .line, .line, .line, .line]],
-                    [Localized("sticker"), Localized("lines")])
+            return ([[.date, .gesture], [.sortBy], [.line, .line, .line, .line, .line]],
+                    [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
             
         case .search:
             return ([[.caseSensitive], [.advance]], ["", ""])
-        
+            
         case .filter:
-            return ([[.filterAll, .filterStar, .filterUnstar], [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]], ["", ""])
+            return ([[.filterAll, .filterStar, .filterUnstar],
+                     [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]],
+                    [Localized("star"), Localized("color")])
+            
+        case .keyboardHeight:
+            return ([[.keyboardHeight]], [""])
+            
+        case .keyboardLine:
+            return ([[.line, .line, .line, .line, .line]], [""])
             
         default:
             fatalError("have not this type \(self)")
         }
     }
     
-    func detailSettingConfig(cell: SettingsTableViewCell, row: Int) {
+    func detailSettingConfig(cell: SettingsTableViewCell, row: Int, section: Int) {
         
         cell.settingDetailLabel.isHidden = true
         cell.checkButton.isHidden = true
         cell.settingSwitch.isHidden = true
+        
         let settings = AppSettings.shared
         switch self {
         case .date:
@@ -91,32 +121,58 @@ enum SettingType {
             cell.settingDetailLabel.text = settings.stickerDateUse == 0 ? Localized("creationDate") : Localized("modificationDate")
             cell.accessoryType = .disclosureIndicator
             
-        case .line:
-            cell.settingLabel.text = "\(row + 4)"
-            cell.checkButton.isHidden = settings.stickerLines != row
+        case .line, .keyboardLine:
+            cell.settingLabel.text = "\(row + 4) \(Localized("lines"))"
+            if self == .line {
+                cell.checkButton.isHidden = settings.stickerLines != row
+            } else {
+                cell.checkButton.isHidden = settings.keyboardLines != row
+            }
             cell.accessoryType = .none
             
         case .gesture:
-            cell.settingLabel.text = Localized("stickerGusture")
+            cell.settingLabel.text = self.settingName()
             cell.settingDetailLabel.isHidden = false
             cell.settingDetailLabel.text = settings.stickerGesture == 0 ? Localized("gusture") : Localized("longGusture")
             cell.accessoryType = .disclosureIndicator
-            
+          
+        case .sortBy:
+            cell.settingLabel.text = self.settingName()
+            cell.settingDetailLabel.isHidden = false
+            cell.settingDetailLabel.text = settings.stickerSort == 0 ? Localized("creationDate") : Localized("modificationDate")
+            cell.accessoryType = .disclosureIndicator
+        
         case .caseSensitive:
-            cell.settingLabel.text = Localized("caseSensitive")
+            cell.settingLabel.text = self.settingName()
             cell.settingSwitch.isHidden = false
             cell.settingSwitch.isOn = settings.caseSensitive == 0
             cell.accessoryType = .none
             
         case .advance:
-            cell.settingLabel.text = Localized("advance")
+            cell.settingLabel.text = self.settingName()
             cell.accessoryType = .none
+            
+        case .filterUnstar, .filterStar, .filterAll, .filterColor:
+            if self == .filterColor {
+            } else {
+                cell.settingLabel.text = self.settingName()
+            }
+            cell.accessoryType = .none
+            if section == 0 {
+                cell.checkButton.isHidden = settings.keyboardFilterStar != row
+            } else {
+                cell.checkButton.isHidden = settings.keyboardFilterColor != row
+            }
+            
+        case .keyboardHeight:
+            cell.settingLabel.text = Localized("keyboardHeight")
+            cell.settingDetailLabel.text = "\(settings.keyboardHeight)pt"
+            cell.accessoryType = .disclosureIndicator
             
         default:
             fatalError("cant config this type \(self) cell")
         }
     }
-
     
 }
 
@@ -125,7 +181,7 @@ struct SettingItemCreator {
     func settingsCreator() -> [[SettingType]] {
         let section1: [SettingType] = [.general, .search]
         let section2: [SettingType] = [.keyboardHeight, .keyboardLine, .filter]
-        let section3: [SettingType] = [.general, .general, .general, .general, .general]
+        let section3: [SettingType] = [.version, .contact, .rate]
         
         return [section1, section2, section3]
     }
@@ -189,87 +245,4 @@ enum SettingDetailType {
         }
     }
     
-}
-
-class AppSettings {
-
-    // 0 create 1 modify
-    var stickerDateUse: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerDateUse, manager: self.userDefualtsManager)
-        }
-    }
-    // 4 5 6 7 8
-    var stickerLines: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerLines, manager: self.userDefualtsManager)
-        }
-    }
-    var keyboardLines: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardLines, manager: self.userDefualtsManager)
-        }
-    }
-    // 0 swipe 1 long press
-    var stickerGesture: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerGesture, manager: self.userDefualtsManager)
-        }
-    }
-    // 0 sensitive 1 none
-    var caseSensitive: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.caseSensitive, manager: self.userDefualtsManager)
-        }
-    }
-    // 0 1 2 all star Unstar | 0 1 2 3 4 5 colors
-    var keyboardFilterStar: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardFilterStar, manager: self.userDefualtsManager)
-        }
-    }
-    var keyboardFilterColor: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardFilterColor, manager: self.userDefualtsManager)
-        }
-    }
-    // 0 create 1 modify
-    var stickerSort: Int {
-        didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerSort, manager: self.userDefualtsManager)
-        }
-    }
-
-    fileprivate let userDefualtsManager: UserDefaultsManager
-    
-    private init() {
-        guard let userDefault = UserDefaultsManager(identifier: GroupIdentifier) else { fatalError("user defaults setup failed") }
-        self.stickerDateUse = userDefault.readInt(UserDefaultsKey.dateLabelUse.rawValue)
-        self.stickerLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
-        self.keyboardLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
-        self.keyboardFilterStar = userDefault.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
-        self.keyboardFilterColor = userDefault.readInt(UserDefaultsKey.keyboardFilterColor.rawValue)
-        self.stickerGesture = userDefault.readInt(UserDefaultsKey.gesture.rawValue)
-        self.caseSensitive = userDefault.readInt(UserDefaultsKey.caseSensitive.rawValue)
-        self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
-        self.userDefualtsManager = userDefault
-    }
-
-    static let shared: AppSettings = AppSettings()
-
-}
-
-enum UserDefaultsKey: StringLiteralType {
-    case dateLabelUse = "com.date.label.use"
-    case stickerLine = "com.sticker.line"
-    case keyboardLine = "com.keyboard.line"
-    case gesture = "com.gesture"
-    case caseSensitive = "com.case.sensitive"
-    case keyboardFilterStar = "com.keyboard.filter.star"
-    case keyboardFilterColor = "com.keyboard.filter.color"
-    case stickerSort = "com.sticker.sort"
-    
-    func write(value: Int, manager: UserDefaultsManager) {
-        manager.write(self.rawValue, value: value)
-    }
 }

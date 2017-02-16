@@ -77,7 +77,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
-        cell.settingLabel.text = self.settingItems[indexPath.section][indexPath.row].settingName()
+        let item = self.settingItems[indexPath.section][indexPath.row]
+        cell.configSettingItem(item: item)
         return cell
     }
     
@@ -94,10 +95,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedIndex = indexPath
         let item = self.settingItems[indexPath.section][indexPath.row]
-        let vc = DetailViewController(rootSettingType: item)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if item == .rate {
+        
+        } else if item == .contact {
+        
+        } else if item == .version { 
+        } else {
+            self.selectedIndex = indexPath
+            let vc = DetailViewController(rootSettingType: item)
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

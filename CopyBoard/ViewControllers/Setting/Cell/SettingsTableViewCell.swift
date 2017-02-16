@@ -36,8 +36,15 @@ class SettingsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configDetailItem(item: SettingType, row: Int) {
-        item.detailSettingConfig(cell: self, row: row)
+    func configDetailItem(item: SettingType, row: Int, section: Int) {
+        item.detailSettingConfig(cell: self, row: row, section: section)
+    }
+    
+    func configSettingItem(item: SettingType) {
+        self.settingLabel.text = item.settingName()
+        self.accessoryType = item == .version ? .none : .disclosureIndicator
+        self.settingDetailLabel.isHidden = item != .version
+        self.settingDetailLabel.text = item == .version ? AppSettings.shared.version : nil
     }
 
 }

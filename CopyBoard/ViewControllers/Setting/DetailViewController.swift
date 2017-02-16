@@ -95,7 +95,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
-        cell.configDetailItem(item: self.detailTypes[indexPath.section][indexPath.row], row: indexPath.row)
+        cell.configDetailItem(item: self.detailTypes[indexPath.section][indexPath.row], row: indexPath.row, section: indexPath.section)
         return cell
     }
     

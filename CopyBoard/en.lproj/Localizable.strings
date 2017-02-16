@@ -11,18 +11,29 @@
 "general"="General";
 "search"="Search";
 "keyboardHeight"="Keyboard height";
-"stickerLine"="Sticker lines";
+"lines"="lines";
+"stickerLines"="Sticker lines";
 "stickerDate"="Date label use";
 "stickerGusture"="Delete gesture";
 "caseSensitive"="Case sensitive";
-"lines"="STICKER LINES";
 "keyboard"="KEYBOARD";
-"extra"="EXTRA";
 "gusture"="Swipe left";
 "longGusture"="Long press";
 
+// sort
+"sort"="Sticker Sorting";
+"sortBy"="Sort by";
+
 // filter
 "filter"="Filter";
+"star"="STICKER STAR";
+"color"="STICKER COLOR";
 "filterAll"="All";
 "filterStar"="Star only";
-"filterStar"="Unstar only";
+"filterUnstar"="Unstar only";
+
+// extra
+"extra"="EXTRA";
+"version"="Version";
+"contactUs"="Contact us";
+"rate"="Rate us";

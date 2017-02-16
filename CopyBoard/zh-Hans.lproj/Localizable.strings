@@ -11,18 +11,27 @@
 "general"="通用";
 "search"="搜索";
 "keyboardHeight"="键盘高度";
-"stickerLine"="便笺行数";
+"lines"="行";
+"stickerLines"="便笺行数";
 "stickerDate"="日期标签为";
 "stickerGusture"="删除手势";
 "caseSensitive"="大小写敏感";
-"lines"="行数";
 "keyboard"="键盘";
-"extra"="附加";
 "gusture"="左滑";
 "longGusture"="长按";
+
+// sort
+"sort"="便笺排序";
+"sortBy"="排序方式按";
 
 // filter
 "filter"="过滤";
 "filterAll"="所有";
 "filterStar"="仅标星";
-"filterStar"="仅不标星";
+"filterUnstar"="仅不标星";
+
+// extra
+"extra"="附加";
+"version"="版本";
+"contactUs"="联系我们";
+"rate"="为我们评分";
