@@ -41,9 +41,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
         
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-        swipe.direction = .left
-        self.cardView.addGestureRecognizer(swipe)
+        if AppSettings.shared.stickerGesture == 0 {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+            swipe.direction = .left
+            self.cardView.addGestureRecognizer(swipe)
+        } else {
+            let long = UILongPressGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+            self.cardView.addGestureRecognizer(long)
+        }
     }
     
     func configCell(use note: Note, query: String? = nil) {
