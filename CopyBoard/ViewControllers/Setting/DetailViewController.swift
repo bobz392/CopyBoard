@@ -11,13 +11,14 @@ import UIKit
 class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     let settingView = SettingView()
-    fileprivate let settingType: SettingType
-    fileprivate var detailTypes: [[SettingDetialType]]
+    fileprivate let rootSettingType: SettingType
+    fileprivate var detailTypes: [[SettingType]]
     fileprivate let detailHeaders: [String]
-    
-    init(type: SettingType) {
-        self.settingType = type
-        let types = type.detailTypes()
+    fileprivate var selectedIndex: IndexPath? = nil
+
+    init(rootSettingType: SettingType) {
+        self.rootSettingType = rootSettingType
+        let types = rootSettingType.detailTypes()
         self.detailTypes = types.0
         self.detailHeaders = types.1
         super.init(nibName: nil, bundle: nil)
@@ -31,7 +32,7 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
 
         self.settingView.config(view: self.view)
-        self.settingView.configSettingDetail(title: self.settingType.settingName())
+        self.settingView.configSettingDetail(title: self.rootSettingType.settingName())
         self.settingView.configTableView(delegate: self, dataSource: self)
         
         self.settingView.closeButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
@@ -40,18 +41,13 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
-    func close() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func back() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+
+        guard let index = self.selectedIndex else { return }
+        self.settingView.settingsTableView.deselectRow(at: index, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +68,15 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
     override func deviceOrientationChanged() {
         self.settingView.invalidateLayout()
     }
-    
+
+    func close() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    func back() {
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
+
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,7 +94,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
+        cell.configDetailItem(item: self.detailTypes[indexPath.section][indexPath.row], row: indexPath.row)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

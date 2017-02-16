@@ -13,7 +13,8 @@ class SettingViewController: BaseViewController {
     let settingView = SettingView()
     fileprivate var settingItems: [[SettingType]]
     fileprivate let settingHeader: [String]
-    
+    fileprivate var selectedIndex: IndexPath? = nil
+
     init() {
         let settingsCreator = SettingItemCreator()
         self.settingItems = settingsCreator.settingsCreator()
@@ -42,7 +43,14 @@ class SettingViewController: BaseViewController {
         
         self.settingView.settingsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let index = self.selectedIndex else { return }
+        self.settingView.settingsTableView.deselectRow(at: index, animated: true)
+    }
+
     func quit() {
         self.dismiss(animated: true) {}
     }
@@ -86,10 +94,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath
         let item = self.settingItems[indexPath.section][indexPath.row]
-        let vc = DetailViewController(type: item)
+        let vc = DetailViewController(rootSettingType: item)
         self.navigationController?.pushViewController(vc, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

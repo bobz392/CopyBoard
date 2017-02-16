@@ -13,19 +13,19 @@ class SettingsTableViewCell: UITableViewCell {
     static let nib = UINib(nibName: "SettingsTableViewCell", bundle: nil)
     static let reuseId = "settingsTableViewCell"
     static let rowHeight: CGFloat = 82
-    
+
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingSwitch: UISwitch!
     @IBOutlet weak var settingDetaiLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.settingLabel.textColor = AppColors.menuText
         self.settingDetaiLabel.textColor = AppColors.menuSecondaryText
         self.settingSwitch.isHidden = true
         self.settingDetaiLabel.isHidden = true
-        
+
         self.accessoryType = .disclosureIndicator
     }
 
@@ -34,9 +34,10 @@ class SettingsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func configDetailItem(item: SettingDetialType, row: Int) {
+
+    func configDetailItem(item: SettingType, row: Int) {
+//        self.settingLabel.text = item.settingUI().0
         self.settingLabel.text = item.settingName()
     }
-    
+
 }

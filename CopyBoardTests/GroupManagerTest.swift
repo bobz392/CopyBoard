@@ -27,7 +27,7 @@ class GroupManagerTest: XCTestCase {
         let tests = (0..<10).map { (index) -> TestGroupClass in
             TestGroupClass()
         }
-        
+
         let manage = GroupManager()
         let s = manage.createDictArray(objects: tests)
         XCTAssertEqual(s?.count, 10)
