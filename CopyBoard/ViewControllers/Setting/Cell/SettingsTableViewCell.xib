@@ -24,31 +24,46 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arl-lx-nO9">
+                    <switch hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arl-lx-nO9">
                         <rect key="frame" x="255" y="6" width="51" height="31"/>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGX-9B-D2s">
-                        <rect key="frame" x="282" y="13" width="38" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGX-9B-D2s">
+                        <rect key="frame" x="287" y="14" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DP-D1-mRb">
+                        <rect key="frame" x="288" y="14" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="T9K-KR-l2y"/>
+                            <constraint firstAttribute="width" constant="16" id="on3-X5-qe9"/>
+                        </constraints>
+                        <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="done"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="6DP-D1-mRb" secondAttribute="trailing" constant="16" id="FjL-oB-rIA"/>
                     <constraint firstItem="6EG-MZ-eg7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GGA-D3-G4t"/>
                     <constraint firstAttribute="trailing" secondItem="arl-lx-nO9" secondAttribute="trailing" constant="16" id="QLa-5A-sJK"/>
                     <constraint firstItem="kGX-9B-D2s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fyr-Zo-QYd"/>
+                    <constraint firstItem="6DP-D1-mRb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jX0-57-JMQ"/>
                     <constraint firstItem="6EG-MZ-eg7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pGg-YY-lwc"/>
                     <constraint firstItem="arl-lx-nO9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ubh-Bc-eSM"/>
                     <constraint firstAttribute="trailing" secondItem="kGX-9B-D2s" secondAttribute="trailing" id="w4U-Ru-2DH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="settingDetaiLabel" destination="kGX-9B-D2s" id="Gmb-R9-XqW"/>
+                <outlet property="checkButton" destination="6DP-D1-mRb" id="BLE-zl-VUS"/>
+                <outlet property="settingDetailLabel" destination="kGX-9B-D2s" id="Wjc-8p-1tU"/>
                 <outlet property="settingLabel" destination="6EG-MZ-eg7" id="4Wt-c5-lcU"/>
                 <outlet property="settingSwitch" destination="arl-lx-nO9" id="7jc-eP-JC3"/>
             </connections>
-            <point key="canvasLocation" x="-595" y="168"/>
+            <point key="canvasLocation" x="-1337" y="239"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="done" width="22" height="22"/>
+    </resources>
 </document>

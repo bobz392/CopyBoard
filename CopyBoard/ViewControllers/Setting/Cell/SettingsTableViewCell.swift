@@ -16,16 +16,15 @@ class SettingsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingSwitch: UISwitch!
-    @IBOutlet weak var settingDetaiLabel: UILabel!
-
+    @IBOutlet weak var settingDetailLabel: UILabel!
+    @IBOutlet weak var checkButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.settingLabel.textColor = AppColors.menuText
-        self.settingDetaiLabel.textColor = AppColors.menuSecondaryText
-        self.settingSwitch.isHidden = true
-        self.settingDetaiLabel.isHidden = true
-
+        self.settingDetailLabel.textColor = AppColors.menuSecondaryText
+        self.checkButton.tintColor = AppColors.red
         self.accessoryType = .disclosureIndicator
     }
 
@@ -36,8 +35,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
 
     func configDetailItem(item: SettingType, row: Int) {
-//        self.settingLabel.text = item.settingUI().0
-        self.settingLabel.text = item.settingName()
+        item.detailSettingConfig(cell: self, row: row)
     }
 
 }

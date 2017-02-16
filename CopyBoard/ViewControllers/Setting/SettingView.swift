@@ -52,6 +52,9 @@ class SettingView {
         
         self.realBarView.appendButtons(buttons: [closeButton], left: false)
         self.closeButton.setImage(Icons.done.iconImage(), for: .normal)
+        self.closeButton.contentHorizontalAlignment = .fill
+        self.closeButton.contentVerticalAlignment = .fill
+        self.closeButton.contentEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
         self.closeButton.tintColor = AppColors.mainIcon
     }
     
@@ -154,7 +157,7 @@ extension SettingView {
             touchButton.config(cornerRadius: 0)
             touchButton.useTint = false
             touchButton.bgColor = UIColor.clear
-            touchButton.selectedBgColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
+            touchButton.selectedBgColor = AppColors.red
             view.addSubview(touchButton)
             touchButton.snp.makeConstraints({ maker in
                 maker.left.equalToSuperview()

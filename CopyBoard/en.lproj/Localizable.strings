@@ -1,26 +1,23 @@
 "sticker"="STICKER";
 "emptyNotes"="No Stickers";
 "infomation"="INFORMATION";
-"modificationDate"="MODIFICATION DATE";
+"modificationDate"="Modification date";
 "modificationDevice"="LAST EDITING DEVICE";
-"creationDate"="CREATION DATE";
+"creationDate"="Creation date";
 "settings"="SETTINGS";
 "close"="CLOSE";
 "noResuts"="No results!";
-
 "useKeyboard"="USE KEYBOARD";
 "general"="General";
 "search"="Search";
 "keyboardHeight"="Keyboard height";
 "stickerLine"="Sticker lines";
-
 "stickerDate"="Date label use";
 "stickerGusture"="Delete gesture";
-
 "caseSensitive"="Case sensitive";
-
 "filter"="Filter";
 "lines"="STICKER LINES";
-
 "keyboard"="KEYBOARD";
 "extra"="EXTRA";
+"gesture"="Swipe left";
+"longPress"="Long press";

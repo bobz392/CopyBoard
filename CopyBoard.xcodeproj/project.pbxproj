@@ -147,6 +147,7 @@
 		C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7D96D661E34304300B4E418 /* iRate.bundle */; };
 		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
 		C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D6C1E3434E300B4E418 /* RateManager.swift */; };
+		C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
 		D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D001F7356D0DC91262059 /* CircleMenu.swift */; };
 		D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */; };
 		D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */; };
@@ -1024,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73F6DF61E393DDC00FBD6F0 /* KeyboardView.xib in Resources */,
+				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

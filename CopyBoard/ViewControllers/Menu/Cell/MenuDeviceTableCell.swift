@@ -39,7 +39,7 @@ class MenuDeviceTableCell: UITableViewCell {
             self.titleLabel.text = Localized("modificationDevice")
         } else {
             self.infoLabel.text = (note.createdAt ?? Date()).string(custom: "yyyy-MM-dd hh:mm a")
-            self.titleLabel.text = Localized("creationDate")
+            self.titleLabel.text = Localized("creationDate").uppercased()
         }
     }
 }

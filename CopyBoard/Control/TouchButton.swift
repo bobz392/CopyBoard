@@ -13,7 +13,11 @@ final class TouchButton: UIButton {
     
     var bgColor: UIColor = UIColor.white {
         didSet {
-            self.backgroundColor = bgColor
+            if self.useTint {
+                self.tintColor = self.bgColor
+            } else {
+                self.backgroundColor = self.bgColor
+            }
         }
     }
     

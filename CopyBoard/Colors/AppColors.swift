@@ -23,7 +23,7 @@ struct AppColors {
     static let cloud = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     static let cloudHeader = UIColor(red:0.93, green:0.94, blue:0.95, alpha:0.8)
     static let menuText = UIColor(red:0.33, green:0.33, blue:0.33, alpha:1.00)
-    
+    static let red = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
     static let menuSecondaryText = UIColor(red:0.63, green:0.63, blue:0.63, alpha:1.00)
     
     //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)

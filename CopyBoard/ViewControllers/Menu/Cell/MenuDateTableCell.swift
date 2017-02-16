@@ -37,7 +37,7 @@ class MenuDateTableCell: UITableViewCell {
     func configEditDate(date: Date) {
         self.dayLabel.text = "\(date.day)"
         self.dateLabel.text = date.string(custom: "MMMM YYYY HH:mm")
-        self.editLabel.text = Localized("modificationDate")
+        self.editLabel.text = Localized("modificationDate").uppercased()
     }
     
 }
