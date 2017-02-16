@@ -11,7 +11,19 @@ import UIKit
 class SettingViewController: BaseViewController {
 
     let settingView = SettingView()
-    var settingItems = SettingItemCreator().creator()
+    fileprivate var settingItems: [[SettingType]]
+    fileprivate let settingHeader: [String]
+    
+    init() {
+        let settingsCreator = SettingItemCreator()
+        self.settingItems = settingsCreator.settingsCreator()
+        self.settingHeader = settingsCreator.settingsHeader()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +34,7 @@ class SettingViewController: BaseViewController {
         self.settingView.closeButton
             .addTarget(self, action: #selector(self.quit), for: .touchUpInside)
         self.automaticallyAdjustsScrollViewInsets = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,14 +74,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return kSettingItemHeight
     }
  
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return self.settingView.catHeaderView()
         } else {
-            return self.settingView.sectionHeaderView(title: "KEYBOARD")
+            return self.settingView.sectionHeaderView(title: self.settingHeader[section])
         }
     }
     
@@ -85,9 +98,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 190
+            return kCatHeaderViewHeight
         } else {
-            return 40
+            return kNormalHeaderViewHeight
         }
     }
     

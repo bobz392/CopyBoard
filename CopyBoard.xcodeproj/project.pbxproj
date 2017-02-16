@@ -23,8 +23,9 @@
 		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
 		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
 		C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */; };
-		C721A0E21E51900E000257A8 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0E11E51900E000257A8 /* SettingItem.swift */; };
+		C721A0E21E51900E000257A8 /* SettingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0E11E51900E000257A8 /* SettingItems.swift */; };
 		C721A0E41E51D76E000257A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0E31E51D76E000257A8 /* DetailViewController.swift */; };
+		C721A0EB1E54FF49000257A8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C721A0EA1E54FF49000257A8 /* CloudKit.framework */; };
 		C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72332B81E3033AB00D5189D /* NoteTextView.swift */; };
 		C72CF6431E4C46D900CAAC15 /* PingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6411E4C46D900CAAC15 /* PingTransition.swift */; };
 		C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6421E4C46D900CAAC15 /* PresentTransition.swift */; };
@@ -227,8 +228,9 @@
 		C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
 		C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
 		C721A0DC1E50DD15000257A8 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
-		C721A0E11E51900E000257A8 /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
+		C721A0E11E51900E000257A8 /* SettingItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingItems.swift; sourceTree = "<group>"; };
 		C721A0E31E51D76E000257A8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C721A0EA1E54FF49000257A8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C72332B81E3033AB00D5189D /* NoteTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		C72332BE1E30F43A00D5189D /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C72CF6411E4C46D900CAAC15 /* PingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingTransition.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C721A0EB1E54FF49000257A8 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +415,7 @@
 				C700F1181E4C398900EE66D4 /* SettingViewController.swift */,
 				C721A0E31E51D76E000257A8 /* DetailViewController.swift */,
 				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
-				C721A0E11E51900E000257A8 /* SettingItem.swift */,
+				C721A0E11E51900E000257A8 /* SettingItems.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 		C79EF8781E3ED828004BDACC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C721A0EA1E54FF49000257A8 /* CloudKit.framework */,
 				C79EF87B1E3ED864004BDACC /* ViewDeck.framework */,
 				C79EF8791E3ED828004BDACC /* ViewDeck.framework */,
 			);
@@ -917,6 +921,12 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					C7403E3A1E269D140067229E = {
@@ -927,7 +937,13 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
 								enabled = 0;
 							};
 						};
@@ -1195,7 +1211,7 @@
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
 				C72CF66A1E4C8C3600CAAC15 /* DateInRegionFormatter.swift in Sources */,
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
-				C721A0E21E51900E000257A8 /* SettingItem.swift in Sources */,
+				C721A0E21E51900E000257A8 /* SettingItems.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C72CF66F1E4C8C3600CAAC15 /* Localization.swift in Sources */,

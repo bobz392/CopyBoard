@@ -9,6 +9,9 @@
 import UIKit
 
 let kSettingMargin: CGFloat = 16
+let kCatHeaderViewHeight: CGFloat = 190
+let kNormalHeaderViewHeight: CGFloat = 40
+let kSettingItemHeight: CGFloat = 50
 
 class SettingView {
     
@@ -134,7 +137,7 @@ extension SettingView {
             
             let label = UILabel()
             view.addSubview(label)
-            label.text = "USE KEYBOARD"
+            label.text = Localized("useKeyboard")
             label.textColor = UIColor.white
             label.backgroundColor = UIColor(red:0.86, green:0.30, blue:0.32, alpha:1.00)
             label.textAlignment = .center

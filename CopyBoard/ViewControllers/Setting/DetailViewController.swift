@@ -12,9 +12,14 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     let settingView = SettingView()
     fileprivate let settingType: SettingType
+    fileprivate var detailTypes: [[SettingDetialType]]
+    fileprivate let detailHeaders: [String]
     
     init(type: SettingType) {
         self.settingType = type
+        let types = type.detailTypes()
+        self.detailTypes = types.0
+        self.detailHeaders = types.1
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,11 +78,15 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.detailTypes[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return self.detailTypes.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kSettingItemHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,11 +98,13 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return CGFloat.leastNonzeroMagnitude
-        } else {
-            return 40
-        }
+        let title = self.detailHeaders[section]
+        return title.characters.count > 0 ? kNormalHeaderViewHeight : CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title = self.detailHeaders[section]
+        return title.characters.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
     }
     
 }

@@ -7,9 +7,20 @@
 "settings"="SETTINGS";
 "close"="CLOSE";
 "noResuts"="No results!";
-"stickerDate"="Sticker date shown as";
 
+"useKeyboard"="USE KEYBOARD";
 "general"="General";
 "search"="Search";
 "keyboardHeight"="Keyboard height";
 "stickerLine"="Sticker lines";
+
+"stickerDate"="Date label use";
+"stickerGusture"="Delete gesture";
+
+"caseSensitive"="Case sensitive";
+
+"filter"="Filter";
+"lines"="STICKER LINES";
+
+"keyboard"="KEYBOARD";
+"extra"="EXTRA";

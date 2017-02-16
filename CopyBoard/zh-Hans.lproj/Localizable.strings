@@ -7,9 +7,20 @@
 "settings"="设置";
 "close"="关闭";
 "noResuts"="无结果!";
-"stickerDate"="便笺日期显示为";
 
+"useKeyboard"="使用键盘";
 "general"="通用";
 "search"="搜索";
 "keyboardHeight"="键盘高度";
 "stickerLine"="便笺行数";
+
+"stickerDate"="日期标签为";
+"stickerGusture"="删除手势";
+
+"caseSensitive"="大小写敏感";
+
+"filter"="过滤";
+"lines"="行数";
+
+"keyboard"="键盘";
+"extra"="附加";
