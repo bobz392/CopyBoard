@@ -26,8 +26,8 @@
 
 // filter
 "filter"="Filter";
-"star"="STICKER STAR";
-"color"="STICKER COLOR";
+"star"="Filter STAR";
+"color"="Filter COLOR";
 "filterAll"="All";
 "filterStar"="Star only";
 "filterUnstar"="Unstar only";

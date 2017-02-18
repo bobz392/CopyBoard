@@ -38,6 +38,7 @@ class EditorViewController: BaseViewController {
             weakSelf.updateNoteIfNeed()
         }
 
+        self.editorView.editorTextView.delegate = self
         self.editorView.faveButton.rx.tap.subscribe { (event) in
                     DBManager.shared.updateObject {
                         weakSelf.note.favourite = !weakSelf.note.favourite
