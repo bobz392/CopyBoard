@@ -12,6 +12,7 @@ class NotesViewController: BaseViewController {
     
     let noteView = NoteView()
     var viewModel: NotesViewModel!
+    fileprivate let appSettingNotifyKey = "NotesViewController"
     
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
@@ -42,6 +43,7 @@ class NotesViewController: BaseViewController {
                                                     notesCount: weakSelf.viewModel.notesCount())
         })
         
+        AppSettings.shared.register(any: self, key: self.appSettingNotifyKey)
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
         self.noteView.searchButton.rx.tap.subscribe { (tap) in
@@ -101,6 +103,7 @@ class NotesViewController: BaseViewController {
     
     deinit {
 //        scrollingNav.stopFollowingScrollView()
+        AppSettings.shared.unregister(key: self.appSettingNotifyKey)
         DBManager.shared.unbindNotify()
     }
     
@@ -227,27 +230,46 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
-        let note = self.viewModel.noteIn(row: indexPath.row)
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
-        let font = appFont(size: 16)
         let space = CGFloat(layout.columnCount + 1) * self.noteView.collectionViewItemSpace()
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
-        let height = self.dynamicHeight(content: note.content, font: font, width: width - 10)
-        return CGSize(width: width, height: height + 35)
+        let height = ceil(appFont(size: 16).lineHeight * CGFloat(AppSettings.shared.stickerLines + 4)) + 35
+        return CGSize(width: width, height: height)
+//        let height = self.dynamicHeight(content: note.content, font: font, width: width - 10)
+//        return CGSize(width: width, height: height + 35)
     }
     
-    func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {
-        if let height = self.noteHeight {
-            return height
-        } else {
-            let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-            let textRect = content.bounding(size: size, font: font)
-            let height = ceil(textRect.height)
-            self.noteHeight = height
-            return height
+//    func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {
+//        if let height = self.noteHeight {
+//            return height
+//        } else {
+//            let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+//            let textRect = content.bounding(size: size, font: font)
+//            let height = ceil(textRect.height)
+//            self.noteHeight = height
+//            return height
+//        }
+//    }
+    
+}
+
+extension NotesViewController: AppSettingsNotify {
+    
+    func settingDidChange(settingKey: UserDefaultsKey) {
+        switch settingKey {
+        case .stickerLine, .gesture, .dateLabelUse:
+            self.noteView.collectionView.reloadData()
+        
+        case .stickerSort:
+            self.viewModel.notes = DBManager.shared.queryNotes()
+            DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
+        
+        default:
+            return
         }
     }
     
 }
+
 

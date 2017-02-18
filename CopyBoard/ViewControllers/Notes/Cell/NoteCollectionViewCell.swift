@@ -40,15 +40,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
-        
-        if AppSettings.shared.stickerGesture == 0 {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-            swipe.direction = .left
-            self.cardView.addGestureRecognizer(swipe)
-        } else {
-            let long = UILongPressGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-            self.cardView.addGestureRecognizer(long)
-        }
     }
     
     func configCell(use note: Note, query: String? = nil) {
@@ -59,21 +50,33 @@ class NoteCollectionViewCell: UICollectionViewCell {
         pairColor.light.bgColor(to: self.cardView)
         
         self.faveButton.isSelected = note.favourite
-        if let createdAt = note.createdAt {
+        if let date = (AppSettings.shared.stickerDateUse == 0 ? note.createdAt : note.modificationDate) {
             let region = Region.Local(autoUpdate: true)
-            self.noteDateLabel.text = try? createdAt.colloquialSinceNow(in: region).colloquial
+            self.noteDateLabel.text = try? date.colloquialSinceNow(in: region).colloquial
         } else {
             self.noteDateLabel.text = nil
         }
         self.noteLabel.attributedText = note.content.searchHintString(query: query)
+        self.configGesture()
         self.note = note
-//        
-//        if let grs = self.cardView.gestureRecognizers {
-//            for gr in grs {
-//                self.cardView.removeGestureRecognizer(gr)
-//            }
-//        }
+    }
+    
+    func configGesture() {
+        if let grs = self.cardView.gestureRecognizers {
+            for gr in grs {
+                self.cardView.removeGestureRecognizer(gr)
+            }
+        }
         
+        if AppSettings.shared.stickerGesture == 0 {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+            swipe.direction = .left
+            self.cardView.addGestureRecognizer(swipe)
+        } else {
+            
+            let long = UILongPressGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+            self.cardView.addGestureRecognizer(long)
+        }
     }
     
     func deselectCell() {
@@ -98,6 +101,9 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     // MARK: - action
     func gestureOpenAction() {
+        Logger.log("sticker open action")
+        guard !self.isCurl else { return }
+        
         self.connectCollectionViewWithOverlay()
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
             let index = cv.indexPath(for: self) else { return }

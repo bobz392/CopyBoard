@@ -19,6 +19,8 @@ class SettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var settingDetailLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     
+    var switchBlock: (() -> SettingType)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -28,6 +30,8 @@ class SettingsTableViewCell: UITableViewCell {
         self.checkButton.setImage(Icons.done.iconImage(), for: .normal)
         self.checkButton.tintColor = AppColors.red
         self.accessoryType = .disclosureIndicator
+        
+        self.settingSwitch.addTarget(self, action: #selector(self.switchAction(s:)), for: .valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,16 +39,18 @@ class SettingsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    func configDetailItem(item: SettingType, row: Int, section: Int) {
-        item.detailSettingConfig(cell: self, row: row, section: section)
-    }
     
     func configSettingItem(item: SettingType) {
         self.settingLabel.text = item.settingName()
         self.accessoryType = item == .version ? .none : .disclosureIndicator
         self.settingDetailLabel.isHidden = item != .version
         self.settingDetailLabel.text = item == .version ? AppSettings.shared.version : nil
+    }
+    
+    func switchAction(s: UISwitch) {
+        if let setting = self.switchBlock?() {
+            setting.selectedType().valueAction(isOn: s.isOn, selectedType: setting)
+        }
     }
 
 }

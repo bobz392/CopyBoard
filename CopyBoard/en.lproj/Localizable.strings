@@ -10,14 +10,17 @@
 "useKeyboard"="USE KEYBOARD";
 "general"="General";
 "search"="Search";
+"advance"="Advance";
 "keyboardHeight"="Keyboard height";
 "lines"="lines";
 "stickerLines"="Sticker lines";
 "stickerDate"="Date label use";
-"stickerGusture"="Delete gesture";
 "caseSensitive"="Case sensitive";
 "keyboard"="KEYBOARD";
-"gusture"="Swipe left";
+
+// gesture
+"stickerGusture"="Sticker gesture";
+"swipe"="Swipe left";
 "longGusture"="Long press";
 
 // sort

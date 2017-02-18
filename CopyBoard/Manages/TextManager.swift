@@ -67,7 +67,7 @@ extension String {
         return attr
     }
     
-    func bounding(size: CGSize, font: UIFont) -> CGSize {
+//    func bounding(size: CGSize, font: UIFont) -> CGSize {
 //        let label = UILabel(frame: CGRect(center: .zero, size: size))
 //        label.numberOfLines = 0
 //        label.attributedText = noteAttr()
@@ -77,10 +77,10 @@ extension String {
         
         
         
-        let attr = noteAttr()
-        let rect = attr.boundingRect(with: size,
-                                     options: [.usesLineFragmentOrigin],
-                                     context: nil)
+//        let attr = noteAttr()
+//        let rect = attr.boundingRect(with: size,
+//                                     options: [.usesLineFragmentOrigin],
+//                                     context: nil)
 //
         //文本的高度减去字体高度小于等于行间距，判断为当前只有1行
 //        if (rect.size.height - font.lineHeight) <= 0 {
@@ -90,8 +90,8 @@ extension String {
 //            }
 //        }
         
-        return CGSize(width: rect.width, height: appFont(size: 16).lineHeight * 5)
-    }
+//        return CGSize(width: rect.width, height: appFont(size: 16).lineHeight * 5)
+//    }
     
     func containChinese() -> Bool {
         let ns = self as NSString

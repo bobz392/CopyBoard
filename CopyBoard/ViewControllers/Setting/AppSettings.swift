@@ -8,58 +8,73 @@
 
 import Foundation
 
+protocol AppSettingsNotify {
+    func settingDidChange(settingKey: UserDefaultsKey)
+}
+
 class AppSettings {
+    
+    fileprivate var notifyObjects = [String: AppSettingsNotify]()
     
     // 0 create 1 modify
     var stickerDateUse: Int {
         didSet {
             UserDefaultsKey.dateLabelUse.write(value: self.stickerDateUse, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.dateLabelUse)
         }
     }
-    // 4 5 6 7 8
+    // 0 1 2 3 4  -> 4 5 6 7 8
     var stickerLines: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerLines, manager: self.userDefualtsManager)
+            UserDefaultsKey.stickerLine.write(value: self.stickerLines, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.stickerLine)
         }
     }
     var keyboardLines: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardLines, manager: self.userDefualtsManager)
+            UserDefaultsKey.keyboardLine.write(value: self.keyboardLines, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardLine)
         }
     }
     // 0 swipe 1 long press
     var stickerGesture: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerGesture, manager: self.userDefualtsManager)
+            UserDefaultsKey.gesture.write(value: self.stickerGesture, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.gesture)
         }
     }
     // 0 sensitive 1 none
     var caseSensitive: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.caseSensitive, manager: self.userDefualtsManager)
+            UserDefaultsKey.caseSensitive.write(value: self.caseSensitive, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.caseSensitive)
         }
     }
     // 0 1 2 all star Unstar | 0 1 2 3 4 5 colors
     var keyboardFilterStar: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardFilterStar, manager: self.userDefualtsManager)
+            UserDefaultsKey.keyboardFilterStar.write(value: self.keyboardFilterStar, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardFilterStar)
         }
     }
-    var keyboardFilterColor: Int {
+    var keyboardFilterColor: [Int] {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.keyboardFilterColor, manager: self.userDefualtsManager)
+            UserDefaultsKey.keyboardFilterColor.write(value: self.keyboardFilterColor, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardFilterColor)
         }
     }
     // 0 create 1 modify
     var stickerSort: Int {
         didSet {
-            UserDefaultsKey.dateLabelUse.write(value: self.stickerSort, manager: self.userDefualtsManager)
+            UserDefaultsKey.stickerSort.write(value: self.stickerSort, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.stickerSort)
         }
     }
     
     var keyboardHeight: Int {
         didSet {
             UserDefaultsKey.keyboardHeight.write(value: self.keyboardHeight, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardHeight)
         }
     }
     
@@ -73,7 +88,7 @@ class AppSettings {
         self.stickerLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
         self.keyboardLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
         self.keyboardFilterStar = userDefault.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
-        self.keyboardFilterColor = userDefault.readInt(UserDefaultsKey.keyboardFilterColor.rawValue)
+        self.keyboardFilterColor = (userDefault.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0]
         self.stickerGesture = userDefault.readInt(UserDefaultsKey.gesture.rawValue)
         self.caseSensitive = userDefault.readInt(UserDefaultsKey.caseSensitive.rawValue)
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
@@ -81,7 +96,7 @@ class AppSettings {
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            self.version = "\(b)(\(v))    "
+            self.version = "\(b)(\(v))"
         } else {
             self.version = ""
         }
@@ -91,7 +106,6 @@ class AppSettings {
     
     static let shared: AppSettings = AppSettings()
     
-    
     func sortKey() -> String {
         return self.stickerSort == 0 ? "createdAt" : "modificationDate"
     }
@@ -99,6 +113,25 @@ class AppSettings {
     func caseSensitiveQuery(key: String, value: String) -> String {
         return "\(key) CONTAINS\(self.caseSensitive == 0 ? "" : "[c]") '\(value)'"
     }
+    
+    func register(any: AppSettingsNotify, key: String) {
+        if let _ = self.notifyObjects[key] {
+            fatalError("key - \(key) was arleady exists")
+        }
+        
+        self.notifyObjects[key] = any
+    }
+    
+    func unregister(key: String) {
+        self.notifyObjects.removeValue(forKey: key)
+    }
+    
+    fileprivate func didChange(key: UserDefaultsKey) {
+        for n in self.notifyObjects {
+            n.value.settingDidChange(settingKey: key)
+        }
+    }
+    
 }
 
 enum UserDefaultsKey: StringLiteralType {
@@ -112,7 +145,8 @@ enum UserDefaultsKey: StringLiteralType {
     case keyboardFilterColor = "com.keyboard.filter.color"
     case stickerSort = "com.sticker.sort"
     
-    func write(value: Int, manager: UserDefaultsManager) {
+    func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)
     }
+    
 }

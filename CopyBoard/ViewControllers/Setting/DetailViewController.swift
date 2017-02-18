@@ -48,12 +48,16 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 
         guard let index = self.selectedIndex else { return }
         self.settingView.settingsTableView.deselectRow(at: index, animated: true)
+        self.selectedIndex = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.settingView.settingsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        
+        guard let index = self.selectedIndex else { return }
+        self.settingView.settingsTableView.reloadRows(at: [index], with: .none)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -95,7 +99,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
-        cell.configDetailItem(item: self.detailTypes[indexPath.section][indexPath.row], row: indexPath.row, section: indexPath.section)
+        self.detailTypes[indexPath.section][indexPath.row]
+            .detailSettingConfig(cell: cell, rootSettingType: self.rootSettingType, row: indexPath.row, section: indexPath.section)
         return cell
     }
     
@@ -108,9 +113,33 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return title.characters.count > 0 ? kNormalHeaderViewHeight : CGFloat.leastNonzeroMagnitude
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let item = self.detailTypes[indexPath.section][indexPath.row]
+        return item.selectedType() == .value ? nil : indexPath
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = self.detailHeaders[section]
         return title.characters.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = self.detailTypes[indexPath.section][indexPath.row]
+        switch item.selectedType() {
+        case .push:
+            self.selectedIndex = indexPath
+            let detailVC = DetailViewController(rootSettingType: item)
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        case .select:
+            tableView.deselectRow(at: indexPath, animated: true)
+            item.selectedType().selectAction(rootSettingType: self.rootSettingType, selectedType: item, row: indexPath.row, section: indexPath.section)
+            tableView.reloadData()
+            
+        case .value:
+            tableView.deselectRow(at: indexPath, animated: true)
+        
+        }
     }
     
 }
