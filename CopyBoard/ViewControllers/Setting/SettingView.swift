@@ -12,6 +12,9 @@ let kSettingMargin: CGFloat = 16
 let kCatHeaderViewHeight: CGFloat = 190
 let kNormalHeaderViewHeight: CGFloat = 40
 let kSettingItemHeight: CGFloat = 50
+//let kMinKeyboardHeight: CGFloat = 200
+//let kDefaultKeyboardHeight: CGFloat = 258
+//let kDefaultKeyboardHeight: CGFloat =
 
 class SettingView {
     
@@ -187,5 +190,10 @@ extension SettingView {
         
         return view
     }
+    
+}
+
+// MAKR: - keyboard
+extension SettingView {
     
 }

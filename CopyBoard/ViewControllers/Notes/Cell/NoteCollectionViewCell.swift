@@ -216,6 +216,15 @@ final class NoteCollectionViewInputOverlay: UIView {
             return nil
         }
 
+        if cell.isCurl == true {
+            NoteCollectionViewInputOverlay.cacheCollectionView?.allowsSelection = false
+            cell.closeCurl()
+            dispatchDelay(0.25, closure: { 
+                NoteCollectionViewInputOverlay.cacheCollectionView?.allowsSelection = true
+            })
+            return self
+        }
+        
         return nil
     }
     
