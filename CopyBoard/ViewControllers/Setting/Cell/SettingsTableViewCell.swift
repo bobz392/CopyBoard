@@ -40,13 +40,6 @@ class SettingsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configSettingItem(item: SettingType) {
-        self.settingLabel.text = item.settingName()
-        self.accessoryType = item == .version ? .none : .disclosureIndicator
-        self.settingDetailLabel.isHidden = item != .version
-        self.settingDetailLabel.text = item == .version ? AppSettings.shared.version : nil
-    }
-    
     func switchAction(s: UISwitch) {
         if let setting = self.switchBlock?() {
             setting.selectedType().valueAction(isOn: s.isOn, selectedType: setting)

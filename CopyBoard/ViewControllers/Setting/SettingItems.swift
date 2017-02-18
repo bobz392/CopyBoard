@@ -32,7 +32,6 @@ enum SettingType {
     
     case sortBy
     
-    case version
     case rate
     case contact
 
@@ -73,9 +72,7 @@ enum SettingType {
             return Localized("filterStar")
         case .filterUnstar:
             return Localized("filterUnstar")
-            
-        case .version:
-            return Localized("version")
+
         case .contact:
             return Localized("contactUs")
         case .rate:
@@ -240,7 +237,7 @@ struct SettingItemCreator {
     func settingsCreator() -> [[SettingType]] {
         let section1: [SettingType] = [.general, .search]
         let section2: [SettingType] = [/**.keyboardHeight, **/.keyboardLine, .filter]
-        let section3: [SettingType] = [.version, .contact, .rate]
+        let section3: [SettingType] = [.contact, .rate]
         
         return [section1, section2, section3]
     }

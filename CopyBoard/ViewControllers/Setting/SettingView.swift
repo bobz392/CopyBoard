@@ -10,6 +10,7 @@ import UIKit
 
 let kSettingMargin: CGFloat = 16
 let kCatHeaderViewHeight: CGFloat = 190
+let kFooterViewHeight: CGFloat = 65
 let kNormalHeaderViewHeight: CGFloat = 40
 let kSettingItemHeight: CGFloat = 50
 //let kMinKeyboardHeight: CGFloat = 200
@@ -24,6 +25,7 @@ class SettingView {
     
     let settingsTableView = UITableView(frame: .zero, style: .grouped)
     var catView: UIView? = nil
+    var bottomView: UIView? = nil
     
     func config(view: UIView) {
         view.backgroundColor = AppColors.cloud
@@ -171,6 +173,29 @@ extension SettingView {
             
             self.catView = catView
             return catView
+        }
+    }
+    
+    func footerView() -> UIView {
+        if let footer = self.bottomView {
+            return footer
+        } else {
+            let footer = UIView()
+            footer.bgClear()
+            
+            let versionLabel = UILabel()
+            footer.addSubview(versionLabel)
+            versionLabel.textAlignment = .center
+            versionLabel.font = appFont(size: 14)
+            versionLabel.textColor = AppColors.menuSecondaryText
+            versionLabel.text = "\(Localized("version")) \(AppSettings.shared.version)"
+            versionLabel.snp.makeConstraints({ maker in
+                maker.centerX.equalToSuperview()
+                maker.top.equalToSuperview().offset(40)
+            })
+            
+            self.bottomView = footer
+            return footer
         }
     }
     

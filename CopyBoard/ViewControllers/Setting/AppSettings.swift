@@ -96,7 +96,7 @@ class AppSettings {
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            self.version = "\(b)(\(v))"
+            self.version = "\(b) (\(v))"
         } else {
             self.version = ""
         }

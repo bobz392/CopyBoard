@@ -78,22 +78,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
         let item = self.settingItems[indexPath.section][indexPath.row]
-        cell.configSettingItem(item: item)
+        cell.settingLabel.text = item.settingName()
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kSettingItemHeight
     }
- 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return self.settingView.catHeaderView()
-        } else {
-            return self.settingView.sectionHeaderView(title: self.settingHeader[section])
-        }
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = self.settingItems[indexPath.section][indexPath.row]
         
@@ -101,7 +93,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         } else if item == .contact {
         
-        } else if item == .version { 
         } else {
             self.selectedIndex = indexPath
             let vc = DetailViewController(rootSettingType: item)
@@ -112,15 +103,27 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return section == self.settingItems.count - 1 ? kFooterViewHeight : CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == self.settingItems.count - 1 {
+            return self.settingView.footerView()
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return self.settingView.catHeaderView()
+        } else {
+            return self.settingView.sectionHeaderView(title: self.settingHeader[section])
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return kCatHeaderViewHeight
-        } else {
-            return kNormalHeaderViewHeight
-        }
+        return section == 0 ? kCatHeaderViewHeight : kNormalHeaderViewHeight
     }
     
 }
