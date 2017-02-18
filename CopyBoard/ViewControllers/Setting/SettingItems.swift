@@ -156,6 +156,7 @@ enum SettingType {
         cell.settingDetailLabel.isHidden = true
         cell.checkButton.isHidden = true
         cell.settingSwitch.isHidden = true
+        cell.resetFilterColorView()
         cell.settingLabel.text = self.settingName()
         cell.switchBlock = nil
         
@@ -199,7 +200,10 @@ enum SettingType {
             
         case .filterUnstar, .filterStar, .filterAll, .filterColor:
             if self == .filterColor {
-                
+                if let pairColor = AppPairColors(rawValue: row) {
+                    cell.filterColorView?.isHidden = false
+                    cell.filterColorView?.backgroundColor = pairColor.pairColor().dark
+                }
             }
             cell.accessoryType = .none
             if section == 0 {
