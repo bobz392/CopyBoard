@@ -97,7 +97,7 @@ class AppSettings {
     }
     
     func caseSensitiveQuery(key: String, value: String) -> String {
-        return "\(key) CONTAINS\(self.caseSensitive == 0 ? "" : "[c]") '\(value)')"
+        return "\(key) CONTAINS\(self.caseSensitive == 0 ? "" : "[c]") '\(value)'"
     }
 }
 

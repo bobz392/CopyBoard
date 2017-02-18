@@ -108,7 +108,7 @@ class EditorView {
         let hideKeyboardButton = TouchButton(type: .custom)
         hideKeyboardButton.setImage(Icons.hideKeyboard.iconImage(), for: .normal)
         hideKeyboardButton.config()
-        hideKeyboardButton.addTarget(self, action: #selector(self.dismissKeyboard), for: .touchUpInside)
+        hideKeyboardButton.addTarget(self, action: #selector(self.dismissKeyboard), for: .allEvents)
         self.keyboardBarView.addSubview(hideKeyboardButton)
         hideKeyboardButton.snp.makeConstraints { maker in
             maker.width.equalTo(32)
