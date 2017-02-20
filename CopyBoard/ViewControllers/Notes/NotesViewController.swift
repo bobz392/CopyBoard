@@ -232,26 +232,12 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
-        let space = CGFloat(layout.columnCount + 1) * self.noteView.collectionViewItemSpace()
+        let space = CGFloat(layout.columnCount + 1) * DeviceManager.shared.collectionViewItemSpace
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
         let height = ceil(appFont(size: 16).lineHeight * CGFloat(AppSettings.shared.stickerLines + 4)) + 35
         return CGSize(width: width, height: height)
-//        let height = self.dynamicHeight(content: note.content, font: font, width: width - 10)
-//        return CGSize(width: width, height: height + 35)
     }
-    
-//    func dynamicHeight(content: String, font: UIFont, width: CGFloat) -> CGFloat {
-//        if let height = self.noteHeight {
-//            return height
-//        } else {
-//            let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-//            let textRect = content.bounding(size: size, font: font)
-//            let height = ceil(textRect.height)
-//            self.noteHeight = height
-//            return height
-//        }
-//    }
-    
+
 }
 
 extension NotesViewController: AppSettingsNotify {

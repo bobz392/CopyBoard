@@ -132,6 +132,10 @@ class AppSettings {
         }
     }
     
+    func realKeyboardLine(line: Int? = nil) -> Int {
+        return (line ?? self.keyboardLines) + 4
+    }
+    
 }
 
 enum UserDefaultsKey: StringLiteralType {

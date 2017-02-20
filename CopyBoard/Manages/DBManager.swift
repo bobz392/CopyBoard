@@ -14,35 +14,39 @@ final class DBManager {
     static let version: UInt64 = 0
     typealias DBBlock = () -> Void
     
-    static let shared = DBManager(realm: DBManager.beSuredCreate())
+    static var shared = DBManager()
     weak var dataSource: RealmNotificationDataSource?
     var notesToken: RealmSwift.NotificationToken? = nil
     
-    let realm: Realm
+    var realm: Realm?
     
-    init(realm: Realm) {
-        self.realm = realm
+    fileprivate var r: Realm {
+        get {
+            if let r = self.realm {
+                return r
+            } else {
+                fatalError("realm not create")
+            }
+        }
     }
     
     static func configDB() {
         let realmURL = self.containerDBURL()
         
+        debugPrint(realmURL)
         let config = Realm.Configuration(fileURL: realmURL,
-                            schemaVersion: version,
-                            migrationBlock: { (migration, oldSchemaVersion) in
-                                if (oldSchemaVersion < version) {}
+                                         schemaVersion: version,
+                                         migrationBlock: { (migration, oldSchemaVersion) in
+                                            if (oldSchemaVersion < version) {}
         })
-        Logger.log(DBManager.shared.realm.configuration.fileURL?.absoluteString ?? "db file url = nil")
         Realm.Configuration.defaultConfiguration = config
-    }
-    
-    static private func beSuredCreate() -> Realm {
-        return try! Realm()
+        DBManager.shared.realm = try? Realm()
+        Logger.log(DBManager.shared.realm?.configuration.fileURL?.absoluteString ?? "db file url = nil")
     }
     
     static private func containerDBURL() -> URL {
         let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!
-        return directory.appendingPathComponent("Library/Caches/db.realm")
+        return directory.appendingPathComponent("db.realm")
     }
     
     static func checkKeyboardAccess() -> Bool {
@@ -52,25 +56,25 @@ final class DBManager {
     }
     
     func writeObject(_ object: Object) {
-        try? realm.write {
-            realm.add(object)
+        try? r.write {
+            r.add(object)
         }
     }
     
     func deleteObject(_ object: Object) {
-        try? realm.write {
-            realm.delete(object)
+        try? r.write {
+            r.delete(object)
         }
     }
     
     func updateObject(_ notify: Bool = true, updateBlock: @escaping DBBlock) {
-        realm.beginWrite()
+        r.beginWrite()
         updateBlock()
         var tokens = [NotificationToken]()
         if notify == false, let token = self.notesToken {
             tokens.append(token)
         }
-        try? realm.commitWrite(withoutNotifying: tokens)
+        try? r.commitWrite(withoutNotifying: tokens)
     }
     
     func writeObjects( notify: Bool = true, objects: [Object]) {
@@ -78,12 +82,12 @@ final class DBManager {
         if notify == false, let token = self.notesToken {
             tokens.append(token)
         }
-
-        realm.beginWrite()
-        realm.add(objects)
-        try? realm.commitWrite(withoutNotifying: tokens)
+        
+        r.beginWrite()
+        r.add(objects)
+        try? r.commitWrite(withoutNotifying: tokens)
     }
-
+    
 }
 
 // MARK: - notes
@@ -113,18 +117,18 @@ extension DBManager {
     
     func queryNotes(contain: String? = nil) -> Results<Note> {
         let sortKey = AppSettings.shared.sortKey()
-
+        
         if let contain = contain {
             let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
-            return self.realm.objects(Note.self)
+            return self.r.objects(Note.self)
                 .filter(query)
                 .sorted(byKeyPath: sortKey, ascending: false)
         } else {
-            return self.realm.objects(Note.self)
+            return self.r.objects(Note.self)
                 .sorted(byKeyPath: sortKey, ascending: false)
         }
     }
-    
+
     func deleteNote(note: Note) {
         self.deleteObject(note)
     }

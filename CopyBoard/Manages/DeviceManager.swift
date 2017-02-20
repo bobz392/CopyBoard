@@ -12,22 +12,6 @@ struct DeviceManager {
     
     static let shared = DeviceManager()
     
-    var statusOrientation: UIInterfaceOrientationMask {
-        let orient = UIApplication.shared.statusBarOrientation
-        switch orient {
-        case .landscapeLeft:
-            return .landscapeLeft
-        case .landscapeRight:
-            return .landscapeRight
-        case .portrait:
-            return .portrait
-        case .portraitUpsideDown:
-            return .portraitUpsideDown
-        case .unknown:
-            return .portrait
-        }
-    }
-    
     var isPhone: Bool {
         get {
             return UIDevice.current.userInterfaceIdiom == .phone
@@ -40,19 +24,7 @@ struct DeviceManager {
         }
     }
     
-    var isLandscape: Bool {
-        get {
-            let orient = UIDevice.current.orientation
-            if orient == .landscapeLeft || orient == .landscapeRight {
-                return true
-            } else if orient == .portrait || orient == .portraitUpsideDown {
-                return false
-            } else {
-                let so = UIApplication.shared.statusBarOrientation
-                return so.isLandscape
-            }
-        }
-    }
+
     
     var deviceName: String {
         get {
@@ -70,15 +42,46 @@ struct DeviceManager {
             return .phone6p
         }
     }
+
+}
+
+extension DeviceManager {
+    
+    var statusOrientation: UIInterfaceOrientationMask {
+        let orient = UIApplication.shared.statusBarOrientation
+        switch orient {
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        case .portrait:
+            return .portrait
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        case .unknown:
+            return .portrait
+        }
+    }
+
+    
+    var isLandscape: Bool {
+        get {
+            let orient = UIDevice.current.orientation
+            if orient == .landscapeLeft || orient == .landscapeRight {
+                return true
+            } else if orient == .portrait || orient == .portraitUpsideDown {
+                return false
+            } else {
+                let so = UIApplication.shared.statusBarOrientation
+                return so.isLandscape
+            }
+        }
+    }
     
     func hiddenStatusBar(hidden: Bool) {
         guard !self.isLandscape else { return }
         UIApplication.shared.setStatusBarHidden(hidden, with: .slide)
     }
-    
-}
-
-extension DeviceManager {
     
     var statusbarHeight: CGFloat {
         get {
@@ -97,6 +100,11 @@ extension DeviceManager {
             return isPad ? (isLandscape ? 4 : 3) : (isLandscape ? 3 : 2)
         }
     }
+    
+    var collectionViewItemSpace: CGFloat {
+        return self.isPhone ? 12.0 : 18.0
+    }
+    
     
 }
 

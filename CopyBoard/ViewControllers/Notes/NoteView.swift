@@ -121,13 +121,9 @@ extension NoteView {
         self.barView.superview?.layoutIfNeeded()
     }
     
-    func collectionViewItemSpace() -> CGFloat {
-        return DeviceManager.shared.isPhone ? 12.0 : 18.0
-    }
-    
     func configCollectionView(view: UIView, delegate: NotesViewController) {
         let layout = CHTCollectionViewWaterfallLayout()
-        let space = self.collectionViewItemSpace()
+        let space = DeviceManager.shared.collectionViewItemSpace
         
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space

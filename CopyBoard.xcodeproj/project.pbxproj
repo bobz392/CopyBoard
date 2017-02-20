@@ -16,6 +16,10 @@
 		C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */; };
 		C71160FE1E56530B00779A0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71160FD1E56530B00779A0F /* AppSettings.swift */; };
 		C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71160FD1E56530B00779A0F /* AppSettings.swift */; };
+		C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71161001E58D42600779A0F /* KeyboardCollectionViewCell.swift */; };
+		C71161031E58D42600779A0F /* KeyboardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */; };
+		C71161051E58D53600779A0F /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */; };
+		C71161081E58DCFF00779A0F /* DKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71161071E58DCFF00779A0F /* DKManager.swift */; };
 		C71741D41E479C4000D39597 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D31E479C4000D39597 /* MenuViewController.swift */; };
 		C71741D61E479C7500D39597 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D51E479C7500D39597 /* MenuView.swift */; };
 		C71741DA1E4824B200D39597 /* MenuDateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741D81E4824B200D39597 /* MenuDateTableCell.swift */; };
@@ -60,7 +64,6 @@
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
-		C73F6DF61E393DDC00FBD6F0 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */; };
 		C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */; };
 		C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */; };
 		C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFB1E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift */; };
@@ -90,6 +93,7 @@
 		C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
+		C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C76996111E369968001E2F86 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C769961E1E369B29001E2F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
 		C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76996201E369B50001E2F86 /* Launch Screen.storyboard */; };
@@ -224,6 +228,10 @@
 		C71160F81E56287100779A0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsTableViewCell.xib"; sourceTree = "<group>"; };
 		C71160F91E56289200779A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C71160FD1E56530B00779A0F /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		C71161001E58D42600779A0F /* KeyboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardCollectionViewCell.xib; sourceTree = "<group>"; };
+		C71161061E58D54500779A0F /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
+		C71161071E58DCFF00779A0F /* DKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKManager.swift; sourceTree = "<group>"; };
 		C71741D31E479C4000D39597 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C71741D51E479C7500D39597 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C71741D81E4824B200D39597 /* MenuDateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDateTableCell.swift; sourceTree = "<group>"; };
@@ -269,7 +277,6 @@
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
 		C73F6DFB1E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
@@ -608,8 +615,11 @@
 			children = (
 				C7403EC91E27CA500067229E /* Keyboard.entitlements */,
 				C7403E3D1E269D140067229E /* KeyboardViewController.swift */,
+				C71161071E58DCFF00779A0F /* DKManager.swift */,
 				C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */,
-				C73F6DF51E393DDC00FBD6F0 /* KeyboardView.xib */,
+				C71161001E58D42600779A0F /* KeyboardCollectionViewCell.swift */,
+				C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */,
+				C71161061E58D54500779A0F /* bridge-header.h */,
 				C7403E3F1E269D140067229E /* Info.plist */,
 			);
 			path = Keyboard;
@@ -1031,7 +1041,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C73F6DF61E393DDC00FBD6F0 /* KeyboardView.xib in Resources */,
+				C71161031E58D42600779A0F /* KeyboardCollectionViewCell.xib in Resources */,
 				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1241,6 +1251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71161081E58DCFF00779A0F /* DKManager.swift in Sources */,
+				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
@@ -1248,6 +1260,8 @@
 				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
 				C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */,
+				C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */,
+				C71161051E58D53600779A0F /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1436,7 +1450,7 @@
 				INFOPLIST_FILE = CopyBoard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-D debug";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "96b228ea-b231-43e0-a541-214700001267";
@@ -1458,11 +1472,13 @@
 				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "832f9861-a45a-4739-866b-0b19b014fbf6";
 				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardDev;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1478,11 +1494,13 @@
 				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "832f9861-a45a-4739-866b-0b19b014fbf6";
 				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardDev;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

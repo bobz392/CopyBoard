@@ -169,7 +169,7 @@ enum SettingType {
             cell.accessoryType = .disclosureIndicator
             
         case .line, .keyboardLine:
-            cell.settingLabel.text = "\(row + 4) \(Localized("lines"))"
+            cell.settingLabel.text = "\(settings.realKeyboardLine(line: row)) \(Localized("lines"))"
             if section != 0 {
                 cell.checkButton.isHidden = settings.stickerLines != row
             } else {

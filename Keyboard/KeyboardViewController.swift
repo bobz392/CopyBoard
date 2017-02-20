@@ -8,35 +8,42 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    var notes: Results<Note>? = nil
+    let keyboardView = KeyboardView()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 10)
-        
+//
         self.nextKeyboardButton = UIButton(type: .system)
-        
-        DBManager.configDB()
-        
-        if DBManager.checkKeyboardAccess() {
-            Logger.log(DBManager.shared.queryNotes())
-            label.text = (DBManager.shared.realm.configuration.fileURL?.absoluteString)! + "\n"
-                + "count = \(DBManager.shared.queryNotes())"
 
+        DBManager.configDB()
+        if DBManager.checkKeyboardAccess() {
+            self.keyboardView.config(view: self.view)
+            label.text = (DBManager.shared.realm?.configuration.fileURL?.absoluteString)! + "\n" + "\(AppSettings.shared.keyboardLines) "
+                //+ "count = \(DBManager.shared.queryNotes())" + "\n"
+            self.notes = DBManager.shared.queryNotes()
+            
+            self.keyboardView.collectionView.delegate = self
+            self.keyboardView.collectionView.dataSource = self
+            self.keyboardView.collectionView.reloadData()
         } else {
-            label.text = "cant access"
+            Logger.log("cant access")
         }
         
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
@@ -65,6 +72,7 @@ class KeyboardViewController: UIInputViewController {
             make.right.equalToSuperview()
         }
         
+        
         self.view.addSubview(self.nextKeyboardButton)
         
         if #available(iOSApplicationExtension 9.0, *) {
@@ -86,7 +94,7 @@ class KeyboardViewController: UIInputViewController {
 //        return
         
         if let url = URL(string: UIApplicationOpenSettingsURLString) {//"prefs:root=General&path=Keyboard") {
-            UIApplication.🚀sharedApplication().🚀openURL(url: url)
+            UIApplication.mSharedApplication().mOpenURL(url: url)
         } else {
             Logger.log("go url = nil")
         }
@@ -116,28 +124,32 @@ class KeyboardViewController: UIInputViewController {
 
 }
 
-extension UIApplication {
-    
-    public static func 🚀sharedApplication() -> UIApplication {
-        
-        guard UIApplication.responds(to: Selector("sharedApplication")) else {
-            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication` does not respond to selector `sharedApplication`.")
-        }
-        
-        
-        guard let unmanagedSharedApplication = UIApplication.perform(Selector("sharedApplication")) else {
-            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication.sharedApplication()` returned `nil`.")
-        }
-        
-        guard let sharedApplication = unmanagedSharedApplication.takeUnretainedValue() as? UIApplication else {
-            fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication.sharedApplication()` returned not `UIApplication` instance.")
-        }
-        
-        return sharedApplication
+extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.notes?.count ?? 0
     }
     
-    public func 🚀openURL(url: URL) {
-        self.performSelector(onMainThread: Selector("openURL:"), with: url, waitUntilDone: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyboardCollectionViewCell.reuseId, for: indexPath) as! KeyboardCollectionViewCell
+        if let note = self.notes?[indexPath.row] {
+            cell.noteLabel.text = note.content
+            cell.backgroundColor = AppPairColors(rawValue: note.color)?.pairColor().light
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
+        let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
+        
+        let font = UIFont.systemFont(ofSize: 16)
+        let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
+        debugPrint(space)
+        debugPrint(layout.columnCount)
+        let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
+        let height = ceil(font.lineHeight * CGFloat(AppSettings.shared.realKeyboardLine())) + 10
+        return CGSize(width: width, height: height)
+    }
 }
