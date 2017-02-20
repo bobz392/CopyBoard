@@ -94,6 +94,9 @@
 		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
+		C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
+		C76859481E5ABB20003B8C7E /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
+		C76859491E5ABD56003B8C7E /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */; };
 		C76996111E369968001E2F86 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C769961E1E369B29001E2F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
 		C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76996201E369B50001E2F86 /* Launch Screen.storyboard */; };
@@ -1042,6 +1045,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71161031E58D42600779A0F /* KeyboardCollectionViewCell.xib in Resources */,
+				C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */,
 				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,6 +1255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76859481E5ABB20003B8C7E /* Icons.swift in Sources */,
 				C71161081E58DCFF00779A0F /* DKManager.swift in Sources */,
 				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
@@ -1263,6 +1268,7 @@
 				C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */,
 				C71161051E58D53600779A0F /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
+				C76859491E5ABD56003B8C7E /* TouchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

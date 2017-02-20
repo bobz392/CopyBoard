@@ -23,33 +23,25 @@ final class TouchButton: UIButton {
     
     var selectedBgColor = AppColors.faveButton
     var useTint = true
+    fileprivate var duration: TimeInterval = 0.35
     
     func config(cornerRadius: CGFloat = 8.0) {
         self.layer.cornerRadius = cornerRadius
-        self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpInside)
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchCancel)
-        
+//        self.addTarget(self, action: #selector(self.buttonAnimationStartAction), for: .touchDown)
+//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction), for: .touchUpOutside)
+//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction), for: .touchDragOutside)
+//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction), for: .touchUpInside)
+//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction), for: .touchCancel)
+//        
         self.adjustsImageWhenHighlighted = false
         self.tintColor = UIColor.white
     }
     
-    fileprivate var duration: TimeInterval = 0.35
-    
-    func buttonAnimationStartAction(_ btn: UIButton) {
-        UIView.animate(withDuration: duration) { [unowned self] in
-            if self.useTint {
-                self.tintColor = self.selectedBgColor
-            } else {
-                self.backgroundColor = self.selectedBgColor
-            }
-            
-        }
+    func buttonAnimationStartAction() {
+      
     }
     
-    func buttonAnimationEndAction(_ btn: UIButton) {
+    func buttonAnimationEndAction() {
         UIView.animate(withDuration: duration) { [unowned self] in
             if self.useTint {
                 self.tintColor = self.bgColor
@@ -57,6 +49,29 @@ final class TouchButton: UIButton {
                 self.backgroundColor = self.bgColor
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        UIView.animate(withDuration: duration) { [unowned self] in
+            if self.useTint {
+                self.tintColor = self.selectedBgColor
+            } else {
+                self.backgroundColor = self.selectedBgColor
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.buttonAnimationEndAction()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        self.buttonAnimationEndAction()
     }
     
 }

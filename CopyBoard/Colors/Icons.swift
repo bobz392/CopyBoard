@@ -22,6 +22,7 @@ enum Icons {
     case info
     case done
     case back
+    case globle
     
     
     case plus
@@ -72,16 +73,15 @@ enum Icons {
         case .info: return "info"
         case .done: return "done"
         case .back: return "back"
+        case .globle: return "globle"
+            
             
             
         case .plus: return "plus"
         case .check: return "check"
         case .uncheck: return "uncheck"
         case .coffee: return "coffee"
-    
         case .timeManagement: return "time_management"
-        
-        
         case .loop: return "loop"
         case .notify: return "notify"
         case .schedule: return "schedule"
