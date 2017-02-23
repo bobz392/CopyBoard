@@ -16,6 +16,8 @@ class KeyboardView: UIView {
     let deleteButton = TouchButton(type: .custom)
     let launchAppButton = TouchButton(type: .custom)
     let returnButton = TouchButton(type: .custom)
+    let spaceButton = TouchButton(type: .custom)
+    let previewButton = UIButton(type: .system)
     
     func config(view: UIView) {
         let lineView = UIView()
@@ -101,6 +103,19 @@ class KeyboardView: UIView {
         buttonConfigBlock(self.nextKeyboardButton, true)
         self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
         
+        self.bottomToolView.addSubview(self.previewButton)
+        self.previewButton.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.left.equalTo(self.nextKeyboardButton.snp.right).offset(inset)
+            maker.width.equalTo(side)
+            maker.height.equalTo(side)
+        }
+        self.previewButton.adjustsImageWhenHighlighted = false
+        self.previewButton.backgroundColor = AppColors.keyboard
+        self.previewButton.layer.cornerRadius = corner
+        self.previewButton.setImage(Icons.preview.iconImage(), for: .normal)
+        self.previewButton.tintColor = UIColor.black
+        
         self.bottomToolView.addSubview(self.returnButton)
         self.returnButton.snp.makeConstraints { maker in
             maker.right.equalToSuperview().offset(-inset)
@@ -120,6 +135,16 @@ class KeyboardView: UIView {
         }
         buttonConfigBlock(self.deleteButton, true)
         self.deleteButton.setImage(Icons.deleteText.iconImage(), for: .normal)
+        
+        self.bottomToolView.addSubview(self.spaceButton)
+        self.spaceButton.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.left.equalTo(self.previewButton.snp.right).offset(inset)
+            maker.right.equalTo(self.deleteButton.snp.left).offset(-inset)
+            maker.height.equalTo(side)
+        }
+        buttonConfigBlock(self.spaceButton, true)
+        self.spaceButton.setImage(Icons.space.iconImage(), for: .normal)
     }
     
 }

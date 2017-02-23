@@ -37,7 +37,7 @@ class KeyboardViewController: UIInputViewController {
         AppSettings.shared.reload()
         
         if DBManager.checkKeyboardAccess() {
-            self.keyboardView.config(view: self.inputView!)
+            self.keyboardView.config(view: self.view)
             self.view.setNeedsUpdateConstraints()
             self.notes = DBManager.shared.queryNotes(contain: nil, keyboardQuery: true)
             
@@ -88,7 +88,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func deleteTextAction(btn: UIButton) {
-        
         self.textDocumentProxy.deleteBackward()
     }
     
