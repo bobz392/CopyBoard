@@ -132,8 +132,8 @@ class AppSettings {
         }
     }
     
-    func realKeyboardLine(line: Int? = nil) -> Int {
-        return (line ?? self.keyboardLines) + 4
+    func realKeyboardLine(line: Int? = nil, inKeyboard: Bool = false) -> Int {
+        return (line ?? self.keyboardLines) + (inKeyboard ? 3 : 4)
     }
     
 }

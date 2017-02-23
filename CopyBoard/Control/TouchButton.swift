@@ -34,6 +34,7 @@ final class TouchButton: UIButton {
 //        self.addTarget(self, action: #selector(self.buttonAnimationEndAction), for: .touchCancel)
 //        
         self.adjustsImageWhenHighlighted = false
+        self.reversesTitleShadowWhenHighlighted = false
         self.tintColor = UIColor.white
     }
     
@@ -61,6 +62,7 @@ final class TouchButton: UIButton {
                 self.backgroundColor = self.selectedBgColor
             }
         }
+        self.isHighlighted = false
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -19,6 +19,7 @@ class KeyboardViewController: UIInputViewController {
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+        
     }
     
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class KeyboardViewController: UIInputViewController {
         
         if DBManager.checkKeyboardAccess() {
             self.keyboardView.config(view: self.view)
+            self.view.setNeedsUpdateConstraints()
 //            label.text = (DBManager.shared.realm?.configuration.fileURL?.absoluteString)! + "\n" + "\(AppSettings.shared.keyboardLines) "
 //                //+ "count = \(DBManager.shared.queryNotes())" + "\n"
             self.notes = DBManager.shared.queryNotes()
@@ -43,12 +45,14 @@ class KeyboardViewController: UIInputViewController {
             Logger.log("cant access")
         }
         
+        
 //        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
 //        self.nextKeyboardButton.sizeToFit()
 //        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         if #available(iOSApplicationExtension 10.0, *) {
             self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+            self.keyboardView.numberButton.addTarget(self, action: #selector(settings), for: .touchUpInside)
         } else {
             self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(self.advanceToNextInputMode), for: .allTouchEvents)
         }
@@ -84,6 +88,13 @@ class KeyboardViewController: UIInputViewController {
 //        }
     }
     
+    func settings() {
+        if let url = URL(string: "App-Prefs:root=General&path=Keyboard") {//"prefs:root=General&path=Keyboard") {
+            UIApplication.mSharedApplication().mOpenURL(url: url)
+        }
+        
+    }
+    
     func open() {
 //        self.extensionContext?.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: { (finish) in
 //            Logger.log("complete")
@@ -108,15 +119,15 @@ class KeyboardViewController: UIInputViewController {
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
-        var textColor: UIColor
-        let proxy = self.textDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.black
-        }
-        self.keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])
+
+//        var textColor: UIColor
+//        let proxy = self.textDocumentProxy
+//        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
+//            textColor = UIColor.white
+//        } else {
+//            textColor = UIColor.black
+//        }
+//        self.keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
 
 }

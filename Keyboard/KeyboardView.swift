@@ -13,6 +13,7 @@ class KeyboardView: UIView {
     var collectionView: UICollectionView!
     let bottomToolView = UIView()
     let nextKeyboardButton = TouchButton(type: .system)
+    let numberButton = TouchButton(type: .system)
     
     func config(view: UIView) {
         let lineView = UIView()
@@ -58,21 +59,55 @@ class KeyboardView: UIView {
             maker.bottom.equalTo(self.bottomToolView.snp.top)
         }
         
+        self.configButtons()
+    }
+
+    fileprivate func configButtons() {
+        let inset = DKManager.shared.itemSpace * 0.5
+        let side: CGFloat = 36
+        let corner: CGFloat = 2
+        
+        self.bottomToolView.addSubview(self.numberButton)
+        self.numberButton.snp.makeConstraints { maker in
+            maker.left.equalToSuperview().offset(inset)
+            maker.centerY.equalToSuperview()
+            maker.width.equalTo(48)
+            maker.height.equalTo(side)
+        }
+        self.numberButton.setTitle("123", for: .normal)
+        self.numberButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        self.numberButton.setTitleColor(UIColor.black, for: .normal)
+        self.numberButton.useTint = false
+        self.numberButton.bgColor = AppColors.keyboard
+        self.numberButton.selectedBgColor = UIColor.white
+        self.numberButton.config(cornerRadius: corner)
+//        self.numberButton.addTarget(self, action: #selector(self.toSettings), for: .touchUpInside)
+        
         self.bottomToolView.addSubview(self.nextKeyboardButton)
         self.nextKeyboardButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
-            maker.left.equalToSuperview().offset(inset)
-            maker.width.equalTo(36)
-            maker.height.equalTo(36)
+            maker.left.equalTo(self.numberButton.snp.right).offset(inset)
+            maker.width.equalTo(side)
+            maker.height.equalTo(side)
         }
         self.nextKeyboardButton.useTint = false
         self.nextKeyboardButton.bgColor = AppColors.keyboard
         self.nextKeyboardButton.selectedBgColor = UIColor.white
-        self.nextKeyboardButton.config(cornerRadius: 2)
-        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
-        self.nextKeyboardButton.tintColor = AppColors.mainIcon
+        self.nextKeyboardButton.config(cornerRadius: corner)
+//        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
+        self.nextKeyboardButton.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
+        self.nextKeyboardButton.tintColor = UIColor.black
     }
-
+    
+    func toSettings() {
+        if let url = URL(string:"App-Prefs:root=General&path=Keyboard") {
+//            if #available(iOS 10.0, *) {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.mSharedApplication().mOpenURL(url: url)
+            
+        }
+    }
+    
 }
 
 

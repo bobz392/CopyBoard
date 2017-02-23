@@ -20,7 +20,7 @@ struct DKManager {
     
     var columnCount: Int {
         get {
-            return isPad ? (isLandscape ? 4 : 3) : (isLandscape ? 3 : 2)
+            return isPad ? (isLandscape ? 5 : 4) : (isLandscape ? 4 : 3)
         }
     }
     
@@ -33,7 +33,7 @@ struct DKManager {
     var isLandscape: Bool {
         get {
             let size = UIScreen.main.bounds.size
-            return size.height > size.width
+            return size.height < size.width
         }
     }
     
