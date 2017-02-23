@@ -14,6 +14,7 @@ class KeyboardView: UIView {
     let bottomToolView = UIView()
     let nextKeyboardButton = TouchButton(type: .system)
     let numberButton = TouchButton(type: .system)
+    let launchAppButton = TouchButton(type: .system)
     
     func config(view: UIView) {
         let lineView = UIView()
@@ -67,6 +68,17 @@ class KeyboardView: UIView {
         let side: CGFloat = 36
         let corner: CGFloat = 2
         
+        let buttonConfigBlock = { (btn: TouchButton, isImage: Bool) -> Void in
+            btn.useTint = false
+            btn.bgColor = AppColors.keyboard
+            btn.selectedBgColor = UIColor.white
+            btn.config(cornerRadius: corner)
+            if isImage {
+                btn.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
+                btn.tintColor = UIColor.black
+            }
+        }
+        
         self.bottomToolView.addSubview(self.numberButton)
         self.numberButton.snp.makeConstraints { maker in
             maker.left.equalToSuperview().offset(inset)
@@ -77,11 +89,7 @@ class KeyboardView: UIView {
         self.numberButton.setTitle("123", for: .normal)
         self.numberButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.numberButton.setTitleColor(UIColor.black, for: .normal)
-        self.numberButton.useTint = false
-        self.numberButton.bgColor = AppColors.keyboard
-        self.numberButton.selectedBgColor = UIColor.white
-        self.numberButton.config(cornerRadius: corner)
-//        self.numberButton.addTarget(self, action: #selector(self.toSettings), for: .touchUpInside)
+        buttonConfigBlock(self.numberButton, false)
         
         self.bottomToolView.addSubview(self.nextKeyboardButton)
         self.nextKeyboardButton.snp.makeConstraints { maker in
@@ -90,13 +98,18 @@ class KeyboardView: UIView {
             maker.width.equalTo(side)
             maker.height.equalTo(side)
         }
-        self.nextKeyboardButton.useTint = false
-        self.nextKeyboardButton.bgColor = AppColors.keyboard
-        self.nextKeyboardButton.selectedBgColor = UIColor.white
-        self.nextKeyboardButton.config(cornerRadius: corner)
+        buttonConfigBlock(self.numberButton, true)
 //        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
-        self.nextKeyboardButton.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
-        self.nextKeyboardButton.tintColor = UIColor.black
+        
+        self.bottomToolView.addSubview(self.launchAppButton)
+        self.launchAppButton.snp.makeConstraints { maker in
+            maker.right.equalToSuperview()
+            maker.centerY.equalToSuperview()
+            maker.width.equalTo(side)
+            maker.height.equalTo(side)
+        }
+        buttonConfigBlock(self.launchAppButton, true)
+//        self.launchAppButton.setImage(Icons.launch.iconImage(), for: .normal)
     }
     
     func toSettings() {
