@@ -27,6 +27,7 @@
 		C71741DD1E49971F00D39597 /* Note+Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DC1E49971F00D39597 /* Note+Creator.swift */; };
 		C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */; };
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
+		C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C721A0DD1E50DD15000257A8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0D91E50DD15000257A8 /* SideMenuManager.swift */; };
 		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
 		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
@@ -1257,6 +1258,7 @@
 			files = (
 				C76859481E5ABB20003B8C7E /* Icons.swift in Sources */,
 				C71161081E58DCFF00779A0F /* DKManager.swift in Sources */,
+				C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */,
 				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,

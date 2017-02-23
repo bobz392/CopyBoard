@@ -16,23 +16,6 @@ func appFont(size: CGFloat, weight: CGFloat = UIFontWeightRegular) -> UIFont {
     return UIFont.systemFont(ofSize: size, weight: weight)
 }
 
-func emptyNotesFont() -> CGFloat {
-    let dm = DeviceManager.shared
-    
-    if dm.isPhone {
-        switch dm.phoneScreenType() {
-        case .phone5:
-            return 18
-        case .phone6:
-            return 20
-        case .phone6p:
-            return 24
-        }
-    } else {
-        return 0
-    }
-}
-
 extension String {
     func searchHintString(query: String? = nil) -> NSAttributedString {
         let attr = noteAttr()
@@ -105,5 +88,29 @@ extension String {
         
         return false
     }
+
+    func tokenizer() -> [String] {
+        var tokens = [String]()
+        
+        if let range = range(of: self) {
+            self.enumerateSubstrings(in: range, options: String.EnumerationOptions.bySentences) { (string, start, end, b) in
+                if let s = string {
+                    print(s)
+                    tokens.append(s)
+                }
+            }
+        }
+        
+//        let locale = CFLocaleCopyCurrent()
+//        let cfString = self as CFString
+//        let range = CFRangeMake(0, CFStringGetLength(cfString))
+//        
+//        let tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, cfString, range, kCFStringTokenizerUnitWord, locale)
+//        
+//        
+        
+        return tokens
+    }
     
 }
+

@@ -63,3 +63,30 @@ s.count
 for i in 0..<10 {
     print(NSUUID().uuidString)
 }
+
+
+func tokenizer() {
+    var tokens = [String]()
+//    let str = "We grow neither better nor worse as we grow old but more and more like ourselves."
+    let str = "李克强主持召开国务院会议  半年三次部署此事"
+    if let range = str.range(of: str) {
+        str.enumerateSubstrings(in: range, options: String.EnumerationOptions.byWords) { (string, start, end, b) in
+            if let s = string {
+                print(s)
+                tokens.append(s)
+            }
+        }
+    }
+    
+    //        let locale = CFLocaleCopyCurrent()
+    //        let cfString = self as CFString
+    //        let range = CFRangeMake(0, CFStringGetLength(cfString))
+    //
+    //        let tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, cfString, range, kCFStringTokenizerUnitWord, locale)
+    //
+    //
+}
+
+print("start")
+
+tokenizer()

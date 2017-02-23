@@ -62,9 +62,10 @@ class KeyboardViewController: UIInputViewController {
         
 //        self.keyboardView.numberButton.addTarget(self, action: #selector(self.goSettingsAtion), for: .touchUpInside)
         self.keyboardView.launchAppButton.addTarget(self, action: #selector(self.launchAppAction), for: .touchUpInside)
-//        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction), for: .touchUpInside)
-        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .allTouchEvents)
+        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .touchUpInside)
         self.keyboardView.returnButton.addTarget(self, action: #selector(self.returnAction), for: .touchUpInside)
+        self.keyboardView.spaceButton.addTarget(self, action: #selector(self.spaceAction), for: .touchUpInside)
+        self.keyboardView.previewButton.addTarget(self, action: #selector(self.previewAction(btn:)), for: .touchUpInside)
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
@@ -93,6 +94,17 @@ class KeyboardViewController: UIInputViewController {
     
     func returnAction() {
         self.textDocumentProxy.insertText("\n")
+    }
+    
+    func previewAction(btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        btn.backgroundColor = btn.isSelected ? UIColor.white : AppColors.keyboard
+    }
+    
+    func spaceAction() {
+        self.textDocumentProxy.insertText(" ")
+        
+        CFStringTokenizer()
     }
     
     override func didReceiveMemoryWarning() {

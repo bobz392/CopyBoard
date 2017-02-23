@@ -17,7 +17,7 @@ class KeyboardView: UIView {
     let launchAppButton = TouchButton(type: .custom)
     let returnButton = TouchButton(type: .custom)
     let spaceButton = TouchButton(type: .custom)
-    let previewButton = UIButton(type: .system)
+    let previewButton = UIButton(type: .custom)
     
     func config(view: UIView) {
         let lineView = UIView()

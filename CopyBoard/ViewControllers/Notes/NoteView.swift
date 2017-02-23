@@ -199,6 +199,23 @@ extension NoteView {
         label.text = Localized("emptyNotes")
     }
     
+    fileprivate func emptyNotesFont() -> CGFloat {
+        let dm = DeviceManager.shared
+        
+        if dm.isPhone {
+            switch dm.phoneScreenType() {
+            case .phone5:
+                return 18
+            case .phone6:
+                return 20
+            case .phone6p:
+                return 24
+            }
+        } else {
+            return 0
+        }
+    }
+    
 }
 
 // MARK: - search
