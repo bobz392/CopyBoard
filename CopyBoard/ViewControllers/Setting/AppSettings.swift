@@ -94,7 +94,7 @@ class AppSettings {
         guard let userDefault = UserDefaultsManager(identifier: GroupIdentifier) else { fatalError("user defaults setup failed") }
         self.stickerDateUse = userDefault.readInt(UserDefaultsKey.dateLabelUse.rawValue)
         self.stickerLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
-        self.keyboardLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
+        self.keyboardLines = userDefault.readInt(UserDefaultsKey.keyboardLine.rawValue)
         self.keyboardFilterStar = userDefault.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
         self.keyboardFilterColor = (userDefault.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0]
         self.stickerGesture = userDefault.readInt(UserDefaultsKey.gesture.rawValue)
@@ -111,6 +111,26 @@ class AppSettings {
         }
         
         self.userDefualtsManager = userDefault
+    }
+    
+    func reload() {
+        self.stickerDateUse = userDefualtsManager.readInt(UserDefaultsKey.dateLabelUse.rawValue)
+        self.stickerLines = userDefualtsManager.readInt(UserDefaultsKey.stickerLine.rawValue)
+        self.keyboardLines = userDefualtsManager.readInt(UserDefaultsKey.keyboardLine.rawValue)
+        self.keyboardFilterStar = userDefualtsManager.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
+        self.keyboardFilterColor = (userDefualtsManager.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0]
+        self.stickerGesture = userDefualtsManager.readInt(UserDefaultsKey.gesture.rawValue)
+        self.caseSensitive = userDefualtsManager.readInt(UserDefaultsKey.caseSensitive.rawValue)
+        self.stickerSort = userDefualtsManager.readInt(UserDefaultsKey.stickerSort.rawValue)
+        self.keyboardHeight = userDefualtsManager.readInt(UserDefaultsKey.keyboardHeight.rawValue)
+        self.sortNewestLast = userDefualtsManager.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
+        
+        if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
+            let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            self.version = "\(b) (\(v))"
+        } else {
+            self.version = ""
+        }
     }
     
     static let shared: AppSettings = AppSettings()
@@ -142,7 +162,7 @@ class AppSettings {
     }
     
     func realKeyboardLine(line: Int? = nil, inKeyboard: Bool = false) -> Int {
-        return (line ?? self.keyboardLines) + (inKeyboard ? 3 : 4)
+        return (line ?? self.keyboardLines) + (inKeyboard ? 2 : 4)
     }
     
 }

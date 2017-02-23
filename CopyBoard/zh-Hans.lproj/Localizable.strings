@@ -31,8 +31,10 @@
 // filter
 "filter"="过滤";
 "filterAll"="所有";
-"filterStar"="仅标星";
-"filterUnstar"="仅不标星";
+"filterStar"="仅星标";
+"filterUnstar"="仅不星标";
+"star"="星标";
+"color"="颜色";
 
 // extra
 "extra"="附加";

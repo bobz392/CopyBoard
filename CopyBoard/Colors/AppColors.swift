@@ -26,7 +26,7 @@ struct AppColors {
     static let red = UIColor(red:0.86, green:0.30, blue:0.32, alpha:1.00)
     static let menuSecondaryText = UIColor(red:0.63, green:0.63, blue:0.63, alpha:1.00)
     
-    static let keyboard = UIColor(red:0.67, green:0.70, blue:0.73, alpha:0.8)
+    static let keyboard = UIColor(red:0.67, green:0.70, blue:0.73, alpha:1.0)
     
     //    static let horizonLine = UIColor(red:0.86, green:0.70, blue:0.42, alpha:1.00)
     //    static let verticalLine = UIColor(red:0.95, green:0.92, blue:0.88, alpha:1.00)

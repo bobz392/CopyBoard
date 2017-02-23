@@ -98,7 +98,7 @@ enum SettingType {
         switch self {
         case .dateLabel:
             return .push
-        case .line:
+        case .line, .keyboardLine:
             return .select
         case .gesture:
             return .push
@@ -141,7 +141,7 @@ enum SettingType {
             return ([[.keyboardHeight]], [""])
             
         case .keyboardLine:
-            return ([[.line, .line, .line, .line, .line]], [""])
+            return ([[.keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine]], [""])
             
         case .dateLabel, .sortBy:
             return ([[.creationDate, .modifyDate]], [""])
@@ -170,9 +170,9 @@ enum SettingType {
             cell.settingDetailLabel.isHidden = false
             cell.settingDetailLabel.text = settings.stickerDateUse == 0 ? Localized("creationDate") : Localized("modificationDate")
             cell.accessoryType = .disclosureIndicator
-            
+        
         case .line, .keyboardLine:
-            cell.settingLabel.text = "\(settings.realKeyboardLine(line: row)) \(Localized("lines"))"
+            cell.settingLabel.text = "\(settings.realKeyboardLine(line: row, inKeyboard: self == .keyboardLine)) \(Localized("lines"))"
             if section != 0 {
                 cell.checkButton.isHidden = settings.stickerLines != row
             } else {

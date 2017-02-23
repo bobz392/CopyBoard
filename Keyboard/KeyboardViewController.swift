@@ -26,6 +26,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         DBManager.configDB()
+        AppSettings.shared.reload()
         
         if DBManager.checkKeyboardAccess() {
             self.keyboardView.config(view: self.view)
@@ -53,7 +54,8 @@ class KeyboardViewController: UIInputViewController {
         
 //        self.keyboardView.numberButton.addTarget(self, action: #selector(self.goSettingsAtion), for: .touchUpInside)
         self.keyboardView.launchAppButton.addTarget(self, action: #selector(self.launchAppAction), for: .touchUpInside)
-        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction), for: .touchUpInside)
+//        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction), for: .touchUpInside)
+        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .allTouchEvents)
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
     
@@ -75,7 +77,8 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    func deleteTextAction() {
+    func deleteTextAction(btn: UIButton) {
+        
         self.textDocumentProxy.deleteBackward()
     }
     
@@ -130,7 +133,10 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
         let font = UIFont.systemFont(ofSize: 16)
         let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
-        let height = ceil(font.lineHeight * CGFloat(AppSettings.shared.realKeyboardLine())) + 10
+        let lineCount = AppSettings.shared.realKeyboardLine(line: nil, inKeyboard: true)
+        let height = ceil(font.lineHeight * CGFloat(lineCount)) + 10
+//        print("line height = \(AppSettings.shared.realKeyboardLine(line: nil, inKeyboard: true)"))
+        print("line count = \(lineCount)")
         return CGSize(width: width, height: height)
     }
 }

@@ -158,7 +158,7 @@ extension SettingView {
                 maker.top.equalTo(imageView.snp.bottom)
             })
             
-            let touchButton = TouchButton(type: .custom)
+            let touchButton = TouchButton(type: .system)
             touchButton.config(cornerRadius: 0)
             touchButton.useTint = false
             touchButton.bgColor = UIColor.clear

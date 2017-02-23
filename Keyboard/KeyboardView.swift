@@ -12,9 +12,9 @@ class KeyboardView: UIView {
 
     var collectionView: UICollectionView!
     let bottomToolView = UIView()
-    let nextKeyboardButton = TouchButton(type: .system)
-    let deleteButton = TouchButton(type: .system)
-    let launchAppButton = TouchButton(type: .system)
+    let nextKeyboardButton = TouchButton(type: .custom)
+    let deleteButton = TouchButton(type: .custom)
+    let launchAppButton = TouchButton(type: .custom)
     
     func config(view: UIView) {
         let lineView = UIView()
@@ -64,8 +64,8 @@ class KeyboardView: UIView {
     }
 
     fileprivate func configButtons() {
-        let inset = DKManager.shared.itemSpace * 0.5
-        let side: CGFloat = 36
+        let inset = DKManager.shared.itemSpace
+        let side: CGFloat = 34
         let corner: CGFloat = 2
         
         let buttonConfigBlock = { (btn: TouchButton, isImage: Bool) -> Void in
@@ -73,8 +73,9 @@ class KeyboardView: UIView {
             btn.bgColor = AppColors.keyboard
             btn.selectedBgColor = UIColor.white
             btn.config(cornerRadius: corner)
+            let imageInset: CGFloat = 6
             if isImage {
-                btn.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
+                btn.imageEdgeInsets = UIEdgeInsetsMake(imageInset, imageInset, imageInset, imageInset)
                 btn.tintColor = UIColor.black
             }
         }
@@ -87,17 +88,17 @@ class KeyboardView: UIView {
             maker.height.equalTo(side)
         }
         buttonConfigBlock(self.nextKeyboardButton, true)
-//        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
+        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
         
         self.bottomToolView.addSubview(self.launchAppButton)
         self.launchAppButton.snp.makeConstraints { maker in
-            maker.right.equalToSuperview()
+            maker.right.equalToSuperview().offset(-inset)
             maker.centerY.equalToSuperview()
             maker.width.equalTo(side)
             maker.height.equalTo(side)
         }
         buttonConfigBlock(self.launchAppButton, true)
-//        self.launchAppButton.setImage(Icons.launch.iconImage(), for: .normal)
+        self.launchAppButton.setImage(Icons.launch.iconImage(), for: .normal)
         
         self.bottomToolView.addSubview(self.deleteButton)
         self.deleteButton.snp.makeConstraints { maker in
@@ -107,7 +108,7 @@ class KeyboardView: UIView {
             maker.height.equalTo(side)
         }
         buttonConfigBlock(self.deleteButton, true)
-//        self.deleteButton.setImage(Icons.deleteText.iconImage(), for: .normal)
+        self.deleteButton.setImage(Icons.deleteText.iconImage(), for: .normal)
     }
     
 }

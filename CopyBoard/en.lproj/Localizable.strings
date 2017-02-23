@@ -35,6 +35,8 @@
 "filterAll"="All";
 "filterStar"="Star only";
 "filterUnstar"="Unstar only";
+"star"="Star";
+"color"="Color";
 
 // extra
 "extra"="EXTRA";
