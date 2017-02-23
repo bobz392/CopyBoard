@@ -24,6 +24,7 @@ enum Icons {
     case back
     case globle
     case launch
+    case deleteText
     
 //    case plus
 //    case check
@@ -75,7 +76,7 @@ enum Icons {
         case .back: return "back"
         case .globle: return "globle"
         case .launch: return "launch"
-            
+        case .deleteText: return "deleteText"
             
 //        case .plus: return "plus"
 //        case .check: return "check"

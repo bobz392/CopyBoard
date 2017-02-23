@@ -24,18 +24,12 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        let label = UILabel()
-//        label.numberOfLines = 0
-//        label.font = UIFont.systemFont(ofSize: 10)
 
         DBManager.configDB()
         
         if DBManager.checkKeyboardAccess() {
             self.keyboardView.config(view: self.view)
             self.view.setNeedsUpdateConstraints()
-//            label.text = (DBManager.shared.realm?.configuration.fileURL?.absoluteString)! + "\n" + "\(AppSettings.shared.keyboardLines) "
-//                //+ "count = \(DBManager.shared.queryNotes())" + "\n"
             self.notes = DBManager.shared.queryNotes(contain: nil, keyboardQuery: true)
             
             self.keyboardView.collectionView.delegate = self
@@ -52,60 +46,37 @@ class KeyboardViewController: UIInputViewController {
         
         if #available(iOSApplicationExtension 10.0, *) {
             self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-            self.keyboardView.numberButton.addTarget(self, action: #selector(settings), for: .touchUpInside)
+            
         } else {
             self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(self.advanceToNextInputMode), for: .allTouchEvents)
         }
-
-//        let settingButton = UIButton(type: UIButtonType.system)
-//        settingButton.addTarget(self, action: #selector(self.open), for: .touchUpInside)
-//        settingButton.setTitle("go", for: .normal)
-//        self.view.addSubview(settingButton)
-//        settingButton.snp.makeConstraints { (make) in
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview()
-//        }
-//
-//        self.view.addSubview(label)
-//        label.snp.makeConstraints { (make) in
-//            make.top.equalTo(settingButton.snp.bottom)
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//        }
-//        
-//        
-//        self.view.addSubview(self.nextKeyboardButton)
-//        
-//        if #available(iOSApplicationExtension 9.0, *) {
-//            self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        if #available(iOSApplicationExtension 9.0, *) {
-//            self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
+        
+//        self.keyboardView.numberButton.addTarget(self, action: #selector(self.goSettingsAtion), for: .touchUpInside)
+        self.keyboardView.launchAppButton.addTarget(self, action: #selector(self.launchAppAction), for: .touchUpInside)
+        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction), for: .touchUpInside)
+        print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
     
-    func settings() {
-        if let url = URL(string: "App-Prefs:root=General&path=Keyboard") {//"prefs:root=General&path=Keyboard") {
-            UIApplication.mSharedApplication().mOpenURL(url: url)
-        }
-        
-    }
-    
-    func open() {
-//        self.extensionContext?.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: { (finish) in
-//            Logger.log("complete")
-//        })
-//        return
-        
-        if let url = URL(string: UIApplicationOpenSettingsURLString) {//"prefs:root=General&path=Keyboard") {
-            UIApplication.mSharedApplication().mOpenURL(url: url)
+    func goSettingsAtion() {
+        if #available(iOSApplicationExtension 10.0, *) {
+            if let url = URL(string: "App-Prefs:root=General&path=Keyboard") {
+                UIApplication.mSharedApplication().mOpenURL(url: url)
+            }
         } else {
-            Logger.log("go url = nil")
+            if let url = URL(string: "prefs:root=General&path=Keyboard") {
+                UIApplication.mSharedApplication().mOpenURL(url: url)
+            }
         }
+    }
+    
+    func launchAppAction() {
+        if let url = URL(string: "sticker://") {
+            UIApplication.mSharedApplication().mOpenURL(url: url)
+        }
+    }
+    
+    func deleteTextAction() {
+        self.textDocumentProxy.deleteBackward()
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,11 +86,12 @@ class KeyboardViewController: UIInputViewController {
     
     override func textWillChange(_ textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
+        print("text will change = \(textInput)")
     }
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-
+        print("text did change = \(textInput)")
 //        var textColor: UIColor
 //        let proxy = self.textDocumentProxy
 //        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
@@ -138,6 +110,9 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let content = self.notes?[indexPath.row].content {
+            self.textDocumentProxy.insertText(content)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -154,8 +129,6 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
         
         let font = UIFont.systemFont(ofSize: 16)
         let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
-        debugPrint(space)
-        debugPrint(layout.columnCount)
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
         let height = ceil(font.lineHeight * CGFloat(AppSettings.shared.realKeyboardLine())) + 10
         return CGSize(width: width, height: height)
