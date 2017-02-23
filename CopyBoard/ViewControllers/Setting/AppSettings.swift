@@ -109,7 +109,7 @@ class AppSettings {
         } else {
             self.version = ""
         }
-        
+
         self.userDefualtsManager = userDefault
     }
     

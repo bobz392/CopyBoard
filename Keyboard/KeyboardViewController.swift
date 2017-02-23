@@ -22,6 +22,14 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
+    override func viewWillLayoutSubviews() {
+        self.keyboardView.collectionView.snp.updateConstraints { maker in
+            maker.height.equalTo(DKManager.shared.keyboardHeight)
+        }
+        self.updateViewConstraints()
+        super.viewWillLayoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +37,7 @@ class KeyboardViewController: UIInputViewController {
         AppSettings.shared.reload()
         
         if DBManager.checkKeyboardAccess() {
-            self.keyboardView.config(view: self.view)
+            self.keyboardView.config(view: self.inputView!)
             self.view.setNeedsUpdateConstraints()
             self.notes = DBManager.shared.queryNotes(contain: nil, keyboardQuery: true)
             
@@ -56,6 +64,8 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardView.launchAppButton.addTarget(self, action: #selector(self.launchAppAction), for: .touchUpInside)
 //        self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction), for: .touchUpInside)
         self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .allTouchEvents)
+        self.keyboardView.returnButton.addTarget(self, action: #selector(self.returnAction), for: .touchUpInside)
+        
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
     
@@ -80,6 +90,10 @@ class KeyboardViewController: UIInputViewController {
     func deleteTextAction(btn: UIButton) {
         
         self.textDocumentProxy.deleteBackward()
+    }
+    
+    func returnAction() {
+        self.textDocumentProxy.insertText("\n")
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,6 +130,8 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
         if let content = self.notes?[indexPath.row].content {
             self.textDocumentProxy.insertText(content)
         }
+        
+        print(self.view.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

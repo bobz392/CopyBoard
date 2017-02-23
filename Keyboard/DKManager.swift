@@ -37,6 +37,12 @@ struct DKManager {
         }
     }
     
+    var keyboardHeight: CGFloat {
+        get {
+            return isLandscape ? 160.0 : 220
+        }
+    }
+    
 }
 
 extension UIApplication {
