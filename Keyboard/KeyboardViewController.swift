@@ -39,7 +39,7 @@ class KeyboardViewController: UIInputViewController {
         if DBManager.checkKeyboardAccess() {
             self.keyboardView.config(view: self.view)
             self.view.setNeedsUpdateConstraints()
-            self.notes = DBManager.shared.queryNotes(contain: nil, keyboardQuery: true)
+            self.notes = DBManager.shared.keyboardQueryNotes()
             
             self.keyboardView.collectionView.delegate = self
             self.keyboardView.collectionView.dataSource = self
@@ -104,7 +104,7 @@ class KeyboardViewController: UIInputViewController {
     func spaceAction() {
         self.textDocumentProxy.insertText(" ")
         
-        CFStringTokenizer()
+//        CFStringTokenizer()
     }
     
     override func didReceiveMemoryWarning() {

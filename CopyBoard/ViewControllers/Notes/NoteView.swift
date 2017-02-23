@@ -11,6 +11,9 @@ import SnapKit
 
 fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
+let kNoteCollectionViewTag = 109
+let kTokenCollectionViewTag = 209
+
 class NoteView {
     
     let barHolderView = UIView()
@@ -26,6 +29,9 @@ class NoteView {
     let searchHolderView = UIView()
     let noResultsLabel = UILabel()
     let catImageView = UIImageView()
+    
+    var tokenCollectionView: UICollectionView? = nil
+    var tokenView: UIView? = nil
     
     private var barShowing = true
     
@@ -95,6 +101,10 @@ class NoteView {
         }
     }
     
+    func configTokenView() {
+    
+    }
+    
 }
 
 // MARK: - collection view
@@ -135,6 +145,7 @@ extension NoteView {
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.collectionView.keyboardDismissMode = .onDrag
         self.collectionView.alwaysBounceVertical = true
+        self.collectionView.tag = kNoteCollectionViewTag
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()

@@ -28,6 +28,7 @@
 		C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */; };
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
 		C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
+		C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB201E5F6F35003ACF70 /* TokenView.swift */; };
 		C721A0DD1E50DD15000257A8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0D91E50DD15000257A8 /* SideMenuManager.swift */; };
 		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
 		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
@@ -243,6 +244,7 @@
 		C71741DC1E49971F00D39597 /* Note+Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Creator.swift"; sourceTree = "<group>"; };
 		C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDeviceTableCell.swift; sourceTree = "<group>"; };
 		C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuDeviceTableCell.xib; sourceTree = "<group>"; };
+		C71DEB201E5F6F35003ACF70 /* TokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
 		C721A0D91E50DD15000257A8 /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
 		C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
 		C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				C7403E3D1E269D140067229E /* KeyboardViewController.swift */,
 				C71161071E58DCFF00779A0F /* DKManager.swift */,
 				C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */,
+				C71DEB201E5F6F35003ACF70 /* TokenView.swift */,
 				C71161001E58D42600779A0F /* KeyboardCollectionViewCell.swift */,
 				C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */,
 				C71161061E58D54500779A0F /* bridge-header.h */,
@@ -1262,6 +1265,7 @@
 				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
+				C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
 				C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */,
 				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,

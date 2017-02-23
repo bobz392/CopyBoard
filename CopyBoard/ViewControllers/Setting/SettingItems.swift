@@ -293,7 +293,9 @@ enum SettingSelectType {
                 settings.keyboardFilterStar = row
             } else {
                 if let index = settings.keyboardFilterColor.index(of: row) {
-                    settings.keyboardFilterColor.remove(at: index)
+                    if settings.keyboardFilterColor.count > 1 {
+                        settings.keyboardFilterColor.remove(at: index)
+                    }
                 } else {
                     settings.keyboardFilterColor.append(row)
                 }

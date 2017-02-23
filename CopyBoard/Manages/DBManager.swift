@@ -115,9 +115,9 @@ extension DBManager {
         
     }
     
-    func queryNotes(contain: String? = nil, keyboardQuery: Bool = false) -> Results<Note> {
+    func queryNotes(contain: String? = nil) -> Results<Note> {
         let sortKey = AppSettings.shared.sortKey()
-        let ascending = keyboardQuery ? keyboardQuery : AppSettings.shared.sortNewestLast
+        let ascending = AppSettings.shared.sortNewestLast
         if let contain = contain {
             let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
             return self.r.objects(Note.self)
@@ -127,6 +127,27 @@ extension DBManager {
             return self.r.objects(Note.self)
                 .sorted(byKeyPath: sortKey, ascending: ascending)
         }
+    }
+    
+    func keyboardQueryNotes() -> Results<Note> {
+        let settings = AppSettings.shared
+        let sortKey = settings.sortKey()
+        var all = self.r.objects(Note.self)
+        if settings.keyboardFilterStar != 0 {
+            all = all.filter("favourite = \(settings.keyboardFilterStar == 1 ? true : false)")
+        }
+        
+        let cs = settings.keyboardFilterColor
+        var qc = ""
+        for (index, c) in cs.enumerated() {
+            qc += "color = \(c)"
+            
+            if index != cs.count - 1 {
+                qc += " OR "
+            }
+        }
+        
+        return all.filter(qc).sorted(byKeyPath: sortKey, ascending: false)
     }
 
     func deleteNote(note: Note) {
