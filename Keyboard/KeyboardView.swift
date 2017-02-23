@@ -98,7 +98,7 @@ class KeyboardView: UIView {
             maker.width.equalTo(side)
             maker.height.equalTo(side)
         }
-        buttonConfigBlock(self.numberButton, true)
+        buttonConfigBlock(self.nextKeyboardButton, true)
 //        self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
         
         self.bottomToolView.addSubview(self.launchAppButton)
