@@ -31,6 +31,7 @@ enum SettingType {
     case filterColor
     
     case sortBy
+    case newest
     
     case rate
     case contact
@@ -80,6 +81,8 @@ enum SettingType {
             
         case .sortBy:
             return Localized("sortBy")
+        case .newest:
+            return Localized("newest")
         
         case .modifyDate:
             return Localized("modificationDate")
@@ -111,7 +114,7 @@ enum SettingType {
         case .filterAll, .filterColor, .filterStar, .filterUnstar:
             return .select
             
-        case .caseSensitive:
+        case .caseSensitive, .newest:
             return .value
  
         default:
@@ -123,7 +126,7 @@ enum SettingType {
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
-            return ([[.dateLabel, .gesture], [.sortBy], [.line, .line, .line, .line, .line]],
+            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.line, .line, .line, .line, .line]],
                     [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
             
         case .search:
@@ -186,6 +189,14 @@ enum SettingType {
             cell.settingDetailLabel.isHidden = false
             cell.settingDetailLabel.text = settings.stickerSort == 0 ? Localized("creationDate") : Localized("modificationDate")
             cell.accessoryType = .disclosureIndicator
+        
+        case .newest:
+            cell.settingSwitch.isHidden = false
+            cell.settingSwitch.isOn = !settings.sortNewestLast
+            cell.switchBlock = { () -> SettingType in
+                return self
+            }
+            cell.accessoryType = .none
             
         case .caseSensitive:
             cell.settingSwitch.isHidden = false
@@ -294,8 +305,14 @@ enum SettingSelectType {
     }
     
     func valueAction(isOn: Bool, selectedType: SettingType) {
-        if selectedType == .caseSensitive {
+        switch selectedType {
+            case .caseSensitive:
             AppSettings.shared.caseSensitive = isOn ? 0 : 1
+        case .newest:
+            AppSettings.shared.sortNewestLast = !isOn
+            default:
+            fatalError("cant selected this value type = \(selectedType)")
         }
     }
+    
 }

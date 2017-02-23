@@ -247,7 +247,7 @@ extension NotesViewController: AppSettingsNotify {
         case .stickerLine, .gesture, .dateLabelUse:
             self.noteView.collectionView.reloadData()
         
-        case .stickerSort:
+        case .stickerSort, .stickerSortNewestLast:
             self.viewModel.notes = DBManager.shared.queryNotes()
             DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         

@@ -78,6 +78,14 @@ class AppSettings {
         }
     }
     
+    // 0 = true | 1 = false
+    var sortNewestLast: Bool {
+        didSet {
+            UserDefaultsKey.keyboardHeight.write(value: self.sortNewestLast, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.stickerSortNewestLast)
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -93,6 +101,7 @@ class AppSettings {
         self.caseSensitive = userDefault.readInt(UserDefaultsKey.caseSensitive.rawValue)
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefault.readInt(UserDefaultsKey.keyboardHeight.rawValue)
+        self.sortNewestLast = userDefault.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -148,6 +157,7 @@ enum UserDefaultsKey: StringLiteralType {
     case keyboardFilterStar = "com.keyboard.filter.star"
     case keyboardFilterColor = "com.keyboard.filter.color"
     case stickerSort = "com.sticker.sort"
+    case stickerSortNewestLast = "com.sticker.newest.last"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)

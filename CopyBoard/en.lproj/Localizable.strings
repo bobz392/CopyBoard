@@ -26,6 +26,7 @@
 // sort
 "sort"="Sticker Sorting";
 "sortBy"="Sort by";
+"newest"="Newest first";
 
 // filter
 "filter"="Filter";

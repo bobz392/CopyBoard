@@ -36,7 +36,7 @@ class KeyboardViewController: UIInputViewController {
             self.view.setNeedsUpdateConstraints()
 //            label.text = (DBManager.shared.realm?.configuration.fileURL?.absoluteString)! + "\n" + "\(AppSettings.shared.keyboardLines) "
 //                //+ "count = \(DBManager.shared.queryNotes())" + "\n"
-            self.notes = DBManager.shared.queryNotes()
+            self.notes = DBManager.shared.queryNotes(contain: nil, keyboardQuery: true)
             
             self.keyboardView.collectionView.delegate = self
             self.keyboardView.collectionView.dataSource = self

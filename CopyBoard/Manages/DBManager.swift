@@ -115,17 +115,17 @@ extension DBManager {
         
     }
     
-    func queryNotes(contain: String? = nil) -> Results<Note> {
+    func queryNotes(contain: String? = nil, keyboardQuery: Bool = false) -> Results<Note> {
         let sortKey = AppSettings.shared.sortKey()
-        
+        let ascending = keyboardQuery ? keyboardQuery : AppSettings.shared.sortNewestLast
         if let contain = contain {
             let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
             return self.r.objects(Note.self)
                 .filter(query)
-                .sorted(byKeyPath: sortKey, ascending: false)
+                .sorted(byKeyPath: sortKey, ascending: ascending)
         } else {
             return self.r.objects(Note.self)
-                .sorted(byKeyPath: sortKey, ascending: false)
+                .sorted(byKeyPath: sortKey, ascending: ascending)
         }
     }
 

@@ -26,6 +26,7 @@
 // sort
 "sort"="便笺排序";
 "sortBy"="排序方式按";
+"newest"="最新优先";
 
 // filter
 "filter"="过滤";
