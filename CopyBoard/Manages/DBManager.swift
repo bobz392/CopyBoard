@@ -40,8 +40,11 @@ final class DBManager {
                                             if (oldSchemaVersion < version) {}
         })
         Realm.Configuration.defaultConfiguration = config
-        DBManager.shared.realm = try? Realm()
         Logger.log(DBManager.shared.realm?.configuration.fileURL?.absoluteString ?? "db file url = nil")
+        
+        if let realm = try? Realm() {
+            DBManager.shared.realm = realm
+        }
     }
     
     static private func containerDBURL() -> URL {
@@ -49,10 +52,14 @@ final class DBManager {
         return directory.appendingPathComponent("db.realm")
     }
     
-    static func checkKeyboardAccess() -> Bool {
-        let r = try? Realm()
-        
-        return r != nil
+    static func canFullAccess() -> Bool {
+        let fm = FileManager.default
+        do {
+            let _ = try fm.contentsOfDirectory(atPath: containerDBURL().path)
+            return true
+        } catch _ {
+            return false
+        }
     }
     
     func writeObject(_ object: Object) {

@@ -23,9 +23,14 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        self.keyboardView.collectionView.snp.updateConstraints { maker in
-            maker.height.equalTo(DKManager.shared.keyboardHeight)
+        if DBManager.canFullAccess() {
+            self.keyboardView.collectionView.snp.updateConstraints { maker in
+                maker.height.equalTo(DKManager.shared.keyboardHeight)
+            }
+        } else {
+        
         }
+        
         self.updateViewConstraints()
         super.viewWillLayoutSubviews()
     }
@@ -33,10 +38,11 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DBManager.configDB()
+        
         AppSettings.shared.reload()
         
-        if DBManager.checkKeyboardAccess() {
+        if DBManager.canFullAccess() {
+            DBManager.configDB()
             self.keyboardView.config(view: self.view)
             self.view.setNeedsUpdateConstraints()
             self.notes = DBManager.shared.keyboardQueryNotes()
@@ -69,6 +75,8 @@ class KeyboardViewController: UIInputViewController {
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
+    
+
     
     func goSettingsAtion() {
         if #available(iOSApplicationExtension 10.0, *) {
