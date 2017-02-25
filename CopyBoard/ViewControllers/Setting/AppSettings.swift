@@ -103,7 +103,7 @@ class AppSettings {
         self.stickerLines = userDefault.readInt(UserDefaultsKey.stickerLine.rawValue)
         self.keyboardLines = userDefault.readInt(UserDefaultsKey.keyboardLine.rawValue)
         self.keyboardFilterStar = userDefault.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
-        self.keyboardFilterColor = (userDefault.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0]
+        self.keyboardFilterColor = (userDefault.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0, 1, 2, 3, 4, 5]
         self.stickerGesture = userDefault.readInt(UserDefaultsKey.gesture.rawValue)
         self.caseSensitive = userDefault.readInt(UserDefaultsKey.caseSensitive.rawValue)
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)

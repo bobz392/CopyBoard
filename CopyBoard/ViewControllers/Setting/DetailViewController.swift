@@ -119,7 +119,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let title = self.detailHeaders[section]
+        let title = self.detailHeaders[section].uppercased()
         return title.characters.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
     }
     
