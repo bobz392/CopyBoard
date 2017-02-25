@@ -19,6 +19,7 @@ class CloudKitManager: NSObject {
         
         self.enable {
             let privateDatabase = CKContainer.default().privateCloudDatabase
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             privateDatabase.fetch(withRecordID: deleteRecordID) { (record, error) in
                 if let _ = record {
                     privateDatabase.delete(withRecordID: deleteRecordID, completionHandler: { (recordID, error) in
@@ -30,6 +31,8 @@ class CloudKitManager: NSObject {
                         } else {
                             Logger.log("delete note failed")
                         }
+                        
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     })
                 }
             }
@@ -42,6 +45,7 @@ class CloudKitManager: NSObject {
         
         self.enable {
             let privateDatabase = CKContainer.default().privateCloudDatabase
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             privateDatabase.fetch(withRecordID: recordId) { [unowned self] (record, error) in
                 let updateRecord: CKRecord
                 if let re = record {
@@ -53,6 +57,7 @@ class CloudKitManager: NSObject {
                 let realm = try! Realm()
                 guard let n = realm.resolve(noteRef) else {
                     Logger.log("update realm resolve failed")
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     return
                 }
                 
@@ -69,6 +74,7 @@ class CloudKitManager: NSObject {
                             note.updateCloud = createdSuccess
                         }
                     }
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
                 
             }
@@ -114,6 +120,7 @@ class CloudKitManager: NSObject {
         
         let privateDatabase = CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "Note", predicate: NSPredicate(value: true))
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
             if let allRecords = records {
                 let notes = allRecords.flatMap ({ (record) -> Note? in
@@ -144,6 +151,8 @@ class CloudKitManager: NSObject {
                     DBManager.shared.writeObjects(objects: notes)
                 }
             }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
@@ -214,11 +223,14 @@ class CloudKitManager: NSObject {
                 Logger.log("queryNotificationReason \(queryCN.queryNotificationReason.rawValue)")
                 switch queryCN.queryNotificationReason {
                 case .recordUpdated, .recordCreated:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
                     CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID, completionHandler: { [unowned self] (record, error) in
                         Logger.log("query record id = \(recordID) result - \(record), error = \(error)")
                         if let record = record {
                             self.updateNoteFromRemote(record: record, reason: queryCN.queryNotificationReason)
                         }
+                        
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     })
                     
                 case .recordDeleted:
