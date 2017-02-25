@@ -90,16 +90,24 @@ class CloudKitManager: NSObject {
         }
     }
     
-    func asyncFromCloud() {
+    func createSubscription() {
         let predicate = NSPredicate(value: true)
-        let subscription = CKSubscription(recordType: "Note", predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordUpdate, .firesOnRecordDeletion])
-        let notificationInfo = CKNotificationInfo()
-        notificationInfo.shouldSendContentAvailable = true
-        subscription.notificationInfo = notificationInfo
-        CKContainer.default().privateCloudDatabase.save(subscription) { (subscription, error) in
-            Logger.log("subscription = \(subscription), error = \(error)")
+        CKContainer.default().privateCloudDatabase.fetchAllSubscriptions { (subscriptions, error) in
+            if let _ = subscriptions {
+                Logger.log("subscription extist avoid recreate it")
+            } else {
+                let subscription = CKSubscription(recordType: "Note", predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordUpdate, .firesOnRecordDeletion])
+                let notificationInfo = CKNotificationInfo()
+                notificationInfo.shouldSendContentAvailable = true
+                subscription.notificationInfo = notificationInfo
+                CKContainer.default().privateCloudDatabase.save(subscription) { (subscription, error) in
+                    Logger.log("subscription = \(subscription), error = \(error)")
+                }
+            }
         }
-        
+    }
+    
+    func asyncFromCloud() {
         guard DBManager.shared.queryNotes().count <= 0 else {
             return
         }
@@ -148,6 +156,42 @@ class CloudKitManager: NSObject {
         record["createdAt"] = note.createdAt as NSDate?
     }
     
+    fileprivate func updateNoteFromRemote(record: CKRecord, reason: CKQueryNotificationReason) {
+        guard let content = record["content"] as? String,
+            let modificationDevice = record["modificationDevice"] as? String,
+            let modificationDate = record["modificationDate"] as? Date,
+            let favourite = (record["favourite"] as? NSNumber)?.boolValue,
+            let color = (record["color"] as? NSNumber)?.intValue,
+            let createdAt = record["createdAt"] as? Date else {
+                Logger.log("update note from icloud but format not correct")
+                return
+        }
+        
+        dispatch_async_main {
+            var note: Note?
+            if reason == .recordCreated {
+                let n = Note()
+                n.uuid = record.recordID.recordName
+                DBManager.shared.writeObject(n)
+                note = n
+            } else {
+                note = DBManager.shared.querySpecificNoteBy(uuid: record.recordID.recordName)
+            }
+            
+            if let note = note {
+                DBManager.shared.updateObject {
+                    note.updateCloud = true
+                    note.content = content
+                    note.modificationDate = modificationDate
+                    note.modificationDevice = modificationDevice
+                    note.color = color
+                    note.createdAt = createdAt
+                    note.favourite = favourite
+                }
+            }
+        }
+    }
+    
     fileprivate func enable(block: @escaping () -> Void) {
         CKContainer.default().accountStatus { (status, error) in
             switch status {
@@ -157,6 +201,31 @@ class CloudKitManager: NSObject {
             default:
                 Logger.log("icloud not enable = \(status), error = \(error)")
                 return
+            }
+        }
+    }
+    
+    func handleNotification(userInfo: [AnyHashable: Any]) {
+        let cn = CKNotification(fromRemoteNotificationDictionary: userInfo)
+        if cn.notificationType == CKNotificationType.query {
+            if let queryCN = cn as? CKQueryNotification,
+                let recordID = queryCN.recordID {
+                Logger.log("recordID \(queryCN.recordID)")
+                Logger.log("queryNotificationReason \(queryCN.queryNotificationReason.rawValue)")
+                switch queryCN.queryNotificationReason {
+                case .recordUpdated, .recordCreated:
+                    CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID, completionHandler: { [unowned self] (record, error) in
+                        Logger.log("query record id = \(recordID) result - \(record), error = \(error)")
+                        if let record = record {
+                            self.updateNoteFromRemote(record: record, reason: queryCN.queryNotificationReason)
+                        }
+                    })
+                    
+                case .recordDeleted:
+                    if let note = DBManager.shared.querySpecificNoteBy(uuid: recordID.recordName) {
+                        DBManager.shared.deleteObject(note)
+                    }
+                }
             }
         }
     }

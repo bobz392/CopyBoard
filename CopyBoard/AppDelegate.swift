@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DBManager.configDB()
     
-        let ns = UIUserNotificationSettings(types: UIUserNotificationType.alert, categories: nil)
-        application.registerUserNotificationSettings(ns)
+//        let ns = UIUserNotificationSettings(types: UIUserNotificationType(rawValue: 0), categories: nil)
+//        application.registerUserNotificationSettings(ns)
         application.registerForRemoteNotifications()
         
         if !AppSettings.shared.appSetup {
@@ -34,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             CloudKitManager.shared.retry()
         }
+        
+        CloudKitManager.shared.createSubscription()
         
         return true
     }
@@ -69,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        print("receive \(userInfo)")
+        CloudKitManager.shared.handleNotification(userInfo: userInfo)
     }
     
 }

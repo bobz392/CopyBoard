@@ -30,7 +30,10 @@ extension DBManager {
                 Logger.log("realmNoticationToken error = \(error)")
             }
         }
-        
+    }
+    
+    func querySpecificNoteBy(uuid: String) -> Note? {
+        return self.r.objects(Note.self).filter("uuid = '\(uuid)'").first
     }
     
     func queryNotes(contain: String? = nil) -> Results<Note> {

@@ -21,14 +21,14 @@ class MenuView {
             maker.right.equalToSuperview()
             maker.top.equalToSuperview()
             maker.bottom.equalToSuperview()
-            maker.width.equalTo(280)
+            maker.width.equalTo(260)
         }
 
         self.holderView.addSubview(self.menuTableView)
         self.menuTableView.bgClear()
         self.menuTableView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
-            maker.left.equalToSuperview()
+            maker.width.equalTo(260)
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
@@ -40,6 +40,8 @@ class MenuView {
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)
         self.menuTableView.register(MenuDeviceTableCell.nib,
                                     forCellReuseIdentifier: MenuDeviceTableCell.reuseId)
+        
+        view.layoutIfNeeded()
         
         view.addSubview(self.closeButton)
         self.closeButton.useTint = false
