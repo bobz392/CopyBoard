@@ -22,6 +22,7 @@ class MenuViewController: BaseViewController {
         menuView.menuTableView.delegate = self
         menuView.menuTableView.dataSource = self
         menuView.closeButton.addTarget(self, action: #selector(self.quitMenu), for: .touchUpInside)
+        menuView.menuTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

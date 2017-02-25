@@ -16,15 +16,15 @@ class NotesViewController: BaseViewController {
     
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
-//    fileprivate var scrollingNav: ScrollingNavigationController {
-//        get {
-//            guard let nav = self.navigationController as? ScrollingNavigationController
-//                else {
-//                    fatalError("navigationController not a ScrollingNavigationController")
-//            }
-//            return nav
-//        }
-//    }
+    //    fileprivate var scrollingNav: ScrollingNavigationController {
+    //        get {
+    //            guard let nav = self.navigationController as? ScrollingNavigationController
+    //                else {
+    //                    fatalError("navigationController not a ScrollingNavigationController")
+    //            }
+    //            return nav
+    //        }
+    //    }
     fileprivate var transitionType = TransitionType.present
     
     override func viewDidLoad() {
@@ -57,15 +57,15 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.settingButton.rx.tap.subscribe { (tap) in
-//            Note.addNote(row: Int(arc4random()) % 100)
-//            return
+            //            Note.addNote(row: Int(arc4random()) % 100)
+            //            return
             let settingVC = SettingViewController()
             let navigation = UINavigationController(rootViewController: settingVC)
             navigation.transitioningDelegate = weakSelf
             navigation.isNavigationBarHidden = true
             weakSelf.transitionType = .ping
             weakSelf.present(navigation, animated: true, completion: nil)
-        }.addDisposableTo(viewModel.disposeBag)
+            }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
@@ -74,7 +74,7 @@ class NotesViewController: BaseViewController {
             Note.noteTestData()
         #endif
         
-//        self.scrollingNav.followScrollView(self.noteView.collectionView)
+        //        self.scrollingNav.followScrollView(self.noteView.collectionView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -85,7 +85,7 @@ class NotesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        scrollingNav.showNavbar()
+        //        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,14 +95,14 @@ class NotesViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         self.selectedCell?.deselectCell()
-        self.selectedCell = nil        
+        self.selectedCell = nil
         self.noteView.searchKeyboardHandle(add: true)
     }
     
     deinit {
-//        scrollingNav.stopFollowingScrollView()
+        //        scrollingNav.stopFollowingScrollView()
         AppSettings.shared.unregister(key: self.appSettingNotifyKey)
         DBManager.shared.unbindNotify()
     }
@@ -131,21 +131,25 @@ extension NotesViewController: RealmNotificationDataSource {
     
     func update(deletions: [Int], insertions: [Int], modifications: [Int]) {
         NoteCollectionViewInputOverlay.closeOpenItem()
-        if insertions.count > 0 {
-            self.noteView.collectionView
-                .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
-//            if self.viewModel.notes.count == 1, !self.viewModel.isInSearch {
-//                self.scrollingNav.followScrollView(self.noteView.collectionView)
-//            }
-        } else if deletions.count > 0 {
-            self.noteView.collectionView
-                .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
-//            if self.viewModel.notes.count == 0, !self.viewModel.isInSearch {
-//                self.scrollingNav.stopFollowingScrollView()
-//            }
-        } else if modifications.count > 0 {
-            self.noteView.collectionView
-                .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
+        if insertions.count > 0, deletions.count > 0 {
+            self.noteView.collectionView.reloadData()
+        } else {
+            if insertions.count > 0 {
+                self.noteView.collectionView
+                    .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+                //            if self.viewModel.notes.count == 1, !self.viewModel.isInSearch {
+                //                self.scrollingNav.followScrollView(self.noteView.collectionView)
+                //            }
+            } else if deletions.count > 0 {
+                self.noteView.collectionView
+                    .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+                //            if self.viewModel.notes.count == 0, !self.viewModel.isInSearch {
+                //                self.scrollingNav.stopFollowingScrollView()
+                //            }
+            } else if modifications.count > 0 {
+                self.noteView.collectionView
+                    .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
+            }
         }
     }
     
@@ -205,7 +209,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         return count
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath)
             as? NoteCollectionViewCell else { return }
@@ -237,7 +241,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let height = ceil(appFont(size: 16).lineHeight * CGFloat(AppSettings.shared.stickerLines + 4)) + 35
         return CGSize(width: width, height: height)
     }
-
+    
 }
 
 extension NotesViewController: AppSettingsNotify {
@@ -246,11 +250,11 @@ extension NotesViewController: AppSettingsNotify {
         switch settingKey {
         case .stickerLine, .gesture, .dateLabelUse:
             self.noteView.collectionView.reloadData()
-        
+            
         case .stickerSort, .stickerSortNewestLast:
             self.viewModel.notes = DBManager.shared.queryNotes()
             DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
-        
+            
         default:
             return
         }

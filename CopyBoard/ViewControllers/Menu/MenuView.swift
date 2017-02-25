@@ -16,7 +16,9 @@ class MenuView {
     func configView(view: UIView) {
 
         view.addSubview(holderView)
+        
         self.holderView.backgroundColor = AppColors.cloud
+        self.holderView.clipsToBounds = false
         self.holderView.snp.makeConstraints { maker in
             maker.right.equalToSuperview()
             maker.top.equalToSuperview()
@@ -29,7 +31,7 @@ class MenuView {
         self.menuTableView.snp.makeConstraints { maker in
             maker.top.equalToSuperview()
             maker.width.equalTo(260)
-            maker.right.equalToSuperview()
+            maker.right.equalTo(view)
             maker.bottom.equalToSuperview()
         }
         
@@ -41,7 +43,6 @@ class MenuView {
         self.menuTableView.register(MenuDeviceTableCell.nib,
                                     forCellReuseIdentifier: MenuDeviceTableCell.reuseId)
         
-        view.layoutIfNeeded()
         
         view.addSubview(self.closeButton)
         self.closeButton.useTint = false

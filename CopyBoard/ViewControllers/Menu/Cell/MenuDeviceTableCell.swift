@@ -23,6 +23,8 @@ class MenuDeviceTableCell: UITableViewCell {
         self.infoLabel.textColor = AppColors.menuText
         self.titleLabel.textColor = AppColors.menuSecondaryText
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         self.bgClear()
         self.contentView.bgClear()
     }

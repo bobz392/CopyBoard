@@ -28,6 +28,8 @@ class MenuDateTableCell: UITableViewCell {
         
         self.bgClear()
         self.contentView.bgClear()
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
