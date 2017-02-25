@@ -23,7 +23,7 @@ extension Note {
     #if debug
     
     class func noteTestData() {
-        if DBManager.shared.queryNotes().count > 20 {
+        if DBManager.shared.queryNotes().count > 0 {
             return
         }
         

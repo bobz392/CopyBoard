@@ -29,6 +29,15 @@
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
 		C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB201E5F6F35003ACF70 /* TokenView.swift */; };
+		C71DEB291E60AD1C003ACF70 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB281E60AD1C003ACF70 /* ActionViewController.swift */; };
+		C71DEB2C1E60AD1C003ACF70 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C71DEB2A1E60AD1C003ACF70 /* MainInterface.storyboard */; };
+		C71DEB301E60AD1C003ACF70 /* StickerAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C71DEB261E60AD1C003ACF70 /* StickerAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C71DEB351E60C15B003ACF70 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB341E60C15B003ACF70 /* CloudKitManager.swift */; };
+		C71DEB381E617176003ACF70 /* DBManager+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */; };
+		C71DEB391E617178003ACF70 /* DBManager+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */; };
+		C71DEB3B1E6171FA003ACF70 /* DBManager+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB3A1E6171FA003ACF70 /* DBManager+Note.swift */; };
+		C71DEB3C1E617261003ACF70 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
+		C71DEB3D1E6172AA003ACF70 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C721A0DD1E50DD15000257A8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0D91E50DD15000257A8 /* SideMenuManager.swift */; };
 		C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */; };
 		C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */; };
@@ -94,7 +103,6 @@
 		C7655AE31E33BDCC00A1CB9F /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C33851E2EFA96001DCE38 /* SnapKit.framework.dSYM */; };
 		C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
-		C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
 		C76859481E5ABB20003B8C7E /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -166,6 +174,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C71DEB2E1E60AD1C003ACF70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7403E1A1E269CA00067229E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C71DEB251E60AD1C003ACF70;
+			remoteInfo = StickerAction;
+		};
 		C7403E401E269D140067229E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7403E1A1E269CA00067229E /* Project object */;
@@ -189,6 +204,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C71DEB301E60AD1C003ACF70 /* StickerAction.appex in Embed App Extensions */,
 				C7403E421E269D140067229E /* Keyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -245,6 +261,14 @@
 		C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDeviceTableCell.swift; sourceTree = "<group>"; };
 		C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuDeviceTableCell.xib; sourceTree = "<group>"; };
 		C71DEB201E5F6F35003ACF70 /* TokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		C71DEB261E60AD1C003ACF70 /* StickerAction.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StickerAction.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C71DEB281E60AD1C003ACF70 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		C71DEB2B1E60AD1C003ACF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C71DEB2D1E60AD1C003ACF70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C71DEB341E60C15B003ACF70 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		C71DEB361E60C244003ACF70 /* StickerAction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StickerAction.entitlements; sourceTree = "<group>"; };
+		C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBManager+Keyboard.swift"; sourceTree = "<group>"; };
+		C71DEB3A1E6171FA003ACF70 /* DBManager+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBManager+Note.swift"; sourceTree = "<group>"; };
 		C721A0D91E50DD15000257A8 /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
 		C721A0DA1E50DD15000257A8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
 		C721A0DB1E50DD15000257A8 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
@@ -402,6 +426,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C71DEB231E60AD1C003ACF70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7403E1F1E269CA00067229E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -444,8 +475,11 @@
 			isa = PBXGroup;
 			children = (
 				C7110FE81E2836B2007A1577 /* GroupManager.swift */,
+				C71DEB341E60C15B003ACF70 /* CloudKitManager.swift */,
 				C7110FE91E2836B2007A1577 /* UserDefaultsManager.swift */,
 				C74568B71E2D34D700E7C776 /* DBManager.swift */,
+				C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */,
+				C71DEB3A1E6171FA003ACF70 /* DBManager+Note.swift */,
 				C7D96D6C1E3434E300B4E418 /* RateManager.swift */,
 				C76B8DEF1E356387006896FA /* Logger.swift */,
 				C76B8DF61E35AB06006896FA /* DeviceManager.swift */,
@@ -465,6 +499,17 @@
 				C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C71DEB271E60AD1C003ACF70 /* StickerAction */ = {
+			isa = PBXGroup;
+			children = (
+				C71DEB361E60C244003ACF70 /* StickerAction.entitlements */,
+				C71DEB281E60AD1C003ACF70 /* ActionViewController.swift */,
+				C71DEB2A1E60AD1C003ACF70 /* MainInterface.storyboard */,
+				C71DEB2D1E60AD1C003ACF70 /* Info.plist */,
+			);
+			path = StickerAction;
 			sourceTree = "<group>";
 		};
 		C721A0D81E50DD15000257A8 /* SideMenu */ = {
@@ -581,6 +626,7 @@
 				C7403E241E269CA00067229E /* CopyBoard */,
 				C7403E3C1E269D140067229E /* Keyboard */,
 				C7403F8B1E282A4E0067229E /* CopyBoardTests */,
+				C71DEB271E60AD1C003ACF70 /* StickerAction */,
 				C7403E231E269CA00067229E /* Products */,
 				C79EF8781E3ED828004BDACC /* Frameworks */,
 			);
@@ -592,6 +638,7 @@
 				C7403E221E269CA00067229E /* CopyBoard.app */,
 				C7403E3B1E269D140067229E /* Keyboard.appex */,
 				C7403F8A1E282A4E0067229E /* CopyBoardTests.xctest */,
+				C71DEB261E60AD1C003ACF70 /* StickerAction.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -865,6 +912,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C71DEB251E60AD1C003ACF70 /* StickerAction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C71DEB311E60AD1C003ACF70 /* Build configuration list for PBXNativeTarget "StickerAction" */;
+			buildPhases = (
+				C71DEB221E60AD1C003ACF70 /* Sources */,
+				C71DEB231E60AD1C003ACF70 /* Frameworks */,
+				C71DEB241E60AD1C003ACF70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StickerAction;
+			productName = StickerAction;
+			productReference = C71DEB261E60AD1C003ACF70 /* StickerAction.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C7403E211E269CA00067229E /* CopyBoard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7403E341E269CA00067229E /* Build configuration list for PBXNativeTarget "CopyBoard" */;
@@ -882,6 +946,7 @@
 			);
 			dependencies = (
 				C7403E411E269D140067229E /* PBXTargetDependency */,
+				C71DEB2F1E60AD1C003ACF70 /* PBXTargetDependency */,
 			);
 			name = CopyBoard;
 			productName = CopyBoard;
@@ -937,12 +1002,25 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = zhoubo;
 				TargetAttributes = {
+					C71DEB251E60AD1C003ACF70 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KJUZN22ZS5;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C7403E211E269CA00067229E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = KJUZN22ZS5;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -995,12 +1073,21 @@
 			targets = (
 				C7403E211E269CA00067229E /* CopyBoard */,
 				C7403E3A1E269D140067229E /* Keyboard */,
+				C71DEB251E60AD1C003ACF70 /* StickerAction */,
 				C7403F891E282A4E0067229E /* CopyBoardTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C71DEB241E60AD1C003ACF70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C71DEB2C1E60AD1C003ACF70 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7403E201E269CA00067229E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1159,6 +1246,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C71DEB221E60AD1C003ACF70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C71DEB291E60AD1C003ACF70 /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7403E1E1E269CA00067229E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1173,6 +1268,7 @@
 				C72CF6721E4C8C3600CAAC15 /* TimeInterval+Extensions.swift in Sources */,
 				C76B8DF01E356387006896FA /* Logger.swift in Sources */,
 				C7753D951E352A0900C45A5A /* XBAnimationManager.m in Sources */,
+				C71DEB351E60C15B003ACF70 /* CloudKitManager.swift in Sources */,
 				C7403F381E280E240067229E /* NotesViewController.swift in Sources */,
 				C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */,
 				C72CF6601E4C8C3600CAAC15 /* Date+Compare.swift in Sources */,
@@ -1215,6 +1311,7 @@
 				C7403F341E280E040067229E /* BaseViewController.swift in Sources */,
 				C72CF6441E4C46D900CAAC15 /* PresentTransition.swift in Sources */,
 				C73F6E031E394DBD00FBD6F0 /* DGElasticPullToRefreshView.swift in Sources */,
+				C71DEB3B1E6171FA003ACF70 /* DBManager+Note.swift in Sources */,
 				C72CF66E1E4C8C3600CAAC15 /* LocaleName.swift in Sources */,
 				C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */,
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
@@ -1233,6 +1330,7 @@
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
 				C71160FE1E56530B00779A0F /* AppSettings.swift in Sources */,
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
+				C71DEB381E617176003ACF70 /* DBManager+Keyboard.swift in Sources */,
 				C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */,
 				C72CF66B1E4C8C3600CAAC15 /* DateTimeInterval.swift in Sources */,
 				C72CF65E1E4C8C3600CAAC15 /* CalendarName.swift in Sources */,
@@ -1264,16 +1362,17 @@
 				C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */,
 				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
+				C71DEB391E617178003ACF70 /* DBManager+Keyboard.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
 				C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
 				C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */,
 				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,
+				C71DEB3D1E6172AA003ACF70 /* DBManager.swift in Sources */,
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
 				C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */,
 				C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */,
 				C71161051E58D53600779A0F /* CHTCollectionViewWaterfallLayout.m in Sources */,
-				C7655AE61E33BE9A00A1CB9F /* DBManager.swift in Sources */,
 				C76859491E5ABD56003B8C7E /* TouchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1284,12 +1383,18 @@
 			files = (
 				C7403F8D1E282A4E0067229E /* CopyBoardTests.swift in Sources */,
 				C7403F951E282A8F0067229E /* GroupManagerTest.swift in Sources */,
+				C71DEB3C1E617261003ACF70 /* GroupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C71DEB2F1E60AD1C003ACF70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C71DEB251E60AD1C003ACF70 /* StickerAction */;
+			targetProxy = C71DEB2E1E60AD1C003ACF70 /* PBXContainerItemProxy */;
+		};
 		C7403E411E269D140067229E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C7403E3A1E269D140067229E /* Keyboard */;
@@ -1312,6 +1417,14 @@
 			name = SettingsTableViewCell.xib;
 			sourceTree = "<group>";
 		};
+		C71DEB2A1E60AD1C003ACF70 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C71DEB2B1E60AD1C003ACF70 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C769961C1E369B29001E2F86 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1324,6 +1437,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C71DEB321E60AD1C003ACF70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StickerAction/StickerAction.entitlements;
+				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				INFOPLIST_FILE = StickerAction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerAction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5b407eca-a093-4e21-a094-9b2eb57d622a";
+				PROVISIONING_PROFILE_SPECIFIER = CopyBoardActionDev;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C71DEB331E60AD1C003ACF70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StickerAction/StickerAction.entitlements;
+				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				INFOPLIST_FILE = StickerAction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerAction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5b407eca-a093-4e21-a094-9b2eb57d622a";
+				PROVISIONING_PROFILE_SPECIFIER = CopyBoardActionDev;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		C7403E321E269CA00067229E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1550,6 +1697,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C71DEB311E60AD1C003ACF70 /* Build configuration list for PBXNativeTarget "StickerAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C71DEB321E60AD1C003ACF70 /* Debug */,
+				C71DEB331E60AD1C003ACF70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C7403E1D1E269CA00067229E /* Build configuration list for PBXProject "CopyBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

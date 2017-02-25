@@ -15,8 +15,9 @@ let GroupIdentifier = "group.com.zhoubo.CopyBoard"
  - userdefault
  - icloud
  */
+typealias GroupArray = [Dictionary<String, String>]
+
 struct GroupManager {
-    typealias GroupArray = [Dictionary<String, String>]
 
     func createDictArray(objects: [ObjectMirrorDelegate]) -> GroupArray? {
         guard let saveKeys = objects.first?.objectValueKeys()

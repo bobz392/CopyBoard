@@ -6,7 +6,7 @@
 //  Copyright © 2017年 zhoubo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 class Note: Object {
@@ -17,5 +17,6 @@ class Note: Object {
     dynamic var modificationDevice: String = ""
     dynamic var color: Int = 0
     dynamic var favourite: Bool = false
-    dynamic var inTrash: Bool = false
+    dynamic var deleteCloud: Bool = false
+    dynamic var updateCloud: Bool = false
 }

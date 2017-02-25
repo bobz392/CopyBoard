@@ -20,7 +20,7 @@ final class DBManager {
     
     var realm: Realm?
     
-    fileprivate var r: Realm {
+    internal var r: Realm {
         get {
             if let r = self.realm {
                 return r
@@ -88,71 +88,6 @@ final class DBManager {
         try? r.commitWrite(withoutNotifying: tokens)
     }
     
-}
-
-// MARK: - notes
-extension DBManager {
-    
-    func unbindNotify() {
-        self.notesToken?.stop()
-        self.dataSource = nil
-    }
-    
-    func bindNotifyToken<T>(result: Results<T>, dataSource: RealmNotificationDataSource) {
-        self.dataSource = dataSource
-        self.notesToken = result.addNotificationBlock { (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial(_):
-                dataSource.dataInit()
-                
-            case .update(_, let deletions, let insertions, let modifications):
-                dataSource.update(deletions: deletions, insertions: insertions, modifications: modifications)
-                
-            case .error(let error):
-                Logger.log("realmNoticationToken error = \(error)")
-            }
-        }
-        
-    }
-    
-    func queryNotes(contain: String? = nil) -> Results<Note> {
-        let sortKey = AppSettings.shared.sortKey()
-        let ascending = AppSettings.shared.sortNewestLast
-        if let contain = contain {
-            let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
-            return self.r.objects(Note.self)
-                .filter(query)
-                .sorted(byKeyPath: sortKey, ascending: ascending)
-        } else {
-            return self.r.objects(Note.self)
-                .sorted(byKeyPath: sortKey, ascending: ascending)
-        }
-    }
-    
-    func keyboardQueryNotes() -> Results<Note> {
-        let settings = AppSettings.shared
-        let sortKey = settings.sortKey()
-        var all = self.r.objects(Note.self)
-        if settings.keyboardFilterStar != 0 {
-            all = all.filter("favourite = \(settings.keyboardFilterStar == 1 ? true : false)")
-        }
-        
-        let cs = settings.keyboardFilterColor
-        var qc = ""
-        for (index, c) in cs.enumerated() {
-            qc += "color = \(c)"
-            
-            if index != cs.count - 1 {
-                qc += " OR "
-            }
-        }
-        
-        return all.filter(qc).sorted(byKeyPath: sortKey, ascending: false)
-    }
-
-    func deleteNote(note: Note) {
-        self.deleteObject(note)
-    }
 }
 
 struct UUIDGenerator {

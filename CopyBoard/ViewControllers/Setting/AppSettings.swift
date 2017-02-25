@@ -86,6 +86,13 @@ class AppSettings {
         }
     }
     
+    var appSetup: Bool {
+        didSet {
+            UserDefaultsKey.appSetup.write(value: self.appSetup, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.appSetup)
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -102,6 +109,8 @@ class AppSettings {
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefault.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         self.sortNewestLast = userDefault.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
+        
+        self.appSetup = userDefault.readBool(UserDefaultsKey.appSetup.rawValue)
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -124,13 +133,6 @@ class AppSettings {
         self.stickerSort = userDefualtsManager.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefualtsManager.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         self.sortNewestLast = userDefualtsManager.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
-        
-        if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
-            let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            self.version = "\(b) (\(v))"
-        } else {
-            self.version = ""
-        }
     }
     
     static let shared: AppSettings = AppSettings()
@@ -178,6 +180,7 @@ enum UserDefaultsKey: StringLiteralType {
     case keyboardFilterColor = "com.keyboard.filter.color"
     case stickerSort = "com.sticker.sort"
     case stickerSortNewestLast = "com.sticker.newest.last"
+    case appSetup = "com.app.setup"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)

@@ -60,5 +60,5 @@ struct UserDefaultsManager {
         self.groupUserDefault.removeObject(forKey: key)
         self.groupUserDefault.synchronize()
     }
-    
+ 
 }

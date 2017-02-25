@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         DBManager.configDB()
+    
+        application.registerForRemoteNotifications()
+        
+        if !AppSettings.shared.appSetup {
+            CloudKitManager.shared.asyncFromCloud()
+            AppSettings.shared.appSetup = true
+        } else {
+            CloudKitManager.shared.retry()
+        }
         
         return true
     }
@@ -48,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("receive \(userInfo)")
+    }
+    
 }
 
