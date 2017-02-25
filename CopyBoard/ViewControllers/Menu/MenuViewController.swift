@@ -18,6 +18,9 @@ class MenuViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let bar = self.navigationController?.navigationBar {
+            menuView.configBar(bar: bar)
+        }
         menuView.configView(view: self.view)
         menuView.menuTableView.delegate = self
         menuView.menuTableView.dataSource = self
@@ -50,29 +53,15 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MenuDateTableCell.reuseId,
                                                      for: indexPath) as! MenuDateTableCell
             cell.configEditDate(date: note.modificationDate ?? Date())
-            
+            cell.layoutIfNeeded()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: MenuDeviceTableCell.reuseId,
                                                      for: indexPath) as! MenuDeviceTableCell
             cell.config(row: indexPath.row, note: note)
+            cell.layoutIfNeeded()
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = AppColors.cloudHeader
-        let label = UILabel()
-        label.text = Localized("infomation")
-        label.textColor = AppColors.menuText
-        label.font = appFont(size: 17)
-        view.addSubview(label)
-        label.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.left.equalToSuperview().offset(12)
-        }
-        return view
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,10 +70,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return MenuDeviceTableCell.rowHeight
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return DeviceManager.shared.navigationBarHeight
     }
     
 }

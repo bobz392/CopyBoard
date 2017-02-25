@@ -79,7 +79,10 @@ class EditorViewController: BaseViewController {
         menuVC.note = self.note
         
         let rightMenu = UISideMenuNavigationController(rootViewController: menuVC)
-        rightMenu.isNavigationBarHidden = true
+//        rightMenu.isNavigationBarHidden = true
+        let image = AppColors.cloud.toImage()
+        rightMenu.navigationBar.shadowImage = image
+        rightMenu.navigationBar.setBackgroundImage(image, for: .default)
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: view, forMenu: .right)
         SideMenuManager.menuPresentMode = .menuSlideIn
         SideMenuManager.menuFadeStatusBar = false

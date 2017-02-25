@@ -16,17 +16,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="57.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hb-s7-dMa">
-                        <rect key="frame" x="22" y="38" width="298" height="16"/>
+                        <rect key="frame" x="16" y="38" width="304" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h0-Oe-Uxx">
-                        <rect key="frame" x="22" y="18" width="298" height="16"/>
+                        <rect key="frame" x="16" y="18" width="304" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,12 +35,13 @@
                 <constraints>
                     <constraint firstItem="8Hb-s7-dMa" firstAttribute="top" secondItem="6h0-Oe-Uxx" secondAttribute="bottom" constant="4" id="EYR-vU-vQK"/>
                     <constraint firstItem="6h0-Oe-Uxx" firstAttribute="trailing" secondItem="8Hb-s7-dMa" secondAttribute="trailing" id="KVl-zK-qR9"/>
-                    <constraint firstItem="8Hb-s7-dMa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="S6V-fO-WXz"/>
+                    <constraint firstItem="8Hb-s7-dMa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="S6V-fO-WXz"/>
                     <constraint firstItem="8Hb-s7-dMa" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="4" id="Ug0-vi-wFf"/>
                     <constraint firstItem="6h0-Oe-Uxx" firstAttribute="leading" secondItem="8Hb-s7-dMa" secondAttribute="leading" id="YpM-bI-CoV"/>
                     <constraint firstAttribute="trailing" secondItem="8Hb-s7-dMa" secondAttribute="trailing" id="p5H-GP-6fh"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="infoLabel" destination="6h0-Oe-Uxx" id="lx4-bY-E5c"/>
                 <outlet property="titleLabel" destination="8Hb-s7-dMa" id="aaw-bz-bkS"/>
