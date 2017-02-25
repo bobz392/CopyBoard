@@ -23,9 +23,9 @@ extension Note {
     #if debug
     
     class func noteTestData() {
-        if DBManager.shared.queryNotes().count > 0 {
+//        if DBManager.shared.queryNotes().count > 0 {
             return
-        }
+//        }
         
         let note1 = Note()
         note1.noteCreator(content: "Work makes the workman.", createdAt: Date())

@@ -40,9 +40,10 @@ class EditorViewController: BaseViewController {
 
         self.editorView.editorTextView.delegate = self
         self.editorView.faveButton.rx.tap.subscribe { (event) in
-                    DBManager.shared.updateObject {
-                        weakSelf.note.favourite = !weakSelf.note.favourite
-                    }
+                    DBManager.shared.updateNote(note: weakSelf.note, updateBlock: { 
+                       weakSelf.note.favourite = !weakSelf.note.favourite
+                    })
+            
                 }.addDisposableTo(self.disposeBag)
 
         self.editorView.colorButton.rx.tap.subscribe { (event) in
@@ -102,11 +103,11 @@ class EditorViewController: BaseViewController {
         if let noteText = self.editorView.editorTextView.text,
             noteText.characters.count > 0, self.noteChanged {
             
-            DBManager.shared.updateObject {
+            DBManager.shared.updateNote(note: self.note, updateBlock: { [unowned self] in
                 self.note.modificationDevice = DeviceManager.shared.deviceName
                 self.note.modificationDate = Date()
                 self.note.content = self.editorView.editorTextView.text
-            }
+            })
         }
     }
 
@@ -163,9 +164,10 @@ extension EditorViewController: CircleMenuDelegate {
             let weakSelf = self
             weakSelf.editorView.changeColor(pair: pc)
             weakSelf.view.backgroundColor = pc.pairColor().light
-            DBManager.shared.updateObject(true, updateBlock: {
+            DBManager.shared.updateNote(note: weakSelf.note, updateBlock: { 
                 weakSelf.note.color = pc.rawValue
             })
+            
             weakSelf.currentPairColor = nil
         }
     }

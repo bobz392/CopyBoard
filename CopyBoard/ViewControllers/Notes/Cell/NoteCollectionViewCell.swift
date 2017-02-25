@@ -137,9 +137,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        DBManager.shared.updateObject(false) {
+        DBManager.shared.updateNote(notify: false, note: n) { 
             n.favourite = !n.favourite
         }
+        
     }
     
     func canEnter() -> Bool {

@@ -26,6 +26,9 @@ class CloudKitManager: NSObject {
                             dispatch_async_main {
                                 DBManager.shared.deleteObject(note)
                             }
+                            Logger.log("delete note success")
+                        } else {
+                            Logger.log("delete note failed")
                         }
                     })
                 }
@@ -49,6 +52,7 @@ class CloudKitManager: NSObject {
                 
                 let realm = try! Realm()
                 guard let n = realm.resolve(noteRef) else {
+                    Logger.log("update realm resolve failed")
                     return
                 }
                 
@@ -57,8 +61,9 @@ class CloudKitManager: NSObject {
                     var createdSuccess = true
                     if record == nil, error != nil {
                         createdSuccess = false
+                        Logger.log("update note failed")
                     }
-                    
+                    Logger.log("update note success")
                     dispatch_async_main {
                         DBManager.shared.updateObject {
                             note.updateCloud = createdSuccess
@@ -119,7 +124,7 @@ class CloudKitManager: NSObject {
                         note.color = color
                         note.modificationDevice = modificationDevice
                         note.createdAt = createdAt
-                        note.updateCloud = false
+                        note.updateCloud = true
                         
                         return note
                     } else {

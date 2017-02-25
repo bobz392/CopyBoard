@@ -50,11 +50,13 @@ extension DBManager {
         return self.r.objects(Note.self).filter("deleteCloud = true OR updateCloud = false")
     }
     
-    func updateNote(note: Note, updateBlock: @escaping () -> Void) {
-        self.updateObject {
+    func updateNote(notify: Bool = true, note: Note, updateBlock: @escaping () -> Void) {
+        Logger.log("update note = \(note), notify = \(notify)")
+        self.updateObject(notify) { 
             note.updateCloud = true
             updateBlock()
         }
+    
         CloudKitManager.shared.update(note: note)
     }
     
@@ -62,6 +64,7 @@ extension DBManager {
         self.updateObject {
             note.deleteCloud = true
         }
+        Logger.log("prepar delete note = \(note)")
         CloudKitManager.shared.delete(note: note)
     }
 }
