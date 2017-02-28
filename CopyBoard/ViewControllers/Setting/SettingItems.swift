@@ -126,8 +126,8 @@ enum SettingType {
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
-            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.caseSensitive], [.line, .line, .line, .line, .line]],
-                    [Localized("sticker"), Localized("sort"), Localized("search"), Localized("stickerLines")])
+            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.line, .line, .line, .line, .line]],
+                    [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
             
         case .filter:
             return ([[.filterAll, .filterStar, .filterUnstar],
