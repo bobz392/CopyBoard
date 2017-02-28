@@ -126,11 +126,8 @@ enum SettingType {
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
-            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.line, .line, .line, .line, .line]],
-                    [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
-            
-        case .search:
-            return ([[.caseSensitive], [.advance]], ["", Localized("advance")])
+            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.caseSensitive], [.line, .line, .line, .line, .line]],
+                    [Localized("sticker"), Localized("sort"), Localized("search"), Localized("stickerLines")])
             
         case .filter:
             return ([[.filterAll, .filterStar, .filterUnstar],
@@ -250,7 +247,7 @@ enum SettingType {
 struct SettingItemCreator {
     
     func settingsCreator() -> [[SettingType]] {
-        let section1: [SettingType] = [.general, .search]
+        let section1: [SettingType] = [.general]
         let section2: [SettingType] = [/**.keyboardHeight, **/.keyboardLine, .filter]
         let section3: [SettingType] = [.contact, .rate]
         

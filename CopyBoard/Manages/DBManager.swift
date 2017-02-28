@@ -55,7 +55,7 @@ final class DBManager {
     static func canFullAccess() -> Bool {
         let fm = FileManager.default
         do {
-            let _ = try fm.contentsOfDirectory(atPath: containerDBURL().path)
+            let _ = try fm.contentsOfDirectory(atPath: FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!.path)
             return true
         } catch _ {
             return false
