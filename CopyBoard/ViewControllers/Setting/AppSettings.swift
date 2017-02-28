@@ -93,6 +93,14 @@ class AppSettings {
         }
     }
     
+    var lastSync: Date {
+        didSet {
+            let s = DateFormatter.localizedString(from: self.lastSync, dateStyle: .full, timeStyle: .full)
+            UserDefaultsKey.lastSync.write(value: s, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.lastSync)
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -110,6 +118,12 @@ class AppSettings {
         self.keyboardHeight = userDefault.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         self.sortNewestLast = userDefault.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
         
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .full
+        let lastSyncDate = formatter.date(from: userDefault.readString(UserDefaultsKey.lastSync.rawValue) ?? "") ?? Date()
+        self.lastSync = lastSyncDate
         self.appSetup = userDefault.readBool(UserDefaultsKey.appSetup.rawValue)
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
@@ -182,6 +196,7 @@ enum UserDefaultsKey: StringLiteralType {
     case stickerSort = "com.sticker.sort"
     case stickerSortNewestLast = "com.sticker.newest.last"
     case appSetup = "com.app.setup"
+    case lastSync = "com.last.sync"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)

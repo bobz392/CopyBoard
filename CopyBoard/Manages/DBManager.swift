@@ -40,10 +40,10 @@ final class DBManager {
                                             if (oldSchemaVersion < version) {}
         })
         Realm.Configuration.defaultConfiguration = config
-        Logger.log(DBManager.shared.realm?.configuration.fileURL?.absoluteString ?? "db file url = nil")
         
         if let realm = try? Realm() {
             DBManager.shared.realm = realm
+            Logger.log(DBManager.shared.realm?.configuration.fileURL?.absoluteString ?? "db file url = nil")
         }
     }
     

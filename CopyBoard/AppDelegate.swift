@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             CloudKitManager.shared.asyncFromCloud()
             AppSettings.shared.appSetup = true
         } else {
-            CloudKitManager.shared.retry()
+            CloudKitManager.shared.syncOfflineDataFromCloud()
         }
         
         CloudKitManager.shared.createSubscription()

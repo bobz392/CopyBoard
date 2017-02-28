@@ -26,6 +26,7 @@ class CloudKitManager: NSObject {
                         if error == nil {
                             dispatch_async_main {
                                 DBManager.shared.deleteObject(note)
+                                AppSettings.shared.lastSync = Date()
                             }
                             Logger.log("delete note success")
                         } else {
@@ -73,6 +74,7 @@ class CloudKitManager: NSObject {
                         DBManager.shared.updateObject {
                             note.updateCloud = createdSuccess
                         }
+                        AppSettings.shared.lastSync = Date()
                     }
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
@@ -81,9 +83,56 @@ class CloudKitManager: NSObject {
         }
     }
     
-    func retry() {
+    func syncOfflineDataFromCloud() {
+        self.enable {
+            let privateDatabase = CKContainer.default().privateCloudDatabase
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            let predicate = NSPredicate(format: "modificationDate > %@", AppSettings.shared.lastSync as NSDate)
+            let query = CKQuery(recordType: "Note", predicate: predicate)
+            privateDatabase.perform(query, inZoneWith: nil, completionHandler: { [unowned self] (records, error) in
+                if let records = records {
+                    let realm = try! Realm()
+                    let allNotes = realm.objects(Note.self)
+                    Logger.log("offline notes \(records)")
+                    for record in records {
+                        if let syncNote = self.configToNoteBy(record: record) {
+                            realm.beginWrite()
+                            if let note = allNotes.filter("uuid = '\(record.recordID.recordName)'").first {
+//                                if note.modificationDate?.isBefore(date: <#T##Date#>, granularity: Calendar.Component.calendar) {
+//                                }
+                                note.modificationDate = syncNote.modificationDate
+                                note.color = syncNote.color
+                                note.favourite = syncNote.favourite
+                                note.modificationDevice = syncNote.modificationDevice
+                                note.content = syncNote.content
+                                note.updateCloud = true
+                            } else {
+                                syncNote.updateCloud = true
+                                realm.add(syncNote)
+                            }
+                            try! realm.commitWrite()
+                        }
+                    }
+                } else {
+                    Logger.log("no offline note")
+                }
+                
+                dispatch_async_main { [unowned self] in 
+                    self.retry()
+                    AppSettings.shared.lastSync = Date()
+                }
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            })
+            
+            
+        }
+    }
+    
+    fileprivate func retry() {
         let waitDeleteNotes = DBManager.shared.queryRetryNotes()
-        Logger.log("waitDeleteNotes = \(waitDeleteNotes)")
+        Logger.log("wait update Notes = \(waitDeleteNotes)")
         
         for n in waitDeleteNotes {
             if n.deleteCloud == true {
@@ -121,30 +170,10 @@ class CloudKitManager: NSObject {
         let privateDatabase = CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "Note", predicate: NSPredicate(value: true))
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
+        privateDatabase.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
             if let allRecords = records {
                 let notes = allRecords.flatMap ({ (record) -> Note? in
-                    if let content = record["content"] as? String,
-                        let modificationDevice = record["modificationDevice"] as? String,
-                        let modificationDate = record["modificationDate"] as? Date,
-                        let favourite = (record["favourite"] as? NSNumber)?.boolValue,
-                        let color = (record["color"] as? NSNumber)?.intValue,
-                        let createdAt = record["createdAt"] as? Date {
-                        
-                        let note = Note()
-                        note.modificationDate = modificationDate
-                        note.content = content
-                        note.uuid = record.recordID.recordName
-                        note.favourite = favourite
-                        note.color = color
-                        note.modificationDevice = modificationDevice
-                        note.createdAt = createdAt
-                        note.updateCloud = true
-                        
-                        return note
-                    } else {
-                        return nil
-                    }
+                    return self.configToNoteBy(record: record)
                 })
                 
                 dispatch_async_main {
@@ -154,6 +183,31 @@ class CloudKitManager: NSObject {
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
+    }
+    
+    fileprivate func configToNoteBy(record: CKRecord) -> Note? {
+        if let content = record["content"] as? String,
+            let modificationDevice = record["modificationDevice"] as? String,
+            let modificationDate = record["modificationDate"] as? Date,
+            let favourite = (record["favourite"] as? NSNumber)?.boolValue,
+            let color = (record["color"] as? NSNumber)?.intValue,
+            let createdAt = record["createdAt"] as? Date {
+            
+            let note = Note()
+            note.modificationDate = modificationDate
+            note.content = content
+            note.uuid = record.recordID.recordName
+            note.favourite = favourite
+            note.color = color
+            note.modificationDevice = modificationDevice
+            note.createdAt = createdAt
+            note.updateCloud = true
+            
+            return note
+        } else {
+            return nil
+        }
+
     }
     
     fileprivate func config(record: CKRecord, byNote note: Note) {
@@ -228,6 +282,9 @@ class CloudKitManager: NSObject {
                         Logger.log("query record id = \(recordID) result - \(record), error = \(error)")
                         if let record = record {
                             self.updateNoteFromRemote(record: record, reason: queryCN.queryNotificationReason)
+                            dispatch_async_main {
+                                AppSettings.shared.lastSync = Date()
+                            }
                         }
                         
                         UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -236,6 +293,7 @@ class CloudKitManager: NSObject {
                 case .recordDeleted:
                     if let note = DBManager.shared.querySpecificNoteBy(uuid: recordID.recordName) {
                         DBManager.shared.deleteObject(note)
+                        AppSettings.shared.lastSync = Date()
                     }
                 }
             }
