@@ -187,8 +187,8 @@ class CloudKitManager: NSObject {
     
     fileprivate func configToNoteBy(record: CKRecord) -> Note? {
         if let content = record["content"] as? String,
-            let modificationDevice = record["modificationDevice"] as? String,
-            let modificationDate = record["modificationDate"] as? Date,
+            let modificationDevice = record["modifiedByDevice"] as? String,
+            let modificationDate = record["modificationAt"] as? Date,
             let favourite = (record["favourite"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
             let createdAt = record["createdAt"] as? Date {
@@ -212,7 +212,6 @@ class CloudKitManager: NSObject {
     
     fileprivate func config(record: CKRecord, byNote note: Note) {
         record["content"] = NSString(string: note.content)
-        record["modificationDevice"] = NSString(string: note.modificationDevice)
         record["modificationAt"] = note.modificationDate as NSDate?
         record["favourite"] = NSNumber(booleanLiteral: note.favourite)
         record["color"] = NSNumber(integerLiteral: note.color)
@@ -221,8 +220,8 @@ class CloudKitManager: NSObject {
     
     fileprivate func updateNoteFromRemote(record: CKRecord, reason: CKQueryNotificationReason) {
         guard let content = record["content"] as? String,
-            let modificationDevice = record["modificationDevice"] as? String,
-            let modificationDate = record["modificationDate"] as? Date,
+            let modificationDevice = record["modifiedByDevice"] as? String,
+            let modificationDate = record["modificationAt"] as? Date,
             let favourite = (record["favourite"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
             let createdAt = record["createdAt"] as? Date else {

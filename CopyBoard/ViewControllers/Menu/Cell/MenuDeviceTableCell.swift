@@ -35,7 +35,7 @@ class MenuDeviceTableCell: UITableViewCell {
     
     func config(row: Int, note: Note) {
         if row == 1 {
-            self.infoLabel.text = DeviceManager.shared.deviceName
+            self.infoLabel.text = note.modificationDevice
             self.titleLabel.text = Localized("modificationDevice")
         } else {
             self.infoLabel.text = (note.createdAt ?? Date()).string(custom: "yyyy-MM-dd hh:mm a")
