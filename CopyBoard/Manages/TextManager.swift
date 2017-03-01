@@ -13,7 +13,24 @@ func Localized(_ key: String) -> String {
 }
 
 func appFont(size: CGFloat, weight: CGFloat = UIFontWeightRegular) -> UIFont {
-    return UIFont.systemFont(ofSize: size, weight: weight)
+    if currentPreferrenLang()?.hasPrefix("en") == true,
+        let font = UIFont(name: "Avenir Next", size: size) {
+        return font
+    } else {
+        return UIFont.systemFont(ofSize: size, weight: weight)
+    }
+}
+
+extension UILabel {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.font = appFont(size: self.font.pointSize)
+    }
+}
+
+func currentPreferrenLang() -> String? {
+    return UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String
 }
 
 extension String {
