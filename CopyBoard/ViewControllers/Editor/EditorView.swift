@@ -23,6 +23,8 @@ class EditorView {
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
     let faveButton = FaveButton(frame: CGRect(origin: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
+    var menuGesture: UIScreenEdgePanGestureRecognizer? = nil
+    
     func config(with view: UIView, note: Note, dismissBlock: @escaping () -> Void) {
         self.configBarView(view: view)
         self.configNote(view: view, content: note.content)
@@ -51,6 +53,21 @@ class EditorView {
         self.faveButton.isSelected = note.favourite
         
         self.configKeyboardAction(view: view)
+        self.configMenu(view: view, note: note)
+    }
+    
+    fileprivate func configMenu(view: UIView, note: Note) {
+        let menuVC = MenuViewController()
+        menuVC.note = note
+        
+        let rightMenu = UISideMenuNavigationController(rootViewController: menuVC)
+        SideMenuManager.menuRightNavigationController = rightMenu
+        self.menuGesture = SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: view, forMenu: .right).first
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.menuShadowOpacity = 0
+        SideMenuManager.menuShadowRadius = 0
+        SideMenuManager.menuAnimationFadeStrength = 0.6
     }
     
     func changeColor(start: Bool) {
@@ -126,7 +143,8 @@ class EditorView {
                 let textViewBottom: CGFloat = show ? -height : 0
                 let barViewAlpha: CGFloat = show ? 0 : 1
                 
-                SideMenuManager.menuEnableSwipeGestures = !show
+                weakSelf.menuGesture?.isEnabled = !show
+                Logger.log("menu enable = \(!show)")
                 weakSelf.barView.snp.updateConstraints({ maker in
                     maker.height.equalTo(barHeight)
                 })

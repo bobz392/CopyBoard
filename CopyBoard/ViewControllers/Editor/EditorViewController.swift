@@ -72,24 +72,6 @@ class EditorViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         self.editorView.editorKeyboardHandle(add: true)
-        self.configMenu()
-    }
-
-    fileprivate func configMenu() {
-        let menuVC = MenuViewController()
-        menuVC.note = self.note
-        
-        let rightMenu = UISideMenuNavigationController(rootViewController: menuVC)
-//        rightMenu.isNavigationBarHidden = true
-        let image = AppColors.cloud.toImage()
-        rightMenu.navigationBar.shadowImage = image
-        rightMenu.navigationBar.setBackgroundImage(image, for: .default)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: view, forMenu: .right)
-        SideMenuManager.menuPresentMode = .menuSlideIn
-        SideMenuManager.menuFadeStatusBar = false
-        SideMenuManager.menuShadowOpacity = 0
-        SideMenuManager.menuShadowRadius = 0
-        SideMenuManager.menuAnimationFadeStrength = 0.6
     }
     
     func dismissAction() {
