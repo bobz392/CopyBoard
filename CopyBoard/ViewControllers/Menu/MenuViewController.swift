@@ -19,7 +19,9 @@ class MenuViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         if let bar = self.navigationController?.navigationBar {
-            menuView.configBar(bar: bar)
+            self.menuView.configBar(bar: bar)
+            bar.setBackgroundImage(UIImage(), for: .default)
+            bar.shadowImage = UIImage()
         }
         menuView.configView(view: self.view)
         menuView.menuTableView.delegate = self

@@ -20,8 +20,6 @@ class EditorView {
     let colorButton = TouchButton(type: .custom)
     let colorHolderView = UIView()
     
-    var canOpenMenu = true
-    
     let colorMenu = CircleMenu(frame: .zero, normalIcon: nil, selectedIcon: Icons.bigClear.iconString())
     let faveButton = FaveButton(frame: CGRect(origin: .zero, size: CGSize(width: 34, height: 34)), faveIconNormal: Icons.star.iconImage())
     
@@ -105,7 +103,7 @@ class EditorView {
         }
         self.keyboardBarView.alpha = 0
         
-        let hideKeyboardButton = TouchButton(type: .custom)
+        let hideKeyboardButton = TouchButton(type: .system)
         hideKeyboardButton.setImage(Icons.hideKeyboard.iconImage(), for: .normal)
         hideKeyboardButton.config()
         hideKeyboardButton.addTarget(self, action: #selector(self.dismissKeyboard), for: .allEvents)
@@ -128,7 +126,7 @@ class EditorView {
                 let textViewBottom: CGFloat = show ? -height : 0
                 let barViewAlpha: CGFloat = show ? 0 : 1
                 
-                weakSelf.canOpenMenu = !show
+                SideMenuManager.menuEnableSwipeGestures = !show
                 weakSelf.barView.snp.updateConstraints({ maker in
                     maker.height.equalTo(barHeight)
                 })

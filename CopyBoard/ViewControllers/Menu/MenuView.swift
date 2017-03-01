@@ -11,43 +11,41 @@ import UIKit
 class MenuView {    
     let menuTableView = UITableView()
     let headerView = UIView()
-    let closeButton = TouchButton(type: .custom)
+    let closeButton = TouchButton(type: .system)
     
     func configBar(bar: UIView) {
-        headerView.backgroundColor = AppColors.cloudHeader
+        self.headerView.backgroundColor = AppColors.cloudHeader
         
         let label = UILabel()
         label.text = Localized("infomation")
         label.textColor = AppColors.menuText
         label.font = appFont(size: 17)
-        headerView.addSubview(label)
+        self.headerView.addSubview(label)
         label.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.left.equalToSuperview().offset(12)
         }
         
-        bar.addSubview(headerView)
-        headerView.snp.makeConstraints { maker in
+        bar.addSubview(self.headerView)
+        self.headerView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.top.equalToSuperview()
-            maker.width.equalTo(260)
             maker.bottom.equalToSuperview()
+        }
+        
+        let statusBarCoverView = UIView()
+        bar.addSubview(statusBarCoverView)
+        statusBarCoverView.backgroundColor = AppColors.cloudHeader
+        statusBarCoverView.snp.makeConstraints { maker in
+            maker.bottom.equalTo(self.headerView.snp.top)
+            maker.height.equalTo(20)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
         }
     }
     
     func configView(view: UIView) {
-//        view.addSubview(holderView)
-
-//        self.holderView.backgroundColor = AppColors.cloud
-//        self.holderView.clipsToBounds = false
-//        self.holderView.snp.makeConstraints { maker in
-//            maker.right.equalToSuperview()
-//            maker.top.equalToSuperview()
-//            maker.bottom.equalToSuperview()
-//            maker.width.equalTo(260)
-//        }
-
         view.addSubview(self.menuTableView)
         self.menuTableView.backgroundColor = AppColors.cloud
         self.menuTableView.snp.makeConstraints { maker in
@@ -71,16 +69,6 @@ class MenuView {
         self.closeButton.snp.makeConstraints { maker in
             maker.bottom.equalToSuperview()
             maker.height.equalTo(44)
-            maker.left.equalTo(self.menuTableView)
-            maker.right.equalToSuperview()
-        }
-        
-        let statusBarCoverView = UIView()
-        view.addSubview(statusBarCoverView)
-        statusBarCoverView.backgroundColor = AppColors.cloud
-        statusBarCoverView.snp.makeConstraints { maker in
-            maker.top.equalToSuperview()
-            maker.height.equalTo(DeviceManager.shared.statusbarHeight)
             maker.left.equalTo(self.menuTableView)
             maker.right.equalToSuperview()
         }

@@ -15,13 +15,14 @@ class EditorViewController: BaseViewController {
     let editorView = EditorView()
     
     fileprivate let note: Note
+    
     fileprivate let disposeBag = DisposeBag()
     fileprivate var currentPairColor: [AppPairColors]? = nil
     fileprivate var noteChanged = false
     
-    
     init(note: Note) {
         self.note = note
+
         super.init(nibName: nil, bundle: nil)
     }
 
