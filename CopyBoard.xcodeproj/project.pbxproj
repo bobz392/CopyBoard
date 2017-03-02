@@ -114,6 +114,10 @@
 		C76B8DF11E3563D9006896FA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */; };
 		C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DF61E35AB06006896FA /* DeviceManager.swift */; };
+		C7702FE51E6799A70022EC75 /* AlertChildPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7702FE11E6799A70022EC75 /* AlertChildPageViewController.swift */; };
+		C7702FE61E6799A70022EC75 /* AlertChildPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7702FE21E6799A70022EC75 /* AlertChildPageViewController.xib */; };
+		C7702FE71E6799A70022EC75 /* AlertOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7702FE31E6799A70022EC75 /* AlertOnboarding.swift */; };
+		C7702FE81E6799A70022EC75 /* AlertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7702FE41E6799A70022EC75 /* AlertPageViewController.swift */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -346,6 +350,10 @@
 		C76B8DF31E359EA8006896FA /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		C76B8DF61E35AB06006896FA /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		C7702FE11E6799A70022EC75 /* AlertChildPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertChildPageViewController.swift; sourceTree = "<group>"; };
+		C7702FE21E6799A70022EC75 /* AlertChildPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertChildPageViewController.xib; sourceTree = "<group>"; };
+		C7702FE31E6799A70022EC75 /* AlertOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertOnboarding.swift; sourceTree = "<group>"; };
+		C7702FE41E6799A70022EC75 /* AlertPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPageViewController.swift; sourceTree = "<group>"; };
 		C7753D721E352A0900C45A5A /* CGPointAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointAdditions.c; sourceTree = "<group>"; };
 		C7753D731E352A0900C45A5A /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
 		C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackFragmentShader.glsl; sourceTree = "<group>"; };
@@ -546,6 +554,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C7702FE01E6799A70022EC75 /* AlertBoard */,
 				C721A0D81E50DD15000257A8 /* SideMenu */,
 				C72CF6471E4C8C3600CAAC15 /* SwiftDate */,
 				C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */,
@@ -740,6 +749,17 @@
 				C76B8DF41E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m */,
 			);
 			path = WaterfallLayout;
+			sourceTree = "<group>";
+		};
+		C7702FE01E6799A70022EC75 /* AlertBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C7702FE11E6799A70022EC75 /* AlertChildPageViewController.swift */,
+				C7702FE21E6799A70022EC75 /* AlertChildPageViewController.xib */,
+				C7702FE31E6799A70022EC75 /* AlertOnboarding.swift */,
+				C7702FE41E6799A70022EC75 /* AlertPageViewController.swift */,
+			);
+			path = AlertBoard;
 			sourceTree = "<group>";
 		};
 		C7753D711E352A0900C45A5A /* XBPageCurl */ = {
@@ -1109,6 +1129,7 @@
 				C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */,
 				C78C338D1E2EFA96001DCE38 /* 709376EC-E602-3A0D-940D-0E51DDC04211.bcsymbolmap in Resources */,
 				C769961E1E369B29001E2F86 /* Localizable.strings in Resources */,
+				C7702FE61E6799A70022EC75 /* AlertChildPageViewController.xib in Resources */,
 				C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */,
 				C72CF6711E4C8C3600CAAC15 /* SwiftDate.bundle in Resources */,
 				C7753D8E1E352A0900C45A5A /* FrontFragmentShader.glsl in Resources */,
@@ -1263,6 +1284,7 @@
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C73F6E011E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				C72CF65F1E4C8C3600CAAC15 /* Commons.swift in Sources */,
+				C7702FE81E6799A70022EC75 /* AlertPageViewController.swift in Sources */,
 				C72CF6611E4C8C3600CAAC15 /* Date+Components.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
 				C72CF6721E4C8C3600CAAC15 /* TimeInterval+Extensions.swift in Sources */,
@@ -1274,6 +1296,7 @@
 				C72CF6601E4C8C3600CAAC15 /* Date+Compare.swift in Sources */,
 				C7753D961E352A0900C45A5A /* XBCurlView.m in Sources */,
 				C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */,
+				C7702FE51E6799A70022EC75 /* AlertChildPageViewController.swift in Sources */,
 				C72CF66D1E4C8C3600CAAC15 /* ISO8601DateTimeFormatter.swift in Sources */,
 				C7D96D6B1E34304300B4E418 /* iRate.m in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
@@ -1282,6 +1305,7 @@
 				C72CF6631E4C8C3600CAAC15 /* Date+Math.swift in Sources */,
 				C7D96D611E341EEF00B4E418 /* Init.swift in Sources */,
 				C71741DD1E49971F00D39597 /* Note+Creator.swift in Sources */,
+				C7702FE71E6799A70022EC75 /* AlertOnboarding.swift in Sources */,
 				C71741DA1E4824B200D39597 /* MenuDateTableCell.swift in Sources */,
 				C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */,
 				C700F1191E4C398900EE66D4 /* SettingViewController.swift in Sources */,
@@ -1704,6 +1728,7 @@
 				C71DEB331E60AD1C003ACF70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7403E1D1E269CA00067229E /* Build configuration list for PBXProject "CopyBoard" */ = {
 			isa = XCConfigurationList;

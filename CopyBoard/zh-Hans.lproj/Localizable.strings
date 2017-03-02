@@ -41,3 +41,12 @@
 "version"="版本";
 "contactUs"="联系我们";
 "rate"="为我们评分";
+
+// guild
+"step"="步骤";
+"description1"="添加便笺输入法。";
+"description2"="开启允许完全访问。我们不会收集或上传您的隐私数据，仅仅用于访问APP数据。";
+"description3"="切换到便笺输入法。";
+"doGuild1"="去添加";
+"doGuild2"="允许完全访问";
+"doGuild3"="知道了";

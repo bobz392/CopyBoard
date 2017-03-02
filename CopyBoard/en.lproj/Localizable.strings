@@ -43,3 +43,12 @@
 "version"="Version";
 "contactUs"="Contact us";
 "rate"="Rate us";
+
+// guild
+"step"="STEP";
+"description1"="Add the Sticker input.";
+"description2"="Allow full access.We will not collect or even upload your privacy data only for access to APP data.";
+"description3"="Switch to Sticker input method.";
+"doGuild1"="TO ADD";
+"doGuild2"="ALLOW";
+"doGuild3"="GOT IT";
