@@ -28,6 +28,7 @@ enum Icons {
     case returnKey
     case preview
     case space
+    case save
     
     func iconString() -> String {
         switch self {
@@ -48,6 +49,7 @@ enum Icons {
         case .returnKey: return "return"
         case .preview: return "preview"
         case .space: return "space"
+        case .save: return "save"
         }
     }
     

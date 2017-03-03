@@ -12,12 +12,15 @@ class KeyboardView: UIView {
     
     var collectionView: UICollectionView!
     let bottomToolView = UIView()
+    var topToolView: UIView? = nil
+    
     let nextKeyboardButton = TouchButton(type: .custom)
     let deleteButton = TouchButton(type: .custom)
     let launchAppButton = TouchButton(type: .custom)
     let returnButton = TouchButton(type: .custom)
     let spaceButton = TouchButton(type: .custom)
     let previewButton = UIButton(type: .custom)
+    let saveButton = TouchButton(type: .custom)
     
     func config(view: UIView) {
         let lineView = UIView()
@@ -66,6 +69,63 @@ class KeyboardView: UIView {
         self.configButtons()
     }
     
+    func configTopToolView(view: UIView) {
+        let toolView: UIView
+        if let tv = self.topToolView {
+            toolView = tv
+        } else {
+            toolView = UIView()
+            self.topToolView = toolView
+        }
+        
+        toolView.backgroundColor = UIColor(white: 0, alpha: 0.6)
+        
+        let label = UILabel()
+        toolView.addSubview(label)
+        label.snp.makeConstraints { maker in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.centerY.equalToSuperview()
+        }
+        label.textAlignment = .center
+
+        let attrText = NSMutableAttributedString(string: Localized("open"),
+                                                 attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: UIColor.white])
+        
+        let t1 = NSAttributedString(string: Localized("fullAccess"),
+                                    attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: AppColors.faveButton, NSUnderlineStyleAttributeName: 1])
+        attrText.append(t1)
+        
+        let t2 = NSMutableAttributedString(string: Localized("guildOpenFullAccess"),
+                                                 attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: UIColor.white])
+        attrText.append(t2)
+        
+        label.attributedText = attrText
+        
+        view.addSubview(toolView)
+        toolView.snp.makeConstraints { maker in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.height.equalTo(36)
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.goSettingsAtion))
+        toolView.addGestureRecognizer(tap)
+    }
+    
+    func goSettingsAtion() {
+        if #available(iOSApplicationExtension 10.0, *) {
+            if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
+                UIApplication.mSharedApplication().mOpenURL(url: url)
+            }
+        } else {
+            if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
+                UIApplication.mSharedApplication().mOpenURL(url: url)
+            }
+        }
+    }
+    
     fileprivate func configButtons() {
         let inset = DKManager.shared.itemSpace
         let side: CGFloat = 34
@@ -79,7 +139,7 @@ class KeyboardView: UIView {
             let imageInset: CGFloat = 6
             if isImage {
                 btn.imageEdgeInsets = UIEdgeInsetsMake(imageInset, imageInset, imageInset, imageInset)
-                btn.tintColor = UIColor.black
+                btn.tintColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
             }
         }
         
@@ -103,18 +163,28 @@ class KeyboardView: UIView {
         buttonConfigBlock(self.nextKeyboardButton, true)
         self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
         
-        self.bottomToolView.addSubview(self.previewButton)
-        self.previewButton.snp.makeConstraints { maker in
+//        self.bottomToolView.addSubview(self.previewButton)
+//        self.previewButton.snp.makeConstraints { maker in
+//            maker.centerY.equalToSuperview()
+//            maker.left.equalTo(self.nextKeyboardButton.snp.right).offset(inset)
+//            maker.width.equalTo(side)
+//            maker.height.equalTo(side)
+//        }
+//        self.previewButton.adjustsImageWhenHighlighted = false
+//        self.previewButton.backgroundColor = AppColors.keyboard
+//        self.previewButton.layer.cornerRadius = corner
+//        self.previewButton.setImage(Icons.preview.iconImage(), for: .normal)
+//        self.previewButton.tintColor = UIColor.black
+        
+        self.bottomToolView.addSubview(self.saveButton)
+        self.saveButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.left.equalTo(self.nextKeyboardButton.snp.right).offset(inset)
             maker.width.equalTo(side)
             maker.height.equalTo(side)
         }
-        self.previewButton.adjustsImageWhenHighlighted = false
-        self.previewButton.backgroundColor = AppColors.keyboard
-        self.previewButton.layer.cornerRadius = corner
-        self.previewButton.setImage(Icons.preview.iconImage(), for: .normal)
-        self.previewButton.tintColor = UIColor.black
+        buttonConfigBlock(self.saveButton, true)
+        self.saveButton.setImage(Icons.save.iconImage(), for: .normal)
         
         self.bottomToolView.addSubview(self.returnButton)
         self.returnButton.snp.makeConstraints { maker in
@@ -139,7 +209,7 @@ class KeyboardView: UIView {
         self.bottomToolView.addSubview(self.spaceButton)
         self.spaceButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
-            maker.left.equalTo(self.previewButton.snp.right).offset(inset)
+            maker.left.equalTo(self.saveButton.snp.right).offset(inset)
             maker.right.equalTo(self.deleteButton.snp.left).offset(-inset)
             maker.height.equalTo(side)
         }

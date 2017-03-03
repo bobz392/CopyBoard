@@ -20,12 +20,37 @@ extension Note {
         return self
     }
     
+    class func createDefaultDBNote() {
+        let note1 = Note()
+        note1.noteCreator(content: Localized("defaultNote1"), createdAt: Date())
+        note1.color = 0
+        
+        let note2 = Note()
+        note2.noteCreator(content: Localized("defaultNote2"), createdAt: Date())
+        note2.color = 0
+        
+        let note3 = Note()
+        note3.noteCreator(content: Localized("defaultNote3"), createdAt: Date())
+        note3.color = 0
+        
+        let note4 = Note()
+        note4.noteCreator(content: Localized("defaultNote4"), createdAt: Date())
+        note4.color = 0
+        
+        let note5 = Note()
+        note5.noteCreator(content: Localized("defaultNote5"), createdAt: Date())
+        note5.color = 0
+        
+        let notes = [note1, note2, note3, note4, note5]
+        DBManager.shared.writeObjects(notify: true , objects: notes)
+    }
+    
     #if debug
     
     class func noteTestData() {
-//        if DBManager.shared.queryNotes().count > 0 {
+        if DBManager.shared.queryNotes().count > 0 {
             return
-//        }
+        }
         
         let note1 = Note()
         note1.noteCreator(content: "Work makes the workman.", createdAt: Date())

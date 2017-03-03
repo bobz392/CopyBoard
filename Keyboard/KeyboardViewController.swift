@@ -13,6 +13,8 @@ import RealmSwift
 class KeyboardViewController: UIInputViewController {
 
     var notes: Results<Note>? = nil
+    var defaultNotes = [String]()
+    
     let keyboardView = KeyboardView()
     
     override func updateViewConstraints() {
@@ -23,14 +25,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if DBManager.canFullAccess() {
-            self.keyboardView.collectionView.snp.updateConstraints { maker in
-                maker.height.equalTo(DKManager.shared.keyboardHeight)
-            }
-        } else {
-        
+        self.keyboardView.collectionView.snp.updateConstraints { maker in
+            maker.height.equalTo(DKManager.shared.keyboardHeight)
         }
-        
+        if let layout = self.keyboardView.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
+            layout.columnCount = DKManager.shared.columnCount
+        }
         self.updateViewConstraints()
         super.viewWillLayoutSubviews()
     }
@@ -38,22 +38,22 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         AppSettings.shared.reload()
+        self.keyboardView.config(view: self.view)
         
         if DBManager.canFullAccess() {
             DBManager.configDB()
-            self.keyboardView.config(view: self.view)
             self.view.setNeedsUpdateConstraints()
             self.notes = DBManager.shared.keyboardQueryNotes()
-            
-            self.keyboardView.collectionView.delegate = self
-            self.keyboardView.collectionView.dataSource = self
-            self.keyboardView.collectionView.reloadData()
         } else {
+            self.defaultNotes.append(contentsOf: AppSettings.shared.keyboardDefaultNote)
+            self.keyboardView.configTopToolView(view: self.view)
             Logger.log("cant access")
         }
         
+        self.keyboardView.collectionView.delegate = self
+        self.keyboardView.collectionView.dataSource = self
+        self.keyboardView.collectionView.reloadData()
         
 //        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
 //        self.nextKeyboardButton.sizeToFit()
@@ -71,29 +71,20 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .touchUpInside)
         self.keyboardView.returnButton.addTarget(self, action: #selector(self.returnAction), for: .touchUpInside)
         self.keyboardView.spaceButton.addTarget(self, action: #selector(self.spaceAction), for: .touchUpInside)
-        self.keyboardView.previewButton.addTarget(self, action: #selector(self.previewAction(btn:)), for: .touchUpInside)
+//        self.keyboardView.previewButton.addTarget(self, action: #selector(self.previewAction(btn:)), for: .touchUpInside)
+        self.keyboardView.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
-    }
-    
-
-    
-    func goSettingsAtion() {
-        if #available(iOSApplicationExtension 10.0, *) {
-            if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS") {
-                UIApplication.mSharedApplication().mOpenURL(url: url)
-            }
-        } else {
-            if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS") {
-                UIApplication.mSharedApplication().mOpenURL(url: url)
-            }
-        }
     }
     
     func launchAppAction() {
         if let url = URL(string: "sticker://") {
             UIApplication.mSharedApplication().mOpenURL(url: url)
         }
+    }
+    
+    func saveAction() {
+        
     }
     
     func deleteTextAction(btn: UIButton) {
@@ -142,22 +133,31 @@ class KeyboardViewController: UIInputViewController {
 
 extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.notes?.count ?? 0
+        if let notes = self.notes {
+            return notes.count
+        } else {
+            return self.defaultNotes.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let content = self.notes?[indexPath.row].content {
             self.textDocumentProxy.insertText(content)
+        } else {
+            self.textDocumentProxy.insertText(self.defaultNotes[indexPath.row])
         }
-        
-        print(self.view.frame.height)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyboardCollectionViewCell.reuseId, for: indexPath) as! KeyboardCollectionViewCell
+        
         if let note = self.notes?[indexPath.row] {
             cell.noteLabel.text = note.content
             cell.backgroundColor = AppPairColors(rawValue: note.color)?.pairColor().light
+        } else {
+            cell.noteLabel.text = self.defaultNotes[indexPath.row]
+            cell.backgroundColor = AppPairColors(rawValue: 0)?.pairColor().light
         }
         return cell
     }
@@ -165,13 +165,12 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
-        let font = UIFont.systemFont(ofSize: 16)
+        let font = appFont(size: 16)
         let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
         let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
-        let lineCount = AppSettings.shared.realKeyboardLine(line: nil, inKeyboard: true)
+        let lineCount = AppSettings.shared.realKeyboardLine(line: nil, inKeyboardExtension: true)
         let height = ceil(font.lineHeight * CGFloat(lineCount)) + 10
-//        print("line height = \(AppSettings.shared.realKeyboardLine(line: nil, inKeyboard: true)"))
-        print("line count = \(lineCount)")
+
         return CGSize(width: width, height: height)
     }
 }

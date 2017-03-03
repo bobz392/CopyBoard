@@ -21,4 +21,8 @@ class Note: Object {
     dynamic var deleteCloud: Bool = false
     // false 代表需要同步，反之则不需要
     dynamic var updateCloud: Bool = false
+    
+    class func createDefaultNote() -> [String] {
+        return [Localized("defaultNote1"), Localized("defaultNote2"), Localized("defaultNote3"), Localized("defaultNote4"), Localized("defaultNote5")]
+    }
 }

@@ -101,6 +101,13 @@ class AppSettings {
         }
     }
     
+    var keyboardDefaultNote: [String] {
+        didSet {
+            UserDefaultsKey.keyboardDefaultNote.write(value: self.keyboardDefaultNote, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardDefaultNote)
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -117,7 +124,7 @@ class AppSettings {
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefault.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         self.sortNewestLast = userDefault.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
-        
+        self.keyboardDefaultNote = (userDefault.readArray(UserDefaultsKey.keyboardDefaultNote.rawValue) as? [String]) ?? Note.createDefaultNote()
 
         let formatter = DateFormatter()
         formatter.dateStyle = .full
@@ -178,8 +185,8 @@ class AppSettings {
         }
     }
     
-    func realKeyboardLine(line: Int? = nil, inKeyboard: Bool = false) -> Int {
-        return (line ?? self.keyboardLines) + (inKeyboard ? 2 : 4)
+    func realKeyboardLine(line: Int? = nil, inKeyboardExtension: Bool = false) -> Int {
+        return (line ?? self.keyboardLines) + (inKeyboardExtension ? 2 : 4)
     }
     
 }
@@ -197,6 +204,7 @@ enum UserDefaultsKey: StringLiteralType {
     case stickerSortNewestLast = "com.sticker.newest.last"
     case appSetup = "com.app.setup"
     case lastSync = "com.last.sync"
+    case keyboardDefaultNote = "com.keyboard.default"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)

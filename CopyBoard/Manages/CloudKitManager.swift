@@ -171,13 +171,17 @@ class CloudKitManager: NSObject {
         let query = CKQuery(recordType: "Note", predicate: NSPredicate(value: true))
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         privateDatabase.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
-            if let allRecords = records {
+            if let allRecords = records, allRecords.count > 0 {
                 let notes = allRecords.flatMap ({ (record) -> Note? in
                     return self.configToNoteBy(record: record)
                 })
                 
                 dispatch_async_main {
                     DBManager.shared.writeObjects(objects: notes)
+                }
+            } else {
+                dispatch_async_main {
+                    Note.createDefaultDBNote()
                 }
             }
             

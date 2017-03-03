@@ -55,7 +55,10 @@ final class DBManager {
     static func canFullAccess() -> Bool {
         let fm = FileManager.default
         do {
-            let _ = try fm.contentsOfDirectory(atPath: FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!.path)
+            var directory = fm.containerURL(forSecurityApplicationGroupIdentifier: GroupIdentifier)!
+            directory.appendPathComponent("1.txt")
+            try fm.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+            try fm.removeItem(at: directory)
             return true
         } catch _ {
             return false
