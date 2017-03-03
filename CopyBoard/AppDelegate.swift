@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         CloudKitManager.shared.createSubscription()
+        if #available(iOS 9.0, *) {
+            self.configureDynamicShortcuts()
+        }
         
         return true
     }
@@ -68,6 +71,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         CloudKitManager.shared.handleNotification(userInfo: userInfo)
     }
-    
+
 }
 
+@available(iOS 9.0, *)
+extension AppDelegate {
+    @objc(application:performActionForShortcutItem:completionHandler:) func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        QuickActionDispatcher().dispatch(shortcutItem, completion: completionHandler)
+    }
+    
+    fileprivate func configureDynamicShortcuts() {
+        let createItem = UIApplicationShortcutItem(
+            type: QuickActionType.create.rawValue,
+            localizedTitle: Localized("create"),
+            localizedSubtitle: "",
+            icon: UIApplicationShortcutIcon(type: .add),
+            userInfo: nil)
+        
+        
+        let searchItem = UIApplicationShortcutItem(
+            type: QuickActionType.search.rawValue,
+            localizedTitle: Localized("search"),
+            localizedSubtitle: "",
+            icon: UIApplicationShortcutIcon(type: .search),
+            userInfo: nil)
+        
+        UIApplication.shared.shortcutItems =
+            [ createItem, searchItem ]
+    }
+    
+}

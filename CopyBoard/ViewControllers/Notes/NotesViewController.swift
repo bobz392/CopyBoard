@@ -24,9 +24,11 @@ class NotesViewController: BaseViewController {
             self.noteView.configBarView(bar: bar)
         }
         self.noteView.config(withView: self.view)
-        self.noteView.configCollectionView(view: self.view, delegate: self, target: self)
         
         let weakSelf = self
+        self.noteView.configCollectionView(view: self.view, delegate: self) { 
+            weakSelf.createAction()
+        }
         
         let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
@@ -37,23 +39,10 @@ class NotesViewController: BaseViewController {
         AppSettings.shared.register(any: self, key: self.appSettingNotifyKey)
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
-        self.noteView.searchButton.rx.tap.subscribe { (tap) in
-            weakSelf.noteView.searchAnimation(startSearch: true)
-            weakSelf.viewModel.isInSearch = true
-            NoteCollectionViewInputOverlay.closeOpenItem()
-            }.addDisposableTo(viewModel.disposeBag)
-        
+        self.noteView.searchButton.addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
+        self.noteView.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
             weakSelf.endSearchAction()
-            }.addDisposableTo(viewModel.disposeBag)
-        
-        self.noteView.settingButton.rx.tap.subscribe { (tap) in
-            let settingVC = SettingViewController()
-            let navigation = UINavigationController(rootViewController: settingVC)
-            navigation.transitioningDelegate = weakSelf
-            navigation.isNavigationBarHidden = true
-            weakSelf.transitionType = .ping
-            weakSelf.present(navigation, animated: true, completion: nil)
             }.addDisposableTo(viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
@@ -112,6 +101,21 @@ class NotesViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func searchAction()  {
+        self.noteView.searchAnimation(startSearch: true)
+        self.viewModel.isInSearch = true
+        NoteCollectionViewInputOverlay.closeOpenItem()
+    }
+    
+    func settingAction() {
+        let settingVC = SettingViewController()
+        let navigation = UINavigationController(rootViewController: settingVC)
+        navigation.transitioningDelegate = self
+        navigation.isNavigationBarHidden = true
+        self.transitionType = .ping
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
     func endSearchAction() {
         self.noteView.searchAnimation(startSearch: false)
         if !self.viewModel.isQueryStringEmpty {
@@ -119,6 +123,13 @@ class NotesViewController: BaseViewController {
         }
         self.viewModel.isInSearch = false
         self.viewModel.isQueryStringEmpty = true
+    }
+    
+    func createAction() {
+        let editorVC = EditorViewController(defaultContent: "")
+        editorVC.transitioningDelegate = self
+        self.transitionType = .present
+        self.present(editorVC, animated: true, completion: nil)
     }
     
 }
