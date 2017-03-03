@@ -138,15 +138,9 @@ extension NotesViewController: RealmNotificationDataSource {
             if insertions.count > 0 {
                 self.noteView.collectionView
                     .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
-                //            if self.viewModel.notes.count == 1, !self.viewModel.isInSearch {
-                //                self.scrollingNav.followScrollView(self.noteView.collectionView)
-                //            }
             } else if deletions.count > 0 {
                 self.noteView.collectionView
                     .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
-                //            if self.viewModel.notes.count == 0, !self.viewModel.isInSearch {
-                //                self.scrollingNav.stopFollowingScrollView()
-                //            }
             } else if modifications.count > 0 {
                 self.noteView.collectionView
                     .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
