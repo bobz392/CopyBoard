@@ -96,8 +96,16 @@ extension AppDelegate {
             icon: UIApplicationShortcutIcon(type: .search),
             userInfo: nil)
         
+        let settingsIcon = UIApplicationShortcutIcon(templateImageName: "setting")
+        let settingItem = UIApplicationShortcutItem(
+            type: QuickActionType.setting.rawValue,
+            localizedTitle: Localized("setting"),
+            localizedSubtitle: "",
+            icon: settingsIcon,
+            userInfo: nil)
+        
         UIApplication.shared.shortcutItems =
-            [ createItem, searchItem ]
+            [ createItem, searchItem, settingItem]
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 enum QuickActionType: String {
     case create = "com.zhoubo.copyboard.new"
     case search = "com.zhoubo.copyboard.search"
-    //    case setting = "com.zhoubo.copyboard.settings"
+    case setting = "com.zhoubo.copyboard.settings"
 }
 
 
@@ -31,6 +31,9 @@ struct QuickActionDispatcher {
             
         case QuickActionType.search.rawValue:
             vc.searchAction()
+        
+        case QuickActionType.setting.rawValue:
+            vc.settingAction()
             
         default:
             break
