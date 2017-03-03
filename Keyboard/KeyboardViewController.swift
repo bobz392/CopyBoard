@@ -84,6 +84,22 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func saveAction() {
+        if self.notes != nil {
+            if let text = UIPasteboard.general.string {
+                let note = Note()
+                note.content = text
+                note.createdAt = Date()
+                note.modificationDate = note.createdAt
+                note.modificationDevice = UIDevice.current.name
+                note.uuid = UUIDGenerator.getUUID()
+                DBManager.shared.writeObject(note)
+                
+                self.notes = DBManager.shared.keyboardQueryNotes()
+                self.keyboardView.collectionView.reloadData()
+            }
+        } else {
+            self.keyboardView.topToolViewShine()
+        }
         
     }
     
@@ -114,11 +130,13 @@ class KeyboardViewController: UIInputViewController {
     override func textWillChange(_ textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
         print("text will change = \(textInput)")
+        print(textInput?.selectedTextRange)
     }
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         print("text did change = \(textInput)")
+        print(textInput?.selectedTextRange)
 //        var textColor: UIColor
 //        let proxy = self.textDocumentProxy
 //        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {

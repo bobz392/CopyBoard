@@ -114,6 +114,22 @@ class KeyboardView: UIView {
         toolView.addGestureRecognizer(tap)
     }
     
+    func topToolViewShine() {
+        let weakSelf = self
+        
+        UIView.animate(withDuration: 0.25, animations: { 
+            UIView.animate(withDuration: 0.5) {
+//                weakSelf.topToolView?.alpha = 0.6
+                weakSelf.topToolView?.backgroundColor = UIColor(white: 0, alpha: 0.2)
+            }
+        }) { (finish) in
+            UIView.animate(withDuration: 0.5) {
+//                weakSelf.topToolView?.alpha = 1
+                weakSelf.topToolView?.backgroundColor = UIColor(white: 0, alpha: 0.6)
+            }
+        }
+    }
+    
     func goSettingsAtion() {
         if #available(iOSApplicationExtension 10.0, *) {
             if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
