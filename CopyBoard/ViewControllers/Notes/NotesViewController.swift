@@ -16,15 +16,6 @@ class NotesViewController: BaseViewController {
     
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
-    //    fileprivate var scrollingNav: ScrollingNavigationController {
-    //        get {
-    //            guard let nav = self.navigationController as? ScrollingNavigationController
-    //                else {
-    //                    fatalError("navigationController not a ScrollingNavigationController")
-    //            }
-    //            return nav
-    //        }
-    //    }
     fileprivate var transitionType = TransitionType.present
     
     override func viewDidLoad() {
@@ -57,8 +48,6 @@ class NotesViewController: BaseViewController {
             }.addDisposableTo(viewModel.disposeBag)
         
         self.noteView.settingButton.rx.tap.subscribe { (tap) in
-            //            Note.addNote(row: Int(arc4random()) % 100)
-            //            return
             let settingVC = SettingViewController()
             let navigation = UINavigationController(rootViewController: settingVC)
             navigation.transitioningDelegate = weakSelf
@@ -74,7 +63,22 @@ class NotesViewController: BaseViewController {
             Note.noteTestData()
         #endif
         
-        //        self.scrollingNav.followScrollView(self.noteView.collectionView)
+        if #available(iOS 9.0, *) {
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.noteView.collectionView
+                }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
+                    guard let index = self.noteView.collectionView.indexPathForItem(at: location),
+                        let cell = self.noteView.collectionView.cellForItem(at: index) else { return nil }
+                    let note = self.viewModel.notes[index.row]
+                    let editorVC = EditorViewController(note: note)
+                    previewingContext.sourceRect = cell.frame
+                    editorVC.transitioningDelegate = self
+                    self.selectedCell = cell as? NoteCollectionViewCell
+                    self.transitionType = .present
+                    return editorVC
+            })
+        }
+
     }
     
     override func viewWillLayoutSubviews() {
@@ -84,8 +88,6 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //        scrollingNav.showNavbar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,7 +104,6 @@ class NotesViewController: BaseViewController {
     }
     
     deinit {
-        //        scrollingNav.stopFollowingScrollView()
         AppSettings.shared.unregister(key: self.appSettingNotifyKey)
         DBManager.shared.unbindNotify()
     }

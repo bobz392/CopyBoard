@@ -54,14 +54,12 @@ extension BaseViewController: UIViewControllerPreviewingDelegate {
         
         if self.traitCollection.forceTouchCapability == .available {
             self.registerForPreviewing(with: self, sourceView: sourceViewBlock())
-        } else {
-            //            Def.log("该设备不支持3D-Touch")
         }
     }
     
     @available(iOS 9.0, *)
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.navigationController?.pushViewController(viewControllerToCommit, animated: false)
+        self.present(viewControllerToCommit, animated: false, completion: nil)
     }
     
     @available(iOS 9.0, *)

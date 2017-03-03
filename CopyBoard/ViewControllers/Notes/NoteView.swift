@@ -101,9 +101,9 @@ class NoteView {
         }
     }
     
-    func configTokenView() {
-    
-    }
+//    func configTokenView() {
+//    
+//    }
     
 }
 
@@ -131,6 +131,24 @@ extension NoteView {
         self.barView.superview?.layoutIfNeeded()
     }
     
+    fileprivate func addRefreshCreate() {
+        let weakSelf = self
+        let loadingView = PullDismissView(icon: Icons.create, side: 20) { (progress) in
+            weakSelf.barView.alpha = 1 - progress
+        }
+        loadingView.imageView.tintColor = AppColors.mainIcon
+        self.collectionView.dg_addPullToRefreshWithActionHandler({ 
+            weakSelf.collectionView.dg_stopLoading()
+        }, loadingView: loadingView)
+        
+        self.collectionView.dg_setPullToRefreshFillColor(AppColors.mainBackground)
+        self.collectionView.dg_setPullToRefreshBackgroundColor(AppColors.mainBackground)
+    }
+    
+    fileprivate func removeFreshCreate() {
+        self.collectionView.dg_removePullToRefresh()
+    }
+    
     func configCollectionView(view: UIView, delegate: NotesViewController) {
         let layout = CHTCollectionViewWaterfallLayout()
         let space = DeviceManager.shared.collectionViewItemSpace
@@ -154,6 +172,7 @@ extension NoteView {
             make.bottom.equalToSuperview()
         }
         
+        // step 2
         self.configEmptyDataView(view: view)
         
         view.addSubview(self.searchHolderView)
@@ -164,6 +183,7 @@ extension NoteView {
             make.bottom.equalToSuperview()
         }
         
+        // step 3
         self.configSearchResultView(view: view)
         
         self.collectionView.register(NoteCollectionViewCell.nib,
@@ -172,6 +192,8 @@ extension NoteView {
         
         self.collectionView.delegate = delegate
         self.collectionView.dataSource = delegate
+        
+        self.addRefreshCreate()
     }
     
     
@@ -342,6 +364,8 @@ extension NoteView {
                     weakSelf.searchBar.alpha = 1
                 }, completion: nil)
             }
+            
+            self.addRefreshCreate()
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
@@ -371,6 +395,8 @@ extension NoteView {
                     weakSelf.searchButton.alpha = 1
                 })
             }
+            
+            self.removeFreshCreate()
         }
     }
     

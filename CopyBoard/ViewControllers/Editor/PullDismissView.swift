@@ -15,18 +15,18 @@ final class PullDismissView: DGElasticPullToRefreshLoadingView {
     private let pb: ProgressBlock
     let imageView = UIImageView()
     
-    init(progressBlock: @escaping ProgressBlock) {
+    init(icon: Icons = Icons.clear, side: CGFloat = 12, progressBlock: @escaping ProgressBlock) {
         self.pb = progressBlock
         super.init(frame: .zero)
         
         self.addSubview(self.imageView)
-        self.imageView.image = Icons.clear.iconImage()
+        self.imageView.image = icon.iconImage()
         self.imageView.contentMode = .scaleAspectFit
         self.imageView.tintColor = UIColor.white
         self.imageView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalTo(12)
-            make.height.equalTo(12)
+            make.width.equalTo(side)
+            make.height.equalTo(side)
         }
     }
     
