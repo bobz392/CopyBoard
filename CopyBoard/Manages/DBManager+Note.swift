@@ -63,6 +63,13 @@ extension DBManager {
         CloudKitManager.shared.update(note: note)
     }
     
+    func writeNote(note: Note) {
+        Logger.log("create note = \(note)")
+        self.writeObject(note)
+        
+        CloudKitManager.shared.update(note: note)
+    }
+    
     func deleteNote(note: Note) {
         self.updateObject {
             note.deleteCloud = true

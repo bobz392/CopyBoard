@@ -16,7 +16,7 @@ class NotesViewController: BaseViewController {
     
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
-    fileprivate var transitionType = TransitionType.present
+    var transitionType = TransitionType.present
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class NotesViewController: BaseViewController {
             self.noteView.configBarView(bar: bar)
         }
         self.noteView.config(withView: self.view)
-        self.noteView.configCollectionView(view: self.view, delegate: self)
+        self.noteView.configCollectionView(view: self.view, delegate: self, target: self)
         
         let weakSelf = self
         
@@ -220,11 +220,11 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let editorVC = EditorViewController(note: note)
             editorVC.transitioningDelegate = self
             self.transitionType = .present
-            self.present(editorVC, animated: true, completion: nil)
             self.selectedCell = cell
+            self.present(editorVC, animated: true, completion: nil)
         }
     }
-    
+ 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)

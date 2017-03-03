@@ -27,7 +27,8 @@ class EditorView {
     
     func config(with view: UIView, note: Note, dismissBlock: @escaping () -> Void) {
         self.configBarView(view: view)
-        self.configNote(view: view, content: note.content)
+        self.configEditorView(view: view)
+        self.configEditorContent(text: note.content)
         self.configColorView(view: view)
         
         let weakSelf = self
@@ -225,10 +226,9 @@ class EditorView {
         self.colorMenu.layer.cornerRadius = 30
     }
     
-    fileprivate func configNote(view: UIView, content: String) {
-        view.addSubview(editorTextView)
-//        self.editorTextView.spliteLineColor = AppColors.horizonLine
-//        self.editorTextView.font = self.editorTextView.noteFont
+    fileprivate func configEditorView(view: UIView) {
+        view.addSubview(self.editorTextView)
+        
         self.editorTextView.bgClear()
         self.editorTextView.textColor = AppColors.noteText
         self.editorTextView.tintColor = AppColors.noteText
@@ -242,8 +242,10 @@ class EditorView {
             maker.top.equalTo(self.barView.snp.bottom)
             maker.bottom.equalToSuperview()
         }
-
-        let attrString = NSMutableAttributedString(string: content)
+    }
+    
+    func configEditorContent(text: String) {
+        let attrString = NSMutableAttributedString(string: text)
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.lineSpacing = NoteTextView.NoteLineSpace
         
@@ -251,7 +253,7 @@ class EditorView {
             NSParagraphStyleAttributeName: paraStyle,
             NSFontAttributeName: appFont(size: 18),
             NSForegroundColorAttributeName: AppColors.noteText
-            ], range: NSMakeRange(0, content.characters.count))
+            ], range: NSMakeRange(0, text.characters.count))
         self.editorTextView.attributedText = attrString
     }
     

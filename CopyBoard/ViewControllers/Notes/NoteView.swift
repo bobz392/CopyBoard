@@ -30,10 +30,8 @@ class NoteView {
     let noResultsLabel = UILabel()
     let catImageView = UIImageView()
     
-    var tokenCollectionView: UICollectionView? = nil
-    var tokenView: UIView? = nil
-    
-    private var barShowing = true
+    fileprivate var barShowing = true
+    fileprivate var target: NotesViewController? = nil
     
     func config(withView view: UIView) {
         AppColors.mainBackground.bgColor(to: view)
@@ -101,10 +99,6 @@ class NoteView {
         }
     }
     
-//    func configTokenView() {
-//    
-//    }
-    
 }
 
 // MARK: - collection view
@@ -139,6 +133,14 @@ extension NoteView {
         loadingView.imageView.tintColor = AppColors.mainIcon
         self.collectionView.dg_addPullToRefreshWithActionHandler({ 
             weakSelf.collectionView.dg_stopLoading()
+            
+            if let t = weakSelf.target {
+                let editorVC = EditorViewController(defaultContent: "")
+                editorVC.transitioningDelegate = t
+                t.transitionType = .present
+                t.present(editorVC, animated: true, completion: nil)
+            }
+            
         }, loadingView: loadingView)
         
         self.collectionView.dg_setPullToRefreshFillColor(AppColors.mainBackground)
@@ -149,7 +151,8 @@ extension NoteView {
         self.collectionView.dg_removePullToRefresh()
     }
     
-    func configCollectionView(view: UIView, delegate: NotesViewController) {
+    func configCollectionView(view: UIView, delegate: NotesViewController, target: NotesViewController) {
+        self.target = target
         let layout = CHTCollectionViewWaterfallLayout()
         let space = DeviceManager.shared.collectionViewItemSpace
         

@@ -18,11 +18,21 @@ class EditorViewController: BaseViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate var currentPairColor: [AppPairColors]? = nil
+    
     fileprivate var noteChanged = false
+    fileprivate let isCreate: Bool
     
     init(note: Note) {
         self.note = note
-
+        self.isCreate = false
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(defaultContent: String? = nil) {
+        self.note = Note()
+        self.note.noteCreator(content: defaultContent ?? "", createdAt: Date())
+        self.note.color = 0
+        self.isCreate = true
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -89,11 +99,16 @@ class EditorViewController: BaseViewController {
         if let noteText = self.editorView.editorTextView.text,
             noteText.characters.count > 0, self.noteChanged {
             
-            DBManager.shared.updateNote(note: self.note, updateBlock: { [unowned self] in
-                self.note.modificationDevice = DeviceManager.shared.deviceName
-                self.note.modificationDate = Date()
-                self.note.content = self.editorView.editorTextView.text
-            })
+            if self.isCreate {
+                self.note.content = noteText
+                DBManager.shared.writeNote(note: self.note)
+            } else {
+                DBManager.shared.updateNote(note: self.note, updateBlock: { [unowned self] in
+                    self.note.modificationDevice = DeviceManager.shared.deviceName
+                    self.note.modificationDate = Date()
+                    self.note.content = noteText
+                })
+            }
         }
     }
 
@@ -121,6 +136,10 @@ extension EditorViewController: UITextViewDelegate {
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         self.noteChanged = true
+        if textView.text.characters.count == 0 {
+            self.editorView.configEditorContent(text: text)
+            return false
+        }
         return true
     }
     
