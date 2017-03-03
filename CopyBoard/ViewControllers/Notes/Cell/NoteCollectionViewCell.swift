@@ -188,6 +188,7 @@ extension NoteCollectionViewCell {
             while(view != nil) {
                 if let cv = view as? UICollectionView {
                     let overlay = NoteCollectionViewInputOverlay()
+                    overlay.bgClear()
                     NoteCollectionViewInputOverlay.cacheCollectionView = cv
                     cv.addSubview(overlay)
                     NoteCollectionViewInputOverlay.connected = true

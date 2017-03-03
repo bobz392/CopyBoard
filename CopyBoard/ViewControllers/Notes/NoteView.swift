@@ -137,18 +137,15 @@ extension NoteView {
             if let t = weakSelf.target {
                 let editorVC = EditorViewController(defaultContent: "")
                 editorVC.transitioningDelegate = t
+                
                 t.transitionType = .present
                 t.present(editorVC, animated: true, completion: nil)
             }
             
         }, loadingView: loadingView)
         
-        self.collectionView.dg_setPullToRefreshFillColor(AppColors.mainBackground)
-        self.collectionView.dg_setPullToRefreshBackgroundColor(AppColors.mainBackground)
-    }
-    
-    fileprivate func removeFreshCreate() {
-        self.collectionView.dg_removePullToRefresh()
+        self.collectionView.dg_setPullToRefreshFillColor(UIColor.clear)
+        self.collectionView.dg_setPullToRefreshBackgroundColor(UIColor.clear)
     }
     
     func configCollectionView(view: UIView, delegate: NotesViewController, target: NotesViewController) {
@@ -166,6 +163,7 @@ extension NoteView {
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.collectionView.keyboardDismissMode = .onDrag
         self.collectionView.alwaysBounceVertical = true
+        self.collectionView.bgClear()
         self.collectionView.tag = kNoteCollectionViewTag
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
@@ -367,8 +365,6 @@ extension NoteView {
                     weakSelf.searchBar.alpha = 1
                 }, completion: nil)
             }
-            
-            self.addRefreshCreate()
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
                 weakSelf.searchBar.alpha = 0
@@ -392,14 +388,12 @@ extension NoteView {
                 weakSelf.searchBar.isHidden = true
                 weakSelf.searchBar.resignFirstResponder()
                 
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.25, animations: { 
                     weakSelf.barView.layoutIfNeeded()
                     weakSelf.barView.titleLabel.alpha = 1
                     weakSelf.searchButton.alpha = 1
                 })
             }
-            
-            self.removeFreshCreate()
         }
     }
     
