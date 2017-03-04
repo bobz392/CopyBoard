@@ -198,6 +198,10 @@
 		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
 		C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D6C1E3434E300B4E418 /* RateManager.swift */; };
 		C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
+		C7F9230A1E6B3D3600700F86 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F923091E6B3D3600700F86 /* Media.xcassets */; };
+		C7F9230D1E6B3F3200700F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F9230F1E6B3F3200700F86 /* InfoPlist.strings */; };
+		C7F923131E6B3F8200700F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F923151E6B3F8200700F86 /* InfoPlist.strings */; };
+		C7F923191E6B3FB600700F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F9231B1E6B3FB600700F86 /* InfoPlist.strings */; };
 		D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D001F7356D0DC91262059 /* CircleMenu.swift */; };
 		D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */; };
 		D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */; };
@@ -470,6 +474,13 @@
 		C7D96D671E34304300B4E418 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		C7D96D681E34304300B4E418 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		C7D96D6C1E3434E300B4E418 /* RateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
+		C7F923091E6B3D3600700F86 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		C7F9230E1E6B3F3200700F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C7F923101E6B3F4900700F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C7F923141E6B3F8200700F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C7F923161E6B3F8300700F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C7F9231A1E6B3FB600700F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C7F9231C1E6B3FCE00700F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D61D001F7356D0DC91262059 /* CircleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenu.swift; sourceTree = "<group>"; };
 		D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuLoader.swift; sourceTree = "<group>"; };
 		D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuButton.swift; sourceTree = "<group>"; };
@@ -561,10 +572,12 @@
 		C71DEB271E60AD1C003ACF70 /* StickerAction */ = {
 			isa = PBXGroup;
 			children = (
+				C7F923091E6B3D3600700F86 /* Media.xcassets */,
 				C71DEB361E60C244003ACF70 /* StickerAction.entitlements */,
 				C71DEB281E60AD1C003ACF70 /* ActionViewController.swift */,
 				C71DEB2A1E60AD1C003ACF70 /* MainInterface.storyboard */,
 				C71DEB2D1E60AD1C003ACF70 /* Info.plist */,
+				C7F9231B1E6B3FB600700F86 /* InfoPlist.strings */,
 			);
 			path = StickerAction;
 			sourceTree = "<group>";
@@ -773,6 +786,7 @@
 				C76996201E369B50001E2F86 /* Launch Screen.storyboard */,
 				C72332BE1E30F43A00D5189D /* bridge-header.h */,
 				C7403E311E269CA00067229E /* Info.plist */,
+				C7F9230F1E6B3F3200700F86 /* InfoPlist.strings */,
 			);
 			path = CopyBoard;
 			sourceTree = "<group>";
@@ -789,6 +803,7 @@
 				C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */,
 				C71161061E58D54500779A0F /* bridge-header.h */,
 				C7403E3F1E269D140067229E /* Info.plist */,
+				C7F923151E6B3F8200700F86 /* InfoPlist.strings */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -1167,6 +1182,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F9230A1E6B3D3600700F86 /* Media.xcassets in Resources */,
+				C7F923191E6B3FB600700F86 /* InfoPlist.strings in Resources */,
 				C71DEB2C1E60AD1C003ACF70 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1176,6 +1193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71FF4B41E6A128000815326 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap in Resources */,
+				C7F9230D1E6B3F3200700F86 /* InfoPlist.strings in Resources */,
 				C7753D8F1E352A0900C45A5A /* FrontVertexShader.glsl in Resources */,
 				C71FF4AA1E6A128000815326 /* 8F30DB2B-FA6E-3A4A-8A8A-20D6A63FC0AD.bcsymbolmap in Resources */,
 				C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */,
@@ -1238,6 +1256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71161031E58D42600779A0F /* KeyboardCollectionViewCell.xib in Resources */,
+				C7F923131E6B3F8200700F86 /* InfoPlist.strings in Resources */,
 				C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */,
 				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
 			);
@@ -1541,12 +1560,40 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		C7F9230F1E6B3F3200700F86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7F9230E1E6B3F3200700F86 /* en */,
+				C7F923101E6B3F4900700F86 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C7F923151E6B3F8200700F86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7F923141E6B3F8200700F86 /* en */,
+				C7F923161E6B3F8300700F86 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C7F9231B1E6B3FB600700F86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7F9231A1E6B3FB600700F86 /* en */,
+				C7F9231C1E6B3FCE00700F86 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C71DEB321E60AD1C003ACF70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_ENTITLEMENTS = StickerAction/StickerAction.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				INFOPLIST_FILE = StickerAction/Info.plist;
@@ -1564,6 +1611,7 @@
 		C71DEB331E60AD1C003ACF70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_ENTITLEMENTS = StickerAction/StickerAction.entitlements;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				INFOPLIST_FILE = StickerAction/Info.plist;
