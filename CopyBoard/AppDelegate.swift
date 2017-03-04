@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         DBManager.configDB()
+        
         application.registerForRemoteNotifications()
         
         if !AppSettings.shared.appSetup {
@@ -31,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         CloudKitManager.shared.createSubscription()
+        
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()
         }
