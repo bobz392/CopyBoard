@@ -171,6 +171,7 @@
 		C774F7F41E6B73750081C5E0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
 		C774F7F51E6B73830081C5E0 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C774F7F61E6B77630081C5E0 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
+		C774F8091E6B86530081C5E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -1266,6 +1267,7 @@
 				C774F7EC1E6B6E150081C5E0 /* InfoPlist.strings in Resources */,
 				C774F7E81E6B6DD80081C5E0 /* Localizable.strings in Resources */,
 				C774F7E71E6B65890081C5E0 /* FinishView.xib in Resources */,
+				C774F8091E6B86530081C5E0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1738,6 +1740,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyBoard/CopyBoard.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1750,8 +1753,8 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96b228ea-b231-43e0-a541-214700001267";
-				PROVISIONING_PROFILE_SPECIFIER = CopyBoardDev;
+				PROVISIONING_PROFILE = "7a13eb80-3d7d-44f7-b982-e46f37a66bfe";
+				PROVISIONING_PROFILE_SPECIFIER = CopyBoardProd;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/CopyBoard/bridge-header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1785,6 +1788,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1796,8 +1800,8 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "832f9861-a45a-4739-866b-0b19b014fbf6";
-				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardDev;
+				PROVISIONING_PROFILE = "85009dc1-6600-4984-96af-5cd7345769e2";
+				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardProd;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
 				SWIFT_VERSION = 3.0;
@@ -1857,6 +1861,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = StickerShare/StickerShare.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1867,8 +1872,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8009018-cb03-4cfe-be37-adb40df4d9e0";
-				PROVISIONING_PROFILE_SPECIFIER = StickerShareDev;
+				PROVISIONING_PROFILE = "9caf6553-2c2c-43bd-8dbc-ad83e4109c8e";
+				PROVISIONING_PROFILE_SPECIFIER = CopyBoardShareProd;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1920,6 +1925,7 @@
 				C774F7DE1E6B637F0081C5E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

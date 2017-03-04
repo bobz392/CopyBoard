@@ -20,27 +20,26 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3H-84-NSI">
-                    <rect key="frame" x="67.5" y="283.5" width="240" height="100"/>
+                    <rect key="frame" x="67.5" y="298.5" width="240" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Ej-rse">
-                            <rect key="frame" x="98" y="78" width="44" height="22"/>
+                            <rect key="frame" x="98" y="48" width="44" height="22"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="save" translatesAutoresizingMaskIntoConstraints="NO" id="gla-Cb-MkZ">
-                            <rect key="frame" x="99" y="0.0" width="42" height="42"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gla-Cb-MkZ">
+                            <rect key="frame" x="104" y="0.0" width="32" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="42" id="FpV-qm-C49"/>
-                                <constraint firstAttribute="height" constant="42" id="dco-XE-RJa"/>
+                                <constraint firstAttribute="width" constant="32" id="FpV-qm-C49"/>
+                                <constraint firstAttribute="height" constant="32" id="dco-XE-RJa"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="AH4-hA-J7Y"/>
-                        <constraint firstAttribute="height" constant="100" id="Crc-Sb-fis"/>
+                        <constraint firstAttribute="height" constant="70" id="Crc-Sb-fis"/>
                         <constraint firstItem="gla-Cb-MkZ" firstAttribute="top" secondItem="r3H-84-NSI" secondAttribute="top" id="Crs-wx-mJa"/>
                         <constraint firstItem="PlY-Ej-rse" firstAttribute="centerX" secondItem="r3H-84-NSI" secondAttribute="centerX" id="Jjs-lx-RDZ"/>
                         <constraint firstAttribute="bottom" secondItem="PlY-Ej-rse" secondAttribute="bottom" id="Jr4-pe-AUo"/>
@@ -66,7 +65,4 @@
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="save" width="19" height="22"/>
-    </resources>
 </document>

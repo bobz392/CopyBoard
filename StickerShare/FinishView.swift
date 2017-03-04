@@ -25,10 +25,11 @@ class FinishView: UIView {
         self.finishLabel.textColor = AppColors.cloud
         self.titleImage.image = Icons.save.iconImage()
         self.titleImage.tintColor = AppColors.faveButton
+        
         self.shadowView.alpha = 0
         self.contentView.transform = CGAffineTransform(scaleX: 0, y: 0)
         self.finishLabel.isHidden = true
-        self.finishLabel.text = "added"//Localized("shareCreated")
+        self.finishLabel.text = Localized("saved")
     }
     
     func addToWindow(window: UIWindow, finishBlock: @escaping () -> Void) {
