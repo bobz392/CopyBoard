@@ -76,14 +76,14 @@ class ShareViewController: SLComposeServiceViewController {
                 note.modificationDevice = UIDevice.current.name
                 note.uuid = UUIDGenerator.getUUID()
                 DBManager.shared.writeObject(note)
-                
+//
                 finishView.addToWindow(window: window, finishBlock: {  [unowned self] in
-                    self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+                    self.extensionContext!.cancelRequest(withError: NSError() as Error)
                 })
             }
          
         } else {
-            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+            self.extensionContext!.cancelRequest(withError: NSError() as Error)
         }
         
     }
