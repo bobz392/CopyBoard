@@ -6,7 +6,7 @@
 //  Copyright © 2017年 zhoubo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 func Localized(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
@@ -41,7 +41,6 @@ extension String {
             let pattern = "\(q)"
             let regular = try! NSRegularExpression(pattern: pattern, options:.caseInsensitive   )
             let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.characters.count))
-            Logger.log("\(results.count) match use \(query)")
             for result in results {
                 attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: result.range)
             }

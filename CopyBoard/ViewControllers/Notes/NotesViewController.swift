@@ -48,10 +48,10 @@ class NotesViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
-        #if debug
-            Note.noteTestData()
-        #endif
-        
+//        #if debug
+//            Note.noteTestData()
+//        #endif
+            
         if #available(iOS 9.0, *) {
             self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
                 return self.noteView.collectionView

@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !AppSettings.shared.appSetup {
             CloudKitManager.shared.asyncFromCloud()
+            AppSettings.shared.keyboardFilterColor = [0, 1, 2, 3, 4, 5]
             AppSettings.shared.appSetup = true
         } else {
             CloudKitManager.shared.syncOfflineDataFromCloud()
@@ -45,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
     }
     
