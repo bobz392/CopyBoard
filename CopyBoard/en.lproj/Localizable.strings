@@ -1,5 +1,4 @@
 "sticker"="STICKER";
-"emptyNotes"="No Stickers";
 "infomation"="INFORMATION";
 "modificationDate"="Modification date";
 "modificationDevice"="LAST EDITING DEVICE";
@@ -52,7 +51,7 @@
 "doGuild3"="GOT IT";
 
 // default note
-"defaultNote1"="Welcome to STICKER. Here are some help stickers.";
+"defaultNote1"="Welcome to STICKER. Here are some tip stickers.";
 "defaultNote2"="In the application navigation bar on the left button to enter the settings interface, the right button is to start the search. \nSwipe stickers to the left to delete it and tap the star to star or unstar one sticker. The left top label of a sticker shows the creation date by default, you can change it to modification date from settings screen.\n You can Create a sticker by pull down list.";
 "defaultNote3"="We will never collect your privacy data or sticker content. Only stored data in your private icloud account and will sync any of your changes to your multiple devices.\nKeyboard only displays 5 data and ignore the color by default, if you open the full access you can access all the stickers.\nGo to the settings screen and click the \"Use keyboard\" button to guide you through the settings.";
 "defaultNote4"="Click on a sticker to enter and modify it, the top buttons from left to right followed by: return to the previous, infomation menu, modify the color and modify the star button. \nDrop down sticker can quickly return to the previous screen. ";

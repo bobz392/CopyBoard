@@ -22,6 +22,8 @@ class NoteView {
     let searchButton = UIButton(type: .custom)
     let settingButton = UIButton(type: .custom)
     
+    let emptyCreateButton = UIButton(type: .system)
+    
     var collectionView: UICollectionView!
     let emptyNoteView = UIView()
     let searchNoResultBgView = UIView()
@@ -204,7 +206,7 @@ extension NoteView {
         let emptyImageView = UIImageView()
         emptyImageView.image = UIImage(named: "empty")
         emptyImageView.contentMode = .scaleAspectFill
-        let width: CGFloat = UIScreen.main.bounds.width * 0.33
+        let width: CGFloat = (min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)) * 0.33
         let height = width * 1.2
         self.emptyNoteView.addSubview(emptyImageView)
         emptyImageView.snp.makeConstraints { (make) in
@@ -214,15 +216,14 @@ extension NoteView {
             make.centerY.equalToSuperview()
         }
         
-        let label = UILabel()
-        label.textColor = AppColors.emptyText
-        self.emptyNoteView.addSubview(label)
-        label.snp.makeConstraints { (make) in
+        self.emptyCreateButton.setTitle(Localized("create"), for: .normal)
+        self.emptyCreateButton.setTitleColor(AppColors.faveButton, for: .normal)
+        self.emptyNoteView.addSubview(emptyCreateButton)
+        self.emptyCreateButton.snp.makeConstraints { (make) in
             make.top.equalTo(emptyImageView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
-        label.font = appFont(size: emptyNotesFont(), weight: UIFontWeightMedium)
-        label.text = Localized("emptyNotes")
+        self.emptyCreateButton.titleLabel?.font = appFont(size: emptyNotesFont(), weight: UIFontWeightMedium)
     }
     
     fileprivate func emptyNotesFont() -> CGFloat {

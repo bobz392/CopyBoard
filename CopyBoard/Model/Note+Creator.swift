@@ -21,27 +21,32 @@ extension Note {
     }
     
     class func createDefaultDBNote() {
-        let note1 = Note()
-        note1.noteCreator(content: Localized("defaultNote1"), createdAt: Date())
-        note1.color = 0
-        
-        let note2 = Note()
-        note2.noteCreator(content: Localized("defaultNote2"), createdAt: Date())
-        note2.color = 0
-        
-        let note3 = Note()
-        note3.noteCreator(content: Localized("defaultNote3"), createdAt: Date())
-        note3.color = 0
+        let note5 = Note()
+        note5.noteCreator(content: Localized("defaultNote5"), createdAt: Date())
+        note5.color = 0
+        note5.updateCloud = true
         
         let note4 = Note()
         note4.noteCreator(content: Localized("defaultNote4"), createdAt: Date())
         note4.color = 0
+        note4.updateCloud = true
         
-        let note5 = Note()
-        note5.noteCreator(content: Localized("defaultNote5"), createdAt: Date())
-        note5.color = 0
+        let note3 = Note()
+        note3.noteCreator(content: Localized("defaultNote3"), createdAt: Date())
+        note3.color = 0
+        note3.updateCloud = true
         
-        let notes = [note1, note2, note3, note4, note5]
+        let note2 = Note()
+        note2.noteCreator(content: Localized("defaultNote2"), createdAt: Date())
+        note2.color = 0
+        note2.updateCloud = true
+        
+        let note1 = Note()
+        note1.noteCreator(content: Localized("defaultNote1"), createdAt: Date())
+        note1.color = 0
+        note1.updateCloud = true
+        
+        let notes = [note5, note4, note3, note2, note1]
         DBManager.shared.writeObjects(notify: true , objects: notes)
     }
     

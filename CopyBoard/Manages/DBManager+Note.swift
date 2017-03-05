@@ -39,7 +39,7 @@ extension DBManager {
     func queryNotes(contain: String? = nil) -> Results<Note> {
         let sortKey = AppSettings.shared.sortKey()
         let ascending = AppSettings.shared.sortNewestLast
-        let queryAll = self.r.objects(Note.self).filter("deleteCloud = false")
+        let queryAll = self.r.objects(Note.self).filter("isDelete = false")
         if let contain = contain {
             let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
             return queryAll.filter(query)
@@ -50,7 +50,12 @@ extension DBManager {
     }
     
     func queryRetryNotes() -> Results<Note> {
-        return self.r.objects(Note.self).filter("deleteCloud = true OR updateCloud = false")
+        return self.r.objects(Note.self).filter("updateCloud = false")
+    }
+    
+    func queryCheckRemoteNotes() -> Results<Note> {
+        let predicate = NSPredicate(format: "modificationDate > %@", AppSettings.shared.lastSync as NSDate)
+        return self.r.objects(Note.self).filter(predicate)
     }
     
     func updateNote(notify: Bool = true, note: Note, updateBlock: @escaping () -> Void) {
@@ -72,9 +77,9 @@ extension DBManager {
     
     func deleteNote(note: Note) {
         self.updateObject {
-            note.deleteCloud = true
+            note.isDelete = true
         }
         Logger.log("prepar delete note = \(note)")
-        CloudKitManager.shared.delete(note: note)
+        CloudKitManager.shared.update(note: note)
     }
 }

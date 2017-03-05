@@ -14,7 +14,7 @@ extension DBManager {
     func keyboardQueryNotes() -> Results<Note> {
         let settings = AppSettings.shared
         let sortKey = settings.sortKey()
-        var all = self.r.objects(Note.self).filter("deleteCloud = false")
+        var all = self.r.objects(Note.self).filter("isDelete = false")
         if settings.keyboardFilterStar != 0 {
             all = all.filter("favourite = \(settings.keyboardFilterStar == 1 ? true : false)")
         }

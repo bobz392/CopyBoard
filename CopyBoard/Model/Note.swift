@@ -18,7 +18,7 @@ class Note: Object {
     dynamic var color: Int = 0
     dynamic var favourite: Bool = false
     // false 代表不需要删除
-    dynamic var deleteCloud: Bool = false
+    dynamic var isDelete: Bool = false
     // false 代表需要同步，反之则不需要
     dynamic var updateCloud: Bool = false
     

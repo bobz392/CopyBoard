@@ -41,6 +41,7 @@ class NotesViewController: BaseViewController {
         
         self.noteView.searchButton.addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
         self.noteView.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
+        self.noteView.emptyCreateButton.addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
             weakSelf.endSearchAction()
             }.addDisposableTo(viewModel.disposeBag)

@@ -14,31 +14,30 @@ class CloudKitManager: NSObject {
     
     static let shared = CloudKitManager()
     
-    func delete(note: Note) {
-        let deleteRecordID = CKRecordID(recordName: note.uuid)
-        
-        self.enable {
-            let privateDatabase = CKContainer.default().privateCloudDatabase
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            privateDatabase.fetch(withRecordID: deleteRecordID) { (record, error) in
-                if let _ = record {
-                    privateDatabase.delete(withRecordID: deleteRecordID, completionHandler: { (recordID, error) in
-                        if error == nil {
-                            dispatch_async_main {
-                                DBManager.shared.deleteObject(note)
-                                AppSettings.shared.lastSync = Date()
-                            }
-                            Logger.log("delete note success")
-                        } else {
-                            Logger.log("delete note failed")
-                        }
-                        
-                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    })
-                }
-            }
-        }
-    }
+//    func delete(note: Note) {
+//        let deleteRecordID = CKRecordID(recordName: note.uuid)
+//        
+//        self.enable {
+//            let privateDatabase = CKContainer.default().privateCloudDatabase
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//            privateDatabase.fetch(withRecordID: deleteRecordID) { (record, error) in
+//                if let _ = record {
+//                    privateDatabase.delete(withRecordID: deleteRecordID, completionHandler: { (recordID, error) in
+//                        if error == nil {
+//                            dispatch_async_main {
+//                                AppSettings.shared.lastSync = Date()
+//                            }
+//                            Logger.log("delete note success")
+//                        } else {
+//                            Logger.log("delete note failed")
+//                        }
+//                        
+//                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//                    })
+//                }
+//            }
+//        }
+//    }
     
     func update(note: Note) {
         let recordId = CKRecordID(recordName: note.uuid)
@@ -99,12 +98,11 @@ class CloudKitManager: NSObject {
                         if let syncNote = self.configToNoteBy(record: record) {
                             realm.beginWrite()
                             if let note = allNotes.filter("uuid = '\(record.recordID.recordName)'").first {
-//                                if note.modificationDate?.isBefore(date: <#T##Date#>, granularity: Calendar.Component.calendar) {
-//                                }
                                 note.modificationDate = syncNote.modificationDate
                                 note.color = syncNote.color
                                 note.favourite = syncNote.favourite
                                 note.modificationDevice = syncNote.modificationDevice
+                                note.isDelete = syncNote.isDelete
                                 note.content = syncNote.content
                                 note.updateCloud = true
                             } else {
@@ -126,19 +124,14 @@ class CloudKitManager: NSObject {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             })
             
-            
         }
     }
-    
+
     fileprivate func retry() {
         let waitDeleteNotes = DBManager.shared.queryRetryNotes()
         Logger.log("wait update Notes = \(waitDeleteNotes)")
         
         for n in waitDeleteNotes {
-            if n.deleteCloud == true {
-                self.delete(note: n)
-            }
-            
             if n.updateCloud == false {
                 self.update(note: n)
             }
@@ -185,6 +178,7 @@ class CloudKitManager: NSObject {
                 }
             }
             
+            AppSettings.shared.appSetup = true
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
@@ -194,6 +188,7 @@ class CloudKitManager: NSObject {
             let modificationDevice = record["modifiedByDevice"] as? String,
             let modificationDate = record["modificationAt"] as? Date,
             let favourite = (record["favourite"] as? NSNumber)?.boolValue,
+            let isDelete = (record["isDelete"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
             let createdAt = record["createdAt"] as? Date {
             
@@ -204,6 +199,7 @@ class CloudKitManager: NSObject {
             note.favourite = favourite
             note.color = color
             note.modificationDevice = modificationDevice
+            note.isDelete = isDelete
             note.createdAt = createdAt
             note.updateCloud = true
             
@@ -220,6 +216,7 @@ class CloudKitManager: NSObject {
         record["favourite"] = NSNumber(booleanLiteral: note.favourite)
         record["color"] = NSNumber(integerLiteral: note.color)
         record["createdAt"] = note.createdAt as NSDate?
+        record["isDelete"] = NSNumber(booleanLiteral: note.isDelete)
     }
     
     fileprivate func updateNoteFromRemote(record: CKRecord, reason: CKQueryNotificationReason) {
@@ -228,6 +225,7 @@ class CloudKitManager: NSObject {
             let modificationDate = record["modificationAt"] as? Date,
             let favourite = (record["favourite"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
+            let isDelete = (record["isDelete"] as? NSNumber)?.boolValue,
             let createdAt = record["createdAt"] as? Date else {
                 Logger.log("update note from icloud but format not correct")
                 return
@@ -253,6 +251,7 @@ class CloudKitManager: NSObject {
                     note.color = color
                     note.createdAt = createdAt
                     note.favourite = favourite
+                    note.isDelete = isDelete
                 }
             }
         }
@@ -293,11 +292,14 @@ class CloudKitManager: NSObject {
                         UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     })
                     
-                case .recordDeleted:
-                    if let note = DBManager.shared.querySpecificNoteBy(uuid: recordID.recordName) {
-                        DBManager.shared.deleteObject(note)
-                        AppSettings.shared.lastSync = Date()
-                    }
+//                case .recordDeleted:
+//                    if let note = DBManager.shared.querySpecificNoteBy(uuid: recordID.recordName) {
+//                        DBManager.shared.deleteObject(note)
+//                        AppSettings.shared.lastSync = Date()
+//                    }
+                    
+                default:
+                    return
                 }
             }
         }
