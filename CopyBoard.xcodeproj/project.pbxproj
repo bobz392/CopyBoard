@@ -163,8 +163,6 @@
 		C774F7E81E6B6DD80081C5E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
 		C774F7E91E6B6DDF0081C5E0 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
 		C774F7EC1E6B6E150081C5E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C774F7EE1E6B6E150081C5E0 /* InfoPlist.strings */; };
-		C774F7F01E6B73040081C5E0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4841E6A128000815326 /* Realm.framework */; };
-		C774F7F11E6B73040081C5E0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4861E6A128000815326 /* RealmSwift.framework */; };
 		C774F7F21E6B73160081C5E0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74568B71E2D34D700E7C776 /* DBManager.swift */; };
 		C774F7F31E6B73520081C5E0 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C774F7F41E6B73750081C5E0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B8DEF1E356387006896FA /* Logger.swift */; };
@@ -174,8 +172,8 @@
 		C774F81B1E6D4E5C0081C5E0 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4851E6A128000815326 /* Realm.framework.dSYM */; };
 		C774F81C1E6D4E5C0081C5E0 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4871E6A128000815326 /* RealmSwift.framework.dSYM */; };
 		C774F81E1E6D4E980081C5E0 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4931E6A128000815326 /* SnapKit.framework.dSYM */; };
-		C774F8211E6D4EEA0081C5E0 /* Realm.framework in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4841E6A128000815326 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C774F8221E6D4EEA0081C5E0 /* RealmSwift.framework in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4861E6A128000815326 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C774F8231E6D50770081C5E0 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4851E6A128000815326 /* Realm.framework.dSYM */; };
+		C774F8241E6D50770081C5E0 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4871E6A128000815326 /* RealmSwift.framework.dSYM */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -214,9 +212,6 @@
 		C7F923361E6B4F3100700F86 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF48A1E6A128000815326 /* RxCocoa.framework */; };
 		C7F923371E6B4F3100700F86 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF48E1E6A128000815326 /* RxSwift.framework */; };
 		C7F923381E6B4F3100700F86 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4921E6A128000815326 /* SnapKit.framework */; };
-		C7F923391E6B4F4800700F86 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4841E6A128000815326 /* Realm.framework */; };
-		C7F9233A1E6B4F4800700F86 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4861E6A128000815326 /* RealmSwift.framework */; };
-		C7F9233B1E6B4F4800700F86 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FF4921E6A128000815326 /* SnapKit.framework */; };
 		D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D001F7356D0DC91262059 /* CircleMenu.swift */; };
 		D61D044D82A90AB327C1EE7A /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0D729FFAFD936A68FEAB /* CircleMenuButton.swift */; };
 		D61D0D6BD09A00FEAEDCBB68 /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D0BB45FE690E104D6F690 /* CircleMenuLoader.swift */; };
@@ -293,8 +288,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				C774F8211E6D4EEA0081C5E0 /* Realm.framework in Copy Carthage dSYMs */,
-				C774F8221E6D4EEA0081C5E0 /* RealmSwift.framework in Copy Carthage dSYMs */,
+				C774F8231E6D50770081C5E0 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C774F8241E6D50770081C5E0 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,9 +522,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7F923391E6B4F4800700F86 /* Realm.framework in Frameworks */,
-				C7F9233A1E6B4F4800700F86 /* RealmSwift.framework in Frameworks */,
-				C7F9233B1E6B4F4800700F86 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,8 +536,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C774F7F01E6B73040081C5E0 /* Realm.framework in Frameworks */,
-				C774F7F11E6B73040081C5E0 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,8 +1095,8 @@
 				C774F7E21E6B63E70081C5E0 /* Set the build number to the count of Git commits */,
 				C774F7CE1E6B637F0081C5E0 /* Frameworks */,
 				C774F7CF1E6B637F0081C5E0 /* Resources */,
-				C774F8201E6D4EA60081C5E0 /* Copy Carthage dSYMs */,
 				C774F81F1E6D4EA40081C5E0 /* Copy Carthage Frameworks */,
+				C774F8201E6D4EA60081C5E0 /* Copy Carthage dSYMs */,
 				C774F7E01E6B63D50081C5E0 /* Set the build number to "DEVELOPMENT" */,
 			);
 			buildRules = (
