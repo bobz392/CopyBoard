@@ -71,7 +71,6 @@
 		C71FF4B71E6A128000815326 /* F7BE8380-2112-3873-AD92-A218F84C1C69.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C71FF4811E6A128000815326 /* F7BE8380-2112-3873-AD92-A218F84C1C69.bcsymbolmap */; };
 		C71FF4B81E6A128000815326 /* F9C3939A-FFDC-34A8-823E-DA52DC4C668E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C71FF4821E6A128000815326 /* F9C3939A-FFDC-34A8-823E-DA52DC4C668E.bcsymbolmap */; };
 		C71FF4B91E6A128000815326 /* FCF0A4C2-2BC0-3F29-BDA0-5077E8D4ADCC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C71FF4831E6A128000815326 /* FCF0A4C2-2BC0-3F29-BDA0-5077E8D4ADCC.bcsymbolmap */; };
-		C71FF4D01E6A135E00815326 /* Compass.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF47B1E6A128000815326 /* Compass.framework.dSYM */; };
 		C71FF4D11E6A135E00815326 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4851E6A128000815326 /* Realm.framework.dSYM */; };
 		C71FF4D21E6A135E00815326 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4871E6A128000815326 /* RealmSwift.framework.dSYM */; };
 		C71FF4D31E6A135E00815326 /* RxCocoa.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF48B1E6A128000815326 /* RxCocoa.framework.dSYM */; };
@@ -261,7 +260,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				C71FF4D01E6A135E00815326 /* Compass.framework.dSYM in Copy Carthage dSYMs */,
 				C71FF4D11E6A135E00815326 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
 				C71FF4D21E6A135E00815326 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C71FF4D31E6A135E00815326 /* RxCocoa.framework.dSYM in Copy Carthage dSYMs */,
@@ -325,8 +323,6 @@
 		C71FF4771E6A128000815326 /* B76A7D0E-A44E-3091-9739-A0F229B9ECEE.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B76A7D0E-A44E-3091-9739-A0F229B9ECEE.bcsymbolmap"; sourceTree = "<group>"; };
 		C71FF4781E6A128000815326 /* C6D46306-99B6-3124-B240-5CB364ADE8AF.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C6D46306-99B6-3124-B240-5CB364ADE8AF.bcsymbolmap"; sourceTree = "<group>"; };
 		C71FF4791E6A128000815326 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap"; sourceTree = "<group>"; };
-		C71FF47A1E6A128000815326 /* Compass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Compass.framework; sourceTree = "<group>"; };
-		C71FF47B1E6A128000815326 /* Compass.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Compass.framework.dSYM; sourceTree = "<group>"; };
 		C71FF47C1E6A128000815326 /* E97F97F7-FAC3-37F8-ACC1-70137A753F29.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E97F97F7-FAC3-37F8-ACC1-70137A753F29.bcsymbolmap"; sourceTree = "<group>"; };
 		C71FF47D1E6A128000815326 /* ECFCA431-272B-319E-B744-22183A1B8EB2.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ECFCA431-272B-319E-B744-22183A1B8EB2.bcsymbolmap"; sourceTree = "<group>"; };
 		C71FF47E1E6A128000815326 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap"; sourceTree = "<group>"; };
@@ -601,8 +597,6 @@
 				C71FF4771E6A128000815326 /* B76A7D0E-A44E-3091-9739-A0F229B9ECEE.bcsymbolmap */,
 				C71FF4781E6A128000815326 /* C6D46306-99B6-3124-B240-5CB364ADE8AF.bcsymbolmap */,
 				C71FF4791E6A128000815326 /* C7074535-9F18-362D-AC26-125AE51066BC.bcsymbolmap */,
-				C71FF47A1E6A128000815326 /* Compass.framework */,
-				C71FF47B1E6A128000815326 /* Compass.framework.dSYM */,
 				C71FF47C1E6A128000815326 /* E97F97F7-FAC3-37F8-ACC1-70137A753F29.bcsymbolmap */,
 				C71FF47D1E6A128000815326 /* ECFCA431-272B-319E-B744-22183A1B8EB2.bcsymbolmap */,
 				C71FF47E1E6A128000815326 /* EFD1ABB4-79BF-3B43-B94A-99F333A195E9.bcsymbolmap */,
@@ -1313,7 +1307,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Compass.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
