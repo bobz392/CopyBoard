@@ -171,6 +171,11 @@
 		C774F7F51E6B73830081C5E0 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
 		C774F7F61E6B77630081C5E0 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
 		C774F8091E6B86530081C5E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
+		C774F81B1E6D4E5C0081C5E0 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4851E6A128000815326 /* Realm.framework.dSYM */; };
+		C774F81C1E6D4E5C0081C5E0 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4871E6A128000815326 /* RealmSwift.framework.dSYM */; };
+		C774F81E1E6D4E980081C5E0 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4931E6A128000815326 /* SnapKit.framework.dSYM */; };
+		C774F8211E6D4EEA0081C5E0 /* Realm.framework in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4841E6A128000815326 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C774F8221E6D4EEA0081C5E0 /* RealmSwift.framework in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C71FF4861E6A128000815326 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -265,6 +270,31 @@
 				C71FF4D31E6A135E00815326 /* RxCocoa.framework.dSYM in Copy Carthage dSYMs */,
 				C71FF4D41E6A135E00815326 /* RxSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C71FF4D51E6A135E00815326 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+			);
+			name = "Copy Carthage dSYMs";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C774F81A1E6D4E490081C5E0 /* Copy Carthage dSYMs */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C774F81E1E6D4E980081C5E0 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+				C774F81B1E6D4E5C0081C5E0 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C774F81C1E6D4E5C0081C5E0 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
+			);
+			name = "Copy Carthage dSYMs";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C774F8201E6D4EA60081C5E0 /* Copy Carthage dSYMs */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C774F8211E6D4EEA0081C5E0 /* Realm.framework in Copy Carthage dSYMs */,
+				C774F8221E6D4EEA0081C5E0 /* RealmSwift.framework in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1036,6 +1066,8 @@
 				C7403E371E269D140067229E /* Sources */,
 				C7403E381E269D140067229E /* Frameworks */,
 				C7403E391E269D140067229E /* Resources */,
+				C774F81A1E6D4E490081C5E0 /* Copy Carthage dSYMs */,
+				C774F81D1E6D4E610081C5E0 /* Copy Carthage Frameworks */,
 				C7655AE01E33BDA400A1CB9F /* Set the build number to "DEVELOPMENT" */,
 			);
 			buildRules = (
@@ -1073,6 +1105,8 @@
 				C774F7E21E6B63E70081C5E0 /* Set the build number to the count of Git commits */,
 				C774F7CE1E6B637F0081C5E0 /* Frameworks */,
 				C774F7CF1E6B637F0081C5E0 /* Resources */,
+				C774F8201E6D4EA60081C5E0 /* Copy Carthage dSYMs */,
+				C774F81F1E6D4EA40081C5E0 /* Copy Carthage Frameworks */,
 				C774F7E01E6B63D50081C5E0 /* Set the build number to "DEVELOPMENT" */,
 			);
 			buildRules = (
@@ -1370,6 +1404,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		C774F81D1E6D4E610081C5E0 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		C774F81F1E6D4EA40081C5E0 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
