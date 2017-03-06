@@ -23,6 +23,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var faveButton: FaveButton!
+//    @IBOutlet weak var syncButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var noteDateLabel: UILabel!
     
@@ -37,6 +38,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
+
+//        self.syncButton.setImage(Icons.sync.iconImage(), for: .normal)
+//        self.syncButton.tintColor = UIColor.white
+//        self.syncButton.addTarget(self, action: #selector(self.syncAction), for: .touchUpInside)
+        
         self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
@@ -108,6 +114,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
         guard let cv = NoteCollectionViewInputOverlay.cacheCollectionView,
             let index = cv.indexPath(for: self) else { return }
         self.curl(index: index)
+    }
+    
+    func syncAction() {
+        
     }
     
     func deleteAction() {

@@ -30,6 +30,7 @@ enum Icons {
     case space
     case save
     case create
+    case sync
     
     func iconString() -> String {
         switch self {
@@ -52,6 +53,7 @@ enum Icons {
         case .space: return "space"
         case .save: return "save"
         case .create: return "create"
+        case .sync: return "sync"
         }
     }
     
