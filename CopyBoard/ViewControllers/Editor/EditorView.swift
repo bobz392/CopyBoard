@@ -48,7 +48,6 @@ class EditorView {
             self.editorTextView.dg_setPullToRefreshBackgroundColor(pairColor.light)
             self.barView.backgroundColor = pairColor.dark
             view.backgroundColor = pairColor.light
-            self.keyboardBarView.backgroundColor = pairColor.dark
         }
         
         self.faveButton.isSelected = note.favourite
@@ -119,11 +118,13 @@ class EditorView {
             maker.bottom.equalTo(self.editorTextView)
             maker.right.equalToSuperview()
         }
+        self.keyboardBarView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         self.keyboardBarView.alpha = 0
         
-        let hideKeyboardButton = TouchButton(type: .system)
+        let hideKeyboardButton = TouchButton(type: .custom)
         hideKeyboardButton.setImage(Icons.hideKeyboard.iconImage(), for: .normal)
         hideKeyboardButton.config()
+        hideKeyboardButton.bgClear()
         hideKeyboardButton.addTarget(self, action: #selector(self.dismissKeyboard), for: .touchUpInside)
         self.keyboardBarView.addSubview(hideKeyboardButton)
         hideKeyboardButton.snp.makeConstraints { maker in
