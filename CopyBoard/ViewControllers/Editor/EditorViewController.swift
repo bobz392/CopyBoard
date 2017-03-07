@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class EditorViewController: BaseViewController {
-
+    
     let editorView = EditorView()
     
     fileprivate let note: Note
@@ -35,44 +35,47 @@ class EditorViewController: BaseViewController {
         self.isCreate = true
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let weakSelf = self
         self.editorView.config(with: self.view,note: note) {
             weakSelf.dismiss(animated: true, completion: { (finish) -> Void in })
             weakSelf.updateNoteIfNeed()
         }
-
+        
         self.editorView.editorTextView.delegate = self
         self.editorView.faveButton.rx.tap.subscribe { (event) in
-                    DBManager.shared.updateNote(note: weakSelf.note, updateBlock: { 
-                       weakSelf.note.favourite = !weakSelf.note.favourite
-                    })
-            
-                }.addDisposableTo(self.disposeBag)
-
+            if weakSelf.isCreate {
+                weakSelf.note.favourite = !weakSelf.note.favourite
+            } else {
+                DBManager.shared.updateNote(note: weakSelf.note, updateBlock: {
+                    weakSelf.note.favourite = !weakSelf.note.favourite
+                })
+            }
+            }.addDisposableTo(self.disposeBag)
+        
         self.editorView.colorButton.rx.tap.subscribe { (event) in
-                weakSelf.editorView.changeColor(start: true)
-                }.addDisposableTo(self.disposeBag)
-
+            weakSelf.editorView.changeColor(start: true)
+            }.addDisposableTo(self.disposeBag)
+        
         self.editorView.closeButton.rx.tap.subscribe { (event) in
             weakSelf.dismissAction()
-        }.addDisposableTo(self.disposeBag)
-
+            }.addDisposableTo(self.disposeBag)
+        
         self.editorView.infoButton.rx.tap.subscribe { (event) in
             guard let menuVC = SideMenuManager.menuRightNavigationController else { return }
             weakSelf.present(menuVC, animated: true, completion: nil)
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
         
         self.editorView.colorMenu.delegate = self
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.editorView.editorKeyboardHandle(add: false)
@@ -111,7 +114,7 @@ class EditorViewController: BaseViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -123,7 +126,7 @@ class EditorViewController: BaseViewController {
 
 // MARK: orientation
 extension EditorViewController {
-   
+    
     override func deviceOrientationChanged() {
         self.editorView.invalidateLayout()
         SideMenuManager.menuRightNavigationController?.dismiss(animated: true, completion: nil)
@@ -133,7 +136,7 @@ extension EditorViewController {
 
 // MARK: - text view delegate
 extension EditorViewController: UITextViewDelegate {
-
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         self.noteChanged = true
         if textView.text.characters.count == 0 {
@@ -169,10 +172,13 @@ extension EditorViewController: CircleMenuDelegate {
             let weakSelf = self
             weakSelf.editorView.changeColor(pair: pc)
             weakSelf.view.backgroundColor = pc.pairColor().light
-            DBManager.shared.updateNote(note: weakSelf.note, updateBlock: { 
+            if !self.isCreate {
+                DBManager.shared.updateNote(note: weakSelf.note, updateBlock: {
+                    weakSelf.note.color = pc.rawValue
+                })
+            } else {
                 weakSelf.note.color = pc.rawValue
-            })
-            
+            }
             weakSelf.currentPairColor = nil
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import GoogleMobileAds
 
 class NotesViewController: BaseViewController {
     
@@ -17,6 +18,7 @@ class NotesViewController: BaseViewController {
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
     var transitionType = TransitionType.present
+//    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,8 @@ class NotesViewController: BaseViewController {
         self.noteView.configCollectionView(view: self.view, delegate: self) { 
             weakSelf.createAction()
         }
+        
+//        interstitial = self.createAndLoadInterstitial()
         
         let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
@@ -134,6 +138,30 @@ class NotesViewController: BaseViewController {
     }
     
 }
+
+//extension NotesViewController: GADInterstitialDelegate {
+//    
+//    fileprivate func createAndLoadInterstitial() -> GADInterstitial {
+//        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6224932916922519/2658320385")
+//        interstitial.delegate = self
+//        let requset = GADRequest()
+//        interstitial.load(requset)
+//        return interstitial
+//    }
+//    
+//    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+//        self.interstitial = self.createAndLoadInterstitial()
+//    }
+//    
+//    func interstitialDidFail(toPresentScreen ad: GADInterstitial) {
+//        Logger.log("interstitialDidFail = \(ad)")
+//    }
+//    
+//    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+//        Logger.log("didFailToReceiveAd = \(ad). WithError = \(error)")
+//    }
+//    
+//}
 
 // MARK: - realm notification data source
 extension NotesViewController: RealmNotificationDataSource {
