@@ -303,7 +303,6 @@ class KeyboardView: UIView {
             })
             UIView.animate(withDuration: 0.25, animations: { //[unowned self] in
                 rv.layoutIfNeeded()
-                //                    self.collectionView.alpha = setShow ? 0 : 1
             })
         }
     }

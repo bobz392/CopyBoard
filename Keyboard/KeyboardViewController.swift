@@ -126,6 +126,11 @@ class KeyboardViewController: UIInputViewController {
     
     func numberAction() {
         self.keyboardView.showNumber = !self.keyboardView.showNumber
+        if self.keyboardView.showNumber {
+            self.keyboardView.numberButton.setImage(Icons.text.iconImage(), for: .normal)
+        } else {
+            self.keyboardView.numberButton.setImage(Icons.number.iconImage(), for: .normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
