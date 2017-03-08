@@ -8,16 +8,36 @@
 
 import UIKit
 
-class KeyboardCollectionViewCell: UICollectionViewCell {
+class KeyboardCollectionViewCell: UICollectionViewCell, CollectionCellHighlight {
 
     static let nib = UINib(nibName: "KeyboardCollectionViewCell", bundle: nil)
     static let reuseId = "keyboardCollectionViewCell"
     
     @IBOutlet weak var noteLabel: UILabel!
     
+    fileprivate var cacheColor: UIColor? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func highlight() {
+        self.cacheColor = self.backgroundColor
+        self.backgroundColor = AppColors.cellSelected
+       
+    }
 
+    func unhighlight() {
+        UIView.animate(withDuration: 0.4, animations: { [unowned self] in
+            self.backgroundColor = self.cacheColor
+        })
+    }
+    
+}
+
+
+protocol CollectionCellHighlight {
+    func highlight()
+    func unhighlight()
 }

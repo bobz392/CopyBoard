@@ -8,12 +8,13 @@
 
 import UIKit
 
-class NumberCollectionViewCell: UICollectionViewCell {
+class NumberCollectionViewCell: UICollectionViewCell, CollectionCellHighlight {
     
     static let nib = UINib(nibName: "NumberCollectionViewCell", bundle: nil)
     static let reuseId = "numberCollectionViewCell"
     
     @IBOutlet weak var numberLabel: UILabel!
+    fileprivate var cacheColor: UIColor? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +22,16 @@ class NumberCollectionViewCell: UICollectionViewCell {
         self.numberLabel.font = appFont(size: 20, weight: UIFontWeightMedium)
         self.backgroundColor = AppColors.keyboard
     }
-
+    
+    func highlight() {
+        self.cacheColor = self.backgroundColor
+        self.backgroundColor = AppColors.cellSelected
+        
+    }
+    
+    func unhighlight() {
+        UIView.animate(withDuration: 0.4, animations: { [unowned self] in
+            self.backgroundColor = self.cacheColor
+        })
+    }
 }
