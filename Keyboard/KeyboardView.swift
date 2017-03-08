@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kBottomKeyboardToolViewHeight: CGFloat = 40
+
 class KeyboardView: UIView {
     
     var collectionView: UICollectionView!
@@ -19,10 +21,29 @@ class KeyboardView: UIView {
     let launchAppButton = TouchButton(type: .custom)
     let returnButton = TouchButton(type: .custom)
     let spaceButton = TouchButton(type: .custom)
-    let previewButton = UIButton(type: .custom)
+    let numberButton = TouchButton(type: .custom)
     let saveButton = TouchButton(type: .custom)
     
+//    fileprivate var topToolViewIsShow = false
+    fileprivate var _numberCollectionView: UICollectionView?
+    
+    var showNumber: Bool = false {
+        didSet {
+            self.numberCollectionView(setShow: self.showNumber)
+        }
+    }
+    
+    weak var rootView: UIView?
+    
+    var numberCollectionView: UICollectionView {
+        get {
+            return self._numberCollectionView ?? self.createCollectionView()
+        }
+    }
+    
     func config(view: UIView) {
+        self.rootView = view
+        
         let lineView = UIView()
         view.addSubview(lineView)
         lineView.backgroundColor = UIColor.lightGray
@@ -38,12 +59,11 @@ class KeyboardView: UIView {
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
-            maker.height.equalTo(40)
+            maker.height.equalTo(kBottomKeyboardToolViewHeight)
         }
         
         let layout = CHTCollectionViewWaterfallLayout()
         let space = DKManager.shared.itemSpace
-        
         layout.minimumInteritemSpacing = space
         layout.minimumColumnSpacing = space
         layout.columnCount = DKManager.shared.columnCount
@@ -57,7 +77,7 @@ class KeyboardView: UIView {
                                      forCellWithReuseIdentifier: KeyboardCollectionViewCell.reuseId)
         
         view.addSubview(self.collectionView)
-        self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.bgClear()
         self.collectionView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
@@ -106,7 +126,7 @@ class KeyboardView: UIView {
         toolView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-kBottomKeyboardToolViewHeight)
             maker.height.equalTo(36)
         }
         
@@ -119,12 +139,10 @@ class KeyboardView: UIView {
         
         UIView.animate(withDuration: 0.25, animations: { 
             UIView.animate(withDuration: 0.5) {
-//                weakSelf.topToolView?.alpha = 0.6
                 weakSelf.topToolView?.backgroundColor = UIColor(white: 0, alpha: 0.2)
             }
         }) { (finish) in
             UIView.animate(withDuration: 0.5) {
-//                weakSelf.topToolView?.alpha = 1
                 weakSelf.topToolView?.backgroundColor = UIColor(white: 0, alpha: 0.6)
             }
         }
@@ -155,7 +173,7 @@ class KeyboardView: UIView {
             let imageInset: CGFloat = 6
             if isImage {
                 btn.imageEdgeInsets = UIEdgeInsetsMake(imageInset, imageInset, imageInset, imageInset)
-                btn.tintColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
+                btn.tintColor = AppColors.keyboardTint
             }
         }
         
@@ -169,28 +187,25 @@ class KeyboardView: UIView {
         buttonConfigBlock(self.launchAppButton, true)
         self.launchAppButton.setImage(Icons.launch.iconImage(), for: .normal)
         
-        self.bottomToolView.addSubview(self.nextKeyboardButton)
-        self.nextKeyboardButton.snp.makeConstraints { maker in
+        self.bottomToolView.addSubview(self.numberButton)
+        self.numberButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.left.equalTo(self.launchAppButton.snp.right).offset(inset)
             maker.width.equalTo(side)
             maker.height.equalTo(side)
         }
+        buttonConfigBlock(self.numberButton, true)
+        self.numberButton.setImage(Icons.number.iconImage(), for: .normal)
+        
+        self.bottomToolView.addSubview(self.nextKeyboardButton)
+        self.nextKeyboardButton.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.left.equalTo(self.numberButton.snp.right).offset(inset)
+            maker.width.equalTo(side)
+            maker.height.equalTo(side)
+        }
         buttonConfigBlock(self.nextKeyboardButton, true)
         self.nextKeyboardButton.setImage(Icons.globle.iconImage(), for: .normal)
-        
-//        self.bottomToolView.addSubview(self.previewButton)
-//        self.previewButton.snp.makeConstraints { maker in
-//            maker.centerY.equalToSuperview()
-//            maker.left.equalTo(self.nextKeyboardButton.snp.right).offset(inset)
-//            maker.width.equalTo(side)
-//            maker.height.equalTo(side)
-//        }
-//        self.previewButton.adjustsImageWhenHighlighted = false
-//        self.previewButton.backgroundColor = AppColors.keyboard
-//        self.previewButton.layer.cornerRadius = corner
-//        self.previewButton.setImage(Icons.preview.iconImage(), for: .normal)
-//        self.previewButton.tintColor = UIColor.black
         
         self.bottomToolView.addSubview(self.saveButton)
         self.saveButton.snp.makeConstraints { maker in
@@ -231,6 +246,66 @@ class KeyboardView: UIView {
         }
         buttonConfigBlock(self.spaceButton, true)
         self.spaceButton.setImage(Icons.space.iconImage(), for: .normal)
+    }
+    
+    fileprivate func createCollectionView() -> UICollectionView {
+        guard let rv = self.rootView else {
+            fatalError("keyboard root view = nil")
+        }
+        let layout = CHTCollectionViewWaterfallLayout()
+        let space = DKManager.shared.itemSpace
+        layout.minimumInteritemSpacing = space
+        layout.minimumColumnSpacing = space
+        layout.columnCount = 3
+        layout.itemRenderDirection = .leftToRight
+        let inset = space * 0.5
+        layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self.collectionView.delegate
+        collectionView.dataSource = self.collectionView.dataSource
+        collectionView.backgroundColor = UIColor.white
+        rv.addSubview(collectionView)
+        collectionView.register(NumberCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: NumberCollectionViewCell.reuseId)
+        collectionView.snp.makeConstraints { maker in
+            maker.height.equalTo(DKManager.shared.keyboardHeight)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalToSuperview().offset(-DKManager.shared.keyboardHeight)
+        }
+        
+        rv.layoutIfNeeded()
+        self._numberCollectionView = collectionView
+        return collectionView
+    }
+    
+    func configNumberCollectionViewLayout() {
+        if let c = self._numberCollectionView {
+            c.snp.updateConstraints({ maker in
+                maker.height.equalTo(DKManager.shared.keyboardHeight)
+            })
+        }
+    }
+    
+    func numberCollectionItemSize() -> CGSize {
+        let space = DKManager.shared.itemSpace
+        guard let rv = self.rootView else {
+            fatalError("root view = nil")
+        }
+        return CGSize(width: (rv.frame.width - space * 4) / 3, height: (DKManager.shared.keyboardHeight - space * 5) / 4)
+    }
+ 
+    func numberCollectionView(setShow: Bool) {
+        if let rv = self.rootView {
+            self.numberCollectionView.snp.updateConstraints({ maker in
+                maker.top.equalToSuperview().offset(setShow ? 0.5 : -DKManager.shared.keyboardHeight)
+            })
+            UIView.animate(withDuration: 0.25, animations: { //[unowned self] in
+                rv.layoutIfNeeded()
+                //                    self.collectionView.alpha = setShow ? 0 : 1
+            })
+        }
     }
     
 }

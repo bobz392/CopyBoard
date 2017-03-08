@@ -28,7 +28,6 @@
 		C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */; };
 		C71741E11E49E9B500D39597 /* MenuDeviceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */; };
 		C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76996101E369968001E2F86 /* TextManager.swift */; };
-		C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB201E5F6F35003ACF70 /* TokenView.swift */; };
 		C71DEB351E60C15B003ACF70 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB341E60C15B003ACF70 /* CloudKitManager.swift */; };
 		C71DEB381E617176003ACF70 /* DBManager+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */; };
 		C71DEB391E617178003ACF70 /* DBManager+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */; };
@@ -149,6 +148,9 @@
 		C774F8651E6D69A70081C5E0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C774F8341E6D65BE0081C5E0 /* RealmSwift.framework */; };
 		C774F8661E6D69AB0081C5E0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C774F8321E6D65BE0081C5E0 /* Realm.framework */; };
 		C774F8671E6D69AB0081C5E0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C774F8341E6D65BE0081C5E0 /* RealmSwift.framework */; };
+		C774F8751E6FAE010081C5E0 /* KeyboardNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C774F8741E6FAE010081C5E0 /* KeyboardNumberView.xib */; };
+		C774F89A1E6FC0D10081C5E0 /* NumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774F8981E6FC0D10081C5E0 /* NumberCollectionViewCell.swift */; };
+		C774F89B1E6FC0D10081C5E0 /* NumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C774F8991E6FC0D10081C5E0 /* NumberCollectionViewCell.xib */; };
 		C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = C7753D721E352A0900C45A5A /* CGPointAdditions.c */; };
 		C7753D8B1E352A0900C45A5A /* BackFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */; };
 		C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = C7753D761E352A0900C45A5A /* BackPageGradient.png */; };
@@ -261,7 +263,6 @@
 		C71741DC1E49971F00D39597 /* Note+Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Creator.swift"; sourceTree = "<group>"; };
 		C71741DE1E49E9B500D39597 /* MenuDeviceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDeviceTableCell.swift; sourceTree = "<group>"; };
 		C71741DF1E49E9B500D39597 /* MenuDeviceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuDeviceTableCell.xib; sourceTree = "<group>"; };
-		C71DEB201E5F6F35003ACF70 /* TokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
 		C71DEB341E60C15B003ACF70 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C71DEB371E617176003ACF70 /* DBManager+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBManager+Keyboard.swift"; sourceTree = "<group>"; };
 		C71DEB3A1E6171FA003ACF70 /* DBManager+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBManager+Note.swift"; sourceTree = "<group>"; };
@@ -378,6 +379,9 @@
 		C774F83B1E6D65BE0081C5E0 /* RxSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RxSwift.framework.dSYM; sourceTree = "<group>"; };
 		C774F83E1E6D65BE0081C5E0 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		C774F83F1E6D65BE0081C5E0 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C774F8741E6FAE010081C5E0 /* KeyboardNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardNumberView.xib; sourceTree = "<group>"; };
+		C774F8981E6FC0D10081C5E0 /* NumberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		C774F8991E6FC0D10081C5E0 /* NumberCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7753D721E352A0900C45A5A /* CGPointAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointAdditions.c; sourceTree = "<group>"; };
 		C7753D731E352A0900C45A5A /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
 		C7753D751E352A0900C45A5A /* BackFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackFragmentShader.glsl; sourceTree = "<group>"; };
@@ -666,9 +670,11 @@
 				C7403E3D1E269D140067229E /* KeyboardViewController.swift */,
 				C71161071E58DCFF00779A0F /* DKManager.swift */,
 				C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */,
-				C71DEB201E5F6F35003ACF70 /* TokenView.swift */,
+				C774F8741E6FAE010081C5E0 /* KeyboardNumberView.xib */,
 				C71161001E58D42600779A0F /* KeyboardCollectionViewCell.swift */,
 				C71161011E58D42600779A0F /* KeyboardCollectionViewCell.xib */,
+				C774F8981E6FC0D10081C5E0 /* NumberCollectionViewCell.swift */,
+				C774F8991E6FC0D10081C5E0 /* NumberCollectionViewCell.xib */,
 				C71161061E58D54500779A0F /* bridge-header.h */,
 				C7403E3F1E269D140067229E /* Info.plist */,
 				C7F923151E6B3F8200700F86 /* InfoPlist.strings */,
@@ -1134,7 +1140,9 @@
 				C71161031E58D42600779A0F /* KeyboardCollectionViewCell.xib in Resources */,
 				C7F923131E6B3F8200700F86 /* InfoPlist.strings in Resources */,
 				C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */,
+				C774F8751E6FAE010081C5E0 /* KeyboardNumberView.xib in Resources */,
 				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
+				C774F89B1E6FC0D10081C5E0 /* NumberCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,13 +1382,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C76859481E5ABB20003B8C7E /* Icons.swift in Sources */,
+				C774F89A1E6FC0D10081C5E0 /* NumberCollectionViewCell.swift in Sources */,
 				C71161081E58DCFF00779A0F /* DKManager.swift in Sources */,
 				C71DEB1F1E5F6009003ACF70 /* TextManager.swift in Sources */,
 				C71161021E58D42600779A0F /* KeyboardCollectionViewCell.swift in Sources */,
 				C76B8DF11E3563D9006896FA /* Logger.swift in Sources */,
 				C71DEB391E617178003ACF70 /* DBManager+Keyboard.swift in Sources */,
 				C7403E3E1E269D140067229E /* KeyboardViewController.swift in Sources */,
-				C71DEB211E5F6F35003ACF70 /* TokenView.swift in Sources */,
 				C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */,
 				C71160FC1E5652FB00779A0F /* UserDefaultsManager.swift in Sources */,
 				C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */,

@@ -31,6 +31,8 @@ enum Icons {
     case save
     case create
     case sync
+    case number
+    case text
     
     func iconString() -> String {
         switch self {
@@ -54,6 +56,8 @@ enum Icons {
         case .save: return "save"
         case .create: return "create"
         case .sync: return "sync"
+        case .number: return "number"
+        case .text: return "text"
         }
     }
     
