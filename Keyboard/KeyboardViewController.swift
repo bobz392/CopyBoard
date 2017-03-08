@@ -210,7 +210,7 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
                 let font = appFont(size: 16)
                 let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
                 let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
-                let lineCount = AppSettings.shared.realKeyboardLine(line: nil, inKeyboardExtension: true)
+                let lineCount = self.notes == nil ? 4 : AppSettings.shared.realKeyboardLine(line: nil, inKeyboardExtension: true)
                 let height = ceil(font.lineHeight * CGFloat(lineCount)) + 10
                 
                 return CGSize(width: width, height: height)
