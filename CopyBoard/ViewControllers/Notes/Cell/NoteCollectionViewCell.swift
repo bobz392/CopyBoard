@@ -96,9 +96,9 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.madeShadow()
     }
     
-    fileprivate func madeShadow() {
+    func madeShadow(highlight: Bool = false) {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 3
+        self.layer.shadowRadius = highlight ? 10 : 3
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.2
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath

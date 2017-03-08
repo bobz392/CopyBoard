@@ -258,6 +258,22 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             self.present(editorVC, animated: true, completion: nil)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell {
+            UIView.animate(withDuration: 0.4, animations: {
+                cell.madeShadow(highlight: false)
+            })
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell {
+            UIView.animate(withDuration: 0.25, animations: { 
+                cell.madeShadow(highlight: true)
+            })
+        }
+    }
  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
