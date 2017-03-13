@@ -47,6 +47,7 @@ class NotesViewController: BaseViewController {
         self.noteView.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
         self.noteView.emptyCreateButton.addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
+            Logger.log(UIPasteboard.general.string ?? "no")
             weakSelf.endSearchAction()
             }.addDisposableTo(viewModel.disposeBag)
         
@@ -73,7 +74,16 @@ class NotesViewController: BaseViewController {
             })
         }
 
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.changedAction(ntf:)), name: NSNotification.Name.UIPasteboardChanged, object: nil)
     }
+    
+//    func changedAction(ntf: NSNotification) {
+//        Logger.log(ntf)
+//        
+//        Logger.log(ntf.object)
+//        
+//        Logger.log(ntf.userInfo)
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
