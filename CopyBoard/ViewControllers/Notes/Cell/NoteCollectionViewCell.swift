@@ -52,6 +52,9 @@ class NoteCollectionViewCell: UICollectionViewCell {
         guard let pairColor = AppPairColors(rawValue: note.color)?.pairColor() else {
             fatalError("have no this type color")
         }
+        
+        self.note = note
+        
         pairColor.dark.bgColor(to: self.headerView)
         pairColor.light.bgColor(to: self.cardView)
         
@@ -62,9 +65,26 @@ class NoteCollectionViewCell: UICollectionViewCell {
         } else {
             self.noteDateLabel.text = nil
         }
-        self.noteLabel.attributedText = note.content.searchHintString(query: query)
+        self.noteLabel.attributedText =
+            note.content.searchHintString(isTruncated: self.isTruncated(), query: query)
+        self.noteLabel.lineBreakMode = .byTruncatingMiddle
         self.configGesture()
-        self.note = note
+    }
+    
+    private func isTruncated() -> Bool {
+        
+        if let string = self.note?.content {
+            
+            let size: CGSize = (string as NSString).boundingRect(
+                with: CGSize(width: self.frame.size.width, height: CGFloat.greatestFiniteMagnitude),
+                options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                attributes: [NSFontAttributeName: appFont(size: 16)],
+                context: nil).size
+            
+            return (size.height > self.bounds.size.height)
+        }
+        
+        return false
     }
     
     func configGesture() {

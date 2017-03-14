@@ -34,20 +34,34 @@ func currentPreferrenLang() -> String? {
 }
 
 extension String {
-    func searchHintString(query: String? = nil) -> NSAttributedString {
-        let attr = noteAttr()
-        
+    
+    func searchHintString(isTruncated: Bool, query: String? = nil) -> NSAttributedString {
         if let q = query, q.characters.count > 0 {
             let pattern = "\(q)"
-            let regular = try! NSRegularExpression(pattern: pattern, options:.caseInsensitive   )
+            let regular =
+                try! NSRegularExpression(pattern: pattern, options:.anchorsMatchLines)
             let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.characters.count))
+            
+            let str: String
+            var jumpIndex = 0
+            if let location = results.first?.range.location {
+                let index = self.index(self.startIndex, offsetBy: location)
+                str = isTruncated ? "...\(self.substring(from: index))" : self
+                jumpIndex = location - 3
+            } else {
+                str = self
+            }
+            let attr = str.noteAttr()
+            
             for result in results {
-                attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: result.range)
+                let range = jumpIndex == 0 ? result.range :
+                    NSMakeRange(result.range.location - jumpIndex, result.range.length)
+                attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: range)
             }
             
             return attr
         } else {
-            return attr
+            return noteAttr()
         }
     }
     
