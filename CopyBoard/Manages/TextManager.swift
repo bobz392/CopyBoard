@@ -80,33 +80,6 @@ extension String {
         return attr
     }
     
-    
-//    func bounding(size: CGSize, font: UIFont) -> CGSize {
-//        let label = UILabel(frame: CGRect(center: .zero, size: size))
-//        label.numberOfLines = 0
-//        label.attributedText = noteAttr()
-//        label.font = appFont(size: 16)
-//        let size = label.sizeThatFits(size)
-//        
-        
-        
-        
-//        let attr = noteAttr()
-//        let rect = attr.boundingRect(with: size,
-//                                     options: [.usesLineFragmentOrigin],
-//                                     context: nil)
-//
-        //文本的高度减去字体高度小于等于行间距，判断为当前只有1行
-//        if (rect.size.height - font.lineHeight) <= 0 {
-//            if self.containChinese() {
-//                let size = CGSize(width: rect.size.width, height: rect.size.height)
-//                rect = CGRect(origin: rect.origin, size: size)
-//            }
-//        }
-        
-//        return CGSize(width: rect.width, height: appFont(size: 16).lineHeight * 5)
-//    }
-    
     func containChinese() -> Bool {
         let ns = self as NSString
         for index in 0..<self.characters.count {
@@ -130,15 +103,7 @@ extension String {
                 }
             }
         }
-        
-//        let locale = CFLocaleCopyCurrent()
-//        let cfString = self as CFString
-//        let range = CFRangeMake(0, CFStringGetLength(cfString))
-//        
-//        let tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, cfString, range, kCFStringTokenizerUnitWord, locale)
-//        
-//        
-        
+     
         return tokens
     }
     
