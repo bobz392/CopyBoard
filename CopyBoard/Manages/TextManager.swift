@@ -44,9 +44,9 @@ extension String {
             
             let str: String
             var jumpIndex = 0
-            if let location = results.first?.range.location {
+            if let location = results.first?.range.location, isTruncated == true {
                 let index = self.index(self.startIndex, offsetBy: location)
-                str = isTruncated ? "...\(self.substring(from: index))" : self
+                str = "...\(self.substring(from: index))"
                 jumpIndex = location - 3
             } else {
                 str = self
@@ -54,7 +54,7 @@ extension String {
             let attr = str.noteAttr()
             
             for result in results {
-                let range = jumpIndex == 0 ? result.range :
+                let range = jumpIndex <= 0 ? result.range :
                     NSMakeRange(result.range.location - jumpIndex, result.range.length)
                 attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: range)
             }
