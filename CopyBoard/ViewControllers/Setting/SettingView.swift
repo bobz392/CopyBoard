@@ -147,7 +147,7 @@ extension SettingView {
             view.addSubview(label)
             label.text = Localized("useKeyboard")
             label.textColor = UIColor.white
-            label.backgroundColor = AppColors.red
+            label.backgroundColor = AppColors.appRed
             label.textAlignment = .center
             view.addSubview(label)
             label.snp.makeConstraints({ maker in

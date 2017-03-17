@@ -90,7 +90,17 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
+        if let item = SLComposeSheetConfigurationItem(),
+            let t = self.textView.text {
+            item.title = Localized("segmenttation")
+            item.tapHandler = { () -> Void in
+                let vc = SegmentationViewController(content: t)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            return [item]
+        } else {
+            return []
+        }
     }
     
 }

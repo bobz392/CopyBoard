@@ -12,6 +12,8 @@
 #import "iRate.h"
 #import "XBPageDragView.h"
 #import "CHTCollectionViewWaterfallLayout.h"
+//#import "SECollectionViewFlowLayout.h"
 //#import "EUMShowTouchWindow.h"
+
 
 #endif /* bridge_header_h */

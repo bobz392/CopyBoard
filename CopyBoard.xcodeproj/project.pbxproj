@@ -90,6 +90,17 @@
 		C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */; };
 		C74BF1441E3D98EE007F35E1 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BF1431E3D98EE007F35E1 /* BarView.swift */; };
 		C74FF9C61E2C455C00D5CC9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
+		C764A3171E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764A3151E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift */; };
+		C764A3181E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */; };
+		C764A31C1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
+		C764A31F1E7BA97A00B2B0C1 /* SegmentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */; };
+		C764A3201E7BAADE00B2B0C1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C774F83E1E6D65BE0081C5E0 /* SnapKit.framework */; };
+		C764A3211E7BAC0100B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764A3151E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift */; };
+		C764A3221E7BAC0200B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764A3151E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift */; };
+		C764A3231E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */; };
+		C764A3241E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */; };
+		C764A3251E7BAF2B00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
+		C764A3261E7BAF2C00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
 		C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA61E325FA100A1CB9F /* EditorViewController.swift */; };
 		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
 		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
@@ -332,6 +343,12 @@
 		C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
 		C74BF1431E3D98EE007F35E1 /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		C74FF9C51E2C455C00D5CC9E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		C764A3151E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentationCollectionViewCell.swift; sourceTree = "<group>"; };
+		C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentationCollectionViewCell.xib; sourceTree = "<group>"; };
+		C764A31A1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SECollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SECollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		C764A31D1E7BA93000B2B0C1 /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
+		C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentationViewController.swift; sourceTree = "<group>"; };
 		C7655AA61E325FA100A1CB9F /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -458,6 +475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C764A3201E7BAADE00B2B0C1 /* SnapKit.framework in Frameworks */,
 				C774F8641E6D69A70081C5E0 /* Realm.framework in Frameworks */,
 				C774F8651E6D69A70081C5E0 /* RealmSwift.framework in Frameworks */,
 			);
@@ -537,6 +555,8 @@
 				C72332B81E3033AB00D5189D /* NoteTextView.swift */,
 				C74BF13A1E3D5CB9007F35E1 /* TouchButton.swift */,
 				C79EF8531E3DF2D0004BDACC /* GuideView.swift */,
+				C764A3151E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift */,
+				C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -544,6 +564,7 @@
 		C72332BF1E30F51300D5189D /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C764A3191E7BA83F00B2B0C1 /* SECollectionViewFlowLayout */,
 				C7702FE01E6799A70022EC75 /* AlertBoard */,
 				C721A0D81E50DD15000257A8 /* SideMenu */,
 				C72CF6471E4C8C3600CAAC15 /* SwiftDate */,
@@ -726,6 +747,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C764A3191E7BA83F00B2B0C1 /* SECollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C764A31A1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.h */,
+				C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */,
+			);
+			path = SECollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
 		C7655AA51E325F9100A1CB9F /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,10 +791,12 @@
 			children = (
 				C774F7DF1E6B63B80081C5E0 /* StickerShare.entitlements */,
 				C774F7D31E6B637F0081C5E0 /* ShareViewController.swift */,
+				C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */,
 				C774F7E41E6B65890081C5E0 /* FinishView.swift */,
 				C774F7E51E6B65890081C5E0 /* FinishView.xib */,
 				C774F7D51E6B637F0081C5E0 /* MainInterface.storyboard */,
 				C774F7D81E6B637F0081C5E0 /* Info.plist */,
+				C764A31D1E7BA93000B2B0C1 /* bridge-header.h */,
 				C774F7EE1E6B6E150081C5E0 /* InfoPlist.strings */,
 			);
 			path = StickerShare;
@@ -1121,6 +1153,7 @@
 				C7753D921E352A0900C45A5A /* NextPageNoTextureVertexShader.glsl in Resources */,
 				C7753D8D1E352A0900C45A5A /* BackVertexShader.glsl in Resources */,
 				C7753D8C1E352A0900C45A5A /* BackPageGradient.png in Resources */,
+				C764A3181E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */,
 				C7753D911E352A0900C45A5A /* NextPageNoTextureFragmentShader.glsl in Resources */,
 				C71741DB1E4824B200D39597 /* MenuDateTableCell.xib in Resources */,
 				C7D96D6A1E34304300B4E418 /* iRate.bundle in Resources */,
@@ -1142,6 +1175,7 @@
 				C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */,
 				C774F8751E6FAE010081C5E0 /* KeyboardNumberView.xib in Resources */,
 				C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */,
+				C764A3231E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */,
 				C774F89B1E6FC0D10081C5E0 /* NumberCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1159,6 +1193,7 @@
 			files = (
 				C774F7D71E6B637F0081C5E0 /* MainInterface.storyboard in Resources */,
 				C774F7EC1E6B6E150081C5E0 /* InfoPlist.strings in Resources */,
+				C764A3241E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */,
 				C774F7E81E6B6DD80081C5E0 /* Localizable.strings in Resources */,
 				C774F7E71E6B65890081C5E0 /* FinishView.xib in Resources */,
 				C774F8091E6B86530081C5E0 /* Assets.xcassets in Resources */,
@@ -1283,6 +1318,7 @@
 				C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */,
 				C73F6E011E394DBD00FBD6F0 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				C72CF65F1E4C8C3600CAAC15 /* Commons.swift in Sources */,
+				C764A3171E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */,
 				C7702FE81E6799A70022EC75 /* AlertPageViewController.swift in Sources */,
 				C72CF6611E4C8C3600CAAC15 /* Date+Components.swift in Sources */,
 				C7753D991E352A0900C45A5A /* XBSnappingPoint.m in Sources */,
@@ -1355,6 +1391,7 @@
 				C71741E01E49E9B500D39597 /* MenuDeviceTableCell.swift in Sources */,
 				C71DEB381E617176003ACF70 /* DBManager+Keyboard.swift in Sources */,
 				C721A0E01E50DD15000257A8 /* UITableViewVibrantCell.swift in Sources */,
+				C764A31C1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */,
 				C72CF66B1E4C8C3600CAAC15 /* DateTimeInterval.swift in Sources */,
 				C72CF65E1E4C8C3600CAAC15 /* CalendarName.swift in Sources */,
 				C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */,
@@ -1396,7 +1433,9 @@
 				C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */,
 				C71160FF1E56531B00779A0F /* AppSettings.swift in Sources */,
 				C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */,
+				C764A3261E7BAF2C00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */,
 				C71161051E58D53600779A0F /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				C764A3211E7BAC0100B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */,
 				C76859491E5ABD56003B8C7E /* TouchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1415,12 +1454,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C764A31F1E7BA97A00B2B0C1 /* SegmentationViewController.swift in Sources */,
 				C774F7F21E6B73160081C5E0 /* DBManager.swift in Sources */,
 				C774F7E91E6B6DDF0081C5E0 /* TextManager.swift in Sources */,
 				C774F7D41E6B637F0081C5E0 /* ShareViewController.swift in Sources */,
 				C774F7E31E6B64940081C5E0 /* AppColors.swift in Sources */,
 				C774F7F41E6B73750081C5E0 /* Logger.swift in Sources */,
 				C774F7F61E6B77630081C5E0 /* Icons.swift in Sources */,
+				C764A3221E7BAC0200B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */,
+				C764A3251E7BAF2B00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */,
 				C774F7F51E6B73830081C5E0 /* GroupManager.swift in Sources */,
 				C774F7E61E6B65890081C5E0 /* FinishView.swift in Sources */,
 				C774F7F31E6B73520081C5E0 /* Note.swift in Sources */,
@@ -1748,6 +1790,7 @@
 				PROVISIONING_PROFILE = "b8009018-cb03-4cfe-be37-adb40df4d9e0";
 				PROVISIONING_PROFILE_SPECIFIER = StickerShareDev;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/StickerShare/bridge-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1770,6 +1813,7 @@
 				PROVISIONING_PROFILE = "9caf6553-2c2c-43bd-8dbc-ad83e4109c8e";
 				PROVISIONING_PROFILE_SPECIFIER = CopyBoardShareProd;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/StickerShare/bridge-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

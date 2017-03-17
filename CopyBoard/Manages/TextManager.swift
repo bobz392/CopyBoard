@@ -119,14 +119,14 @@ extension String {
         return false
     }
 
-    func tokenizer() -> [String] {
-        var tokens = [String]()
+    func segmentation() -> [SegmenttationItem] {
+        var tokens = [SegmenttationItem]()
         
         if let range = range(of: self) {
-            self.enumerateSubstrings(in: range, options: String.EnumerationOptions.bySentences) { (string, start, end, b) in
-                if let s = string {
-                    print(s)
-                    tokens.append(s)
+            self.enumerateSubstrings(in: range, options: String.EnumerationOptions.byWords) { (string, start, end, b) in
+                if let s = string, s != " " {
+                    let seg = SegmenttationItem(content: s, inUse: true)
+                    tokens.append(seg)
                 }
             }
         }
@@ -144,3 +144,7 @@ extension String {
     
 }
 
+struct SegmenttationItem {
+    var content: String
+    var inUse: Bool
+}
