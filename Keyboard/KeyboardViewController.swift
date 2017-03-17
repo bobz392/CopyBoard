@@ -87,8 +87,15 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func saveAction() {
+        let key = "keyboard.last.clip.board.saved"
+        let userDefault = UserDefaults.standard
+        let lastClipBoardString = userDefault.string(forKey: key)
+        
         if self.notes != nil {
-            if let text = UIPasteboard.general.string {
+            if let text = UIPasteboard.general.string,
+                text != lastClipBoardString {
+                userDefault.set(text, forKey: key)
+                
                 let note = Note()
                 note.content = text
                 note.createdAt = Date()
@@ -99,7 +106,6 @@ class KeyboardViewController: UIInputViewController {
                 
                 self.notes = DBManager.shared.keyboardQueryNotes()
                 self.keyboardView.collectionView.reloadData()
-                UIPasteboard.general.string = nil
             }
         } else {
             self.keyboardView.topToolViewShine()
