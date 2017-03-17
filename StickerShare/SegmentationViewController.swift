@@ -13,9 +13,11 @@ class SegmentationViewController: UIViewController {
 
     fileprivate var items: [SegmenttationItem]
     fileprivate let caculatorLabel = UILabel()
+    fileprivate let saveBlock: (String?) -> Void
     
-    init(content: String) {
+    init(content: String, saveBlock: @escaping (String?) -> Void) {
         self.items = content.segmentation()
+        self.saveBlock = saveBlock
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +29,7 @@ class SegmentationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         if let layout = SECollectionViewFlowLayout(autoSelectRows: true, panToDeselect: true, autoSelectCellsBetweenTouches: false) {
             self.caculatorLabel.font = appFont(size: kSegmentationFontSize)
             self.caculatorLabel.textAlignment = .center
@@ -35,9 +37,9 @@ class SegmentationViewController: UIViewController {
             layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = 6
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            collectionView.backgroundColor = AppColors.mainBackground
-            let inset: CGFloat = 4
-            collectionView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset)
+            self.view.backgroundColor = AppColors.mainBackground
+            
+            collectionView.bgClear()
             collectionView.delegate = self
             collectionView.dataSource = self
             collectionView.allowsMultipleSelection = true
@@ -46,10 +48,10 @@ class SegmentationViewController: UIViewController {
             
             self.view.addSubview(collectionView)
             collectionView.snp.makeConstraints({ maker in
-                maker.left.equalToSuperview()
-                maker.top.equalToSuperview()
-                maker.right.equalToSuperview()
-                maker.bottom.equalToSuperview()
+                maker.left.equalToSuperview().offset(4)
+                maker.top.equalToSuperview().offset(4)
+                maker.right.equalToSuperview().offset(-4)
+                maker.bottom.equalToSuperview().offset(-4)
             })
             
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.saveAction))
@@ -59,7 +61,11 @@ class SegmentationViewController: UIViewController {
     }
 
     func saveAction() {
-    
+        let content = self.items.reduce("") { (str, item) -> String in
+            return str + (item.inUse ? item.content : "")
+        }
+        
+        self.saveBlock(content.characters.count > 0 ? content : nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,14 +97,18 @@ extension SegmentationViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.items[indexPath.row].inUse = !self.items[indexPath.row].inUse
-        collectionView.reloadItems(at: [indexPath])
+        self.items[indexPath.row].inUse = false
+        let cell = collectionView.cellForItem(at: indexPath) as? SegmentationCollectionViewCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentationCollectionViewCell.reuseId, for: indexPath) as! SegmentationCollectionViewCell
+        cell?.configCellUseItem(segmenttation: self.items[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        self.items[indexPath.row].inUse = true
+        let cell = collectionView.cellForItem(at: indexPath) as? SegmentationCollectionViewCell
+        cell?.configCellUseItem(segmenttation: self.items[indexPath.row])
     }
     
 }

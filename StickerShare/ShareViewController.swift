@@ -16,17 +16,9 @@ class ShareViewController: SLComposeServiceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleLabel =
-            UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 30)))
-        titleLabel.text = Localized("sticker")
-        titleLabel.font = appFont(size: 17)
-        titleLabel.textColor = AppColors.mainIcon
-        titleLabel.textAlignment = .center
-        
-        self.navigationItem.titleView = titleLabel
+        self.title = Localized("sticker")
         self.view.backgroundColor = AppColors.mainBackground
         self.navigationController?.view.backgroundColor = AppColors.mainBackground
-        self.navigationController?.navigationBar.topItem?.titleView = titleLabel
         self.navigationController?.navigationBar.tintColor = AppColors.mainIcon
         self.navigationController?.navigationBar.barTintColor = AppColors.mainBackground
     }
@@ -89,13 +81,20 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         if let item = SLComposeSheetConfigurationItem(),
             let t = self.textView.text {
             item.title = Localized("segmenttation")
             item.tapHandler = { () -> Void in
-                let vc = SegmentationViewController(content: t)
-                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = SegmentationViewController(content: t, saveBlock: { [unowned self] (text) in
+                    if let t = text {
+                        self.textView.text = t
+                    }
+                    
+                    self.popConfigurationViewController()
+                })
+                vc.title = Localized("segmenttation")
+                vc.preferredContentSize = self.preferredContentSize
+                self.pushConfigurationViewController(vc)
             }
             return [item]
         } else {
