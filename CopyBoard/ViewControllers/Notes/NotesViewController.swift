@@ -54,10 +54,6 @@ class NotesViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
         
-//        #if debug
-//            Note.noteTestData()
-//        #endif
-            
         if #available(iOS 9.0, *) {
             self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
                 return self.noteView.collectionView
@@ -73,17 +69,7 @@ class NotesViewController: BaseViewController {
                     return editorVC
             })
         }
-
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.changedAction(ntf:)), name: NSNotification.Name.UIPasteboardChanged, object: nil)
     }
-    
-//    func changedAction(ntf: NSNotification) {
-//        Logger.log(ntf)
-//        
-//        Logger.log(ntf.object)
-//        
-//        Logger.log(ntf.userInfo)
-//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

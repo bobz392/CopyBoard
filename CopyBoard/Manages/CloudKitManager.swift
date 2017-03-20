@@ -233,26 +233,28 @@ class CloudKitManager: NSObject {
         }
         
         dispatch_async_main {
-            var note: Note?
+            let block = { (note: Note) -> Void in
+                note.updateCloud = true
+                note.content = content
+                note.modificationDate = modificationDate
+                note.modificationDevice = modificationDevice
+                note.color = color
+                note.createdAt = createdAt
+                note.favourite = favourite
+                note.isDelete = isDelete
+            }
+            
             if reason == .recordCreated {
                 let n = Note()
                 n.uuid = record.recordID.recordName
+                block(n)
                 DBManager.shared.writeObject(n)
-                note = n
             } else {
-                note = DBManager.shared.querySpecificNoteBy(uuid: record.recordID.recordName)
-            }
-            
-            if let note = note {
-                DBManager.shared.updateObject {
-                    note.updateCloud = true
-                    note.content = content
-                    note.modificationDate = modificationDate
-                    note.modificationDevice = modificationDevice
-                    note.color = color
-                    note.createdAt = createdAt
-                    note.favourite = favourite
-                    note.isDelete = isDelete
+                if let note =
+                    DBManager.shared.querySpecificNoteBy(uuid: record.recordID.recordName) {
+                    DBManager.shared.updateObject {
+                        block(note)
+                    }
                 }
             }
         }
