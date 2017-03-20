@@ -83,7 +83,7 @@ class ShareViewController: SLComposeServiceViewController {
     override func configurationItems() -> [Any]! {
         if let item = SLComposeSheetConfigurationItem(),
             let t = self.textView.text {
-            item.title = Localized("segmenttation")
+            item.title = Localized("segmentation")
             item.tapHandler = { () -> Void in
                 let vc = SegmentationViewController(content: t, saveBlock: { [unowned self] (text) in
                     if let t = text {
@@ -92,7 +92,7 @@ class ShareViewController: SLComposeServiceViewController {
                     
                     self.popConfigurationViewController()
                 })
-                vc.title = Localized("segmenttation")
+                vc.title = Localized("segmentation")
                 vc.preferredContentSize = self.preferredContentSize
                 self.pushConfigurationViewController(vc)
             }
