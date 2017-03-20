@@ -101,6 +101,7 @@ class CloudKitManager: NSObject {
                                 note.modificationDate = syncNote.modificationDate
                                 note.color = syncNote.color
                                 note.favourite = syncNote.favourite
+                                note.createdAt = syncNote.createdAt
                                 note.modificationDevice = syncNote.modificationDevice
                                 note.isDelete = syncNote.isDelete
                                 note.content = syncNote.content

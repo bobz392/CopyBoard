@@ -101,6 +101,8 @@
 		C764A3241E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */; };
 		C764A3251E7BAF2B00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
 		C764A3261E7BAF2C00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
+		C764A3291E7FA95C00B2B0C1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C764A3281E7FA95C00B2B0C1 /* Fabric.framework */; };
+		C764A32B1E7FA97700B2B0C1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */; };
 		C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA61E325FA100A1CB9F /* EditorViewController.swift */; };
 		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
 		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
@@ -349,6 +351,8 @@
 		C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SECollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		C764A31D1E7BA93000B2B0C1 /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentationViewController.swift; sourceTree = "<group>"; };
+		C764A3281E7FA95C00B2B0C1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C7655AA61E325FA100A1CB9F /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C774F7CC1E6B55150081C5E0 /* CloudKit.framework in Frameworks */,
+				C764A32B1E7FA97700B2B0C1 /* Crashlytics.framework in Frameworks */,
+				C764A3291E7FA95C00B2B0C1 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +888,8 @@
 		C79EF8781E3ED828004BDACC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */,
+				C764A3281E7FA95C00B2B0C1 /* Fabric.framework */,
 				C721A0EA1E54FF49000257A8 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -967,6 +975,7 @@
 				C7403E1F1E269CA00067229E /* Frameworks */,
 				C7403E201E269CA00067229E /* Resources */,
 				C7403E461E269D140067229E /* Embed App Extensions */,
+				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 				C7403F2D1E27D0D40067229E /* Copy Carthage Frameworks */,
 				C7403F291E27D09B0067229E /* Copy Carthage dSYMs */,
 				C7403F271E27D0710067229E /* Set the build number to "DEVELOPMENT" */,
@@ -1249,6 +1258,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		C764A3271E7FA93F00B2B0C1 /* Frabic */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Frabic;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run dbb82aa26921283c58449d2ccd9afe794a5615b6 53753c1f64bf224be62638ead72468d7e6d4afebce1e12593014125d29f9727f";
 		};
 		C7655ADF1E33BD8C00A1CB9F /* Set the build number to the count of Git commits */ = {
 			isa = PBXShellScriptBuildPhase;
