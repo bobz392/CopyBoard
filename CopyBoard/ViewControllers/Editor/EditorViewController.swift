@@ -30,7 +30,7 @@ class EditorViewController: BaseViewController {
     
     init(defaultContent: String? = nil) {
         self.note = Note()
-        self.note.noteCreator(content: defaultContent ?? "", createdAt: Date())
+        self.note.noteCreator(content: defaultContent ?? "  ", createdAt: Date())
         self.note.color = 0
         self.isCreate = true
         super.init(nibName: nil, bundle: nil)
@@ -139,13 +139,17 @@ extension EditorViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         self.noteChanged = true
-        if textView.text.characters.count == 0 {
-            self.editorView.configEditorContent(text: text)
-            return false
-        }
         return true
     }
     
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+//        if textView.text.characters.count == 0 {
+//            self.editorView.configEditorContent(text: text)
+//            return false
+//        }
+        Logger.log("change selection")
+    }
 }
 
 // MARK: - circle menu delegate

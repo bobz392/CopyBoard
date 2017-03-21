@@ -335,7 +335,6 @@
 		C7403ECA1E27CA630067229E /* CopyBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CopyBoard.entitlements; sourceTree = "<group>"; };
 		C7403F321E280E040067229E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C7403F371E280E240067229E /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
-		C7403F391E280F600067229E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		C7403F8A1E282A4E0067229E /* CopyBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CopyBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7403F8C1E282A4E0067229E /* CopyBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyBoardTests.swift; sourceTree = "<group>"; };
 		C7403F8E1E282A4E0067229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -648,7 +647,6 @@
 			isa = PBXGroup;
 			children = (
 				C774F8251E6D65BE0081C5E0 /* iOS */,
-				C7403F391E280F600067229E /* MyPlayground.playground */,
 				C7403E241E269CA00067229E /* CopyBoard */,
 				C7403E3C1E269D140067229E /* Keyboard */,
 				C774F7D21E6B637F0081C5E0 /* StickerShare */,

@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="141" height="177"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhg-0T-2Od">
-                                <rect key="frame" x="107" y="143" width="29" height="29"/>
+                                <rect key="frame" x="104" y="140" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="29" id="IE1-Q8-Slr"/>
-                                    <constraint firstAttribute="height" constant="29" id="c97-w5-00b"/>
+                                    <constraint firstAttribute="width" constant="32" id="IE1-Q8-Slr"/>
+                                    <constraint firstAttribute="height" constant="32" id="c97-w5-00b"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                             </button>
