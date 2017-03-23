@@ -72,6 +72,10 @@ class KeyboardViewController: UIInputViewController {
         
         self.keyboardView.launchAppButton.addTarget(self, action: #selector(self.launchAppAction), for: .touchUpInside)
         self.keyboardView.deleteButton.addTarget(self, action: #selector(self.deleteTextAction(btn:)), for: .touchUpInside)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.deleteTextAction(btn:)))
+        longPress.minimumPressDuration = 0.8
+        self.keyboardView.deleteButton.addGestureRecognizer(longPress)
+        
         self.keyboardView.returnButton.addTarget(self, action: #selector(self.returnAction), for: .touchUpInside)
         self.keyboardView.numberButton.addTarget(self, action: #selector(self.numberAction), for: .touchUpInside)
         self.keyboardView.spaceButton.addTarget(self, action: #selector(self.spaceAction), for: .touchUpInside)
