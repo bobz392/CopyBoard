@@ -21,7 +21,7 @@ class Note: Object {
     dynamic var isDelete: Bool = false
     // false 代表需要同步，反之则不需要
     dynamic var updateCloud: Bool = false
-    dynamic var tagUUID: String? = nil
+    dynamic var tag: String? = nil
     
     class func createDefaultNote() -> [String] {
         return [Localized("defaultNote1"), Localized("defaultNote2"), Localized("defaultNote3"), Localized("defaultNote4"), Localized("defaultNote5")]

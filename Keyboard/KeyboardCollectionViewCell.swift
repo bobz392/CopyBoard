@@ -14,6 +14,7 @@ class KeyboardCollectionViewCell: UICollectionViewCell, CollectionCellHighlight 
     static let reuseId = "keyboardCollectionViewCell"
     
     @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var tagLabel: UILabel!
     
     fileprivate var cacheColor: UIColor? = nil
     
