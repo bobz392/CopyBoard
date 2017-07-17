@@ -11,7 +11,7 @@ import RealmSwift
 import RxSwift
 
 final class DBManager {
-    static let version: UInt64 = 0
+    static let version: UInt64 = 1
     typealias DBBlock = () -> Void
     
     static var shared = DBManager()
