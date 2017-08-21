@@ -16,6 +16,7 @@
 "stickerDate"="Date label use";
 "caseSensitive"="Case sensitive";
 "keyboard"="KEYBOARD";
+"tag"="Tag";
 
 // gesture
 "stickerGusture"="Sticker gesture";

@@ -44,13 +44,14 @@ class MenuViewController: BaseViewController {
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let note = self.note else {
             fatalError("in ment note must not nil")
         }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MenuDateTableCell.reuseId,
                                                      for: indexPath) as! MenuDateTableCell
