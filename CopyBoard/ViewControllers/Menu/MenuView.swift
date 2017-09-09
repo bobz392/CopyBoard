@@ -58,7 +58,6 @@ class MenuView {
         
         self.menuTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
         self.menuTableView.separatorStyle = .none
-        self.menuTableView.allowsSelection = false
         self.menuTableView.register(MenuDateTableCell.nib,
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)
         self.menuTableView.register(MenuDeviceTableCell.nib,

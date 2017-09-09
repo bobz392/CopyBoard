@@ -38,6 +38,34 @@ class MenuViewController: BaseViewController {
     func quitMenu() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func changeCatelogue() {
+        guard let note = self.note else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: Localized("changeCatelogue"), message: "", preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+            textField.placeholder = note.category
+        })
+        
+        let weakSelf = self
+        let confirmAction = UIAlertAction(title: Localized("save"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            if let text = alertController.textFields?[0].text,
+                text.characters.count > 0 {
+                DBManager.shared.updateObject {
+                    note.category = text
+                    weakSelf.menuView.menuTableView.reloadData()
+                }
+            }
+        })
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: { _ in })
+    }
 
 }
 
@@ -65,6 +93,19 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             cell.layoutIfNeeded()
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row == 3 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.changeCatelogue()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
