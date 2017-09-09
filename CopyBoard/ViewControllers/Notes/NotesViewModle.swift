@@ -48,6 +48,9 @@ class NotesViewModel {
         
         search.asObservable()
             .takeUntil(insearchVariable)
+            .filter({ (state) -> Bool in
+                return state.searchString.characters.count > 0
+            })
             .subscribe { [unowned self] (state) in
                 print(state.element ?? "no state")
                 if let s = state.element {

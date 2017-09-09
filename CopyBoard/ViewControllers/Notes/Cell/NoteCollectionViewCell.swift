@@ -24,6 +24,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var faveButton: FaveButton!
 //    @IBOutlet weak var syncButton: UIButton!
+    
+    @IBOutlet weak var catelogueButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var noteDateLabel: UILabel!
     
@@ -69,7 +71,19 @@ class NoteCollectionViewCell: UICollectionViewCell {
             note.content.searchHintString(isTruncated: self.isTruncated(), query: query)
         self.noteLabel.lineBreakMode = .byTruncatingMiddle
         self.configGesture()
+        
+        if let catelogue = note.category {
+            self.catelogueButton.setTitle(catelogue, for: .normal)
+        } else {
+            self.catelogueButton.setTitle(Localized("defaultCatelogue"), for: .normal)
+        }
+        
+        self.catelogueButton.layer.cornerRadius = 12.0
+        self.catelogueButton.layer.borderColor = UIColor.white.cgColor
+        self.catelogueButton.layer.borderWidth = 1.0 / UIScreen.main.scale
     }
+    
+    
     
     private func isTruncated() -> Bool {
         

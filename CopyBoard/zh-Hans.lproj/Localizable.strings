@@ -16,7 +16,11 @@
 "stickerDate"="日期标签为";
 "caseSensitive"="大小写敏感";
 "keyboard"="键盘";
-"tag"="标签";
+"catelogue"="类别";
+"defaultCatelogue"="无";
+"changeCatelogue"="新类别";
+"save"="保存";
+"cancel"="取消";
 
 // gesture
 "stickerGusture"="便笺手势";

@@ -16,7 +16,11 @@
 "stickerDate"="Date label use";
 "caseSensitive"="Case sensitive";
 "keyboard"="KEYBOARD";
-"tag"="Tag";
+"catelogue"="Category";
+"defaultCatelogue"="None";
+"changeCatelogue"="New Category";
+"save"="Save";
+"cancel"="Cancel";
 
 // gesture
 "stickerGusture"="Sticker gesture";

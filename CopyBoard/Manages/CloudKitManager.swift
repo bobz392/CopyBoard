@@ -106,6 +106,7 @@ class CloudKitManager: NSObject {
                                 note.isDelete = syncNote.isDelete
                                 note.content = syncNote.content
                                 note.updateCloud = true
+                                note.category = syncNote.category
                             } else {
                                 syncNote.updateCloud = true
                                 realm.add(syncNote)
@@ -192,6 +193,7 @@ class CloudKitManager: NSObject {
             let isDelete = (record["isDelete"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
             let createdAt = record["createdAt"] as? Date {
+            let category = record["category"] as? String
             
             let note = Note()
             note.modificationDate = modificationDate
@@ -203,6 +205,7 @@ class CloudKitManager: NSObject {
             note.isDelete = isDelete
             note.createdAt = createdAt
             note.updateCloud = true
+            note.category = category
             
             return note
         } else {
@@ -213,6 +216,9 @@ class CloudKitManager: NSObject {
     
     fileprivate func config(record: CKRecord, byNote note: Note) {
         record["content"] = NSString(string: note.content)
+        if let category = note.category {
+            record["catelogue"] = NSString(string: category)
+        }
         record["modificationAt"] = note.modificationDate as NSDate?
         record["favourite"] = NSNumber(booleanLiteral: note.favourite)
         record["color"] = NSNumber(integerLiteral: note.color)
@@ -232,6 +238,8 @@ class CloudKitManager: NSObject {
                 return
         }
         
+        let category = record["category"] as? String
+        
         dispatch_async_main {
             let block = { (note: Note) -> Void in
                 note.updateCloud = true
@@ -242,6 +250,7 @@ class CloudKitManager: NSObject {
                 note.createdAt = createdAt
                 note.favourite = favourite
                 note.isDelete = isDelete
+                note.category = category
             }
             
             if reason == .recordCreated {

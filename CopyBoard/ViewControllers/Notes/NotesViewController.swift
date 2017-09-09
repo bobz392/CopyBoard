@@ -277,8 +277,34 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let note = self.viewModel.noteIn(row: indexPath.row)
         let query = self.noteView.searchBar.text
         cell.configCell(use: note, query: query)
+        cell.catelogueButton.tag = indexPath.row;
+        cell.catelogueButton.removeTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
+        cell.catelogueButton.addTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
         
         return cell
+    }
+    
+    func changeCatelogue(sender: UIButton) {
+        let note = self.viewModel.noteIn(row: sender.tag)
+        
+        let alertController = UIAlertController(title: Localized("changeCatelogue"), message: "", preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+            textField.placeholder = note.category
+        })
+        let confirmAction = UIAlertAction(title: Localized("save"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            if let text = alertController.textFields?[0].text,
+                text.characters.count > 0 {
+                DBManager.shared.updateObject {
+                    note.category = text
+                }
+            }
+        })
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: { _ in })
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
