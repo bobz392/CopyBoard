@@ -216,6 +216,12 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
             
             if let note = self.notes?[indexPath.row] {
                 cell.noteLabel.text = note.content
+                if let category = note.category {
+                    cell.categoryButton.isHidden = false
+                    cell.categoryButton.setTitle(category, for: .normal)
+                } else {
+                    cell.categoryButton.isHidden = true
+                }
                 cell.backgroundColor = AppPairColors(rawValue: note.color)?.pairColor().light
             } else {
                 cell.noteLabel.text = self.defaultNotes[indexPath.row]
@@ -236,7 +242,7 @@ extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewData
                 let space = CGFloat(layout.columnCount + 1) * DKManager.shared.itemSpace
                 let width = (self.view.frame.width - space) / CGFloat(layout.columnCount)
                 let lineCount = self.notes == nil ? 3 : AppSettings.shared.realKeyboardLine(line: nil, inKeyboardExtension: true)
-                let height = ceil(font.lineHeight * CGFloat(lineCount)) + 10
+                let height = ceil(font.lineHeight * CGFloat(lineCount)) + 15
                 
                 return CGSize(width: width, height: height)
             } else {

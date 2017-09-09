@@ -14,13 +14,16 @@ class KeyboardCollectionViewCell: UICollectionViewCell, CollectionCellHighlight 
     static let reuseId = "keyboardCollectionViewCell"
     
     @IBOutlet weak var noteLabel: UILabel!
-    @IBOutlet weak var tagLabel: UILabel!
+    
+    @IBOutlet weak var categoryButton: UIButton!
     
     fileprivate var cacheColor: UIColor? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.categoryButton.layer.masksToBounds = true
+        self.categoryButton.layer.cornerRadius = 5.0
     }
     
     func highlight() {
