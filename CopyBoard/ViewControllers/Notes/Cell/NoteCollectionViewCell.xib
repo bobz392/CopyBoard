@@ -30,14 +30,14 @@
                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISq-1U-KmB">
-                                <rect key="frame" x="93" y="5" width="43" height="24"/>
+                                <rect key="frame" x="108.5" y="5" width="27" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="29g-X3-YVm"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="lqn-2A-r4s"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="mJa-vf-ht5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="Button">
+                                <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                <state key="normal" title="无">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -45,7 +45,6 @@
                         <color key="backgroundColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ISq-1U-KmB" firstAttribute="top" secondItem="TU5-ve-6Ak" secondAttribute="top" constant="5" id="GzE-xe-ZBU"/>
-                            <constraint firstItem="ISq-1U-KmB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TU5-ve-6Ak" secondAttribute="leading" constant="10" id="I9r-23-ktO"/>
                             <constraint firstAttribute="bottom" secondItem="Vhg-0T-2Od" secondAttribute="bottom" constant="5" id="ari-d8-hfm"/>
                             <constraint firstAttribute="trailing" secondItem="ISq-1U-KmB" secondAttribute="trailing" constant="5" id="smk-Pf-9sh"/>
                             <constraint firstAttribute="trailing" secondItem="Vhg-0T-2Od" secondAttribute="trailing" constant="5" id="wBA-EQ-Q5S"/>

@@ -40,14 +40,16 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
         self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
-
-//        self.syncButton.setImage(Icons.sync.iconImage(), for: .normal)
-//        self.syncButton.tintColor = UIColor.white
-//        self.syncButton.addTarget(self, action: #selector(self.syncAction), for: .touchUpInside)
         
         self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
+        
+        let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.8
+        self.catelogueButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        self.catelogueButton.snp.makeConstraints { (maker) in
+            maker.width.lessThanOrEqualTo(self.frame.width * rato)
+        }
     }
     
     func configCell(use note: Note, query: String? = nil) {

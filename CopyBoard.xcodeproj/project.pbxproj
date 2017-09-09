@@ -973,10 +973,10 @@
 				C7403E1F1E269CA00067229E /* Frameworks */,
 				C7403E201E269CA00067229E /* Resources */,
 				C7403E461E269D140067229E /* Embed App Extensions */,
-				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 				C7403F2D1E27D0D40067229E /* Copy Carthage Frameworks */,
 				C7403F291E27D09B0067229E /* Copy Carthage dSYMs */,
 				C7403F271E27D0710067229E /* Set the build number to "DEVELOPMENT" */,
+				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 			);
 			buildRules = (
 			);
