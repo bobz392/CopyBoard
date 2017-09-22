@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             CloudKitManager.shared.syncOfflineDataFromCloud()
         }
-        
+
         CloudKitManager.shared.createSubscription()
         
         if #available(iOS 9.0, *) {
