@@ -133,9 +133,9 @@ extension NoteView {
             weakSelf.barView.alpha = 1 - progress
         }
         loadingView.imageView.tintColor = AppColors.mainIcon
-        self.collectionView.dg_addPullToRefreshWithActionHandler({ 
-            weakSelf.collectionView.dg_stopLoading()
+        self.collectionView.dg_addPullToRefreshWithActionHandler({
             weakSelf.createBlock?()
+            weakSelf.collectionView.dg_stopLoading()
         }, loadingView: loadingView)
         
         self.collectionView.dg_setPullToRefreshFillColor(UIColor.clear)

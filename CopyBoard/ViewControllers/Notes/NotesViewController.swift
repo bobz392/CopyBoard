@@ -84,6 +84,7 @@ class NotesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.noteView.barView.alpha = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {
