@@ -34,8 +34,12 @@ class SettingViewController: BaseViewController {
         
         self.settingView.closeButton
             .addTarget(self, action: #selector(self.quit), for: .touchUpInside)
-        self.automaticallyAdjustsScrollViewInsets = false
         
+        if #available(iOS 11.0, *) {
+            self.settingView.settingsTableView.contentInsetAdjustmentBehavior = .never;
+        } else {
+           self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

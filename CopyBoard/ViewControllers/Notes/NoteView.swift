@@ -161,7 +161,7 @@ extension NoteView {
         self.collectionView.tag = kNoteCollectionViewTag
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -183,14 +183,12 @@ extension NoteView {
         
         self.collectionView.register(NoteCollectionViewCell.nib,
                                      forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
-        self.collectionView.bgClear()
         
         self.collectionView.delegate = delegate
         self.collectionView.dataSource = delegate
         
         self.addRefreshCreate()
     }
-    
     
     func configEmptyDataView(view: UIView) {
         view.addSubview(self.emptyNoteView)

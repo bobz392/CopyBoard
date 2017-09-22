@@ -85,7 +85,9 @@ class CloudKitManager: NSObject {
     func syncOfflineDataFromCloud() {
         self.enable {
             let privateDatabase = CKContainer.default().privateCloudDatabase
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            dispatch_async_main {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
             
             let predicate = NSPredicate(format: "modificationDate > %@", AppSettings.shared.lastSync as NSDate)
             let query = CKQuery(recordType: "Note", predicate: predicate)
@@ -121,9 +123,8 @@ class CloudKitManager: NSObject {
                 dispatch_async_main { [unowned self] in 
                     self.retry()
                     AppSettings.shared.lastSync = Date()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             })
             
         }

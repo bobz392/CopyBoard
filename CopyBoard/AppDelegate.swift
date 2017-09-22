@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         DBManager.configDB()
-        
+
         application.registerForRemoteNotifications()
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
@@ -40,8 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()
         }
-        Fabric.with([Crashlytics.self])
         
+        Fabric.with([Crashlytics.self])
+        Fabric.sharedSDK().debug = true
         return true
     }
 

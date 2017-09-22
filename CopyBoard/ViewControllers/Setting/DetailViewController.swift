@@ -38,7 +38,11 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.settingView.closeButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
         self.settingView.backButton.addTarget(self, action: #selector(self.back), for: .touchUpInside)
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            self.settingView.settingsTableView.contentInsetAdjustmentBehavior = .never;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

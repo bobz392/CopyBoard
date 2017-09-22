@@ -69,6 +69,12 @@ class NotesViewController: BaseViewController {
                     return editorVC
             })
         }
+        if #available(iOS 11.0, *) {
+            self.noteView.collectionView.contentInsetAdjustmentBehavior = .never;
+            self.additionalSafeAreaInsets = UIEdgeInsetsMake(64, 0, 0, 0)
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -194,6 +200,10 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
         Logger.log("deviceOrientationChanged")
         NoteCollectionViewInputOverlay.closeOpenItem()
         self.noteView.invalidateLayout()
+        
+        self.noteView.collectionView.snp.updateConstraints { (maker) in
+            maker.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
+        }   
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

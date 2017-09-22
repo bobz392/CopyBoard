@@ -1269,7 +1269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run dbb82aa26921283c58449d2ccd9afe794a5615b6 53753c1f64bf224be62638ead72468d7e6d4afebce1e12593014125d29f9727f";
+			shellScript = "./Fabric.framework/run 94529d28ee795e0f76d6086b6b1f3832eb117358 6b4ea331ad8ca6c8316433adfc578c59a04e21621b4425b1b57b31860ad3374e";
 		};
 		C7655ADF1E33BD8C00A1CB9F /* Set the build number to the count of Git commits */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1736,7 +1736,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "832f9861-a45a-4739-866b-0b19b014fbf6";
+				PROVISIONING_PROFILE = "72c407c5-39c5-4b7f-8810-348acc568a94";
 				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardDev;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
@@ -1812,8 +1812,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8009018-cb03-4cfe-be37-adb40df4d9e0";
-				PROVISIONING_PROFILE_SPECIFIER = StickerShareDev;
+				PROVISIONING_PROFILE = "bb7a5e57-c7b0-467f-b5f4-ac21ed82e22a";
+				PROVISIONING_PROFILE_SPECIFIER = CopyShareDev;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/StickerShare/bridge-header.h";
 				SWIFT_VERSION = 3.0;

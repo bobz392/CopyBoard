@@ -83,6 +83,12 @@ extension DeviceManager {
         UIApplication.shared.setStatusBarHidden(hidden, with: .slide)
     }
     
+    var mainHeight: CGFloat {
+        get {
+            return self.statusbarHeight + self.navigationBarHeight
+        }
+    }
+    
     var statusbarHeight: CGFloat {
         get {
             return UIApplication.shared.statusBarFrame.height
