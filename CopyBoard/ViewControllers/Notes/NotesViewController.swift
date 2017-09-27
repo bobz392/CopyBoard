@@ -141,6 +141,16 @@ class NotesViewController: BaseViewController {
         self.present(editorVC, animated: true, completion: nil)
     }
     
+    override func deviceOrientationChanged() {
+        Logger.log("deviceOrientationChanged")
+        NoteCollectionViewInputOverlay.closeOpenItem()
+        self.noteView.invalidateLayout()
+        
+        self.noteView.collectionView.snp.updateConstraints { (maker) in
+            maker.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
+        }
+    }
+    
 }
 
 //extension NotesViewController: GADInterstitialDelegate {
@@ -196,16 +206,6 @@ extension NotesViewController: RealmNotificationDataSource {
 
 // MARK: transition and orientation
 extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartViewDelegate {
-    
-    override func deviceOrientationChanged() {
-        Logger.log("deviceOrientationChanged")
-        NoteCollectionViewInputOverlay.closeOpenItem()
-        self.noteView.invalidateLayout()
-        
-        self.noteView.collectionView.snp.updateConstraints { (maker) in
-            maker.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
-        }   
-    }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if self.transitionType == .present {
