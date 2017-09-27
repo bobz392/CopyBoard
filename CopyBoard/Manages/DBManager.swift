@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import RxSwift
 
 final class DBManager {
     static let version: UInt64 = 2

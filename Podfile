@@ -24,6 +24,8 @@ target 'Keyboard' do
 
   # Pods for Keyboard
   pod 'RealmSwift'
+  pod 'SnapKit',    '~> 3.2.0'
+  
 end
 
 target 'StickerShare' do
@@ -32,8 +34,6 @@ target 'StickerShare' do
 
   # Pods for StickerShare
   pod 'RealmSwift'
-  pod 'RxSwift',    '~> 3.0'
-  pod 'RxCocoa',    '~> 3.0'
   pod 'SnapKit',    '~> 3.2.0'
 
 end
