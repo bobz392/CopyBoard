@@ -49,12 +49,12 @@ extension UIApplication {
     
     public static func mSharedApplication() -> UIApplication {
         
-        guard UIApplication.responds(to: Selector("sharedApplication")) else {
+        guard UIApplication.responds(to: NSSelectorFromString("sharedApplication")) else {
             fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication` does not respond to selector `sharedApplication`.")
         }
         
         
-        guard let unmanagedSharedApplication = UIApplication.perform(Selector("sharedApplication")) else {
+        guard let unmanagedSharedApplication = UIApplication.perform(NSSelectorFromString("sharedApplication")) else {
             fatalError("UIApplication.sharedKeyboardApplication(): `UIApplication.sharedApplication()` returned `nil`.")
         }
         
@@ -66,7 +66,7 @@ extension UIApplication {
     }
     
     public func mOpenURL(url: URL) {
-        self.performSelector(onMainThread: Selector("openURL:"), with: url, waitUntilDone: true)
+        self.performSelector(onMainThread: NSSelectorFromString("openURL:"), with: url, waitUntilDone: true)
     }
     
 }

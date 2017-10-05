@@ -99,7 +99,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             
             UIApplication.shared.openURL(u)
         } else if item == .contact {
-            guard let url = URL(string: "mailto:zhoubo392@gmail.com") else { return }
+            guard let url = URL(string: "mailto:zh.ou+bo392+8882@gmail.com") else { return }
             UIApplication.shared.openURL(url)
         } else {
             self.selectedIndex = indexPath
