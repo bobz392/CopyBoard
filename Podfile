@@ -9,7 +9,8 @@ target 'CopyBoard' do
   pod 'RxSwift',    '~> 3.0'
   pod 'RxCocoa',    '~> 3.0'
   pod 'RealmSwift'
-  pod 'SnapKit',    '~> 3.2.0' 
+  pod 'SnapKit',    '~> 3.2.0'
+  pod 'SwiftDate',  '~> 4.3.0'
   
   target 'CopyBoardTests' do
     inherit! :search_paths

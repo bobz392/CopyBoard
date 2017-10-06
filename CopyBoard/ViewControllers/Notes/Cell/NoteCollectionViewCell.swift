@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 fileprivate let kCurlDeleteDuration: TimeInterval = 0.4
 fileprivate let kCurlOpenDuration: TimeInterval = 0.3
@@ -65,7 +66,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.faveButton.isSelected = note.favourite
         if let date = (AppSettings.shared.stickerDateUse == 0 ? note.createdAt : note.modificationDate) {
             let region = Region.Local(autoUpdate: true)
-            self.noteDateLabel.text = try? date.colloquialSinceNow(in: region).colloquial
+            self.noteDateLabel.text = try?
+                date.colloquialSinceNow(in: region, unitStyle: .full).colloquial
         } else {
             self.noteDateLabel.text = nil
         }
@@ -216,7 +218,7 @@ extension NoteCollectionViewCell {
             
             let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.8
             let p = CGPoint(x: cardBounds.width * rato, y: cardBounds.height * rato)
-            let angle = CGFloat(M_PI_2)
+            let angle = CGFloat(Double.pi / 2)
             self.curlView?.curl(self.cardView,
                                 cylinderPosition: p,
                                 cylinderAngle: angle,
