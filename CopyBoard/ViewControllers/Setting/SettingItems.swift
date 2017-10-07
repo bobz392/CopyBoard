@@ -94,6 +94,15 @@ enum SettingType {
         }
     }
     
+//    func descriptionText() -> String? {
+//        switch self {
+//        case <#pattern#>:
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
+//    }
+    
     func selectedType() -> SettingSelectType {
         switch self {
         case .dateLabel:
@@ -130,8 +139,7 @@ enum SettingType {
                     [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
             
         case .filter:
-            return ([[.filterAll, .filterStar, .filterUnstar],
-                     [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]],
+            return ([[.filterAll, .filterStar, .filterUnstar], [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]],
                     [Localized("star"), Localized("color")])
             
         case .keyboardHeight:

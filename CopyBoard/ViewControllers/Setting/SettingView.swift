@@ -279,7 +279,7 @@ extension SettingView {
         footerLabel.snp.makeConstraints { maker in
             maker.leading.equalTo(kSettingMargin)
             maker.trailing.equalTo(-kSettingMargin)
-            maker.top.equalTo(5)
+            maker.top.equalTo(2)
         }
         
         return view

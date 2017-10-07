@@ -57,11 +57,11 @@
 "doGuild3"="GOT IT";
 
 // default note
-"defaultNote1"="Welcome to Memo. Here are some tip memo.";
-"defaultNote2"="In the application navigation bar on the left button to enter the settings interface, the right button is to start the search. \nSwipe memos to the left to delete it and tap the star to star or unstar one memo. The left top label of a memo shows the creation date by default, you can change it to modification date from settings screen.\n You can Create a memo by pull down list.";
+"defaultNote1"="Welcome to Memo Keyboard. Here are some tip memo.";
+"defaultNote2"="In the application navigation bar on the left button to enter the settings interface, the right button is to start the search. \nSwipe memos to the left to delete it and tap the star to star or unstar one memo. The left top shows the creation date by default, you can change it to modification date from settings screen.\n You can Create a memo by pull down list.";
 "defaultNote3"="We will never collect your privacy data or memo content. Only stored data in your private icloud account and will sync any of your changes to your multiple devices.\nKeyboard only displays 5 data and ignore the color by default, if you open the full access you can access all the memos.\nGo to the settings screen and click the \"Use keyboard\" button to guide you through the settings.";
 "defaultNote4"="Click on a memo to enter and modify it, the top buttons from left to right followed by: return to the previous, infomation menu, modify the color and modify the star button. \nDrop down memo can quickly return to the previous screen. ";
-"defaultNote5"="Finally, sincerely thank you for using the product, we would love to hear your voice, you can contact us from settings screen. \nIf you are satisfied or have dissatisfied places, boldly scoring for us :)";
+"defaultNote5"="Finally, sincerely thank you for using the Memo Keyboard, we would love to hear your voice, you can contact us from settings screen. \nIf you are satisfied or have dissatisfied places, boldly scoring for us :)";
 
 "open"="Open";
 "fullAccess"=" Allow Full Access ";
