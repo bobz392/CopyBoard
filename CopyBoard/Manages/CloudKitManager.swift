@@ -183,7 +183,9 @@ class CloudKitManager: NSObject {
             }
             
             AppSettings.shared.appSetup = true
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            dispatch_async_main {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
     
