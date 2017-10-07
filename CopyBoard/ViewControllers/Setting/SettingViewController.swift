@@ -124,7 +124,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if section == self.settingItems.count - 1 {
             return self.settingView.versionFooterView()
         } else if (section == 1) {
-            return self.settingView.sectionFilterFooterView()
+            return self.settingView.sectionFooterView(title: Localized("filterHelper"))
         } else {
             return nil
         }

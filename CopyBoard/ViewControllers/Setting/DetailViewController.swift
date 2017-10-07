@@ -109,7 +109,21 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
+        if let footer = self.rootSettingType.detailFooter(),
+            footer.count > 0 {
+            return 40
+        } else {
+            return CGFloat.leastNonzeroMagnitude
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let footer = self.rootSettingType.detailFooter(),
+            footer.count > section {
+            return self.settingView.sectionFooterView(title: footer[section])
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -117,14 +131,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return title.characters.count > 0 ? kNormalHeaderViewHeight : CGFloat.leastNonzeroMagnitude
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        let item = self.detailTypes[indexPath.section][indexPath.row]
-        return item.selectedType() == .value ? nil : indexPath
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = self.detailHeaders[section].uppercased()
         return title.characters.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let item = self.detailTypes[indexPath.section][indexPath.row]
+        return item.selectedType() == .value ? nil : indexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

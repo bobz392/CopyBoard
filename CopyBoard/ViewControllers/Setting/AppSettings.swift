@@ -108,6 +108,13 @@ class AppSettings {
         }
     }
     
+    var keyboardSegmentationOpen: Bool {
+        didSet {
+            UserDefaultsKey.keyboardSegmentation.write(value: self.keyboardSegmentationOpen, manager: self.userDefualtsManager)
+            self.didChange(key: UserDefaultsKey.keyboardSegmentation)
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -132,6 +139,7 @@ class AppSettings {
         let lastSyncDate = formatter.date(from: userDefault.readString(UserDefaultsKey.lastSync.rawValue) ?? "") ?? Date()
         self.lastSync = lastSyncDate
         self.appSetup = userDefault.readBool(UserDefaultsKey.appSetup.rawValue)
+        self.keyboardSegmentationOpen = userDefault.readBool(UserDefaultsKey.keyboardSegmentation.rawValue)
         
         if let v = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -154,6 +162,7 @@ class AppSettings {
         self.stickerSort = userDefualtsManager.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefualtsManager.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         self.sortNewestLast = userDefualtsManager.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
+        self.keyboardSegmentationOpen = userDefualtsManager.readBool(UserDefaultsKey.keyboardSegmentation.rawValue)
     }
     
     static let shared: AppSettings = AppSettings()
@@ -205,6 +214,7 @@ enum UserDefaultsKey: StringLiteralType {
     case appSetup = "com.app.setup"
     case lastSync = "com.last.sync"
     case keyboardDefaultNote = "com.keyboard.default"
+    case keyboardSegmentation = "com.keyboard.segmentation"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(self.rawValue, value: value)

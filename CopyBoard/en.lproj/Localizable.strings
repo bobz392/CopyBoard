@@ -41,6 +41,10 @@
 "color"="Color";
 "filterHelper"="When you set the filter, only satisfy the conditions of memos will appear in the keyboard";
 
+// keyboard function
+"function"="Function";
+"segmentationDesc"="When you open this function, the word segment will be executed after selecting one memo.";
+
 // extra
 "extra"="EXTRA";
 "version"="Version";

@@ -12,7 +12,7 @@ enum SettingType {
     case general
     case search
     case keyboardLine
-    case keyboardHeight
+//    case keyboardHeight
     case filter
 
     case dateLabel
@@ -39,6 +39,9 @@ enum SettingType {
     case creationDate
     case modifyDate
     
+    case keyboardFunction
+    case segmentation
+    
     func settingName() -> String {
         switch self {
         case .general:
@@ -47,11 +50,13 @@ enum SettingType {
             return Localized("search")
         case .keyboardLine:
             return Localized("stickerLines")
-        case .keyboardHeight:
-            return Localized("keyboardHeight")
+//        case .keyboardHeight:
+//            return Localized("keyboardHeight")
         case .filter:
             return Localized("filter")
-
+        case .keyboardFunction:
+            return Localized("function")
+            
         case .dateLabel:
             return Localized("stickerDate")
         case .gesture:
@@ -89,6 +94,8 @@ enum SettingType {
         case .creationDate:
             return Localized("creationDate")
             
+        case .segmentation:
+            return Localized("segmentation")
         default:
             return ""
         }
@@ -125,6 +132,9 @@ enum SettingType {
             
         case .caseSensitive, .newest:
             return .value
+            
+        case .segmentation:
+            return .value
  
         default:
             fatalError("this type cant select, \(self)")
@@ -141,21 +151,36 @@ enum SettingType {
         case .filter:
             return ([[.filterAll, .filterStar, .filterUnstar], [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]],
                     [Localized("star"), Localized("color")])
-            
-        case .keyboardHeight:
-            return ([[.keyboardHeight]], [""])
+        
+        case .keyboardFunction:
+            return ([[.segmentation]], [Localized("keyboard")])
+        
+//        case .keyboardHeight:
+//            return ([[.keyboardHeight]], [""])
             
         case .keyboardLine:
-            return ([[.keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine]], [""])
+            return ([[.keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine, .keyboardLine]], [Localized("keyboard")])
             
         case .dateLabel, .sortBy:
-            return ([[.creationDate, .modifyDate]], [""])
+            return ([[.creationDate, .modifyDate]], [Localized("sticker")])
             
         case .gesture:
-            return ([[.swipe, .longPress]], [""])
+            return ([[.swipe, .longPress]], [Localized("sticker")])
             
         default:
             fatalError("have not this type \(self)")
+        }
+    }
+    
+    /**
+     * 是否有 footer 通常是一个描述文字说明这个设置是干嘛的
+     */
+    func detailFooter() -> [String]? {
+        switch self {
+        case .keyboardFunction:
+            return [Localized("segmentationDesc")]
+        default:
+            return nil
         }
     }
     
@@ -240,10 +265,18 @@ enum SettingType {
             cell.checkButton.isHidden = settings.stickerGesture != row
             cell.accessoryType = .none
             
-        case .keyboardHeight:
-            cell.settingLabel.text = Localized("keyboardHeight")
-            cell.settingDetailLabel.text = "\(settings.keyboardHeight)pt"
-            cell.accessoryType = .disclosureIndicator
+//        case .keyboardHeight:
+//            cell.settingLabel.text = Localized("keyboardHeight")
+//            cell.settingDetailLabel.text = "\(settings.keyboardHeight)pt"
+//            cell.accessoryType = .disclosureIndicator
+            
+        case .segmentation:
+            cell.accessoryType = .none
+            cell.settingSwitch.isHidden = false
+            cell.settingSwitch.isOn = settings.keyboardSegmentationOpen
+            cell.switchBlock = { () -> SettingType in
+                return self
+            }
             
         default:
             fatalError("cant config this type \(self) cell")
@@ -256,7 +289,7 @@ struct SettingItemCreator {
     
     func settingsCreator() -> [[SettingType]] {
         let section1: [SettingType] = [.general]
-        let section2: [SettingType] = [/**.keyboardHeight, **/.keyboardLine, .filter]
+        let section2: [SettingType] = [.keyboardLine, .keyboardFunction, .filter]
         let section3: [SettingType] = [.contact, .rate]
         
         return [section1, section2, section3]
@@ -314,11 +347,15 @@ enum SettingSelectType {
     func valueAction(isOn: Bool, selectedType: SettingType) {
         switch selectedType {
             case .caseSensitive:
-            AppSettings.shared.caseSensitive = isOn ? 0 : 1
+            AppSettings.shared.caseSensitive = !isOn ? 0 : 1
         case .newest:
             AppSettings.shared.sortNewestLast = !isOn
-            default:
+        case .segmentation:
+            AppSettings.shared.keyboardSegmentationOpen = isOn
+            
+        default:
             fatalError("cant selected this value type = \(selectedType)")
+        
         }
     }
     

@@ -265,12 +265,12 @@ extension SettingView {
         return view
     }
     
-    func sectionFilterFooterView() -> UIView {
+    func sectionFooterView(title: String) -> UIView {
         let view = UIView()
         view.bgClear()
         
         let footerLabel = UILabel()
-        footerLabel.text = Localized("filterHelper")
+        footerLabel.text = title
         footerLabel.textAlignment = .left
         footerLabel.textColor = AppColors.menuSecondaryText
         footerLabel.numberOfLines = 0
