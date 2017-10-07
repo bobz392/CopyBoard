@@ -184,33 +184,42 @@ extension SettingView {
         
         let alertView = AlertOnboarding(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, arrayOfBottomTitles: buttonsTitles) { (index) in
             
-            if index == 0 {
-                if #available(iOSApplicationExtension 10.0, *) {
-                    if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS") {
+            if #available(iOS 11.0, *) {
+                if index == 0 || index == 1 {
+                    if let url = URL(string: UIApplicationOpenSettingsURLString) {
                         UIApplication.shared.openURL(url)
                     }
+                    return false
                 } else {
-                    if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS") {
-                        UIApplication.shared.openURL(url)
-                    }
+                    return true
                 }
-                return false
-            } else if index == 1 {
-                if #available(iOSApplicationExtension 10.0, *) {
-                    if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                        UIApplication.shared.openURL(url)
-                    }
-                } else {
-                    if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-                return false
             } else {
-                return true
+                if index == 0 {
+                    if #available(iOSApplicationExtension 10.0, *) {
+                        if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS") {
+                            UIApplication.shared.openURL(url)
+                        }
+                    } else {
+                        if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS") {
+                            UIApplication.shared.openURL(url)
+                        }
+                    }
+                    return false
+                } else if index == 1 {
+                    if #available(iOSApplicationExtension 10.0, *) {
+                        if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
+                            UIApplication.shared.openURL(url)
+                        }
+                    } else {
+                        if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
+                            UIApplication.shared.openURL(url)
+                        }
+                    }
+                    return false
+                } else {
+                    return true
+                }
             }
-            
-            
         }
         
         alertView.show()
