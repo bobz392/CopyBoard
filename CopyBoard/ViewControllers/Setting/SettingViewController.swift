@@ -113,6 +113,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if (section == self.settingItems.count - 1) {
             return kVersionFooterViewHeight
+        } else if (section == 1) {
+            return kFilterFooterViewHeight
         } else {
             return CGFloat.leastNormalMagnitude
         }
@@ -121,6 +123,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == self.settingItems.count - 1 {
             return self.settingView.versionFooterView()
+        } else if (section == 1) {
+            return self.settingView.sectionFilterFooterView()
         } else {
             return nil
         }

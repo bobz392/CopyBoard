@@ -9,13 +9,11 @@
 import UIKit
 
 let kSettingMargin: CGFloat = 16
-let kCatHeaderViewHeight: CGFloat = 190
+let kCatHeaderViewHeight: CGFloat = 0.334 * max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
 let kVersionFooterViewHeight: CGFloat = 65
 let kNormalHeaderViewHeight: CGFloat = 40
+let kFilterFooterViewHeight: CGFloat = 40
 let kSettingItemHeight: CGFloat = 50
-//let kMinKeyboardHeight: CGFloat = 200
-//let kDefaultKeyboardHeight: CGFloat = 258
-//let kDefaultKeyboardHeight: CGFloat =
 
 class SettingView {
     
@@ -258,6 +256,25 @@ extension SettingView {
         return view
     }
     
+    func sectionFilterFooterView() -> UIView {
+        let view = UIView()
+        view.bgClear()
+        
+        let footerLabel = UILabel()
+        footerLabel.text = Localized("filterHelper")
+        footerLabel.textAlignment = .left
+        footerLabel.textColor = AppColors.menuSecondaryText
+        footerLabel.numberOfLines = 0
+        footerLabel.font = appFont(size: 11)
+        view.addSubview(footerLabel)
+        footerLabel.snp.makeConstraints { maker in
+            maker.leading.equalTo(kSettingMargin)
+            maker.trailing.equalTo(-kSettingMargin)
+            maker.top.equalTo(5)
+        }
+        
+        return view
+    }
 }
 
 // MAKR: - keyboard
