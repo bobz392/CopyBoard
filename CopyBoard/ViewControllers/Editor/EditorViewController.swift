@@ -85,6 +85,9 @@ class EditorViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         self.editorView.editorKeyboardHandle(add: true)
+        if (self.editorView.editorTextView.text == " ") {
+            self.editorView.editorTextView.text = ""
+        }
     }
     
     func dismissAction() {

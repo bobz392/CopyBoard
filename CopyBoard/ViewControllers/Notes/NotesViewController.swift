@@ -135,7 +135,7 @@ class NotesViewController: BaseViewController {
     
     func createAction() {
         let defaultContent = self.noteView.searchBar.text ?? ""
-        let editorVC = EditorViewController(defaultContent: defaultContent.characters.count > 0 ? defaultContent : "  ")
+        let editorVC = EditorViewController(defaultContent: defaultContent.characters.count > 0 ? defaultContent : " ")
         editorVC.transitioningDelegate = self
         self.transitionType = .present
         self.present(editorVC, animated: true, completion: nil)
