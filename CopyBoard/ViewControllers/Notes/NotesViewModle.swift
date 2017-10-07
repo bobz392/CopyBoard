@@ -28,6 +28,7 @@ class NotesViewModel {
         self.notes = DBManager.shared.queryNotes()
         
         let search = searchDriver.throttle(0.5)
+            .skip(1)
             .distinctUntilChanged()
             .flatMapLatest { (query) -> Driver<NotesSearchState> in
                 if query.isEmpty {
@@ -48,11 +49,8 @@ class NotesViewModel {
         
         search.asObservable()
             .takeUntil(insearchVariable)
-            .filter({ (state) -> Bool in
-                return state.searchString.characters.count > 0
-            })
             .subscribe { [unowned self] (state) in
-                print(state.element ?? "no state")
+                Logger.log(state.element ?? "no state")
                 if let s = state.element {
                     self.searchNotes = s.notes
                     self.isQueryStringEmpty = s.searchString.characters.count <= 0
