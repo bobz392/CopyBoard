@@ -150,16 +150,18 @@ class KeyboardViewController: UIInputViewController {
     
     override func textWillChange(_ textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
-        Logger.log("text will change = \(textInput)")
+        if let input = textInput {
+            Logger.log("text will change = \(input)")
+        }
         Logger.log(self.textDocumentProxy.documentContextBeforeInput ?? "before input = nil")
         Logger.log(self.textDocumentProxy.documentContextAfterInput ?? "after input = nil")
     }
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        Logger.log("text did change = \(textInput)")
-        
-        
+        if let input = textInput {
+            Logger.log("text did change = \(input)")
+        }
         //        var textColor: UIColor
         //        let proxy = self.textDocumentProxy
         //        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {

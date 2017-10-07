@@ -10,7 +10,7 @@ import UIKit
 
 let kSettingMargin: CGFloat = 16
 let kCatHeaderViewHeight: CGFloat = 190
-let kFooterViewHeight: CGFloat = 65
+let kVersionFooterViewHeight: CGFloat = 65
 let kNormalHeaderViewHeight: CGFloat = 40
 let kSettingItemHeight: CGFloat = 50
 //let kMinKeyboardHeight: CGFloat = 200
@@ -218,7 +218,7 @@ extension SettingView {
         alertView.show()
     }
     
-    func footerView() -> UIView {
+    func versionFooterView() -> UIView {
         if let footer = self.bottomView {
             return footer
         } else {
@@ -248,7 +248,7 @@ extension SettingView {
         let headerLabel = UILabel()
         headerLabel.text = title
         headerLabel.textColor = AppColors.menuSecondaryText
-        headerLabel.font = appFont(size: 15)
+        headerLabel.font = appFont(size: 14)
         view.addSubview(headerLabel)
         headerLabel.snp.makeConstraints { maker in
             maker.left.equalTo(kSettingMargin)

@@ -34,7 +34,9 @@ class ShareViewController: SLComposeServiceViewController {
         
         provider.loadItem(forTypeIdentifier: dataType, options: nil, completionHandler: { (text, error) in
             debugPrint("================")
-            debugPrint("item type \(dataType), text = \(text)")
+            if let text = text {
+                debugPrint("item type \(dataType), text = \(text)")
+            }
             debugPrint("================")
             
             if dataType == String(kUTTypeURL) {

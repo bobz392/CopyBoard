@@ -39,6 +39,7 @@
 "filterUnstar"="Unstar only";
 "star"="Star";
 "color"="Color";
+"filterHelper"="When you set the filter, only satisfy the conditions of notes will appear in the keyboard";
 
 // extra
 "extra"="EXTRA";

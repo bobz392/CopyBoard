@@ -152,7 +152,8 @@ class CloudKitManager: NSObject {
                 notificationInfo.shouldSendContentAvailable = true
                 subscription.notificationInfo = notificationInfo
                 CKContainer.default().privateCloudDatabase.save(subscription) { (subscription, error) in
-                    Logger.log("subscription = \(subscription), error = \(error)")
+                    let nilText = "nil"
+                    Logger.log("subscription = \(subscription.debugDescription), error = \(error?.localizedDescription ?? nilText)")
                 }
             }
         }
@@ -277,7 +278,7 @@ class CloudKitManager: NSObject {
                 block()
                 
             default:
-                Logger.log("icloud not enable = \(status), error = \(error)")
+                Logger.log("icloud not enable = \(status), error = \(error?.localizedDescription ?? "nil")")
                 return
             }
         }
@@ -288,13 +289,13 @@ class CloudKitManager: NSObject {
         if cn.notificationType == CKNotificationType.query {
             if let queryCN = cn as? CKQueryNotification,
                 let recordID = queryCN.recordID {
-                Logger.log("recordID \(queryCN.recordID)")
+                Logger.log("recordID \(queryCN.recordID.debugDescription)")
                 Logger.log("queryNotificationReason \(queryCN.queryNotificationReason.rawValue)")
                 switch queryCN.queryNotificationReason {
                 case .recordUpdated, .recordCreated:
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
                     CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID, completionHandler: { [unowned self] (record, error) in
-                        Logger.log("query record id = \(recordID) result - \(record), error = \(error)")
+                        Logger.log("query record id = \(recordID.debugDescription) result - \(record.debugDescription), error = \(error?.localizedDescription ?? "nil")")
                         if let record = record {
                             self.updateNoteFromRemote(record: record, reason: queryCN.queryNotificationReason)
                             dispatch_async_main {

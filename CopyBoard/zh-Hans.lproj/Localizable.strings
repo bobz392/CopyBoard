@@ -39,6 +39,7 @@
 "filterUnstar"="仅不星标";
 "star"="星标";
 "color"="颜色";
+"filterHelper"="当您设置过滤条件时，只有满足条件的便笺才会出现在键盘中";
 
 // extra
 "extra"="附加";
