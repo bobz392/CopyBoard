@@ -191,23 +191,24 @@ class CloudKitManager: NSObject {
     
     fileprivate func configToNoteBy(record: CKRecord) -> Note? {
         if let content = record["content"] as? String,
-            let modificationDevice = record["modifiedByDevice"] as? String,
-            let modificationDate = record["modificationAt"] as? Date,
             let favourite = (record["favourite"] as? NSNumber)?.boolValue,
             let isDelete = (record["isDelete"] as? NSNumber)?.boolValue,
-            let color = (record["color"] as? NSNumber)?.intValue,
-            let createdAt = record["createdAt"] as? Date {
+            let color = (record["color"] as? NSNumber)?.intValue {
+            
             let category = record["catelogue"] as? String
+            let createdAt = record["createdAt"] as? Date
+            let modificationDevice = record["modifiedByDevice"] as? String
+            let modificationDate = record["modificationAt"] as? Date
             
             let note = Note()
-            note.modificationDate = modificationDate
+            note.modificationDate = modificationDate ?? Date()
             note.content = content
             note.uuid = record.recordID.recordName
             note.favourite = favourite
             note.color = color
-            note.modificationDevice = modificationDevice
+            note.modificationDevice = modificationDevice ?? DeviceManager.shared.deviceName
             note.isDelete = isDelete
-            note.createdAt = createdAt
+            note.createdAt = createdAt ?? Date()
             note.updateCloud = true
             note.category = category
             
