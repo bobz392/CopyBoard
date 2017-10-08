@@ -125,16 +125,11 @@ class EditorViewController: BaseViewController {
     deinit {
         self.editorView.editorTextView.dg_removePullToRefresh()
     }
-}
-
-// MARK: orientation
-extension EditorViewController {
     
     override func deviceOrientationChanged() {
         self.editorView.invalidateLayout()
         SideMenuManager.menuRightNavigationController?.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - text view delegate

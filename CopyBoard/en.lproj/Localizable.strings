@@ -16,7 +16,7 @@
 "stickerDate"="Date label use";
 "caseSensitive"="Case sensitive";
 "keyboard"="KEYBOARD";
-"catelogue"="Category";
+"catelogue"="CATEGORY";
 "defaultCatelogue"="None";
 "changeCatelogue"="New Category";
 "save"="Save";
@@ -78,3 +78,5 @@
 
 "saved"="Saved!";
 "segmentation"="Word Segmentation";
+
+"help"="Help";

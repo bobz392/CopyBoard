@@ -289,7 +289,7 @@ struct SettingItemCreator {
     
     func settingsCreator() -> [[SettingType]] {
         let section1: [SettingType] = [.general]
-        let section2: [SettingType] = [.keyboardLine, .keyboardFunction, .filter]
+        let section2: [SettingType] = [.keyboardLine, .filter]
         let section3: [SettingType] = [.contact, .rate]
         
         return [section1, section2, section3]
