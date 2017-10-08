@@ -157,6 +157,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         case .value:
             tableView.deselectRow(at: indexPath, animated: true)
         
+        case .pushHelp:
+            print(item)
+            
         }
     }
     
