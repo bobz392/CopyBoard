@@ -197,7 +197,7 @@ class CloudKitManager: NSObject {
             let isDelete = (record["isDelete"] as? NSNumber)?.boolValue,
             let color = (record["color"] as? NSNumber)?.intValue,
             let createdAt = record["createdAt"] as? Date {
-            let category = record["category"] as? String
+            let category = record["catelogue"] as? String
             
             let note = Note()
             note.modificationDate = modificationDate
@@ -242,7 +242,7 @@ class CloudKitManager: NSObject {
                 return
         }
         
-        let category = record["category"] as? String
+        let category = record["catelogue"] as? String
         
         dispatch_async_main {
             let block = { (note: Note) -> Void in

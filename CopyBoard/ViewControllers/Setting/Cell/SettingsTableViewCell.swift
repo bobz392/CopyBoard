@@ -27,11 +27,9 @@ class SettingsTableViewCell: UITableViewCell {
 
         self.settingLabel.textColor = AppColors.menuText
         self.settingDetailLabel.textColor = AppColors.menuSecondaryText
-        
         self.checkButton.setImage(Icons.done.iconImage(), for: .normal)
         self.checkButton.tintColor = AppColors.appRed
         self.accessoryType = .disclosureIndicator
-        
         self.settingSwitch.addTarget(self, action: #selector(self.switchAction(s:)), for: .valueChanged)
     }
     
