@@ -90,8 +90,6 @@
 		C764A3241E7BAC0400B2B0C1 /* SegmentationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C764A3161E7B9CE500B2B0C1 /* SegmentationCollectionViewCell.xib */; };
 		C764A3251E7BAF2B00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
 		C764A3261E7BAF2C00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */; };
-		C764A3291E7FA95C00B2B0C1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C764A3281E7FA95C00B2B0C1 /* Fabric.framework */; };
-		C764A32B1E7FA97700B2B0C1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */; };
 		C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA61E325FA100A1CB9F /* EditorViewController.swift */; };
 		C7655AA91E32603C00A1CB9F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AA81E32603C00A1CB9F /* EditorView.swift */; };
 		C7655AD91E33059400A1CB9F /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */; };
@@ -299,8 +297,6 @@
 		C764A31B1E7BA83F00B2B0C1 /* SECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SECollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		C764A31D1E7BA93000B2B0C1 /* bridge-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridge-header.h"; sourceTree = "<group>"; };
 		C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentationViewController.swift; sourceTree = "<group>"; };
-		C764A3281E7FA95C00B2B0C1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C7655AA61E325FA100A1CB9F /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -386,8 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C774F7CC1E6B55150081C5E0 /* CloudKit.framework in Frameworks */,
-				C764A32B1E7FA97700B2B0C1 /* Crashlytics.framework in Frameworks */,
-				C764A3291E7FA95C00B2B0C1 /* Fabric.framework in Frameworks */,
 				FC620C6CA508CA45CC8E7B03 /* Pods_CopyBoard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,8 +767,6 @@
 		C79EF8781E3ED828004BDACC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C764A32A1E7FA97700B2B0C1 /* Crashlytics.framework */,
-				C764A3281E7FA95C00B2B0C1 /* Fabric.framework */,
 				C721A0EA1E54FF49000257A8 /* CloudKit.framework */,
 				9D8FEBE3FB46156ABEFB451E /* Pods_CopyBoard.framework */,
 				0A7DDE67CAABDEB3AAB5040B /* Pods_CopyBoardTests.framework */,
@@ -881,9 +873,9 @@
 				C7403E201E269CA00067229E /* Resources */,
 				C7403E461E269D140067229E /* Embed App Extensions */,
 				C7403F271E27D0710067229E /* Set the build number to "DEVELOPMENT" */,
-				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 				9EBF67809C80D45F6FE94718 /* [CP] Embed Pods Frameworks */,
 				01CD17B3709F762E5E256188 /* [CP] Copy Pods Resources */,
+				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 			);
 			buildRules = (
 			);
@@ -1316,7 +1308,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 94529d28ee795e0f76d6086b6b1f3832eb117358 6b4ea331ad8ca6c8316433adfc578c59a04e21621b4425b1b57b31860ad3374e";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 94529d28ee795e0f76d6086b6b1f3832eb117358 6b4ea331ad8ca6c8316433adfc578c59a04e21621b4425b1b57b31860ad3374e";
 		};
 		C7655ADF1E33BD8C00A1CB9F /* Set the build number to the count of Git commits */ = {
 			isa = PBXShellScriptBuildPhase;
