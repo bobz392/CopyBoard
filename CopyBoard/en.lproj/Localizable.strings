@@ -53,7 +53,7 @@
 
 // guild
 "step"="STEP";
-"description1"="Add the Memo IME.";
+"description1"="Add the Memo Keyboard.";
 "description2"="Allow full access. We will not collect or even upload your privacy data, only for access to application data.";
 "description3"="Switch to Memo input method.";
 "doGuild1"="TO ADD";
