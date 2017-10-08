@@ -94,16 +94,23 @@ extension String {
 
     func segmentation() -> [SegmenttationItem] {
         var tokens = [SegmenttationItem]()
+        let nsstring = self as NSString
         
-        if let range = range(of: self) {
-            self.enumerateSubstrings(in: range, options: String.EnumerationOptions.byWords) { (string, start, end, b) in
-                if let s = string, s != " " {
-                    let seg = SegmenttationItem(content: s, inUse: true)
-                    tokens.append(seg)
-                }
-            }
+        let tokenizer: CFStringTokenizer = CFStringTokenizerCreate(nil, nsstring, CFRangeMake(0, self.characters.count), kCFStringTokenizerUnitWordBoundary, CFLocaleCopyCurrent())
+        var range: CFRange // 当前分词的位置
+        // 获取第一个分词的范围
+        CFStringTokenizerAdvanceToNextToken(tokenizer)
+        range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
+        
+        // 循环遍历获取所有分词并记录到数组中
+        while (range.length > 0) {
+            let s = nsstring.substring(with: NSMakeRange(range.location, range.length))
+            let seg = SegmenttationItem(content: s as String, inUse: true)
+            tokens.append(seg)
+            CFStringTokenizerAdvanceToNextToken(tokenizer)
+            range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
         }
-     
+        
         return tokens
     }
     
