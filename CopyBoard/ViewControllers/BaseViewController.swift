@@ -71,14 +71,12 @@ extension BaseViewController: UIViewControllerPreviewingDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        if #available(iOS 9.0, *) {
-            switch traitCollection.forceTouchCapability {
-            case .available:
-                guard let block = self.sourceViewBlock else { return }
-                self.registerForPreviewing(with: self, sourceView: block())
-            default:
-                return
-            }
+        switch traitCollection.forceTouchCapability {
+        case .available:
+            guard let block = self.sourceViewBlock else { return }
+            self.registerForPreviewing(with: self, sourceView: block())
+        default:
+            return
         }
     }
     

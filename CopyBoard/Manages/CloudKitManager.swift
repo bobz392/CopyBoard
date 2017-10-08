@@ -74,8 +74,8 @@ class CloudKitManager: NSObject {
                             note.updateCloud = createdSuccess
                         }
                         AppSettings.shared.lastSync = Date()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     }
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
                 
             }
@@ -321,4 +321,16 @@ class CloudKitManager: NSObject {
         }
     }
     
+    func downloadHelperMov(name: String, downloadFinishBlock: @escaping (_ url: URL) -> Void) {
+        let id = CKRecordID(recordName: name)
+        Logger.log("download name = \(name)")
+        CKContainer.default().publicCloudDatabase.fetch(withRecordID: id) { (record, error) in
+            if let record = record,
+                let asset = record.object(forKey: "videoDatas") as? CKAsset {
+                    downloadFinishBlock(asset.fileURL)
+            } else {
+                Logger.log("download failed")
+            }
+        }
+    }
 }

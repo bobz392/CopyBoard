@@ -81,11 +81,12 @@
 
 // helper
 "help"="Help";
+"helpFooter"="If you not quite sure about some functions, please contact us through the Settings page :)";
 "helpCreate"="How to create new Memo";
 "helpDelete"="How to delete Memo";
 "helpCatagory"="How to classify the Memo";
 "helpShare"="How to share post to Memo quickly";
 "helpCheck"="How to check infomation of a Memo";
-"helpLineHeight"="How to change Memo's max line count";
+"helpLineCount"="How to change Memo's max line count";
 "helpColor"="How to change Memo's color";
 "helpCopy"="How to copy text to Memo in Keyboard";

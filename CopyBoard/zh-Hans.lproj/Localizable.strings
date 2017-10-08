@@ -80,12 +80,13 @@
 "segmentation"="分词";
 
 // helper
-"help"="Help";
+"help"="帮助";
+"helpFooter"="如果您仍有其他不会使用的功能，请通过设置页面联系我们 :)";
 "helpCreate"="如何创建新的便笺";
 "helpDelete"="如何删除一个便笺";
 "helpCatagory"="如何给便笺分类";
 "helpShare"="如何快速分享一段文字到便笺";
 "helpCheck"="如何查看便笺的相关信息";
-"helpLineHeight"="如何改变便笺的最大显示行数";
+"helpLineCount"="如何改变便笺的最大显示行数";
 "helpColor"="如何改变便笺的颜色";
 "helpCopy"="在键盘中如何复制文字到便笺";

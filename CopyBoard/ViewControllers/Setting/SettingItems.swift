@@ -48,7 +48,7 @@ enum SettingType {
     case helpCatagory
     case helpShare
     case helpCheck
-    case helpLineHeight
+    case helpLineCount
     case helpColor
     case helpCopy
     
@@ -119,8 +119,8 @@ enum SettingType {
             return Localized("helpShare")
         case .helpCheck:
             return Localized("helpCheck")
-        case .helpLineHeight:
-            return Localized("helpLineHeight")
+        case .helpLineCount:
+            return Localized("helpLineCount")
         case .helpColor:
             return Localized("helpColor")
         case .helpCopy:
@@ -166,7 +166,7 @@ enum SettingType {
             return .value
         
         case .helpCopy, .helpCheck, .helpColor, .helpShare,
-             .helpDelete, .helpCatagory, .helpLineHeight, .helpCreate:
+             .helpDelete, .helpCatagory, .helpLineCount, .helpCreate:
             return .pushHelp
             
 //        case .segmentation:
@@ -205,7 +205,7 @@ enum SettingType {
             
         case .help:
             return ([[.helpCreate, .helpDelete, .helpCatagory,
-                      .helpShare, .helpCheck, .helpLineHeight,
+                      .helpShare, .helpCheck, .helpLineCount,
                       .helpColor, .helpCopy]], [""])
         
         default:
@@ -220,6 +220,9 @@ enum SettingType {
         switch self {
 //        case .keyboardFunction:
 //            return [Localized("segmentationDesc")]
+        case .help:
+            return [Localized("helpFooter")]
+            
         default:
             return nil
         }
@@ -319,7 +322,7 @@ enum SettingType {
 //                return self
 //            }
         case .helpCopy, .helpCheck, .helpColor, .helpShare,
-             .helpDelete, .helpCatagory, .helpLineHeight, .helpCreate:
+             .helpDelete, .helpCatagory, .helpLineCount, .helpCreate:
             cell.accessoryType = .disclosureIndicator
             
         default:

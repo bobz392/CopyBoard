@@ -51,6 +51,15 @@
 		C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */; };
 		C72ECF4E1E382B59008B34E1 /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4D1E382B59008B34E1 /* Convenient.swift */; };
 		C72ECF501E383C47008B34E1 /* NoteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */; };
+		C73193FC1F89F3EB00DD48AC /* HelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73193FB1F89F3EB00DD48AC /* HelperViewController.swift */; };
+		C73194111F8A085500DD48AC /* helpCatagory.mov in Resources */ = {isa = PBXBuildFile; fileRef = C73194091F8A084B00DD48AC /* helpCatagory.mov */; };
+		C73194121F8A085500DD48AC /* helpCheck.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940A1F8A084B00DD48AC /* helpCheck.mov */; };
+		C73194131F8A085500DD48AC /* helpColor.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940B1F8A084B00DD48AC /* helpColor.mov */; };
+		C73194141F8A085500DD48AC /* helpCopy.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940C1F8A084B00DD48AC /* helpCopy.mov */; };
+		C73194151F8A085500DD48AC /* helpCreate.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940D1F8A084B00DD48AC /* helpCreate.mov */; };
+		C73194161F8A085500DD48AC /* helpDelete.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940E1F8A084B00DD48AC /* helpDelete.mov */; };
+		C73194171F8A085500DD48AC /* helpLineHeight.mov in Resources */ = {isa = PBXBuildFile; fileRef = C731940F1F8A084B00DD48AC /* helpLineHeight.mov */; };
+		C73194181F8A085500DD48AC /* helpShare.mov in Resources */ = {isa = PBXBuildFile; fileRef = C73194101F8A084B00DD48AC /* helpShare.mov */; };
 		C73F6DA61E391F2300FBD6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
 		C73F6DF81E393DE600FBD6F0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */; };
 		C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */; };
@@ -248,6 +257,15 @@
 		C72CF6751E4C8EF200CAAC15 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		C72ECF4D1E382B59008B34E1 /* Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewLayout.swift; sourceTree = "<group>"; };
+		C73193FB1F89F3EB00DD48AC /* HelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperViewController.swift; sourceTree = "<group>"; };
+		C73194091F8A084B00DD48AC /* helpCatagory.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpCatagory.mov; sourceTree = "<group>"; };
+		C731940A1F8A084B00DD48AC /* helpCheck.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpCheck.mov; sourceTree = "<group>"; };
+		C731940B1F8A084B00DD48AC /* helpColor.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpColor.mov; sourceTree = "<group>"; };
+		C731940C1F8A084B00DD48AC /* helpCopy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpCopy.mov; sourceTree = "<group>"; };
+		C731940D1F8A084B00DD48AC /* helpCreate.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpCreate.mov; sourceTree = "<group>"; };
+		C731940E1F8A084B00DD48AC /* helpDelete.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpDelete.mov; sourceTree = "<group>"; };
+		C731940F1F8A084B00DD48AC /* helpLineHeight.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpLineHeight.mov; sourceTree = "<group>"; };
+		C73194101F8A084B00DD48AC /* helpShare.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = helpShare.mov; sourceTree = "<group>"; };
 		C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C73F6DF71E393DE600FBD6F0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C73F6DFA1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
@@ -404,9 +422,11 @@
 		C700F1171E4C397D00EE66D4 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				C73194081F8A084B00DD48AC /* movies */,
 				C72CF6741E4C8EE200CAAC15 /* Cell */,
 				C700F1181E4C398900EE66D4 /* SettingViewController.swift */,
 				C721A0E31E51D76E000257A8 /* DetailViewController.swift */,
+				C73193FB1F89F3EB00DD48AC /* HelperViewController.swift */,
 				C700F11A1E4C399E00EE66D4 /* SettingView.swift */,
 				C721A0E11E51900E000257A8 /* SettingItems.swift */,
 				C71160FD1E56530B00779A0F /* AppSettings.swift */,
@@ -511,6 +531,21 @@
 				C71160F71E56286F00779A0F /* SettingsTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C73194081F8A084B00DD48AC /* movies */ = {
+			isa = PBXGroup;
+			children = (
+				C73194091F8A084B00DD48AC /* helpCatagory.mov */,
+				C731940A1F8A084B00DD48AC /* helpCheck.mov */,
+				C731940B1F8A084B00DD48AC /* helpColor.mov */,
+				C731940C1F8A084B00DD48AC /* helpCopy.mov */,
+				C731940D1F8A084B00DD48AC /* helpCreate.mov */,
+				C731940E1F8A084B00DD48AC /* helpDelete.mov */,
+				C731940F1F8A084B00DD48AC /* helpLineHeight.mov */,
+				C73194101F8A084B00DD48AC /* helpShare.mov */,
+			);
+			path = movies;
 			sourceTree = "<group>";
 		};
 		C73F6DF91E394DBD00FBD6F0 /* DGElasticPullToRefresh */ = {
@@ -1016,6 +1051,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73194111F8A085500DD48AC /* helpCatagory.mov in Resources */,
+				C73194121F8A085500DD48AC /* helpCheck.mov in Resources */,
+				C73194131F8A085500DD48AC /* helpColor.mov in Resources */,
+				C73194141F8A085500DD48AC /* helpCopy.mov in Resources */,
+				C73194151F8A085500DD48AC /* helpCreate.mov in Resources */,
+				C73194161F8A085500DD48AC /* helpDelete.mov in Resources */,
+				C73194171F8A085500DD48AC /* helpLineHeight.mov in Resources */,
+				C73194181F8A085500DD48AC /* helpShare.mov in Resources */,
 				C7F9230D1E6B3F3200700F86 /* InfoPlist.strings in Resources */,
 				C7753D8F1E352A0900C45A5A /* FrontVertexShader.glsl in Resources */,
 				C76996211E369B50001E2F86 /* Launch Screen.storyboard in Resources */,
@@ -1428,6 +1471,7 @@
 				C7110FEB1E2836B2007A1577 /* UserDefaultsManager.swift in Sources */,
 				C72CF6461E4C46EA00CAAC15 /* TransitionType.swift in Sources */,
 				C71FF4D71E6A16A400815326 /* QuickActionDispatcher.swift in Sources */,
+				C73193FC1F89F3EB00DD48AC /* HelperViewController.swift in Sources */,
 				C78C335D1E2EEE9A001DCE38 /* NoteView.swift in Sources */,
 				C74BF1391E3D4B8B007F35E1 /* KeyboardManager.swift in Sources */,
 				D61D03857CFD94CB234944FC /* CircleMenu.swift in Sources */,
@@ -1615,7 +1659,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1666,7 +1710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1691,7 +1735,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
@@ -1717,7 +1761,7 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = CopyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
@@ -1814,7 +1858,7 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = StickerShare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;
@@ -1837,7 +1881,7 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = StickerShare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;

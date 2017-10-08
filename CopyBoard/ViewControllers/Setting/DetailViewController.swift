@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 
@@ -142,7 +143,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.detailTypes[indexPath.section][indexPath.row]
+        let item: SettingType = self.detailTypes[indexPath.section][indexPath.row]
         switch item.selectedType() {
         case .push:
             self.selectedIndex = indexPath
@@ -158,8 +159,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: true)
         
         case .pushHelp:
-            print(item)
-            
+            self.selectedIndex = indexPath
+            let vc = HelperViewController(settingType: item)
+            let nav = UINavigationController(rootViewController: vc)
+            self.present(nav, animated: true, completion: nil)
+//            CloudKitManager.shared.downloadHelperMov(name: "helpCatagory")
         }
     }
     
