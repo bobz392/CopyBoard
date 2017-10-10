@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 //import GoogleMobileAds
 
 class NotesViewController: BaseViewController {
@@ -18,6 +19,7 @@ class NotesViewController: BaseViewController {
     fileprivate var selectedCell: NoteCollectionViewCell? = nil
     fileprivate var noteHeight: CGFloat? = nil
     var transitionType = TransitionType.present
+    private let firstEnterKey = "com.zhoubo.notes.view.controller"
 //    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
@@ -98,6 +100,27 @@ class NotesViewController: BaseViewController {
         self.selectedCell?.deselectCell()
         self.selectedCell = nil
         self.noteView.searchKeyboardHandle(add: true)
+        
+        if false == UserDefaults.standard.bool(forKey: self.firstEnterKey) {
+            var config = SwiftMessages.Config()
+            config.presentationStyle = .bottom
+            config.duration = .forever
+            let view = MessageView.viewFromNib(layout: .cardView)
+            view.configureContent(title: Localized("message1"), body: Localized("message2"), iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "OK", buttonTapHandler: { (button) in
+                SwiftMessages.hide()
+                UserDefaults.standard.set(true, forKey: self.firstEnterKey)
+                UserDefaults.standard.synchronize()
+            })
+            view.configureTheme(.info)
+            view.iconLabel?.isHidden = true
+            view.iconImageView?.isHidden = true
+            view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
+            view.button?.backgroundColor = AppPairColors.sand.pairColor().light
+            view.button?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+            view.button?.setTitleColor(AppColors.faveButton, for: .normal)
+            view.configureDropShadow()
+            SwiftMessages.show(config: config, view: view)
+        }
     }
     
     deinit {
@@ -139,6 +162,12 @@ class NotesViewController: BaseViewController {
         editorVC.transitioningDelegate = self
         self.transitionType = .present
         self.present(editorVC, animated: true, completion: nil)
+        
+        if false == UserDefaults.standard.bool(forKey: self.firstEnterKey) {
+            SwiftMessages.hide()
+            UserDefaults.standard.set(true, forKey: self.firstEnterKey)
+            UserDefaults.standard.synchronize()
+        }
     }
     
     override func deviceOrientationChanged() {

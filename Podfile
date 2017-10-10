@@ -13,6 +13,7 @@ target 'CopyBoard' do
   pod 'RealmSwift'
   pod 'SnapKit',    '~> 3.2.0'
   pod 'SwiftDate',  '~> 4.3.0'
+  pod 'SwiftMessages'
   
   target 'CopyBoardTests' do
     inherit! :search_paths

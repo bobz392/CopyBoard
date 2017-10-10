@@ -60,6 +60,10 @@
 "doGuild2"="ALLOW";
 "doGuild3"="GOT IT";
 
+// message
+"message1"="Tips:";
+"message2"="Pull down to create a memo :)";
+
 // default note
 "defaultNote1"="Welcome to Memo Keyboard. Here are some tip memo.";
 "defaultNote2"="In the application navigation bar on the left button to enter the settings interface, the right button is to start the search. \nSwipe memos to the left to delete it and tap the star to star or unstar one memo. The left top shows the creation date by default, you can change it to modification date from settings screen.\n You can Create a memo by pull down list.";

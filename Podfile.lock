@@ -12,15 +12,17 @@ PODS:
   - RxSwift (3.6.1)
   - SnapKit (3.2.0)
   - SwiftDate (4.3.0)
+  - SwiftMessages (4.0.0)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.8.6)
+  - Crashlytics
   - Fabric
   - RealmSwift
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
   - SnapKit (~> 3.2.0)
   - SwiftDate (~> 4.3.0)
+  - SwiftMessages
 
 SPEC CHECKSUMS:
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftDate: 64e2312711c5c506f7b51794308ce91f19eb494a
+  SwiftMessages: cd565e0e7d095584be1770c012c6b5be4183b5ee
 
-PODFILE CHECKSUM: 3b3ae8d2aa36d9b47f991cd0b41d1243f084fc8f
+PODFILE CHECKSUM: 013a865f937e86fc43a6d5abc8c8bffc27cddd28
 
 COCOAPODS: 1.3.1

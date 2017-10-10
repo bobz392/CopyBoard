@@ -52,6 +52,9 @@ enum SettingType {
     case helpColor
     case helpCopy
     
+    /**
+     * 当前的 setting 的本地化名字
+     */
     func settingName() -> String {
         switch self {
         case .general:
@@ -140,6 +143,9 @@ enum SettingType {
 //        }
 //    }
     
+    /**
+     * 选中 setting item 后执行的动作类型
+     */
     func selectedType() -> SettingSelectType {
         switch self {
         case .dateLabel:
@@ -177,7 +183,9 @@ enum SettingType {
         }
     }
  
-    // types and header titles
+    /**
+     * 每个 setting 的子级 setting 列表
+     */
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
@@ -222,7 +230,7 @@ enum SettingType {
 //            return [Localized("segmentationDesc")]
         case .help:
             return [Localized("helpFooter")]
-            
+        
         default:
             return nil
         }

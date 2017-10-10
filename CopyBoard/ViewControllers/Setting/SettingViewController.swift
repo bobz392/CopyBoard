@@ -94,7 +94,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let item = self.settingItems[indexPath.section][indexPath.row]
         
         if item == .rate {
-             let url = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&id=1212066610"
+             let url = "https://itunes.apple.com/us/app/sticker-your-note-keyboard/id1212066610?mt=8"
             guard let u = URL(string: url) else { return }
             
             UIApplication.shared.openURL(u)
