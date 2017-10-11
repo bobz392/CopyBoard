@@ -81,6 +81,7 @@ class EditorViewController: BaseViewController {
         self.editorView.editorKeyboardHandle(add: false)
         
         if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
+            MessageViewBuilder.hiddenMessageView()
             MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: true)
         }
     }

@@ -36,13 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         CloudKitManager.shared.createSubscription()
-        
-        if #available(iOS 9.0, *) {
-            self.configureDynamicShortcuts()
-        }
+        self.configureDynamicShortcuts()
         
         Fabric.with([Crashlytics.self])
-        Fabric.sharedSDK().debug = true
+//        Fabric.sharedSDK().debug = true
+        MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: false)
+        
         return true
     }
 
