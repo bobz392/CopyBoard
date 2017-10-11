@@ -79,6 +79,10 @@ class EditorViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.editorView.editorKeyboardHandle(add: false)
+        
+        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
+            MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +91,10 @@ class EditorViewController: BaseViewController {
         self.editorView.editorKeyboardHandle(add: true)
         if (self.editorView.editorTextView.text == " ") {
             self.editorView.editorTextView.text = ""
+        }
+        
+        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
+            MessageViewBuilder.showMessageView(title: Localized("message1"), body: Localized("message3"), checkKey: MessageViewBuilder.kFirstEditorKey)
         }
     }
     
@@ -139,7 +147,6 @@ extension EditorViewController: UITextViewDelegate {
         self.noteChanged = true
         return true
     }
-    
     
     func textViewDidChangeSelection(_ textView: UITextView) {
 //        if textView.text.characters.count == 0 {

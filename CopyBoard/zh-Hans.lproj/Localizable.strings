@@ -62,7 +62,8 @@
 
 // message
 "message1"="Tips:";
-"message2"="下拉可以创建新的便笺";
+"message2"="下拉来创建您的第一个便笺 :)";
+"message3"="您创建的便笺会自动保存";
 
 // default note
 "defaultNote1"="欢迎来到便笺。这里有一些提示的便笺";

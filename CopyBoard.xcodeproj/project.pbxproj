@@ -96,6 +96,7 @@
 		C7655ADA1E33059400A1CB9F /* NoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */; };
 		C7655AE41E33BE8C00A1CB9F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C51E2C455C00D5CC9E /* Note.swift */; };
 		C7655AE51E33BE9600A1CB9F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7110FE81E2836B2007A1577 /* GroupManager.swift */; };
+		C76699341F8DBA94009D94C9 /* MessageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76699331F8DBA94009D94C9 /* MessageViewBuilder.swift */; };
 		C76859461E5A9D12003B8C7E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C76859471E5ABAB2003B8C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73F6DA51E391F2300FBD6F0 /* Assets.xcassets */; };
 		C76859481E5ABB20003B8C7E /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
@@ -301,6 +302,7 @@
 		C7655AA81E32603C00A1CB9F /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionViewCell.xib; sourceTree = "<group>"; };
+		C76699331F8DBA94009D94C9 /* MessageViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewBuilder.swift; sourceTree = "<group>"; };
 		C76996101E369968001E2F86 /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		C769961D1E369B29001E2F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C769961F1E369B3B001E2F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				C72ECF4D1E382B59008B34E1 /* Convenient.swift */,
 				C74BF1381E3D4B8B007F35E1 /* KeyboardManager.swift */,
 				C71FF4D61E6A16A400815326 /* QuickActionDispatcher.swift */,
+				C76699331F8DBA94009D94C9 /* MessageViewBuilder.swift */,
 			);
 			path = Manages;
 			sourceTree = "<group>";
@@ -1462,6 +1465,7 @@
 				C721A0E21E51900E000257A8 /* SettingItems.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
+				C76699341F8DBA94009D94C9 /* MessageViewBuilder.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultsManager.swift in Sources */,
 				C72CF6461E4C46EA00CAAC15 /* TransitionType.swift in Sources */,
 				C71FF4D71E6A16A400815326 /* QuickActionDispatcher.swift in Sources */,

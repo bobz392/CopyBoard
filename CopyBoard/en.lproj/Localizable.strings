@@ -62,7 +62,8 @@
 
 // message
 "message1"="Tips:";
-"message2"="Pull down to create a memo :)";
+"message2"="Pull down to create your first memo :)";
+"message3"="Your memo will be saved automatically";
 
 // default note
 "defaultNote1"="Welcome to Memo Keyboard. Here are some tip memo.";
