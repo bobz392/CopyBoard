@@ -19,8 +19,8 @@ class NotesViewController: BaseViewController {
     fileprivate var noteHeight: CGFloat? = nil
     var transitionType = TransitionType.present
     
-
-//    var interstitial: GADInterstitial!
+    
+    //    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class NotesViewController: BaseViewController {
             weakSelf.createAction()
         }
         
-//        interstitial = self.createAndLoadInterstitial()
+        //        interstitial = self.createAndLoadInterstitial()
         
         let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
@@ -202,16 +202,18 @@ extension NotesViewController: RealmNotificationDataSource {
         if insertions.count > 0, deletions.count > 0 {
             self.noteView.collectionView.reloadData()
         } else {
-            if insertions.count > 0 {
-                self.noteView.collectionView
-                    .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
-            } else if deletions.count > 0 {
-                self.noteView.collectionView
-                    .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
-            } else if modifications.count > 0 {
-                self.noteView.collectionView
-                    .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
-            }
+            self.noteView.collectionView.performBatchUpdates({ [weak self] in
+                if insertions.count > 0 {
+                    self?.noteView.collectionView
+                        .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+                } else if deletions.count > 0 {
+                    self?.noteView.collectionView
+                        .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+                } else if modifications.count > 0 {
+                    self?.noteView.collectionView
+                        .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
+                }
+            }, completion: nil)
         }
     }
     
@@ -295,7 +297,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             })
         }
     }
- 
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)

@@ -1,12 +1,12 @@
 PODS:
-  - Crashlytics (3.8.6):
-    - Fabric (~> 1.6.3)
-  - Fabric (1.6.13)
-  - Realm (2.10.1):
-    - Realm/Headers (= 2.10.1)
-  - Realm/Headers (2.10.1)
-  - RealmSwift (2.10.1):
-    - Realm (= 2.10.1)
+  - Crashlytics (3.9.0):
+    - Fabric (~> 1.7.0)
+  - Fabric (1.7.0)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
@@ -25,10 +25,10 @@ DEPENDENCIES:
   - SwiftMessages
 
 SPEC CHECKSUMS:
-  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
-  Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
-  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
+  Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
+  Fabric: e6be012366472553807dada21243c5ab8d904151
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7

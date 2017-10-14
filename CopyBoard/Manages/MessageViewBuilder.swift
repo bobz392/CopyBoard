@@ -36,8 +36,12 @@ struct MessageViewBuilder {
         view.configureTheme(.info)
         view.iconLabel?.isHidden = true
         view.iconImageView?.isHidden = true
-        view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
-        view.button?.backgroundColor = AppPairColors.sand.pairColor().light
+        if checkKey == kFirstNoteKey {
+            view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
+        } else if checkKey == kFirstEditorKey {
+            view.backgroundView.backgroundColor = AppColors.mainBackground
+        }
+        view.button?.backgroundColor = UIColor.clear
         view.button?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.button?.setTitleColor(AppColors.faveButton, for: .normal)
         view.configureDropShadow()
