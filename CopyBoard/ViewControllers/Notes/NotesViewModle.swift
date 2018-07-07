@@ -53,7 +53,7 @@ class NotesViewModel {
                 Logger.log(state.element ?? "no state")
                 if let s = state.element {
                     self.searchNotes = s.notes
-                    self.isQueryStringEmpty = s.searchString.characters.count <= 0
+                    self.isQueryStringEmpty = s.searchString.count <= 0
                     self.searchBlock(s.searchString)
                 }
             }.addDisposableTo(disposeBag)

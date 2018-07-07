@@ -317,7 +317,7 @@ open class DGElasticPullToRefreshView: UIView {
         resetScrollViewContentInset(shouldAddObserverWhenFinished: false, animated: false, completion: nil)
         
         let centerY = DGElasticPullToRefreshConstants.LoadingContentInset
-        let duration = 0.5
+        let duration = DGElasticPullToRefreshConstants.LoadingAnimation
         
         scrollView.isScrollEnabled = false
         startDisplayLink()

@@ -36,11 +36,11 @@ func currentPreferrenLang() -> String? {
 extension String {
     
     func searchHintString(isTruncated: Bool, query: String? = nil) -> NSAttributedString {
-        if let q = query, q.characters.count > 0 {
+        if let q = query, q.count > 0 {
             let pattern = "\(q)"
             let regular =
                 try! NSRegularExpression(pattern: pattern, options:.anchorsMatchLines)
-            let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.characters.count))
+            let results = regular.matches(in: self, options: .reportProgress , range: NSMakeRange(0, self.count))
             
             let str: String
             var jumpIndex = 0
@@ -72,7 +72,7 @@ extension String {
         paragraphStyle.lineBreakMode = .byTruncatingMiddle
         
         
-        let range = NSMakeRange(0, self.characters.count)
+        let range = NSMakeRange(0, self.count)
         attr.addAttribute(NSParagraphStyleAttributeName,
                           value: paragraphStyle, range: range)
         attr.addAttribute(NSFontAttributeName, value: appFont(size: 16), range: range)
@@ -82,7 +82,7 @@ extension String {
     
     func containChinese() -> Bool {
         let ns = self as NSString
-        for index in 0..<self.characters.count {
+        for index in 0..<self.count {
             let c = ns.character(at: index)
             if c > 0x4e00, c < 0x9fff {
                 return true
@@ -96,7 +96,7 @@ extension String {
         var tokens = [SegmenttationItem]()
         let nsstring = self as NSString
         
-        let tokenizer: CFStringTokenizer = CFStringTokenizerCreate(nil, nsstring, CFRangeMake(0, self.characters.count), kCFStringTokenizerUnitWordBoundary, CFLocaleCopyCurrent())
+        let tokenizer: CFStringTokenizer = CFStringTokenizerCreate(nil, nsstring, CFRangeMake(0, self.count), kCFStringTokenizerUnitWordBoundary, CFLocaleCopyCurrent())
         var range: CFRange // 当前分词的位置
         // 获取第一个分词的范围
         CFStringTokenizerAdvanceToNextToken(tokenizer)

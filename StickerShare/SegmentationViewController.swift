@@ -65,7 +65,7 @@ class SegmentationViewController: UIViewController {
             return str + (item.inUse ? item.content : "")
         }
         
-        self.saveBlock(content.characters.count > 0 ? content : nil)
+        self.saveBlock(content.count > 0 ? content : nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -52,7 +52,7 @@ class MenuViewController: BaseViewController {
         let weakSelf = self
         let confirmAction = UIAlertAction(title: Localized("save"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
             if let text = alertController.textFields?[0].text,
-                text.characters.count > 0 {
+                text.count > 0 {
                 DBManager.shared.updateObject {
                     note.category = text
                     weakSelf.menuView.menuTableView.reloadData()

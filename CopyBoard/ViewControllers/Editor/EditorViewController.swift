@@ -74,6 +74,10 @@ class EditorViewController: BaseViewController {
             }.addDisposableTo(self.disposeBag)
         
         self.editorView.colorMenu.delegate = self
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillTerminate, object: self, queue: OperationQueue.main) { (notify) in
+            self.updateNoteIfNeed()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -112,7 +116,7 @@ class EditorViewController: BaseViewController {
     
     private func updateNoteIfNeed() {
         if let noteText = self.editorView.editorTextView.text,
-            noteText.characters.count > 0, self.noteChanged {
+            noteText.count > 0, self.noteChanged {
             
             if self.isCreate {
                 self.note.content = noteText

@@ -129,12 +129,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let title = self.detailHeaders[section]
-        return title.characters.count > 0 ? kNormalHeaderViewHeight : CGFloat.leastNonzeroMagnitude
+        return title.count > 0 ? kNormalHeaderViewHeight : CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = self.detailHeaders[section].uppercased()
-        return title.characters.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
+        return title.count > 0 ? self.settingView.sectionHeaderView(title: title) : nil
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {

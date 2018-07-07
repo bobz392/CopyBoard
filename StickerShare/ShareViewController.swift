@@ -50,7 +50,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     override func isContentValid() -> Bool {
-        return self.textView.text.characters.count > 0
+        return self.textView.text.count > 0
     }
     
     override func didSelectPost() {

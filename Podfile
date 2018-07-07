@@ -4,6 +4,7 @@ platform :ios, '9.0'
 target 'CopyBoard' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for CopyBoard
   pod 'Fabric'
@@ -25,8 +26,11 @@ end
 target 'Keyboard' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+  inhibit_all_warnings!
   # Pods for Keyboard
+  
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'RealmSwift'
   pod 'SnapKit',    '~> 3.2.0'
   
@@ -35,7 +39,7 @@ end
 target 'StickerShare' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+  inhibit_all_warnings!
   # Pods for StickerShare
   pod 'RealmSwift'
   pod 'SnapKit',    '~> 3.2.0'

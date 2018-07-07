@@ -877,7 +877,6 @@
 				C7403E461E269D140067229E /* Embed App Extensions */,
 				C7403F271E27D0710067229E /* Set the build number to "DEVELOPMENT" */,
 				9EBF67809C80D45F6FE94718 /* [CP] Embed Pods Frameworks */,
-				01CD17B3709F762E5E256188 /* [CP] Copy Pods Resources */,
 				C764A3271E7FA93F00B2B0C1 /* Frabic */,
 			);
 			buildRules = (
@@ -901,7 +900,6 @@
 				C7403E381E269D140067229E /* Frameworks */,
 				C7403E391E269D140067229E /* Resources */,
 				C7655AE01E33BDA400A1CB9F /* Set the build number to "DEVELOPMENT" */,
-				4BF2F22CA760F9E0039B662B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -920,8 +918,6 @@
 				C7403F861E282A4E0067229E /* Sources */,
 				C7403F871E282A4E0067229E /* Frameworks */,
 				C7403F881E282A4E0067229E /* Resources */,
-				0902BE202E9CF5AB96144A60 /* [CP] Embed Pods Frameworks */,
-				3F461BD442C4DA029E0082B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -943,7 +939,6 @@
 				C774F7CE1E6B637F0081C5E0 /* Frameworks */,
 				C774F7CF1E6B637F0081C5E0 /* Resources */,
 				C774F7E01E6B63D50081C5E0 /* Set the build number to "DEVELOPMENT" */,
-				A763488D4F1EDBE69C7B15F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1114,36 +1109,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01CD17B3709F762E5E256188 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CopyBoard/Pods-CopyBoard-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0902BE202E9CF5AB96144A60 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CopyBoardTests/Pods-CopyBoardTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		25C30AC5B175130FBF35F180 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1178,36 +1143,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F461BD442C4DA029E0082B5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CopyBoardTests/Pods-CopyBoardTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4BF2F22CA760F9E0039B662B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9DD09DFAB22F98FBDFB4AAC4 /* [CP] Check Pods Manifest.lock */ = {
@@ -1256,21 +1191,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CopyBoard/Pods-CopyBoard-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A763488D4F1EDBE69C7B15F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StickerShare/Pods-StickerShare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C7403F271E27D0710067229E /* Set the build number to "DEVELOPMENT" */ = {
@@ -1786,7 +1706,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72c407c5-39c5-4b7f-8810-348acc568a94";
+				PROVISIONING_PROFILE = "eb74681f-48a2-4679-9ef6-3fa27359e432";
 				PROVISIONING_PROFILE_SPECIFIER = CopyKeyBoardDev;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";

@@ -38,7 +38,7 @@ class NotesViewController: BaseViewController {
         
         let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
-            weakSelf.noteView.searchViewStateChange(query: query.characters.count > 0,
+            weakSelf.noteView.searchViewStateChange(query: query.count > 0,
                                                     notesCount: weakSelf.viewModel.notesCount())
         })
         
@@ -143,7 +143,7 @@ class NotesViewController: BaseViewController {
     
     func createAction() {
         let defaultContent = self.noteView.searchBar.text ?? ""
-        let editorVC = EditorViewController(defaultContent: defaultContent.characters.count > 0 ? defaultContent : " ")
+        let editorVC = EditorViewController(defaultContent: defaultContent.count > 0 ? defaultContent : " ")
         editorVC.transitioningDelegate = self
         self.transitionType = .present
         self.present(editorVC, animated: true, completion: nil)
@@ -319,7 +319,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         })
         let confirmAction = UIAlertAction(title: Localized("save"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
             if let text = alertController.textFields?[0].text,
-                text.characters.count > 0 {
+                text.count > 0 {
                 DBManager.shared.updateObject {
                     note.category = text
                 }

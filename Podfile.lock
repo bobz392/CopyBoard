@@ -24,6 +24,18 @@ DEPENDENCIES:
   - SwiftDate (~> 4.3.0)
   - SwiftMessages
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - SwiftDate
+    - SwiftMessages
+
 SPEC CHECKSUMS:
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
@@ -35,6 +47,6 @@ SPEC CHECKSUMS:
   SwiftDate: 64e2312711c5c506f7b51794308ce91f19eb494a
   SwiftMessages: cd565e0e7d095584be1770c012c6b5be4183b5ee
 
-PODFILE CHECKSUM: 013a865f937e86fc43a6d5abc8c8bffc27cddd28
+PODFILE CHECKSUM: 587623850f7e74c1d272c7a42889c7e3a6ea9ea7
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

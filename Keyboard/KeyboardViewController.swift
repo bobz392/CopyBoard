@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Fabric
+import Crashlytics
 
 class KeyboardViewController: UIInputViewController {
     
@@ -82,6 +84,8 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardView.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
+        
+        Fabric.with([Crashlytics.self])
     }
     
     func launchAppAction() {
