@@ -74,10 +74,7 @@ class EditorViewController: BaseViewController {
             }.addDisposableTo(self.disposeBag)
         
         self.editorView.colorMenu.delegate = self
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillTerminate, object: self, queue: OperationQueue.main) { (notify) in
-            self.updateNoteIfNeed()
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateNoteIfNeed), name: NSNotification.Name.CopyBoardWillTerminal, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,7 +111,7 @@ class EditorViewController: BaseViewController {
         self.updateNoteIfNeed()
     }
     
-    private func updateNoteIfNeed() {
+    @objc private func updateNoteIfNeed() {
         if let noteText = self.editorView.editorTextView.text,
             noteText.count > 0, self.noteChanged {
             
@@ -201,4 +198,8 @@ extension EditorViewController: CircleMenuDelegate {
         self.editorView.changeColor(start: false)
     }
     
+}
+
+extension Notification.Name {
+    public static let CopyBoardWillTerminal: Notification.Name = Notification.Name(rawValue: "com.zhoubo.copyboard.will.terminal")
 }

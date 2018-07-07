@@ -39,9 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureDynamicShortcuts()
         
         Fabric.with([Crashlytics.self])
-//        Fabric.sharedSDK().debug = true
         MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: false)
         
+        #if DEBUG
+        //        Fabric.sharedSDK().debug = true
+        #endif
         return true
     }
 
@@ -77,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        NotificationCenter.default.post(name: Notification.Name.CopyBoardWillTerminal, object: nil)
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
