@@ -9,8 +9,6 @@
 import UIKit
 import SnapKit
 import RealmSwift
-import Fabric
-import Crashlytics
 
 class KeyboardViewController: UIInputViewController {
     
@@ -43,7 +41,7 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let heightConstraint = NSLayoutConstraint(item: self.view, attribute: .height, relatedBy: .equal, toItem: nil,
                                                   attribute: .notAnAttribute, multiplier: 0, constant: DKManager.shared.keyboardHeight + kBottomKeyboardToolViewHeight + 0.5)
         self.view.addConstraint(heightConstraint)
@@ -84,8 +82,6 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardView.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
-        
-        Fabric.with([Crashlytics.self])
     }
     
     func launchAppAction() {
