@@ -1,0 +1,8 @@
+app_identifier("com.zhoubo.CopyBoard") # The bundle identifier of your app
+apple_id("1957878262@qq.com") # Your Apple email address
+
+itc_team_id("118433984") # App Store Connect Team ID
+team_id("KJUZN22ZS5") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

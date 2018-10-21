@@ -1,0 +1,25 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+	cocoapods(repo_update: true)
+    build_app(workspace: "CopyBoard.xcworkspace", scheme: "CopyBoard")
+    pgyer(api_key: "ea5b5fe82328335fe68f3e2da205dd96", user_key: "a5f0502107c1559e515f78b9fdb0f60e")
+  end
+end
