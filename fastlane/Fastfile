@@ -18,8 +18,11 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-	cocoapods(repo_update: true)
-    build_app(workspace: "CopyBoard.xcworkspace", scheme: "CopyBoard")
+    cocoapods
+    get_provisioning_profile(
+      provisioning_name: "CopyBoardPro"
+    )
+    gym(scheme: "CopyBoard",export_options: {iCloudContainerEnvironment: 'Production'})
     pgyer(api_key: "ea5b5fe82328335fe68f3e2da205dd96", user_key: "a5f0502107c1559e515f78b9fdb0f60e")
   end
 end
