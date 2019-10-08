@@ -54,12 +54,12 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     override func didSelectPost() {
-        self.childViewControllers.first?.view.backgroundColor = AppColors.mainBackground
+        self.children.first?.view.backgroundColor = AppColors.mainBackground
         if let content = self.textView.text,
-            let first = self.childViewControllers.first,
+            let first = self.children.first,
             let window = self.view.window,
             let finishView = FinishView.loadNib(self) {
-            first.removeFromParentViewController()
+            first.removeFromParent()
             
             DispatchQueue.main.async {
                 DBManager.configDB()

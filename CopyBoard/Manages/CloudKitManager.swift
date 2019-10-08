@@ -40,12 +40,17 @@ class CloudKitManager: NSObject {
 //    }
     
     func update(note: Note) {
-        let recordId = CKRecordID(recordName: note.uuid)
+        let recordId = CKRecord.ID(recordName: note.uuid)
         let noteRef = ThreadSafeReference(to: note)
         
         self.enable {
             let privateDatabase = CKContainer.default().privateCloudDatabase
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+           
+            dispatch_async_main {
+                UIApplication.shared
+                    .isNetworkActivityIndicatorVisible = true
+            }
+            
             privateDatabase.fetch(withRecordID: recordId) { [unowned self] (record, error) in
                 let updateRecord: CKRecord
                 if let re = record {
@@ -148,7 +153,7 @@ class CloudKitManager: NSObject {
                 Logger.log("subscription extist avoid recreate it")
             } else {
                 let subscription = CKSubscription(recordType: "Note", predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordUpdate, .firesOnRecordDeletion])
-                let notificationInfo = CKNotificationInfo()
+                let notificationInfo = CKSubscription.NotificationInfo()
                 notificationInfo.shouldSendContentAvailable = true
                 subscription.notificationInfo = notificationInfo
                 CKContainer.default().privateCloudDatabase.save(subscription) { (subscription, error) in
@@ -231,7 +236,7 @@ class CloudKitManager: NSObject {
         record["isDelete"] = NSNumber(booleanLiteral: note.isDelete)
     }
     
-    fileprivate func updateNoteFromRemote(record: CKRecord, reason: CKQueryNotificationReason) {
+    fileprivate func updateNoteFromRemote(record: CKRecord, reason: CKQueryNotification.Reason) {
         guard let content = record["content"] as? String,
             let modificationDevice = record["modifiedByDevice"] as? String,
             let modificationDate = record["modificationAt"] as? Date,
@@ -289,7 +294,7 @@ class CloudKitManager: NSObject {
     
     func handleNotification(userInfo: [AnyHashable: Any]) {
         let cn = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        if cn.notificationType == CKNotificationType.query {
+        if cn?.notificationType == CKNotification.NotificationType.query {
             if let queryCN = cn as? CKQueryNotification,
                 let recordID = queryCN.recordID {
                 Logger.log("recordID \(queryCN.recordID.debugDescription)")
@@ -323,12 +328,12 @@ class CloudKitManager: NSObject {
     }
     
     func downloadHelperMov(name: String, downloadFinishBlock: @escaping (_ url: URL) -> Void) {
-        let id = CKRecordID(recordName: name)
+        let id = CKRecord.ID(recordName: name)
         Logger.log("download name = \(name)")
         CKContainer.default().publicCloudDatabase.fetch(withRecordID: id) { (record, error) in
             if let record = record,
                 let asset = record.object(forKey: "videoDatas") as? CKAsset {
-                    downloadFinishBlock(asset.fileURL)
+                downloadFinishBlock(asset.fileURL!)
             } else {
                 Logger.log("download failed")
             }

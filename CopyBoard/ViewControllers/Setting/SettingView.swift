@@ -57,7 +57,7 @@ class SettingView {
         self.closeButton.setImage(Icons.done.iconImage(), for: .normal)
         self.closeButton.contentHorizontalAlignment = .fill
         self.closeButton.contentVerticalAlignment = .fill
-        self.closeButton.contentEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
+        self.closeButton.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         self.closeButton.tintColor = AppColors.mainIcon
     }
     
@@ -71,7 +71,7 @@ class SettingView {
         }
         let height = DeviceManager.shared.navigationBarHeight + DeviceManager.shared.statusbarHeight
         self.settingsTableView.contentInset =
-            UIEdgeInsetsMake(height, 0, 0, 0)
+            UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         
         self.settingsTableView.register(SettingsTableViewCell.nib,
                                         forCellReuseIdentifier: SettingsTableViewCell.reuseId)
@@ -89,7 +89,7 @@ class SettingView {
         let barHeight = DeviceManager.shared.navigationBarHeight
         
         self.settingsTableView.contentInset =
-            UIEdgeInsetsMake(barHeight + statusBarHeight, 0, 0, 0)
+            UIEdgeInsets(top: barHeight + statusBarHeight, left: 0, bottom: 0, right: 0)
         
         self.realBarView.snp.updateConstraints { maker in
             maker.top.equalToSuperview().offset(statusBarHeight)
@@ -186,7 +186,7 @@ extension SettingView {
             
             if #available(iOS 11.0, *) {
                 if index == 0 || index == 1 {
-                    if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.openURL(url)
                     }
                     return false

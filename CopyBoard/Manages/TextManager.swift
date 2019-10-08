@@ -12,7 +12,8 @@ func Localized(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
-func appFont(size: CGFloat, weight: CGFloat = UIFontWeightRegular) -> UIFont {
+func appFont(size: CGFloat,
+             weight: UIFont.Weight = .regular) -> UIFont {
     if currentPreferrenLang()?.hasPrefix("en") == true,
         let font = UIFont(name: "Avenir Next", size: size) {
         return font
@@ -55,8 +56,12 @@ extension String {
             
             for result in results {
                 let range = jumpIndex <= 0 ? result.range :
-                    NSMakeRange(result.range.location - jumpIndex, result.range.length)
-                attr.addAttributes([NSBackgroundColorAttributeName: AppColors.searchText], range: range)
+                    NSMakeRange(result.range.location - jumpIndex,
+                                result.range.length)
+                attr.addAttributes(
+                    [NSAttributedString.Key.backgroundColor: AppColors.searchText],
+                    range: range
+                )
             }
             
             return attr
@@ -73,9 +78,10 @@ extension String {
         
         
         let range = NSMakeRange(0, self.count)
-        attr.addAttribute(NSParagraphStyleAttributeName,
+        attr.addAttribute(NSAttributedString.Key.paragraphStyle,
                           value: paragraphStyle, range: range)
-        attr.addAttribute(NSFontAttributeName, value: appFont(size: 16), range: range)
+        attr.addAttribute(NSAttributedString.Key.font,
+                          value: appFont(size: 16), range: range)
         
         return attr
     }

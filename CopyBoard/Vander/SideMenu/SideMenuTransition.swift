@@ -75,17 +75,17 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
         return viewController
     }
     
-    internal class func handlePresentMenuLeftScreenEdge(_ edge: UIScreenEdgePanGestureRecognizer) {
+    @objc internal class func handlePresentMenuLeftScreenEdge(_ edge: UIScreenEdgePanGestureRecognizer) {
         SideMenuTransition.presentDirection = .left
         handlePresentMenuPan(edge)
     }
-    
+    @objc  
     internal class func handlePresentMenuRightScreenEdge(_ edge: UIScreenEdgePanGestureRecognizer) {
         SideMenuTransition.presentDirection = .right
         handlePresentMenuPan(edge)
     }
     
-    internal class func handlePresentMenuPan(_ pan: UIPanGestureRecognizer) {
+    @objc internal class func handlePresentMenuPan(_ pan: UIPanGestureRecognizer) {
         if activeGesture == nil {
             activeGesture = pan
         } else if pan != activeGesture {
@@ -148,7 +148,8 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
             view.transform = transform
             if velocity >= 100 || velocity >= -50 && abs(distance) >= 0.5 {
                 // bug workaround: animation briefly resets after call to finishInteractiveTransition() but before animateTransition completion is called.
-                if ProcessInfo().operatingSystemVersion.majorVersion == 8, singleton.percentComplete > 1 - CGFloat(FLT_EPSILON) {
+                if ProcessInfo().operatingSystemVersion.majorVersion == 8,
+                    singleton.percentComplete > 1 - CGFloat.ulpOfOne {
                     singleton.update(0.9999)
                 }
                 singleton.finish()
@@ -160,7 +161,7 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
         }
     }
     
-    internal class func handleHideMenuPan(_ pan: UIPanGestureRecognizer) {
+    @objc internal class func handleHideMenuPan(_ pan: UIPanGestureRecognizer) {
         if activeGesture == nil {
             activeGesture = pan
         } else if pan != activeGesture {
@@ -185,7 +186,8 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
             let velocity = pan.velocity(in: pan.view!).x * direction
             if velocity >= 100 || velocity >= -50 && distance >= 0.5 {
                 // bug workaround: animation briefly resets after call to finishInteractiveTransition() but before animateTransition completion is called.
-                if ProcessInfo().operatingSystemVersion.majorVersion == 8, singleton.percentComplete > 1 - CGFloat(FLT_EPSILON) {
+                if ProcessInfo().operatingSystemVersion.majorVersion == 8,
+                    singleton.percentComplete > 1 - CGFloat.ulpOfOne {
                     singleton.update(0.9999)
                 }
                 singleton.finish()
@@ -197,7 +199,7 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
         }
     }
     
-    internal class func handleHideMenuTap(_ tap: UITapGestureRecognizer) {
+    @objc internal class func handleHideMenuTap(_ tap: UITapGestureRecognizer) {
         viewControllerForPresentedMenu?.dismiss(animated: true, completion: nil)
     }
     
@@ -310,7 +312,7 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
     }
     
     internal class func presentMenuComplete() {
-        NotificationCenter.default.addObserver(SideMenuTransition.singleton, selector:#selector(SideMenuTransition.applicationDidEnterBackgroundNotification), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(SideMenuTransition.singleton, selector:#selector(SideMenuTransition.applicationDidEnterBackgroundNotification), name: UIApplication.didEnterBackgroundNotification, object: nil)
         guard let mainViewController = SideMenuTransition.viewControllerForPresentedMenu else {
             return
         }
@@ -434,7 +436,7 @@ extension SideMenuTransition: UIViewControllerAnimatedTransitioning {
                     container.insertSubview(topView, at: 0)
                 }
                 if let statusBarView = SideMenuTransition.statusBarView {
-                    container.bringSubview(toFront: statusBarView)
+                    container.bringSubviewToFront(statusBarView)
                 }
                 
                 return
@@ -506,7 +508,7 @@ extension SideMenuTransition: UIViewControllerTransitioningDelegate {
         return interactive ? SideMenuTransition.singleton : nil
     }
     
-    internal func applicationDidEnterBackgroundNotification() {
+    @objc internal func applicationDidEnterBackgroundNotification() {
         if let menuViewController: UINavigationController = SideMenuTransition.presentDirection == .left ? SideMenuManager.menuLeftNavigationController : SideMenuManager.menuRightNavigationController,
             menuViewController.presentedViewController == nil {
             SideMenuTransition.hideMenuStart()

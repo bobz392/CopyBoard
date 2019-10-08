@@ -51,9 +51,9 @@ open class FaveButton: UIButton {
     }
     
     @IBInspectable open var normalColor: UIColor     = UIColor.white
-    @IBInspectable open var selectedColor: UIColor   = UIColor(colorLiteralRed: 226/255, green: 38/255,  blue: 77/255,  alpha: 1)
-    @IBInspectable open var dotFirstColor: UIColor   = UIColor(colorLiteralRed: 152/255, green: 219/255, blue: 236/255, alpha: 1)
-    @IBInspectable open var dotSecondColor: UIColor  = UIColor(colorLiteralRed: 247/255, green: 188/255, blue: 48/255,  alpha: 1)
+    @IBInspectable open var selectedColor: UIColor   = UIColor(red: 226/255, green: 38/255, blue: 77/255, alpha: 1)
+    @IBInspectable open var dotFirstColor: UIColor   = UIColor(red: 152/255, green: 219/255, blue: 236/255, alpha: 1)
+    @IBInspectable open var dotSecondColor: UIColor  = UIColor(red: 247/255, green: 188/255, blue: 48/255,  alpha: 1)
     
     @IBOutlet open weak var delegate: AnyObject?
     
@@ -96,16 +96,16 @@ extension FaveButton{
     fileprivate func applyInit(){
         
         if nil == faveIconImage{
-            faveIconImage = image(for: UIControlState())
+            faveIconImage = image(for: UIControl.State())
         }
         
         guard let faveIconImage = faveIconImage else{
             fatalError("please provide an image for normal state.")
         }
         
-        setImage(UIImage(), for: UIControlState())
+        setImage(UIImage(), for: UIControl.State())
         setImage(UIImage(), for: .selected)
-        setTitle(nil, for: UIControlState())
+        setTitle(nil, for: UIControl.State())
         setTitle(nil, for: .selected)
         
         faveIcon  = createFaveIcon(faveIconImage)
@@ -161,7 +161,7 @@ extension FaveButton{
         self.addTarget(self, action: #selector(toggle(_:)), for: .touchUpInside)
     }
     
-    func toggle(_ sender: FaveButton){
+    @objc func toggle(_ sender: FaveButton){
         sender.isSelected = !sender.isSelected
         
         guard case let delegate as FaveButtonDelegate = self.delegate else{

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftMessages
+//import SwiftMessages
 
 extension String {
     func saveToUserDefault(value: Bool) {
@@ -24,31 +24,31 @@ struct MessageViewBuilder {
     static let kFirstNoteKey = "com.zhoubo.notes.view.controller"
     static let kFirstEditorKey = "com.zhoubo.editor.view.controller"
     
-    static func showMessageView(title: String, body: String, checkKey: String) {
-        var config = SwiftMessages.Config()
-        config.presentationStyle = .bottom
-        config.duration = .forever
-        let view = MessageView.viewFromNib(layout: .cardView)
-        view.configureContent(title: title, body: body, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "OK", buttonTapHandler: { (button) in
-            SwiftMessages.hide()
-            checkKey.saveToUserDefault(value: true)
-        })
-        view.configureTheme(.info)
-        view.iconLabel?.isHidden = true
-        view.iconImageView?.isHidden = true
-        if checkKey == kFirstNoteKey {
-            view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
-        } else if checkKey == kFirstEditorKey {
-            view.backgroundView.backgroundColor = AppColors.mainBackground
-        }
-        view.button?.backgroundColor = UIColor.clear
-        view.button?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        view.button?.setTitleColor(AppColors.faveButton, for: .normal)
-        view.configureDropShadow()
-        SwiftMessages.show(config: config, view: view)
-    }
+//    static func showMessageView(title: String, body: String, checkKey: String) {
+//        var config = SwiftMessages.Config()
+//        config.presentationStyle = .bottom
+//        config.duration = .forever
+//        let view = MessageView.viewFromNib(layout: .cardView)
+//        view.configureContent(title: title, body: body, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "OK", buttonTapHandler: { (button) in
+////            SwiftMessages.hide()
+//            checkKey.saveToUserDefault(value: true)
+//        })
+//        view.configureTheme(.info)
+//        view.iconLabel?.isHidden = true
+//        view.iconImageView?.isHidden = true
+//        if checkKey == kFirstNoteKey {
+//            view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
+//        } else if checkKey == kFirstEditorKey {
+//            view.backgroundView.backgroundColor = AppColors.mainBackground
+//        }
+//        view.button?.backgroundColor = UIColor.clear
+//        view.button?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+//        view.button?.setTitleColor(AppColors.faveButton, for: .normal)
+//        view.configureDropShadow()
+//        SwiftMessages.show(config: config, view: view)
+//    }
     
     static func hiddenMessageView() {
-        SwiftMessages.hide()
+//        SwiftMessages.hide()
     }
 }

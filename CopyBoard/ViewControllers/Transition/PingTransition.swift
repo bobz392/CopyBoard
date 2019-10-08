@@ -73,7 +73,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
             let maskLayerAnimation = CABasicAnimation(keyPath: "path")
             maskLayerAnimation.duration = self.animationDuration
-            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             maskLayerAnimation.delegate = self
             maskLayerAnimation.fromValue = maskFinalPath.cgPath
             maskLayerAnimation.toValue = maskStartPath.cgPath
@@ -81,7 +81,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
             self.maskLayer.add(maskLayerAnimation, forKey: "path")
             
             let duration = self.animationDuration * 0.5
-            UIView.animate(withDuration: duration, delay: duration, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
+            UIView.animate(withDuration: duration, delay: duration, options: UIView.AnimationOptions.curveEaseInOut, animations: { 
                 self.fromView?.alpha = 0.2
             }, completion: { (finish) in })
             
@@ -103,7 +103,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
             let maskLayerAnimation = CABasicAnimation(keyPath: "path")
             maskLayerAnimation.duration = self.animationDuration
-            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             maskLayerAnimation.delegate = self
             maskLayerAnimation.toValue = maskFinalPath.cgPath
             maskLayerAnimation.fromValue = maskStartPath.cgPath

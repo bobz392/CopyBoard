@@ -19,7 +19,7 @@ class NumberCollectionViewCell: UICollectionViewCell, CollectionCellHighlight {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.numberLabel.textColor = AppColors.keyboardTint
-        self.numberLabel.font = appFont(size: 20, weight: UIFontWeightMedium)
+        self.numberLabel.font = appFont(size: 20, weight: .medium)
         self.backgroundColor = AppColors.keyboard
     }
     

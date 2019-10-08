@@ -12,13 +12,13 @@ import RealmSwift
 extension DBManager {
     
     func unbindNotify() {
-        self.notesToken?.stop()
+        self.notesToken?.invalidate()
         self.dataSource = nil
     }
     
     func bindNotifyToken<T>(result: Results<T>, dataSource: RealmNotificationDataSource) {
         self.dataSource = dataSource
-        self.notesToken = result.addNotificationBlock { (changes: RealmCollectionChange) in
+        self.notesToken = result.observe { (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 dataSource.dataInit()

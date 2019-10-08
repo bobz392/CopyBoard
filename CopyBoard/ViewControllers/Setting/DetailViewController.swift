@@ -78,11 +78,11 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.settingView.invalidateLayout()
     }
 
-    func close() {
+    @objc func close() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
-    func back() {
+    @objc func back() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 

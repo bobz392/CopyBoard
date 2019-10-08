@@ -82,7 +82,7 @@ class HelperViewController: UIViewController {
 //        UIApplication.shared.setStatusBarHidden(false, with: .none)
     }
     
-    func quit() {
+    @objc func quit() {
         self.dismiss(animated: true, completion: nil)
     }
 

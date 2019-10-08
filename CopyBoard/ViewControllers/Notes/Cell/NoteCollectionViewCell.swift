@@ -40,9 +40,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
         self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         self.deleteButton.tintColor = UIColor.white
-        self.deleteButton.addTarget(self, action: #selector(self.deleteAction), for: .touchUpInside)
+        self.deleteButton.addTarget(self,
+                                    action: #selector(self.deleteAction),
+                                    for: .touchUpInside)
         
-        self.faveButton.addTarget(self, action: #selector(self.favourate), for: .touchUpInside)
+        self.faveButton.addTarget(self,
+                                  action: #selector(self.favourate),
+                                  for: .touchUpInside)
         self.noteLabel.textColor = AppColors.noteText
         self.noteDateLabel.textColor = AppColors.noteDate
         
@@ -65,9 +69,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
         self.faveButton.isSelected = note.favourite
         if let date = (AppSettings.shared.stickerDateUse == 0 ? note.createdAt : note.modificationDate) {
-            let region = Region.Local(autoUpdate: true)
-            self.noteDateLabel.text = try?
-                date.colloquialSinceNow(in: region, unitStyle: .full).colloquial
+            self.noteDateLabel.text = date.toRelative()
         } else {
             self.noteDateLabel.text = nil
         }
@@ -87,8 +89,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.catelogueButton.layer.borderWidth = 1.0 / UIScreen.main.scale
     }
     
-    
-    
     private func isTruncated() -> Bool {
         
         if let string = self.note?.content {
@@ -96,7 +96,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
             let size: CGSize = (string as NSString).boundingRect(
                 with: CGSize(width: self.frame.size.width, height: CGFloat.greatestFiniteMagnitude),
                 options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                attributes: [NSFontAttributeName: appFont(size: 16)],
+                attributes: [NSAttributedString.Key.font: appFont(size: 16)],
                 context: nil).size
             
             return (size.height > self.bounds.size.height)
@@ -144,7 +144,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - action
-    func gestureOpenAction() {
+    @objc func gestureOpenAction() {
         Logger.log("sticker open action")
         guard !self.isCurl else { return }
         
@@ -158,7 +158,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func deleteAction() {
+    @objc func deleteAction() {
         guard let cv = self.curlView else { return }
         let weakSelf =  self
         self.closeCurl {
@@ -179,7 +179,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         DBManager.shared.deleteNote(note: n)
     }
     
-    func favourate() {
+    @objc func favourate() {
         guard  let n = self.note else {
             Logger.log("have no note to delete")
             return

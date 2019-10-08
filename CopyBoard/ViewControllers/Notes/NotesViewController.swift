@@ -45,13 +45,16 @@ class NotesViewController: BaseViewController {
         AppSettings.shared.register(any: self, key: self.appSettingNotifyKey)
         DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
         
-        self.noteView.searchButton.addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
-        self.noteView.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
-        self.noteView.emptyCreateButton.addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
+        self.noteView.searchButton
+            .addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
+        self.noteView.settingButton
+            .addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
+        self.noteView.emptyCreateButton
+            .addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
         self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
             Logger.log(UIPasteboard.general.string ?? "no")
             weakSelf.endSearchAction()
-            }.addDisposableTo(viewModel.disposeBag)
+        }.disposed(by: viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
         self.noteView.searchHolderView.addGestureRecognizer(tap)
@@ -73,7 +76,8 @@ class NotesViewController: BaseViewController {
         }
         if #available(iOS 11.0, *) {
             self.noteView.collectionView.contentInsetAdjustmentBehavior = .never;
-            self.additionalSafeAreaInsets = UIEdgeInsetsMake(64, 0, 0, 0)
+            self.additionalSafeAreaInsets =
+                UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -101,11 +105,11 @@ class NotesViewController: BaseViewController {
         self.selectedCell = nil
         self.noteView.searchKeyboardHandle(add: true)
         
-        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
-            MessageViewBuilder.showMessageView(title: Localized("message1"),
-                                               body: Localized("message2"),
-                                               checkKey: MessageViewBuilder.kFirstNoteKey)
-        }
+//        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
+//            MessageViewBuilder.showMessageView(title: Localized("message1"),
+//                                               body: Localized("message2"),
+//                                               checkKey: MessageViewBuilder.kFirstNoteKey)
+//        }
     }
     
     deinit {
@@ -117,13 +121,13 @@ class NotesViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func searchAction()  {
+    @objc func searchAction()  {
         self.noteView.searchAnimation(startSearch: true)
         self.viewModel.isInSearch = true
         NoteCollectionViewInputOverlay.closeOpenItem()
     }
     
-    func settingAction() {
+    @objc func settingAction() {
         let settingVC = SettingViewController()
         let navigation = UINavigationController(rootViewController: settingVC)
         navigation.transitioningDelegate = self
@@ -132,7 +136,7 @@ class NotesViewController: BaseViewController {
         self.present(navigation, animated: true, completion: nil)
     }
     
-    func endSearchAction() {
+    @objc func endSearchAction() {
         self.noteView.searchAnimation(startSearch: false)
         if !self.viewModel.isQueryStringEmpty {
             self.noteView.collectionView.reloadData()
@@ -141,17 +145,19 @@ class NotesViewController: BaseViewController {
         self.viewModel.isQueryStringEmpty = true
     }
     
-    func createAction() {
+    @objc func createAction() {
         let defaultContent = self.noteView.searchBar.text ?? ""
         let editorVC = EditorViewController(defaultContent: defaultContent.count > 0 ? defaultContent : " ")
         editorVC.transitioningDelegate = self
         self.transitionType = .present
-        self.present(editorVC, animated: true, completion: nil)
-        
-        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
-            MessageViewBuilder.hiddenMessageView()
-            MessageViewBuilder.kFirstNoteKey.saveToUserDefault(value: true)
+        self.present(editorVC, animated: true) {
+            self.noteView.collectionView.dg_stopLoading()
+            self.noteView.barView.alpha = 1.0
         }
+//        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
+//            MessageViewBuilder.hiddenMessageView()
+//            MessageViewBuilder.kFirstNoteKey.saveToUserDefault(value: true)
+//        }
     }
     
     override func deviceOrientationChanged() {
@@ -221,7 +227,7 @@ extension NotesViewController: RealmNotificationDataSource {
 
 // MARK: transition and orientation
 extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartViewDelegate {
-    
+  
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if self.transitionType == .present {
             let transition = PresentTransition()
@@ -236,7 +242,9 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
         }
     }
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if self.transitionType == .present {
             let transition = PresentTransition()
             transition.reverse = false
@@ -304,13 +312,15 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let query = self.noteView.searchBar.text
         cell.configCell(use: note, query: query)
         cell.catelogueButton.tag = indexPath.row;
-        cell.catelogueButton.removeTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
-        cell.catelogueButton.addTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
+        cell.catelogueButton
+            .removeTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
+        cell.catelogueButton
+            .addTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
         
         return cell
     }
     
-    func changeCatelogue(sender: UIButton) {
+    @objc func changeCatelogue(sender: UIButton) {
         let note = self.viewModel.noteIn(row: sender.tag)
         
         let alertController = UIAlertController(title: Localized("changeCatelogue"), message: "", preferredStyle: .alert)
@@ -330,7 +340,7 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             alertController.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: { _ in })
+        present(alertController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {

@@ -53,7 +53,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         self.view.backgroundColor = UIColor.clear
         self.view.addSubview(self.pageController.view)
         self.view.addSubview(self.pageControl)
-        self.pageController.didMove(toParentViewController: self)
+        self.pageController.didMove(toParent: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +140,9 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         }
         if pageControl != nil {
             pageControl.currentPage = arrayOfImage.count - index - 1
-            self.alertview.buttonBottom.setTitle(alertview.arrayOfBottomTitles[pageControl.currentPage], for: UIControlState())
+            self.alertview.buttonBottom
+                .setTitle(alertview.arrayOfBottomTitles[pageControl.currentPage],
+                          for: UIControl.State())
         }
     }
     
@@ -167,7 +169,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
     }
     
     fileprivate func configurePageViewController(){
-        self.pageController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.horizontal, options: nil)
+        self.pageController = UIPageViewController(transitionStyle: UIPageViewController.TransitionStyle.scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: nil)
         self.pageController.view.backgroundColor = UIColor.clear
         
         if #available(iOS 9.0, *) {
@@ -186,7 +188,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         self.viewControllers = [initialViewController!]
         self.pageController.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
         
-        self.addChildViewController(self.pageController)
+        self.addChild(self.pageController)
     }
     
     //MARK: Called after notification orientation changement

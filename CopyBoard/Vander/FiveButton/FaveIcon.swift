@@ -58,9 +58,11 @@ extension FaveIcon{
         }
         onView.addSubview(faveIcon)
         
-        (faveIcon, onView) >>- [.centerX,.centerY]
+        (faveIcon, onView) >>- [NSLayoutConstraint.Attribute.centerX,
+                                NSLayoutConstraint.Attribute.centerY]
         
-        faveIcon >>- [.width,.height]
+        faveIcon >>- [NSLayoutConstraint.Attribute.width,
+                      NSLayoutConstraint.Attribute.height]
         
         return faveIcon
     }

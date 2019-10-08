@@ -57,7 +57,7 @@ class SettingsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func switchAction(s: UISwitch) {
+    @objc func switchAction(s: UISwitch) {
         if let setting = self.switchBlock?() {
             setting.selectedType().valueAction(isOn: s.isOn, selectedType: setting)
         }

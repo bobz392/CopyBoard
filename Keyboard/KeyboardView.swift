@@ -69,9 +69,11 @@ class KeyboardView: UIView {
         layout.columnCount = DKManager.shared.columnCount
         layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
-        layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
+        layout.sectionInset = UIEdgeInsets(top: inset, left: inset,
+                                           bottom: inset, right: inset)
         
-        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView = UICollectionView(frame: .zero,
+                                               collectionViewLayout: layout)
         self.collectionView.delaysContentTouches = false
         self.collectionView.register(KeyboardCollectionViewCell.nib,
                                      forCellWithReuseIdentifier: KeyboardCollectionViewCell.reuseId)
@@ -110,14 +112,14 @@ class KeyboardView: UIView {
         label.textAlignment = .center
 
         let attrText = NSMutableAttributedString(string: Localized("open"),
-                                                 attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: UIColor.white])
+                                                 attributes: [NSAttributedString.Key.font: appFont(size: 14), NSAttributedString.Key.foregroundColor: UIColor.white])
         
         let t1 = NSAttributedString(string: Localized("fullAccess"),
-                                    attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: AppColors.faveButton, NSUnderlineStyleAttributeName: 1])
+                                    attributes: [NSAttributedString.Key.font: appFont(size: 14), NSAttributedString.Key.foregroundColor: AppColors.faveButton, NSAttributedString.Key.underlineStyle: 1])
         attrText.append(t1)
         
         let t2 = NSMutableAttributedString(string: Localized("guildOpenFullAccess"),
-                                                 attributes: [NSFontAttributeName: appFont(size: 14), NSForegroundColorAttributeName: UIColor.white])
+                                           attributes: [NSAttributedString.Key.font: appFont(size: 14), NSAttributedString.Key.foregroundColor: UIColor.white])
         attrText.append(t2)
         
         label.attributedText = attrText
@@ -148,7 +150,7 @@ class KeyboardView: UIView {
         }
     }
     
-    func goSettingsAtion() {
+    @objc func goSettingsAtion() {
         if #available(iOSApplicationExtension 10.0, *) {
             if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
                 UIApplication.mSharedApplication().mOpenURL(url: url)
@@ -172,7 +174,10 @@ class KeyboardView: UIView {
             btn.config(cornerRadius: corner)
             let imageInset: CGFloat = 6
             if isImage {
-                btn.imageEdgeInsets = UIEdgeInsetsMake(imageInset, imageInset, imageInset, imageInset)
+                btn.imageEdgeInsets = UIEdgeInsets(top: imageInset,
+                                                   left: imageInset,
+                                                   bottom: imageInset,
+                                                   right: imageInset)
                 btn.tintColor = AppColors.keyboardTint
             }
         }
@@ -259,7 +264,10 @@ class KeyboardView: UIView {
         layout.columnCount = 3
         layout.itemRenderDirection = .leftToRight
         let inset = space * 0.5
-        layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
+        layout.sectionInset = UIEdgeInsets(top: inset,
+                                           left: inset,
+                                           bottom: inset,
+                                           right: inset)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self.collectionView.delegate

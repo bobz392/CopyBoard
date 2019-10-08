@@ -54,13 +54,13 @@ class SegmentationViewController: UIViewController {
                 maker.bottom.equalToSuperview().offset(-4)
             })
             
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.saveAction))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.saveAction))
         } else {
             let _ = self.navigationController?.popViewController(animated: true)
         }
     }
 
-    func saveAction() {
+    @objc func saveAction() {
         let content = self.items.reduce("") { (str, item) -> String in
             return str + (item.inUse ? item.content : "")
         }

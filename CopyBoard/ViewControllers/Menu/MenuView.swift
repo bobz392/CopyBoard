@@ -56,7 +56,7 @@ class MenuView {
             maker.bottom.equalToSuperview()
         }
         
-        self.menuTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
+        self.menuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
         self.menuTableView.separatorStyle = .none
         self.menuTableView.register(MenuDateTableCell.nib,
                                     forCellReuseIdentifier: MenuDateTableCell.reuseId)

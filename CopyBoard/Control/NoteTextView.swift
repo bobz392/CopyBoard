@@ -48,19 +48,19 @@ class NoteTextView: UITextView {
         return originalRect
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
-        let rects = super.selectionRects(for: range)
-        return rects.map { (r) -> Any in
-            if let selectionRect = r as? UITextSelectionRect {
-                print("UITextSelectionRect = \(selectionRect.rect)")
-//                selectionRect.rect.size.height = noteFont.lineHeight
-//                let s = UITextSelectionRect()
-//                s.containsEnd = selectionRect.containsEnd
-//                s.containsStart = selectionRect.containsStart
-                return selectionRect
-            }
-            
-            return r
-        }
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
+        return super.selectionRects(for: range)
+//                return rects.map { (r) -> Any in
+//                    if let selectionRect = r as? UITextSelectionRect {
+//                        print("UITextSelectionRect = \(selectionRect.rect)")
+//        //                selectionRect.rect.size.height = noteFont.lineHeight
+//        //                let s = UITextSelectionRect()
+//        //                s.containsEnd = selectionRect.containsEnd
+//        //                s.containsStart = selectionRect.containsStart
+//                        return selectionRect
+//                    }
+//
+//                    return r
+//                }
     }
 }

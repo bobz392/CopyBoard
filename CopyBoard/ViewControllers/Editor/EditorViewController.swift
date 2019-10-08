@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CircleMenu
 
 class EditorViewController: BaseViewController {
     
@@ -45,7 +46,7 @@ class EditorViewController: BaseViewController {
         
         let weakSelf = self
         self.editorView.config(with: self.view,note: note) {
-            weakSelf.dismiss(animated: true, completion: { (finish) -> Void in })
+            weakSelf.dismiss(animated: true, completion: nil)
             weakSelf.updateNoteIfNeed()
         }
         
@@ -58,20 +59,20 @@ class EditorViewController: BaseViewController {
                     weakSelf.note.favourite = !weakSelf.note.favourite
                 })
             }
-            }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         self.editorView.colorButton.rx.tap.subscribe { (event) in
             weakSelf.editorView.changeColor(start: true)
-            }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         self.editorView.closeButton.rx.tap.subscribe { (event) in
             weakSelf.dismissAction()
-            }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         self.editorView.infoButton.rx.tap.subscribe { (event) in
             guard let menuVC = SideMenuManager.menuRightNavigationController else { return }
             weakSelf.present(menuVC, animated: true, completion: nil)
-            }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         self.editorView.colorMenu.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(updateNoteIfNeed), name: NSNotification.Name.CopyBoardWillTerminal, object: nil)
@@ -95,9 +96,9 @@ class EditorViewController: BaseViewController {
             self.editorView.editorTextView.text = ""
         }
         
-        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
-            MessageViewBuilder.showMessageView(title: Localized("message1"), body: Localized("message3"), checkKey: MessageViewBuilder.kFirstEditorKey)
-        }
+//        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
+//            MessageViewBuilder.showMessageView(title: Localized("message1"), body: Localized("message3"), checkKey: MessageViewBuilder.kFirstEditorKey)
+//        }
     }
     
     func dismissAction() {

@@ -76,21 +76,29 @@ class KeyboardViewController: UIInputViewController {
         longPress.minimumPressDuration = 0.8
         self.keyboardView.deleteButton.addGestureRecognizer(longPress)
         
-        self.keyboardView.returnButton.addTarget(self, action: #selector(self.returnAction), for: .touchUpInside)
-        self.keyboardView.numberButton.addTarget(self, action: #selector(self.numberAction), for: .touchUpInside)
-        self.keyboardView.spaceButton.addTarget(self, action: #selector(self.spaceAction), for: .touchUpInside)
-        self.keyboardView.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
+        self.keyboardView.returnButton.addTarget(self,
+                                                 action: #selector(self.returnAction),
+                                                 for: .touchUpInside)
+        self.keyboardView.numberButton.addTarget(self,
+                                                 action: #selector(self.numberAction),
+                                                 for: .touchUpInside)
+        self.keyboardView.spaceButton.addTarget(self,
+                                                action: #selector(self.spaceAction),
+                                                for: .touchUpInside)
+        self.keyboardView.saveButton.addTarget(self,
+                                               action: #selector(self.saveAction),
+                                               for: .touchUpInside)
         
         print(self.textDocumentProxy.keyboardType?.rawValue ?? "hahaha not type")
     }
     
-    func launchAppAction() {
+    @objc func launchAppAction() {
         if let url = URL(string: "sticker://") {
             UIApplication.mSharedApplication().mOpenURL(url: url)
         }
     }
     
-    func saveAction() {
+    @objc func saveAction() {
         let key = "keyboard.last.clip.board.saved"
         let userDefault = UserDefaults.standard
         let lastClipBoardString = userDefault.string(forKey: key)
@@ -117,11 +125,11 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
-    func deleteTextAction(btn: UIButton) {
+    @objc func deleteTextAction(btn: UIButton) {
         self.textDocumentProxy.deleteBackward()
     }
     
-    func returnAction() {
+    @objc func returnAction() {
         self.textDocumentProxy.insertText("\n")
     }
     
@@ -130,11 +138,11 @@ class KeyboardViewController: UIInputViewController {
         btn.backgroundColor = btn.isSelected ? UIColor.white : AppColors.keyboard
     }
     
-    func spaceAction() {
+    @objc func spaceAction() {
         self.textDocumentProxy.insertText(" ")
     }
     
-    func numberAction() {
+    @objc func numberAction() {
         self.keyboardView.showNumber = !self.keyboardView.showNumber
         if self.keyboardView.showNumber {
             self.keyboardView.numberButton.setImage(Icons.text.iconImage(), for: .normal)

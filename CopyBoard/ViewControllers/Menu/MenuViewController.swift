@@ -26,7 +26,9 @@ class MenuViewController: BaseViewController {
         menuView.configView(view: self.view)
         menuView.menuTableView.delegate = self
         menuView.menuTableView.dataSource = self
-        menuView.closeButton.addTarget(self, action: #selector(self.quitMenu), for: .touchUpInside)
+        menuView.closeButton.addTarget(self,
+                                       action: #selector(self.quitMenu),
+                                       for: .touchUpInside)
         menuView.menuTableView.reloadData()
     }
 
@@ -35,7 +37,7 @@ class MenuViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func quitMenu() {
+    @objc func quitMenu() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -64,7 +66,7 @@ class MenuViewController: BaseViewController {
             alertController.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: { _ in })
+        present(alertController, animated: true, completion: nil)
     }
 
 }

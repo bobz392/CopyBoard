@@ -113,7 +113,10 @@ extension NoteView {
             self.collectionView.setCollectionViewLayout(layout, animated: true)
             
         }
-        UIApplication.shared.setStatusBarHidden(DeviceManager.shared.isLandscape, with: .fade)
+       
+        UIApplication.shared
+            .setStatusBarHidden(DeviceManager.shared.isLandscape,
+                                with: .fade)
         
         let height: CGFloat = self.searchNoResultView.frame.height * 0.4
         self.catImageView.snp.updateConstraints { maker in
@@ -135,7 +138,6 @@ extension NoteView {
         loadingView.imageView.tintColor = AppColors.mainIcon
         self.collectionView.dg_addPullToRefreshWithActionHandler({
             weakSelf.createBlock?()
-            weakSelf.collectionView.dg_stopLoading()
         }, loadingView: loadingView)
         
         self.collectionView.dg_setPullToRefreshFillColor(UIColor.clear)
@@ -152,7 +154,7 @@ extension NoteView {
         layout.columnCount = DeviceManager.shared.noteColumnCount
         layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
-        layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset)
+        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.collectionView.keyboardDismissMode = .onDrag
@@ -221,7 +223,8 @@ extension NoteView {
             make.top.equalTo(emptyImageView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
-        self.emptyCreateButton.titleLabel?.font = appFont(size: emptyNotesFont(), weight: UIFontWeightMedium)
+        self.emptyCreateButton.titleLabel?.font =
+            appFont(size: emptyNotesFont(), weight: .medium)
     }
     
     fileprivate func emptyNotesFont() -> CGFloat {

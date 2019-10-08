@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import CircleMenu
 
 class EditorView {
     let editorTextView = UITextView()
@@ -78,7 +79,7 @@ class EditorView {
             UIView.animate(withDuration: 0.2, animations: {
                 weakSelf.colorHolderView.alpha = 1
             }, completion: { (finish) in
-                weakSelf.colorMenu.onTap()
+                weakSelf.colorMenu.perform(NSSelectorFromString("onTap"))
             })
             
             
@@ -233,7 +234,8 @@ class EditorView {
         self.editorTextView.bgClear()
         self.editorTextView.textColor = AppColors.noteText
         self.editorTextView.tintColor = AppColors.noteText
-        self.editorTextView.textContainerInset = UIEdgeInsetsMake(12, 12, 12, 12)
+        self.editorTextView.textContainerInset =
+            UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         self.editorTextView.alwaysBounceVertical = true
 
         self.editorTextView.snp.makeConstraints { maker in
@@ -250,10 +252,10 @@ class EditorView {
         paraStyle.lineSpacing = NoteTextView.NoteLineSpace
         
         attrString.addAttributes([
-            NSParagraphStyleAttributeName: paraStyle,
-            NSFontAttributeName: appFont(size: 18),
-            NSForegroundColorAttributeName: AppColors.noteText
-            ], range: NSMakeRange(0, text.characters.count))
+            NSAttributedString.Key.paragraphStyle: paraStyle,
+            NSAttributedString.Key.font: appFont(size: 18),
+            NSAttributedString.Key.foregroundColor: AppColors.noteText
+            ], range: NSMakeRange(0, text.count))
         self.editorTextView.attributedText = attrString
     }
     

@@ -55,7 +55,7 @@ class SettingViewController: BaseViewController {
         self.settingView.settingsTableView.deselectRow(at: index, animated: true)
     }
 
-    func quit() {
+    @objc func quit() {
         self.dismiss(animated: true) {}
     }
 
