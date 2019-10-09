@@ -15,15 +15,16 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
     fileprivate var transitionContext: UIViewControllerContextTransitioning? = nil
     fileprivate var maskLayer = CAShapeLayer()
-    fileprivate var fromView: UIView? = nil
+    
+    fileprivate var startViewBounds: CGRect = .zero
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return animationDuration
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-              let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
+        guard let fromVC = transitionContext.viewController(forKey: .from),
+              let toVC = transitionContext.viewController(forKey: .to) else {
             return
         }
 
@@ -41,69 +42,72 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
         self.transitionContext = transitionContext
 
-        toView.frame = fromView.bounds
-        toView.layoutIfNeeded()
-        self.fromView = fromView
-
         self.animateTransition(transitionContext, fromView: fromView, toView: toView, startView: startView)
     }
 
-    fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView, startView: UIView) {
+    fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning,
+                                       fromView: UIView,
+                                       toView: UIView,
+                                       startView: UIView) {
         let containerView = transitionContext.containerView
+        containerView.backgroundColor = UIColor.black
 
-        let v = self.reverse ? toView : fromView
-        var bounds = v.convert(startView.frame, to: containerView)
-        bounds.origin.y += DeviceManager.shared.statusbarHeight
-
-//        if reverse {
-//            bounds.insetBy(dx: 15, dy: 15)
-//        }
-        let maskStartPath = UIBezierPath(ovalIn: bounds)
+        if startViewBounds == .zero,
+            let superStartView = startView.superview {
+            startViewBounds = superStartView
+                .convert(startView.frame, to: containerView)
+        }
+        let maskStartPath = UIBezierPath(ovalIn: startViewBounds)
 
         let finalPoint = self.calculateFinalPoint(startView: startView, toView: toView)
         let radius = sqrt(pow(finalPoint.x, 2) + pow(finalPoint.y, 2))
-        let maskFinalPath = UIBezierPath(ovalIn: bounds.insetBy(dx: -radius, dy: -radius))
+        let maskFinalPath = UIBezierPath(ovalIn: startViewBounds.insetBy(dx: -radius, dy: -radius))
 
         if reverse {
-            containerView.addSubview(toView)
-            containerView.addSubview(fromView)
+            let toImageView = UIImageView()
+            if let toVCView = transitionContext.viewController(forKey: .to)?.view {
+                toImageView.image = toVCView.asImage()
+                toImageView.frame = containerView.bounds
+                containerView.insertSubview(toImageView, at: 0)
+            }
 
             self.maskLayer.path = maskStartPath.cgPath
             fromView.layer.mask = self.maskLayer
 
             let maskLayerAnimation = CABasicAnimation(keyPath: "path")
             maskLayerAnimation.duration = self.animationDuration
-            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            maskLayerAnimation.timingFunction =
+                CAMediaTimingFunction(name: .easeInEaseOut)
             maskLayerAnimation.delegate = self
             maskLayerAnimation.fromValue = maskFinalPath.cgPath
             maskLayerAnimation.toValue = maskStartPath.cgPath
 
             self.maskLayer.add(maskLayerAnimation, forKey: "path")
-            
-            let duration = self.animationDuration * 0.5
-            UIView.animate(withDuration: duration, delay: duration, options: UIView.AnimationOptions.curveEaseInOut, animations: { 
-                self.fromView?.alpha = 0.2
-            }, completion: { (finish) in })
-            
-//            let alphaAnimation = CABasicAnimation(keyPath: "opacity")
-//            alphaAnimation.duration = self.animationDuration * 0.5
-//            alphaAnimation.beginTime = CACurrentMediaTime() + self.animationDuration * 0.5
-//            alphaAnimation.fromValue = 1
-//            alphaAnimation.toValue = 0.2
-//            alphaAnimation.isRemovedOnCompletion = false
-//            alphaAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//            
-//            self.maskLayer.add(alphaAnimation, forKey: "opacity")
-        } else {
-            containerView.addSubview(fromView)
-            containerView.addSubview(toView)
 
+            let duration = self.animationDuration * 0.5
+            UIView.animate(withDuration: duration,
+                           delay: duration,
+                           options: .curveEaseIn, animations: {
+                fromView.alpha = 0.2
+            }, completion: { (finish) in })
+        } else {
+            let fromImageView = UIImageView()
+            if let fromVCView = transitionContext.viewController(forKey: .from)?.view {
+                fromImageView.image = fromVCView.asImage()
+                fromImageView.frame = containerView.bounds
+                containerView.insertSubview(fromImageView, at: 0)
+            }
+            
+            toView.frame = containerView.bounds
+            containerView.addSubview(toView)
+                    
             self.maskLayer.path = maskFinalPath.cgPath
             toView.layer.mask = self.maskLayer
 
             let maskLayerAnimation = CABasicAnimation(keyPath: "path")
             maskLayerAnimation.duration = self.animationDuration
-            maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            maskLayerAnimation.timingFunction =
+                CAMediaTimingFunction(name: .easeInEaseOut)
             maskLayerAnimation.delegate = self
             maskLayerAnimation.toValue = maskFinalPath.cgPath
             maskLayerAnimation.fromValue = maskStartPath.cgPath
@@ -119,9 +123,7 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         }
         
         transitionContext.completeTransition(true)
-        self.fromView?.removeFromSuperview()
         self.maskLayer.removeFromSuperlayer()
-        self.fromView?.alpha = 1
     }
 
     func calculateFinalPoint(startView: UIView, toView: UIView) -> CGPoint {
