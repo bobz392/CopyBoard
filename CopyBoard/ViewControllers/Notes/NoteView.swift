@@ -252,10 +252,7 @@ extension NoteView {
     func configSearchResultView(view: UIView) {
         view.addSubview(self.searchNoResultBgView)
         self.searchNoResultBgView.snp.makeConstraints { maker in
-            maker.center.equalToSuperview()
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
-            maker.bottom.equalToSuperview()
+            maker.edges.equalToSuperview()
         }
         if let image = UIImage(named: "empty_bg.pdf") {
             self.searchNoResultBgView.layer.contents = image.cgImage

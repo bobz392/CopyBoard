@@ -60,9 +60,11 @@ extension DeviceManager {
             return .portraitUpsideDown
         case .unknown:
             return .portrait
+        default:
+            return .portrait
         }
     }
-
+    
     
     var isLandscape: Bool {
         get {

@@ -327,7 +327,10 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
             textField.placeholder = note.category
         })
-        let confirmAction = UIAlertAction(title: Localized("save"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+        let confirmAction = UIAlertAction(title: Localized("save"),
+                                          style: .default,
+                                          handler:
+            {(_ action: UIAlertAction) -> Void in
             if let text = alertController.textFields?[0].text,
                 text.count > 0 {
                 DBManager.shared.updateObject {
@@ -336,14 +339,19 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
         })
         alertController.addAction(confirmAction)
-        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
-            alertController.dismiss(animated: true, completion: nil)
+        let cancelAction = UIAlertAction(title: Localized("cancel"),
+                                         style: .cancel,
+                                         handler:
+            {(_ action: UIAlertAction) -> Void in
+                alertController.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
     
-    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView!,
+                        layout collectionViewLayout: UICollectionViewLayout!,
+                        sizeForItemAt indexPath: IndexPath!) -> CGSize {
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
         let space = CGFloat(layout.columnCount + 1) * DeviceManager.shared.collectionViewItemSpace
@@ -363,7 +371,8 @@ extension NotesViewController: AppSettingsNotify {
             
         case .stickerSort, .stickerSortNewestLast:
             self.viewModel.notes = DBManager.shared.queryNotes()
-            DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
+            DBManager.shared
+                .bindNotifyToken(result: self.viewModel.notes, dataSource: self)
             
         default:
             return

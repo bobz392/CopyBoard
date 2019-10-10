@@ -182,8 +182,11 @@ extension SettingView {
         let arrayOfDescription = [Localized("description1"), Localized("description2"), Localized("description3")]
         let buttonsTitles = [Localized("doGuild1"), Localized("doGuild2"), Localized("doGuild3")]
         
-        let alertView = AlertOnboarding(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, arrayOfBottomTitles: buttonsTitles) { (index) in
-            
+        let alertView = AlertOnboarding(arrayOfImage: arrayOfImage,
+                                        arrayOfTitle: arrayOfTitle,
+                                        arrayOfDescription: arrayOfDescription,
+                                        arrayOfBottomTitles: buttonsTitles)
+        { (index) in
             if #available(iOS 11.0, *) {
                 if index == 0 || index == 1 {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
