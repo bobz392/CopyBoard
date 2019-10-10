@@ -109,7 +109,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     }
     
     //Hide onboarding with animation
-    open func hide(){
+    @objc open func hide(){
         self.checkIfOnboardingWasSkipped()
         DispatchQueue.main.async { () -> Void in
             self.animateForEnding()
@@ -143,6 +143,8 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.background = UIView(frame: CGRect(x: 0,y: 0, width: 0, height: 0))
         self.background.backgroundColor = UIColor.black
         self.background.alpha = 0.5
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hide))
+        self.background.addGestureRecognizer(tap)
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
@@ -202,8 +204,9 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     }
     
     fileprivate func animateForEnding(){
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
             self.alpha = 0.0
+            self.background.alpha = 0.0
             }, completion: {
                 (finished: Bool) -> Void in
                 // On main thread
@@ -245,12 +248,16 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default
             .addObserver(self, selector: #selector(AlertOnboarding.onOrientationChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(onOrientationChange), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     @objc func onOrientationChange(){
-        if let superview = self.superview {
-            self.configureConstraints(superview)
-            self.container.configureConstraintsForPageControl()
-        }
+//        if let superview = self.superview {
+//            self.configureConstraints(superview)
+////            self.container.configureConstraintsForPageControl()
+//        }
+//        self.container.configureConstraintsForPageControl()
+        self.hide()
     }
 }
