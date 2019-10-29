@@ -28,7 +28,7 @@ DEPENDENCIES:
   - SwiftDate
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - CircleMenu
     - Crashlytics
     - Fabric
@@ -54,4 +54,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2ee40299a823ad87b6963e35424444595c7923cd
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.3

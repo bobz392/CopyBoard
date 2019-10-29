@@ -19,6 +19,7 @@ class BaseViewController: UIViewController {
         self.modalPresentationStyle = .overFullScreen
         if #available(iOS 13.0, *) {
             self.isModalInPresentation = true
+            UIApplication.shared.statusBarStyle = .darkContent
         }
     }
     
