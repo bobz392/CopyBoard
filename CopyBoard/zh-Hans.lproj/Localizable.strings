@@ -1,4 +1,4 @@
-"sticker"="便笺";
+"sticker"="便签";
 "infomation"="详情";
 "modificationDate"="修改日期";
 "modificationDevice"="最后一次编辑的设备";
@@ -12,23 +12,23 @@
 "advance"="高级";
 "keyboardHeight"="键盘高度";
 "lines"="行";
-"stickerLines"="便笺行数";
+"stickerLines"="便签行数";
 "stickerDate"="日期标签为";
 "caseSensitive"="大小写敏感";
 "keyboard"="键盘";
-"catelogue"="类别";
+"catelogue"="标签";
 "defaultCatelogue"="无";
 "changeCatelogue"="新类别";
 "save"="保存";
 "cancel"="取消";
 
 // gesture
-"stickerGusture"="便笺手势";
+"stickerGusture"="便签手势";
 "swipe"="左滑";
 "longGusture"="长按";
 
 // sort
-"sort"="便笺排序";
+"sort"="便签排序";
 "sortBy"="排序方式按";
 "newest"="最新优先";
 
@@ -39,11 +39,11 @@
 "filterUnstar"="仅不星标";
 "star"="星标";
 "color"="颜色";
-"filterHelper"="当您设置过滤条件时，只有满足条件的便笺才会出现在键盘中";
+"filterHelper"="当您设置过滤条件时，只有满足条件的便签才会出现在键盘中";
 
 // keyboard function
 "function"="功能";
-"segmentationDesc"="开启以后将会在选中一个便笺后进行分词动作";
+"segmentationDesc"="开启以后将会在选中一个便签后进行分词动作";
 
 // extra
 "extra"="附加";
@@ -53,31 +53,31 @@
 
 // guild
 "step"="步骤";
-"description1"="添加便笺输入法。";
+"description1"="添加便签输入法。";
 "description2"="开启允许完全访问。我们不会收集或上传您的隐私数据，仅仅用于访问APP数据。";
-"description3"="切换到便笺输入法。";
+"description3"="切换到便签输入法。";
 "doGuild1"="去添加";
 "doGuild2"="允许完全访问";
 "doGuild3"="知道了";
 
 // message
 "message1"="Tips:";
-"message2"="下拉来创建您的第一个便笺 :)";
-"message3"="您创建的便笺会自动保存";
+"message2"="下拉来创建您的第一个便签 :)";
+"message3"="您创建的便签会自动保存";
 
 // default note
-"defaultNote1"="欢迎来到便笺。这里有一些提示的便笺";
-"defaultNote2"="在应用程序导航栏的左侧按钮进入设置界面，右侧的按钮是可以进行搜索。\n向左边滑动贴纸可以删除对应的贴纸，点击星可以对一张贴纸进行标星或者取消标星。贴纸的左上方默认显示的是创建日期，您可以从设置界面改为修改日期。\n下拉可以创建新的便笺。";
-"defaultNote3"="我们永远不会收集您的隐私数据或者便笺内容，仅仅保存数据在您自己的icloud账号中，并且会同步您的任何修改到您的多台设备上。\n默认键盘中仅显示5条数据并且忽略颜色，如果您开启完全访问则可以访问所有便笺。\n进入设置界面并点击”使用键盘“按钮来引导您进行设置。";
-"defaultNote4"="点击一个便笺可进入便笺并修改它，导航条顶部按钮左到右边依次是：返回上级、详情菜单、修改颜色和修改标星按钮。\n下拉便笺可以快捷的返回上级界面。";
+"defaultNote1"="欢迎来到便签。这里有一些提示内容";
+"defaultNote2"="在应用程序导航栏的左侧按钮进入设置界面，右侧的按钮是可以进行搜索。\n向左边滑动贴纸可以删除对应的贴纸，点击星可以对一张贴纸进行标星或者取消标星。贴纸的左上方默认显示的是创建日期，您可以从设置界面改为修改日期。\n下拉可以创建新的便签。";
+"defaultNote3"="我们永远不会收集您的隐私数据或者便签内容，仅仅保存数据在您自己的icloud账号中，并且会同步您的任何修改到您的多台设备上。\n默认键盘中仅显示5条数据并且忽略颜色，如果您开启完全访问则可以访问所有便签。\n进入设置界面并点击”使用键盘“按钮来引导您进行设置。";
+"defaultNote4"="点击一个便签可进入便签并修改它，导航条顶部按钮左到右边依次是：返回上级、详情菜单、修改颜色和修改标星按钮。\n下拉便签可以快捷的返回上级界面。";
 "defaultNote5"="最后，真诚的感谢您使用产品，我们很希望听到您的声音，您可以在设置页面中联系我们。 \n如果你满意或有不满意的地方，大胆地为我们打分吧 :)";
 
 "open"="开启";
 "fullAccess"="完全访问";
-"guildOpenFullAccess"="可以读取所有便笺>";
+"guildOpenFullAccess"="可以读取所有便签>";
 
 // shortcuts
-"create"="新建便笺";
+"create"="新建便签";
 "search"="搜索";
 "setting"="设置";
 
@@ -87,11 +87,11 @@
 // helper
 "help"="帮助";
 "helpFooter"="如果您仍有其他不会使用的功能，请通过设置页面联系我们 :)";
-"helpCreate"="如何创建新的便笺";
-"helpDelete"="如何删除一个便笺";
-"helpCatagory"="如何给便笺分类";
-"helpShare"="如何快速分享一段文字到便笺";
-"helpCheck"="如何查看便笺的相关信息";
-"helpLineCount"="如何改变便笺的最大显示行数";
-"helpColor"="如何改变便笺的颜色";
-"helpCopy"="在键盘中如何复制文字到便笺";
+"helpCreate"="如何创建新的便签";
+"helpDelete"="如何删除一个便签";
+"helpCatagory"="如何给便签分类";
+"helpShare"="如何快速分享一段文字到便签";
+"helpCheck"="如何查看便签的相关信息";
+"helpLineCount"="如何改变便签的最大显示行数";
+"helpColor"="如何改变便签的颜色";
+"helpCopy"="在键盘中如何复制文字到便签";
