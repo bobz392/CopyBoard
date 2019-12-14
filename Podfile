@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'CopyBoard' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,15 +7,17 @@ target 'CopyBoard' do
   inhibit_all_warnings!
   
   # Pods for CopyBoard
-  pod 'Fabric'
-  pod 'Crashlytics'
+#  pod 'Fabric'
+#  pod 'Crashlytics'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RealmSwift'
   pod 'SnapKit'
   pod 'SwiftDate'
   pod 'CircleMenu'
-#  pod 'SwiftMessages'
+  pod 'Bugly'
+  
+  pod 'WhatsNewKit'
 
   target 'CopyBoardTests' do
     inherit! :search_paths
@@ -30,8 +32,6 @@ target 'Keyboard' do
   inhibit_all_warnings!
   # Pods for Keyboard
   
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'RealmSwift'
   pod 'SnapKit'
   

@@ -10,6 +10,8 @@ import UIKit
 
 enum SettingType {
     case general
+    case statistics
+    
     case search
     case keyboardLine
 //    case keyboardHeight
@@ -59,6 +61,9 @@ enum SettingType {
         switch self {
         case .general:
             return Localized("general")
+        case .statistics:
+            return Localized("statistics")
+            
         case .search:
             return Localized("search")
         case .keyboardLine:
@@ -133,15 +138,6 @@ enum SettingType {
             return ""
         }
     }
-    
-//    func descriptionText() -> String? {
-//        switch self {
-//        case <#pattern#>:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
     
     /**
      * 选中 setting item 后执行的动作类型
@@ -386,7 +382,9 @@ enum SettingSelectType {
             if section == 0 {
                 settings.keyboardFilterStar = row
             } else {
-                if let index = settings.keyboardFilterColor.index(of: row) {
+                if let index = settings
+                    .keyboardFilterColor
+                    .firstIndex(of: row) {
                     if settings.keyboardFilterColor.count > 1 {
                         settings.keyboardFilterColor.remove(at: index)
                     }

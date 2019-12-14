@@ -174,7 +174,7 @@ class CloudKitManager: NSObject {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         privateDatabase.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
             if let allRecords = records, allRecords.count > 0 {
-                let notes = allRecords.flatMap ({ (record) -> Note? in
+                let notes = allRecords.compactMap ({ (record) -> Note? in
                     return self.configToNoteBy(record: record)
                 })
                 

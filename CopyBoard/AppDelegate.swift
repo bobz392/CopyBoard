@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,12 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CloudKitManager.shared.createSubscription()
         self.configureDynamicShortcuts()
         
-        Fabric.with([Crashlytics.self])
         MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: false)
         
+        let config = BuglyConfig()
         #if DEBUG
-        Fabric.sharedSDK().debug = true
+        config.debugMode = true
         #endif
+        config.reportLogLevel = .warn
+        Bugly.start(withAppId: "1867f49195")
+        
         return true
     }
     

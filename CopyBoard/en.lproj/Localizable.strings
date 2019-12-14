@@ -21,6 +21,7 @@
 "changeCatelogue"="New Category";
 "save"="Save";
 "cancel"="Cancel";
+"statistics"="statistics";
 
 // gesture
 "stickerGusture"="Memo gesture";
@@ -75,6 +76,8 @@
 "open"="Open";
 "fullAccess"=" Allow Full Access ";
 "guildOpenFullAccess"="to load all memos>";
+
+"useKeyboardTip"="You can share or use your note or article to other application through Memo keyboard";
 
 // shortcuts
 "create"="Create New";

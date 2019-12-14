@@ -33,6 +33,7 @@ enum Icons {
     case sync
     case number
     case text
+    case filter
     
     func iconString() -> String {
         switch self {
@@ -58,10 +59,12 @@ enum Icons {
         case .sync: return "sync"
         case .number: return "number"
         case .text: return "text"
+        case .filter: return "filter"
         }
     }
     
     func iconImage() -> UIImage? {
-        return UIImage(named: self.iconString())?.withRenderingMode(.alwaysTemplate)
+        return UIImage(named: self.iconString())?
+            .withRenderingMode(.alwaysTemplate)
     }
 }

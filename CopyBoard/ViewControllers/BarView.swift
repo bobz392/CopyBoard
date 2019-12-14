@@ -72,8 +72,7 @@ class BarView: UIView {
             self.addSubview(btn)
             btn.snp.makeConstraints({ maker in
                 maker.centerY.equalToSuperview()
-                maker.height.equalTo(self.barButtonSide)
-                maker.width.equalTo(self.barButtonSide)
+                maker.width.height.equalTo(self.barButtonSide)
                 if left {
                     maker.left.equalToSuperview().offset(current)
                 } else {

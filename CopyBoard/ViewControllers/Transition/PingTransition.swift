@@ -10,7 +10,7 @@ import UIKit
 
 final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
 
-    internal let animationDuration: TimeInterval = 0.6
+    internal let animationDuration: TimeInterval = 0.4
     var reverse = false
 
     fileprivate var transitionContext: UIViewControllerContextTransitioning? = nil
@@ -53,12 +53,15 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
         containerView.backgroundColor = UIColor.black
 
         if startViewBounds == .zero,
+            let convertView = UIApplication
+                .shared.keyWindow?
+                .rootViewController?.view,
             let superStartView = startView.superview {
             startViewBounds = superStartView
-                .convert(startView.frame, to: containerView)
+                .convert(startView.frame, to: convertView)
         }
         let maskStartPath = UIBezierPath(ovalIn: startViewBounds)
-
+        
         let finalPoint = self.calculateFinalPoint(startView: startView, toView: toView)
         let radius = sqrt(pow(finalPoint.x, 2) + pow(finalPoint.y, 2))
         let maskFinalPath = UIBezierPath(ovalIn: startViewBounds.insetBy(dx: -radius, dy: -radius))
@@ -84,11 +87,11 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
             self.maskLayer.add(maskLayerAnimation, forKey: "path")
 
-            let duration = self.animationDuration * 0.5
-            UIView.animate(withDuration: duration,
-                           delay: duration,
-                           options: .curveEaseIn, animations: {
-                fromView.alpha = 0.2
+            let duration = self.animationDuration * 0.7
+            UIView.animate(withDuration: duration ,
+                           delay: self.animationDuration * 0.3,
+                           options: .curveEaseInOut, animations: {
+                            fromView.alpha = 0.2
             }, completion: { (finish) in })
         } else {
             let fromImageView = UIImageView()

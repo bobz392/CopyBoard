@@ -21,6 +21,7 @@
 "changeCatelogue"="新类别";
 "save"="保存";
 "cancel"="取消";
+"statistics"="统计";
 
 // gesture
 "stickerGusture"="便签手势";
@@ -75,6 +76,8 @@
 "open"="开启";
 "fullAccess"="完全访问";
 "guildOpenFullAccess"="可以读取所有便签>";
+
+"useKeyboardTip"="启用键盘以后可以通过 Memo 自定义的键盘快速使用或者分享您的文本到别的应用";
 
 // shortcuts
 "create"="新建便签";

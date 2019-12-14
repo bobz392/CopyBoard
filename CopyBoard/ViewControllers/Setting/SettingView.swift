@@ -9,7 +9,9 @@
 import UIKit
 
 let kSettingMargin: CGFloat = 16
-let kCatHeaderViewHeight: CGFloat = 0.334 * max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+let kCatHeaderImageBottomPadding: CGFloat = 25
+let kCatHeaderViewHeight: CGFloat =
+    0.334 * max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) + kCatHeaderImageBottomPadding
 let kVersionFooterViewHeight: CGFloat = 65
 let kNormalHeaderViewHeight: CGFloat = 40
 let kFilterFooterViewHeight: CGFloat = 40
@@ -126,7 +128,7 @@ extension SettingView {
                 maker.left.equalToSuperview().offset(kSettingMargin)
                 maker.right.equalToSuperview().offset(-kSettingMargin)
                 maker.top.equalToSuperview().offset(5)
-                maker.bottom.equalToSuperview().offset(-20)
+                maker.bottom.equalToSuperview().offset(-20-kCatHeaderImageBottomPadding)
             })
             view.clipsToBounds = true
             view.layer.cornerRadius = 8
@@ -146,6 +148,7 @@ extension SettingView {
             label.text = Localized("useKeyboard")
             label.textColor = UIColor.white
             label.backgroundColor = AppColors.appRed
+            label.clipsToBounds = true
             label.textAlignment = .center
             view.addSubview(label)
             label.snp.makeConstraints({ maker in
@@ -170,6 +173,19 @@ extension SettingView {
             })
             touchButton.addTarget(self, action: #selector(self.guildAction), for: .touchUpInside)
             
+            let useKeyboardTip = UILabel()
+            useKeyboardTip.text = Localized("useKeyboardTip")
+            useKeyboardTip.textAlignment = .left
+            useKeyboardTip.textColor = AppColors.menuSecondaryText
+            useKeyboardTip.numberOfLines = 0
+            useKeyboardTip.font = appFont(size: 11)
+            catView.addSubview(useKeyboardTip)
+            useKeyboardTip.snp.makeConstraints { maker in
+                maker.leading.equalTo(kSettingMargin)
+                maker.trailing.equalTo(-kSettingMargin)
+                maker.bottom.equalToSuperview().offset(-10)
+            }
+            
             self.catView = catView
             return catView
         }
@@ -190,7 +206,7 @@ extension SettingView {
             if #available(iOS 11.0, *) {
                 if index == 0 || index == 1 {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.openURL(url)
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
                     return false
                 } else {
@@ -200,7 +216,7 @@ extension SettingView {
                 if index == 0 {
                     if #available(iOSApplicationExtension 10.0, *) {
                         if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS") {
-                            UIApplication.shared.openURL(url)
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } else {
                         if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS") {
@@ -211,7 +227,7 @@ extension SettingView {
                 } else if index == 1 {
                     if #available(iOSApplicationExtension 10.0, *) {
                         if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                            UIApplication.shared.openURL(url)
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } else {
                         if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {

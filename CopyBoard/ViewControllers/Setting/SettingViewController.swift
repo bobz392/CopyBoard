@@ -45,7 +45,8 @@ class SettingViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.settingView.settingsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        self.settingView.settingsTableView
+            .scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -96,11 +97,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if item == .rate {
              let url = "https://itunes.apple.com/us/app/sticker-your-note-keyboard/id1212066610?mt=8"
             guard let u = URL(string: url) else { return }
-            
-            UIApplication.shared.openURL(u)
+            UIApplication.shared.open(u, options: [:], completionHandler: nil)
         } else if item == .contact {
             guard let url = URL(string: "mailto:zhoubo392@gmail.com") else { return }
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             self.selectedIndex = indexPath
             let vc = DetailViewController(rootSettingType: item)

@@ -12,6 +12,7 @@
 #import "iRate.h"
 #import "XBPageDragView.h"
 #import "CHTCollectionViewWaterfallLayout.h"
+#import <Bugly/Bugly.h>
 //#import "SECollectionViewFlowLayout.h"
 //#import "EUMShowTouchWindow.h"
 
