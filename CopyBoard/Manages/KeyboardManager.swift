@@ -9,7 +9,9 @@
 import UIKit
 
 final class KeyboardManager {
-    typealias KeyboardHandle = (_ show: Bool, _ height: CGFloat, _ duration: Double) -> Void
+    typealias KeyboardHandle = (_ show: Bool,
+        _ height: CGFloat,
+        _ duration: Double) -> Void
     
     static let shared = KeyboardManager()
     //    static var keyboardHeight: CGFloat = 0
@@ -19,16 +21,19 @@ final class KeyboardManager {
     fileprivate var keyboardHandler: KeyboardHandle?
     
     init() {
+        weak var ws = self
         NotificationCenter.default.addObserver(
-            forName: UIResponder.keyboardWillChangeFrameNotification, object: nil,
+            forName: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil,
             queue: OperationQueue.main) { notification in
-                self.handleKeyboardShow(notification)
+                ws?.handleKeyboardShow(notification)
         }
         
         NotificationCenter.default.addObserver(
-            forName: UIResponder.keyboardWillHideNotification, object: nil,
+            forName: UIResponder.keyboardWillHideNotification,
+            object: nil,
             queue: OperationQueue.main) { notification in
-                self.handleKeyboardHide(notification)
+                ws?.handleKeyboardHide(notification)
         }
     }
     

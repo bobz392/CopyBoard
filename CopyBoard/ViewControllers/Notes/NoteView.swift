@@ -295,9 +295,9 @@ extension NoteView {
         self.searchNoResultBgView.isHidden = true
     }
     
-    func searchKeyboardHandle(add: Bool) {
-        if add {
-            KeyboardManager.shared.setHander { [unowned self] (show, height, duration) in
+    func searchKeyboardHandle() {
+        KeyboardManager.shared
+            .setHander { [unowned self] (show, height, duration) in
                 let view = self.searchNoResultView
                 view.snp.updateConstraints({ maker in
                     maker.bottom.equalToSuperview().offset( show ? -height : 0)
@@ -308,9 +308,6 @@ extension NoteView {
                 UIView.animate(withDuration: duration, animations: {
                     view.layoutIfNeeded()
                 })
-            }
-        } else {
-            KeyboardManager.shared.removeHander()
         }
     }
     

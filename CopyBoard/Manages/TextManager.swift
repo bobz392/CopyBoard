@@ -47,7 +47,7 @@ extension String {
             var jumpIndex = 0
             if let location = results.first?.range.location, isTruncated == true {
                 let index = self.index(self.startIndex, offsetBy: location)
-                str = "...\(self.substring(from: index))"
+                str = "...\(self[index..<self.endIndex])"
                 jumpIndex = location - 3
             } else {
                 str = self

@@ -91,11 +91,11 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.detailTypes[section].count
+        return detailTypes[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.detailTypes.count
+        return detailTypes.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -104,13 +104,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseId, for: indexPath) as! SettingsTableViewCell
-        self.detailTypes[indexPath.section][indexPath.row]
-            .detailSettingConfig(cell: cell, rootSettingType: self.rootSettingType, row: indexPath.row, section: indexPath.section)
+        detailTypes[indexPath.section][indexPath.row]
+            .detailSettingConfig(cell: cell,
+                                 rootSettingType: rootSettingType,
+                                 row: indexPath.row,
+                                 section: indexPath.section)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if let footer = self.rootSettingType.detailFooter(),
+        if let footer = rootSettingType.detailFooter(),
             footer.count > 0 {
             return 40
         } else {
@@ -163,7 +166,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = HelperViewController(settingType: item)
             let nav = UINavigationController(rootViewController: vc)
             self.present(nav, animated: true, completion: nil)
-//            CloudKitManager.shared.downloadHelperMov(name: "helpCatagory")
         }
     }
     

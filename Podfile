@@ -7,13 +7,15 @@ target 'CopyBoard' do
   inhibit_all_warnings!
   
   # Pods for CopyBoard
-#  pod 'Fabric'
-#  pod 'Crashlytics'
   pod 'RxSwift'
   pod 'RxCocoa'
+  
   pod 'RealmSwift'
-  pod 'SnapKit'
+  # https://github.com/SnapKit/SnapKit
+  pod 'SnapKit', '~> 5.0.0'
+  # https://github.com/malcommac/SwiftDate
   pod 'SwiftDate'
+  # https://github.com/Ramotion/circle-menu
   pod 'CircleMenu'
   pod 'Bugly'
   
@@ -33,7 +35,7 @@ target 'Keyboard' do
   # Pods for Keyboard
   
   pod 'RealmSwift'
-  pod 'SnapKit'
+  pod 'SnapKit', '~> 5.0.0'
   
 end
 
@@ -43,6 +45,6 @@ target 'StickerShare' do
   inhibit_all_warnings!
   # Pods for StickerShare
   pod 'RealmSwift'
-  pod 'SnapKit'
+  pod 'SnapKit', '~> 5.0.0'
 
 end

@@ -14,7 +14,10 @@ let kCatHeaderViewHeight: CGFloat =
     0.334 * max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) + kCatHeaderImageBottomPadding
 let kVersionFooterViewHeight: CGFloat = 65
 let kNormalHeaderViewHeight: CGFloat = 40
-let kFilterFooterViewHeight: CGFloat = 40
+
+let kFooterViewHeight: CGFloat = 40
+let kFooterViewContentTopPadding: CGFloat = 4
+
 let kSettingItemHeight: CGFloat = 50
 
 class SettingView {
@@ -22,6 +25,7 @@ class SettingView {
     let realBarView = BarView()
     let closeButton = UIButton(type: .custom)
     let backButton = UIButton(type: .custom)
+    let catGuideButton = TouchButton(type: .system)
     
     let settingsTableView = UITableView(frame: .zero, style: .grouped)
     var catView: UIView? = nil
@@ -159,19 +163,18 @@ extension SettingView {
                 maker.top.equalTo(imageView.snp.bottom)
             })
             
-            let touchButton = TouchButton(type: .system)
-            touchButton.config(cornerRadius: 0)
-            touchButton.useTint = false
-            touchButton.bgColor = UIColor.clear
-            touchButton.selectedBgColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
-            view.addSubview(touchButton)
-            touchButton.snp.makeConstraints({ maker in
+            catGuideButton.config(cornerRadius: 0)
+            catGuideButton.useTint = false
+            catGuideButton.bgColor = UIColor.clear
+            catGuideButton.selectedBgColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:0.8)
+            view.addSubview(catGuideButton)
+            catGuideButton.snp.makeConstraints({ maker in
                 maker.left.equalToSuperview()
                 maker.right.equalToSuperview()
                 maker.top.equalToSuperview()
                 maker.bottom.equalToSuperview()
             })
-            touchButton.addTarget(self, action: #selector(self.guildAction), for: .touchUpInside)
+//            touchButton.addTarget(self, action: #selector(self.guildAction), for: .touchUpInside)
             
             let useKeyboardTip = UILabel()
             useKeyboardTip.text = Localized("useKeyboardTip")
@@ -189,59 +192,6 @@ extension SettingView {
             self.catView = catView
             return catView
         }
-    }
-    
-    @objc func guildAction() {
-        let arrayOfImage = ["step1", "step2", "step3"]
-        let local = Localized("step")
-        let arrayOfTitle = ["\(local) 1", "\(local) 2", "\(local) 3"]
-        let arrayOfDescription = [Localized("description1"), Localized("description2"), Localized("description3")]
-        let buttonsTitles = [Localized("doGuild1"), Localized("doGuild2"), Localized("doGuild3")]
-        
-        let alertView = AlertOnboarding(arrayOfImage: arrayOfImage,
-                                        arrayOfTitle: arrayOfTitle,
-                                        arrayOfDescription: arrayOfDescription,
-                                        arrayOfBottomTitles: buttonsTitles)
-        { (index) in
-            if #available(iOS 11.0, *) {
-                if index == 0 || index == 1 {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                    return false
-                } else {
-                    return true
-                }
-            } else {
-                if index == 0 {
-                    if #available(iOSApplicationExtension 10.0, *) {
-                        if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS") {
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }
-                    } else {
-                        if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS") {
-                            UIApplication.shared.openURL(url)
-                        }
-                    }
-                    return false
-                } else if index == 1 {
-                    if #available(iOSApplicationExtension 10.0, *) {
-                        if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }
-                    } else {
-                        if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                            UIApplication.shared.openURL(url)
-                        }
-                    }
-                    return false
-                } else {
-                    return true
-                }
-            }
-        }
-        
-        alertView.show()
     }
     
     func versionFooterView() -> UIView {
@@ -298,7 +248,7 @@ extension SettingView {
         footerLabel.snp.makeConstraints { maker in
             maker.leading.equalTo(kSettingMargin)
             maker.trailing.equalTo(-kSettingMargin)
-            maker.top.equalTo(2)
+            maker.top.equalTo(kFooterViewContentTopPadding)
         }
         
         return view

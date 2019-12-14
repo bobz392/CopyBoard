@@ -97,6 +97,12 @@ final class DBManager {
         try? r.commitWrite(withoutNotifying: tokens)
     }
     
+    func noteCountByColor(color: Int) -> Int {
+        return r.objects(Note.self)
+            .filter("color = \(color)")
+            .count
+    }
+    
 }
 
 struct UUIDGenerator {

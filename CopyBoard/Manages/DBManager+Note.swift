@@ -82,4 +82,5 @@ extension DBManager {
         Logger.log("prepar delete note = \(note)")
         CloudKitManager.shared.update(note: note)
     }
+    
 }

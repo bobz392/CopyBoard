@@ -24,22 +24,24 @@ class NotesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let bar = self.navigationController?.navigationBar {
+        if let bar = navigationController?.navigationBar {
             self.noteView.configBarView(bar: bar)
         }
         self.noteView.config(withView: self.view)
         
         let weakSelf = self
-        self.noteView.configCollectionView(view: self.view, delegate: self) { 
-            weakSelf.createAction()
+        noteView
+            .configCollectionView(view: self.view, delegate: self) {
+                weakSelf.createAction()
         }
         
         //        interstitial = self.createAndLoadInterstitial()
         
-        let searchDriver = self.noteView.searchBar.rx.text.orEmpty.asDriver()
+        let searchDriver = noteView.searchBar.rx.text.orEmpty.asDriver()
         self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
-            weakSelf.noteView.searchViewStateChange(query: query.count > 0,
-                                                    notesCount: weakSelf.viewModel.notesCount())
+            weakSelf.noteView
+                .searchViewStateChange(query: query.count > 0,
+                                       notesCount: weakSelf.viewModel.notesCount())
         })
         
         AppSettings.shared.register(any: self, key: self.appSettingNotifyKey)
@@ -51,16 +53,20 @@ class NotesViewController: BaseViewController {
             .addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
         self.noteView.emptyCreateButton
             .addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
-        self.noteView.searchBar.rx.cancelButtonClicked.subscribe { (cancel) in
-            Logger.log(UIPasteboard.general.string ?? "no")
-            weakSelf.endSearchAction()
-        }.disposed(by: viewModel.disposeBag)
+        
+        self.noteView.searchBar
+            .rx.cancelButtonClicked
+            .subscribe ({ (cancel) in
+                Logger.log(UIPasteboard.general.string ?? "no")
+                weakSelf.endSearchAction()
+            })
+            .disposed(by: viewModel.disposeBag)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endSearchAction))
-        self.noteView.searchHolderView.addGestureRecognizer(tap)
+        noteView.searchHolderView.addGestureRecognizer(tap)
         
         if #available(iOS 9.0, *) {
-            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+            registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
                 return self.noteView.collectionView
                 }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
                     guard let index = self.noteView.collectionView.indexPathForItem(at: location),
@@ -75,35 +81,35 @@ class NotesViewController: BaseViewController {
             })
         }
         if #available(iOS 11.0, *) {
-            self.noteView.collectionView.contentInsetAdjustmentBehavior = .never;
-            self.additionalSafeAreaInsets =
+            noteView.collectionView.contentInsetAdjustmentBehavior = .never;
+            additionalSafeAreaInsets =
                 UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
+        
+        noteView.searchKeyboardHandle()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.noteView.invalidateLayout()
+        noteView.invalidateLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.noteView.barView.alpha = 1
+        noteView.barView.alpha = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.noteView.searchKeyboardHandle(add: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.selectedCell?.deselectCell()
-        self.selectedCell = nil
-        self.noteView.searchKeyboardHandle(add: true)
+        selectedCell?.deselectCell()
+        selectedCell = nil
         
 //        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
 //            MessageViewBuilder.showMessageView(title: Localized("message1"),
@@ -113,8 +119,9 @@ class NotesViewController: BaseViewController {
     }
     
     deinit {
-        AppSettings.shared.unregister(key: self.appSettingNotifyKey)
+        AppSettings.shared.unregister(key: appSettingNotifyKey)
         DBManager.shared.unbindNotify()
+        KeyboardManager.shared.removeHander()
     }
     
     override func didReceiveMemoryWarning() {
@@ -208,7 +215,7 @@ extension NotesViewController: RealmNotificationDataSource {
         if insertions.count > 0, deletions.count > 0 {
             self.noteView.collectionView.reloadData()
         } else {
-            self.noteView.collectionView.performBatchUpdates({ [weak self] in
+            noteView.collectionView.performBatchUpdates({ [weak self] in
                 if insertions.count > 0 {
                     self?.noteView.collectionView
                         .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
@@ -219,7 +226,7 @@ extension NotesViewController: RealmNotificationDataSource {
                     self?.noteView.collectionView
                         .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
                 }
-            }, completion: nil)
+                }, completion: nil)
         }
     }
     
@@ -227,13 +234,13 @@ extension NotesViewController: RealmNotificationDataSource {
 
 // MARK: transition and orientation
 extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartViewDelegate {
-  
+    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if self.transitionType == .present {
+        if transitionType == .present {
             let transition = PresentTransition()
             transition.reverse = true
             return transition
-        } else if self.transitionType == .ping {
+        } else if transitionType == .ping {
             let transition = PingTransition()
             transition.reverse = true
             return transition
@@ -245,11 +252,11 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if self.transitionType == .present {
+        if transitionType == .present {
             let transition = PresentTransition()
             transition.reverse = false
             return transition
-        } else if self.transitionType == .ping {
+        } else if transitionType == .ping {
             let transition = PingTransition()
             transition.reverse = false
             return transition
@@ -259,7 +266,7 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
     }
     
     func startView() -> UIView {
-        return self.noteView.settingButton
+        return noteView.settingButton
     }
     
 }
@@ -268,9 +275,9 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.viewModel.notesCount()
-        if !self.viewModel.isInSearch {
-            self.noteView.emptyNotesView(hidden: count > 0)
+        let count = viewModel.notesCount()
+        if !viewModel.isInSearch {
+            noteView.emptyNotesView(hidden: count > 0)
         }
         
         return count
@@ -281,12 +288,12 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             as? NoteCollectionViewCell else { return }
         
         if cell.canEnter() {
-            let note = self.viewModel.noteIn(row: indexPath.row)
+            let note = viewModel.noteIn(row: indexPath.row)
             let editorVC = EditorViewController(note: note)
             editorVC.transitioningDelegate = self
-            self.transitionType = .present
-            self.selectedCell = cell
-            self.present(editorVC, animated: true, completion: nil)
+            transitionType = .present
+            selectedCell = cell
+            present(editorVC, animated: true, completion: nil)
         }
     }
     
@@ -313,9 +320,13 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.configCell(use: note, query: query)
         cell.catelogueButton.tag = indexPath.row;
         cell.catelogueButton
-            .removeTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
+            .removeTarget(self,
+                          action: #selector(self.changeCatelogue(sender:)),
+                          for: .touchUpInside)
         cell.catelogueButton
-            .addTarget(self, action: #selector(self.changeCatelogue(sender:)), for: .touchUpInside)
+            .addTarget(self,
+                       action: #selector(self.changeCatelogue(sender:)),
+                       for: .touchUpInside)
         
         return cell
     }

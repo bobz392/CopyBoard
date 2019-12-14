@@ -11,6 +11,8 @@ import UIKit
 enum SettingType {
     case general
     case statistics
+    case statisticsColor
+    case statisticsTag
     
     case search
     case keyboardLine
@@ -146,30 +148,46 @@ enum SettingType {
         switch self {
         case .dateLabel:
             return .push
-        case .line, .keyboardLine:
+        case .line,
+             .keyboardLine:
             return .select
-        case .gesture:
+        case .gesture,
+             .statistics:
             return .push
         case .sortBy:
             return .push
         case .help:
             return .push
         
-        case .modifyDate, .creationDate:
+        case .modifyDate,
+             .creationDate:
             return .select
         
         case .longPress, .swipe:
             return .select
             
-        case .filterAll, .filterColor, .filterStar, .filterUnstar:
+        case .filterAll,
+             .filterColor,
+             .filterStar,
+             .filterUnstar:
             return .select
             
         case .caseSensitive, .newest:
             return .value
         
-        case .helpCopy, .helpCheck, .helpColor, .helpShare,
-             .helpDelete, .helpCatagory, .helpLineCount, .helpCreate:
+        case .helpCopy,
+             .helpCheck,
+             .helpColor,
+             .helpShare,
+             .helpDelete,
+             .helpCatagory,
+             .helpLineCount,
+             .helpCreate:
             return .pushHelp
+            
+        case .statisticsColor,
+             .statisticsTag:
+            return .select
             
 //        case .segmentation:
 //            return .value
@@ -185,12 +203,33 @@ enum SettingType {
     func detailTypes() -> ([[SettingType]], [String]) {
         switch self {
         case .general:
-            return ([[.dateLabel, .gesture], [.sortBy, .newest], [.line, .line, .line, .line, .line]],
-                    [Localized("sticker"), Localized("sort"), Localized("stickerLines")])
-            
+            return (
+                [[.dateLabel, .gesture],
+                 [.sortBy, .newest],
+                 [.line, .line, .line, .line, .line]],
+                [Localized("sticker"),
+                 Localized("sort"),
+                 Localized("stickerLines")])
         case .filter:
-            return ([[.filterAll, .filterStar, .filterUnstar], [.filterColor, .filterColor, .filterColor, .filterColor, .filterColor, .filterColor]],
-                    [Localized("star"), Localized("color")])
+            return (
+                [[.filterAll,
+                  .filterStar,
+                  .filterUnstar],
+                 [.filterColor, .filterColor,
+                  .filterColor, .filterColor,
+                  .filterColor, .filterColor]],
+                [Localized("star"),
+                 Localized("color")])
+        case .statistics:
+            return (
+                [[.statisticsColor,
+                  .statisticsColor,
+                  .statisticsColor,
+                  .statisticsColor,
+                  .statisticsColor,
+                  .statisticsColor]],
+                [Localized("star"),
+                 Localized("color")])
         
 //        case .keyboardFunction:
 //            return ([[.segmentation]], [Localized("keyboard")])
@@ -232,8 +271,10 @@ enum SettingType {
         }
     }
     
-    func detailSettingConfig(cell: SettingsTableViewCell, rootSettingType: SettingType, row: Int, section: Int) {
-        
+    func detailSettingConfig(cell: SettingsTableViewCell,
+                             rootSettingType: SettingType,
+                             row: Int,
+                             section: Int) {
         cell.settingDetailLabel.isHidden = true
         cell.checkButton.isHidden = true
         cell.settingSwitch.isHidden = true
@@ -252,9 +293,11 @@ enum SettingType {
         case .line, .keyboardLine:
             cell.settingLabel.text = "\(settings.realKeyboardLine(line: row, inKeyboardExtension: self == .keyboardLine)) \(Localized("lines"))"
             if section != 0 {
-                cell.checkButton.isHidden = settings.stickerLines != row
+                cell.checkButton.isHidden =
+                    settings.stickerLines != row
             } else {
-                cell.checkButton.isHidden = settings.keyboardLines != row
+                cell.checkButton.isHidden =
+                    settings.keyboardLines != row
             }
             cell.accessoryType = .none
             
@@ -287,25 +330,48 @@ enum SettingType {
         case .advance:
             cell.accessoryType = .none
             
-        case .filterUnstar, .filterStar, .filterAll, .filterColor:
-            if self == .filterColor {
-                if let pairColor = AppPairColors(rawValue: row) {
-                    cell.filterColorView?.isHidden = false
-                    cell.filterColorView?.backgroundColor = pairColor.pairColor().dark
-                }
+        case .statisticsColor,
+             .statisticsTag:
+            cell.accessoryType = .none
+            cell.settingDetailLabel.isHidden = false
+            if let pairColor = AppPairColors(rawValue: row) {
+                cell.filterColorView?.isHidden = false
+                cell.filterColorView?.backgroundColor
+                    = pairColor.pairColor().dark
             }
+            let count = DBManager.shared
+                .noteCountByColor(color: row)
+            cell.settingDetailLabel.text =
+                "\(count)    \(Localized("piece"))"
+                
+            
+        case .filterUnstar,
+             .filterStar,
+             .filterAll,
+             .filterColor:
+            if self == .filterColor,
+                let pairColor = AppPairColors(rawValue: row) {
+                cell.filterColorView?.isHidden = false
+                cell.filterColorView?.backgroundColor
+                    = pairColor.pairColor().dark
+            }
+            
             cell.accessoryType = .none
             if section == 0 {
-                cell.checkButton.isHidden = settings.keyboardFilterStar != row
+                cell.checkButton.isHidden =
+                    settings.keyboardFilterStar != row
             } else {
-                cell.checkButton.isHidden = !settings.keyboardFilterColor.contains(row)
+                cell.checkButton.isHidden =
+                    !settings.keyboardFilterColor.contains(row)
             }
             
         case .creationDate, .modifyDate:
             if rootSettingType == .sortBy {
-                cell.checkButton.isHidden = settings.stickerSort != row
+                cell.checkButton.isHidden =
+                    settings.stickerSort != row
             } else {
-                cell.checkButton.isHidden = settings.stickerDateUse != row
+                cell.checkButton.isHidden =
+                    settings.stickerDateUse != row
             }
             cell.accessoryType = .none
             
@@ -325,13 +391,23 @@ enum SettingType {
 //            cell.switchBlock = { () -> SettingType in
 //                return self
 //            }
-        case .helpCopy, .helpCheck, .helpColor, .helpShare,
-             .helpDelete, .helpCatagory, .helpLineCount, .helpCreate:
+        case .helpCopy, .helpCheck,
+             .helpColor, .helpShare,
+             .helpDelete, .helpCatagory,
+             .helpLineCount, .helpCreate:
             cell.accessoryType = .disclosureIndicator
             
         default:
             fatalError("cant config this type \(self) cell")
         }
+    }
+ 
+    private func queryColorCount() {
+        
+    }
+    
+    private func queryTagCount() {
+        
     }
     
 }
@@ -339,7 +415,7 @@ enum SettingType {
 struct SettingItemCreator {
     
     func settingsCreator() -> [[SettingType]] {
-        let section1: [SettingType] = [.general]
+        let section1: [SettingType] = [.general, .statistics]
         let section2: [SettingType] = [.keyboardLine, .filter]
         let section3: [SettingType] = [.help, .contact, .rate]
         
@@ -358,17 +434,23 @@ enum SettingSelectType {
     case select
     case pushHelp
     
-    func selectAction(rootSettingType: SettingType, selectedType: SettingType, row: Int, section: Int) {
+    func selectAction(rootSettingType: SettingType,
+                      selectedType: SettingType,
+                      row: Int,
+                      section: Int) {
         let settings = AppSettings.shared
         switch rootSettingType {
         case .dateLabel:
-            settings.stickerDateUse = selectedType == .creationDate ? 0 : 1
+            settings.stickerDateUse =
+                selectedType == .creationDate ? 0 : 1
             
         case .sortBy:
-            settings.stickerSort = selectedType == .creationDate ? 0 : 1
+            settings.stickerSort =
+                selectedType == .creationDate ? 0 : 1
             
         case .gesture:
-            settings.stickerGesture = selectedType == .swipe ? 0 : 1
+            settings.stickerGesture =
+                selectedType == .swipe ? 0 : 1
         
         case .general:
             if selectedType == .line {
@@ -392,6 +474,9 @@ enum SettingSelectType {
                     settings.keyboardFilterColor.append(row)
                 }
             }
+            
+        case .statistics:
+            break
             
         default:
             fatalError("\(selectedType) havn't this action")

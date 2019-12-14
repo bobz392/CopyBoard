@@ -152,7 +152,12 @@ class CloudKitManager: NSObject {
             if let _ = subscriptions {
                 Logger.log("subscription extist avoid recreate it")
             } else {
-                let subscription = CKSubscription(recordType: "Note", predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordUpdate, .firesOnRecordDeletion])
+                let subscription =
+                    CKSubscription(recordType: "Note",
+                                   predicate: predicate,
+                                   options: [.firesOnRecordCreation,
+                                             .firesOnRecordUpdate,
+                                             .firesOnRecordDeletion])
                 let notificationInfo = CKSubscription.NotificationInfo()
                 notificationInfo.shouldSendContentAvailable = true
                 subscription.notificationInfo = notificationInfo
