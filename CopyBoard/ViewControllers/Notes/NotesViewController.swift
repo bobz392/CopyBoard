@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WhatsNewKit
 //import GoogleMobileAds
 
 class NotesViewController: BaseViewController {
@@ -120,6 +121,9 @@ class NotesViewController: BaseViewController {
                     .snp.updateConstraints { (maker) in
                         maker.height.equalTo(height)
                 }
+                UIView.animate(withDuration: 0.25) {
+                    ws.view.layoutIfNeeded()
+                }
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -138,14 +142,6 @@ class NotesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         noteView.barView.alpha = 1
-        
-        if let show =
-            try? viewModel.showFilterSubject.value(),
-            let type = AppSettings.shared.filterColorType {
-            if !show {
-                self.filterAction()
-            }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -160,6 +156,15 @@ class NotesViewController: BaseViewController {
         
         MessageViewBuilder
             .showMessageViewIfFirstUse(checkKey: kFirstUseNoteKey)
+        
+        if let show =
+            try? viewModel.showFilterSubject.value(),
+            let _ = AppSettings.shared.filterColorType {
+            if !show {
+                self.filterAction()
+            }
+        }
+//        showNewFeature()
     }
     
     deinit {
@@ -482,4 +487,33 @@ extension NotesViewController: AppSettingsNotify {
     
 }
 
+// MARK: - Whats New
+extension NotesViewController {
+    
+    func showNewFeature() {
+        
+        let whatsNew = WhatsNew(
+            // The Title
+            title: "Memo",
+            // The features you want to showcase
+            items: [
+                WhatsNew.Item(
+                    title: "Installation",
+                    subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
+                    image: Icons.filter.iconImage()
+                ),
+                WhatsNew.Item(
+                    title: "Open Source",
+                    subtitle: "Contributions are very welcome 👨‍💻",
+                    image: UIImage(named: "openSource")
+                )
+            ]
+        )
 
+        let whatsNewViewController = WhatsNewViewController(
+            whatsNew: whatsNew
+        )
+
+        present(whatsNewViewController, animated: true)
+    }
+}
