@@ -81,11 +81,6 @@ class EditorViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.editorView.editorKeyboardHandle(add: false)
-        
-        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
-            MessageViewBuilder.hiddenMessageView()
-            MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: true)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,9 +91,8 @@ class EditorViewController: BaseViewController {
             self.editorView.editorTextView.text = ""
         }
         
-//        if MessageViewBuilder.kFirstEditorKey.valueForKeyInUserDefault() == false {
-//            MessageViewBuilder.showMessageView(title: Localized("message1"), body: Localized("message3"), checkKey: MessageViewBuilder.kFirstEditorKey)
-//        }
+        MessageViewBuilder
+            .showMessageViewIfFirstUse(checkKey: kFirstUseEditorKey)
     }
     
     func dismissAction() {

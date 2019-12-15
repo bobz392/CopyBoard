@@ -7,7 +7,11 @@
 //
 
 import Foundation
-//import SwiftMessages
+import TTGSnackbar
+
+let kFirstUseNoteKey = "com.zhoubo.notes.view.controller"
+let kFirstUseEditorKey = "com.zhoubo.editor.view.controller"
+
 
 extension String {
     func saveToUserDefault(value: Bool) {
@@ -15,40 +19,31 @@ extension String {
         UserDefaults.standard.synchronize()
     }
     
-    func valueForKeyInUserDefault() -> Bool {
+    func valueForKeyIsInUserDefault() -> Bool {
         return UserDefaults.standard.bool(forKey: self)
     }
 }
 
 struct MessageViewBuilder {
-    static let kFirstNoteKey = "com.zhoubo.notes.view.controller"
-    static let kFirstEditorKey = "com.zhoubo.editor.view.controller"
-    
-//    static func showMessageView(title: String, body: String, checkKey: String) {
-//        var config = SwiftMessages.Config()
-//        config.presentationStyle = .bottom
-//        config.duration = .forever
-//        let view = MessageView.viewFromNib(layout: .cardView)
-//        view.configureContent(title: title, body: body, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "OK", buttonTapHandler: { (button) in
-////            SwiftMessages.hide()
-//            checkKey.saveToUserDefault(value: true)
-//        })
-//        view.configureTheme(.info)
-//        view.iconLabel?.isHidden = true
-//        view.iconImageView?.isHidden = true
-//        if checkKey == kFirstNoteKey {
-//            view.backgroundView.backgroundColor = AppPairColors.sand.pairColor().light
-//        } else if checkKey == kFirstEditorKey {
-//            view.backgroundView.backgroundColor = AppColors.mainBackground
-//        }
-//        view.button?.backgroundColor = UIColor.clear
-//        view.button?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-//        view.button?.setTitleColor(AppColors.faveButton, for: .normal)
-//        view.configureDropShadow()
-//        SwiftMessages.show(config: config, view: view)
-//    }
-    
-    static func hiddenMessageView() {
-//        SwiftMessages.hide()
+    static func showMessageViewIfFirstUse(checkKey: String) {
+        guard !checkKey.valueForKeyIsInUserDefault()
+            else { return }
+        let message: String
+        if checkKey == kFirstUseNoteKey {
+            message = "\(Localized("message1")) \(Localized("message2"))"
+        } else {
+            message = "\(Localized("message1")) \(Localized("message3"))"
+        }
+        
+        let snackbar = TTGSnackbar(
+            message: message,
+            duration: .forever,
+            actionText: Localized("got"),
+            actionBlock: { (snackbar) in
+                snackbar.dismiss()
+            }
+        )
+        checkKey.saveToUserDefault(value: true)
+        snackbar.show()
     }
 }

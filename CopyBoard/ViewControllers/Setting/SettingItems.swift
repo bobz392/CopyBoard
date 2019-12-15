@@ -11,6 +11,7 @@ import UIKit
 enum SettingType {
     case general
     case statistics
+    
     case statisticsColor
     case statisticsTag
     
@@ -21,6 +22,7 @@ enum SettingType {
 
     case dateLabel
     case line
+    case hideCreateButton
     
     case gesture
     case swipe
@@ -81,6 +83,8 @@ enum SettingType {
             return Localized("stickerDate")
         case .gesture:
             return Localized("stickerGusture")
+        case .hideCreateButton:
+            return Localized("showCreateButton")
 
         case .swipe:
             return Localized("swipe")
@@ -146,24 +150,21 @@ enum SettingType {
      */
     func selectedType() -> SettingSelectType {
         switch self {
-        case .dateLabel:
-            return .push
         case .line,
-             .keyboardLine:
+             .keyboardLine,
+             .longPress,
+             .swipe:
             return .select
+            
         case .gesture,
+             .sortBy,
+             .help,
+             .dateLabel,
              .statistics:
             return .push
-        case .sortBy:
-            return .push
-        case .help:
-            return .push
-        
+            
         case .modifyDate,
              .creationDate:
-            return .select
-        
-        case .longPress, .swipe:
             return .select
             
         case .filterAll,
@@ -172,7 +173,9 @@ enum SettingType {
              .filterUnstar:
             return .select
             
-        case .caseSensitive, .newest:
+        case .caseSensitive,
+             .hideCreateButton,
+             .newest:
             return .value
         
         case .helpCopy,
@@ -204,7 +207,7 @@ enum SettingType {
         switch self {
         case .general:
             return (
-                [[.dateLabel, .gesture],
+                [[.dateLabel, .gesture, .hideCreateButton],
                  [.sortBy, .newest],
                  [.line, .line, .line, .line, .line]],
                 [Localized("sticker"),
@@ -289,7 +292,16 @@ enum SettingType {
             cell.settingDetailLabel.isHidden = false
             cell.settingDetailLabel.text = settings.stickerDateUse == 0 ? Localized("creationDate") : Localized("modificationDate")
             cell.accessoryType = .disclosureIndicator
-        
+            
+        case .hideCreateButton:
+            cell.accessoryType = .none
+            cell.settingSwitch.isHidden = false
+            cell.settingSwitch.isOn =
+                !settings.hideCreateButton
+            cell.switchBlock = { () -> SettingType in
+                return self
+            }
+            
         case .line, .keyboardLine:
             cell.settingLabel.text = "\(settings.realKeyboardLine(line: row, inKeyboardExtension: self == .keyboardLine)) \(Localized("lines"))"
             if section != 0 {
@@ -343,7 +355,6 @@ enum SettingType {
                 .noteCountByColor(color: row)
             cell.settingDetailLabel.text =
                 "\(count)    \(Localized("piece"))"
-                
             
         case .filterUnstar,
              .filterStar,
@@ -401,15 +412,6 @@ enum SettingType {
             fatalError("cant config this type \(self) cell")
         }
     }
- 
-    private func queryColorCount() {
-        
-    }
-    
-    private func queryTagCount() {
-        
-    }
-    
 }
 
 struct SettingItemCreator {
@@ -429,9 +431,9 @@ struct SettingItemCreator {
 }
 
 enum SettingSelectType {
-    case push
-    case value
-    case select
+    case push // 到新的子页面
+    case value // switch
+    case select // 选择
     case pushHelp
     
     func selectAction(rootSettingType: SettingType,
@@ -489,9 +491,12 @@ enum SettingSelectType {
             AppSettings.shared.caseSensitive = !isOn ? 0 : 1
         case .newest:
             AppSettings.shared.sortNewestLast = !isOn
+        case .hideCreateButton:
+            AppSettings.shared.hideCreateButton = !isOn
+            
 //        case .segmentation:
 //            AppSettings.shared.keyboardSegmentationOpen = isOn
-            
+
         default:
             fatalError("cant selected this value type = \(selectedType)")
         

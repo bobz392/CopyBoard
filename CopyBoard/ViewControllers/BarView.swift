@@ -61,31 +61,89 @@ class BarView: UIView {
     }
     
     func appendButtons(buttons: [UIButton], left: Bool) {
-        var current = self.sideMargin
         if left {
-            self.leftButtons.append(contentsOf: buttons)
+            leftButtons.append(contentsOf: buttons)
         } else {
-            self.rightButtons.append(contentsOf: buttons)
+            rightButtons.append(contentsOf: buttons)
         }
-        
+        var lastButton: UIButton? = nil
         for btn in buttons {
-            self.addSubview(btn)
+            addSubview(btn)
             btn.snp.makeConstraints({ maker in
                 maker.centerY.equalToSuperview()
-                maker.width.height.equalTo(self.barButtonSide)
-                if left {
-                    maker.left.equalToSuperview().offset(current)
+                    .offset(2)
+                maker.width.height
+                    .equalTo(barButtonSide)
+                if let lb = lastButton {
+                    if left {
+                        maker.left
+                            .equalTo(lb.snp.right)
+                            .offset(sideMargin)
+                    } else {
+                        maker.right
+                            .equalTo(lb.snp.left)
+                            .offset(-sideMargin)
+                    }
                 } else {
-                    maker.right.equalToSuperview().offset(-current)
+                    if left {
+                        maker.left
+                        .equalToSuperview()
+                        .offset(sideMargin)
+                    } else {
+                        maker.right
+                            .equalToSuperview()
+                            .offset(-sideMargin)
+                    }
                 }
             })
-            
-            current += self.sideMargin + self.barButtonSide
+            lastButton = btn
+            btn.imageView?.contentMode = .scaleAspectFit
+        }
+    }
+    
+    func buttonsSearchLayoutChange(startSearch: Bool) {
+        titleLabel
+            .snp.updateConstraints({ (maker) in
+                maker.centerY
+                    .equalToSuperview()
+                    .offset(startSearch ? 11 : 0)
+            })
+        
+        if let leftFirstBtn = leftButtons.first {
+            let leftSide: CGFloat
+            if startSearch {
+                let count = CGFloat(leftButtons.count)
+                leftSide =
+                    -count * (barButtonSide + sideMargin)
+            } else {
+                leftSide = sideMargin
+            }
+
+            leftFirstBtn.snp.updateConstraints
+                { (maker) in
+                    maker.left.equalToSuperview()
+                        .offset(leftSide)
+            }
+        }
+        
+        if let rightFirstBtn = rightButtons.first {
+            let rightSide: CGFloat
+            if startSearch {
+                let count = CGFloat(rightButtons.count)
+                rightSide =
+                    count * (barButtonSide + sideMargin)
+            } else {
+                rightSide = -sideMargin
+            }
+            rightFirstBtn.snp.updateConstraints
+                { (maker) in
+                    maker.right.equalToSuperview()
+                        .offset(rightSide)
+            }
         }
     }
     
     func setTitle(title: String) {
-        self.titleLabel.text = title
+        titleLabel.text = title
     }
-
 }

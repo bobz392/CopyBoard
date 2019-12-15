@@ -51,18 +51,27 @@ class DetailViewController: BaseViewController, UIGestureRecognizerDelegate {
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 
-        guard let index = self.selectedIndex else { return }
-        self.settingView.settingsTableView.deselectRow(at: index, animated: true)
+        guard let index = self.selectedIndex
+            else { return }
+        
+        self.settingView
+            .settingsTableView
+            .deselectRow(at: index, animated: true)
+        self.settingView
+            .settingsTableView
+            .reloadRows(at: [index], with: .none)
+        
         self.selectedIndex = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        
+//        self.settingView.settingsTableView
+//            .scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+//
+//        guard let index = self.selectedIndex else { return }
         
-        self.settingView.settingsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        
-        guard let index = self.selectedIndex else { return }
-        self.settingView.settingsTableView.reloadRows(at: [index], with: .none)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -149,13 +158,17 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         let item: SettingType = self.detailTypes[indexPath.section][indexPath.row]
         switch item.selectedType() {
         case .push:
-            self.selectedIndex = indexPath
+            selectedIndex = indexPath
             let detailVC = DetailViewController(rootSettingType: item)
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        
+            navigationController?.pushViewController(detailVC, animated: true)
+            
         case .select:
             tableView.deselectRow(at: indexPath, animated: true)
-            item.selectedType().selectAction(rootSettingType: self.rootSettingType, selectedType: item, row: indexPath.row, section: indexPath.section)
+            item.selectedType()
+                .selectAction(rootSettingType: rootSettingType,
+                              selectedType: item,
+                              row: indexPath.row,
+                              section: indexPath.section)
             tableView.reloadData()
             
         case .value:
@@ -165,7 +178,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             self.selectedIndex = indexPath
             let vc = HelperViewController(settingType: item)
             let nav = UINavigationController(rootViewController: vc)
-            self.present(nav, animated: true, completion: nil)
+            present(nav, animated: true, completion: nil)
         }
     }
     

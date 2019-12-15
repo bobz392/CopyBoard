@@ -14,6 +14,7 @@ PODS:
   - RxSwift (5.0.1)
   - SnapKit (5.0.1)
   - SwiftDate (6.1.0)
+  - TTGSnackbar (1.9.0)
   - WhatsNewKit (1.3.1)
 
 DEPENDENCIES:
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit (~> 5.0.0)
   - SwiftDate
+  - TTGSnackbar
   - WhatsNewKit
 
 SPEC REPOS:
@@ -37,6 +39,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SwiftDate
+    - TTGSnackbar
     - WhatsNewKit
 
 SPEC CHECKSUMS:
@@ -49,8 +52,9 @@ SPEC CHECKSUMS:
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
+  TTGSnackbar: 7408a90b9739d296b933804287dd3ef6dadf2725
   WhatsNewKit: fc8ca82510148c030d66b3bb9b937175f8dcb3fd
 
-PODFILE CHECKSUM: d0083eb8b4da39ff561cf61e67427b58cf69c239
+PODFILE CHECKSUM: 6590647d6d8195aa6df9c56b2f59ce3d6b88c6f1
 
 COCOAPODS: 1.8.4

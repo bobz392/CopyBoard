@@ -5,6 +5,8 @@
 "creationDate"="创建日期";
 "settings"="设置";
 "close"="关闭";
+"delete"="删除";
+"revert"="删除文档无法恢复";
 "noResuts"="无结果!";
 "useKeyboard"="使用键盘";
 "general"="通用";
@@ -23,6 +25,8 @@
 "cancel"="取消";
 "statistics"="统计";
 "piece"="篇";
+"got"="知道了";
+"showCreateButton"="显示创建便签按钮";
 
 // gesture
 "stickerGusture"="便签手势";
@@ -64,7 +68,7 @@
 
 // message
 "message1"="Tips:";
-"message2"="下拉来创建您的第一个便签 :)";
+"message2"="也可以通过下拉来创建您的便签 :)";
 "message3"="您创建的便签会自动保存";
 
 // default note

@@ -38,61 +38,65 @@ class NoteCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
-        self.deleteButton.tintColor = UIColor.white
-        self.deleteButton.addTarget(self,
-                                    action: #selector(self.deleteAction),
-                                    for: .touchUpInside)
+        deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
+        deleteButton.tintColor = UIColor.white
+        deleteButton.addTarget(self,
+                               action: #selector(self.deleteAction),
+                               for: .touchUpInside)
         
-        self.faveButton.addTarget(self,
-                                  action: #selector(self.favourate),
-                                  for: .touchUpInside)
-        self.noteLabel.textColor = AppColors.noteText
-        self.noteDateLabel.textColor = AppColors.noteDate
+        faveButton.addTarget(self,
+                             action: #selector(self.favourate),
+                             for: .touchUpInside)
+        noteLabel.textColor = AppColors.noteText
+        noteDateLabel.textColor = AppColors.noteDate
         
         let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.8
-        self.catelogueButton.titleLabel?.lineBreakMode = .byTruncatingTail
-        self.catelogueButton.snp.makeConstraints { (maker) in
+        catelogueButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        catelogueButton.snp.makeConstraints { (maker) in
             maker.width.lessThanOrEqualTo(self.frame.width * rato)
         }
     }
     
     func configCell(use note: Note, query: String? = nil) {
-        guard let pairColor = AppPairColors(rawValue: note.color)?.pairColor() else {
+        guard let pairColor =
+            AppPairColors(rawValue: note.color)?.pairColor() else {
             fatalError("have no this type color")
         }
         
         self.note = note
         
-        pairColor.dark.bgColor(to: self.headerView)
-        pairColor.light.bgColor(to: self.cardView)
+        pairColor.dark.bgColor(to: headerView)
+        pairColor.light.bgColor(to: cardView)
         
-        self.faveButton.isSelected = note.favourite
+        faveButton.isSelected = note.favourite
+        
         if let date = (AppSettings.shared.stickerDateUse == 0 ? note.createdAt : note.modificationDate) {
             self.noteDateLabel.text = date.toRelative()
         } else {
             self.noteDateLabel.text = nil
         }
-        self.noteLabel.attributedText =
-            note.content.searchHintString(isTruncated: self.isTruncated(), query: query)
-        self.noteLabel.lineBreakMode = .byTruncatingMiddle
+        noteLabel.attributedText =
+            note.content.searchHintString(isTruncated: isTruncated(),
+                                          query: query)
+        noteLabel.lineBreakMode = .byTruncatingMiddle
         self.configGesture()
         
         if let catelogue = note.category {
-            self.catelogueButton.setTitle(catelogue, for: .normal)
+            catelogueButton.setTitle(catelogue, for: .normal)
         } else {
-            self.catelogueButton.setTitle(Localized("defaultCatelogue"), for: .normal)
+            catelogueButton
+                .setTitle(Localized("defaultCatelogue"),
+                          for: .normal)
         }
         
-        self.catelogueButton.layer.cornerRadius = 12.0
-        self.catelogueButton.layer.borderColor = UIColor.white.cgColor
-        self.catelogueButton.layer.borderWidth = 1.0 / UIScreen.main.scale
+        catelogueButton.layer.cornerRadius = 12.0
+        catelogueButton.layer.borderColor = UIColor.white.cgColor
+        catelogueButton.layer.borderWidth = 1.0 / UIScreen.main.scale
     }
     
     private func isTruncated() -> Bool {
         
-        if let string = self.note?.content {
-            
+        if let string = note?.content {
             let size: CGSize = (string as NSString).boundingRect(
                 with: CGSize(width: self.frame.size.width, height: CGFloat.greatestFiniteMagnitude),
                 options: NSStringDrawingOptions.usesLineFragmentOrigin,
@@ -136,10 +140,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     func madeShadow(highlight: Bool = false) {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = highlight ? 10 : 3
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowRadius = highlight ? 6 : 3
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOpacity = 0.15
+        self.layer.shadowPath =
+            UIBezierPath(rect: self.bounds).cgPath
         self.layer.backgroundColor = UIColor.clear.cgColor
     }
     
@@ -161,13 +166,37 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @objc func deleteAction() {
         guard let cv = self.curlView else { return }
         let weakSelf =  self
-        self.closeCurl {
-            UIView.animate(withDuration: kCurlDeleteDuration, animations: {
-                cv.alpha = 0
-            }) { (finish) in
-                weakSelf.deleteRealmNote()
-            }
+        let alertVc =
+            UIAlertController(title: Localized("revert"),
+                              message: nil,
+                              preferredStyle: .actionSheet)
+        let sureAction =
+            UIAlertAction(title: Localized("delete"),
+                          style: .destructive)
+            { (action) in
+                weakSelf.closeCurl {
+                    UIView.animate(withDuration: kCurlDeleteDuration, animations: {
+                        cv.alpha = 0
+                    }) { (finish) in
+                        weakSelf.deleteRealmNote()
+                    }
+                }
         }
+        
+        let cancelAction =
+            UIAlertAction(title: Localized("cancel"),
+                          style: .cancel)
+            { (action) in
+                alertVc.dismiss(animated: true, completion: nil)
+                weakSelf.closeCurl()
+        }
+        alertVc.addAction(cancelAction)
+        alertVc.addAction(sureAction)
+        
+        UIApplication.shared
+            .keyWindow?
+            .rootViewController?
+            .present(alertVc, animated: true, completion: nil)
     }
     
     fileprivate func deleteRealmNote() {

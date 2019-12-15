@@ -34,6 +34,7 @@ enum Icons {
     case number
     case text
     case filter
+    case createManual
     
     func iconString() -> String {
         switch self {
@@ -60,11 +61,18 @@ enum Icons {
         case .number: return "number"
         case .text: return "text"
         case .filter: return "filter"
+        case .createManual: return "createManual"
         }
     }
     
     func iconImage() -> UIImage? {
         return UIImage(named: self.iconString())?
             .withRenderingMode(.alwaysTemplate)
+    }
+    
+    func configMainButton(button: UIButton) {
+        button.setImage(self.iconImage(),
+                        for: .normal)
+        button.tintColor = AppColors.mainIcon
     }
 }

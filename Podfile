@@ -17,7 +17,10 @@ target 'CopyBoard' do
   pod 'SwiftDate'
   # https://github.com/Ramotion/circle-menu
   pod 'CircleMenu'
+  # https://bugly.qq.com/v2/product/apps/1867f49195?pid=2
   pod 'Bugly'
+  # https://github.com/zekunyan/TTGSnackbar
+  pod "TTGSnackbar"
   
   pod 'WhatsNewKit'
 

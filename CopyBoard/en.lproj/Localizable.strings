@@ -1,44 +1,48 @@
 "sticker"="MEMO";
 "infomation"="INFORMATION";
-"modificationDate"="Modification date";
+"modificationDate"="Modification Date";
 "modificationDevice"="LAST EDITING DEVICE";
-"creationDate"="Creation date";
+"creationDate"="Creation Date";
 "settings"="SETTINGS";
 "close"="CLOSE";
-"noResuts"="No results!";
+"delete"="Delete";
+"revert"="This operation can't be restored";
+"noResuts"="No Results!";
 "useKeyboard"="USE KEYBOARD";
 "general"="General";
 "search"="Search";
 "advance"="Advance";
-"keyboardHeight"="Keyboard height";
+"keyboardHeight"="Keyboard Height";
 "lines"="lines";
-"stickerLines"="Memo lines";
+"stickerLines"="Memo Lines";
 "stickerDate"="Date label use";
-"caseSensitive"="Case sensitive";
+"caseSensitive"="Case Sensitive";
 "keyboard"="KEYBOARD";
 "catelogue"="CATEGORY";
 "defaultCatelogue"="None";
 "changeCatelogue"="New Category";
 "save"="Save";
 "cancel"="Cancel";
-"statistics"="statistics";
+"statistics"="Statistics";
 "piece"="piece";
+"got"="Ok";
+"showCreateButton"="Show Add Memo Button";
 
 // gesture
 "stickerGusture"="Memo gesture";
-"swipe"="Swipe left";
-"longGusture"="Long press";
+"swipe"="Swipe Left";
+"longGusture"="Long Press";
 
 // sort
 "sort"="Memo Sorting";
 "sortBy"="Sort by";
-"newest"="Newest first";
+"newest"="Newest First";
 
 // filter
 "filter"="Filter";
 "filterAll"="All";
-"filterStar"="Star only";
-"filterUnstar"="Unstar only";
+"filterStar"="Star Only";
+"filterUnstar"="Unstar Only";
 "star"="Star";
 "color"="Color";
 "filterHelper"="When you set the filter, only satisfy the conditions of memos will appear in the keyboard";
@@ -50,8 +54,8 @@
 // extra
 "extra"="EXTRA";
 "version"="Version";
-"contactUs"="Contact us";
-"rate"="Rate us";
+"contactUs"="Contact Us";
+"rate"="Rate Us";
 
 // guild
 "step"="STEP";
@@ -64,7 +68,7 @@
 
 // message
 "message1"="Tips:";
-"message2"="Pull down to create your first memo :)";
+"message2"="Pull down to conveniently create your memo :)";
 "message3"="Your memo will be saved automatically";
 
 // default note

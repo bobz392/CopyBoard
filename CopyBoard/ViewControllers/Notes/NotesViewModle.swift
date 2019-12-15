@@ -27,7 +27,8 @@ class NotesViewModel {
         self.searchBlock = searchBlock
         self.notes = DBManager.shared.queryNotes()
         
-        let search = searchDriver.throttle(0.5)
+        let search = searchDriver
+            .throttle(0.5)
             .skip(1)
             .distinctUntilChanged()
             .flatMapLatest { (query) -> Driver<NotesSearchState> in
@@ -49,14 +50,15 @@ class NotesViewModel {
         
         search.asObservable()
             .takeUntil(insearchVariable)
-            .subscribe { [unowned self] (state) in
+            .subscribe ({ [unowned self] (state) in
                 Logger.log(state.element ?? "no state")
                 if let s = state.element {
                     self.searchNotes = s.notes
                     self.isQueryStringEmpty = s.searchString.count <= 0
                     self.searchBlock(s.searchString)
                 }
-            }.addDisposableTo(disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func useSearchNotes() -> Bool {

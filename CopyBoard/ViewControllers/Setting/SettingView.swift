@@ -33,21 +33,24 @@ class SettingView {
     
     func config(view: UIView) {
         view.backgroundColor = AppColors.cloud
-        self.configTableView(view: view)
-        self.configBarView(view: view)
+        
+        configTableView(view: view)
+        configBarView(view: view)
     }
     
     func configBarView(view: UIView) {
-        view.addSubview(self.realBarView)
-        self.realBarView.snp.makeConstraints { maker in
+        view.addSubview(realBarView)
+        realBarView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.top.equalToSuperview().offset(DeviceManager.shared.statusbarHeight)
-            maker.height.equalTo(DeviceManager.shared.navigationBarHeight)
+            maker.top.equalToSuperview()
+                .offset(DeviceManager.shared.statusbarHeight)
+            maker.height
+                .equalTo(DeviceManager.shared.navigationBarHeight)
         }
-        self.realBarView.backgroundColor = AppColors.cloudHeader
-        self.realBarView.titleLabel.text = Localized("settings")
-        self.realBarView.addTableViewIndexCover(color: AppColors.cloud)
+        realBarView.backgroundColor = AppColors.cloudHeader
+        realBarView.titleLabel.text = Localized("settings")
+        realBarView.addTableViewIndexCover(color: AppColors.cloud)
         
         let topView = UIView()
         topView.backgroundColor = AppColors.cloudHeader
@@ -59,62 +62,73 @@ class SettingView {
             maker.bottom.equalTo(self.realBarView.snp.top)
         }
         
-        self.realBarView.appendButtons(buttons: [closeButton], left: false)
-        self.closeButton.setImage(Icons.done.iconImage(), for: .normal)
-        self.closeButton.contentHorizontalAlignment = .fill
-        self.closeButton.contentVerticalAlignment = .fill
-        self.closeButton.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        self.closeButton.tintColor = AppColors.mainIcon
+        realBarView.appendButtons(buttons: [closeButton],
+                                  left: false)
+        closeButton.setImage(Icons.done.iconImage(),
+                             for: .normal)
+        closeButton.contentHorizontalAlignment = .fill
+        closeButton.contentVerticalAlignment = .fill
+        
+        let insets: CGFloat = 5
+        closeButton.contentEdgeInsets =
+            UIEdgeInsets(top: insets, left: 0,
+                         bottom: insets, right: 0)
+        closeButton.tintColor = AppColors.mainIcon
     }
     
     fileprivate func configTableView(view: UIView) {
-        view.addSubview(self.settingsTableView)
-        self.settingsTableView.snp.makeConstraints { maker in
+        view.addSubview(settingsTableView)
+        settingsTableView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.top.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
         let height = DeviceManager.shared.navigationBarHeight + DeviceManager.shared.statusbarHeight
-        self.settingsTableView.contentInset =
+        settingsTableView.contentInset =
             UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         
-        self.settingsTableView.register(SettingsTableViewCell.nib,
-                                        forCellReuseIdentifier: SettingsTableViewCell.reuseId)
-        self.settingsTableView.separatorColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
-        self.settingsTableView.bgClear()
+        settingsTableView
+            .register(SettingsTableViewCell.nib,
+                      forCellReuseIdentifier: SettingsTableViewCell.reuseId)
+        settingsTableView.separatorColor =
+            UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
+        settingsTableView.bgClear()
     }
     
     func configTableView<T: UITableViewDelegate, E: UITableViewDataSource>(delegate: T, dataSource: E) {
-        self.settingsTableView.delegate = delegate
-        self.settingsTableView.dataSource = dataSource
+        settingsTableView.delegate = delegate
+        settingsTableView.dataSource = dataSource
     }
     
     func invalidateLayout() {
         let statusBarHeight = DeviceManager.shared.statusbarHeight
         let barHeight = DeviceManager.shared.navigationBarHeight
         
-        self.settingsTableView.contentInset =
+        settingsTableView.contentInset =
             UIEdgeInsets(top: barHeight + statusBarHeight, left: 0, bottom: 0, right: 0)
         
         self.realBarView.snp.updateConstraints { maker in
             maker.top.equalToSuperview().offset(statusBarHeight)
             maker.height.equalTo(barHeight)
         }
-        self.realBarView.superview?.layoutIfNeeded()
+        realBarView.superview?.layoutIfNeeded()
         
-        if let firstCell = self.settingsTableView.visibleCells.first,
-            let index = self.settingsTableView.indexPath(for: firstCell) {
-            self.settingsTableView.scrollToRow(at: index, at: .top, animated: false)
+        if let firstCell = settingsTableView.visibleCells.first,
+            let index = settingsTableView.indexPath(for: firstCell) {
+            settingsTableView
+                .scrollToRow(at: index, at: .top, animated: false)
         }
     }
     
     // MARK: - detail setting
     func configSettingDetail(title: String) {
-        self.realBarView.titleLabel.text = title
-        self.realBarView.appendButtons(buttons: [self.backButton], left: true)
-        self.backButton.setImage(Icons.back.iconImage(), for: .normal)
-        self.backButton.tintColor = AppColors.mainIcon
+        realBarView.titleLabel.text = title
+        realBarView.appendButtons(buttons: [backButton],
+                                  left: true)
+        backButton.setImage(Icons.back.iconImage(),
+                            for: .normal)
+        backButton.tintColor = AppColors.mainIcon
     }
     
 }
@@ -122,7 +136,7 @@ class SettingView {
 extension SettingView {
     
     func catHeaderView() -> UIView {
-        if let view = self.catView {
+        if let view = catView {
             return view
         } else {
             let catView = UIView()
@@ -132,7 +146,8 @@ extension SettingView {
                 maker.left.equalToSuperview().offset(kSettingMargin)
                 maker.right.equalToSuperview().offset(-kSettingMargin)
                 maker.top.equalToSuperview().offset(5)
-                maker.bottom.equalToSuperview().offset(-20-kCatHeaderImageBottomPadding)
+                maker.bottom.equalToSuperview()
+                    .offset(-20-kCatHeaderImageBottomPadding)
             })
             view.clipsToBounds = true
             view.layer.cornerRadius = 8
@@ -174,7 +189,6 @@ extension SettingView {
                 maker.top.equalToSuperview()
                 maker.bottom.equalToSuperview()
             })
-//            touchButton.addTarget(self, action: #selector(self.guildAction), for: .touchUpInside)
             
             let useKeyboardTip = UILabel()
             useKeyboardTip.text = Localized("useKeyboardTip")

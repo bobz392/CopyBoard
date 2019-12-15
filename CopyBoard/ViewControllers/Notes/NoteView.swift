@@ -21,6 +21,8 @@ class NoteView {
     let searchBar = UISearchBar()
     let searchButton = UIButton(type: .custom)
     let settingButton = UIButton(type: .custom)
+    let filterButton = UIButton(type: .custom)
+    let createButton = UIButton(type: .custom)
     
     let emptyCreateButton = UIButton(type: .system)
     
@@ -37,9 +39,9 @@ class NoteView {
     
     func config(withView view: UIView) {
         AppColors.mainBackground.bgColor(to: view)
-        self.searchHolderView.alpha = 0
-        self.searchHolderView.isHidden = true
-        self.searchHolderView.backgroundColor = UIColor.black
+        searchHolderView.alpha = 0
+        searchHolderView.isHidden = true
+        searchHolderView.backgroundColor = UIColor.black
     }
     
     func configBarView(bar: UINavigationBar) {
@@ -47,40 +49,44 @@ class NoteView {
         bar.shadowImage = barImage
         bar.setBackgroundImage(barImage, for: .default)
         
-        self.barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
-        bar.addSubview(self.barHolderView)
-        self.barHolderView.snp.makeConstraints { maker in
+        barHolderView.backgroundColor = AppColors.mainBackgroundAlpha
+        bar.addSubview(barHolderView)
+        barHolderView.snp.makeConstraints { maker in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.top.equalToSuperview().offset(-DeviceManager.shared.statusbarHeight)
+            maker.top.equalToSuperview()
+                .offset(-DeviceManager.shared.statusbarHeight)
             maker.bottom.equalToSuperview()
         }
         
-        bar.addSubview(self.barView)
-        self.barView.bgClear()
-        self.barView.clipsToBounds = true
-        self.barView.addConstraint()
+        bar.addSubview(barView)
+        barView.bgClear()
+        barView.clipsToBounds = true
+        barView.addConstraint()
+        barView.setTitle(title: Localized("sticker"))
+        barView.appendButtons(buttons: [searchButton],
+                                   left: false)
         
-        self.barView.setTitle(title: Localized("sticker"))
+        searchButton.setImage(Icons.search.iconImage(),
+                                   for: .normal)
+        searchButton.tintColor = AppColors.mainIcon
         
-        self.barView.appendButtons(buttons: [self.searchButton], left: false)
-        self.searchButton.setImage(Icons.search.iconImage(), for: .normal)
-        self.searchButton.tintColor = AppColors.mainIcon
+        barView.appendButtons(buttons: [settingButton, filterButton],
+                                   left: true)
+        Icons.setting.configMainButton(button: settingButton)
+        Icons.filter.configMainButton(button: filterButton)
         
-        self.barView.appendButtons(buttons: [self.settingButton], left: true)
-        self.settingButton.setImage(Icons.setting.iconImage(), for: .normal)
-        self.settingButton.tintColor = AppColors.mainIcon
-        
-        self.barView.addSubview(self.searchBar)
-        self.searchBar.isHidden = true
-        self.searchBar.isTranslucent = true
-        self.searchBar.barStyle = .default
-        self.searchBar.searchBarStyle = .minimal
-        self.searchBar.tintColor = UIColor.black
-        self.searchBar.alpha = 0
-        self.searchBar.showsCancelButton = true
-        self.searchBar.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(kNoteCellPadding)
+        barView.addSubview(searchBar)
+        searchBar.isHidden = true
+        searchBar.isTranslucent = true
+        searchBar.barStyle = .default
+        searchBar.searchBarStyle = .minimal
+        searchBar.tintColor = UIColor.black
+        searchBar.alpha = 0
+        searchBar.showsCancelButton = true
+        searchBar.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+                .offset(kNoteCellPadding)
             make.top.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -89,11 +95,38 @@ class NoteView {
         bar.layoutIfNeeded()
     }
     
+    func configCreateButton(withView view: UIView) {
+        if let icon = Icons.createManual.iconImage() {
+            createButton.setImage(icon, for: .normal)
+        }
+        createButton.backgroundColor = UIColor.white
+        createButton.tintColor = AppColors.mainIcon
+        createButton.layer.cornerRadius = 22
+        createButton.layer.shadowOpacity = 0.2
+        createButton.layer.shadowRadius = 2
+        createButton.layer.shadowColor = UIColor.black.cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.addSubview(createButton)
+        createButton.snp.makeConstraints { (maker) in
+            maker.height.equalTo(44)
+            maker.width.equalTo(80)
+            maker.centerX.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                maker.bottom.equalToSuperview()
+                    .offset(-20 - view.safeAreaInsets.bottom)
+            } else {
+                maker.bottom.equalToSuperview()
+                    .offset(-20)
+            }
+        }
+    }
+    
     func emptyNotesView(hidden: Bool) {
         self.emptyNoteView.isHidden = hidden
-        let searchButtonRight: CGFloat = hidden ? -self.barView.sideMargin : 44
-        self.searchButton.snp.updateConstraints({ (make) in
-            make.right.equalToSuperview().offset(searchButtonRight)
+        let searchButtonRight: CGFloat = hidden ? -barView.sideMargin : 44
+        searchButton.snp.updateConstraints({ (make) in
+            make.right.equalToSuperview()
+                .offset(searchButtonRight)
         })
         
         UIView.animate(withDuration: 0.25) { [unowned self] in
@@ -108,9 +141,9 @@ extension NoteView {
     
     func invalidateLayout() {
         if let layout =
-            self.collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
+            collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
             layout.columnCount = DeviceManager.shared.noteColumnCount
-            self.collectionView.setCollectionViewLayout(layout, animated: true)
+            collectionView.setCollectionViewLayout(layout, animated: true)
             
         }
        
@@ -124,7 +157,8 @@ extension NoteView {
             maker.width.equalTo(height * 0.7)
         }
         self.barHolderView.snp.updateConstraints { maker in
-            maker.top.equalToSuperview().offset(-DeviceManager.shared.statusbarHeight)
+            maker.top.equalToSuperview()
+                .offset(-DeviceManager.shared.statusbarHeight)
         }
         
         self.barView.superview?.layoutIfNeeded()
@@ -132,19 +166,24 @@ extension NoteView {
     
     fileprivate func addRefreshCreate() {
         let weakSelf = self
-        let loadingView = PullDismissView(icon: Icons.create, side: 20) { (progress) in
-            weakSelf.barView.alpha = 1 - progress
+        let loadingView =
+            PullDismissView(icon: Icons.create,
+                            side: 20)
+            { (progress) in
+                weakSelf.barView.alpha = 1 - progress
         }
         loadingView.imageView.tintColor = AppColors.mainIcon
-        self.collectionView.dg_addPullToRefreshWithActionHandler({
+        collectionView.dg_addPullToRefreshWithActionHandler({
             weakSelf.createBlock?()
         }, loadingView: loadingView)
         
-        self.collectionView.dg_setPullToRefreshFillColor(UIColor.clear)
-        self.collectionView.dg_setPullToRefreshBackgroundColor(UIColor.clear)
+        collectionView.dg_setPullToRefreshFillColor(UIColor.clear)
+        collectionView.dg_setPullToRefreshBackgroundColor(UIColor.clear)
     }
     
-    func configCollectionView(view: UIView, delegate: NotesViewController, createBlock: @escaping () -> Void) {
+    func configCollectionView(view: UIView,
+                              delegate: NotesViewController,
+                              createBlock: @escaping () -> Void) {
         self.createBlock = createBlock
         let layout = CHTCollectionViewWaterfallLayout()
         let space = DeviceManager.shared.collectionViewItemSpace
@@ -156,24 +195,25 @@ extension NoteView {
         let inset = space * 0.5
         layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         
-        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        self.collectionView.keyboardDismissMode = .onDrag
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.bgClear()
-        self.collectionView.tag = kNoteCollectionViewTag
-        view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.keyboardDismissMode = .onDrag
+        collectionView.alwaysBounceVertical = true
+        collectionView.bgClear()
+        collectionView.tag = kNoteCollectionViewTag
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+                .offset(DeviceManager.shared.mainHeight)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
         // step 2
-        self.configEmptyDataView(view: view)
+        configEmptyDataView(view: view)
         
-        view.addSubview(self.searchHolderView)
-        self.searchHolderView.snp.makeConstraints { (make) in
+        view.addSubview(searchHolderView)
+        searchHolderView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.top.equalTo(self.collectionView)
@@ -181,34 +221,34 @@ extension NoteView {
         }
         
         // step 3
-        self.configSearchResultView(view: view)
+        configSearchResultView(view: view)
         
-        self.collectionView.register(NoteCollectionViewCell.nib,
-                                     forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
+        collectionView.register(NoteCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
         
-        self.collectionView.delegate = delegate
-        self.collectionView.dataSource = delegate
+        collectionView.delegate = delegate
+        collectionView.dataSource = delegate
         
-        self.addRefreshCreate()
+        addRefreshCreate()
     }
     
     func configEmptyDataView(view: UIView) {
-        view.addSubview(self.emptyNoteView)
-        self.emptyNoteView.snp.makeConstraints { (make) in
+        view.addSubview(emptyNoteView)
+        emptyNoteView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        self.emptyNoteView.isHidden = true
-        self.emptyNoteView.bgClear()
+        emptyNoteView.isHidden = true
+        emptyNoteView.bgClear()
         
         let emptyImageView = UIImageView()
         emptyImageView.image = UIImage(named: "empty")
         emptyImageView.contentMode = .scaleAspectFill
         let width: CGFloat = (min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)) * 0.33
         let height = width * 1.2
-        self.emptyNoteView.addSubview(emptyImageView)
+        emptyNoteView.addSubview(emptyImageView)
         emptyImageView.snp.makeConstraints { (make) in
             make.width.equalTo(width)
             make.height.equalTo(height)
@@ -216,14 +256,15 @@ extension NoteView {
             make.centerY.equalToSuperview()
         }
         
-        self.emptyCreateButton.setTitle(Localized("create"), for: .normal)
-        self.emptyCreateButton.setTitleColor(AppColors.faveButton, for: .normal)
-        self.emptyNoteView.addSubview(emptyCreateButton)
-        self.emptyCreateButton.snp.makeConstraints { (make) in
-            make.top.equalTo(emptyImageView.snp.bottom).offset(15)
+        emptyCreateButton.setTitle(Localized("create"), for: .normal)
+        emptyCreateButton.setTitleColor(AppColors.faveButton, for: .normal)
+        emptyNoteView.addSubview(emptyCreateButton)
+        emptyCreateButton.snp.makeConstraints { (make) in
+            make.top.equalTo(emptyImageView.snp.bottom)
+                .offset(15)
             make.centerX.equalToSuperview()
         }
-        self.emptyCreateButton.titleLabel?.font =
+        emptyCreateButton.titleLabel?.font =
             appFont(size: emptyNotesFont(), weight: .medium)
     }
     
@@ -312,74 +353,54 @@ extension NoteView {
     }
     
     func searchAnimation(startSearch: Bool) {
-        let weakSelf = self
-        let labelCenterY: CGFloat = startSearch ? 11 : 0
-        let searchButtonRight: CGFloat = startSearch ? 44 : -self.barView.sideMargin
-        let settingButtonLeft: CGFloat = startSearch ? -44 : self.barView.sideMargin
-        self.searchBar.text = nil
+        weak var weakSelf = self
+        searchBar.text = nil
         
         if startSearch {
             let index = IndexPath(item: 0, section: 0)
-            weakSelf.collectionView.scrollToItem(at: index, at: .top, animated: true)
-            weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
-                make.centerY.equalToSuperview().offset(labelCenterY)
-            })
+            collectionView.scrollToItem(at: index,
+                                        at: .top,
+                                        animated: true)
+            searchBar.setShowsCancelButton(true,
+                                           animated: false)
             
-            weakSelf.settingButton.snp.updateConstraints({ maker in
-                maker.left.equalToSuperview().offset(settingButtonLeft)
-            })
-            
-            weakSelf.searchButton.snp.updateConstraints({ (make) in
-                make.right.equalToSuperview().offset(searchButtonRight)
-            })
-            weakSelf.searchBar.setShowsCancelButton(true, animated: false)
-            weakSelf.searchBar.becomeFirstResponder()
-            weakSelf.searchHolderView.isHidden = false
-            weakSelf.searchNoResultBgView.isHidden = false
+            searchHolderView.isHidden = false
+            searchNoResultBgView.isHidden = false
+            barView.buttonsSearchLayoutChange(startSearch: startSearch)
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-                weakSelf.barView.layoutIfNeeded()
-                weakSelf.searchHolderView.alpha = kHolderViewAlpha
-                weakSelf.barView.titleLabel.alpha = 0
-                weakSelf.searchButton.alpha = 0
+                guard let ws = weakSelf else { return }
+                ws.barView.layoutIfNeeded()
+                ws.searchHolderView.alpha = kHolderViewAlpha
+                ws.barView.titleLabel.alpha = 0
+                ws.searchButton.alpha = 0
             }) { (finish) in
+                guard let ws = weakSelf else { return }
+                ws.searchBar.becomeFirstResponder()
                 UIView.animate(withDuration: 0.2, animations: {
-                    weakSelf.searchBar.isHidden = false
-                    weakSelf.searchBar.alpha = 1
+                    ws.searchBar.isHidden = false
+                    ws.searchBar.alpha = 1
                 })
-                
-                UIView.animate(withDuration: 0.2, animations: {
-                    weakSelf.searchBar.isHidden = false
-                    weakSelf.searchBar.alpha = 1
-                }, completion: nil)
             }
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-                weakSelf.searchBar.alpha = 0
-                weakSelf.searchHolderView.alpha = 0
-                weakSelf.searchNoResultBgView.alpha = 0
+                guard let ws = weakSelf else { return }
+                ws.searchBar.alpha = 0
+                ws.searchHolderView.alpha = 0
+                ws.searchNoResultBgView.alpha = 0
             }) { (finish) in
-                weakSelf.searchHolderView.isHidden = true
-                weakSelf.searchNoResultBgView.isHidden = true
+                guard let ws = weakSelf else { return }
+                ws.searchHolderView.isHidden = true
+                ws.searchNoResultBgView.isHidden = true
                 
-                weakSelf.barView.titleLabel.snp.updateConstraints({ (make) in
-                    make.centerY.equalToSuperview().offset(labelCenterY)
-                })
-                
-                weakSelf.settingButton.snp.updateConstraints({ maker in
-                    maker.left.equalToSuperview().offset(settingButtonLeft)
-                })
-                
-                weakSelf.searchButton.snp.updateConstraints({ (make) in
-                    make.right.equalToSuperview().offset(searchButtonRight)
-                })
-                weakSelf.searchBar.isHidden = true
-                weakSelf.searchBar.resignFirstResponder()
+                ws.barView.buttonsSearchLayoutChange(startSearch: false)
+                ws.searchBar.isHidden = true
+                ws.searchBar.resignFirstResponder()
                 
                 UIView.animate(withDuration: 0.25, animations: { 
-                    weakSelf.barView.layoutIfNeeded()
-                    weakSelf.barView.titleLabel.alpha = 1
-                    weakSelf.searchButton.alpha = 1
+                    ws.barView.layoutIfNeeded()
+                    ws.barView.titleLabel.alpha = 1
+                    ws.searchButton.alpha = 1
                 })
             }
         }

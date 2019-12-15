@@ -38,23 +38,35 @@ class NotesViewController: BaseViewController {
         //        interstitial = self.createAndLoadInterstitial()
         
         let searchDriver = noteView.searchBar.rx.text.orEmpty.asDriver()
-        self.viewModel = NotesViewModel(searchDriver: searchDriver, searchBlock: { (query) in
-            weakSelf.noteView
-                .searchViewStateChange(query: query.count > 0,
-                                       notesCount: weakSelf.viewModel.notesCount())
-        })
+        self.viewModel =
+            NotesViewModel(searchDriver: searchDriver,
+                           searchBlock:
+                { (query) in
+                    weakSelf.noteView
+                        .searchViewStateChange(query: query.count > 0,
+                                               notesCount: weakSelf.viewModel.notesCount())
+            })
         
-        AppSettings.shared.register(any: self, key: self.appSettingNotifyKey)
-        DBManager.shared.bindNotifyToken(result: self.viewModel.notes, dataSource: self)
+        AppSettings.shared.register(any: self,
+                                    key: appSettingNotifyKey)
+        DBManager.shared
+            .bindNotifyToken(result: viewModel.notes,
+                             dataSource: self)
         
-        self.noteView.searchButton
-            .addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
-        self.noteView.settingButton
-            .addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
-        self.noteView.emptyCreateButton
-            .addTarget(self, action: #selector(self.createAction), for: .touchUpInside)
+        noteView.searchButton
+            .addTarget(self,
+                       action: #selector(self.searchAction),
+                       for: .touchUpInside)
+        noteView.settingButton
+            .addTarget(self,
+                       action: #selector(self.settingAction),
+                       for: .touchUpInside)
+        noteView.emptyCreateButton
+            .addTarget(self,
+                       action: #selector(self.createAction),
+                       for: .touchUpInside)
         
-        self.noteView.searchBar
+        noteView.searchBar
             .rx.cancelButtonClicked
             .subscribe ({ (cancel) in
                 Logger.log(UIPasteboard.general.string ?? "no")
@@ -89,6 +101,11 @@ class NotesViewController: BaseViewController {
         }
         
         noteView.searchKeyboardHandle()
+        noteView.configCreateButton(withView: self.view)
+        noteView.createButton
+            .addTarget(self,
+                       action: #selector(createAction),
+                       for: .touchUpInside)
     }
     
     override func viewWillLayoutSubviews() {
@@ -111,11 +128,8 @@ class NotesViewController: BaseViewController {
         selectedCell?.deselectCell()
         selectedCell = nil
         
-//        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
-//            MessageViewBuilder.showMessageView(title: Localized("message1"),
-//                                               body: Localized("message2"),
-//                                               checkKey: MessageViewBuilder.kFirstNoteKey)
-//        }
+        MessageViewBuilder
+            .showMessageViewIfFirstUse(checkKey: kFirstUseNoteKey)
     }
     
     deinit {
@@ -161,10 +175,10 @@ class NotesViewController: BaseViewController {
             self.noteView.collectionView.dg_stopLoading()
             self.noteView.barView.alpha = 1.0
         }
-//        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
-//            MessageViewBuilder.hiddenMessageView()
-//            MessageViewBuilder.kFirstNoteKey.saveToUserDefault(value: true)
-//        }
+        //        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
+        //            MessageViewBuilder.hiddenMessageView()
+        //            MessageViewBuilder.kFirstNoteKey.saveToUserDefault(value: true)
+        //        }
     }
     
     override func deviceOrientationChanged() {
@@ -342,12 +356,12 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
                                           style: .default,
                                           handler:
             {(_ action: UIAlertAction) -> Void in
-            if let text = alertController.textFields?[0].text,
-                text.count > 0 {
-                DBManager.shared.updateObject {
-                    note.category = text
+                if let text = alertController.textFields?[0].text,
+                    text.count > 0 {
+                    DBManager.shared.updateObject {
+                        note.category = text
+                    }
                 }
-            }
         })
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: Localized("cancel"),
@@ -377,13 +391,21 @@ extension NotesViewController: AppSettingsNotify {
     
     func settingDidChange(settingKey: UserDefaultsKey) {
         switch settingKey {
-        case .stickerLine, .gesture, .dateLabelUse:
-            self.noteView.collectionView.reloadData()
+        case .stickerLine,
+             .gesture,
+             .dateLabelUse:
+            noteView.collectionView.reloadData()
             
-        case .stickerSort, .stickerSortNewestLast:
-            self.viewModel.notes = DBManager.shared.queryNotes()
+        case .stickerSort,
+             .stickerSortNewestLast:
+            viewModel.notes = DBManager.shared.queryNotes()
             DBManager.shared
-                .bindNotifyToken(result: self.viewModel.notes, dataSource: self)
+                .bindNotifyToken(result: viewModel.notes,
+                                 dataSource: self)
+            
+        case .hideCreateButton:
+            noteView.createButton.isHidden =
+                AppSettings.shared.hideCreateButton
             
         default:
             return

@@ -35,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CloudKitManager.shared.createSubscription()
         self.configureDynamicShortcuts()
         
-        MessageViewBuilder.kFirstEditorKey.saveToUserDefault(value: false)
-        
         let config = BuglyConfig()
         #if DEBUG
         config.debugMode = true
