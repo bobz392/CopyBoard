@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WhatsNewKit
 
 class SettingViewController: BaseViewController {
 

@@ -36,12 +36,19 @@ extension DBManager {
         return self.r.objects(Note.self).filter("uuid = '\(uuid)'").first
     }
     
-    func queryNotes(contain: String? = nil) -> Results<Note> {
+    func queryNotes(contain: String? = nil, color: Int? = nil) -> Results<Note> {
         let sortKey = AppSettings.shared.sortKey()
         let ascending = AppSettings.shared.sortNewestLast
-        let queryAll = self.r.objects(Note.self).filter("isDelete = false")
+        let predict: String
+        if let c = color {
+            predict = "isDelete = false AND color = \(c)"
+        } else {
+            predict = "isDelete = false"
+        }
+        let queryAll = r.objects(Note.self).filter(predict)
         if let contain = contain {
-            let query = AppSettings.shared.caseSensitiveQuery(key: "content", value: contain)
+            let query = AppSettings.shared
+                .caseSensitiveQuery(key: "content", value: contain)
             return queryAll.filter(query)
                 .sorted(byKeyPath: sortKey, ascending: ascending)
         } else {

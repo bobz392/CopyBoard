@@ -13,6 +13,39 @@ fileprivate let kHolderViewAlpha: CGFloat = 0.2
 
 let kNoteCollectionViewTag = 109
 let kTokenCollectionViewTag = 209
+let kFilterViewHeight: CGFloat = 50
+
+class NoteFilerHeaderView: UIView {
+    let segment = UISegmentedControl()
+    
+    func configFilterView() {
+        self.clipsToBounds = true
+        let images = AppColors.filterImages()
+        segment.insertSegment(withTitle: kFilterNoneType,
+                              at: 0,
+                              animated: false)
+        for (index, image) in images.enumerated() {
+            segment.insertSegment(
+                with: image.withRenderingMode(.alwaysOriginal),
+                at: index + 1,
+                animated: false)
+        }
+        if let type = AppSettings.shared.filterColorType {
+            segment.selectedSegmentIndex = type + 1
+        } else {
+            segment.selectedSegmentIndex = 0
+        }
+        
+        addSubview(segment)
+        segment.snp.makeConstraints { (maker) in
+            maker.left.equalToSuperview()
+                .offset(20)
+            maker.centerY.equalToSuperview()
+        }
+        
+        
+    }
+}
 
 class NoteView {
     
@@ -34,7 +67,8 @@ class NoteView {
     let noResultsLabel = UILabel()
     let catImageView = UIImageView()
     
-    fileprivate var barShowing = true
+    let filterColorView = NoteFilerHeaderView()
+    
     fileprivate var createBlock: (() -> Void)? = nil
     
     func config(withView view: UIView) {
@@ -133,7 +167,6 @@ class NoteView {
             self.barView.layoutIfNeeded()
         }
     }
-    
 }
 
 // MARK: - collection view
@@ -151,17 +184,17 @@ extension NoteView {
             .setStatusBarHidden(DeviceManager.shared.isLandscape,
                                 with: .fade)
         
-        let height: CGFloat = self.searchNoResultView.frame.height * 0.4
-        self.catImageView.snp.updateConstraints { maker in
+        let height: CGFloat = searchNoResultView.frame.height * 0.4
+        catImageView.snp.updateConstraints { maker in
             maker.height.equalTo(height)
             maker.width.equalTo(height * 0.7)
         }
-        self.barHolderView.snp.updateConstraints { maker in
+        barHolderView.snp.updateConstraints { maker in
             maker.top.equalToSuperview()
                 .offset(-DeviceManager.shared.statusbarHeight)
         }
         
-        self.barView.superview?.layoutIfNeeded()
+        barView.superview?.layoutIfNeeded()
     }
     
     fileprivate func addRefreshCreate() {
@@ -184,6 +217,15 @@ extension NoteView {
     func configCollectionView(view: UIView,
                               delegate: NotesViewController,
                               createBlock: @escaping () -> Void) {
+        view.addSubview(filterColorView)
+        filterColorView.configFilterView()
+        filterColorView.snp.makeConstraints { (maker) in
+            maker.top.equalToSuperview()
+                .offset(DeviceManager.shared.mainHeight)
+            maker.left.right.equalToSuperview()
+            maker.height.equalTo(0)
+        }
+        
         self.createBlock = createBlock
         let layout = CHTCollectionViewWaterfallLayout()
         let space = DeviceManager.shared.collectionViewItemSpace
@@ -193,17 +235,17 @@ extension NoteView {
         layout.columnCount = DeviceManager.shared.noteColumnCount
         layout.itemRenderDirection = .shortestFirst
         let inset = space * 0.5
-        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.sectionInset =
+            UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        collectionView =
+            UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.keyboardDismissMode = .onDrag
         collectionView.alwaysBounceVertical = true
         collectionView.bgClear()
         collectionView.tag = kNoteCollectionViewTag
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-                .offset(DeviceManager.shared.mainHeight)
+            make.top.equalTo(filterColorView.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -224,12 +266,13 @@ extension NoteView {
         configSearchResultView(view: view)
         
         collectionView.register(NoteCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
+                      forCellWithReuseIdentifier: NoteCollectionViewCell.reuseId)
         
         collectionView.delegate = delegate
         collectionView.dataSource = delegate
         
         addRefreshCreate()
+        view.bringSubviewToFront(filterColorView)
     }
     
     func configEmptyDataView(view: UIView) {

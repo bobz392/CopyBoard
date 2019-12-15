@@ -29,10 +29,10 @@ class EditorViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(defaultContent: String? = nil) {
+    init(defaultContent: String? = nil, color: Int? = nil) {
         self.note = Note()
         self.note.noteCreator(content: defaultContent ?? "  ", createdAt: Date())
-        self.note.color = 0
+        self.note.color = color ?? 0
         self.isCreate = true
         super.init(nibName: nil, bundle: nil)
     }

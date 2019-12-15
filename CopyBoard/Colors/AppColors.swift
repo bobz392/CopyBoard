@@ -32,6 +32,30 @@ struct AppColors {
     
     static let cellSelected = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
     
+    static func filterImages() -> [UIImage] {
+        let colors = [
+            AppPairColors.sand.pairColor().light,
+            AppPairColors.pink.pairColor().light,
+            AppPairColors.white.pairColor().light,
+            AppPairColors.watermelon.pairColor().light,
+            AppPairColors.powderBlue.pairColor().light,
+            AppPairColors.mint.pairColor().light,
+        ]
+        let size: CGFloat = 20
+        let renderer =
+            UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
+        
+        return colors.map { (color) -> UIImage in
+            renderer.image { context in
+              context.cgContext.setFillColor(color.cgColor)
+
+              let rectangle = CGRect(x: 0, y: 0,
+                                     width: size, height: size)
+              context.cgContext.addRect(rectangle)
+              context.cgContext.drawPath(using: .fill)
+            }
+        }
+    }
 }
 
 enum AppPairColors: Int, CustomDebugStringConvertible {
@@ -98,7 +122,6 @@ enum AppPairColors: Int, CustomDebugStringConvertible {
             }
         }
     }
-    
 }
 
 extension UIColor {

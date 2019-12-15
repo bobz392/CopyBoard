@@ -27,12 +27,12 @@ class NotesViewController: BaseViewController {
         if let bar = navigationController?.navigationBar {
             self.noteView.configBarView(bar: bar)
         }
-        self.noteView.config(withView: self.view)
+        noteView.config(withView: self.view)
         
-        let weakSelf = self
-        noteView
-            .configCollectionView(view: self.view, delegate: self) {
-                weakSelf.createAction()
+        weak var weakSelf = self
+        noteView.configCollectionView(view: self.view, delegate: self) {
+            guard let ws = weakSelf else { return }
+            ws.createAction()
         }
         
         //        interstitial = self.createAndLoadInterstitial()
@@ -42,9 +42,8 @@ class NotesViewController: BaseViewController {
             NotesViewModel(searchDriver: searchDriver,
                            searchBlock:
                 { (query) in
-                    weakSelf.noteView
-                        .searchViewStateChange(query: query.count > 0,
-                                               notesCount: weakSelf.viewModel.notesCount())
+                    guard let ws = weakSelf else { return }
+                    ws.noteView.searchViewStateChange(query: query.count > 0, notesCount: ws.viewModel.notesCount())
             })
         
         AppSettings.shared.register(any: self,
@@ -55,22 +54,27 @@ class NotesViewController: BaseViewController {
         
         noteView.searchButton
             .addTarget(self,
-                       action: #selector(self.searchAction),
+                       action: #selector(searchAction),
                        for: .touchUpInside)
         noteView.settingButton
             .addTarget(self,
-                       action: #selector(self.settingAction),
+                       action: #selector(settingAction),
                        for: .touchUpInside)
         noteView.emptyCreateButton
             .addTarget(self,
-                       action: #selector(self.createAction),
+                       action: #selector(createAction),
+                       for: .touchUpInside)
+        noteView.filterButton
+            .addTarget(self,
+                       action: #selector(filterAction),
                        for: .touchUpInside)
         
         noteView.searchBar
             .rx.cancelButtonClicked
             .subscribe ({ (cancel) in
+                guard let ws = weakSelf else { return }
                 Logger.log(UIPasteboard.general.string ?? "no")
-                weakSelf.endSearchAction()
+                ws.endSearchAction()
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -106,6 +110,24 @@ class NotesViewController: BaseViewController {
             .addTarget(self,
                        action: #selector(createAction),
                        for: .touchUpInside)
+        
+        viewModel.showFilterSubject
+            .skip(1)
+            .subscribe(onNext: { (show) in
+                guard let ws = weakSelf else { return }
+                let height: CGFloat = show ? kFilterViewHeight : 0
+                ws.noteView.filterColorView
+                    .snp.updateConstraints { (maker) in
+                        maker.height.equalTo(height)
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        noteView.filterColorView
+            .segment
+            .addTarget(self,
+                       action: #selector(filterChangeAction(seg:)),
+                       for: .valueChanged)
     }
     
     override func viewWillLayoutSubviews() {
@@ -116,6 +138,14 @@ class NotesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         noteView.barView.alpha = 1
+        
+        if let show =
+            try? viewModel.showFilterSubject.value(),
+            let type = AppSettings.shared.filterColorType {
+            if !show {
+                self.filterAction()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,8 +173,8 @@ class NotesViewController: BaseViewController {
     }
     
     @objc func searchAction()  {
-        self.noteView.searchAnimation(startSearch: true)
-        self.viewModel.isInSearch = true
+        noteView.searchAnimation(startSearch: true)
+        viewModel.isInSearch = true
         NoteCollectionViewInputOverlay.closeOpenItem()
     }
     
@@ -153,32 +183,53 @@ class NotesViewController: BaseViewController {
         let navigation = UINavigationController(rootViewController: settingVC)
         navigation.transitioningDelegate = self
         navigation.isNavigationBarHidden = true
-        self.transitionType = .ping
-        self.present(navigation, animated: true, completion: nil)
+        transitionType = .ping
+        present(navigation, animated: true, completion: nil)
     }
     
     @objc func endSearchAction() {
-        self.noteView.searchAnimation(startSearch: false)
-        if !self.viewModel.isQueryStringEmpty {
-            self.noteView.collectionView.reloadData()
+        noteView.searchAnimation(startSearch: false)
+        if !viewModel.isQueryStringEmpty {
+            noteView.collectionView.reloadData()
         }
-        self.viewModel.isInSearch = false
-        self.viewModel.isQueryStringEmpty = true
+        viewModel.isInSearch = false
+        viewModel.isQueryStringEmpty = true
     }
     
     @objc func createAction() {
         let defaultContent = self.noteView.searchBar.text ?? ""
-        let editorVC = EditorViewController(defaultContent: defaultContent.count > 0 ? defaultContent : " ")
+        let dc = defaultContent.count > 0 ? defaultContent : " "
+        let color = AppSettings.shared.filterColorType
+        let editorVC =
+            EditorViewController(defaultContent: dc,
+                                 color: color)
         editorVC.transitioningDelegate = self
-        self.transitionType = .present
-        self.present(editorVC, animated: true) {
+        transitionType = .present
+        present(editorVC, animated: true) {
             self.noteView.collectionView.dg_stopLoading()
             self.noteView.barView.alpha = 1.0
         }
-        //        if false == MessageViewBuilder.kFirstNoteKey.valueForKeyInUserDefault() {
-        //            MessageViewBuilder.hiddenMessageView()
-        //            MessageViewBuilder.kFirstNoteKey.saveToUserDefault(value: true)
-        //        }
+    }
+    
+    @objc func filterAction() {
+        guard let showFilter =
+            try? !viewModel.showFilterSubject.value()
+            else { return }
+        
+        viewModel.showFilterSubject.onNext(showFilter)
+        if showFilter {
+            noteView.filterButton.tintColor = AppColors.faveButton
+        } else {
+            noteView.filterButton.tintColor = AppColors.mainIcon
+        }
+    }
+    
+    @objc func filterChangeAction(seg: UISegmentedControl) {
+        if seg.selectedSegmentIndex == 0 {
+            AppSettings.shared.filterColorNote = kFilterNoneType
+        } else {
+            AppSettings.shared.filterColorNote = "\(seg.selectedSegmentIndex - 1)"
+        }
     }
     
     override func deviceOrientationChanged() {
@@ -288,16 +339,24 @@ extension NotesViewController: UIViewControllerTransitioningDelegate, PingStartV
 // MARK: collection view
 extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         let count = viewModel.notesCount()
         if !viewModel.isInSearch {
             noteView.emptyNotesView(hidden: count > 0)
+            if let show =
+                try? viewModel.showFilterSubject.value() {
+                if count <= 0 && !show {
+                    self.filterAction()
+                }
+            }
         }
         
         return count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath)
             as? NoteCollectionViewCell else { return }
         
@@ -311,7 +370,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didUnhighlightItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell {
             UIView.animate(withDuration: 0.4, animations: {
                 cell.madeShadow(highlight: false)
@@ -319,7 +379,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didHighlightItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell {
             UIView.animate(withDuration: 0.25, animations: { 
                 cell.madeShadow(highlight: true)
@@ -327,7 +388,8 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
         let query = self.noteView.searchBar.text
@@ -398,7 +460,9 @@ extension NotesViewController: AppSettingsNotify {
             
         case .stickerSort,
              .stickerSortNewestLast:
-            viewModel.notes = DBManager.shared.queryNotes()
+            viewModel.notes = DBManager
+                .shared
+                .queryNotes()
             DBManager.shared
                 .bindNotifyToken(result: viewModel.notes,
                                  dataSource: self)
@@ -406,7 +470,11 @@ extension NotesViewController: AppSettingsNotify {
         case .hideCreateButton:
             noteView.createButton.isHidden =
                 AppSettings.shared.hideCreateButton
-            
+        
+        case .filterColorNote:
+            viewModel.refreshNote()
+            noteView.collectionView.reloadData()
+             
         default:
             return
         }

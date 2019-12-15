@@ -8,6 +8,8 @@
 
 import Foundation
 
+let kFilterNoneType = "无"
+
 protocol AppSettingsNotify {
     func settingDidChange(settingKey: UserDefaultsKey)
 }
@@ -155,6 +157,25 @@ class AppSettings {
         }
     }
     
+    var filterColorNote: String {
+        didSet {
+            UserDefaultsKey.filterColorNote
+                .write(value: filterColorNote,
+                       manager: userDefualtsManager)
+            didChange(key: UserDefaultsKey.filterColorNote)
+        }
+    }
+    
+    var filterColorType: Int? {
+        get {
+            if filterColorNote == kFilterNoneType {
+                return nil
+            } else {
+                return Int(filterColorNote)
+            }
+        }
+    }
+    
     var version: String
     
     fileprivate let userDefualtsManager: UserDefaultsManager
@@ -166,7 +187,8 @@ class AppSettings {
         self.keyboardLines = userDefault.readInt(UserDefaultsKey.keyboardLine.rawValue)
         self.keyboardFilterStar = userDefault.readInt(UserDefaultsKey.keyboardFilterStar.rawValue)
         self.keyboardFilterColor = (userDefault.readArray(UserDefaultsKey.keyboardFilterColor.rawValue) as? [Int]) ?? [0, 1, 2, 3, 4, 5]
-        self.stickerGesture = userDefault.readInt(UserDefaultsKey.gesture.rawValue)
+        self.stickerGesture =
+            userDefault.readInt(UserDefaultsKey.gesture.rawValue)
         self.caseSensitive = userDefault.readInt(UserDefaultsKey.caseSensitive.rawValue)
         self.stickerSort = userDefault.readInt(UserDefaultsKey.stickerSort.rawValue)
         self.keyboardHeight = userDefault.readInt(UserDefaultsKey.keyboardHeight.rawValue)
@@ -176,13 +198,16 @@ class AppSettings {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         formatter.timeStyle = .full
-        let lastSyncDate = formatter.date(from: userDefault.readString(UserDefaultsKey.lastSync.rawValue) ?? "") ?? Date()
+        let lastSyncDate = formatter.date(from: userDefault.readString(UserDefaultsKey.lastSync.rawValue) ?? "")
+            ?? Date()
         self.lastSync = lastSyncDate
         self.appSetup = userDefault.readBool(UserDefaultsKey.appSetup.rawValue)
         self.keyboardSegmentationOpen = userDefault.readBool(UserDefaultsKey.keyboardSegmentation.rawValue)
         self.hideCreateButton =
             userDefault.readBool(UserDefaultsKey.hideCreateButton.rawValue)
-        
+        self.filterColorNote =
+            userDefault.readString(UserDefaultsKey.filterColorNote.rawValue)
+            ?? kFilterNoneType
         if let v = Bundle.main
             .infoDictionary?[kCFBundleVersionKey as String] as? String,
             let b = Bundle.main
@@ -207,6 +232,7 @@ class AppSettings {
         keyboardHeight = userDefualtsManager.readInt(UserDefaultsKey.keyboardHeight.rawValue)
         sortNewestLast = userDefualtsManager.readBool(UserDefaultsKey.stickerSortNewestLast.rawValue)
         keyboardSegmentationOpen = userDefualtsManager.readBool(UserDefaultsKey.keyboardSegmentation.rawValue)
+        filterColorNote = userDefualtsManager.readString(UserDefaultsKey.filterColorNote.rawValue) ?? kFilterNoneType
     }
     
     static let shared: AppSettings = AppSettings()
@@ -261,6 +287,7 @@ enum UserDefaultsKey: StringLiteralType {
     case keyboardDefaultNote = "com.keyboard.default"
     case keyboardSegmentation = "com.keyboard.segmentation"
     case hideCreateButton = "com.create.button.hide"
+    case filterColorNote = "com.filter.color.note"
     
     func write<T>(value: T, manager: UserDefaultsManager) {
         manager.write(rawValue, value: value)

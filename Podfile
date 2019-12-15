@@ -21,7 +21,9 @@ target 'CopyBoard' do
   pod 'Bugly'
   # https://github.com/zekunyan/TTGSnackbar
   pod "TTGSnackbar"
-  
+  # https://github.com/airbnb/MagazineLayout
+#  pod 'MagazineLayout'
+  # https://github.com/SvenTiigi/WhatsNewKit
   pod 'WhatsNewKit'
 
   target 'CopyBoardTests' do

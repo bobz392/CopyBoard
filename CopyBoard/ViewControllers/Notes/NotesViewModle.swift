@@ -19,13 +19,15 @@ class NotesViewModel {
     var isQueryStringEmpty = true
     var searchNotes = [Note]()
     let searchBlock: SearchBlock
+    let showFilterSubject = BehaviorSubject<Bool>(value: false)
     
     init(
         searchDriver: Driver<String>,
         searchBlock: @escaping SearchBlock) {
         
         self.searchBlock = searchBlock
-        self.notes = DBManager.shared.queryNotes()
+        self.notes = DBManager.shared
+            .queryNotes(color: AppSettings.shared.filterColorType)
         
         let search = searchDriver
             .throttle(0.5)
@@ -35,8 +37,10 @@ class NotesViewModel {
                 if query.isEmpty {
                     return Driver.just(NotesSearchState.empty)
                 } else {
-                    let notes = DBManager.shared.queryNotes(contain: query)
-                    let errorReturn = Driver.just(NotesSearchState(notes: [], searchString: query))
+                    let notes = DBManager.shared
+                        .queryNotes(contain: query, color: AppSettings.shared.filterColorType)
+                    let errorReturn = Driver
+                        .just(NotesSearchState(notes: [], searchString: query))
                     if notes.isEmpty {
                         return errorReturn
                     } else {
@@ -61,6 +65,11 @@ class NotesViewModel {
             .disposed(by: disposeBag)
     }
     
+    func refreshNote() {
+        self.notes = DBManager.shared
+            .queryNotes(color: AppSettings.shared.filterColorType)
+    }
+    
     private func useSearchNotes() -> Bool {
         return self.isInSearch && !self.isQueryStringEmpty
     }
@@ -74,17 +83,6 @@ class NotesViewModel {
     }
     
 }
-//
-//extension Note: IdentifiableType {
-//    typealias Identity = String
-//    
-//    var identity: String {
-//        get {
-//            return self.uuid
-//        }
-//    }
-//}
-
 
 struct NotesData {
     var notes: [Note]
