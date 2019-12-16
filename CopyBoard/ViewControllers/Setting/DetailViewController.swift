@@ -178,6 +178,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             self.selectedIndex = indexPath
             let vc = HelperViewController(settingType: item)
             let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .overFullScreen
             present(nav, animated: true, completion: nil)
         }
     }

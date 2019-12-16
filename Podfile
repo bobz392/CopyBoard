@@ -6,6 +6,8 @@ target 'CopyBoard' do
   use_frameworks!
   inhibit_all_warnings!
   
+  # https://github.com/vsouza/awesome-ios
+  
   # Pods for CopyBoard
   pod 'RxSwift'
   pod 'RxCocoa'

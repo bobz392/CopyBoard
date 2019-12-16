@@ -25,12 +25,15 @@ class SettingsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.settingLabel.textColor = AppColors.menuText
-        self.settingDetailLabel.textColor = AppColors.menuSecondaryText
-        self.checkButton.setImage(Icons.done.iconImage(), for: .normal)
-        self.checkButton.tintColor = AppColors.appRed
-        self.accessoryType = .disclosureIndicator
-        self.settingSwitch.addTarget(self, action: #selector(self.switchAction(s:)), for: .valueChanged)
+        settingLabel.textColor = AppColors.menuText
+        settingDetailLabel.textColor = AppColors.menuSecondaryText
+        checkButton.setImage(Icons.selected.iconImage(), for: .normal)
+        checkButton.tintColor = AppColors.appRed
+        checkButton.imageView?.contentMode = .scaleAspectFit
+        accessoryType = .disclosureIndicator
+        settingSwitch.addTarget(self,
+                                action: #selector(self.switchAction(s:)),
+                                for: .valueChanged)
     }
     
     func resetFilterColorView() {

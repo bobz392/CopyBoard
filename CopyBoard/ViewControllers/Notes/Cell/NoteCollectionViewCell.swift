@@ -38,6 +38,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backView.backgroundColor = AppColors.mainIcon
         deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         deleteButton.tintColor = UIColor.white
         deleteButton.addTarget(self,
@@ -89,7 +90,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
                           for: .normal)
         }
         
-        catelogueButton.layer.cornerRadius = 12.0
+        catelogueButton.layer.cornerRadius = 4.0
         catelogueButton.layer.borderColor = UIColor.white.cgColor
         catelogueButton.layer.borderWidth = 1.0 / UIScreen.main.scale
     }

@@ -26,6 +26,7 @@
 "statistics"="Statistics";
 "piece"="piece";
 "got"="Ok";
+"filterAll"="All";
 "showCreateButton"="Show Add Memo Button";
 
 // gesture

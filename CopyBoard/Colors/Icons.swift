@@ -35,6 +35,7 @@ enum Icons {
     case text
     case filter
     case createManual
+    case selected
     
     func iconString() -> String {
         switch self {
@@ -62,6 +63,7 @@ enum Icons {
         case .text: return "text"
         case .filter: return "filter"
         case .createManual: return "createManual"
+        case .selected: return "selected"
         }
     }
     

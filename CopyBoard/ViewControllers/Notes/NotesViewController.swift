@@ -230,6 +230,7 @@ class NotesViewController: BaseViewController {
     }
     
     @objc func filterChangeAction(seg: UISegmentedControl) {
+        NoteCollectionViewInputOverlay.closeOpenItem()
         if seg.selectedSegmentIndex == 0 {
             AppSettings.shared.filterColorNote = kFilterNoneType
         } else {

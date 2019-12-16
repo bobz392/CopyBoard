@@ -21,7 +21,11 @@ class NoteFilerHeaderView: UIView {
     func configFilterView() {
         self.clipsToBounds = true
         let images = AppColors.filterImages()
-        segment.insertSegment(withTitle: kFilterNoneType,
+        
+        if #available(iOS 13.0, *) {} else {
+            segment.tintColor = AppColors.faveButton
+        }
+        segment.insertSegment(withTitle: Localized("filterAll"),
                               at: 0,
                               animated: false)
         for (index, image) in images.enumerated() {
