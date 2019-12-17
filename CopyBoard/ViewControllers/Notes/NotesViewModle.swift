@@ -66,20 +66,20 @@ class NotesViewModel {
     }
     
     func refreshNote() {
-        self.notes = DBManager.shared
+        notes = DBManager.shared
             .queryNotes(color: AppSettings.shared.filterColorType)
     }
     
     private func useSearchNotes() -> Bool {
-        return self.isInSearch && !self.isQueryStringEmpty
+        return isInSearch && !isQueryStringEmpty
     }
     
     func notesCount() -> Int {
-        return self.useSearchNotes() ? self.searchNotes.count : self.notes.count
+        return useSearchNotes() ? searchNotes.count : notes.count
     }
     
     func noteIn(row: Int) -> Note {
-        return self.useSearchNotes() ? self.searchNotes[row] : self.notes[row]
+        return useSearchNotes() ? searchNotes[row] : notes[row]
     }
     
 }

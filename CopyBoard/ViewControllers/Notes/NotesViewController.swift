@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WhatsNewKit
+//import WhatsNewKit
 //import GoogleMobileAds
 
 class NotesViewController: BaseViewController {
@@ -241,11 +241,15 @@ class NotesViewController: BaseViewController {
     override func deviceOrientationChanged() {
         Logger.log("deviceOrientationChanged")
         NoteCollectionViewInputOverlay.closeOpenItem()
-        self.noteView.invalidateLayout()
+        noteView.invalidateLayout()
         
-        self.noteView.collectionView.snp.updateConstraints { (maker) in
-            maker.top.equalToSuperview().offset(DeviceManager.shared.mainHeight)
+        noteView.filterColorView.snp
+            .updateConstraints { (maker) in
+                maker.top.equalToSuperview()
+                    .offset(DeviceManager.shared.mainHeight)
         }
+        
+        self.view.layoutIfNeeded()
     }
     
 }
@@ -396,27 +400,44 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId, for: indexPath) as! NoteCollectionViewCell
+        let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId,
+                                 for: indexPath) as! NoteCollectionViewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
         let query = self.noteView.searchBar.text
         cell.configCell(use: note, query: query)
-        cell.catelogueButton.tag = indexPath.row;
-        cell.catelogueButton
-            .removeTarget(self,
-                          action: #selector(self.changeCatelogue(sender:)),
-                          for: .touchUpInside)
-        cell.catelogueButton
-            .addTarget(self,
-                       action: #selector(self.changeCatelogue(sender:)),
-                       for: .touchUpInside)
+        resetTargetAction(cell: cell, indexPath: indexPath)
         
         return cell
     }
     
-    @objc func changeCatelogue(sender: UIButton) {
-        let note = self.viewModel.noteIn(row: sender.tag)
+    func resetTargetAction(cell: NoteCollectionViewCell,
+                           indexPath: IndexPath) {
+        cell.catelogueButton.tag = indexPath.row;
+        cell.deleteButton.tag = indexPath.row;
+        cell.catelogueButton
+            .removeTarget(self,
+                          action: nil, for: .touchUpInside)
+        cell.catelogueButton
+            .addTarget(self,
+                       action: #selector(changeCatelogue(sender:)),
+                       for: .touchUpInside)
         
-        let alertController = UIAlertController(title: Localized("changeCatelogue"), message: "", preferredStyle: .alert)
+        cell.deleteButton
+            .removeTarget(self,
+                          action: nil, for: .touchUpInside)
+        cell.deleteButton
+            .addTarget(self,
+                       action: #selector(deleteNoteAction(sender:)),
+                       for: .touchUpInside)
+    }
+    
+    @objc func changeCatelogue(sender: UIButton) {
+        let note = viewModel.noteIn(row: sender.tag)
+        
+        let alertController = UIAlertController(title: Localized("changeCatelogue"),
+                                                message: "",
+                                                preferredStyle: .alert)
         alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
             textField.placeholder = note.category
         })
@@ -440,6 +461,15 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         })
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func deleteNoteAction(sender: UIButton) {
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        guard let cell = noteView
+            .collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell else {
+            return
+        }
+        cell.deleteAction(targetCtl: self)
     }
     
     func collectionView(_ collectionView: UICollectionView!,
@@ -493,28 +523,28 @@ extension NotesViewController {
     
     func showNewFeature() {
         
-        let whatsNew = WhatsNew(
-            // The Title
-            title: "Memo",
-            // The features you want to showcase
-            items: [
-                WhatsNew.Item(
-                    title: "Installation",
-                    subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
-                    image: Icons.filter.iconImage()
-                ),
-                WhatsNew.Item(
-                    title: "Open Source",
-                    subtitle: "Contributions are very welcome 👨‍💻",
-                    image: UIImage(named: "openSource")
-                )
-            ]
-        )
-
-        let whatsNewViewController = WhatsNewViewController(
-            whatsNew: whatsNew
-        )
-
-        present(whatsNewViewController, animated: true)
+//        let whatsNew = WhatsNew(
+//            // The Title
+//            title: "Memo",
+//            // The features you want to showcase
+//            items: [
+//                WhatsNew.Item(
+//                    title: "Installation",
+//                    subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
+//                    image: Icons.filter.iconImage()
+//                ),
+//                WhatsNew.Item(
+//                    title: "Open Source",
+//                    subtitle: "Contributions are very welcome 👨‍💻",
+//                    image: UIImage(named: "openSource")
+//                )
+//            ]
+//        )
+//
+//        let whatsNewViewController = WhatsNewViewController(
+//            whatsNew: whatsNew
+//        )
+//
+//        present(whatsNewViewController, animated: true)
     }
 }

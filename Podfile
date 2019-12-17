@@ -26,7 +26,7 @@ target 'CopyBoard' do
   # https://github.com/airbnb/MagazineLayout
 #  pod 'MagazineLayout'
   # https://github.com/SvenTiigi/WhatsNewKit
-  pod 'WhatsNewKit'
+#  pod 'WhatsNewKit'
 
   target 'CopyBoardTests' do
     inherit! :search_paths

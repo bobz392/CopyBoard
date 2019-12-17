@@ -41,12 +41,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
         backView.backgroundColor = AppColors.mainIcon
         deleteButton.setImage(Icons.delete.iconImage(), for: .normal)
         deleteButton.tintColor = UIColor.white
-        deleteButton.addTarget(self,
-                               action: #selector(self.deleteAction),
-                               for: .touchUpInside)
-        
         faveButton.addTarget(self,
-                             action: #selector(self.favourate),
+                             action: #selector(favourate),
                              for: .touchUpInside)
         noteLabel.textColor = AppColors.noteText
         noteDateLabel.textColor = AppColors.noteDate
@@ -54,7 +50,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.8
         catelogueButton.titleLabel?.lineBreakMode = .byTruncatingTail
         catelogueButton.snp.makeConstraints { (maker) in
-            maker.width.lessThanOrEqualTo(self.frame.width * rato)
+            maker.width.lessThanOrEqualTo(frame.width * rato)
         }
     }
     
@@ -71,10 +67,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
         faveButton.isSelected = note.favourite
         
-        if let date = (AppSettings.shared.stickerDateUse == 0 ? note.createdAt : note.modificationDate) {
-            self.noteDateLabel.text = date.toRelative()
+        if let date = (AppSettings.shared.stickerDateUse == 0 ?
+            note.createdAt : note.modificationDate) {
+            noteDateLabel.text = date.toRelative()
         } else {
-            self.noteDateLabel.text = nil
+            noteDateLabel.text = nil
         }
         noteLabel.attributedText =
             note.content.searchHintString(isTruncated: isTruncated(),
@@ -118,19 +115,21 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }
         
         if AppSettings.shared.stickerGesture == 0 {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
+            let swipe = UISwipeGestureRecognizer(target: self,
+                                                 action: #selector(gestureOpenAction))
             swipe.direction = .left
             self.cardView.addGestureRecognizer(swipe)
         } else {
             
-            let long = UILongPressGestureRecognizer(target: self, action: #selector(self.gestureOpenAction))
-            self.cardView.addGestureRecognizer(long)
+            let long = UILongPressGestureRecognizer(target: self,
+                                                    action: #selector(gestureOpenAction))
+            cardView.addGestureRecognizer(long)
         }
     }
     
     func deselectCell() {
-        if let fave = self.note?.favourite {
-            self.faveButton.isSelected = fave
+        if let fave = note?.favourite {
+            faveButton.isSelected = fave
         }
     }
     
@@ -160,17 +159,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.curl(index: index)
     }
     
-    func syncAction() {
-        
-    }
-    
-    @objc func deleteAction() {
-        guard let cv = self.curlView else { return }
+    func deleteAction(targetCtl: UIViewController) {
+        guard let cv = curlView else { return }
         let weakSelf =  self
         let alertVc =
             UIAlertController(title: Localized("revert"),
                               message: nil,
-                              preferredStyle: .actionSheet)
+                              preferredStyle: .alert)
         let sureAction =
             UIAlertAction(title: Localized("delete"),
                           style: .destructive)
@@ -194,10 +189,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         alertVc.addAction(cancelAction)
         alertVc.addAction(sureAction)
         
-        UIApplication.shared
-            .keyWindow?
-            .rootViewController?
-            .present(alertVc, animated: true, completion: nil)
+        targetCtl.present(alertVc, animated: true, completion: nil)
     }
     
     fileprivate func deleteRealmNote() {
@@ -239,14 +231,15 @@ extension NoteCollectionViewCell {
         if self.isCurl {
             self.closeCurl()
         } else {
-            guard NoteCollectionViewInputOverlay.openedItemIndex == nil else { return }
+            guard NoteCollectionViewInputOverlay.openedItemIndex == nil
+                else { return }
             
-            let cardBounds = self.cardView.bounds
+            let cardBounds = cardView.bounds
             self.curlView = XBCurlView(frame: cardBounds)
             self.curlView?.isOpaque = false
             self.curlView?.pageOpaque = true
             
-            let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.8
+            let rato: CGFloat = DeviceManager.shared.isPhone ? 0.4 : 0.5
             let p = CGPoint(x: cardBounds.width * rato, y: cardBounds.height * rato)
             let angle = CGFloat(Double.pi / 2)
             self.curlView?.curl(self.cardView,

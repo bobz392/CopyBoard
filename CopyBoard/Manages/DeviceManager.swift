@@ -24,7 +24,11 @@ struct DeviceManager {
         }
     }
     
-
+    var isPadPro: Bool {
+        get {
+            return min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) >= 1024
+        }
+    }
     
     var deviceName: String {
         get {
@@ -106,7 +110,17 @@ extension DeviceManager {
     
     var noteColumnCount: Int {
         get {
-            return isPad ? (isLandscape ? 4 : 3) : (isLandscape ? 3 : 2)
+            return isPad ? padColumnCount : (isLandscape ? 3 : 2)
+        }
+    }
+    
+    private var padColumnCount: Int {
+        get {
+            if isPadPro {
+                return isLandscape ? 5 : 4
+            } else {
+                return isLandscape ? 4 : 3
+            }
         }
     }
     
