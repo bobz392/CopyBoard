@@ -39,20 +39,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>DEVELOPMENT</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>94529d28ee795e0f76d6086b6b1f3832eb117358</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

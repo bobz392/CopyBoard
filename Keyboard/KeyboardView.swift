@@ -151,14 +151,9 @@ class KeyboardView: UIView {
     }
     
     @objc func goSettingsAtion() {
-        if #available(iOSApplicationExtension 10.0, *) {
-            if let url = URL(string: "App-Prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                UIApplication.mSharedApplication().mOpenURL(url: url)
-            }
-        } else {
-            if let url = URL(string: "prefs:root=General&path=Keyboard/KEYBOARDS/com.zhoubo.CopyBoard.Keyboard") {
-                UIApplication.mSharedApplication().mOpenURL(url: url)
-            }
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.mSharedApplication()
+                .mOpenURL(url: url)
         }
     }
     

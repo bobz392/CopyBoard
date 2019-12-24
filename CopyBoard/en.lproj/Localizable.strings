@@ -60,8 +60,8 @@
 
 // guild
 "step"="STEP";
-"description1"="Add the Memo Keyboard.";
-"description2"="Allow full access. We will not collect or even upload your privacy data, only for access to application data.";
+"description1"="Add Memo Keyboard.";
+"description2"="Allow full access. We will never collect or even upload your privacy data, only for access to application data.";
 "description3"="Switch to Memo input method.";
 "doGuild1"="TO ADD";
 "doGuild2"="ALLOW";
@@ -69,14 +69,14 @@
 
 // message
 "message1"="Tips:";
-"message2"="Pull down to conveniently create your memo :)";
+"message2"="Pull down to create your memo conveniently :)";
 "message3"="Your memo will be saved automatically";
 
 // default note
-"defaultNote1"="Welcome to Memo Keyboard. Here are some tip memo.";
-"defaultNote2"="In the application navigation bar on the left button to enter the settings interface, the right button is to start the search. \nSwipe memos to the left to delete it and tap the star to star or unstar one memo. The left top shows the creation date by default, you can change it to modification date from settings screen.\n You can Create a memo by pull down list.";
-"defaultNote3"="We will never collect your privacy data or memo content. Only stored data in your private icloud account and will sync any of your changes to your multiple devices.\nKeyboard only displays 5 data and ignore the color by default, if you open the full access you can access all the memos.\nGo to the settings screen and click the \"Use keyboard\" button to guide you through the settings.";
-"defaultNote4"="Click on a memo to enter and modify it, the top buttons from left to right followed by: return to the previous, infomation menu, modify the color and modify the star button. \nDrop down memo can quickly return to the previous screen. ";
+"defaultNote1"="Welcome to Memo Keyboard. Here are some tip memos.";
+"defaultNote2"="If you want to enter settings you can click left button on the top bar and start searching by right button on the top bar. \nYou can delete memos by swipe cell from right to left.\nYou can also star your favourite memo or unstar it";
+"defaultNote3"="We will never collect your privacy datas or memo contents. We only store the data in your icloud account and sync any of your changes to your multiple devices.\nIf you open the full access you can access all the memos in the Memo input method.\nIn settings screen you can click the \"Use keyboard\" button to guide you to use input method.";
+"defaultNote4"="Click a memo to enter and modify the content, the top buttons from left to right followed by: return to the previous, infomation menu, modify the color and modify the star button. \nDrop down memo can quickly return to the previous screen. ";
 "defaultNote5"="Finally, sincerely thank you for using the Memo Keyboard, we would love to hear your voice, you can contact us from settings screen. \nIf you are satisfied or have dissatisfied places, boldly scoring for us :)";
 
 "open"="Open";
