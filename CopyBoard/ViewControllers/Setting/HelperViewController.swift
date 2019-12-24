@@ -56,7 +56,7 @@ class HelperViewController: UIViewController {
         case .helpCheck:
             helpName = "helpCheck"
         case .helpLineCount:
-            helpName = "helpLineCount"
+            helpName = "helpLineHeight"
         case .helpColor:
             helpName = "helpColor"
         case .helpCopy:
@@ -73,13 +73,13 @@ class HelperViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-//        UIApplication.shared.setStatusBarHidden(true, with: .none)
+        UIApplication.shared.setStatusBarHidden(true, with: .none)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-//        UIApplication.shared.setStatusBarHidden(false, with: .none)
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
     }
     
     @objc func quit() {
