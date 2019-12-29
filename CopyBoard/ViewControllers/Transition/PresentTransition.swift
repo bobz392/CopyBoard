@@ -22,6 +22,9 @@ final class PresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
         let toVc = vcCtx.viewController(forKey:.to)
         print("fromVc is", type(of: fromVc!), "toVc is", type(of: toVc!))
         
+        toVc?.modalPresentationStyle = .custom
+        toVc?.modalPresentationCapturesStatusBarAppearance = true
+        
         let containerView = vcCtx.containerView
         containerView.backgroundColor = UIColor.black
         

@@ -27,7 +27,8 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
               let toVC = transitionContext.viewController(forKey: .to) else {
             return
         }
-
+        toVC.modalPresentationStyle = .custom
+        toVC.modalPresentationCapturesStatusBarAppearance = true
         let vc = self.reverse ? toVC : fromVC
         guard let startVC = (vc as? UINavigationController)?.viewControllers.first as? PingStartViewDelegate else {
             fatalError("start vc not comfirm PingStartViewDelegate")
@@ -42,7 +43,10 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
 
         self.transitionContext = transitionContext
 
-        self.animateTransition(transitionContext, fromView: fromView, toView: toView, startView: startView)
+        animateTransition(transitionContext,
+                          fromView: fromView,
+                          toView: toView,
+                          startView: startView)
     }
 
     fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning,
@@ -121,12 +125,11 @@ final class PingTransition: NSObject, UIViewControllerAnimatedTransitioning, CAA
     }
 
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        guard  let transitionContext = self.transitionContext else {
+        guard  let tc = self.transitionContext else {
             fatalError("transitionContext = nil")
         }
-        
-        transitionContext.completeTransition(true)
-        self.maskLayer.removeFromSuperlayer()
+        tc.completeTransition(true)
+        maskLayer.removeFromSuperlayer()
     }
 
     func calculateFinalPoint(startView: UIView, toView: UIView) -> CGPoint {

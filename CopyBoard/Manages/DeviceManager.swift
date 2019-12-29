@@ -84,12 +84,6 @@ extension DeviceManager {
         }
     }
     
-    func hiddenStatusBar(hidden: Bool) {
-        guard !self.isLandscape else { return }
-        UIApplication.shared
-            .setStatusBarHidden(hidden, with: .slide)
-    }
-    
     var mainHeight: CGFloat {
         get {
             return self.statusbarHeight + self.navigationBarHeight

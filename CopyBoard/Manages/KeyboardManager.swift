@@ -14,9 +14,6 @@ final class KeyboardManager {
         _ duration: Double) -> Void
     
     static let shared = KeyboardManager()
-    //    static var keyboardHeight: CGFloat = 0
-    //    static var duration: Double = 0.25
-    //    static var keyboardShow: Bool = false
     
     fileprivate var keyboardHandler: KeyboardHandle?
     
@@ -49,7 +46,7 @@ final class KeyboardManager {
         if let userInfo = (notification as NSNotification).userInfo,
             let frameValue = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let durationValue = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
-//            Logger.log("change frame height to \(frameValue.height)")
+            Logger.log("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
                 self.keyboardHandler?(true, frameValue.height, durationValue)
             }

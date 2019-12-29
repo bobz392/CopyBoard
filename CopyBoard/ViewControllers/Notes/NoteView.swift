@@ -181,12 +181,7 @@ extension NoteView {
             collectionView.collectionViewLayout as? CHTCollectionViewWaterfallLayout {
             layout.columnCount = DeviceManager.shared.noteColumnCount
             collectionView.setCollectionViewLayout(layout, animated: true)
-            
         }
-       
-        UIApplication.shared
-            .setStatusBarHidden(DeviceManager.shared.isLandscape,
-                                with: .fade)
         
         let height: CGFloat = searchNoResultView.frame.height * 0.4
         catImageView.snp.updateConstraints { maker in

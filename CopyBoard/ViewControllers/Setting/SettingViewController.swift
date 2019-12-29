@@ -29,14 +29,14 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.settingView
+        settingView
             .config(view: self.view)
-        self.settingView
+        settingView
             .configTableView(delegate: self, dataSource: self)
         
-        self.settingView.closeButton
+        settingView.closeButton
             .addTarget(self,
-                       action: #selector(self.quit),
+                       action: #selector(quit),
                        for: .touchUpInside)
         
         if #available(iOS 11.0, *) {

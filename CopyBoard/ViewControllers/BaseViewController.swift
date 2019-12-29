@@ -13,13 +13,33 @@ class BaseViewController: UIViewController {
     fileprivate var sourceViewBlock: SourceViewBlock? = nil
     fileprivate var previewViewControllerBlock: PreviewViewControllerBlock? = nil
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override init(nibName nibNameOrNil: String?,
+                  bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil,
+                   bundle: nibBundleOrNil)
         
-        self.modalPresentationStyle = .overFullScreen
+        self.modalPresentationStyle = .fullScreen
+        self.modalPresentationCapturesStatusBarAppearance = true
+//        modalPresentationCapturesStatusBarAppearance
+        
         if #available(iOS 13.0, *) {
             self.isModalInPresentation = true
-            UIApplication.shared.statusBarStyle = .darkContent
+        } 
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
         }
     }
     
@@ -33,11 +53,6 @@ class BaseViewController: UIViewController {
         NotificationCenter.default
             .addObserver(self, selector: #selector(self.deviceOrientationChanged),
                          name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc func deviceOrientationChanged() {
@@ -54,7 +69,6 @@ class BaseViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
 }
 
 // Mark: - 3d touch
@@ -96,4 +110,11 @@ extension BaseViewController: UIViewControllerPreviewingDelegate {
         }
     }
     
+}
+
+
+extension UINavigationController {
+    override open var childForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
 }
