@@ -11,13 +11,13 @@ import UIKit
 class BarView: UIView {
 
     let sideMargin: CGFloat
-    let barButtonSide: CGFloat = 32
+    let barButtonSide: CGFloat = 40
     
     let titleLabel = UILabel()
     fileprivate var leftButtons = [UIButton]()
     fileprivate var rightButtons = [UIButton]()
     
-    init(sideMargin: CGFloat = 8) {
+    init(sideMargin: CGFloat = 0) {
         self.sideMargin = sideMargin
         super.init(frame: CGRect.zero)
         self.setup()
@@ -34,8 +34,6 @@ class BarView: UIView {
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.left.greaterThanOrEqualToSuperview().offset(60)
-            make.right.greaterThanOrEqualToSuperview().offset(-60)
         }
     }
     
@@ -98,6 +96,8 @@ class BarView: UIView {
             })
             lastButton = btn
             btn.imageView?.contentMode = .scaleAspectFit
+            btn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5,
+                                               bottom: 5, right: 5)
         }
     }
     

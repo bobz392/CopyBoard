@@ -54,7 +54,7 @@ class NoteFilerHeaderView: UIView {
 class NoteView {
     
     let barHolderView = UIView()
-    let barView = BarView(sideMargin: 6)
+    let barView = BarView()
     let searchBar = UISearchBar()
     let searchButton = UIButton(type: .custom)
     let settingButton = UIButton(type: .custom)
