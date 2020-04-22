@@ -196,6 +196,10 @@ extension NoteView {
         barView.superview?.layoutIfNeeded()
     }
     
+    func stopLoading() {
+        self.collectionView.dg_stopLoading()
+    }
+    
     fileprivate func addRefreshCreate() {
         let weakSelf = self
         let loadingView =

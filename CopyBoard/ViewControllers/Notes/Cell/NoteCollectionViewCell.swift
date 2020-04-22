@@ -160,8 +160,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     func deleteAction(targetCtl: UIViewController) {
-        guard let cv = curlView else { return }
-        let weakSelf =  self
+        guard let cv = self.curlView else { return }
+        let weakSelf = self
         let alertVc =
             UIAlertController(title: Localized("revert"),
                               message: nil,

@@ -20,7 +20,6 @@ class BaseViewController: UIViewController {
         
         self.modalPresentationStyle = .fullScreen
         self.modalPresentationCapturesStatusBarAppearance = true
-//        modalPresentationCapturesStatusBarAppearance
         
         if #available(iOS 13.0, *) {
             self.isModalInPresentation = true
