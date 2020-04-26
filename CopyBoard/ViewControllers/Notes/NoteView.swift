@@ -44,6 +44,7 @@ class NoteFilerHeaderView: UIView {
         segment.snp.makeConstraints { (maker) in
             maker.left.equalToSuperview()
                 .offset(20)
+            maker.right.equalToSuperview().offset(-20)
             maker.centerY.equalToSuperview()
         }
         
