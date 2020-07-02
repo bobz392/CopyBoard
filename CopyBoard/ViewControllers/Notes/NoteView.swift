@@ -44,6 +44,7 @@ class NoteFilerHeaderView: UIView {
         segment.snp.makeConstraints { (maker) in
             maker.left.equalToSuperview()
                 .offset(20)
+            maker.right.equalToSuperview().offset(-20)
             maker.centerY.equalToSuperview()
         }
         
@@ -194,6 +195,10 @@ extension NoteView {
         }
         
         barView.superview?.layoutIfNeeded()
+    }
+    
+    func stopLoading() {
+        self.collectionView.dg_stopLoading()
     }
     
     fileprivate func addRefreshCreate() {

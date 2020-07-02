@@ -211,7 +211,7 @@ class NotesViewController: BaseViewController {
         editorVC.transitioningDelegate = self
         transitionType = .present
         present(editorVC, animated: true) {
-            self.noteView.collectionView.dg_stopLoading()
+            self.noteView.stopLoading()
             self.noteView.barView.alpha = 1.0
         }
     }
@@ -288,20 +288,26 @@ extension NotesViewController: RealmNotificationDataSource {
     func update(deletions: [Int], insertions: [Int], modifications: [Int]) {
         NoteCollectionViewInputOverlay.closeOpenItem()
         if insertions.count > 0, deletions.count > 0 {
+            // 如果是增加和删除都有的话，就直接 reload
             self.noteView.collectionView.reloadData()
         } else {
             noteView.collectionView.performBatchUpdates({ [weak self] in
+                guard let ws = self else { return }
                 if insertions.count > 0 {
-                    self?.noteView.collectionView
+                    ws.noteView.collectionView
                         .insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
                 } else if deletions.count > 0 {
-                    self?.noteView.collectionView
+                    ws.noteView.collectionView
                         .deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
                 } else if modifications.count > 0 {
-                    self?.noteView.collectionView
+                    ws.noteView.collectionView
                         .reloadItems(at: modifications.map { IndexPath(row: $0, section: 0) })
                 }
-                }, completion: nil)
+                }, completion: { [weak self] finish in
+                    if finish {
+                        self?.noteView.collectionView.reloadData()
+                    }
+            })
         }
     }
     

@@ -36,10 +36,12 @@ final class PullDismissView: DGElasticPullToRefreshLoadingView {
     
     override func stopLoading() {
         super.stopLoading()
+        self.imageView.alpha = 0
     }
     
     override func startAnimating() {
         super.startAnimating()
+        self.imageView.alpha = 1
     }
     
     
