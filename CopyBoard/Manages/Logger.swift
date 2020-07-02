@@ -21,7 +21,8 @@ struct Logger {
                 print("║", function, line)
                 print("║", file)
                 print("╟───────────────────────────────────────────────────────────")
-                print("║ \(log)")
+//                print("║ \(log)")
+                print("║ \(log)", separator: " ", terminator: "\n║ \n")
                 print("╚═══════════════════════════════════════════════════════════")
                 print("\n")
             }

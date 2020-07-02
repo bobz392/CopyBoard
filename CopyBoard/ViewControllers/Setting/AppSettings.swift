@@ -15,7 +15,7 @@ protocol AppSettingsNotify {
 }
 
 class AppSettings {
-    
+    	
     fileprivate var notifyObjects = [String: AppSettingsNotify]()
     
     // 0 create 1 modify

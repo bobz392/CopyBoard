@@ -151,6 +151,7 @@
 		C78C33601E2EF019001DCE38 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C335F1E2EF019001DCE38 /* AppColors.swift */; };
 		C78C33621E2EF060001DCE38 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C33611E2EF060001DCE38 /* Icons.swift */; };
 		C79EF8541E3DF2D0004BDACC /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EF8531E3DF2D0004BDACC /* GuideView.swift */; };
+		C7D8E9FE24611BFD0084412E /* SegmentCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8E9FD24611BFD0084412E /* SegmentCollectionViewFlowLayout.swift */; };
 		C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D531E341EEF00B4E418 /* FaveButton.swift */; };
 		C7D96D5D1E341EEF00B4E418 /* FaveIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D541E341EEF00B4E418 /* FaveIcon.swift */; };
 		C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D561E341EEF00B4E418 /* Constraints+.swift */; };
@@ -351,6 +352,7 @@
 		C78C335F1E2EF019001DCE38 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C78C33611E2EF060001DCE38 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		C79EF8531E3DF2D0004BDACC /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		C7D8E9FD24611BFD0084412E /* SegmentCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		C7D96D531E341EEF00B4E418 /* FaveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveButton.swift; sourceTree = "<group>"; };
 		C7D96D541E341EEF00B4E418 /* FaveIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveIcon.swift; sourceTree = "<group>"; };
 		C7D96D561E341EEF00B4E418 /* Constraints+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+.swift"; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				C774F7DF1E6B63B80081C5E0 /* StickerShare.entitlements */,
 				C774F7D31E6B637F0081C5E0 /* ShareViewController.swift */,
 				C764A31E1E7BA97A00B2B0C1 /* SegmentationViewController.swift */,
+				C7D8E9FD24611BFD0084412E /* SegmentCollectionViewFlowLayout.swift */,
 				C774F7E41E6B65890081C5E0 /* FinishView.swift */,
 				C774F7E51E6B65890081C5E0 /* FinishView.xib */,
 				C774F7D51E6B637F0081C5E0 /* MainInterface.storyboard */,
@@ -1402,6 +1405,7 @@
 				C764A3221E7BAC0200B2B0C1 /* SegmentationCollectionViewCell.swift in Sources */,
 				C764A3251E7BAF2B00B2B0C1 /* SECollectionViewFlowLayout.m in Sources */,
 				C774F7F51E6B73830081C5E0 /* GroupManager.swift in Sources */,
+				C7D8E9FE24611BFD0084412E /* SegmentCollectionViewFlowLayout.swift in Sources */,
 				C774F7E61E6B65890081C5E0 /* FinishView.swift in Sources */,
 				C774F7F31E6B73520081C5E0 /* Note.swift in Sources */,
 			);

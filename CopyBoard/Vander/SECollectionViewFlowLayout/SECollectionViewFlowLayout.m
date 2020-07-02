@@ -165,7 +165,9 @@ static NSString * const kSECollectionViewKeyPath = @"collectionView";
                     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
                     if (cell.selected) {
                         if (self.panToDeselect) {
-                            if (!self.previousIndexPath && ![self.previousIndexPath isEqual:indexPath]) self.deselecting = YES;
+                            if (!self.previousIndexPath
+                                // && ![self.previousIndexPath isEqual:indexPath]
+                                ) self.deselecting = YES;
                             if (self.deselecting)   [self deselectCellAtIndexPath:indexPath];
                         }
                     } else {
