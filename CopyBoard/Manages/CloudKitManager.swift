@@ -153,7 +153,7 @@ class CloudKitManager: NSObject {
                 Logger.log("subscription extist avoid recreate it")
             } else {
                 let subscription =
-                    CKSubscription(recordType: "Note",
+                CKQuerySubscription(recordType: "Note",
                                    predicate: predicate,
                                    options: [.firesOnRecordCreation,
                                              .firesOnRecordUpdate,
@@ -171,6 +171,9 @@ class CloudKitManager: NSObject {
     
     func asyncFromCloud() {
         guard DBManager.shared.queryNotes().count <= 0 else {
+            dispatch_async_main {
+                Note.createDefaultDBNote()
+            }
             return
         }
         

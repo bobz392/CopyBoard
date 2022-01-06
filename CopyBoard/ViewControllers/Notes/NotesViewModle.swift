@@ -24,46 +24,44 @@ class NotesViewModel {
     init(
         searchDriver: Driver<String>,
         searchBlock: @escaping SearchBlock) {
-        
-        self.searchBlock = searchBlock
-        self.notes = DBManager.shared
-            .queryNotes(color: AppSettings.shared.filterColorType)
-        
-        let search = searchDriver
-            .throttle(0.5)
-            .skip(1)
-            .distinctUntilChanged()
-            .flatMapLatest { (query) -> Driver<NotesSearchState> in
-                if query.isEmpty {
-                    return Driver.just(NotesSearchState.empty)
-                } else {
-                    let notes = DBManager.shared
-                        .queryNotes(contain: query, color: AppSettings.shared.filterColorType)
-                    let errorReturn = Driver
-                        .just(NotesSearchState(notes: [], searchString: query))
-                    if notes.isEmpty {
-                        return errorReturn
+            self.searchBlock = searchBlock
+            self.notes = DBManager.shared
+                .queryNotes(color: AppSettings.shared.filterColorType)
+            
+            let time: RxTimeInterval = .milliseconds(500)
+            let search = searchDriver
+                .throttle(time)
+                .skip(1)
+                .distinctUntilChanged()
+                .flatMapLatest { (query) -> Driver<NotesSearchState> in
+                    if query.isEmpty {
+                        return Driver.just(NotesSearchState.empty)
                     } else {
-                        let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query))
-                        return k.asDriver(onErrorJustReturn: NotesSearchState(notes: [], searchString: query))
+                        let notes = DBManager.shared
+                            .queryNotes(contain: query, color: AppSettings.shared.filterColorType)
+                        let errorReturn = Driver
+                            .just(NotesSearchState(notes: [], searchString: query))
+                        if notes.isEmpty {
+                            return errorReturn
+                        } else {
+                            let k = Observable.just(NotesSearchState(notes: Array(notes), searchString: query))
+                            return k.asDriver(onErrorJustReturn: NotesSearchState(notes: [], searchString: query))
+                        }
                     }
                 }
+            
+            search.asObservable()
+                .subscribe({ [unowned self] stateEvent in
+                    guard self.isInSearch else { return }
+                    Logger.log(stateEvent.element ?? "no state")
+                    if let s = stateEvent.element {
+                        self.searchNotes = s.notes
+                        self.isQueryStringEmpty = s.searchString.count <= 0
+                        self.searchBlock(s.searchString)
+                    }
+                })
+                .disposed(by: disposeBag)
         }
-        
-        let insearchVariable = Variable(self.isInSearch).asObservable()
-        
-        search.asObservable()
-            .takeUntil(insearchVariable)
-            .subscribe ({ [unowned self] (state) in
-                Logger.log(state.element ?? "no state")
-                if let s = state.element {
-                    self.searchNotes = s.notes
-                    self.isQueryStringEmpty = s.searchString.count <= 0
-                    self.searchBlock(s.searchString)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
     
     func refreshNote() {
         notes = DBManager.shared

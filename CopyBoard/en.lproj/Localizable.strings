@@ -104,3 +104,8 @@
 "helpLineCount"="How to change Memo's max line count";
 "helpColor"="How to change Memo's color";
 "helpCopy"="How to copy text to Memo in Keyboard";
+
+
+// New UI Localizables
+"list"="List";
+"card"="Card";

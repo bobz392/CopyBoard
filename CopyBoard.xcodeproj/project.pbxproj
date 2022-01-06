@@ -112,6 +112,7 @@
 		C7702FE61E6799A70022EC75 /* AlertChildPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7702FE21E6799A70022EC75 /* AlertChildPageViewController.xib */; };
 		C7702FE71E6799A70022EC75 /* AlertOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7702FE31E6799A70022EC75 /* AlertOnboarding.swift */; };
 		C7702FE81E6799A70022EC75 /* AlertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7702FE41E6799A70022EC75 /* AlertPageViewController.swift */; };
+		C7727A002779EDF4006EDA62 /* NoteCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77279FF2779EDF4006EDA62 /* NoteCollectionCell.swift */; };
 		C774F7CC1E6B55150081C5E0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C721A0EA1E54FF49000257A8 /* CloudKit.framework */; };
 		C774F7D41E6B637F0081C5E0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774F7D31E6B637F0081C5E0 /* ShareViewController.swift */; };
 		C774F7D71E6B637F0081C5E0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C774F7D51E6B637F0081C5E0 /* MainInterface.storyboard */; };
@@ -162,6 +163,9 @@
 		C7D96D6B1E34304300B4E418 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D681E34304300B4E418 /* iRate.m */; };
 		C7D96D6D1E3434E300B4E418 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D96D6C1E3434E300B4E418 /* RateManager.swift */; };
 		C7F13BC51E55B33300DFE4AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769961C1E369B29001E2F86 /* Localizable.strings */; };
+		C7F341B627804BCD00E2C792 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F341B527804BCD00E2C792 /* NoteViewController.swift */; };
+		C7F341B827804EAF00E2C792 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F341B727804EAF00E2C792 /* NoteCell.swift */; };
+		C7F341BD2782FA4200E2C792 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F341BC2782FA4200E2C792 /* MenuController.swift */; };
 		C7F9230D1E6B3F3200700F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F9230F1E6B3F3200700F86 /* InfoPlist.strings */; };
 		C7F923131E6B3F8200700F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F923151E6B3F8200700F86 /* InfoPlist.strings */; };
 		FC620C6CA508CA45CC8E7B03 /* Pods_CopyBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8FEBE3FB46156ABEFB451E /* Pods_CopyBoard.framework */; };
@@ -312,6 +316,7 @@
 		C7702FE21E6799A70022EC75 /* AlertChildPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertChildPageViewController.xib; sourceTree = "<group>"; };
 		C7702FE31E6799A70022EC75 /* AlertOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertOnboarding.swift; sourceTree = "<group>"; };
 		C7702FE41E6799A70022EC75 /* AlertPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPageViewController.swift; sourceTree = "<group>"; };
+		C77279FF2779EDF4006EDA62 /* NoteCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionCell.swift; sourceTree = "<group>"; };
 		C774F7D11E6B637F0081C5E0 /* StickerShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StickerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C774F7D31E6B637F0081C5E0 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		C774F7D61E6B637F0081C5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -362,6 +367,9 @@
 		C7D96D671E34304300B4E418 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		C7D96D681E34304300B4E418 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		C7D96D6C1E3434E300B4E418 /* RateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
+		C7F341B527804BCD00E2C792 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		C7F341B727804EAF00E2C792 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		C7F341BC2782FA4200E2C792 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		C7F9230E1E6B3F3200700F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C7F923101E6B3F4900700F86 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C7F923141E6B3F8200700F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -473,6 +481,7 @@
 				C7655AD71E33059400A1CB9F /* NoteCollectionViewCell.swift */,
 				C7655AD81E33059400A1CB9F /* NoteCollectionViewCell.xib */,
 				C72ECF4F1E383C47008B34E1 /* NoteCollectionViewLayout.swift */,
+				C77279FF2779EDF4006EDA62 /* NoteCollectionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -631,6 +640,7 @@
 		C7403F361E280E240067229E /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				C7F341B427804BC200E2C792 /* View */,
 				C72332B01E302D9900D5189D /* Cell */,
 				C7403F371E280E240067229E /* NotesViewController.swift */,
 				C71110281E29448F007A1577 /* NotesViewModle.swift */,
@@ -812,6 +822,24 @@
 				C7D96D681E34304300B4E418 /* iRate.m */,
 			);
 			path = iRate;
+			sourceTree = "<group>";
+		};
+		C7F341B427804BC200E2C792 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7F341BB2782FA3500E2C792 /* Menu */,
+				C7F341B527804BCD00E2C792 /* NoteViewController.swift */,
+				C7F341B727804EAF00E2C792 /* NoteCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C7F341BB2782FA3500E2C792 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C7F341BC2782FA4200E2C792 /* MenuController.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		ED6A0EEAC03B747A660C9296 /* Pods */ = {
@@ -1138,6 +1166,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CopyBoard/Pods-CopyBoard-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CircleMenu/CircleMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/ContextMenu/ContextMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -1146,10 +1175,12 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework",
+				"${BUILT_PRODUCTS_DIR}/UILibrary/UILibrary.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ContextMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -1158,6 +1189,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGSnackbar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UILibrary.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1289,6 +1321,7 @@
 				C74BF13B1E3D5CB9007F35E1 /* TouchButton.swift in Sources */,
 				C7702FE51E6799A70022EC75 /* AlertChildPageViewController.swift in Sources */,
 				C7D96D6B1E34304300B4E418 /* iRate.m in Sources */,
+				C7F341B627804BCD00E2C792 /* NoteViewController.swift in Sources */,
 				C74568B81E2D34D700E7C776 /* DBManager.swift in Sources */,
 				C76B8DF71E35AB06006896FA /* DeviceManager.swift in Sources */,
 				C700F11B1E4C399E00EE66D4 /* SettingView.swift in Sources */,
@@ -1302,6 +1335,7 @@
 				C7D96D631E341EEF00B4E418 /* Spark.swift in Sources */,
 				C7110FEA1E2836B2007A1577 /* GroupManager.swift in Sources */,
 				C73F6DFF1E394DBD00FBD6F0 /* DGElasticPullToRefreshConstants.swift in Sources */,
+				C7727A002779EDF4006EDA62 /* NoteCollectionCell.swift in Sources */,
 				C71741D41E479C4000D39597 /* MenuViewController.swift in Sources */,
 				C7655AA71E325FA100A1CB9F /* EditorViewController.swift in Sources */,
 				C7753D8A1E352A0900C45A5A /* CGPointAdditions.c in Sources */,
@@ -1325,6 +1359,7 @@
 				C7D96D601E341EEF00B4E418 /* Geometry.swift in Sources */,
 				C721A0E41E51D76E000257A8 /* DetailViewController.swift in Sources */,
 				C76B8DF51E359EA8006896FA /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				C7F341B827804EAF00E2C792 /* NoteCell.swift in Sources */,
 				C721A0DE1E50DD15000257A8 /* SideMenuTransition.swift in Sources */,
 				C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
@@ -1341,6 +1376,7 @@
 				C7D96D5C1E341EEF00B4E418 /* FaveButton.swift in Sources */,
 				C721A0E21E51900E000257A8 /* SettingItems.swift in Sources */,
 				C7D96D5E1E341EEF00B4E418 /* Constraints+.swift in Sources */,
+				C7F341BD2782FA4200E2C792 /* MenuController.swift in Sources */,
 				C72332B91E3033AB00D5189D /* NoteTextView.swift in Sources */,
 				C76699341F8DBA94009D94C9 /* MessageViewBuilder.swift in Sources */,
 				C7110FEB1E2836B2007A1577 /* UserDefaultsManager.swift in Sources */,
@@ -1533,7 +1569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1586,7 +1622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1613,13 +1649,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/CopyBoard/bridge-header.h";
 				SWIFT_VERSION = 5.0;
@@ -1642,13 +1677,12 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = CopyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/CopyBoard/bridge-header.h";
 				SWIFT_VERSION = 5.0;
@@ -1667,13 +1701,12 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Keyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
@@ -1694,13 +1727,12 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Keyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Keyboard/bridge-header.h";
@@ -1753,13 +1785,12 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = StickerShare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/StickerShare/bridge-header.h";
@@ -1780,13 +1811,12 @@
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = StickerShare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.CopyBoard.StickerShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/StickerShare/bridge-header.h";

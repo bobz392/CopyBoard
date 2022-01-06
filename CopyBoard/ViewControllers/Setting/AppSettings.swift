@@ -7,8 +7,36 @@
 //
 
 import Foundation
+import UILibrary
+import UIKit
 
 let kFilterNoneType = "无"
+
+extension GlobalSettings.Key {
+    /// 是分组还是列表
+    public static let noteGroupKey = GlobalSettings.Key(rawValue: "com.bob.memo.group.or.list")
+    
+}
+
+
+public struct MemoSettings {
+    
+    public static let shared = MemoSettings()
+    private init() { }
+    
+    /// noteGroupKey
+    var useGroup: Bool {
+        set(value) {
+            GlobalSettings.default
+                .set(forKey: .noteGroupKey, value: value)
+        }
+        get {
+            return GlobalSettings.default
+                .valueForKey(.noteGroupKey) ?? true
+        }
+    }
+    
+}
 
 protocol AppSettingsNotify {
     func settingDidChange(settingKey: UserDefaultsKey)

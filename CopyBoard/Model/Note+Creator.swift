@@ -47,7 +47,37 @@ extension Note {
         note1.color = 0
         note1.updateCloud = true
         
-        let notes = [note5, note4, note3, note2, note1]
+        let note6 = Note()
+        note6.noteCreator(content: Localized("description1"), createdAt: Date())
+        note6.color = 0
+        note6.updateCloud = true
+        
+        let note7 = Note()
+        note7.noteCreator(content: Localized("description2"), createdAt: Date())
+        note7.color = 0
+        note7.updateCloud = true
+        
+        let note8 = Note()
+        note8.noteCreator(content: Localized("description3"), createdAt: Date())
+        note8.color = 0
+        note8.updateCloud = true
+        
+        let note9 = Note()
+        note9.noteCreator(content: Localized("doGuild1"), createdAt: Date())
+        note9.color = 0
+        note9.updateCloud = true
+        
+        let note10 = Note()
+        note10.noteCreator(content: Localized("doGuild2"), createdAt: Date())
+        note10.color = 0
+        note10.updateCloud = true
+        
+        let note11 = Note()
+        note11.noteCreator(content: Localized("doGuild3"), createdAt: Date())
+        note11.color = 0
+        note11.updateCloud = true
+        
+        let notes = [note11, note10, note9, note8, note7, note6, note5, note4, note3, note2, note1]
         DBManager.shared.writeObjects(notify: true , objects: notes)
     }
     

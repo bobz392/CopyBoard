@@ -104,3 +104,8 @@
 "helpLineCount"="如何改变便签的最大显示行数";
 "helpColor"="如何改变便签的颜色";
 "helpCopy"="在键盘中如何复制文字到便签";
+
+
+// New UI Localizables
+"list"="列表";
+"card"="卡片";

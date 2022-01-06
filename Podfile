@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '13.0'
 
 target 'CopyBoard' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -14,7 +14,7 @@ target 'CopyBoard' do
   
   pod 'RealmSwift'
   # https://github.com/SnapKit/SnapKit
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit'
   # https://github.com/malcommac/SwiftDate
   pod 'SwiftDate'
   # https://github.com/Ramotion/circle-menu
@@ -27,6 +27,9 @@ target 'CopyBoard' do
 #  pod 'MagazineLayout'
   # https://github.com/SvenTiigi/WhatsNewKit
 #  pod 'WhatsNewKit'
+  pod "ContextMenu"
+
+  pod "UILibrary", :path => '../UILibrary'
 
   target 'CopyBoardTests' do
     inherit! :search_paths
@@ -42,7 +45,8 @@ target 'Keyboard' do
   # Pods for Keyboard
   
   pod 'RealmSwift'
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit'
+  pod "UILibrary", :path => '../UILibrary'
   
 end
 
@@ -52,6 +56,7 @@ target 'StickerShare' do
   inhibit_all_warnings!
   # Pods for StickerShare
   pod 'RealmSwift'
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit'
+  pod "UILibrary", :path => '../UILibrary'
 
 end

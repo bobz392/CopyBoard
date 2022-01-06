@@ -15,12 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController(rootViewController: NotesViewController())
+        DBManager.configDB()
+        let navigationController = UINavigationController(rootViewController: NoteViewController())
         navigationController.view.backgroundColor = AppColors.mainBackground
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
-        DBManager.configDB()
         
         application.registerForRemoteNotifications()
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
@@ -35,12 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CloudKitManager.shared.createSubscription()
         self.configureDynamicShortcuts()
         
-        let config = BuglyConfig()
-        #if DEBUG
-        config.debugMode = true
-        #endif
-        config.reportLogLevel = .warn
-        Bugly.start(withAppId: "1867f49195")
+//        let config = BuglyConfig()
+//        #if DEBUG
+//        config.debugMode = true
+//        #endif
+//        config.reportLogLevel = .warn
+//        Bugly.start(withAppId: "1867f49195")
         
         return true
     }

@@ -37,6 +37,12 @@ enum Icons {
     case createManual
     case selected
     
+    // new
+    case share
+    case moreActions
+    case group
+    case list
+    
     func iconString() -> String {
         switch self {
         case .setting: return "setting"
@@ -64,6 +70,11 @@ enum Icons {
         case .filter: return "filter"
         case .createManual: return "createManual"
         case .selected: return "selected"
+            
+        case .share: return "share"
+        case .moreActions: return "more_actions"
+        case .group: return "group"
+        case .list: return "list"
         }
     }
     

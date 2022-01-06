@@ -162,7 +162,5 @@ extension UIView {
         self.layer.shadowRadius = 10
         self.layer.shadowOffset = CGSize.zero
         //        self.layer.shadowPath = CGPath(rect: self.layer.bounds, transform: nil)
-        
-        
     }
 }
