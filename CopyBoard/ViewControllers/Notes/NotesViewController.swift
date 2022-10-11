@@ -407,12 +407,23 @@ extension NotesViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView
-            .dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.reuseId,
-                                 for: indexPath) as! NoteCollectionViewCell
+            .dequeueReusableCell(withReuseIdentifier: NotePreviewCell.reuseId,
+                                 for: indexPath) as! NotePreviewCell
         let note = self.viewModel.noteIn(row: indexPath.row)
         let query = self.noteView.searchBar.text
-        cell.configCell(use: note, query: query)
-        resetTargetAction(cell: cell, indexPath: indexPath)
+//        cell.configCell(use: note, query: query)
+        cell.lastEditLabel.text = "Last edit 1 day ago"
+        cell.previewLabel.text = note.content
+        cell.starButton.isSelected = note.favourite
+        cell.tagLabel.text = note.category
+        
+        if let pairColor =
+            AppPairColors(rawValue: note.color)?.pairColor() {
+            cell.tagLabel.backgroundColor = pairColor.light
+        }
+    
+        
+//        resetTargetAction(cell: cell, indexPath: indexPath)
         
         return cell
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21136E5C28EC6E8500447930 /* NotePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21136E5B28EC6E8500447930 /* NotePreviewCell.swift */; };
 		39BF2558422B05FB526619BF /* Pods_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22074684895A2EFF5ED903B /* Pods_Keyboard.framework */; };
 		93A111E78A74FED083EBE686 /* Pods_CopyBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7DDE67CAABDEB3AAB5040B /* Pods_CopyBoardTests.framework */; };
 		9DB9D7077D9C4D12DE13EE97 /* Pods_StickerShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67998128834E618F5B8F205 /* Pods_StickerShare.framework */; };
@@ -213,6 +214,7 @@
 /* Begin PBXFileReference section */
 		0A7DDE67CAABDEB3AAB5040B /* Pods_CopyBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CopyBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8D3377582B9FACA772F008 /* Pods-Keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard.release.xcconfig"; sourceTree = "<group>"; };
+		21136E5B28EC6E8500447930 /* NotePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreviewCell.swift; sourceTree = "<group>"; };
 		2ADFF247C854FEBD8A1C8AF2 /* Pods-CopyBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CopyBoard/Pods-CopyBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		945D95510F54B4FABDC505FC /* Pods-Keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		9D8FEBE3FB46156ABEFB451E /* Pods_CopyBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CopyBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,6 +419,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21136E5928EC6DEE00447930 /* Note-New */ = {
+			isa = PBXGroup;
+			children = (
+				21136E5A28EC6E4C00447930 /* Views */,
+			);
+			path = "Note-New";
+			sourceTree = "<group>";
+		};
+		21136E5A28EC6E4C00447930 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21136E5B28EC6E8500447930 /* NotePreviewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C700F1171E4C397D00EE66D4 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +644,7 @@
 		C7403F311E280DE70067229E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				21136E5928EC6DEE00447930 /* Note-New */,
 				C7403F321E280E040067229E /* BaseViewController.swift */,
 				C74BF1431E3D98EE007F35E1 /* BarView.swift */,
 				C72CF6401E4C46D900CAAC15 /* Transition */,
@@ -1364,6 +1383,7 @@
 				C721A0DF1E50DD15000257A8 /* UISideMenuNavigationController.swift in Sources */,
 				C7753D971E352A0900C45A5A /* XBPageCurlView.m in Sources */,
 				C73F6E001E394DBD00FBD6F0 /* DGElasticPullToRefreshExtensions.swift in Sources */,
+				21136E5C28EC6E8500447930 /* NotePreviewCell.swift in Sources */,
 				C72CF6771E4C8EF200CAAC15 /* SettingsTableViewCell.swift in Sources */,
 				C71110291E29448F007A1577 /* NotesViewModle.swift in Sources */,
 				C7D96D5F1E341EEF00B4E418 /* Easing.swift in Sources */,
@@ -1649,6 +1669,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CopyBoard/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0.1;
@@ -1677,6 +1698,7 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = CopyBoard/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0.1;

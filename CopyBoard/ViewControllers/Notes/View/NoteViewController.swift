@@ -49,30 +49,30 @@ class NoteViewController: UIViewController {
     private func configNavigationBar() {
         uilib_largeTitleSupport(searchController: nil)
         self.title = Localized("sticker")
-        navigationItem.searchController = viewProps.searchController
+//        navigationItem.searchController = viewProps.searchController
         
-        let barItem = UIBarButtonItem(customView: viewProps.arrangeButton)
-        navigationItem.rightBarButtonItem = barItem
+//        let barItem = UIBarButtonItem(customView: viewProps.arrangeButton)
+//        navigationItem.rightBarButtonItem = barItem
         
-        viewProps.arrangeButton
-            .rx.tap
-            .subscribe { [unowned self] _ in
-                ContextMenu.shared.show(
-                    sourceViewController: self,
-                    viewController: MenuController(style: .plain),
-                    options: ContextMenu.Options(
-                        containerStyle: ContextMenu.ContainerStyle(
-                            cornerRadius: 12,
-                            xPadding: -20,
-                            backgroundColor: .dms_white
-                        ),
-                        menuStyle: .minimal,
-                        hapticsStyle: .light
-                    ),
-                    sourceView: self.viewProps.arrangeButton,
-                    delegate: nil
-                )
-        }.disposed(by: disposeBag)
+//        viewProps.arrangeButton
+//            .rx.tap
+//            .subscribe { [unowned self] _ in
+//                ContextMenu.shared.show(
+//                    sourceViewController: self,
+//                    viewController: MenuController(style: .plain),
+//                    options: ContextMenu.Options(
+//                        containerStyle: ContextMenu.ContainerStyle(
+//                            cornerRadius: 12,
+//                            xPadding: -20,
+//                            backgroundColor: .dms_white
+//                        ),
+//                        menuStyle: .minimal,
+//                        hapticsStyle: .light
+//                    ),
+//                    sourceView: self.viewProps.arrangeButton,
+//                    delegate: nil
+//                )
+//        }.disposed(by: disposeBag)
         
     }
     
@@ -117,11 +117,22 @@ extension NoteViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCell.uilib_reuseIdentifier, for: indexPath) as? NoteCell {
-            let row = indexPath.row
-            cell.updateCellBy(viewModel.noteIn(row: row), row)
-            cell.actionsButton.removeTarget(self, action: nil, for: .touchUpInside)
-            cell.actionsButton.addTarget(self, action: #selector(action(sender:)), for: .touchUpInside)
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotePreviewCell.uilib_reuseIdentifier, for: indexPath) as? NotePreviewCell {
+//            let row = indexPath.row
+//            cell.updateCellBy(viewModel.noteIn(row: row), row)
+//            cell.actionsButton.removeTarget(self, action: nil, for: .touchUpInside)
+//            cell.actionsButton.addTarget(self, action: #selector(action(sender:)), for: .touchUpInside)
+            let note = self.viewModel.noteIn(row: indexPath.row)
+            cell.lastEditLabel.text = "Last edit 1 day ago"
+            cell.previewLabel.text = note.content
+            cell.starButton.isSelected = note.favourite
+            cell.tagLabel.text = note.category
+            
+            if let pairColor =
+                AppPairColors(rawValue: note.color)?.pairColor() {
+                cell.tagLabel.backgroundColor = pairColor.light
+            }
+            
             return cell
         } else {
             return UICollectionViewCell()
@@ -146,14 +157,15 @@ struct NoteViewProps {
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 15
-        let width = (UIScreen.main.bounds.width - 55) * 0.5
-        layout.itemSize = CGSize(width: width, height: 86.0 + 20 * 3.0)
+        layout.sectionInset = UIEdgeInsets.zero
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        let width = UIScreen.main.bounds.width
+        layout.itemSize = CGSize(width: width, height: 115)
         let cv = UICollectionView(frame: .zero,
                                   collectionViewLayout: layout)
-        NoteCell.uilib_registeTo(cv)
+//        NoteCell.uilib_registeTo(cv)
+        NotePreviewCell.uilib_registeTo(cv)
         return cv
     }()
     
@@ -180,24 +192,24 @@ struct NoteViewProps {
 extension NoteViewController: GlobalSettingObservable {
     
     func valueChanged(forKey key: GlobalSettings.Key, oldValue: Any?, newValue: Any?) {
-        switch key {
-        case .noteGroupKey:
-            if let grouped = newValue as? Bool {
-                let layout = UICollectionViewFlowLayout()
-                layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-                layout.minimumLineSpacing = 20
-                layout.minimumInteritemSpacing = 15
-                let width: CGFloat
-                if grouped {
-                    width = (UIScreen.main.bounds.width - 55) * 0.5
-                } else {
-                    width = UIScreen.main.bounds.width - 40
-                }
-                layout.itemSize = CGSize(width: width, height: 86.0 + 20 * 3.0)
-                viewProps.collectionView.setCollectionViewLayout(layout, animated: true)
-            }
-        default:
-            return
-        }
+//        switch key {
+//        case .noteGroupKey:
+//            if let grouped = newValue as? Bool {
+//                let layout = UICollectionViewFlowLayout()
+//                layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//                layout.minimumLineSpacing = 20
+//                layout.minimumInteritemSpacing = 15
+//                let width: CGFloat
+//                if grouped {
+//                    width = (UIScreen.main.bounds.width - 55) * 0.5
+//                } else {
+//                    width = UIScreen.main.bounds.width - 40
+//                }
+//                layout.itemSize = CGSize(width: width, height: 86.0 + 20 * 3.0)
+//                viewProps.collectionView.setCollectionViewLayout(layout, animated: true)
+//            }
+//        default:
+//            return
+//        }
     }
 }

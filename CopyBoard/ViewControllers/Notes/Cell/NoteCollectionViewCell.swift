@@ -69,7 +69,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         
         if let date = (AppSettings.shared.stickerDateUse == 0 ?
             note.createdAt : note.modificationDate) {
-            noteDateLabel.text = date.toRelative()
+//            noteDateLabel.text = date.toRelative()
         } else {
             noteDateLabel.text = nil
         }

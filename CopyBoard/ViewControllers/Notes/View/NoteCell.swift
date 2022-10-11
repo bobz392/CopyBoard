@@ -84,7 +84,8 @@ class NoteCell: UICollectionViewCell {
         let edgePadding: CGFloat = 12.0
         cardView.addSubview(tagLabel)
         tagLabel.snp.makeConstraints { make in
-            make.left.top.equalToSuperview()
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
                 .inset(edgePadding)
             make.height.equalTo(20)
         }
@@ -141,7 +142,7 @@ class NoteCell: UICollectionViewCell {
         
         if let date = (AppSettings.shared.stickerDateUse == 0 ?
             note.createdAt : note.modificationDate) {
-            updateLabel.text = date.toRelative()
+//            updateLabel.text = date.toRelative()
         } else {
             updateLabel.text = nil
         }
